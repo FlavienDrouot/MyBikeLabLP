@@ -1,0 +1,68 @@
+/* Tailwind ne peut pas cibler les pseudo-éléments des inputs range */
+
+.thumb {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+}
+
+.thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #2563eb; /* brand-600 */
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  pointer-events: all;
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+
+.thumb::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.thumb::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  pointer-events: all;
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+
+.thumb::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+.track {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #e2e8f0;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.range {
+  position: absolute;
+  height: 6px;
+  border-radius: 3px;
+  background: #2563eb;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
