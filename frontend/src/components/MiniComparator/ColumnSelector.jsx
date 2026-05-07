@@ -40,7 +40,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 z-20 mt-2 w-64 rounded-lg border border-ink-200 bg-white shadow-lg p-3"
+          className="absolute right-0 z-20 mt-2 w-64 max-w-[calc(100vw-1rem)] rounded-lg border border-ink-200 bg-white shadow-lg p-3"
         >
           {COLUMN_GROUPS.map((group) => {
             const items = COLUMNS.filter(
