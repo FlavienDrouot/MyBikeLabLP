@@ -28,19 +28,16 @@ const filtersSlice = createSlice({
     setBrands: (state, action) => { state.brands = action.payload; },
     setRimMaterials: (state, action) => { state.rimMaterials = action.payload; },
     setHookless: (state, action) => { state.hookless = action.payload; },
-    setMinWeight: (state, action) => { state.minWeight = action.payload; },
-    setMaxWeight: (state, action) => { state.maxWeight = action.payload; },
-    setMinDepth: (state, action) => { state.minDepth = action.payload; },
-    setMaxDepth: (state, action) => { state.maxDepth = action.payload; },
-    setMinPrice: (state, action) => { state.minPrice = action.payload; },
-    setMaxPrice: (state, action) => { state.maxPrice = action.payload; },
     setSortBy: (state, action) => { state.sortBy = action.payload; },
-    setBrandsEnabled: (state, action) => { state.brandsEnabled = action.payload; },
-    setRimMaterialsEnabled: (state, action) => { state.rimMaterialsEnabled = action.payload; },
-    setHooklessEnabled: (state, action) => { state.hooklessEnabled = action.payload; },
-    setWeightEnabled: (state, action) => { state.weightEnabled = action.payload; },
-    setDepthEnabled: (state, action) => { state.depthEnabled = action.payload; },
-    setPriceEnabled: (state, action) => { state.priceEnabled = action.payload; },
+    setRange: (state, action) => {
+      const { key, min, max } = action.payload;
+      state[`min${key}`] = min;
+      state[`max${key}`] = max;
+    },
+    setEnabled: (state, action) => {
+      const { key, value } = action.payload;
+      state[`${key}Enabled`] = value;
+    },
     resetFilters: () => initialFiltersState,
   },
 });
@@ -49,19 +46,9 @@ export const {
   setBrands,
   setRimMaterials,
   setHookless,
-  setMinWeight,
-  setMaxWeight,
-  setMinDepth,
-  setMaxDepth,
-  setMinPrice,
-  setMaxPrice,
   setSortBy,
-  setBrandsEnabled,
-  setRimMaterialsEnabled,
-  setHooklessEnabled,
-  setWeightEnabled,
-  setDepthEnabled,
-  setPriceEnabled,
+  setRange,
+  setEnabled,
   resetFilters,
 } = filtersSlice.actions;
 
