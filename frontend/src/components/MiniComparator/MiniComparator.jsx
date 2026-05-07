@@ -28,7 +28,7 @@ const MiniComparator = () => {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[320px_1fr]">
           <FilterPanel />
-          <div>
+          <div className="min-w-0">
             <div className="flex justify-end mb-3">
               <ColumnSelector visibility={visibility} onToggle={handleToggle} />
             </div>
