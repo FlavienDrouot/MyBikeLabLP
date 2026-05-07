@@ -10,10 +10,10 @@ const ContactForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const subject = encodeURIComponent(
-      `Message de ${form.name}${form.company ? ` (${form.company})` : ''}`
+      `Message from ${form.name}${form.company ? ` (${form.company})` : ''}`
     );
     const body = encodeURIComponent(
-      `Nom : ${form.name}\nEmail : ${form.email}${form.company ? `\nEntreprise : ${form.company}` : ''}\n\n${form.message}`
+      `Name: ${form.name}\nEmail: ${form.email}${form.company ? `\nCompany: ${form.company}` : ''}\n\n${form.message}`
     );
     window.open(`mailto:contact.mybikelab@gmail.com?subject=${subject}&body=${body}`);
     setSent(true);
@@ -43,6 +43,7 @@ const ContactForm = () => {
           <input
             id="name"
             name="name"
+            maxLength={80}
             value={form.name}
             onChange={onChange}
             required
@@ -55,6 +56,7 @@ const ContactForm = () => {
             id="email"
             name="email"
             type="email"
+            maxLength={320}
             value={form.email}
             onChange={onChange}
             required
@@ -67,6 +69,7 @@ const ContactForm = () => {
         <input
           id="company"
           name="company"
+          maxLength={120}
           value={form.company}
           onChange={onChange}
           className="mt-1 w-full rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"
@@ -77,6 +80,7 @@ const ContactForm = () => {
         <textarea
           id="message"
           name="message"
+          maxLength={1200}
           rows={4}
           value={form.message}
           onChange={onChange}
