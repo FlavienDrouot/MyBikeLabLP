@@ -1,11 +1,19 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import FilterPanel from './FilterPanel';
 import ComparisonTable from './ComparisonTable';
 import ColumnSelector from './ColumnSelector';
-import { DEFAULT_VISIBILITY } from './columnsConfig';
+import { getColumnProperties } from '../../config/wheelProperties';
+
+// All optional columns (= non `required`) are visible by default.
+// Computed from the registry on mount.
+const buildDefaultVisibility = () =>
+  getColumnProperties()
+    .filter((p) => !p.column?.required)
+    .reduce((acc, p) => ({ ...acc, [p.id]: true }), {});
 
 const MiniComparator = () => {
-  const [visibility, setVisibility] = useState(DEFAULT_VISIBILITY);
+  const defaultVisibility = useMemo(() => buildDefaultVisibility(), []);
+  const [visibility, setVisibility] = useState(defaultVisibility);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   const handleToggle = (id) =>

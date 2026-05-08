@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { COLUMNS, COLUMN_GROUPS } from './columnsConfig';
+import {
+  COLUMN_GROUPS,
+  getColumnProperties,
+} from '../../config/wheelProperties';
 
 const ColumnSelector = ({ visibility, onToggle }) => {
   const [open, setOpen] = useState(false);
@@ -43,8 +46,10 @@ const ColumnSelector = ({ visibility, onToggle }) => {
           className="absolute right-0 z-20 mt-2 w-64 max-w-[calc(100vw-1rem)] rounded-lg border border-ink-200 bg-white shadow-lg p-3"
         >
           {COLUMN_GROUPS.map((group) => {
-            const items = COLUMNS.filter(
-              (c) => c.group === group.id && !c.required,
+            // Optional columns in the group (the `required` ones are always
+            // displayed, so they are absent from the selector).
+            const items = getColumnProperties().filter(
+              (p) => p.group === group.id && !p.column?.required,
             );
             if (items.length === 0) return null;
             return (
@@ -53,16 +58,16 @@ const ColumnSelector = ({ visibility, onToggle }) => {
                   {group.label}
                 </div>
                 <ul className="space-y-1">
-                  {items.map((c) => (
-                    <li key={c.id}>
+                  {items.map((p) => (
+                    <li key={p.id}>
                       <label className="flex items-center gap-2 px-1 py-1 rounded hover:bg-ink-100/60 cursor-pointer text-sm text-ink-700">
                         <input
                           type="checkbox"
-                          checked={!!visibility[c.id]}
-                          onChange={() => onToggle(c.id)}
+                          checked={!!visibility[p.id]}
+                          onChange={() => onToggle(p.id)}
                           className="h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-brand-500"
                         />
-                        {c.label}
+                        {p.label}
                       </label>
                     </li>
                   ))}

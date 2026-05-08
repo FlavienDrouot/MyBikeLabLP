@@ -1,12 +1,26 @@
 import { useSelector } from 'react-redux';
 import { selectFilteredWheels } from '../../store/selectors/wheelsSelectors';
-import { COLUMNS } from './columnsConfig';
+import { getColumnProperties } from '../../config/wheelProperties';
+
+// Helpers — provide default render/className when the registry doesn't specify them.
+// A new property added as displayable column can thus simply provide an `accessor`
+// + a `unit` (typical for ranges).
+const renderCellFor = (property) =>
+  property.column?.renderCell ??
+  ((w) => `${property.accessor(w)}${property.unit ?? ''}`);
+const cellClassFor = (property) =>
+  property.column?.cellClassName ?? 'px-4 py-3 text-ink-700';
+const headClassFor = (property) =>
+  property.column?.headClassName ?? 'px-4 py-3 font-semibold';
 
 const ComparisonTable = ({ visibility }) => {
   const wheels = useSelector(selectFilteredWheels);
   const total = useSelector((state) => state.wheels.items.length);
 
-  const cols = COLUMNS.filter((c) => c.required || visibility[c.id]);
+  // Displayed columns: required or checked by user via ColumnSelector.
+  const cols = getColumnProperties().filter(
+    (p) => p.column?.required || visibility[p.id]
+  );
 
   return (
     <div className="card overflow-hidden">
@@ -28,19 +42,22 @@ const ComparisonTable = ({ visibility }) => {
           <table className="w-full text-sm">
             <thead className="bg-ink-100/60 text-ink-700">
               <tr className="text-left">
-                {cols.map((c) => (
-                  <th key={c.id} className={c.headClassName}>
-                    {c.label}
+                {cols.map((p) => (
+                  <th key={p.id} className={headClassFor(p)}>
+                    {p.label}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody className="divide-y divide-ink-100">
               {wheels.map((w) => (
-                <tr key={w.id} className="hover:bg-brand-50/40 transition-colors">
-                  {cols.map((c) => (
-                    <td key={c.id} className={c.cellClassName}>
-                      {c.renderCell(w)}
+                <tr
+                  key={w.id}
+                  className="hover:bg-brand-50/40 transition-colors"
+                >
+                  {cols.map((p) => (
+                    <td key={p.id} className={cellClassFor(p)}>
+                      {renderCellFor(p)(w)}
                     </td>
                   ))}
                 </tr>

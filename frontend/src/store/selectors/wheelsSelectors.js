@@ -1,76 +1,72 @@
 import { createSelector } from '@reduxjs/toolkit';
+import {
+  getFilterableProperties,
+  getAllSorts,
+  getPropertyById,
+  minPrice,
+} from '../../config/wheelProperties';
 
-export const minPrice = (wheel) =>
-  Math.min(...wheel.prices.map((p) => p.price_eur));
+// `minPrice` is re-exported from the registry to maintain backward compatibility
+// with potential third-party imports (e.g. used in future tests).
+export { minPrice };
 
+// Filter type predicates. Adding a new filter type = add an entry here +
+// a case in `buildInitialFilters` on the slice side.
+const matchers = {
+  range: (value, filter) =>
+    value >= filter.value.min && value <= filter.value.max,
+  multiSelect: (value, filter) =>
+    filter.value.length === 0 || filter.value.includes(value),
+  triState: (value, filter) =>
+    filter.value === null || value === filter.value,
+};
+
+// Main selector: filters then sorts the wheel list by looping over the registry.
+// No filters are hardcoded here.
 export const selectFilteredWheels = createSelector(
   [(state) => state.wheels.items, (state) => state.filters],
-  (items, filters) => {
+  (items, filtersState) => {
+    const filterables = getFilterableProperties();
+    const sort = getAllSorts().find((s) => s.id === filtersState.sortBy);
+
     return items
-      .filter((wheel) => {
-        // Each filter is bypassed when its corresponding *Enabled flag is false,
-        // so the user can pause a filter without losing its current values.
-        const brandMatch =
-          !filters.brandsEnabled ||
-          filters.brands.length === 0 ||
-          filters.brands.includes(wheel.brand);
-        const matMatch =
-          !filters.rimMaterialsEnabled ||
-          filters.rimMaterials.length === 0 ||
-          filters.rimMaterials.includes(wheel.rim.material);
-        const hooklessMatch =
-          !filters.hooklessEnabled ||
-          filters.hookless === null ||
-          wheel.rim.hookless === filters.hookless;
-        const weightMatch =
-          !filters.weightEnabled ||
-          (wheel.weight_grams >= filters.minWeight &&
-            wheel.weight_grams <= filters.maxWeight);
-        const depthMatch =
-          !filters.depthEnabled ||
-          (wheel.rim.depth_mm >= filters.minDepth &&
-            wheel.rim.depth_mm <= filters.maxDepth);
-        const wheelMin = minPrice(wheel);
-        const priceMatch =
-          !filters.priceEnabled ||
-          (wheelMin >= filters.minPrice && wheelMin <= filters.maxPrice);
-        return (
-          brandMatch &&
-          matMatch &&
-          hooklessMatch &&
-          weightMatch &&
-          depthMatch &&
-          priceMatch
-        );
-      })
+      .filter((wheel) =>
+        filterables.every((property) => {
+          const f = filtersState.filters[property.id];
+          // Filter missing from state (case of updated registry without
+          // rehydration) or disabled: let it pass.
+          if (!f || !f.enabled) return true;
+          const matcher = matchers[property.filter.type];
+          if (!matcher) return true;
+          return matcher(property.accessor(wheel), f);
+        })
+      )
       .slice()
       .sort((a, b) => {
-        switch (filters.sortBy) {
-          case 'weight_asc':
-            return a.weight_grams - b.weight_grams;
-          case 'weight_desc':
-            return b.weight_grams - a.weight_grams;
-          case 'price_asc':
-            return minPrice(a) - minPrice(b);
-          case 'price_desc':
-            return minPrice(b) - minPrice(a);
-          case 'depth_asc':
-            return a.rim.depth_mm - b.rim.depth_mm;
-          case 'depth_desc':
-            return b.rim.depth_mm - a.rim.depth_mm;
-          default:
-            return a.model.localeCompare(b.model);
+        if (!sort) return 0;
+        const va = sort.accessor(a);
+        const vb = sort.accessor(b);
+        if (sort.direction === 'localeCompare') {
+          return String(va).localeCompare(String(vb));
         }
+        return sort.direction === 'asc' ? va - vb : vb - va;
       });
   }
 );
 
-export const selectAllBrands = createSelector(
-  [(state) => state.wheels.items],
-  (items) => [...new Set(items.map((w) => w.brand))].sort()
-);
-
-export const selectAllRimMaterials = createSelector(
-  [(state) => state.wheels.items],
-  (items) => [...new Set(items.map((w) => w.rim.material))].sort()
-);
+// Parameterized selector: returns the sorted, deduplicated list of values
+// for a given property, computed from the current catalog.
+// Replaces old selectAllBrands / selectAllRimMaterials.
+//
+// Usage:
+//   const allBrands = useSelector(useMemo(() => makeSelectOptionsFor('brand'), []));
+// or more simply via the useOptionsFor hook (cf. FilterPanel).
+export const makeSelectOptionsFor = (propertyId) =>
+  createSelector(
+    [(state) => state.wheels.items],
+    (items) => {
+      const property = getPropertyById(propertyId);
+      if (!property) return [];
+      return [...new Set(items.map(property.accessor))].sort();
+    }
+  );

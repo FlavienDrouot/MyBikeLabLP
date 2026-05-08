@@ -1,54 +1,77 @@
 import { createSlice } from '@reduxjs/toolkit';
+import {
+  getFilterableProperties,
+  getDefaultSortId,
+} from '../../config/wheelProperties';
 
-export const initialFiltersState = {
-  brands: [],
-  rimMaterials: [],
-  hookless: null,
-  minWeight: 700,
-  maxWeight: 2000,
-  minDepth: 20,
-  maxDepth: 80,
-  minPrice: 200,
-  maxPrice: 5000,
-  sortBy: 'name',
-  // Per-filter enable flags. When false, the corresponding filter is ignored
-  // by the wheels selector regardless of its current values.
-  brandsEnabled: true,
-  rimMaterialsEnabled: true,
-  hooklessEnabled: true,
-  weightEnabled: true,
-  depthEnabled: true,
-  priceEnabled: true,
+// State dynamically generated from the wheel properties registry.
+// Shape:
+//   {
+//     filters: { [propertyId]: { value, enabled } },
+//     sortBy: string,
+//   }
+//
+// Initial `value` depends on filter type:
+//   - range       : { min, max } (default bounds from spec)
+//   - multiSelect : [] (empty array = "all")
+//   - triState    : null (= no preference)
+
+const buildInitialFilters = () => {
+  const filters = {};
+  for (const property of getFilterableProperties()) {
+    let value;
+    switch (property.filter.type) {
+      case 'range':
+        value = { min: property.filter.min, max: property.filter.max };
+        break;
+      case 'multiSelect':
+        value = [];
+        break;
+      case 'triState':
+        value = null;
+        break;
+      default:
+        value = null;
+    }
+    filters[property.id] = { value, enabled: true };
+  }
+  return filters;
 };
+
+export const buildInitialState = () => ({
+  filters: buildInitialFilters(),
+  sortBy: getDefaultSortId(),
+});
 
 const filtersSlice = createSlice({
   name: 'filters',
-  initialState: initialFiltersState,
+  initialState: buildInitialState(),
   reducers: {
-    setBrands: (state, action) => { state.brands = action.payload; },
-    setRimMaterials: (state, action) => { state.rimMaterials = action.payload; },
-    setHookless: (state, action) => { state.hookless = action.payload; },
-    setSortBy: (state, action) => { state.sortBy = action.payload; },
-    setRange: (state, action) => {
-      const { key, min, max } = action.payload;
-      state[`min${key}`] = min;
-      state[`max${key}`] = max;
+    // Updates filter value (range = {min,max}, multiSelect = [], triState = bool|null)
+    setFilterValue: (state, action) => {
+      const { id, value } = action.payload;
+      if (state.filters[id]) {
+        state.filters[id].value = value;
+      }
     },
-    setEnabled: (state, action) => {
-      const { key, value } = action.payload;
-      state[`${key}Enabled`] = value;
+    // Enables or disables a filter without losing its current value.
+    setFilterEnabled: (state, action) => {
+      const { id, enabled } = action.payload;
+      if (state.filters[id]) {
+        state.filters[id].enabled = enabled;
+      }
     },
-    resetFilters: () => initialFiltersState,
+    setSortBy: (state, action) => {
+      state.sortBy = action.payload;
+    },
+    resetFilters: () => buildInitialState(),
   },
 });
 
 export const {
-  setBrands,
-  setRimMaterials,
-  setHookless,
+  setFilterValue,
+  setFilterEnabled,
   setSortBy,
-  setRange,
-  setEnabled,
   resetFilters,
 } = filtersSlice.actions;
 
