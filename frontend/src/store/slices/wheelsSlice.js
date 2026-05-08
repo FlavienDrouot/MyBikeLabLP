@@ -5,6 +5,7 @@ const wheelsSlice = createSlice({
   name: 'wheels',
   initialState: {
     items: wheelsData,
+    // Reserved for future backend integration with async thunks
     loading: false,
     error: null,
   },

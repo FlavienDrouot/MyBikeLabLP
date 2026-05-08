@@ -1,0 +1,29 @@
+{
+  "expectations": [
+    {
+      "text": "Le rapport identifie la faille XSS via dangerouslySetInnerHTML, classée 🔴 Bloquant",
+      "passed": true,
+      "evidence": "Section '1.1 Faille XSS – bloquant' avec payload exemple `<img src=x onerror=...>` et explication détaillée."
+    },
+    {
+      "text": "Le rapport signale l'absence de `<label>` associés aux inputs",
+      "passed": true,
+      "evidence": "Section '2.3 Accessibilité (a11y)' couvre absence de label, id, role status, aria-invalid avec exemple corrigé."
+    },
+    {
+      "text": "Le rapport mentionne que le fetch n'a pas de gestion d'erreur",
+      "passed": true,
+      "evidence": "Section '2.1 Aucune gestion d'erreur ni d'état de chargement' propose try/catch + isSubmitting + état error."
+    },
+    {
+      "text": "Le rapport relève l'absence d'état de chargement",
+      "passed": true,
+      "evidence": "Section 2.1 mentionne 'l\\'utilisateur peut spammer le bouton' et propose `disabled={isSubmitting}`."
+    },
+    {
+      "text": "Le rapport suit le format demandé",
+      "passed": false,
+      "evidence": "Format différent : sections numérotées '1. Problèmes critiques', '2. Problèmes importants', '3. Problèmes mineurs', '4. Version corrigée', '5. Récapitulatif'. Pas de structure Findings/🔴🟠🟡⚪/Questions ouvertes."
+    }
+  ]
+}

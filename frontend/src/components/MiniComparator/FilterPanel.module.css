@@ -1,4 +1,4 @@
-/* Tailwind ne peut pas cibler les pseudo-éléments des inputs range */
+/* Tailwind cannot target pseudo-elements of range inputs */
 
 .thumb {
   position: absolute;

@@ -4,19 +4,9 @@ import {
   setBrands,
   setRimMaterials,
   setHookless,
-  setMinWeight,
-  setMaxWeight,
-  setMinDepth,
-  setMaxDepth,
-  setMinPrice,
-  setMaxPrice,
   setSortBy,
-  setBrandsEnabled,
-  setRimMaterialsEnabled,
-  setHooklessEnabled,
-  setWeightEnabled,
-  setDepthEnabled,
-  setPriceEnabled,
+  setRange,
+  setEnabled,
   resetFilters,
 } from '../../store/slices/filtersSlice';
 import {
@@ -230,7 +220,7 @@ const FilterPanel = () => {
           <div className="flex items-center gap-2">
             <FilterToggle
               enabled={filters.brandsEnabled}
-              onChange={(v) => dispatch(setBrandsEnabled(v))}
+              onChange={(v) => dispatch(setEnabled({key: 'brands', value: v}))}
               ariaLabel="Enable brand filter"
             />
             <span className="text-sm font-medium text-ink-700">Brand</span>
@@ -256,19 +246,19 @@ const FilterPanel = () => {
           label="Weight" unit=" g"
           min={700} max={2000} step={10}
           valueLow={filters.minWeight} valueHigh={filters.maxWeight}
-          onChangeLow={(v) => dispatch(setMinWeight(v))}
-          onChangeHigh={(v) => dispatch(setMaxWeight(v))}
+          onChangeLow={(v) => dispatch(setRange({key: 'Weight', min: v, max: filters.maxWeight}))}
+          onChangeHigh={(v) => dispatch(setRange({key: 'Weight', min: filters.minWeight, max: v}))}
           enabled={filters.weightEnabled}
-          onToggleEnabled={(v) => dispatch(setWeightEnabled(v))}
+          onToggleEnabled={(v) => dispatch(setEnabled({key: 'weight', value: v}))}
         />
         <DualRangeRow
           label="Price" unit=" €"
           min={200} max={5000} step={50}
           valueLow={filters.minPrice} valueHigh={filters.maxPrice}
-          onChangeLow={(v) => dispatch(setMinPrice(v))}
-          onChangeHigh={(v) => dispatch(setMaxPrice(v))}
+          onChangeLow={(v) => dispatch(setRange({key: 'Price', min: v, max: filters.maxPrice}))}
+          onChangeHigh={(v) => dispatch(setRange({key: 'Price', min: filters.minPrice, max: v}))}
           enabled={filters.priceEnabled}
-          onToggleEnabled={(v) => dispatch(setPriceEnabled(v))}
+          onToggleEnabled={(v) => dispatch(setEnabled({key: 'price', value: v}))}
         />
       </Section>
 
@@ -278,7 +268,7 @@ const FilterPanel = () => {
           <div className="flex items-center gap-2">
             <FilterToggle
               enabled={filters.rimMaterialsEnabled}
-              onChange={(v) => dispatch(setRimMaterialsEnabled(v))}
+              onChange={(v) => dispatch(setEnabled({key: 'rimMaterials', value: v}))}
               ariaLabel="Enable rim material filter"
             />
             <span className="text-sm font-medium text-ink-700">Rim material</span>
@@ -307,7 +297,7 @@ const FilterPanel = () => {
           <div className="flex items-center gap-2">
             <FilterToggle
               enabled={filters.hooklessEnabled}
-              onChange={(v) => dispatch(setHooklessEnabled(v))}
+              onChange={(v) => dispatch(setEnabled({key: 'hookless', value: v}))}
               ariaLabel="Enable hookless filter"
             />
             <span className="text-sm font-medium text-ink-700">Hookless</span>
@@ -333,10 +323,10 @@ const FilterPanel = () => {
           label="Depth" unit=" mm"
           min={20} max={80}
           valueLow={filters.minDepth} valueHigh={filters.maxDepth}
-          onChangeLow={(v) => dispatch(setMinDepth(v))}
-          onChangeHigh={(v) => dispatch(setMaxDepth(v))}
+          onChangeLow={(v) => dispatch(setRange({key: 'Depth', min: v, max: filters.maxDepth}))}
+          onChangeHigh={(v) => dispatch(setRange({key: 'Depth', min: filters.minDepth, max: v}))}
           enabled={filters.depthEnabled}
-          onToggleEnabled={(v) => dispatch(setDepthEnabled(v))}
+          onToggleEnabled={(v) => dispatch(setEnabled({key: 'depth', value: v}))}
         />
       </Section>
     </aside>
