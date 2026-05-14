@@ -16,6 +16,9 @@
   .container-page {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+  .container-fluid {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
   .btn-primary {
     @apply inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-700 transition-colors;
   }

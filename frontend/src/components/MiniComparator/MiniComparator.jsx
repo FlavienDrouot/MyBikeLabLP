@@ -9,7 +9,7 @@ import { getColumnProperties } from '../../config/wheelProperties';
 const buildDefaultVisibility = () =>
   getColumnProperties()
     .filter((p) => !p.column?.required)
-    .reduce((acc, p) => ({ ...acc, [p.id]: true }), {});
+    .reduce((acc, p) => ({ ...acc, [p.id]: p.column?.defaultVisible !== false }), {});
 
 const MiniComparator = () => {
   const defaultVisibility = useMemo(() => buildDefaultVisibility(), []);
@@ -21,7 +21,7 @@ const MiniComparator = () => {
 
   return (
     <section id="tool" className="section bg-brand-50">
-      <div className="container-page">
+      <div className="container-fluid">
         <div className="text-center max-w-2xl mx-auto">
           <span className="text-sm font-semibold uppercase tracking-wider text-brand-600">
             Live Demo
@@ -35,7 +35,7 @@ const MiniComparator = () => {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[320px_1fr]">
+        <div className="mt-12 grid gap-6 lg:grid-cols-[320px_1fr] w-fit mx-auto">
           {/* Mobile-only trigger: opens the filter drawer below lg */}
           <div className="lg:hidden">
             <button

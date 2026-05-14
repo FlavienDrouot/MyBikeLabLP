@@ -234,6 +234,86 @@ const RangeFilter = ({ property, filter }) => {
   );
 };
 
+const LargeMultiSelectFilter = ({ property, filter }) => {
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState('');
+  const selectOptions = useMemo(
+    () => makeSelectOptionsFor(property.id),
+    [property.id]
+  );
+  const options = useSelector(selectOptions);
+
+  const toggle = (option) => {
+    const next = filter.value.includes(option)
+      ? filter.value.filter((v) => v !== option)
+      : [...filter.value, option];
+    dispatch(setFilterValue({ id: property.id, value: next }));
+  };
+
+  const visible = search
+    ? options.filter((o) =>
+        String(o).toLowerCase().includes(search.toLowerCase())
+      )
+    : options;
+
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center gap-2">
+        <FilterToggle
+          enabled={filter.enabled}
+          onChange={(v) =>
+            dispatch(setFilterEnabled({ id: property.id, enabled: v }))
+          }
+          ariaLabel={`Enable ${property.label.toLowerCase()} filter`}
+        />
+        <span className="text-sm font-medium text-ink-700">{property.label}</span>
+      </div>
+      <div className={filter.enabled ? '' : 'opacity-50 pointer-events-none'}>
+        {filter.value.length > 0 && (
+          <div className="flex flex-wrap gap-1 mb-2">
+            {filter.value.map((v) => (
+              <button
+                key={String(v)}
+                type="button"
+                onClick={() => toggle(v)}
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-brand-600 text-white hover:bg-brand-700 transition-colors"
+              >
+                {String(v)}
+                <span aria-hidden="true" className="text-brand-200">×</span>
+              </button>
+            ))}
+          </div>
+        )}
+        <input
+          type="text"
+          placeholder="Search…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full rounded-lg border border-ink-300 px-3 py-1.5 text-sm focus:border-brand-600 focus:outline-none mb-2"
+        />
+        <ul className="max-h-40 overflow-y-auto rounded-lg border border-ink-200">
+          {visible.map((opt) => (
+            <li key={String(opt)}>
+              <label className="flex items-center gap-2 px-3 py-1.5 hover:bg-ink-100/60 cursor-pointer text-sm text-ink-700">
+                <input
+                  type="checkbox"
+                  checked={filter.value.includes(opt)}
+                  onChange={() => toggle(opt)}
+                  className="h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-brand-500"
+                />
+                {String(opt)}
+              </label>
+            </li>
+          ))}
+          {visible.length === 0 && (
+            <li className="px-3 py-2 text-sm text-ink-500 italic">No results</li>
+          )}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
 const MultiSelectFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
   // Memoized selector by propertyId, recreated only if id changes.
@@ -242,6 +322,9 @@ const MultiSelectFilter = ({ property, filter }) => {
     [property.id]
   );
   const options = useSelector(selectOptions);
+
+  if (options.length <= 1) return null;
+  if (options.length > 10) return <LargeMultiSelectFilter property={property} filter={filter} />;
 
   const toggle = (option) => {
     const next = filter.value.includes(option)

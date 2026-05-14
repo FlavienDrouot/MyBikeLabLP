@@ -28,7 +28,7 @@ import { HookBadge } from '../components/MiniComparator/badges';
  * @typedef {{id: string, label: string, direction: 'asc' | 'desc' | 'localeCompare', accessor?: (w:any)=>any}} SortSpec
  *
  * @typedef {{required?: boolean, headClassName?: string, cellClassName?: string,
- *           renderCell?: (w:any) => any, hidden?: boolean}} ColumnSpec
+ *           renderCell?: (w:any) => any, hidden?: boolean, defaultVisible?: boolean}} ColumnSpec
  */
 
 // Exported helper because reused in multiple entries (price, price column).
@@ -42,6 +42,20 @@ export const COLUMN_GROUPS = [
 
 /** @type {WheelProperty[]} */
 export const WHEEL_PROPERTIES = [
+  {
+    id: 'image',
+    label: 'Image',
+    group: 'general',
+    accessor: (w) => w.image,
+    column: {
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-2 py-2',
+      renderCell: (w) => (
+        <img src={w.image} alt={w.model} className="w-16 h-16 object-contain rounded" />
+      ),
+    },
+  },
+
   {
     id: 'model',
     label: 'Model',
@@ -111,6 +125,20 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
+    id: 'diameter',
+    label: 'Diameter',
+    group: 'general',
+    unit: ' mm',
+    accessor: (w) => w.diameter_mm,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-700 text-right tabular-nums',
+    },
+  },
+
+  {
     id: 'rimMaterial',
     label: 'Rim material',
     group: 'rims',
@@ -154,11 +182,104 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
+    id: 'rimWidth',
+    label: 'Rim width',
+    group: 'rims',
+    unit: ' mm',
+    accessor: (w) => w.rim.externalWidth_mm,
+    filter: { type: 'range', min: 20, max: 40 },
+    sorts: [
+      { id: 'rimWidth_asc', label: 'Rim width (narrow → wide)', direction: 'asc' },
+      { id: 'rimWidth_desc', label: 'Rim width (wide → narrow)', direction: 'desc' },
+    ],
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-700 text-right tabular-nums',
+    },
+  },
+
+  {
     id: 'hub',
     label: 'Hub',
     group: 'subs',
     accessor: (w) => `${w.hub.brand} ${w.hub.model}`,
     column: {
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 font-medium text-ink-900',
+      renderCell: (w) => (
+        <>
+          <span className="text-ink-500 font-normal text-xs">{w.hub.brand}</span>
+          <br />
+          {w.hub.model}
+        </>
+      ),
+    },
+  },
+
+  {
+    id: 'hubBrand',
+    label: 'Hub brand',
+    group: 'subs',
+    accessor: (w) => w.hub.brand,
+    filter: { type: 'multiSelect' },
+    column: { hidden: true },
+  },
+
+  {
+    id: 'hubModel',
+    label: 'Hub model',
+    group: 'subs',
+    accessor: (w) => w.hub.model,
+    filter: { type: 'multiSelect' },
+    column: { hidden: true },
+  },
+
+  {
+    id: 'spokes',
+    label: 'Spokes',
+    group: 'subs',
+    accessor: (w) => `${w.spokes.brand} ${w.spokes.model}`,
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 font-medium text-ink-900',
+      renderCell: (w) => (
+        <>
+          <span className="text-ink-500 font-normal text-xs">{w.spokes.brand}</span>
+          <br />
+          {w.spokes.model}
+        </>
+      ),
+    },
+  },
+
+  {
+    id: 'spokesBrand',
+    label: 'Spokes brand',
+    group: 'subs',
+    accessor: (w) => w.spokes.brand,
+    filter: { type: 'multiSelect' },
+    column: { hidden: true },
+  },
+
+  {
+    id: 'spokesModel',
+    label: 'Spokes model',
+    group: 'subs',
+    accessor: (w) => w.spokes.model,
+    filter: { type: 'multiSelect' },
+    column: { hidden: true },
+  },
+
+  {
+    id: 'spokeMaterial',
+    label: 'Spoke material',
+    group: 'subs',
+    accessor: (w) => w.spokes.material,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       cellClassName: 'px-4 py-3 text-ink-700',
     },

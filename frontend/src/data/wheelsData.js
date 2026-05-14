@@ -1,5 +1,7 @@
 // Generic wheel dataset for the MVP comparator.
 // Future: replace with API thunk fetching from backend.
+import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
+
 export const wheelsData = [
   {
     id: 1,
@@ -14,7 +16,7 @@ export const wheelsData = [
       { price_eur: 1299, url: 'https://example-shop.com/roval-alpinist-clx' },
       { price_eur: 1349, url: 'https://another-shop.com/roval-alpinist-clx' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 2,
@@ -28,7 +30,7 @@ export const wheelsData = [
     prices: [
       { price_eur: 1750, url: 'https://example-shop.com/zipp-303-firecrest' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 3,
@@ -43,7 +45,7 @@ export const wheelsData = [
       { price_eur: 1990, url: 'https://example-shop.com/dt-swiss-arc-1100-62' },
       { price_eur: 2050, url: 'https://another-shop.com/dt-swiss-arc-1100-62' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 4,
@@ -57,7 +59,7 @@ export const wheelsData = [
     prices: [
       { price_eur: 1200, url: 'https://example-shop.com/fulcrum-racing-zero-carbon' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 5,
@@ -72,7 +74,7 @@ export const wheelsData = [
       { price_eur: 1600, url: 'https://example-shop.com/shimano-dura-ace-c50' },
       { price_eur: 1690, url: 'https://another-shop.com/shimano-dura-ace-c50' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 6,
@@ -86,7 +88,7 @@ export const wheelsData = [
     prices: [
       { price_eur: 899, url: 'https://example-shop.com/hunt-60-limitless' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 7,
@@ -100,7 +102,7 @@ export const wheelsData = [
     prices: [
       { price_eur: 2200, url: 'https://example-shop.com/campagnolo-bora-ultra-45' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 8,
@@ -114,7 +116,7 @@ export const wheelsData = [
     prices: [
       { price_eur: 1099, url: 'https://example-shop.com/mavic-cosmic-pro-carbon-sl' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 9,
@@ -129,7 +131,7 @@ export const wheelsData = [
       { price_eur: 2000, url: 'https://example-shop.com/bontrager-aeolus-rsl-37' },
       { price_eur: 2100, url: 'https://another-shop.com/bontrager-aeolus-rsl-37' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 10,
@@ -143,7 +145,7 @@ export const wheelsData = [
     prices: [
       { price_eur: 1800, url: 'https://example-shop.com/giant-slr-0-36' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 11,
@@ -157,7 +159,7 @@ export const wheelsData = [
     prices: [
       { price_eur: 2800, url: 'https://example-shop.com/enve-ses-4-5-ar' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 12,
@@ -171,7 +173,7 @@ export const wheelsData = [
     prices: [
       { price_eur: 750, url: 'https://example-shop.com/vittoria-elusion-45' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 13,
@@ -185,7 +187,7 @@ export const wheelsData = [
     prices: [
       { price_eur: 1650, url: 'https://example-shop.com/reynolds-ar-58' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 14,
@@ -199,7 +201,7 @@ export const wheelsData = [
     prices: [
       { price_eur: 850, url: 'https://example-shop.com/boyd-altamont-60' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
   {
     id: 15,
@@ -213,6 +215,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 2300, url: 'https://example-shop.com/princeton-grit-4540' },
     ],
-    image: '/images/wheel-placeholder.jpg',
+    image: wheelPlaceholderUrl,
   },
 ];
