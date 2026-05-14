@@ -10,6 +10,7 @@ You area senior developper helping Flavien with creating a website. You write cl
 - When a plan is accepted, give it a short but descriptive name and save it in the folder
     "C:\Users\Flavien\Google Drive\VisualStudioCode\Claude\MyBikeLab\specifications"
     consolidate your memory then start implementing from the plan
+- A la fin d'une implementation, écrit un texte court descriptif pour le commit
 
 # Architecture Summary
 

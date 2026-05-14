@@ -23,7 +23,7 @@ const ComparisonTable = ({ visibility }) => {
   );
 
   return (
-    <div className="card overflow-hidden">
+    <div className="card overflow-hidden w-fit max-w-full">
       <div className="flex items-center justify-between px-5 py-4 border-b border-ink-100">
         <h3 className="text-base font-semibold text-ink-900">
           Wheels{' '}
@@ -39,7 +39,7 @@ const ComparisonTable = ({ visibility }) => {
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-max text-sm">
             <thead className="bg-ink-100/60 text-ink-700">
               <tr className="text-left">
                 {cols.map((p) => (
