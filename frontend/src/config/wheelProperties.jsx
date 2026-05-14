@@ -116,6 +116,7 @@ export const WHEEL_PROPERTIES = [
     group: 'general',
     unit: ' mm',
     accessor: (w) => w.diameter_mm,
+    filter: { type: 'multiSelect' },
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
@@ -201,6 +202,25 @@ export const WHEEL_PROPERTIES = [
       ),
     },
   },
+
+  {
+    id: 'hubBrand',
+    label: 'Hub brand',
+    group: 'subs',
+    accessor: (w) => w.hub.brand,
+    filter: { type: 'multiSelect' },
+    column: { hidden: true },
+  },
+
+  {
+    id: 'hubModel',
+    label: 'Hub model',
+    group: 'subs',
+    accessor: (w) => w.hub.model,
+    filter: { type: 'multiSelect' },
+    column: { hidden: true },
+  },
+
   {
     id: 'spokes',
     label: 'Spokes',
@@ -218,6 +238,24 @@ export const WHEEL_PROPERTIES = [
         </>
       ),
     },
+  },
+
+  {
+    id: 'spokesBrand',
+    label: 'Spokes brand',
+    group: 'subs',
+    accessor: (w) => w.spokes.brand,
+    filter: { type: 'multiSelect' },
+    column: { hidden: true },
+  },
+
+  {
+    id: 'spokesModel',
+    label: 'Spokes model',
+    group: 'subs',
+    accessor: (w) => w.spokes.model,
+    filter: { type: 'multiSelect' },
+    column: { hidden: true },
   },
 
   {
