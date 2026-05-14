@@ -43,6 +43,20 @@ export const COLUMN_GROUPS = [
 /** @type {WheelProperty[]} */
 export const WHEEL_PROPERTIES = [
   {
+    id: 'image',
+    label: 'Image',
+    group: 'general',
+    accessor: (w) => w.image,
+    column: {
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-2 py-2',
+      renderCell: (w) => (
+        <img src={w.image} alt={w.model} className="w-16 h-16 object-contain rounded" />
+      ),
+    },
+  },
+
+  {
     id: 'model',
     label: 'Model',
     group: 'general',
