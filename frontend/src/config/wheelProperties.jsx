@@ -191,7 +191,14 @@ export const WHEEL_PROPERTIES = [
     accessor: (w) => `${w.hub.brand} ${w.hub.model}`,
     column: {
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-700',
+      cellClassName: 'px-4 py-3 font-medium text-ink-900',
+      renderCell: (w) => (
+        <>
+          <span className="text-ink-500 font-normal text-xs">{w.hub.brand}</span>
+          <br />
+          {w.hub.model}
+        </>
+      ),
     },
   },
   {
@@ -202,7 +209,14 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-700',
+      cellClassName: 'px-4 py-3 font-medium text-ink-900',
+      renderCell: (w) => (
+        <>
+          <span className="text-ink-500 font-normal text-xs">{w.spokes.brand}</span>
+          <br />
+          {w.spokes.model}
+        </>
+      ),
     },
   },
 
