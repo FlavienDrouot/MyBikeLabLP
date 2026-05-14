@@ -9,7 +9,7 @@ import { getColumnProperties } from '../../config/wheelProperties';
 const buildDefaultVisibility = () =>
   getColumnProperties()
     .filter((p) => !p.column?.required)
-    .reduce((acc, p) => ({ ...acc, [p.id]: true }), {});
+    .reduce((acc, p) => ({ ...acc, [p.id]: p.column?.defaultVisible !== false }), {});
 
 const MiniComparator = () => {
   const defaultVisibility = useMemo(() => buildDefaultVisibility(), []);
