@@ -12,7 +12,12 @@ git -C "MyBikeLab" <commande>
 ```
 
 ## Navigation
-[TODO]
+
+| Folder / File | Role | Read |
+|---|---|---|
+| `frontend/` | Application React (source, config, build) | `frontend/README.md` |
+| `evolutions/` | Specs d'évolution (planifiées et archivées) | `evolutions/README.md` |
+| `.github/workflows/deploy.yml` | Pipeline CI/CD — déploiement GitHub Pages | — |
 
 ## Architecture Summary
 

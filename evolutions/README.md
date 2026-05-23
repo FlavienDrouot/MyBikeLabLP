@@ -1,28 +1,15 @@
-# Évolutions — MyBikeLab
+# evolutions/
 
-## Description
+Specifications for planned and implemented evolutions of the MyBikeLab frontend.
 
-Ce dossier trace l'historique des évolutions significatives du projet MyBikeLab.
+## Structure
 
-Chaque évolution significative reçoit un sous-dossier dédié avec sa documentation, ses décisions et ses artefacts intermédiaires.
+| Folder | Role |
+|---|---|
+| `archive/` | Implemented specs — one file per completed feature |
 
-## Convention de nommage
+## Convention
 
-```
-evolution-NNN-description-courte/
-```
+A spec file is written during planning and moved to `archive/` once the corresponding code has been merged.
 
-Exemple : `evolution-001-workspace-init/`
-
-## Évolutions
-
-| Dossier | Description | État |
-|---|---|---|
-| `evolution-001-workspace-init/` | Mise en place de l'architecture workspace AI | Terminée |
-
-## Règles
-
-- Une évolution = un contexte isolé
-- Documenter les décisions prises, pas seulement les actions réalisées
-- Archiver plutôt que supprimer
-- Le dossier reste lisible sans contexte extérieur
+A `drafts/` folder can be created here to hold specs that are being actively written but not yet ready for implementation.

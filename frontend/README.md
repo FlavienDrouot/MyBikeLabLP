@@ -1,16 +1,41 @@
-# React + Vite
+# MyBikeLab — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for architecture overview and conventions.
 
-Currently, two official plugins are available:
+## Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Dev server with HMR |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build locally |
 
-## React Compiler
+## Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Path | Role |
+| --- | --- |
+| `src/config/wheelProperties.jsx` | Central registry — source of truth for all wheel properties (filters, sorts, columns) |
+| `src/data/wheelsData.js` | Static wheel dataset (~15 items) |
+| `src/store/slices/filtersSlice.js` | Filter + sort global state (keyed by registry property IDs) |
+| `src/store/slices/wheelsSlice.js` | Wheel data state |
+| `src/store/selectors/wheelsSelectors.js` | `selectFilteredWheels` — memoized, applies active filters + sort |
+| `src/store/index.js` | Redux store configuration |
+| `src/components/MiniComparator/` | Main feature: `MiniComparator` → `FilterPanel` + `ComparisonTable` + `ColumnSelector` |
+| `src/components/` | Other UI components: Navbar, Hero, Footer, RoadmapSection, BenefitsGrid, ContactForm |
+| `src/pages/Landing.jsx` | Single-page orchestrator |
+| `src/index.css` | Tailwind base + shared utility classes |
 
-## Expanding the ESLint configuration
+## Config Files
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| File | Purpose |
+| --- | --- |
+| `vite.config.js` | Base path set to `/MyBikeLabLP/` for GitHub Pages deployment |
+| `tailwind.config.js` | Custom tokens: `brand-*` (blue), `ink-*` (neutral) |
+| `eslint.config.js` | ESLint rules |
+
+## Key Conventions
+
+- **New wheel property** → add one entry in `wheelProperties.jsx` only; no other file to update
+- **Filter types**: `range` \| `multiSelect` \| `triState` — new type requires a matcher + init in `filtersSlice`
+- **Column visibility** = local state in `MiniComparator`; filter/sort = Redux global state
+- **Tailwind tokens**: use `brand-*` and `ink-*`; add shared classes to `src/index.css`
