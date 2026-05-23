@@ -5,7 +5,7 @@
 Le composant `MiniComparator` est aujourd'hui un prototype fonctionnel mais fortement **couplé** : ajouter une nouvelle propriété roue (ex. ETRTO width, modèle de rayons, type de freinage…) oblige à toucher **3-4 fichiers** et **6 emplacements** distincts :
 
 | Fichier | Modification requise |
-|---|---|
+| --- | --- |
 | `store/slices/filtersSlice.js` | Ajouter `min*`, `max*` et `*Enabled` à l'`initialState` |
 | `store/selectors/wheelsSelectors.js` | Ajouter un prédicat `xxxMatch` ET un `case` dans le switch de tri |
 | `components/MiniComparator/FilterPanel.jsx` | Ajouter un `<DualRangeRow>` ou `<Pill>` ET une `<option>` dans le `<select>` de tri |

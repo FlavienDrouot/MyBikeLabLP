@@ -18,7 +18,7 @@ Transformer le prompt de revue de code frontend (conçu en conversation) en skil
 
 ## Livrables
 
-```
+```text
 Review/
 ├── SKILL.md                              # le skill (frontmatter + corps)
 ├── evals/

@@ -40,7 +40,8 @@ Choix retenus (validés) : popover déclenché par bouton, Model non listée dan
 - **`frontend/src/components/MiniComparator/MiniComparator.jsx`**
   - Ajouter `useState` initialisé avec `DEFAULT_VISIBILITY`.
   - Dans la cellule droite de la grille (actuellement `<ComparisonTable />` seul), insérer un wrapper flex-col :
-    ```
+
+    ```jsx
     <div className="flex justify-end mb-3">
       <ColumnSelector visibility={visibility} onToggle={(id) => setVisibility(v => ({ ...v, [id]: !v[id] }))} />
     </div>

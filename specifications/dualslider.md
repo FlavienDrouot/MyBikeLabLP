@@ -185,7 +185,7 @@ Le helper `RangeRow` (lignes 21-40) peut etre **supprime** — il n'est plus uti
 ## Fichiers touches
 
 | Fichier | Action |
-|---|---|
+| --- | --- |
 | `frontend/src/components/MiniComparator/FilterPanel.jsx` | Modifier : remplacer `RangeRow` par `DualRangeRow`, importer le CSS module + `clampLow`/`clampHigh`, remplacer les 6 RangeRow par 3 DualRangeRow |
 | `frontend/src/components/MiniComparator/FilterPanel.module.css` | **Creer** : classes `.thumb`, `.track`, `.range` |
 | `frontend/src/components/MiniComparator/rangeMath.js` | **Creer** : `roundToStep`, `clampLow`, `clampHigh` (fonctions pures) |

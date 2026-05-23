@@ -15,7 +15,8 @@ Stack Phase 1: **React (Vite) + TailwindCSS** | Stack Future: **Node.js + Postgr
 ## Phase 1: Architecture & Configuration Initiale
 
 ### 1.1 Structure des dossiers (Phase 1)
-```
+
+```text
 MyBikeLab/
 ├── frontend/                 # App React (Phase 1 focus)
 │   ├── src/
@@ -58,7 +59,8 @@ MyBikeLab/
 - **No API calls** - données locales en JS
 
 ### 1.3 Redux Store Architecture
-```
+
+```text
 store/
 ├── index.js              # configureStore
 ├── slices/
@@ -69,7 +71,8 @@ store/
 ```
 
 **filtersSlice — état complet aligné sur la structure de données:**
-```
+
+```text
 filters: {
   // Identité
   brands: string[]            → filtre sur wheel.brand
@@ -155,7 +158,7 @@ export const wheelsData = [
 
 ### 2.2 Résumé des champs
 | Groupe | Champ | Type | Notes |
-|--------|-------|------|-------|
+| --- | --- | --- | --- |
 | Identité | id | number | unique |
 | Identité | model | string | nom du modèle |
 | Identité | brand | string | marque du wheelset |
@@ -188,7 +191,8 @@ Filtres à adapter à cette structure :
 ## Phase 3: Landing Page - Layout & Sections
 
 ### 3.1 Structure page complète avec vision future
-```
+
+```text
 ┌─────────────────────────────────────────────────────┐
 │ Navbar (logo MyBikeLab + lien "Tool" + CTA Contact) │
 ├─────────────────────────────────────────────────────┤
@@ -247,7 +251,7 @@ Filtres à adapter à cette structure :
 
 ### 3.2 Composants à créer
 | Section | Composant | Responsabilité |
-|---------|-----------|----------------|
+| --- | --- | --- |
 | **Header** | Navbar | Logo, lien Tool, CTA Contact |
 | **Hero** | Hero | Titre vision, subheader, CTA scroll |
 | **Demo** | FilterPanel, ComparisonTable | MVP en action, connectés Redux |
@@ -410,7 +414,7 @@ npx tailwindcss init -p
 ## Phase 6: Données MVP (~15 roues)
 
 | Marque | Modèle | Poids | Profil | Mat. | Hookless | Prix min (€) |
-|--------|--------|-------|--------|------|----------|-------------|
+| --- | --- | --- | --- | --- | --- | --- |
 | Roval | Alpinist CLX II | 1225g | 33mm | Carbon | No | 1299 |
 | Zipp | 303 Firecrest | 1510g | 45mm | Carbon | Yes | 1750 |
 | DT Swiss | ARC 1100 62 | 1510g | 62mm | Carbon | No | 1990 |

@@ -4,6 +4,13 @@
 
 React application for bike wheel comparison. Frontend-only MVP.
 
+## Git Commands
+
+Working directory is `Claude\` — run git from the project root with:
+```
+git -C "MyBikeLab" <commande>
+```
+
 ## Navigation
 [TODO]
 
