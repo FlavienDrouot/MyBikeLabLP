@@ -21,7 +21,7 @@ import { HookBadge } from '../components/MiniComparator/badges';
  * @property {SortSpec[]} [sorts]   Absent => not sortable.
  * @property {ColumnSpec} [column]  Table display override.
  *
- * @typedef {{type: 'range', min: number, max: number, step?: number}
+ * @typedef {{type: 'range', step?: number}
  *         | {type: 'multiSelect'}
  *         | {type: 'triState', labels: [string, string, string]}} FilterSpec
  *
@@ -94,7 +94,7 @@ export const WHEEL_PROPERTIES = [
     group: 'general',
     unit: ' g',
     accessor: (w) => w.weight_grams,
-    filter: { type: 'range', min: 700, max: 2000, step: 10 },
+    filter: { type: 'range', step: 10 },
     sorts: [
       { id: 'weight_asc', label: 'Weight (light → heavy)', direction: 'asc' },
       { id: 'weight_desc', label: 'Weight (heavy → light)', direction: 'desc' },
@@ -112,7 +112,7 @@ export const WHEEL_PROPERTIES = [
     unit: ' €',
     // Computed accessor: value is not in a direct field.
     accessor: minPrice,
-    filter: { type: 'range', min: 200, max: 5000, step: 50 },
+    filter: { type: 'range', step: 50 },
     sorts: [
       { id: 'price_asc', label: 'Price (low → high)', direction: 'asc' },
       { id: 'price_desc', label: 'Price (high → low)', direction: 'desc' },
@@ -170,7 +170,7 @@ export const WHEEL_PROPERTIES = [
     group: 'rims',
     unit: ' mm',
     accessor: (w) => w.rim.depth_mm,
-    filter: { type: 'range', min: 20, max: 80 },
+    filter: { type: 'range' },
     sorts: [
       { id: 'depth_asc', label: 'Depth (shallow → deep)', direction: 'asc' },
       { id: 'depth_desc', label: 'Depth (deep → shallow)', direction: 'desc' },
@@ -187,7 +187,7 @@ export const WHEEL_PROPERTIES = [
     group: 'rims',
     unit: ' mm',
     accessor: (w) => w.rim.externalWidth_mm,
-    filter: { type: 'range', min: 20, max: 40 },
+    filter: { type: 'range' },
     sorts: [
       { id: 'rimWidth_asc', label: 'Rim width (narrow → wide)', direction: 'asc' },
       { id: 'rimWidth_desc', label: 'Rim width (wide → narrow)', direction: 'desc' },

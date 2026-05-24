@@ -6,7 +6,11 @@ import {
   setSortBy,
   resetFilters,
 } from '../../store/slices/filtersSlice';
-import { makeSelectOptionsFor } from '../../store/selectors/wheelsSelectors';
+import {
+  makeSelectOptionsFor,
+  makeSelectRangeBoundsFor,
+  makeSelectContextualCountsFor,
+} from '../../store/selectors/wheelsSelectors';
 import {
   COLUMN_GROUPS,
   getFilterableProperties,
@@ -56,7 +60,7 @@ const DualRangeRow = ({
     effectiveStep
   );
 
-  const pct = (v) => ((v - min) / (max - min)) * 100;
+  const pct = (v) => (max === min ? 0 : ((v - min) / (max - min)) * 100);
 
   const handleLow = (raw) =>
     onChangeLow(clampLow({ raw, min, valueHigh, step: effectiveStep, minDiff }));
@@ -183,15 +187,16 @@ const Section = ({ title, defaultOpen = false, children }) => {
 };
 
 // Pill button for multiple selections (multiSelect, triState).
-const Pill = ({ active, onClick, children }) => (
+const Pill = ({ active, muted, onClick, children }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
-      active
+    className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors
+      ${active
         ? 'bg-brand-600 text-white border-brand-600'
         : 'bg-white text-ink-700 border-ink-300 hover:border-brand-600 hover:text-brand-600'
-    }`}
+      }
+      ${muted ? 'opacity-40' : ''}`}
   >
     {children}
   </button>
@@ -205,14 +210,16 @@ const Pill = ({ active, onClick, children }) => (
 
 const RangeFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
-  const { min, max, step } = property.filter;
+  const { step } = property.filter;
+  const selectBounds = useMemo(() => makeSelectRangeBoundsFor(property.id), [property.id]);
+  const bounds = useSelector(selectBounds);
   const value = filter.value; // { min, max }
   return (
     <DualRangeRow
       label={property.label}
       unit={property.unit ?? ''}
-      min={min}
-      max={max}
+      min={bounds.min}
+      max={bounds.max}
       step={step}
       valueLow={value.min}
       valueHigh={value.max}
@@ -237,11 +244,10 @@ const RangeFilter = ({ property, filter }) => {
 const LargeMultiSelectFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
-  const selectOptions = useMemo(
-    () => makeSelectOptionsFor(property.id),
-    [property.id]
-  );
+  const selectOptions = useMemo(() => makeSelectOptionsFor(property.id), [property.id]);
   const options = useSelector(selectOptions);
+  const selectCounts = useMemo(() => makeSelectContextualCountsFor(property.id), [property.id]);
+  const counts = useSelector(selectCounts);
 
   const toggle = (option) => {
     const next = filter.value.includes(option)
@@ -292,19 +298,24 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           className="w-full rounded-lg border border-ink-300 px-3 py-1.5 text-sm focus:border-brand-600 focus:outline-none mb-2"
         />
         <ul className="max-h-40 overflow-y-auto rounded-lg border border-ink-200">
-          {visible.map((opt) => (
-            <li key={String(opt)}>
-              <label className="flex items-center gap-2 px-3 py-1.5 hover:bg-ink-100/60 cursor-pointer text-sm text-ink-700">
-                <input
-                  type="checkbox"
-                  checked={filter.value.includes(opt)}
-                  onChange={() => toggle(opt)}
-                  className="h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-brand-500"
-                />
-                {String(opt)}
-              </label>
-            </li>
-          ))}
+          {visible.map((opt) => {
+            const count = counts[String(opt)] ?? 0;
+            const isActive = filter.value.includes(opt);
+            const isMuted = count === 0 && !isActive;
+            return (
+              <li key={String(opt)}>
+                <label className={`flex items-center gap-2 px-3 py-1.5 hover:bg-ink-100/60 cursor-pointer text-sm ${isMuted ? 'text-ink-300' : 'text-ink-700'}`}>
+                  <input
+                    type="checkbox"
+                    checked={isActive}
+                    onChange={() => toggle(opt)}
+                    className="h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-brand-500"
+                  />
+                  {String(opt)} ({count})
+                </label>
+              </li>
+            );
+          })}
           {visible.length === 0 && (
             <li className="px-3 py-2 text-sm text-ink-500 italic">No results</li>
           )}
@@ -316,12 +327,10 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
 
 const MultiSelectFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
-  // Memoized selector by propertyId, recreated only if id changes.
-  const selectOptions = useMemo(
-    () => makeSelectOptionsFor(property.id),
-    [property.id]
-  );
+  const selectOptions = useMemo(() => makeSelectOptionsFor(property.id), [property.id]);
   const options = useSelector(selectOptions);
+  const selectCounts = useMemo(() => makeSelectContextualCountsFor(property.id), [property.id]);
+  const counts = useSelector(selectCounts);
 
   if (options.length <= 1) return null;
   if (options.length > 10) return <LargeMultiSelectFilter property={property} filter={filter} />;
@@ -350,15 +359,20 @@ const MultiSelectFilter = ({ property, filter }) => {
           filter.enabled ? '' : 'opacity-50 pointer-events-none'
         }`}
       >
-        {options.map((opt) => (
-          <Pill
-            key={String(opt)}
-            active={filter.value.includes(opt)}
-            onClick={() => toggle(opt)}
-          >
-            {String(opt)}
-          </Pill>
-        ))}
+        {options.map((opt) => {
+          const count = counts[String(opt)] ?? 0;
+          const isActive = filter.value.includes(opt);
+          return (
+            <Pill
+              key={String(opt)}
+              active={isActive}
+              muted={count === 0 && !isActive}
+              onClick={() => toggle(opt)}
+            >
+              {String(opt)} ({count})
+            </Pill>
+          );
+        })}
       </div>
     </div>
   );
@@ -368,6 +382,11 @@ const TriStateFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
   const [labelAll, labelTrue, labelFalse] = property.filter.labels;
   const set = (v) => dispatch(setFilterValue({ id: property.id, value: v }));
+
+  const selectCounts = useMemo(() => makeSelectContextualCountsFor(property.id), [property.id]);
+  const counts = useSelector(selectCounts);
+  const trueCount = counts['true'] ?? 0;
+  const falseCount = counts['false'] ?? 0;
 
   return (
     <div className="space-y-2">
@@ -381,19 +400,23 @@ const TriStateFilter = ({ property, filter }) => {
         />
         <span className="text-sm font-medium text-ink-700">{property.label}</span>
       </div>
-      <div
-        className={`flex flex-wrap gap-1.5 ${
-          filter.enabled ? '' : 'opacity-50 pointer-events-none'
-        }`}
-      >
+      <div className={`flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-50 pointer-events-none'}`}>
         <Pill active={filter.value === null} onClick={() => set(null)}>
           {labelAll}
         </Pill>
-        <Pill active={filter.value === true} onClick={() => set(true)}>
-          {labelTrue}
+        <Pill
+          active={filter.value === true}
+          muted={trueCount === 0 && filter.value !== true}
+          onClick={() => set(true)}
+        >
+          {labelTrue} ({trueCount})
         </Pill>
-        <Pill active={filter.value === false} onClick={() => set(false)}>
-          {labelFalse}
+        <Pill
+          active={filter.value === false}
+          muted={falseCount === 0 && filter.value !== false}
+          onClick={() => set(false)}
+        >
+          {labelFalse} ({falseCount})
         </Pill>
       </div>
     </div>

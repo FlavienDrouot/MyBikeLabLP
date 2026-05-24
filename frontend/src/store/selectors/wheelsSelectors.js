@@ -70,3 +70,50 @@ export const makeSelectOptionsFor = (propertyId) =>
       return [...new Set(items.map(property.accessor))].sort();
     }
   );
+
+export const makeSelectContextualCountsFor = (propertyId) =>
+  createSelector(
+    [(state) => state.wheels.items, (state) => state.filters],
+    (items, filtersState) => {
+      const property = getPropertyById(propertyId);
+      if (!property) return {};
+
+      const otherFilterables = getFilterableProperties().filter((p) => p.id !== propertyId);
+
+      const filteredItems = items.filter((wheel) =>
+        otherFilterables.every((p) => {
+          const f = filtersState.filters[p.id];
+          if (!f || !f.enabled) return true;
+          const matcher = matchers[p.filter.type];
+          if (!matcher) return true;
+          return matcher(p.accessor(wheel), f);
+        })
+      );
+
+      const counts = {};
+      for (const wheel of filteredItems) {
+        const key = String(property.accessor(wheel));
+        counts[key] = (counts[key] ?? 0) + 1;
+      }
+      return counts;
+    }
+  );
+
+export const makeSelectRangeBoundsFor = (propertyId) =>
+  createSelector(
+    [(state) => state.wheels.items],
+    (items) => {
+      const property = getPropertyById(propertyId);
+      if (!property) return { min: 0, max: 0 };
+      const values = items.map(property.accessor).filter(Number.isFinite);
+      if (!values.length) return { min: 0, max: 0 };
+      const dataMin = Math.min(...values);
+      const dataMax = Math.max(...values);
+      const step = property.filter?.step;
+      if (!step) return { min: dataMin, max: dataMax };
+      return {
+        min: Math.floor(dataMin / step) * step,
+        max: Math.ceil(dataMax / step) * step,
+      };
+    }
+  );

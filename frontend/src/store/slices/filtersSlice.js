@@ -3,6 +3,7 @@ import {
   getFilterableProperties,
   getDefaultSortId,
 } from '../../config/wheelProperties';
+import { wheelsData } from '../../data/wheelsData';
 
 // State dynamically generated from the wheel properties registry.
 // Shape:
@@ -21,9 +22,19 @@ const buildInitialFilters = () => {
   for (const property of getFilterableProperties()) {
     let value;
     switch (property.filter.type) {
-      case 'range':
-        value = { min: property.filter.min, max: property.filter.max };
+      case 'range': {
+        const values = wheelsData
+          .map((w) => property.accessor(w))
+          .filter(Number.isFinite);
+        const step = property.filter.step;
+        const dataMin = values.length ? Math.min(...values) : 0;
+        const dataMax = values.length ? Math.max(...values) : 0;
+        value = {
+          min: (step && values.length) ? Math.floor(dataMin / step) * step : dataMin,
+          max: (step && values.length) ? Math.ceil(dataMax / step) * step : dataMax,
+        };
         break;
+      }
       case 'multiSelect':
         value = [];
         break;
