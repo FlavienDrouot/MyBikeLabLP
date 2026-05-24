@@ -1,3 +1,5 @@
+import { getFilterableProperties } from '../config/wheelProperties';
+
 const Hero = () => {
   return (
     <section
@@ -27,7 +29,7 @@ const Hero = () => {
             <div className="text-sm text-ink-500">Wheels indexed</div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-brand-600">7</div>
+            <div className="text-2xl font-bold text-brand-600">{getFilterableProperties().length}</div>
             <div className="text-sm text-ink-500">Filter axes</div>
           </div>
           <div>

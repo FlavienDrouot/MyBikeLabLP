@@ -37,7 +37,7 @@ The current product is a single-page landing site with one interactive feature: 
 
 | Section | Content |
 |---|---|
-| Hero | Value proposition, key stats (15+ wheels, 7 filter axes), CTAs |
+| Hero | Value proposition, key stats (15+ wheels, 13 filter axes), CTAs |
 | Wheel Comparator | Main interactive tool — see below |
 | Roadmap | 3-phase vision (comparison → simulation → configurator) |
 | Benefits | Platform value proposition for cyclists |
