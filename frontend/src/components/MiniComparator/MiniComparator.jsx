@@ -76,7 +76,7 @@ const MiniComparator = () => {
                 type="button"
                 onClick={() => setFiltersOpen(false)}
                 aria-label="Close filters"
-                className="rounded-full p-1.5 text-ink-8 hover:bg-ink-2 hover:text-ink-11"
+                className="rounded-xs p-1.5 text-ink-8 hover:bg-ink-2 hover:text-ink-11"
               >
                 <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fillRule="evenodd" d="M4.28 3.22a.75.75 0 00-1.06 1.06L8.94 10l-5.72 5.72a.75.75 0 101.06 1.06L10 11.06l5.72 5.72a.75.75 0 101.06-1.06L11.06 10l5.72-5.72a.75.75 0 00-1.06-1.06L10 8.94 4.28 3.22z" clipRule="evenodd" />

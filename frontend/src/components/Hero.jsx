@@ -4,10 +4,10 @@ const Hero = () => {
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-paper-0"
+      className="relative overflow-hidden"
     >
       <div className="container-page section text-center">
-        <span className="inline-flex items-center rounded-full border border-brass-4 bg-paper-0 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brass-9">
+        <span className="inline-flex items-center rounded-xs border border-brass-4 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brass-9">
           № 01 · MVP v0.1 · Road wheels
         </span>
         <h1 className="mt-6 hero-title text-ink-10">

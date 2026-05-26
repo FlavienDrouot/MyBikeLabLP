@@ -191,7 +191,7 @@ const Pill = ({ active, muted, onClick, children }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors
+    className={`px-3 py-1 rounded-xs text-xs font-medium border transition-colors
       ${active
         ? 'bg-brass-7 text-ink-12 border-brass-7'
         : 'bg-paper-0 text-ink-11 border-ink-4 hover:border-brass-8 hover:text-brass-8'
@@ -282,7 +282,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                 key={String(v)}
                 type="button"
                 onClick={() => toggle(v)}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-brass-7 text-ink-12 hover:bg-brass-8 transition-colors"
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-brass-7 text-ink-12 hover:bg-brass-8 transition-colors"
               >
                 {String(v)}
                 <span aria-hidden="true" className="text-ink-12/60">×</span>

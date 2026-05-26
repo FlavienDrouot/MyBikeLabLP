@@ -65,6 +65,9 @@ export default {
       letterSpacing: {
         widest: '0.18em',
       },
+      opacity: {
+        '88': '0.88',
+      },
       borderRadius: {
         xs: '2px',
       },

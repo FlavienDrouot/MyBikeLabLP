@@ -6,7 +6,7 @@ const Navbar = () => {
   const close = () => setIsOpen(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-ink-3 bg-paper-0/80 backdrop-blur">
+    <header className="sticky top-0 z-40 w-full border-b border-ink-3 bg-paper-1/88 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
           <div className="grid h-8 w-8 place-items-center rounded-xs bg-brass-7 text-ink-12 font-bold">
@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div id="mobile-menu" className="md:hidden border-t border-ink-3 bg-paper-0">
+        <div id="mobile-menu" className="md:hidden border-t border-ink-3 bg-paper-1">
           <nav className="container-page flex flex-col py-2">
             <a href="#tool" onClick={close} className="btn-ghost justify-start">Tool</a>
             <a href="#roadmap" onClick={close} className="btn-ghost justify-start">Roadmap</a>
