@@ -32,7 +32,7 @@ const FilterToggle = ({ enabled, onChange, ariaLabel }) => (
     aria-checked={enabled}
     aria-label={ariaLabel}
     onClick={() => onChange(!enabled)}
-    className={`flex h-5 w-9 cursor-pointer items-center rounded-full p-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-brass-8 focus:ring-offset-1 ${
+    className={`flex h-5 w-9 cursor-pointer items-center rounded-full p-0.5 transition-colors ${
       enabled ? 'bg-brass-7 justify-end' : 'bg-ink-4 justify-start'
     }`}
   >
@@ -101,7 +101,7 @@ const DualRangeRow = ({
             step={effectiveStep}
             disabled={!enabled}
             onChange={(e) => handleLow(e.target.value)}
-            className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center focus:border-brass-8 focus:outline-none disabled:cursor-not-allowed"
+            className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
           <span className="flex-1 text-center text-ink-5 text-xs select-none">
             —
@@ -114,7 +114,7 @@ const DualRangeRow = ({
             step={effectiveStep}
             disabled={!enabled}
             onChange={(e) => handleHigh(e.target.value)}
-            className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center focus:border-brass-8 focus:outline-none disabled:cursor-not-allowed"
+            className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
         </div>
         <div className="relative h-5 flex items-center">
@@ -295,7 +295,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           placeholder="Search…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-xs border border-ink-4 px-3 py-1.5 text-sm focus:border-brass-8 focus:outline-none mb-2"
+          className="w-full rounded-xs border border-ink-4 px-3 py-1.5 text-sm mb-2"
         />
         <ul className="max-h-40 overflow-y-auto rounded-lg border border-ink-3">
           {visible.map((opt) => {
@@ -309,7 +309,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                     type="checkbox"
                     checked={isActive}
                     onChange={() => toggle(opt)}
-                    className="h-4 w-4 rounded border-ink-4 accent-brass-7 focus:ring-brass-8"
+                    className="h-4 w-4 rounded border-ink-4 accent-brass-7"
                   />
                   {String(opt)} ({count})
                 </label>
@@ -468,7 +468,7 @@ const FilterPanel = () => {
         <select
           value={sortBy ?? ''}
           onChange={(e) => dispatch(setSortBy(e.target.value))}
-          className="w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm focus:border-brass-8 focus:outline-none"
+          className="w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm"
         >
           {sorts.map((s) => (
             <option key={s.id} value={s.id}>

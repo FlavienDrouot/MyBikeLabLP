@@ -17,8 +17,7 @@
   height: 20px;
   border-radius: 50%;
   background: #a88846; /* brass-8 */
-  border: 2px solid #fbfaf6; /* paper-0 */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  border: 2px solid var(--paper-0);
   pointer-events: all;
   cursor: pointer;
   transition: transform 150ms ease;
@@ -28,13 +27,17 @@
   transform: scale(1.2);
 }
 
+.thumb:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--brass-8);
+  outline-offset: 2px;
+}
+
 .thumb::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background: #a88846; /* brass-8 */
-  border: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  border: 2px solid var(--paper-0);
   pointer-events: all;
   cursor: pointer;
   transition: transform 150ms ease;
@@ -42,6 +45,11 @@
 
 .thumb::-moz-range-thumb:hover {
   transform: scale(1.2);
+}
+
+.thumb:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--brass-8);
+  outline-offset: 2px;
 }
 
 .track {

@@ -43,7 +43,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 z-20 mt-2 w-64 max-w-[calc(100vw-1rem)] rounded-none border border-ink-4 bg-paper-0 shadow-sm p-3"
+          className="absolute right-0 z-20 mt-2 w-64 max-w-[calc(100vw-1rem)] rounded-none border border-ink-4 bg-paper-0 shadow-menu p-3"
         >
           {COLUMN_GROUPS.map((group) => {
             // Optional columns in the group (the `required` ones are always
@@ -65,7 +65,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
                           type="checkbox"
                           checked={!!visibility[p.id]}
                           onChange={() => onToggle(p.id)}
-                          className="h-4 w-4 rounded border-ink-4 accent-brass-7 focus:ring-brass-8"
+                          className="h-4 w-4 rounded border-ink-4 accent-brass-7"
                         />
                         {p.label}
                       </label>

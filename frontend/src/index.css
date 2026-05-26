@@ -13,6 +13,14 @@
     @apply bg-paper-1 text-ink-11 font-sans antialiased;
     font-feature-settings: 'ss01', 'ss02', 'cv11';
   }
+  ::selection {
+    background: var(--brass-5);
+    color: var(--ink-12);
+  }
+  :focus-visible {
+    outline: 2px solid var(--brass-8);
+    outline-offset: 2px;
+  }
 }
 
 @layer components {

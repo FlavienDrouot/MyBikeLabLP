@@ -68,6 +68,9 @@ export default {
       borderRadius: {
         xs: '2px',
       },
+      boxShadow: {
+        menu: '0 1px 0 0 var(--ink-10), 0 8px 24px -12px rgba(14, 15, 12, 0.18)',
+      },
     },
   },
   plugins: [],
