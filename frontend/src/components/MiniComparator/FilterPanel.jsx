@@ -32,11 +32,11 @@ const FilterToggle = ({ enabled, onChange, ariaLabel }) => (
     aria-checked={enabled}
     aria-label={ariaLabel}
     onClick={() => onChange(!enabled)}
-    className={`flex h-5 w-9 cursor-pointer items-center rounded-full p-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-1 ${
-      enabled ? 'bg-brand-600 justify-end' : 'bg-ink-300 justify-start'
+    className={`flex h-5 w-9 cursor-pointer items-center rounded-full p-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-brass-8 focus:ring-offset-1 ${
+      enabled ? 'bg-brass-7 justify-end' : 'bg-ink-4 justify-start'
     }`}
   >
-    <span className="h-4 w-4 rounded-full bg-white shadow-sm transition-transform" />
+    <span className="h-4 w-4 rounded-full bg-paper-0 transition-transform" />
   </button>
 );
 
@@ -75,7 +75,7 @@ const DualRangeRow = ({
   return (
     <div className="space-y-3">
       <div className="flex items-baseline justify-between text-sm">
-        <span className="flex items-center gap-2 font-medium text-ink-700">
+        <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-ink-7">
           {onToggleEnabled && (
             <FilterToggle
               enabled={enabled}
@@ -85,7 +85,7 @@ const DualRangeRow = ({
           )}
           {label}
         </span>
-        <span className="text-ink-500 tabular-nums">
+        <span className="text-ink-7 tabular-nums font-mono">
           {valueLow}
           {unit} — {valueHigh}
           {unit}
@@ -101,9 +101,9 @@ const DualRangeRow = ({
             step={effectiveStep}
             disabled={!enabled}
             onChange={(e) => handleLow(e.target.value)}
-            className="w-24 rounded-lg border border-ink-300 px-2 py-1.5 text-sm text-center focus:border-brand-600 focus:outline-none disabled:cursor-not-allowed"
+            className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center focus:border-brass-8 focus:outline-none disabled:cursor-not-allowed"
           />
-          <span className="flex-1 text-center text-ink-400 text-xs select-none">
+          <span className="flex-1 text-center text-ink-5 text-xs select-none">
             —
           </span>
           <input
@@ -114,7 +114,7 @@ const DualRangeRow = ({
             step={effectiveStep}
             disabled={!enabled}
             onChange={(e) => handleHigh(e.target.value)}
-            className="w-24 rounded-lg border border-ink-300 px-2 py-1.5 text-sm text-center focus:border-brand-600 focus:outline-none disabled:cursor-not-allowed"
+            className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center focus:border-brass-8 focus:outline-none disabled:cursor-not-allowed"
           />
         </div>
         <div className="relative h-5 flex items-center">
@@ -158,16 +158,16 @@ const DualRangeRow = ({
 const Section = ({ title, defaultOpen = false, children }) => {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="border-t border-ink-100 pt-4">
+    <div className="border-t border-ink-3 pt-4">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between text-left"
         aria-expanded={open}
       >
-        <span className="text-sm font-semibold text-ink-900">{title}</span>
+        <span className="text-xs font-semibold uppercase tracking-widest text-ink-7">{title}</span>
         <svg
-          className={`h-4 w-4 text-ink-500 transition-transform ${
+          className={`h-4 w-4 text-ink-6 transition-transform ${
             open ? 'rotate-180' : ''
           }`}
           viewBox="0 0 20 20"
@@ -193,8 +193,8 @@ const Pill = ({ active, muted, onClick, children }) => (
     onClick={onClick}
     className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors
       ${active
-        ? 'bg-brand-600 text-white border-brand-600'
-        : 'bg-white text-ink-700 border-ink-300 hover:border-brand-600 hover:text-brand-600'
+        ? 'bg-brass-7 text-ink-12 border-brass-7'
+        : 'bg-paper-0 text-ink-11 border-ink-4 hover:border-brass-8 hover:text-brass-8'
       }
       ${muted ? 'opacity-40' : ''}`}
   >
@@ -272,7 +272,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           }
           ariaLabel={`Enable ${property.label.toLowerCase()} filter`}
         />
-        <span className="text-sm font-medium text-ink-700">{property.label}</span>
+        <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{property.label}</span>
       </div>
       <div className={filter.enabled ? '' : 'opacity-50 pointer-events-none'}>
         {filter.value.length > 0 && (
@@ -282,10 +282,10 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                 key={String(v)}
                 type="button"
                 onClick={() => toggle(v)}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-brand-600 text-white hover:bg-brand-700 transition-colors"
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-brass-7 text-ink-12 hover:bg-brass-8 transition-colors"
               >
                 {String(v)}
-                <span aria-hidden="true" className="text-brand-200">×</span>
+                <span aria-hidden="true" className="text-ink-12/60">×</span>
               </button>
             ))}
           </div>
@@ -295,21 +295,21 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           placeholder="Search…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-lg border border-ink-300 px-3 py-1.5 text-sm focus:border-brand-600 focus:outline-none mb-2"
+          className="w-full rounded-xs border border-ink-4 px-3 py-1.5 text-sm focus:border-brass-8 focus:outline-none mb-2"
         />
-        <ul className="max-h-40 overflow-y-auto rounded-lg border border-ink-200">
+        <ul className="max-h-40 overflow-y-auto rounded-lg border border-ink-3">
           {visible.map((opt) => {
             const count = counts[String(opt)] ?? 0;
             const isActive = filter.value.includes(opt);
             const isMuted = count === 0 && !isActive;
             return (
               <li key={String(opt)}>
-                <label className={`flex items-center gap-2 px-3 py-1.5 hover:bg-ink-100/60 cursor-pointer text-sm ${isMuted ? 'text-ink-300' : 'text-ink-700'}`}>
+                <label className={`flex items-center gap-2 px-3 py-1.5 hover:bg-ink-2/60 cursor-pointer text-sm ${isMuted ? 'text-ink-4' : 'text-ink-11'}`}>
                   <input
                     type="checkbox"
                     checked={isActive}
                     onChange={() => toggle(opt)}
-                    className="h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-brand-500"
+                    className="h-4 w-4 rounded border-ink-4 accent-brass-7 focus:ring-brass-8"
                   />
                   {String(opt)} ({count})
                 </label>
@@ -352,7 +352,7 @@ const MultiSelectFilter = ({ property, filter }) => {
           }
           ariaLabel={`Enable ${property.label.toLowerCase()} filter`}
         />
-        <span className="text-sm font-medium text-ink-700">{property.label}</span>
+        <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{property.label}</span>
       </div>
       <div
         className={`flex flex-wrap gap-1.5 ${
@@ -398,7 +398,7 @@ const TriStateFilter = ({ property, filter }) => {
           }
           ariaLabel={`Enable ${property.label.toLowerCase()} filter`}
         />
-        <span className="text-sm font-medium text-ink-700">{property.label}</span>
+        <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{property.label}</span>
       </div>
       <div className={`flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-50 pointer-events-none'}`}>
         <Pill active={filter.value === null} onClick={() => set(null)}>
@@ -452,11 +452,11 @@ const FilterPanel = () => {
     <aside className="card p-5 lg:p-6 space-y-6 h-fit lg:sticky lg:top-20">
       {/* Header with reset shortcut */}
       <div className="flex items-center justify-between">
-        <h3 className="text-base font-semibold text-ink-900">Filters</h3>
+        <h3 className="text-base font-semibold text-ink-11">Filters</h3>
         <button
           type="button"
           onClick={() => dispatch(resetFilters())}
-          className="text-xs font-medium text-brand-600 hover:text-brand-700"
+          className="text-xs font-medium text-brass-8 hover:text-brass-9"
         >
           Reset
         </button>
@@ -464,11 +464,11 @@ const FilterPanel = () => {
 
       {/* Sort — options generated from registry */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-ink-700">Sort by</label>
+        <label className="text-sm font-medium text-ink-11">Sort by</label>
         <select
           value={sortBy ?? ''}
           onChange={(e) => dispatch(setSortBy(e.target.value))}
-          className="w-full rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"
+          className="w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm focus:border-brass-8 focus:outline-none"
         >
           {sorts.map((s) => (
             <option key={s.id} value={s.id}>

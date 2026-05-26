@@ -36,7 +36,7 @@ const BenefitsGrid = () => {
     <section className="section">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-sm font-semibold uppercase tracking-wider text-brand-600">
+          <span className="text-sm font-semibold uppercase tracking-wider text-brass-8">
             Why MyBikeLab
           </span>
           <h2 className="section-title mt-2">Built for serious cyclists</h2>
@@ -44,11 +44,11 @@ const BenefitsGrid = () => {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {benefits.map((b) => (
             <div key={b.title} className="card p-6">
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-brand-50 text-brand-700">
+              <div className="grid h-10 w-10 place-items-center rounded-none bg-brass-3 text-brass-9">
                 {b.icon}
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-ink-900">{b.title}</h3>
-              <p className="mt-2 text-ink-500">{b.description}</p>
+              <h3 className="mt-4 text-lg font-semibold text-ink-11">{b.title}</h3>
+              <p className="mt-2 text-ink-8">{b.description}</p>
             </div>
           ))}
         </div>

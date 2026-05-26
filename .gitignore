@@ -43,3 +43,6 @@ Administrative/
 # Archive folders
 **/archive/
 **/evolutions/
+
+# Design system (work in progress, transferred from Claude interface)
+design-system/

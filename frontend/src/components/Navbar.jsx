@@ -6,14 +6,14 @@ const Navbar = () => {
   const close = () => setIsOpen(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-ink-100 bg-white/80 backdrop-blur">
+    <header className="sticky top-0 z-40 w-full border-b border-ink-3 bg-paper-0/80 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <div className="grid h-8 w-8 place-items-center rounded-lg bg-brand-600 text-white font-bold">
+          <div className="grid h-8 w-8 place-items-center rounded-xs bg-brass-7 text-ink-12 font-bold">
             M
           </div>
           <span className="text-lg font-semibold tracking-tight">
-            My<span className="text-brand-600">Bike</span>Lab
+            My<span className="text-brass-8">Bike</span>Lab
           </span>
         </a>
         <nav className="hidden md:flex items-center gap-1">
@@ -29,7 +29,7 @@ const Navbar = () => {
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-            className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-ink-700 hover:text-brand-600 transition-colors"
+            className="md:hidden inline-flex items-center justify-center rounded-xs p-2 text-ink-11 hover:text-brass-8 transition-colors focus-visible:ring-2 focus-visible:ring-brass-8"
           >
             {isOpen ? (
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -47,7 +47,7 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div id="mobile-menu" className="md:hidden border-t border-ink-100 bg-white">
+        <div id="mobile-menu" className="md:hidden border-t border-ink-3 bg-paper-0">
           <nav className="container-page flex flex-col py-2">
             <a href="#tool" onClick={close} className="btn-ghost justify-start">Tool</a>
             <a href="#roadmap" onClick={close} className="btn-ghost justify-start">Roadmap</a>

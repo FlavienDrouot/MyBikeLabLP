@@ -27,10 +27,10 @@ const phases = [
 
 const RoadmapSection = () => {
   return (
-    <section id="roadmap" className="section bg-ink-100/40">
+    <section id="roadmap" className="section bg-paper-2">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-sm font-semibold uppercase tracking-wider text-brand-600">
+          <span className="text-sm font-semibold uppercase tracking-wider text-brass-8">
             Roadmap
           </span>
           <h2 className="section-title mt-2">What's Coming</h2>
@@ -44,25 +44,25 @@ const RoadmapSection = () => {
           {phases.map((p, idx) => (
             <div key={p.tag} className="card p-6 flex flex-col">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wider text-brand-600">
+                <span className="text-xs font-semibold uppercase tracking-widest text-brass-8">
                   {p.tag}
                 </span>
                 <span
                   className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                     idx === 0
-                      ? 'bg-brand-600 text-white'
-                      : 'bg-ink-100 text-ink-700'
+                      ? 'bg-brass-7 text-ink-12'
+                      : 'bg-ink-2 text-ink-11'
                   }`}
                 >
                   {p.status}
                 </span>
               </div>
-              <h3 className="mt-3 text-xl font-bold text-ink-900">{p.title}</h3>
-              <p className="mt-2 text-ink-500">{p.description}</p>
-              <ul className="mt-5 space-y-2 text-sm text-ink-700">
+              <h3 className="mt-3 text-xl font-bold text-ink-11">{p.title}</h3>
+              <p className="mt-2 text-ink-8">{p.description}</p>
+              <ul className="mt-5 space-y-2 text-sm text-ink-11">
                 {p.points.map((pt) => (
                   <li key={pt} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-600" />
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brass-7" />
                     {pt}
                   </li>
                 ))}

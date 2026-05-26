@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +10,7 @@
     scroll-padding-top: 5rem;
   }
   body {
-    @apply bg-white text-ink-900 font-sans antialiased;
+    @apply bg-paper-1 text-ink-11 font-sans antialiased;
   }
 }
 
@@ -20,24 +22,24 @@
     @apply mx-auto px-4 sm:px-6 lg:px-8;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-700 transition-colors;
+    @apply inline-flex items-center justify-center rounded-xs bg-brass-7 px-5 py-2.5 text-sm font-semibold text-ink-12 hover:bg-brass-8 transition-colors;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-ink-700 hover:text-brand-600 transition-colors;
+    @apply inline-flex items-center justify-center rounded-xs px-5 py-2.5 text-sm font-semibold text-ink-11 hover:text-brass-8 transition-colors;
   }
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-lg border border-ink-300 px-5 py-2.5 text-sm font-semibold text-ink-700 hover:border-brand-600 hover:text-brand-600 transition-colors;
+    @apply inline-flex items-center justify-center rounded-xs border border-ink-4 px-5 py-2.5 text-sm font-semibold text-ink-11 hover:border-brass-8 hover:text-brass-8 transition-colors;
   }
   .section {
     @apply py-16 sm:py-20 lg:py-24;
   }
   .section-title {
-    @apply text-3xl sm:text-4xl font-bold tracking-tight text-ink-900;
+    @apply text-3xl sm:text-4xl font-bold tracking-tight text-ink-10;
   }
   .section-subtitle {
-    @apply mt-3 text-lg text-ink-500 max-w-2xl;
+    @apply mt-3 text-lg text-ink-8 max-w-2xl;
   }
   .card {
-    @apply rounded-2xl border border-ink-100 bg-white shadow-sm;
+    @apply rounded-none border border-ink-4 bg-paper-0;
   }
 }
