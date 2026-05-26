@@ -6,8 +6,8 @@ export const HookBadge = ({ hookless }) => (
   <span
     className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium ${
       hookless
-        ? 'bg-brand-50 text-brand-700'
-        : 'bg-ink-100 text-ink-700'
+        ? 'bg-brass-3 text-brass-10'
+        : 'bg-ink-2 text-ink-8'
     }`}
   >
     {hookless ? 'Hookless' : 'Hooked'}
