@@ -16,15 +16,12 @@ const PartnershipSection = () => {
     <section id="partnerships" className="section bg-ink-12 text-paper-1">
       <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
         <div>
-          <span className="text-sm font-semibold uppercase tracking-wider text-paper-3">
-            B2B Partnerships
-          </span>
+          <p className="t-section-index">№ 05 · PARTNERSHIP</p>
           <h2 className="mt-2 t-h1">
-            Join the Platform
+            Work with us
           </h2>
           <p className="mt-3 text-lg text-paper-2 max-w-xl">
-            We're building the trusted layer between cyclists and the components
-            they buy. Help shape the dataset and the tools.
+            MyBikeLab connects cyclists with structured component data. If you supply or sell road bike components, your product data belongs here.
           </p>
 
           <div className="mt-8 space-y-4">

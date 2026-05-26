@@ -23,15 +23,12 @@ const MiniComparator = () => {
     <section id="tool" className="section bg-paper-2">
       <div className="container-fluid">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-sm font-semibold uppercase tracking-wider text-brass-8">
-            Live Demo
-          </span>
+          <p className="t-section-index">№ 02 · COMPARATOR</p>
           <h2 className="section-title mt-2">
-            Start with Wheels — Explore Components
+            Road wheels — filter and compare
           </h2>
           <p className="section-subtitle mx-auto">
-            Filter by brand, weight, depth, price and more. Sort to find the
-            wheelset that fits your priorities.
+            Filter and sort by brand, weight, rim depth, price, and many more.
           </p>
         </div>
 

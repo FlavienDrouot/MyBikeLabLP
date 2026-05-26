@@ -36,9 +36,7 @@ const BenefitsGrid = () => {
     <section className="section">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-sm font-semibold uppercase tracking-wider text-brass-8">
-            Why MyBikeLab
-          </span>
+          <p className="t-section-index">№ 04 · BENEFITS</p>
           <h2 className="section-title mt-2">Built for serious cyclists</h2>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">

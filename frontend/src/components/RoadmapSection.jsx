@@ -30,13 +30,10 @@ const RoadmapSection = () => {
     <section id="roadmap" className="section bg-paper-2">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-sm font-semibold uppercase tracking-wider text-brass-8">
-            Roadmap
-          </span>
-          <h2 className="section-title mt-2">What's Coming</h2>
+          <p className="t-section-index">№ 03 · ROADMAP</p>
+          <h2 className="section-title mt-2">Three phases</h2>
           <p className="section-subtitle mx-auto">
-            From a focused wheel comparator to a full-stack bike intelligence
-            platform — here's how we get there.
+            Comparison first. Impact simulation next. Full bike configurator on the horizon.
           </p>
         </div>
 
