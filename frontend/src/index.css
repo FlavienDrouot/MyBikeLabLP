@@ -11,6 +11,7 @@
   }
   body {
     @apply bg-paper-1 text-ink-11 font-sans antialiased;
+    font-feature-settings: 'ss01', 'ss02', 'cv11';
   }
 }
 
@@ -33,8 +34,18 @@
   .section {
     @apply py-16 sm:py-20 lg:py-24;
   }
+  .hero-title {
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    @apply text-4xl sm:text-5xl lg:text-6xl;
+  }
   .section-title {
-    @apply text-3xl sm:text-4xl font-bold tracking-tight text-ink-10;
+    font-weight: 500;
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tighter);
+    @apply text-ink-10;
   }
   .section-subtitle {
     @apply mt-3 text-lg text-ink-8 max-w-2xl;

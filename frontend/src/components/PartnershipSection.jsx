@@ -19,7 +19,7 @@ const PartnershipSection = () => {
           <span className="text-sm font-semibold uppercase tracking-wider text-paper-3">
             B2B Partnerships
           </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-bold tracking-tight">
+          <h2 className="mt-2 t-h1">
             Join the Platform
           </h2>
           <p className="mt-3 text-lg text-paper-2 max-w-xl">

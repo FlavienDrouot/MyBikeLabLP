@@ -10,7 +10,7 @@ const Hero = () => {
         <span className="inline-flex items-center rounded-full border border-brass-4 bg-paper-0 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brass-9">
           MVP v0.1 — Road Bike Wheels
         </span>
-        <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink-10">
+        <h1 className="mt-6 hero-title text-ink-10">
           The Future of <span className="text-brass-8">Bike Component</span>
           <br className="hidden sm:block" /> Intelligence
         </h1>
