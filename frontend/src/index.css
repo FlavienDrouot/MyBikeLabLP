@@ -64,4 +64,10 @@
   .card {
     @apply rounded-none border border-ink-4 bg-paper-0;
   }
+  .hero-grid-bg {
+    background-image:
+      linear-gradient(to right, var(--ink-2) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--ink-2) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
 }

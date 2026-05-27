@@ -32,3 +32,21 @@ Canonical definitions for terms used across evolutions. Updated whenever an ambi
 | Term | Definition |
 |---|---|
 | Navbar surface | `paper-1` at 88% opacity (`rgba(246,244,239,0.88)`) with 8px backdrop blur. This is the canonical Navbar background. |
+
+---
+
+## Design System — Backgrounds & Patterns
+
+| Term | Definition |
+|---|---|
+| Schematic grid | The single decorative background pattern in the design system. A 32 px ruled grid rendered in `ink-2` via CSS `background-image: linear-gradient(...)`. Used exclusively on the Hero section. Evokes drafting paper / engineering blueprint. Must not appear on any other section. |
+
+---
+
+## Design System — Typographic Glyphs
+
+| Term | Definition |
+|---|---|
+| Typographic glyphs | Unicode characters (`→`, `↓`, `↑`, `·`, `№`, `Ø`, `±`, `≈`) used in place of icon components in compact or data-dense UI contexts. Rendered in Inter (full coverage confirmed). |
+| `→` (CTA arrow) | Trailing directional glyph appended to primary CTA link text (e.g., "Open comparator →"). Signals navigation intent. Applied at the component level, not in data. |
+| `Ø` (diameter prefix) | Diameter symbol. Applied as a prefix to wheel diameter values only (e.g., `Ø 700C`). Must **not** be used for rim depth, which is a linear measurement rendered as `33 mm`. |

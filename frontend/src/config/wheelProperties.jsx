@@ -34,6 +34,16 @@ import { HookBadge } from '../components/MiniComparator/badges';
 // Exported helper because reused in multiple entries (price, price column).
 export const minPrice = (wheel) => Math.min(...wheel.prices.map((p) => p.price_eur));
 
+const DIAMETER_LABEL_MAP = {
+  700: '700C',
+  650: '650B',
+};
+
+export const formatDiameter = (rawMm) => {
+  const label = DIAMETER_LABEL_MAP[rawMm] ?? String(rawMm);
+  return `Ø ${label}`;
+};
+
 export const COLUMN_GROUPS = [
   { id: 'general', label: 'General specs' },
   { id: 'rims', label: 'Rims' },
@@ -133,13 +143,13 @@ export const WHEEL_PROPERTIES = [
     id: 'diameter',
     label: 'Diameter',
     group: 'general',
-    unit: ' mm',
     accessor: (w) => w.diameter_mm,
     filter: { type: 'multiSelect' },
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w) => formatDiameter(w.diameter_mm),
     },
   },
 

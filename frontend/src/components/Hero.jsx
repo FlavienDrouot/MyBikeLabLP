@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section
       id="top"
-      className="relative overflow-hidden"
+      className="relative overflow-hidden hero-grid-bg"
     >
       <div className="container-page section text-center">
         <span className="inline-flex items-center rounded-xs border border-brass-4 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brass-9">
