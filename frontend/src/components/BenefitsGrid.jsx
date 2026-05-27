@@ -3,19 +3,19 @@ import Icon from './ui/Icon';
 
 const benefits = [
   {
-    title: 'Better Decisions',
+    title: 'Better decisions',
     description:
       'Stop comparing PDFs and forum threads. Filter on the specs that actually matter for your ride.',
     icon: <Icon as={CheckCircle} size={24} aria-hidden="true" />,
   },
   {
-    title: 'Data-Driven',
+    title: 'Data-driven',
     description:
       'Every spec is sourced and structured. No marketing fluff, just numbers you can cross-check.',
     icon: <Icon as={TrendingUp} size={24} aria-hidden="true" />,
   },
   {
-    title: 'Community-Focused',
+    title: 'Community-focused',
     description:
       'Built with riders, manufacturers and resellers. Open data, transparent affiliations.',
     icon: <Icon as={Users} size={24} aria-hidden="true" />,
@@ -27,7 +27,7 @@ const BenefitsGrid = () => {
     <section className="section">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="t-section-index">№ 04 · BENEFITS</p>
+          <p className="t-section-index">BENEFITS</p>
           <h2 className="section-title mt-2">Built for serious cyclists</h2>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">

@@ -14,7 +14,7 @@ const Hero = () => {
           Wheels, measured. Not marketed.
         </h1>
         <p className="mt-6 text-lg sm:text-xl text-ink-8 max-w-2xl mx-auto">
-          Compare by weight, rim depth, hookless compatibility, hub brand, price and many more — structured in a single table.
+          Compare by weight, rim depth, hookless compatibility, hub brand, price and many more. Structured in a single table.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
           <a href="#tool" className="btn-primary">Open comparator →</a>

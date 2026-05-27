@@ -2,7 +2,7 @@ const phases = [
   {
     tag: 'Phase 1',
     status: 'In progress',
-    title: 'Components Comparison',
+    title: 'Components comparison',
     description:
       'Wheels first, then drivetrains, brakes, tires. Structured specs, side-by-side decisions.',
     points: ['Wheels MVP live', 'Drivetrains coming', 'Brakes & tires next'],
@@ -10,7 +10,7 @@ const phases = [
   {
     tag: 'Phase 2',
     status: 'Next',
-    title: 'Impact Simulator',
+    title: 'Impact simulator',
     description:
       'See how each part changes your ride: weight, aerodynamics, total cost, predicted performance.',
     points: ['Weight delta', 'Aero gains', 'Cost-per-watt'],
@@ -18,7 +18,7 @@ const phases = [
   {
     tag: 'Phase 3',
     status: 'Vision',
-    title: 'Full Bike Configurator',
+    title: 'Full bike configurator',
     description:
       'Build your dream bike from the frame up, simulate the full setup, then go buy it.',
     points: ['Frame to finish', 'Performance preview', 'Affiliate-ready'],
@@ -30,7 +30,7 @@ const RoadmapSection = () => {
     <section id="roadmap" className="section bg-paper-2">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="t-section-index">№ 03 · ROADMAP</p>
+          <p className="t-section-index">ROADMAP</p>
           <h2 className="section-title mt-2">Three phases</h2>
           <p className="section-subtitle mx-auto">
             Comparison first. Impact simulation next. Full bike configurator on the horizon.

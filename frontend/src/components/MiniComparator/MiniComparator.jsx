@@ -25,9 +25,9 @@ const MiniComparator = () => {
     <section id="tool" className="section bg-paper-2">
       <div className="container-fluid">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="t-section-index">№ 02 · COMPARATOR</p>
+          <p className="t-section-index">COMPARATOR</p>
           <h2 className="section-title mt-2">
-            Road wheels — filter and compare
+            Road wheels: filter and compare
           </h2>
           <p className="section-subtitle mx-auto">
             Filter and sort by brand, weight, rim depth, price, and many more.
@@ -101,7 +101,7 @@ const MiniComparator = () => {
         </div>
 
         <p className="mt-8 text-center text-xs text-ink-7">
-          MVP v0.1 · Sample dataset · Real prices &amp; partners coming soon
+          Sample dataset · Real prices &amp; partners coming soon
         </p>
       </div>
     </section>

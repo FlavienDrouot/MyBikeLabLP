@@ -16,7 +16,7 @@ const PartnershipSection = () => {
     <section id="partnerships" className="section bg-ink-12 text-paper-1">
       <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
         <div>
-          <p className="t-section-index">№ 05 · PARTNERSHIP</p>
+          <p className="t-section-index">PARTNERSHIP</p>
           <h2 className="mt-2 t-h1">
             Work with us
           </h2>
