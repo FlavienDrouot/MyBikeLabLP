@@ -1,6 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="border-t border-ink-10 bg-ink-12">
+    <footer className="bg-ink-12">
+      <hr className="rule rule-strong" />
       <div className="container-page py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <div className="grid h-7 w-7 place-items-center rounded-xs bg-brass-7 text-ink-12 text-xs font-bold">

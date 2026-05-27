@@ -37,6 +37,8 @@ const RoadmapSection = () => {
           </p>
         </div>
 
+        <hr className="rule mt-8" />
+
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {phases.map((p, idx) => (
             <div key={p.tag} className="card p-6 flex flex-col">

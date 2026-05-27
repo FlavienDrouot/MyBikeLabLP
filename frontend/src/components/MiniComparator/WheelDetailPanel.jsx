@@ -30,8 +30,11 @@ const WheelDetailPanel = ({ wheel }) => {
                   <span className="font-medium text-ink-11">{brand}</span>
                   <span className="flex items-center gap-3 flex-shrink-0">
                     {manufacturer.price_eur != null && (
-                      <span className="font-semibold text-ink-11 font-mono tabular-nums">
-                        {manufacturer.price_eur.toLocaleString('fr-FR')} &euro;
+                      <span className="flex flex-col items-end">
+                        <span className="font-semibold text-ink-11 font-mono tabular-nums">
+                          {manufacturer.price_eur.toLocaleString('fr-FR')} &euro;
+                        </span>
+                        <span className="t-annotation">indicative price, sourced 2025-Q2</span>
                       </span>
                     )}
                     <a
@@ -57,8 +60,11 @@ const WheelDetailPanel = ({ wheel }) => {
                     <li key={i} className="flex items-center justify-between text-sm">
                       <span className="text-ink-11">{r.name}</span>
                       <span className="flex items-center gap-3 flex-shrink-0">
-                        <span className="font-semibold text-ink-11 font-mono tabular-nums">
-                          {r.price_eur.toLocaleString('fr-FR')} &euro;
+                        <span className="flex flex-col items-end">
+                          <span className="font-semibold text-ink-11 font-mono tabular-nums">
+                            {r.price_eur.toLocaleString('fr-FR')} &euro;
+                          </span>
+                          <span className="t-annotation">indicative price, sourced 2025-Q2</span>
                         </span>
                         <a
                           href={r.url}

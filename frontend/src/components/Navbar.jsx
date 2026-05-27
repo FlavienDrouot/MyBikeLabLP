@@ -31,7 +31,8 @@ const Navbar = () => {
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-            className="md:hidden inline-flex items-center justify-center rounded-xs p-2 text-ink-11 hover:text-brass-8 transition-colors focus-visible:ring-2 focus-visible:ring-brass-8"
+            className="md:hidden inline-flex items-center justify-center rounded-xs p-2 text-ink-11 hover:text-brass-8 focus-visible:ring-2 focus-visible:ring-brass-8"
+            style={{ transition: 'color var(--duration-quick) var(--ease-standard)' }}
           >
             {isOpen ? (
               <Icon as={X} size={24} aria-hidden="true" />

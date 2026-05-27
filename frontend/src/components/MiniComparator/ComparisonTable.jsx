@@ -31,7 +31,7 @@ const ComparisonTable = ({ visibility }) => {
 
   return (
     <div className="card overflow-hidden w-fit max-w-full">
-      <div className="flex items-center justify-between px-5 py-4 border-b border-ink-3">
+      <div className="flex items-center justify-between px-5 py-4">
         <h3 className="text-base font-semibold text-ink-11">
           Wheels{' '}
           <span className="text-ink-7 font-normal">
@@ -39,6 +39,7 @@ const ComparisonTable = ({ visibility }) => {
           </span>
         </h3>
       </div>
+      <hr className="rule" />
 
       {wheels.length === 0 ? (
         <div className="p-10 text-center text-ink-7 text-sm">
@@ -57,11 +58,12 @@ const ComparisonTable = ({ visibility }) => {
                 <th className="px-4 py-3 w-10" />
               </tr>
             </thead>
-            <tbody className="divide-y divide-ink-3">
+            <tbody>
               {wheels.map((w) => (
                 <React.Fragment key={w.id}>
                   <tr
-                    className="hover:bg-paper-2 transition-colors cursor-pointer"
+                    className="hover:bg-paper-2 cursor-pointer"
+                    style={{ borderBottom: '1px solid var(--rule-faint)', transition: 'background-color var(--duration-quick) var(--ease-standard)' }}
                     onClick={() => toggleExpanded(w.id)}
                   >
                     {cols.map((p) => (
