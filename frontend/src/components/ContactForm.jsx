@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Check } from 'lucide-react';
+import Icon from './ui/Icon';
 
 const ContactForm = () => {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
@@ -23,9 +25,7 @@ const ContactForm = () => {
     return (
       <div className="card p-6 text-center">
         <div className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-brass-3 text-brass-9">
-          <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
+          <Icon as={Check} size={20} aria-hidden="true" />
         </div>
         <h3 className="mt-4 text-lg font-semibold text-ink-11">Thanks, {form.name || 'there'}!</h3>
         <p className="mt-1 text-ink-8">

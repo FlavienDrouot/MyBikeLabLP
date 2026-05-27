@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { ChevronDown } from 'lucide-react';
 import { selectFilteredWheels } from '../../store/selectors/wheelsSelectors';
 import { getColumnProperties } from '../../config/wheelProperties';
 import WheelDetailPanel from './WheelDetailPanel';
+import Icon from '../ui/Icon';
 
 const renderCellFor = (property) =>
   property.column?.renderCell ??
@@ -14,16 +16,6 @@ const cellClassFor = (property) => {
 const headClassFor = (property) =>
   property.column?.headClassName ?? 'px-4 py-3 font-semibold';
 
-const ChevronIcon = ({ expanded }) => (
-  <svg
-    className={`w-4 h-4 transition-transform duration-150 ${expanded ? 'rotate-180' : ''}`}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-  </svg>
-);
 
 const ComparisonTable = ({ visibility }) => {
   const wheels = useSelector(selectFilteredWheels);
@@ -78,7 +70,12 @@ const ComparisonTable = ({ visibility }) => {
                       </td>
                     ))}
                     <td className="px-4 py-3 text-ink-6">
-                      <ChevronIcon expanded={expandedId === w.id} />
+                      <Icon
+                        as={ChevronDown}
+                        size={16}
+                        aria-hidden="true"
+                        className={`transition-transform duration-150 ${expandedId === w.id ? 'rotate-180' : ''}`}
+                      />
                     </td>
                   </tr>
                   {expandedId === w.id && (

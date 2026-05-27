@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
+import { Columns2 } from 'lucide-react';
 import {
   COLUMN_GROUPS,
   getColumnProperties,
 } from '../../config/wheelProperties';
+import Icon from '../ui/Icon';
 
 const ColumnSelector = ({ visibility, onToggle }) => {
   const [open, setOpen] = useState(false);
@@ -28,15 +30,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
         aria-haspopup="true"
         aria-expanded={open}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          className="h-4 w-4 text-ink-7"
-          aria-hidden="true"
-        >
-          <path d="M3 4.5A1.5 1.5 0 0 1 4.5 3h11A1.5 1.5 0 0 1 17 4.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 15.5v-11Zm4 0v11h2v-11H7Zm4 0v11h2v-11h-2Z" />
-        </svg>
+        <Icon as={Columns2} size={16} className="text-ink-7" aria-hidden="true" />
         Columns
       </button>
 

@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react';
+import { SlidersHorizontal, X } from 'lucide-react';
 import FilterPanel from './FilterPanel';
 import ComparisonTable from './ComparisonTable';
 import ColumnSelector from './ColumnSelector';
+import Icon from '../ui/Icon';
 import { getColumnProperties } from '../../config/wheelProperties';
 
 // All optional columns (= non `required`) are visible by default.
@@ -42,9 +44,7 @@ const MiniComparator = () => {
               aria-controls="filters-drawer"
               className="inline-flex items-center gap-2 rounded-xs border border-ink-4 bg-paper-0 px-4 py-2 text-sm font-semibold text-ink-11 hover:border-brass-8 hover:text-brass-8"
             >
-              <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm2 5a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm3 5a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clipRule="evenodd" />
-              </svg>
+              <Icon as={SlidersHorizontal} size={16} aria-hidden="true" />
               Filters
             </button>
           </div>
@@ -78,9 +78,7 @@ const MiniComparator = () => {
                 aria-label="Close filters"
                 className="rounded-xs p-1.5 text-ink-8 hover:bg-ink-2 hover:text-ink-11"
               >
-                <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fillRule="evenodd" d="M4.28 3.22a.75.75 0 00-1.06 1.06L8.94 10l-5.72 5.72a.75.75 0 101.06 1.06L10 11.06l5.72 5.72a.75.75 0 101.06-1.06L11.06 10l5.72-5.72a.75.75 0 00-1.06-1.06L10 8.94 4.28 3.22z" clipRule="evenodd" />
-                </svg>
+                <Icon as={X} size={20} aria-hidden="true" />
               </button>
             </div>
             <div className="px-4 py-4 lg:p-0">
