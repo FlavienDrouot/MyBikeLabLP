@@ -443,7 +443,10 @@ const FilterPanel = () => {
   const filterables = useMemo(() => getFilterableProperties(), []);
 
   return (
-    <aside className="card p-5 lg:p-6 space-y-6 h-fit lg:sticky lg:top-20">
+    <aside
+      className="card p-5 lg:p-6 space-y-6 h-fit lg:sticky"
+      style={{ top: 'var(--navbar-height)' }}
+    >
       {/* Header with reset shortcut */}
       <div className="flex items-center justify-between">
         <h3 className="text-base font-semibold text-ink-11">Filters</h3>

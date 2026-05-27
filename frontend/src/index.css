@@ -7,7 +7,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: var(--navbar-height);
   }
   body {
     @apply bg-paper-1 text-ink-11 font-sans antialiased;

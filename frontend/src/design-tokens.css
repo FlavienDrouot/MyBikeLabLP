@@ -8,11 +8,6 @@
    tabular figures, all-caps micro labels.
    ============================================================================ */
 
-/* --- Fonts (Google Fonts) -------------------------------------------------- */
-/* Inter is the workhorse (kept from the existing codebase).                  */
-/* JetBrains Mono carries every numeral — added to support the spec-sheet     */
-/* precision direction.                                                       */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   /* ==========================================================================
@@ -208,6 +203,7 @@
   --container-narrow: 880px;
   --gutter: var(--space-6);
   --grid-unit: 8px;
+  --navbar-height: 5rem;  /* sticky top offset for scroll anchors and floating panels */
 }
 
 /* ============================================================================
