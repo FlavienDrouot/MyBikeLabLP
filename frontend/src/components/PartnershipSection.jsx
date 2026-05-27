@@ -26,7 +26,7 @@ const PartnershipSection = () => {
 
           <div className="mt-8 space-y-4">
             {audiences.map((a) => (
-              <div key={a.title} className="rounded-none border border-paper-1/10 bg-paper-1/5 p-4">
+              <div key={a.title} className="rounded-none border border-sage-4/40 bg-sage-1/10 p-4">
                 <h3 className="font-semibold">{a.title}</h3>
                 <p className="text-sm text-paper-2/80 mt-1">{a.description}</p>
               </div>
@@ -35,6 +35,7 @@ const PartnershipSection = () => {
         </div>
 
         <div id="contact" className="text-ink-11">
+          <div className="lg:hidden border-t border-sage-3/30 mb-8" />
           <ContactForm />
         </div>
       </div>

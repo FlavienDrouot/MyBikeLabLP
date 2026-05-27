@@ -44,4 +44,4 @@ User filter → `FilterPanel` dispatches `setFilterValue` → `filtersSlice` →
 - **New wheel property** = one entry in `wheelProperties.jsx` only (no changes elsewhere)
 - Filter types: `range` | `multiSelect` | `triState` — new type requires matcher + init in slice
 - Column visibility = local state in `MiniComparator`; filter/sort = Redux global
-- Tailwind tokens: `brand-*` (blue), `ink-*` (neutral); shared classes in `src/index.css`
+- Tailwind tokens: `paper-*`, `ink-*`, `brass-*`, `sage-*`; shared classes in `src/index.css`
