@@ -26,11 +26,12 @@ const ColumnSelector = ({ visibility, onToggle }) => {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-2 rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm font-medium text-ink-11 hover:bg-ink-2/60 transition-colors"
+        className="inline-flex items-center gap-2 rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm font-medium text-ink-11 hover:border-brass-8 hover:text-brass-8"
+        style={{ transition: 'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard)' }}
         aria-haspopup="true"
         aria-expanded={open}
       >
-        <Icon as={Columns2} size={16} className="text-ink-7" aria-hidden="true" />
+        <Icon as={Columns2} size={16} aria-hidden="true" />
         Columns
       </button>
 

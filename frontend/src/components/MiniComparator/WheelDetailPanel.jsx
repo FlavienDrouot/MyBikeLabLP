@@ -9,7 +9,7 @@ const WheelDetailPanel = ({ wheel }) => {
   const sortedRetailers = [...retailers].sort((a, b) => a.price_eur - b.price_eur);
 
   return (
-    <div className="flex items-center gap-5 px-5 py-3 bg-paper-2/60 border-t border-ink-3">
+    <div className="flex items-center gap-5 px-5 py-3 bg-paper-2/60 border-t border-t-ink-3 border-b border-b-ink-4">
       <img
         src={image}
         alt={model}

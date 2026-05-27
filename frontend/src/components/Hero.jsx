@@ -14,7 +14,7 @@ const Hero = () => {
           Wheels, measured. Not marketed.
         </h1>
         <p className="mt-6 text-lg sm:text-xl text-ink-8 max-w-2xl mx-auto">
-          15 road wheels, 13 filter axes. Compare by weight, rim depth, hookless compatibility, hub brand, and price — structured in a single table.
+          Compare by weight, rim depth, hookless compatibility, hub brand, price and many more — structured in a single table.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
           <a href="#tool" className="btn-primary">Open comparator →</a>
@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="mt-16 grid grid-cols-3 max-w-xl mx-auto gap-6 text-left">
           <div>
             <div className="text-2xl font-bold text-brass-8 font-mono tabular-nums">15</div>
-            <div className="text-sm text-ink-7">Road wheels</div>
+            <div className="text-sm text-ink-7">Wheels</div>
           </div>
           <div>
             <div className="text-2xl font-bold text-brass-8 font-mono tabular-nums">{getFilterableProperties().length}</div>

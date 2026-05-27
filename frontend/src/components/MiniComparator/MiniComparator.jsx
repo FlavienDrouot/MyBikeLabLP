@@ -34,7 +34,12 @@ const MiniComparator = () => {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[320px_1fr] w-fit mx-auto">
+        <div className="mt-12 grid gap-x-6 lg:grid-cols-[320px_1fr] lg:grid-rows-[auto_1fr] w-fit mx-auto items-start">
+          {/* ColumnSelector: row 1, col 2 — desktop only */}
+          <div className="hidden lg:flex justify-end mb-3 lg:col-start-2 lg:row-start-1">
+            <ColumnSelector visibility={visibility} onToggle={handleToggle} />
+          </div>
+
           {/* Mobile-only trigger: opens the filter drawer below lg */}
           <div className="lg:hidden">
             <button
@@ -58,7 +63,7 @@ const MiniComparator = () => {
             />
           )}
 
-          {/* Filter container: off-canvas drawer below lg, sticky sidebar at lg+.
+          {/* Filter container: off-canvas drawer below lg, sidebar at lg+.
               `fixed` removes it from grid flow on mobile so it overlays cleanly. */}
           <div
             id="filters-drawer"
@@ -67,7 +72,7 @@ const MiniComparator = () => {
             aria-label="Filters"
             className={`fixed inset-y-0 left-0 z-50 flex w-80 max-w-[85vw] flex-col overflow-y-auto bg-paper-2 border-r border-ink-4 transition-transform duration-200 ease-out ${
               filtersOpen ? 'translate-x-0' : '-translate-x-full'
-            } lg:relative lg:inset-auto lg:z-auto lg:flex lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:border-r-0`}
+            } lg:relative lg:inset-auto lg:z-auto lg:flex lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:border-r-0 lg:row-start-2`}
           >
             {/* Mobile drawer header with close button */}
             <div className="flex items-center justify-between border-b border-ink-3 px-4 py-3 lg:hidden">
@@ -86,8 +91,9 @@ const MiniComparator = () => {
             </div>
           </div>
 
-          <div className="min-w-0">
-            <div className="flex justify-end mb-3">
+          {/* ComparisonTable: row 2, col 2 — mobile also gets ColumnSelector here */}
+          <div className="min-w-0 lg:row-start-2">
+            <div className="flex justify-end mb-3 lg:hidden">
               <ColumnSelector visibility={visibility} onToggle={handleToggle} />
             </div>
             <ComparisonTable visibility={visibility} />

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Icon from './ui/Icon';
+import logoWordmark from '../assets/logo-wordmark.svg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,12 +12,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-40 w-full border-b border-ink-3 bg-paper-1/88 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <div className="grid h-8 w-8 place-items-center rounded-xs bg-brass-7 text-ink-12 font-bold">
-            M
-          </div>
-          <span className="text-lg font-semibold tracking-tight">
-            My<span className="text-brass-8">Bike</span>Lab
-          </span>
+          <img src={logoWordmark} alt="MyBikeLab" className="h-8 w-auto" />
         </a>
         <nav className="hidden md:flex items-center gap-1">
           <a href="#tool" className="btn-ghost">Tool</a>
