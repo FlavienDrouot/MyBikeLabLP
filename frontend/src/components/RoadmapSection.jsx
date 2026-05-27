@@ -42,26 +42,19 @@ const RoadmapSection = () => {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {phases.map((p, idx) => (
             <div key={p.tag} className="card p-6 flex flex-col">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-widest text-brass-8">
-                  {p.tag}
-                </span>
-                <span
-                  className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                    idx === 0
-                      ? 'bg-brass-7 text-ink-12'
-                      : 'bg-ink-2 text-ink-11'
-                  }`}
-                >
-                  {p.status}
-                </span>
-              </div>
+              <span
+                className={`self-start text-xs px-2 py-0.5 rounded-full font-medium ${
+                  idx === 0 ? 'bg-brass-7 text-ink-12' : 'bg-ink-2 text-ink-11'
+                }`}
+              >
+                {p.status}
+              </span>
               <h3 className="mt-3 text-xl font-bold text-ink-11">{p.title}</h3>
               <p className="mt-2 text-ink-8">{p.description}</p>
               <ul className="mt-5 space-y-2 text-sm text-ink-11">
                 {p.points.map((pt) => (
                   <li key={pt} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brass-7" />
+                    <span>→</span>
                     {pt}
                   </li>
                 ))}

@@ -56,6 +56,12 @@ export default {
           11: 'var(--sage-11)',
           12: 'var(--sage-12)',
         },
+        signal: {
+          up:   'var(--signal-up)',
+          down: 'var(--signal-down)',
+          warn: 'var(--signal-warn)',
+          info: 'var(--signal-info)',
+        },
       },
       fontFamily: {
         display: ['var(--font-display)', 'sans-serif'],

@@ -5,12 +5,25 @@ import Icon from './ui/Icon';
 const ContactForm = () => {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
 
   const onChange = (e) =>
     setForm((s) => ({ ...s, [e.target.name]: e.target.value }));
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    const newErrors = {
+      name: form.name.trim() === '' ? 'Name is required' : '',
+      email: form.email.trim() === '' ? 'Email is required' : '',
+      message: form.message.trim() === '' ? 'Message is required' : '',
+    };
+    setErrors(newErrors);
+
+    if (newErrors.name || newErrors.email || newErrors.message) {
+      return;
+    }
+
     const subject = encodeURIComponent(
       `Message from ${form.name}${form.company ? ` (${form.company})` : ''}`
     );
@@ -24,7 +37,7 @@ const ContactForm = () => {
   if (sent) {
     return (
       <div className="card p-6 text-center">
-        <div className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-brass-3 text-brass-9">
+        <div className="mx-auto grid h-10 w-10 place-items-center rounded-none bg-brass-3 text-brass-9">
           <Icon as={Check} size={20} aria-hidden="true" />
         </div>
         <h3 className="mt-4 text-lg font-semibold text-ink-11">Thanks, {form.name || 'there'}!</h3>
@@ -46,9 +59,11 @@ const ContactForm = () => {
             maxLength={80}
             value={form.name}
             onChange={onChange}
-            required
             className="mt-1 w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm focus:border-brass-8 focus:outline-none"
           />
+          {errors.name && (
+            <p className="mt-1 t-body-sm text-signal-down">{errors.name}</p>
+          )}
         </div>
         <div>
           <label htmlFor="email" className="text-sm font-medium text-ink-11">Email</label>
@@ -59,9 +74,11 @@ const ContactForm = () => {
             maxLength={320}
             value={form.email}
             onChange={onChange}
-            required
             className="mt-1 w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm focus:border-brass-8 focus:outline-none"
           />
+          {errors.email && (
+            <p className="mt-1 t-body-sm text-signal-down">{errors.email}</p>
+          )}
         </div>
       </div>
       <div>
@@ -84,9 +101,11 @@ const ContactForm = () => {
           rows={4}
           value={form.message}
           onChange={onChange}
-          required
           className="mt-1 w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm focus:border-brass-8 focus:outline-none"
         />
+        {errors.message && (
+          <p className="mt-1 t-body-sm text-signal-down">{errors.message}</p>
+        )}
       </div>
       <button type="submit" className="btn-primary w-full sm:w-auto">Send message</button>
     </form>

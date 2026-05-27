@@ -7,10 +7,7 @@ const Hero = () => {
       className="relative overflow-hidden hero-grid-bg"
     >
       <div className="container-page section text-center">
-        <span className="inline-flex items-center rounded-xs border border-brass-4 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brass-9">
-          № 01 · MVP v0.1 · Road wheels
-        </span>
-        <h1 className="mt-6 hero-title text-ink-10">
+        <h1 className="hero-title text-ink-10">
           Wheels, measured. Not marketed.
         </h1>
         <p className="mt-6 text-lg sm:text-xl text-ink-8 max-w-2xl mx-auto">
