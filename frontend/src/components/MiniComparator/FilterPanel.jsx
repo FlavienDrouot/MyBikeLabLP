@@ -93,7 +93,7 @@ const DualRangeRow = ({
           {unit}
         </span>
       </div>
-      <div className={`space-y-3 ${enabled ? '' : 'opacity-50'}`}>
+      <div className={`space-y-3 ${enabled ? '' : 'opacity-40'}`}>
         <div className="flex items-center">
           <input
             type="number"
@@ -268,7 +268,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
         />
         <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{property.label}</span>
       </div>
-      <div className={filter.enabled ? '' : 'opacity-50 pointer-events-none'}>
+      <div className={filter.enabled ? '' : 'opacity-40 pointer-events-none'}>
         {filter.value.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-2">
             {filter.value.map((v) => (
@@ -291,7 +291,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           onChange={(e) => setSearch(e.target.value)}
           className="w-full rounded-xs border border-ink-4 px-3 py-1.5 text-sm mb-2"
         />
-        <ul className="max-h-40 overflow-y-auto rounded-lg border border-ink-3">
+        <ul className="max-h-40 overflow-y-auto rounded-none border border-ink-4">
           {visible.map((opt) => {
             const count = counts[String(opt)] ?? 0;
             const isActive = filter.value.includes(opt);
@@ -350,7 +350,7 @@ const MultiSelectFilter = ({ property, filter }) => {
       </div>
       <div
         className={`flex flex-wrap gap-1.5 ${
-          filter.enabled ? '' : 'opacity-50 pointer-events-none'
+          filter.enabled ? '' : 'opacity-40 pointer-events-none'
         }`}
       >
         {options.map((opt) => {
@@ -394,7 +394,7 @@ const TriStateFilter = ({ property, filter }) => {
         />
         <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{property.label}</span>
       </div>
-      <div className={`flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-50 pointer-events-none'}`}>
+      <div className={`flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-40 pointer-events-none'}`}>
         <Pill active={filter.value === null} onClick={() => set(null)}>
           {labelAll}
         </Pill>
