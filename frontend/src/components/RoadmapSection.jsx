@@ -27,7 +27,7 @@ const phases = [
 
 const RoadmapSection = () => {
   return (
-    <section id="roadmap" className="section bg-paper-2">
+    <section id="roadmap" className="section bg-paper-1">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
           <p className="t-section-index">ROADMAP</p>

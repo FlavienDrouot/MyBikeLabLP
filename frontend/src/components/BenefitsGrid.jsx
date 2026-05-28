@@ -24,7 +24,7 @@ const benefits = [
 
 const BenefitsGrid = () => {
   return (
-    <section className="section">
+    <section className="section bg-paper-2">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
           <p className="t-section-index">BENEFITS</p>

@@ -8,7 +8,7 @@ const Hero = () => {
     >
       <div className="container-page section text-center">
         <h1 className="hero-title text-ink-10">
-          Wheels, measured. Not marketed.
+          Wheels, <em>measured.</em> Not marketed.
         </h1>
         <p className="mt-6 text-lg sm:text-xl text-ink-8 max-w-2xl mx-auto">
           Compare by weight, rim depth, hookless compatibility, hub brand, price and many more. Structured in a single table.

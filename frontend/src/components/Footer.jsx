@@ -2,7 +2,7 @@ import logoMark from '../assets/logo-mark.svg';
 
 const Footer = () => {
   return (
-    <footer className="bg-ink-12">
+    <footer className="bg-ink-11">
       <hr className="rule rule-strong" />
       <div className="container-page py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
