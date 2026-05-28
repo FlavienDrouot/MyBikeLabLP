@@ -13,9 +13,6 @@ const cellClassFor = (property) => {
   const base = property.column?.cellClassName ?? `px-4 py-3 text-ink-11`;
   return property.unit !== undefined ? `${base} font-mono tabular-nums` : base;
 };
-const headClassFor = (property) =>
-  property.column?.headClassName ?? 'px-4 py-3 font-semibold';
-
 
 const ComparisonTable = ({ visibility }) => {
   const wheels = useSelector(selectFilteredWheels);
