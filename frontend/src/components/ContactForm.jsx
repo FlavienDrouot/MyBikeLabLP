@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Check } from 'lucide-react';
 import Icon from './ui/Icon';
 
 const ContactForm = () => {
+  const { t } = useTranslation();
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState({ name: '', email: '', message: '' });
@@ -14,9 +16,9 @@ const ContactForm = () => {
     e.preventDefault();
 
     const newErrors = {
-      name: form.name.trim() === '' ? 'Name is required' : '',
-      email: form.email.trim() === '' ? 'Email is required' : '',
-      message: form.message.trim() === '' ? 'Message is required' : '',
+      name: form.name.trim() === '' ? t('contact.errors.nameRequired') : '',
+      email: form.email.trim() === '' ? t('contact.errors.emailRequired') : '',
+      message: form.message.trim() === '' ? t('contact.errors.messageRequired') : '',
     };
     setErrors(newErrors);
 
@@ -40,9 +42,11 @@ const ContactForm = () => {
         <div className="mx-auto grid h-10 w-10 place-items-center rounded-none bg-brass-3 text-brass-9">
           <Icon as={Check} size={20} aria-hidden="true" />
         </div>
-        <h3 className="mt-4 text-lg font-semibold text-ink-11">Thanks, {form.name || 'there'}!</h3>
+        <h3 className="mt-4 text-lg font-semibold text-ink-11">
+          {t('contact.success.title', { name: form.name || t('contact.successFallbackName') })}
+        </h3>
         <p className="mt-1 text-ink-8">
-          We'll get back to you at <span className="font-medium">{form.email}</span> shortly.
+          {t('contact.success.body', { email: form.email })}
         </p>
       </div>
     );
@@ -52,7 +56,7 @@ const ContactForm = () => {
     <form onSubmit={onSubmit} className="card p-6 space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="name" className="text-sm font-medium text-ink-11">Name</label>
+          <label htmlFor="name" className="text-sm font-medium text-ink-11">{t('contact.namePlaceholder')}</label>
           <input
             id="name"
             name="name"
@@ -66,7 +70,7 @@ const ContactForm = () => {
           )}
         </div>
         <div>
-          <label htmlFor="email" className="text-sm font-medium text-ink-11">Email</label>
+          <label htmlFor="email" className="text-sm font-medium text-ink-11">{t('contact.emailPlaceholder')}</label>
           <input
             id="email"
             name="email"
@@ -82,7 +86,7 @@ const ContactForm = () => {
         </div>
       </div>
       <div>
-        <label htmlFor="company" className="text-sm font-medium text-ink-11">Company (optional)</label>
+        <label htmlFor="company" className="text-sm font-medium text-ink-11">{t('contact.companyPlaceholder')}</label>
         <input
           id="company"
           name="company"
@@ -93,7 +97,7 @@ const ContactForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="message" className="text-sm font-medium text-ink-11">Message</label>
+        <label htmlFor="message" className="text-sm font-medium text-ink-11">{t('contact.messagePlaceholder')}</label>
         <textarea
           id="message"
           name="message"
@@ -107,7 +111,7 @@ const ContactForm = () => {
           <p className="mt-1 t-body-sm text-signal-down">{errors.message}</p>
         )}
       </div>
-      <button type="submit" className="btn-primary w-full sm:w-auto">Send message</button>
+      <button type="submit" className="btn-primary w-full sm:w-auto">{t('contact.submit')}</button>
     </form>
   );
 };

@@ -1,27 +1,20 @@
+import { useTranslation } from 'react-i18next';
 import ContactForm from './ContactForm';
 
-const audiences = [
-  {
-    title: 'Manufacturers',
-    description: 'Showcase your specs in a structured, comparison-ready format.',
-  },
-  {
-    title: 'Resellers',
-    description: 'Plug into a high-intent comparison funnel built for road cyclists.',
-  },
-];
-
 const PartnershipSection = () => {
+  const { t } = useTranslation();
+  const audiences = t('partnership.audiences', { returnObjects: true });
+
   return (
     <section id="partnerships" className="section bg-ink-12 text-paper-1">
       <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
         <div>
-          <p className="t-section-index">PARTNERSHIP</p>
+          <p className="t-section-index">{t('partnership.sectionIndex')}</p>
           <h2 className="mt-2 t-h1">
-            Work with us
+            {t('partnership.title')}
           </h2>
           <p className="mt-3 text-lg text-paper-2 max-w-xl">
-            MyBikeLab connects cyclists with structured component data. If you supply or sell road bike components, your product data belongs here.
+            {t('partnership.intro')}
           </p>
 
           <div className="mt-8 space-y-4">

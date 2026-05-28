@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 const WheelDetailPanel = ({ wheel }) => {
+  const { t } = useTranslation();
   const { affiliateLinks, image, brand, model } = wheel;
   const manufacturer = affiliateLinks?.manufacturer;
   const retailers = affiliateLinks?.retailers ?? [];
@@ -18,13 +21,13 @@ const WheelDetailPanel = ({ wheel }) => {
 
       <div className="flex-1 flex flex-col gap-2 overflow-y-auto max-h-[140px] py-0.5">
         {hasNoLinks ? (
-          <p className="text-xs text-ink-6 italic">No affiliate links available for this wheel.</p>
+          <p className="text-xs text-ink-6 italic">{t('wheelDetail.noLinks')}</p>
         ) : (
           <>
             {hasManufacturer && (
               <div>
                 <p className="text-xs font-medium uppercase tracking-widest text-ink-6 mb-1">
-                  Manufacturer
+                  {t('wheelDetail.manufacturer')}
                 </p>
                 <div className="flex items-center justify-between text-sm">
                   <span className="font-medium text-ink-11">{brand}</span>
@@ -34,7 +37,7 @@ const WheelDetailPanel = ({ wheel }) => {
                         <span className="font-semibold text-ink-11 font-mono tabular-nums">
                           {manufacturer.price_eur.toLocaleString('fr-FR')} &euro;
                         </span>
-                        <span className="t-annotation">indicative price, sourced 2025-Q2</span>
+                        <span className="t-annotation">{t('wheelDetail.priceAnnotation')}</span>
                       </span>
                     )}
                     <a
@@ -43,7 +46,7 @@ const WheelDetailPanel = ({ wheel }) => {
                       rel="noopener noreferrer"
                       className="text-xs text-brass-8 hover:underline"
                     >
-                      Buy &rarr;
+                      {t('wheelDetail.buyLink')}
                     </a>
                   </span>
                 </div>
@@ -53,7 +56,7 @@ const WheelDetailPanel = ({ wheel }) => {
             {hasRetailers && (
               <div>
                 <p className="text-xs font-medium uppercase tracking-widest text-ink-6 mb-1">
-                  Where to buy
+                  {t('wheelDetail.whereToBuy')}
                 </p>
                 <ul className="space-y-1">
                   {sortedRetailers.map((r, i) => (
@@ -64,7 +67,7 @@ const WheelDetailPanel = ({ wheel }) => {
                           <span className="font-semibold text-ink-11 font-mono tabular-nums">
                             {r.price_eur.toLocaleString('fr-FR')} &euro;
                           </span>
-                          <span className="t-annotation">indicative price, sourced 2025-Q2</span>
+                          <span className="t-annotation">{t('wheelDetail.priceAnnotation')}</span>
                         </span>
                         <a
                           href={r.url}
@@ -72,7 +75,7 @@ const WheelDetailPanel = ({ wheel }) => {
                           rel="noopener noreferrer"
                           className="text-xs text-brass-8 hover:underline"
                         >
-                          Buy &rarr;
+                          {t('wheelDetail.buyLink')}
                         </a>
                       </span>
                     </li>

@@ -1,0 +1,193 @@
+{
+  "nav": {
+    "tool": "Tool",
+    "roadmap": "Roadmap",
+    "partnerships": "Partnerships",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "lang": {
+      "en": "EN",
+      "fr": "FR",
+      "switchTo": "Switch to {{lang}}"
+    }
+  },
+  "hero": {
+    "titleBefore": "Wheels,",
+    "titleEmphasis": "measured.",
+    "titleAfter": "Not marketed.",
+    "subtitle": "Compare by weight, rim depth, hookless compatibility, hub brand, price and many more. Structured in a single table.",
+    "ctaPrimary": "Open comparator →",
+    "ctaSecondary": "See the roadmap →",
+    "stats": {
+      "wheels": "Wheels",
+      "filterAxes": "Filter axes",
+      "phasesPlanned": "Phases planned"
+    }
+  },
+  "comparator": {
+    "sectionIndex": "COMPARATOR",
+    "title": "Road wheels: filter and compare",
+    "subtitle": "Filter and sort by brand, weight, rim depth, price, and many more.",
+    "filtersButton": "Filters",
+    "filtersDrawerLabel": "Filters",
+    "footerNote": "Sample dataset · Real prices & partners coming soon"
+  },
+  "filterPanel": {
+    "heading": "Filters",
+    "reset": "Reset",
+    "sortBy": "Sort by",
+    "searchPlaceholder": "Search…",
+    "noResults": "No results",
+    "enableFilter": "Enable {{label}} filter",
+    "closeFilters": "Close filters"
+  },
+  "columnSelector": {
+    "button": "Columns"
+  },
+  "table": {
+    "heading": "Wheels",
+    "of": "of",
+    "emptyState": "No wheels match your filters. Try resetting them."
+  },
+  "wheelDetail": {
+    "manufacturer": "Manufacturer",
+    "whereToBuy": "Where to buy",
+    "buyLink": "Buy →",
+    "noLinks": "No affiliate links available for this wheel.",
+    "priceAnnotation": "indicative price, sourced 2025-Q2"
+  },
+  "badges": {
+    "hookless": "Hookless",
+    "hooked": "Hooked"
+  },
+  "roadmap": {
+    "sectionIndex": "ROADMAP",
+    "title": "Three phases",
+    "subtitle": "Comparison first. Impact simulation next. Full bike configurator on the horizon.",
+    "phases": [
+      {
+        "tag": "Phase 1",
+        "status": "In progress",
+        "title": "Components comparison",
+        "description": "Wheels first, then drivetrains, brakes, tires. Structured specs, side-by-side decisions.",
+        "points": ["Wheels MVP live", "Drivetrains coming", "Brakes & tires next"]
+      },
+      {
+        "tag": "Phase 2",
+        "status": "Next",
+        "title": "Impact simulator",
+        "description": "See how each part changes your ride: weight, aerodynamics, total cost, predicted performance.",
+        "points": ["Weight delta", "Aero gains", "Cost-per-watt"]
+      },
+      {
+        "tag": "Phase 3",
+        "status": "Vision",
+        "title": "Full bike configurator",
+        "description": "Build your dream bike from the frame up, simulate the full setup, then go buy it.",
+        "points": ["Frame to finish", "Performance preview", "Affiliate-ready"]
+      }
+    ]
+  },
+  "benefits": {
+    "sectionIndex": "BENEFITS",
+    "title": "Built for serious cyclists",
+    "items": [
+      {
+        "title": "Better decisions",
+        "description": "Stop comparing PDFs and forum threads. Filter on the specs that actually matter for your ride."
+      },
+      {
+        "title": "Data-driven",
+        "description": "Every spec is sourced and structured. No marketing fluff, just numbers you can cross-check."
+      },
+      {
+        "title": "Community-focused",
+        "description": "Built with riders, manufacturers and resellers. Open data, transparent affiliations."
+      }
+    ]
+  },
+  "partnership": {
+    "sectionIndex": "PARTNERSHIP",
+    "title": "Work with us",
+    "intro": "MyBikeLab connects cyclists with structured component data. If you supply or sell road bike components, your product data belongs here.",
+    "audiences": [
+      {
+        "title": "Manufacturers",
+        "description": "Showcase your specs in a structured, comparison-ready format."
+      },
+      {
+        "title": "Resellers",
+        "description": "Plug into a high-intent comparison funnel built for road cyclists."
+      }
+    ]
+  },
+  "contact": {
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "Email",
+    "companyPlaceholder": "Company (optional)",
+    "messagePlaceholder": "Message",
+    "submit": "Send message",
+    "errors": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "messageRequired": "Message is required"
+    },
+    "success": {
+      "title": "Thanks, {{name}}!",
+      "body": "We'll get back to you at {{email}} shortly."
+    },
+    "successFallbackName": "there"
+  },
+  "footer": {
+    "copyright": "© {{year}} MyBikeLab. All rights reserved.",
+    "nav": {
+      "tool": "Tool",
+      "roadmap": "Roadmap",
+      "partnerships": "Partnerships",
+      "contact": "Contact"
+    }
+  },
+  "properties": {
+    "groups": {
+      "general": "General specs",
+      "rims": "Rims",
+      "subs": "Subcomponents"
+    },
+    "image": { "label": "Image" },
+    "model": { "label": "Model" },
+    "brand": { "label": "Brand" },
+    "weight": { "label": "Weight" },
+    "price": { "label": "Price" },
+    "diameter": { "label": "Diameter" },
+    "rimMaterial": { "label": "Rim material" },
+    "hookless": { "label": "Hookless" },
+    "depth": { "label": "Depth" },
+    "rimWidth": { "label": "Rim width" },
+    "hub": { "label": "Hub" },
+    "hubBrand": { "label": "Hub brand" },
+    "hubModel": { "label": "Hub model" },
+    "spokes": { "label": "Spokes" },
+    "spokesBrand": { "label": "Spokes brand" },
+    "spokesModel": { "label": "Spokes model" },
+    "spokeMaterial": { "label": "Spoke material" }
+  },
+  "sorts": {
+    "name": "Name (A → Z)",
+    "weight_asc": "Weight (light → heavy)",
+    "weight_desc": "Weight (heavy → light)",
+    "price_asc": "Price (low → high)",
+    "price_desc": "Price (high → low)",
+    "depth_asc": "Depth (shallow → deep)",
+    "depth_desc": "Depth (deep → shallow)",
+    "rimWidth_asc": "Rim width (narrow → wide)",
+    "rimWidth_desc": "Rim width (wide → narrow)"
+  },
+  "filters": {
+    "hookless": {
+      "all": "All",
+      "hookless": "Hookless",
+      "hooked": "Hooked"
+    }
+  }
+}

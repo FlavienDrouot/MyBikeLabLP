@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Columns2 } from 'lucide-react';
 import {
   COLUMN_GROUPS,
@@ -7,6 +8,7 @@ import {
 import Icon from '../ui/Icon';
 
 const ColumnSelector = ({ visibility, onToggle }) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const containerRef = useRef(null);
 
@@ -32,7 +34,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
         aria-expanded={open}
       >
         <Icon as={Columns2} size={16} aria-hidden="true" />
-        Columns
+        {t('columnSelector.button')}
       </button>
 
       {open && (
@@ -50,7 +52,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
             return (
               <div key={group.id} className="mb-3 last:mb-0">
                 <div className="text-xs font-semibold uppercase tracking-widest text-ink-7 mb-1.5">
-                  {group.label}
+                  {t(group.label)}
                 </div>
                 <ul className="space-y-1">
                   {items.map((p) => (
@@ -62,7 +64,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
                           onChange={() => onToggle(p.id)}
                           className="h-4 w-4 rounded border-ink-4 accent-brass-7"
                         />
-                        {p.label}
+                        {t(p.label)}
                       </label>
                     </li>
                   ))}

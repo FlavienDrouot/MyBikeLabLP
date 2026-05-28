@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { ChevronDown } from 'lucide-react';
 import { selectFilteredWheels } from '../../store/selectors/wheelsSelectors';
 import { getColumnProperties } from '../../config/wheelProperties';
@@ -15,6 +16,7 @@ const cellClassFor = (property) => {
 };
 
 const ComparisonTable = ({ visibility }) => {
+  const { t } = useTranslation();
   const wheels = useSelector(selectFilteredWheels);
   const total = useSelector((state) => state.wheels.items.length);
   const [expandedId, setExpandedId] = useState(null);
@@ -30,9 +32,9 @@ const ComparisonTable = ({ visibility }) => {
     <div className="card overflow-hidden w-fit max-w-full">
       <div className="flex items-center justify-between px-5 py-4">
         <h3 className="text-base font-semibold text-ink-11">
-          Wheels{' '}
+          {t('table.heading')}{' '}
           <span className="text-ink-7 font-normal">
-            — {wheels.length} of {total}
+            — {wheels.length} {t('table.of')} {total}
           </span>
         </h3>
       </div>
@@ -40,7 +42,7 @@ const ComparisonTable = ({ visibility }) => {
 
       {wheels.length === 0 ? (
         <div className="p-10 text-center text-ink-7 text-sm">
-          No wheels match your filters. Try resetting them.
+          {t('table.emptyState')}
         </div>
       ) : (
         <div className="overflow-x-auto">
@@ -49,7 +51,7 @@ const ComparisonTable = ({ visibility }) => {
               <tr className="text-left">
                 {cols.map((p) => (
                   <th key={p.id} className="px-4 py-3 text-xs font-medium uppercase tracking-widest text-ink-7">
-                    {p.label}
+                    {t(p.label)}
                   </th>
                 ))}
                 <th className="px-4 py-3 w-10" />

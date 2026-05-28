@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SlidersHorizontal, X } from 'lucide-react';
 import FilterPanel from './FilterPanel';
 import ComparisonTable from './ComparisonTable';
@@ -14,6 +15,7 @@ const buildDefaultVisibility = () =>
     .reduce((acc, p) => ({ ...acc, [p.id]: p.column?.defaultVisible !== false }), {});
 
 const MiniComparator = () => {
+  const { t } = useTranslation();
   const defaultVisibility = useMemo(() => buildDefaultVisibility(), []);
   const [visibility, setVisibility] = useState(defaultVisibility);
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -25,12 +27,12 @@ const MiniComparator = () => {
     <section id="tool" className="section bg-paper-2">
       <div className="container-fluid">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="t-section-index">COMPARATOR</p>
+          <p className="t-section-index">{t('comparator.sectionIndex')}</p>
           <h2 className="section-title mt-2">
-            Road wheels: filter and compare
+            {t('comparator.title')}
           </h2>
           <p className="section-subtitle mx-auto">
-            Filter and sort by brand, weight, rim depth, price, and many more.
+            {t('comparator.subtitle')}
           </p>
         </div>
 
@@ -50,7 +52,7 @@ const MiniComparator = () => {
               className="inline-flex items-center gap-2 rounded-xs border border-ink-4 bg-paper-0 px-4 py-2 text-sm font-semibold text-ink-11 hover:border-brass-8 hover:text-brass-8"
             >
               <Icon as={SlidersHorizontal} size={16} aria-hidden="true" />
-              Filters
+              {t('comparator.filtersButton')}
             </button>
           </div>
 
@@ -69,18 +71,18 @@ const MiniComparator = () => {
             id="filters-drawer"
             role="dialog"
             aria-modal={filtersOpen ? 'true' : undefined}
-            aria-label="Filters"
+            aria-label={t('comparator.filtersDrawerLabel')}
             className={`fixed inset-y-0 left-0 z-50 flex w-80 max-w-[85vw] flex-col overflow-y-auto bg-paper-2 border-r border-ink-4 transition-transform duration-200 ease-out ${
               filtersOpen ? 'translate-x-0' : '-translate-x-full'
             } lg:relative lg:inset-auto lg:z-auto lg:flex lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:border-r-0 lg:row-start-2`}
           >
             {/* Mobile drawer header with close button */}
             <div className="flex items-center justify-between border-b border-ink-3 px-4 py-3 lg:hidden">
-              <span className="text-sm font-semibold text-ink-11">Filters</span>
+              <span className="text-sm font-semibold text-ink-11">{t('comparator.filtersDrawerLabel')}</span>
               <button
                 type="button"
                 onClick={() => setFiltersOpen(false)}
-                aria-label="Close filters"
+                aria-label={t('filterPanel.closeFilters')}
                 className="rounded-xs p-1.5 text-ink-8 hover:bg-ink-2 hover:text-ink-11"
               >
                 <Icon as={X} size={20} aria-hidden="true" />
@@ -101,7 +103,7 @@ const MiniComparator = () => {
         </div>
 
         <p className="mt-8 text-center text-xs text-ink-7">
-          Sample dataset · Real prices &amp; partners coming soon
+          {t('comparator.footerNote')}
         </p>
       </div>
     </section>
