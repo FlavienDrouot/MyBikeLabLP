@@ -17,6 +17,7 @@ export const wheelsData = [
       { price_eur: 1349, url: 'https://another-shop.com/roval-alpinist-clx' },
     ],
     image: wheelPlaceholderUrl,
+    images: [wheelPlaceholderUrl, wheelPlaceholderUrl, wheelPlaceholderUrl],
     affiliateLinks: {
       manufacturer: { url: 'https://www.roval.com/alpinist-clx-ii', price_eur: 1399 },
       retailers: [
@@ -38,6 +39,7 @@ export const wheelsData = [
       { price_eur: 1750, url: 'https://example-shop.com/zipp-303-firecrest' },
     ],
     image: wheelPlaceholderUrl,
+    images: [wheelPlaceholderUrl, wheelPlaceholderUrl],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/zipp/303-firecrest', price_eur: 1799 },
       retailers: [
@@ -99,6 +101,7 @@ export const wheelsData = [
       { price_eur: 1690, url: 'https://another-shop.com/shimano-dura-ace-c50' },
     ],
     image: wheelPlaceholderUrl,
+    images: [wheelPlaceholderUrl, wheelPlaceholderUrl, wheelPlaceholderUrl],
     affiliateLinks: {
       manufacturer: { url: 'https://bike.shimano.com/dura-ace-wh-r9270-c50', price_eur: null },
       retailers: [

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useLayoutEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown } from 'lucide-react';
@@ -20,6 +20,28 @@ const ComparisonTable = ({ visibility }) => {
   const wheels = useSelector(selectFilteredWheels);
   const total = useSelector((state) => state.wheels.items.length);
   const [expandedId, setExpandedId] = useState(null);
+
+  const scrollRef = useRef(null);
+  const panelRef = useRef(null);
+
+  // Called when the panel div mounts or unmounts — sets width immediately on mount.
+  const setPanelRef = useCallback((el) => {
+    panelRef.current = el;
+    if (el && scrollRef.current) {
+      el.style.width = `${scrollRef.current.clientWidth}px`;
+    }
+  }, []);
+
+  // Keep width correct when the scroll container is resized.
+  useLayoutEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => {
+      if (panelRef.current) panelRef.current.style.width = `${el.clientWidth}px`;
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   const cols = getColumnProperties().filter(
     (p) => p.column?.required || visibility[p.id]
@@ -45,7 +67,7 @@ const ComparisonTable = ({ visibility }) => {
           {t('table.emptyState')}
         </div>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto" ref={scrollRef}>
           <table className="w-max text-sm">
             <thead className="bg-paper-2 text-ink-7">
               <tr className="text-left">
@@ -82,7 +104,12 @@ const ComparisonTable = ({ visibility }) => {
                   {expandedId === w.id && (
                     <tr>
                       <td colSpan={cols.length + 1} className="p-0">
-                        <WheelDetailPanel wheel={w} />
+                        <div
+                          ref={setPanelRef}
+                          style={{ position: 'sticky', left: 0 }}
+                        >
+                          <WheelDetailPanel wheel={w} />
+                        </div>
                       </td>
                     </tr>
                   )}

@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
+import WheelImageCarousel from './WheelImageCarousel';
 
 const WheelDetailPanel = ({ wheel }) => {
   const { t } = useTranslation();
-  const { affiliateLinks, image, brand, model } = wheel;
+  const { affiliateLinks, brand } = wheel;
   const manufacturer = affiliateLinks?.manufacturer;
   const retailers = affiliateLinks?.retailers ?? [];
   const hasManufacturer = !!manufacturer;
@@ -12,14 +13,10 @@ const WheelDetailPanel = ({ wheel }) => {
   const sortedRetailers = [...retailers].sort((a, b) => a.price_eur - b.price_eur);
 
   return (
-    <div className="flex items-center gap-5 px-5 py-3 bg-paper-2/60 border-t border-t-ink-3 border-b border-b-ink-4">
-      <img
-        src={image}
-        alt={model}
-        className="w-[140px] h-[140px] flex-shrink-0 object-contain rounded-xs"
-      />
+    <div className="flex max-[900px]:flex-col items-start max-[900px]:items-center justify-evenly gap-5 px-5 py-3 bg-paper-2/60 border-t border-t-ink-3 border-b border-b-ink-4">
+      <WheelImageCarousel wheel={wheel} />
 
-      <div className="flex-1 flex flex-col gap-2 overflow-y-auto max-h-[140px] py-0.5">
+      <div className="w-[450px] max-w-full flex flex-col gap-2 overflow-y-auto py-0.5">
         {hasNoLinks ? (
           <p className="text-xs text-ink-6 italic">{t('wheelDetail.noLinks')}</p>
         ) : (
