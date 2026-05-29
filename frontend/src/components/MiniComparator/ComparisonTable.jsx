@@ -52,7 +52,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     setExpandedId((prev) => (prev === id ? null : id));
 
   return (
-    <div className="card overflow-hidden w-fit max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden">
+    <div className="card overflow-hidden w-fit max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden snap-start">
       <div className="flex items-center justify-between px-5 py-4">
         <h3 className="text-base font-semibold text-ink-11">
           {t('table.heading')}{' '}
