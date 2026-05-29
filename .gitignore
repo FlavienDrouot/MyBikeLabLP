@@ -48,5 +48,4 @@ Administrative/
 design-system/
 
 # Scripts — credentials and generated output
-scripts/.env
-scripts/data/*.json
+**/scripts/
