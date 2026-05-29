@@ -1,0 +1,10 @@
+{
+  "name": "mybikelab-scripts",
+  "version": "1.0.0",
+  "description": "Local data ingestion scripts for MyBikeLab",
+  "private": true,
+  "dependencies": {
+    "csv-parse": "^5.5.0",
+    "dotenv": "^16.0.0"
+  }
+}

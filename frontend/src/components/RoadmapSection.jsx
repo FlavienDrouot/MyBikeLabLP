@@ -1,68 +1,38 @@
-const phases = [
-  {
-    tag: 'Phase 1',
-    status: 'In progress',
-    title: 'Components Comparison',
-    description:
-      'Wheels first, then drivetrains, brakes, tires. Structured specs, side-by-side decisions.',
-    points: ['Wheels MVP live', 'Drivetrains coming', 'Brakes & tires next'],
-  },
-  {
-    tag: 'Phase 2',
-    status: 'Next',
-    title: 'Impact Simulator',
-    description:
-      'See how each part changes your ride: weight, aerodynamics, total cost, predicted performance.',
-    points: ['Weight delta', 'Aero gains', 'Cost-per-watt'],
-  },
-  {
-    tag: 'Phase 3',
-    status: 'Vision',
-    title: 'Full Bike Configurator',
-    description:
-      'Build your dream bike from the frame up, simulate the full setup, then go buy it.',
-    points: ['Frame to finish', 'Performance preview', 'Affiliate-ready'],
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const RoadmapSection = () => {
+  const { t } = useTranslation();
+  const phases = t('roadmap.phases', { returnObjects: true });
+
   return (
-    <section id="roadmap" className="section bg-ink-100/40">
+    <section id="roadmap" className="section bg-paper-1">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-sm font-semibold uppercase tracking-wider text-brand-600">
-            Roadmap
-          </span>
-          <h2 className="section-title mt-2">What's Coming</h2>
+          <p className="t-section-index">{t('roadmap.sectionIndex')}</p>
+          <h2 className="section-title mt-2">{t('roadmap.title')}</h2>
           <p className="section-subtitle mx-auto">
-            From a focused wheel comparator to a full-stack bike intelligence
-            platform — here's how we get there.
+            {t('roadmap.subtitle')}
           </p>
         </div>
+
+        <hr className="rule mt-8" />
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {phases.map((p, idx) => (
             <div key={p.tag} className="card p-6 flex flex-col">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wider text-brand-600">
-                  {p.tag}
-                </span>
-                <span
-                  className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                    idx === 0
-                      ? 'bg-brand-600 text-white'
-                      : 'bg-ink-100 text-ink-700'
-                  }`}
-                >
-                  {p.status}
-                </span>
-              </div>
-              <h3 className="mt-3 text-xl font-bold text-ink-900">{p.title}</h3>
-              <p className="mt-2 text-ink-500">{p.description}</p>
-              <ul className="mt-5 space-y-2 text-sm text-ink-700">
+              <span
+                className={`self-start text-xs px-2 py-0.5 rounded-full font-medium ${
+                  idx === 0 ? 'bg-brass-7 text-ink-12' : 'bg-ink-2 text-ink-11'
+                }`}
+              >
+                {p.status}
+              </span>
+              <h3 className="mt-3 text-xl font-bold text-ink-11">{p.title}</h3>
+              <p className="mt-2 text-ink-8">{p.description}</p>
+              <ul className="mt-5 space-y-2 text-sm text-ink-11">
                 {p.points.map((pt) => (
                   <li key={pt} className="flex items-start gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-600" />
+                    <span>→</span>
                     {pt}
                   </li>
                 ))}

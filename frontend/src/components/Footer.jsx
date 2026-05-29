@@ -1,20 +1,24 @@
+import { useTranslation } from 'react-i18next';
+import logoMark from '../assets/logo-mark.svg';
+
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
-    <footer className="border-t border-ink-100 bg-white">
+    <footer className="bg-ink-11">
+      <hr className="rule rule-strong" />
       <div className="container-page py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <div className="grid h-7 w-7 place-items-center rounded-md bg-brand-600 text-white text-xs font-bold">
-            M
-          </div>
-          <span className="text-sm text-ink-500">
-            © {new Date().getFullYear()} MyBikeLab. All rights reserved.
+          <img src={logoMark} alt="MyBikeLab" className="h-7 w-auto brightness-0 invert" />
+          <span className="text-sm text-paper-2">
+            {t('footer.copyright', { year: new Date().getFullYear() })}
           </span>
         </div>
-        <nav className="flex items-center gap-5 text-sm text-ink-500">
-          <a href="#tool" className="hover:text-brand-600">Tool</a>
-          <a href="#roadmap" className="hover:text-brand-600">Roadmap</a>
-          <a href="#partnerships" className="hover:text-brand-600">Partnerships</a>
-          <a href="#contact" className="hover:text-brand-600">Contact</a>
+        <nav className="flex items-center gap-5 text-sm text-paper-2">
+          <a href="#tool" className="hover:text-brass-7">{t('footer.nav.tool')}</a>
+          <a href="#roadmap" className="hover:text-brass-7">{t('footer.nav.roadmap')}</a>
+          <a href="#partnerships" className="hover:text-brass-7">{t('footer.nav.partnerships')}</a>
+          <a href="#contact" className="hover:text-brass-7">{t('footer.nav.contact')}</a>
         </nav>
       </div>
     </footer>

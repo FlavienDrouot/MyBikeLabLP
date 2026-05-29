@@ -1,0 +1,205 @@
+{
+  "nav": {
+    "tool": "Outil",
+    "roadmap": "Roadmap",
+    "partnerships": "Partenariats",
+    "contact": "Contact",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "lang": {
+      "en": "EN",
+      "fr": "FR",
+      "switchTo": "Passer en {{lang}}"
+    }
+  },
+  "hero": {
+    "titleBefore": "Des roues",
+    "titleEmphasis": "mesurées,",
+    "titleAfter": "pas marketées.",
+    "subtitle": "Comparez par poids, profil de jante, compatibilité hookless, marque de moyeu, prix et bien plus. Tout dans un seul tableau.",
+    "ctaPrimary": "Ouvrir le comparateur →",
+    "ctaSecondary": "Voir la roadmap →",
+    "stats": {
+      "wheels": "Roues",
+      "filterAxes": "Axes de filtres",
+      "phasesPlanned": "Phases prévues"
+    }
+  },
+  "comparator": {
+    "sectionIndex": "COMPARATEUR",
+    "title": "Roues route : filtrer et comparer",
+    "subtitle": "Filtrez et triez par marque, poids, profil de jante, prix et bien plus.",
+    "filtersButton": "Filtres",
+    "filtersDrawerLabel": "Filtres",
+    "footerNote": "Jeu de données d'exemple · Prix réels et partenaires bientôt disponibles"
+  },
+  "filterPanel": {
+    "heading": "Filtres",
+    "reset": "Réinitialiser",
+    "sortBy": "Trier par",
+    "searchPlaceholder": "Rechercher…",
+    "noResults": "Aucun résultat",
+    "enableFilter": "Activer le filtre {{label}}",
+    "closeFilters": "Fermer les filtres"
+  },
+  "columnSelector": {
+    "button": "Colonnes"
+  },
+  "table": {
+    "heading": "Roues",
+    "of": "sur",
+    "emptyState": "Aucune roue ne correspond à vos filtres. Essayez de les réinitialiser."
+  },
+  "wheelDetail": {
+    "manufacturer": "Fabricant",
+    "whereToBuy": "Où acheter",
+    "buyLink": "Acheter →",
+    "noLinks": "Aucun lien affilié disponible pour cette roue.",
+    "priceAnnotation": "prix indicatif, sourcé en 2025-Q2"
+  },
+  "badges": {
+    "hookless": "Hookless",
+    "hooked": "Avec crochet"
+  },
+  "roadmap": {
+    "sectionIndex": "ROADMAP",
+    "title": "Trois phases",
+    "subtitle": "La comparaison d'abord. La simulation d'impact ensuite. Le configurateur complet à l'horizon.",
+    "phases": [
+      {
+        "tag": "Phase 1",
+        "status": "En cours",
+        "title": "Comparaison de composants",
+        "description": "Les roues d'abord, puis les transmissions, freins et pneus. Des specs structurées, des décisions côte à côte.",
+        "points": ["MVP roues disponible", "Transmissions à venir", "Freins et pneus ensuite"]
+      },
+      {
+        "tag": "Phase 2",
+        "status": "Suivant",
+        "title": "Simulateur d'impact",
+        "description": "Visualisez comment chaque pièce change votre machine : poids, aérodynamique, coût total, performance estimée.",
+        "points": ["Delta de poids", "Gains aéro", "Coût par watt"]
+      },
+      {
+        "tag": "Phase 3",
+        "status": "Vision",
+        "title": "Configurateur vélo complet",
+        "description": "Construisez un vélo complet depuis le cadre, simulez la configuration complète, puis achetez.",
+        "points": ["Du cadre à la finition", "Aperçu des performances", "Prêt pour l'affiliation"]
+      }
+    ]
+  },
+  "benefits": {
+    "sectionIndex": "AVANTAGES",
+    "title": "Conçu pour les cyclistes sérieux",
+    "items": [
+      {
+        "title": "De meilleures décisions",
+        "description": "Fini de comparer des PDFs et des fils de forum. Filtrez sur les specs qui comptent vraiment pour votre pratique."
+      },
+      {
+        "title": "Basé sur les données",
+        "description": "Chaque spec est sourcée et structurée. Pas de communication marketing, juste des chiffres vérifiables."
+      },
+      {
+        "title": "Orienté communauté",
+        "description": "Construit avec des cyclistes, des fabricants et des revendeurs. Données ouvertes, affiliations transparentes."
+      }
+    ]
+  },
+  "partnership": {
+    "sectionIndex": "PARTENARIAT",
+    "title": "Travaillez avec nous",
+    "intro": "MyBikeLab connecte les cyclistes à des données composants structurées. Si vous fournissez ou vendez des composants vélo route, vos données ont leur place ici.",
+    "audiences": [
+      {
+        "title": "Fabricants",
+        "description": "Mettez en valeur vos specs dans un format structuré, prêt pour la comparaison."
+      },
+      {
+        "title": "Revendeurs",
+        "description": "Touchez des cyclistes qui comparent activement avant d'acheter."
+      }
+    ]
+  },
+  "contact": {
+    "namePlaceholder": "Nom",
+    "emailPlaceholder": "Email",
+    "companyPlaceholder": "Entreprise (facultatif)",
+    "messagePlaceholder": "Message",
+    "submit": "Envoyer le message",
+    "errors": {
+      "nameRequired": "Le nom est requis",
+      "emailRequired": "L'email est requis",
+      "messageRequired": "Le message est requis"
+    },
+    "success": {
+      "title": "Merci, {{name}}.",
+      "body": "Nous vous répondrons à {{email}} très prochainement."
+    },
+    "successFallbackName": "vous"
+  },
+  "footer": {
+    "copyright": "© {{year}} MyBikeLab. Tous droits réservés.",
+    "nav": {
+      "tool": "Outil",
+      "roadmap": "Roadmap",
+      "partnerships": "Partenariats",
+      "contact": "Contact"
+    }
+  },
+  "properties": {
+    "groups": {
+      "general": "Caractéristiques générales",
+      "rims": "Jantes",
+      "subs": "Sous-composants"
+    },
+    "image": { "label": "Image" },
+    "model": { "label": "Modèle" },
+    "brand": { "label": "Marque" },
+    "weight": { "label": "Poids" },
+    "price": { "label": "Prix" },
+    "diameter": { "label": "Diamètre" },
+    "rimMaterial": { "label": "Matériau de jante" },
+    "hookless": { "label": "Hookless" },
+    "depth": { "label": "Profil" },
+    "rimWidth": { "label": "Largeur de jante" },
+    "hub": { "label": "Moyeu" },
+    "hubBrand": { "label": "Marque de moyeu" },
+    "hubModel": { "label": "Modèle de moyeu" },
+    "spokes": { "label": "Rayons" },
+    "spokesBrand": { "label": "Marque de rayons" },
+    "spokesModel": { "label": "Modèle de rayons" },
+    "spokeMaterial": { "label": "Matériau des rayons" }
+  },
+  "sorts": {
+    "name": "Nom (A → Z)",
+    "weight_asc": "Poids (léger → lourd)",
+    "weight_desc": "Poids (lourd → léger)",
+    "price_asc": "Prix (croissant)",
+    "price_desc": "Prix (décroissant)",
+    "depth_asc": "Profil (faible → élevé)",
+    "depth_desc": "Profil (élevé → faible)",
+    "rimWidth_asc": "Largeur de jante (étroite → large)",
+    "rimWidth_desc": "Largeur de jante (large → étroite)"
+  },
+  "filters": {
+    "hookless": {
+      "all": "Tous",
+      "hookless": "Hookless",
+      "hooked": "Avec crochet"
+    }
+  },
+  "rimMaterial": {
+    "carbon": "Carbone",
+    "aluminum": "Aluminium"
+  },
+  "spokeMaterial": {
+    "stainless_steel": "Acier inox",
+    "aluminum": "Aluminium"
+  },
+  "hookless": {
+    "true": "Hookless",
+    "false": "Avec crochet"
+  }
+}

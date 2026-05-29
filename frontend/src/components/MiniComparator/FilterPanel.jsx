@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { ChevronDown } from 'lucide-react';
 import {
   setFilterValue,
   setFilterEnabled,
@@ -18,6 +20,7 @@ import {
 } from '../../config/wheelProperties';
 import { roundToStep, clampLow, clampHigh } from './rangeMath';
 import styles from './FilterPanel.module.css';
+import Icon from '../ui/Icon';
 
 // ---------------------------------------------------------------------------
 // Reusable UI primitives (unchanged from original prototype).
@@ -32,11 +35,11 @@ const FilterToggle = ({ enabled, onChange, ariaLabel }) => (
     aria-checked={enabled}
     aria-label={ariaLabel}
     onClick={() => onChange(!enabled)}
-    className={`flex h-5 w-9 cursor-pointer items-center rounded-full p-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-1 ${
-      enabled ? 'bg-brand-600 justify-end' : 'bg-ink-300 justify-start'
+    className={`flex h-5 w-9 cursor-pointer items-center rounded-full p-0.5 transition-colors ${
+      enabled ? 'bg-brass-7 justify-end' : 'bg-ink-4 justify-start'
     }`}
   >
-    <span className="h-4 w-4 rounded-full bg-white shadow-sm transition-transform" />
+    <span className="h-4 w-4 rounded-full bg-paper-0 transition-transform" />
   </button>
 );
 
@@ -52,6 +55,7 @@ const DualRangeRow = ({
   onChangeHigh,
   enabled = true,
   onToggleEnabled,
+  ariaLabel,
 }) => {
   const computedStep = (max - min) / 50 > 1 ? 1 : 0.1;
   const effectiveStep = stepProp ?? computedStep;
@@ -75,23 +79,23 @@ const DualRangeRow = ({
   return (
     <div className="space-y-3">
       <div className="flex items-baseline justify-between text-sm">
-        <span className="flex items-center gap-2 font-medium text-ink-700">
+        <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-ink-7">
           {onToggleEnabled && (
             <FilterToggle
               enabled={enabled}
               onChange={onToggleEnabled}
-              ariaLabel={`Enable ${label.toLowerCase()} filter`}
+              ariaLabel={ariaLabel}
             />
           )}
           {label}
         </span>
-        <span className="text-ink-500 tabular-nums">
+        <span className="text-ink-7 tabular-nums font-mono">
           {valueLow}
           {unit} — {valueHigh}
           {unit}
         </span>
       </div>
-      <div className={`space-y-3 ${enabled ? '' : 'opacity-50'}`}>
+      <div className={`space-y-3 ${enabled ? '' : 'opacity-40'}`}>
         <div className="flex items-center">
           <input
             type="number"
@@ -101,9 +105,9 @@ const DualRangeRow = ({
             step={effectiveStep}
             disabled={!enabled}
             onChange={(e) => handleLow(e.target.value)}
-            className="w-24 rounded-lg border border-ink-300 px-2 py-1.5 text-sm text-center focus:border-brand-600 focus:outline-none disabled:cursor-not-allowed"
+            className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
-          <span className="flex-1 text-center text-ink-400 text-xs select-none">
+          <span className="flex-1 text-center text-ink-5 text-xs select-none">
             —
           </span>
           <input
@@ -114,7 +118,7 @@ const DualRangeRow = ({
             step={effectiveStep}
             disabled={!enabled}
             onChange={(e) => handleHigh(e.target.value)}
-            className="w-24 rounded-lg border border-ink-300 px-2 py-1.5 text-sm text-center focus:border-brand-600 focus:outline-none disabled:cursor-not-allowed"
+            className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
         </div>
         <div className="relative h-5 flex items-center">
@@ -158,28 +162,20 @@ const DualRangeRow = ({
 const Section = ({ title, defaultOpen = false, children }) => {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="border-t border-ink-100 pt-4">
+    <div className="border-t border-ink-3 pt-4">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between text-left"
         aria-expanded={open}
       >
-        <span className="text-sm font-semibold text-ink-900">{title}</span>
-        <svg
-          className={`h-4 w-4 text-ink-500 transition-transform ${
-            open ? 'rotate-180' : ''
-          }`}
-          viewBox="0 0 20 20"
-          fill="currentColor"
+        <span className="text-xs font-semibold uppercase tracking-widest text-ink-7">{title}</span>
+        <Icon
+          as={ChevronDown}
+          size={16}
           aria-hidden="true"
-        >
-          <path
-            fillRule="evenodd"
-            d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
-            clipRule="evenodd"
-          />
-        </svg>
+          className={`text-ink-6 transition-transform ${open ? 'rotate-180' : ''}`}
+        />
       </button>
       {open && <div className="mt-4 space-y-5">{children}</div>}
     </div>
@@ -191,10 +187,10 @@ const Pill = ({ active, muted, onClick, children }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors
+    className={`px-3 py-1 rounded-xs text-xs font-medium border transition-colors
       ${active
-        ? 'bg-brand-600 text-white border-brand-600'
-        : 'bg-white text-ink-700 border-ink-300 hover:border-brand-600 hover:text-brand-600'
+        ? 'bg-brass-7 text-ink-12 border-brass-7'
+        : 'bg-paper-0 text-ink-11 border-ink-4 hover:border-brass-8 hover:text-brass-8'
       }
       ${muted ? 'opacity-40' : ''}`}
   >
@@ -210,13 +206,15 @@ const Pill = ({ active, muted, onClick, children }) => (
 
 const RangeFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { step } = property.filter;
   const selectBounds = useMemo(() => makeSelectRangeBoundsFor(property.id), [property.id]);
   const bounds = useSelector(selectBounds);
   const value = filter.value; // { min, max }
+  const resolvedLabel = t(property.label);
   return (
     <DualRangeRow
-      label={property.label}
+      label={resolvedLabel}
       unit={property.unit ?? ''}
       min={bounds.min}
       max={bounds.max}
@@ -237,12 +235,14 @@ const RangeFilter = ({ property, filter }) => {
       onToggleEnabled={(v) =>
         dispatch(setFilterEnabled({ id: property.id, enabled: v }))
       }
+      ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
     />
   );
 };
 
 const LargeMultiSelectFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [search, setSearch] = useState('');
   const selectOptions = useMemo(() => makeSelectOptionsFor(property.id), [property.id]);
   const options = useSelector(selectOptions);
@@ -262,6 +262,8 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
       )
     : options;
 
+  const resolvedLabel = t(property.label);
+
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-2">
@@ -270,11 +272,11 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           onChange={(v) =>
             dispatch(setFilterEnabled({ id: property.id, enabled: v }))
           }
-          ariaLabel={`Enable ${property.label.toLowerCase()} filter`}
+          ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-sm font-medium text-ink-700">{property.label}</span>
+        <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{resolvedLabel}</span>
       </div>
-      <div className={filter.enabled ? '' : 'opacity-50 pointer-events-none'}>
+      <div className={filter.enabled ? '' : 'opacity-40 pointer-events-none'}>
         {filter.value.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-2">
             {filter.value.map((v) => (
@@ -282,34 +284,34 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                 key={String(v)}
                 type="button"
                 onClick={() => toggle(v)}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-brand-600 text-white hover:bg-brand-700 transition-colors"
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-brass-7 text-ink-12 hover:bg-brass-8 transition-colors"
               >
                 {String(v)}
-                <span aria-hidden="true" className="text-brand-200">×</span>
+                <span aria-hidden="true" className="text-ink-12/60">×</span>
               </button>
             ))}
           </div>
         )}
         <input
           type="text"
-          placeholder="Search…"
+          placeholder={t('filterPanel.searchPlaceholder')}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-lg border border-ink-300 px-3 py-1.5 text-sm focus:border-brand-600 focus:outline-none mb-2"
+          className="w-full rounded-xs border border-ink-4 px-3 py-1.5 text-sm mb-2"
         />
-        <ul className="max-h-40 overflow-y-auto rounded-lg border border-ink-200">
+        <ul className="max-h-40 overflow-y-auto rounded-none border border-ink-4 filter-panel-scroll">
           {visible.map((opt) => {
             const count = counts[String(opt)] ?? 0;
             const isActive = filter.value.includes(opt);
             const isMuted = count === 0 && !isActive;
             return (
               <li key={String(opt)}>
-                <label className={`flex items-center gap-2 px-3 py-1.5 hover:bg-ink-100/60 cursor-pointer text-sm ${isMuted ? 'text-ink-300' : 'text-ink-700'}`}>
+                <label className={`flex items-center gap-2 px-3 py-1.5 hover:bg-ink-2/60 cursor-pointer text-sm ${isMuted ? 'text-ink-4' : 'text-ink-11'}`}>
                   <input
                     type="checkbox"
                     checked={isActive}
                     onChange={() => toggle(opt)}
-                    className="h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-brand-500"
+                    className="h-4 w-4 rounded border-ink-4 accent-brass-7"
                   />
                   {String(opt)} ({count})
                 </label>
@@ -317,7 +319,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
             );
           })}
           {visible.length === 0 && (
-            <li className="px-3 py-2 text-sm text-ink-500 italic">No results</li>
+            <li className="px-3 py-2 text-sm text-ink-500 italic">{t('filterPanel.noResults')}</li>
           )}
         </ul>
       </div>
@@ -327,6 +329,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
 
 const MultiSelectFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const selectOptions = useMemo(() => makeSelectOptionsFor(property.id), [property.id]);
   const options = useSelector(selectOptions);
   const selectCounts = useMemo(() => makeSelectContextualCountsFor(property.id), [property.id]);
@@ -342,6 +345,8 @@ const MultiSelectFilter = ({ property, filter }) => {
     dispatch(setFilterValue({ id: property.id, value: next }));
   };
 
+  const resolvedLabel = t(property.label);
+
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-2">
@@ -350,13 +355,13 @@ const MultiSelectFilter = ({ property, filter }) => {
           onChange={(v) =>
             dispatch(setFilterEnabled({ id: property.id, enabled: v }))
           }
-          ariaLabel={`Enable ${property.label.toLowerCase()} filter`}
+          ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-sm font-medium text-ink-700">{property.label}</span>
+        <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{resolvedLabel}</span>
       </div>
       <div
         className={`flex flex-wrap gap-1.5 ${
-          filter.enabled ? '' : 'opacity-50 pointer-events-none'
+          filter.enabled ? '' : 'opacity-40 pointer-events-none'
         }`}
       >
         {options.map((opt) => {
@@ -380,13 +385,19 @@ const MultiSelectFilter = ({ property, filter }) => {
 
 const TriStateFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
-  const [labelAll, labelTrue, labelFalse] = property.filter.labels;
+  const { t } = useTranslation();
+  const [keyAll, keyTrue, keyFalse] = property.filter.labels;
+  const labelAll = t(keyAll);
+  const labelTrue = t(keyTrue);
+  const labelFalse = t(keyFalse);
   const set = (v) => dispatch(setFilterValue({ id: property.id, value: v }));
 
   const selectCounts = useMemo(() => makeSelectContextualCountsFor(property.id), [property.id]);
   const counts = useSelector(selectCounts);
   const trueCount = counts['true'] ?? 0;
   const falseCount = counts['false'] ?? 0;
+
+  const resolvedLabel = t(property.label);
 
   return (
     <div className="space-y-2">
@@ -396,11 +407,11 @@ const TriStateFilter = ({ property, filter }) => {
           onChange={(v) =>
             dispatch(setFilterEnabled({ id: property.id, enabled: v }))
           }
-          ariaLabel={`Enable ${property.label.toLowerCase()} filter`}
+          ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-sm font-medium text-ink-700">{property.label}</span>
+        <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{resolvedLabel}</span>
       </div>
-      <div className={`flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-50 pointer-events-none'}`}>
+      <div className={`flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-40 pointer-events-none'}`}>
         <Pill active={filter.value === null} onClick={() => set(null)}>
           {labelAll}
         </Pill>
@@ -444,35 +455,38 @@ const FilterField = ({ property }) => {
 
 const FilterPanel = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const sortBy = useSelector((s) => s.filters.sortBy);
   const sorts = useMemo(() => getAllSorts(), []);
   const filterables = useMemo(() => getFilterableProperties(), []);
 
   return (
-    <aside className="card p-5 lg:p-6 space-y-6 h-fit lg:sticky lg:top-20">
+    <aside
+      className="card p-5 lg:p-6 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto filter-panel-scroll"
+    >
       {/* Header with reset shortcut */}
       <div className="flex items-center justify-between">
-        <h3 className="text-base font-semibold text-ink-900">Filters</h3>
+        <h3 className="text-base font-semibold text-ink-11">{t('filterPanel.heading')}</h3>
         <button
           type="button"
           onClick={() => dispatch(resetFilters())}
-          className="text-xs font-medium text-brand-600 hover:text-brand-700"
+          className="text-xs font-medium text-brass-8 hover:text-brass-9"
         >
-          Reset
+          {t('filterPanel.reset')}
         </button>
       </div>
 
       {/* Sort — options generated from registry */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-ink-700">Sort by</label>
+        <label className="text-sm font-medium text-ink-11">{t('filterPanel.sortBy')}</label>
         <select
           value={sortBy ?? ''}
           onChange={(e) => dispatch(setSortBy(e.target.value))}
-          className="w-full rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"
+          className="w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm"
         >
           {sorts.map((s) => (
             <option key={s.id} value={s.id}>
-              {s.label}
+              {t(s.label)}
             </option>
           ))}
         </select>
@@ -483,7 +497,7 @@ const FilterPanel = () => {
         const props = filterables.filter((p) => p.group === group.id);
         if (props.length === 0) return null;
         return (
-          <Section key={group.id} title={group.label} defaultOpen={idx === 0}>
+          <Section key={group.id} title={t(group.label)} defaultOpen={idx === 0}>
             {props.map((p) => (
               <FilterField key={p.id} property={p} />
             ))}

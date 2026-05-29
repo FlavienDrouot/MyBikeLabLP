@@ -13,8 +13,9 @@ import { HookBadge } from '../components/MiniComparator/badges';
 /**
  * @typedef {Object} WheelProperty
  * @property {string} id            Unique identifier (Redux key + column).
- * @property {string} label         Displayed label (filter + column + sort).
+ * @property {string} label         Translation key for display label (filter + column + sort).
  * @property {string} group         'general' | 'rims' | 'subs'.
+ * @property {boolean} translatable Whether the property's value must be translated before display.
  * @property {(w: any) => any} accessor  Always a function (handles computed cases like min price).
  * @property {string} [unit]        Unit suffix used for default cell rendering.
  * @property {FilterSpec} [filter]  Absent => property not filterable.
@@ -26,6 +27,7 @@ import { HookBadge } from '../components/MiniComparator/badges';
  *         | {type: 'triState', labels: [string, string, string]}} FilterSpec
  *
  * @typedef {{id: string, label: string, direction: 'asc' | 'desc' | 'localeCompare', accessor?: (w:any)=>any}} SortSpec
+ * // label: translation key resolved by consuming components via t()
  *
  * @typedef {{required?: boolean, headClassName?: string, cellClassName?: string,
  *           renderCell?: (w:any) => any, hidden?: boolean, defaultVisible?: boolean}} ColumnSpec
@@ -34,18 +36,29 @@ import { HookBadge } from '../components/MiniComparator/badges';
 // Exported helper because reused in multiple entries (price, price column).
 export const minPrice = (wheel) => Math.min(...wheel.prices.map((p) => p.price_eur));
 
+const DIAMETER_LABEL_MAP = {
+  700: '700C',
+  650: '650B',
+};
+
+export const formatDiameter = (rawMm) => {
+  const label = DIAMETER_LABEL_MAP[rawMm] ?? String(rawMm);
+  return `Ø ${label}`;
+};
+
 export const COLUMN_GROUPS = [
-  { id: 'general', label: 'General specs' },
-  { id: 'rims', label: 'Rims' },
-  { id: 'subs', label: 'Subcomponents' },
+  { id: 'general', label: 'properties.groups.general' },
+  { id: 'rims', label: 'properties.groups.rims' },
+  { id: 'subs', label: 'properties.groups.subs' },
 ];
 
 /** @type {WheelProperty[]} */
 export const WHEEL_PROPERTIES = [
   {
     id: 'image',
-    label: 'Image',
+    label: 'properties.image.label',
     group: 'general',
+    translatable: false,
     accessor: (w) => w.image,
     column: {
       headClassName: 'px-4 py-3 font-semibold',
@@ -58,16 +71,17 @@ export const WHEEL_PROPERTIES = [
 
   {
     id: 'model',
-    label: 'Model',
+    label: 'properties.model.label',
     group: 'general',
+    translatable: false,
     accessor: (w) => w.model,
     sorts: [
-      { id: 'name', label: 'Name (A → Z)', direction: 'localeCompare' },
+      { id: 'name', label: 'sorts.name', direction: 'localeCompare' },
     ],
     column: {
       required: true,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 font-medium text-ink-900',
+      cellClassName: 'px-4 py-3 font-medium text-ink-11',
       renderCell: (w) => (
         <>
           <span className="text-ink-500 font-normal text-xs">{w.brand}</span>
@@ -80,8 +94,9 @@ export const WHEEL_PROPERTIES = [
 
   {
     id: 'brand',
-    label: 'Brand',
+    label: 'properties.brand.label',
     group: 'general',
+    translatable: false,
     accessor: (w) => w.brand,
     filter: { type: 'multiSelect' },
     // Filterable but no dedicated column — brand is already visible in Model column.
@@ -90,123 +105,132 @@ export const WHEEL_PROPERTIES = [
 
   {
     id: 'weight',
-    label: 'Weight',
+    label: 'properties.weight.label',
     group: 'general',
+    translatable: false,
     unit: ' g',
     accessor: (w) => w.weight_grams,
     filter: { type: 'range', step: 10 },
     sorts: [
-      { id: 'weight_asc', label: 'Weight (light → heavy)', direction: 'asc' },
-      { id: 'weight_desc', label: 'Weight (heavy → light)', direction: 'desc' },
+      { id: 'weight_asc', label: 'sorts.weight_asc', direction: 'asc' },
+      { id: 'weight_desc', label: 'sorts.weight_desc', direction: 'desc' },
     ],
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-700 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
     },
   },
 
   {
     id: 'price',
-    label: 'Price',
+    label: 'properties.price.label',
     group: 'general',
+    translatable: false,
     unit: ' €',
     // Computed accessor: value is not in a direct field.
     accessor: minPrice,
     filter: { type: 'range', step: 50 },
     sorts: [
-      { id: 'price_asc', label: 'Price (low → high)', direction: 'asc' },
-      { id: 'price_desc', label: 'Price (high → low)', direction: 'desc' },
+      { id: 'price_asc', label: 'sorts.price_asc', direction: 'asc' },
+      { id: 'price_desc', label: 'sorts.price_desc', direction: 'desc' },
     ],
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-right font-semibold text-ink-900 tabular-nums',
-      renderCell: (w) => `${minPrice(w).toLocaleString('fr-FR')} €`,
+      cellClassName: 'px-4 py-3 text-right font-semibold text-ink-11 tabular-nums',
+      renderCell: (w) => w.prices?.length > 0
+        ? `${minPrice(w).toLocaleString('fr-FR')} €`
+        : null,
     },
   },
 
   {
     id: 'diameter',
-    label: 'Diameter',
+    label: 'properties.diameter.label',
     group: 'general',
-    unit: ' mm',
+    translatable: false,
     accessor: (w) => w.diameter_mm,
     filter: { type: 'multiSelect' },
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-700 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w) => formatDiameter(w.diameter_mm),
     },
   },
 
   {
     id: 'rimMaterial',
-    label: 'Rim material',
+    label: 'properties.rimMaterial.label',
     group: 'rims',
+    translatable: true,
     accessor: (w) => w.rim.material,
     filter: { type: 'multiSelect' },
     column: {
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-700',
+      cellClassName: 'px-4 py-3 text-ink-11',
     },
   },
 
   {
     id: 'hookless',
-    label: 'Hookless',
+    label: 'properties.hookless.label',
     group: 'rims',
+    translatable: true,
     accessor: (w) => w.rim.hookless,
-    filter: { type: 'triState', labels: ['All', 'Hookless', 'Hooked'] },
+    filter: { type: 'triState', labels: ['filters.hookless.all', 'filters.hookless.hookless', 'filters.hookless.hooked'] },
     column: {
       headClassName: 'px-4 py-3 font-semibold',
       cellClassName: 'px-4 py-3',
-      // Display a badge instead of raw boolean.
       renderCell: (w) => <HookBadge hookless={w.rim.hookless} />,
     },
   },
 
   {
     id: 'depth',
-    label: 'Depth',
+    label: 'properties.depth.label',
     group: 'rims',
+    translatable: false,
     unit: ' mm',
     accessor: (w) => w.rim.depth_mm,
     filter: { type: 'range' },
     sorts: [
-      { id: 'depth_asc', label: 'Depth (shallow → deep)', direction: 'asc' },
-      { id: 'depth_desc', label: 'Depth (deep → shallow)', direction: 'desc' },
+      { id: 'depth_asc', label: 'sorts.depth_asc', direction: 'asc' },
+      { id: 'depth_desc', label: 'sorts.depth_desc', direction: 'desc' },
     ],
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-700 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
     },
   },
 
   {
     id: 'rimWidth',
-    label: 'Rim width',
+    label: 'properties.rimWidth.label',
     group: 'rims',
+    translatable: false,
     unit: ' mm',
     accessor: (w) => w.rim.externalWidth_mm,
     filter: { type: 'range' },
     sorts: [
-      { id: 'rimWidth_asc', label: 'Rim width (narrow → wide)', direction: 'asc' },
-      { id: 'rimWidth_desc', label: 'Rim width (wide → narrow)', direction: 'desc' },
+      { id: 'rimWidth_asc', label: 'sorts.rimWidth_asc', direction: 'asc' },
+      { id: 'rimWidth_desc', label: 'sorts.rimWidth_desc', direction: 'desc' },
     ],
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-700 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
     },
   },
 
   {
     id: 'hub',
-    label: 'Hub',
+    label: 'properties.hub.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => `${w.hub.brand} ${w.hub.model}`,
     column: {
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 font-medium text-ink-900',
+      cellClassName: 'px-4 py-3 font-medium text-ink-11',
       renderCell: (w) => (
         <>
           <span className="text-ink-500 font-normal text-xs">{w.hub.brand}</span>
@@ -219,8 +243,9 @@ export const WHEEL_PROPERTIES = [
 
   {
     id: 'hubBrand',
-    label: 'Hub brand',
+    label: 'properties.hubBrand.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => w.hub.brand,
     filter: { type: 'multiSelect' },
     column: { hidden: true },
@@ -228,8 +253,9 @@ export const WHEEL_PROPERTIES = [
 
   {
     id: 'hubModel',
-    label: 'Hub model',
+    label: 'properties.hubModel.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => w.hub.model,
     filter: { type: 'multiSelect' },
     column: { hidden: true },
@@ -237,13 +263,14 @@ export const WHEEL_PROPERTIES = [
 
   {
     id: 'spokes',
-    label: 'Spokes',
+    label: 'properties.spokes.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => `${w.spokes.brand} ${w.spokes.model}`,
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 font-medium text-ink-900',
+      cellClassName: 'px-4 py-3 font-medium text-ink-11',
       renderCell: (w) => (
         <>
           <span className="text-ink-500 font-normal text-xs">{w.spokes.brand}</span>
@@ -256,8 +283,9 @@ export const WHEEL_PROPERTIES = [
 
   {
     id: 'spokesBrand',
-    label: 'Spokes brand',
+    label: 'properties.spokesBrand.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => w.spokes.brand,
     filter: { type: 'multiSelect' },
     column: { hidden: true },
@@ -265,8 +293,9 @@ export const WHEEL_PROPERTIES = [
 
   {
     id: 'spokesModel',
-    label: 'Spokes model',
+    label: 'properties.spokesModel.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => w.spokes.model,
     filter: { type: 'multiSelect' },
     column: { hidden: true },
@@ -274,14 +303,15 @@ export const WHEEL_PROPERTIES = [
 
   {
     id: 'spokeMaterial',
-    label: 'Spoke material',
+    label: 'properties.spokeMaterial.label',
     group: 'subs',
+    translatable: true,
     accessor: (w) => w.spokes.material,
     filter: { type: 'multiSelect' },
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-700',
+      cellClassName: 'px-4 py-3 text-ink-11',
     },
   },
 ];

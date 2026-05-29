@@ -43,3 +43,10 @@ Administrative/
 # Archive folders
 **/archive/
 **/evolutions/
+
+# Design system (work in progress, transferred from Claude interface)
+design-system/
+
+# Scripts — credentials and generated output
+scripts/.env
+scripts/data/*.json

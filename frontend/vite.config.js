@@ -9,9 +9,10 @@ export default defineConfig({
   test: {
     environment: 'node',
     globals: true,
+    setupFiles: ['./src/test-setup.js'],
     alias: [
       {
-        find: /\.(svg|png|jpg|jpeg|gif)$/,
+        find: /^.+\.(svg|png|jpg|jpeg|gif)$/,
         replacement: fileURLToPath(new URL('./src/__mocks__/fileMock.js', import.meta.url)),
       },
     ],

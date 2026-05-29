@@ -101,6 +101,37 @@ Build a complete bike component by component, simulate different setups, compare
 
 ---
 
+## Data Acquisition Strategy
+
+Three sequential phases addressing the cold start problem (small catalog → low value → no partners).
+
+### Phase A — Volume via scraping *(no dependency)*
+
+Scrape public specs and prices from brand websites (Roval, Zipp, DT Swiss, Fulcrum, Shimano, Mavic…) and major retailers (Alltricks, Probikeshop, Canyon, Wiggle). Target: ~150–200 wheels with real specs, current prices, and actual product images.
+
+> **Note — SEO:** Without organic traffic, affiliate clicks will not come on their own. After Phase A, improving SEO (structured data, page titles, wheel-specific landing pages) is a prerequisite for Phase B to generate meaningful results.
+
+> **Note — Architecture:** Scaling from ~15 to ~200 wheels requires a decision on data management. The current inline `wheelsData.js` approach may need to migrate to an external JSON file or a lightweight backend before scraping begins.
+
+### Phase B — Self-service affiliate monetization *(requires: Phase A catalog)*
+
+Sign up for self-service affiliate programs (Awin, Amazon Associates, TradeTracker) and replace direct product links with tracked affiliate links. No partner negotiation required — full control.
+
+### Phase C — Direct partner outreach *(requires: measurable traffic)*
+
+Approach retailer e-commerce managers and premium brands with traffic metrics. Pitch: "Your products are already listed. Affiliate links let you measure and reward the qualified traffic we send." Unlocks better commission rates and direct product data feeds.
+
+### Sequence summary
+
+| Step | Action | Dependency | Output |
+|---|---|---|---|
+| A | Scraping specs + prices | none | 150+ wheels in catalog |
+| A+ | SEO improvements | Phase A catalog | organic traffic |
+| B | Self-service affiliate sign-up | existing catalog | active monetization |
+| C | Direct partner outreach | measurable traffic | better rates + data feeds |
+
+---
+
 ## Current Limitations and Known Gaps
 
 - Dataset is small (~15 wheels) and manually maintained — no backend, no data pipeline
@@ -109,6 +140,7 @@ Build a complete bike component by component, simulate different setups, compare
 - No user accounts, no saved comparisons, no sharing
 - No simulation features yet (Phase 2 is not built)
 - No real affiliate tracking implemented yet
+- No analytics or click tracking in place — required to measure affiliate performance and build the case for direct partnerships (Phase C)
 
 ---
 
