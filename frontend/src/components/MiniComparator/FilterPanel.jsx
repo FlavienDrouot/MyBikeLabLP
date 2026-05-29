@@ -299,7 +299,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           onChange={(e) => setSearch(e.target.value)}
           className="w-full rounded-xs border border-ink-4 px-3 py-1.5 text-sm mb-2"
         />
-        <ul className="max-h-40 overflow-y-auto rounded-none border border-ink-4">
+        <ul className="max-h-40 overflow-y-auto rounded-none border border-ink-4 filter-panel-scroll">
           {visible.map((opt) => {
             const count = counts[String(opt)] ?? 0;
             const isActive = filter.value.includes(opt);
@@ -462,7 +462,7 @@ const FilterPanel = () => {
 
   return (
     <aside
-      className="card p-5 lg:p-6 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto"
+      className="card p-5 lg:p-6 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto filter-panel-scroll"
     >
       {/* Header with reset shortcut */}
       <div className="flex items-center justify-between">
