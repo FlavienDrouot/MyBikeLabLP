@@ -132,12 +132,9 @@ export const WHEEL_PROPERTIES = [
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-right font-semibold text-ink-11 tabular-nums',
-      renderCell: (w) => w.prices?.length > 0 ? (
-        <>
-          <span>{minPrice(w).toLocaleString('fr-FR')} €</span>
-          <span className="t-annotation block">{i18next.t('wheelDetail.priceAnnotation')}</span>
-        </>
-      ) : null,
+      renderCell: (w) => w.prices?.length > 0
+        ? `${minPrice(w).toLocaleString('fr-FR')} €`
+        : null,
     },
   },
 

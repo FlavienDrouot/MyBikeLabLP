@@ -83,7 +83,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
         </div>
       ) : (
         <div className="comparison-table-scroll overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]" ref={scrollRef}>
-          <table className="w-max text-sm bg-paper-0">
+          <table className="w-min text-sm bg-paper-0">
             <thead className="bg-paper-2 text-ink-7 sticky top-0 z-10">
               <tr className="text-left">
                 {cols.map((p) => (
@@ -103,7 +103,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                     onClick={() => toggleExpanded(w.id)}
                   >
                     {cols.map((p) => (
-                      <td key={p.id} className={cellClassFor(p)}>
+                      <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap`}>
                         {renderCellFor(p)(w)}
                       </td>
                     ))}
