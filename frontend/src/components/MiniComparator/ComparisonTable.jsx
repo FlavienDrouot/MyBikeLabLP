@@ -51,7 +51,7 @@ const ComparisonTable = ({ visibility }) => {
     setExpandedId((prev) => (prev === id ? null : id));
 
   return (
-    <div className="card overflow-hidden w-fit max-w-full">
+    <div className="card overflow-hidden w-fit max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden">
       <div className="flex items-center justify-between px-5 py-4">
         <h3 className="text-base font-semibold text-ink-11">
           {t('table.heading')}{' '}
@@ -67,9 +67,9 @@ const ComparisonTable = ({ visibility }) => {
           {t('table.emptyState')}
         </div>
       ) : (
-        <div className="overflow-x-auto" ref={scrollRef}>
+        <div className="overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]" ref={scrollRef}>
           <table className="w-max text-sm">
-            <thead className="bg-paper-2 text-ink-7">
+            <thead className="bg-paper-2 text-ink-7 sticky top-0 z-10">
               <tr className="text-left">
                 {cols.map((p) => (
                   <th key={p.id} className="px-4 py-3 text-xs font-medium uppercase tracking-widest text-ink-7">

@@ -462,8 +462,7 @@ const FilterPanel = () => {
 
   return (
     <aside
-      className="card p-5 lg:p-6 space-y-6 h-fit lg:sticky"
-      style={{ top: 'var(--navbar-height)' }}
+      className="card p-5 lg:p-6 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto"
     >
       {/* Header with reset shortcut */}
       <div className="flex items-center justify-between">

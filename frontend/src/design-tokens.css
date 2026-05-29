@@ -203,7 +203,7 @@
   --container-narrow: 880px;
   --gutter: var(--space-6);
   --grid-unit: 8px;
-  --navbar-height: 5rem;  /* sticky top offset for scroll anchors and floating panels */
+  --navbar-height: 5rem;  /* fallback only — overridden at runtime by Navbar.jsx with the live measured header height (see EVO-025) */
 }
 
 /* ============================================================================

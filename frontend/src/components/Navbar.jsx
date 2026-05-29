@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Icon from './ui/Icon';
@@ -41,11 +41,47 @@ const LanguageToggle = () => {
 const Navbar = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef(null);
 
   const close = () => setIsOpen(false);
 
+  // Sync the global `--navbar-height` CSS variable with the live measured
+  // height of the rendered <header>. Consumers (scroll-padding-top, the cap
+  // formula on MiniComparator panels) then read the actual rendered height
+  // rather than the static design token (5rem), which mismatches reality.
+  useLayoutEffect(() => {
+    const headerEl = headerRef.current;
+    if (!headerEl) return undefined;
+
+    const root = document.documentElement;
+    const write = () => {
+      root.style.setProperty('--navbar-height', `${headerEl.offsetHeight}px`);
+    };
+
+    write();
+
+    if (typeof ResizeObserver === 'undefined') {
+      return () => {
+        root.style.removeProperty('--navbar-height');
+      };
+    }
+
+    const ro = new ResizeObserver(() => {
+      write();
+    });
+    ro.observe(headerEl);
+
+    return () => {
+      ro.disconnect();
+      root.style.removeProperty('--navbar-height');
+    };
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-ink-3 bg-paper-1/88 backdrop-blur">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-40 w-full border-b border-ink-3 bg-paper-1/88 backdrop-blur"
+    >
       <div className="container-page flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
           <img src={logoWordmark} alt="MyBikeLab" className="h-8 w-auto" />
