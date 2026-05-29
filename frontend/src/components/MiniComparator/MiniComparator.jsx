@@ -1,9 +1,8 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { SlidersHorizontal, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import FilterPanel from './FilterPanel';
 import ComparisonTable from './ComparisonTable';
-import ColumnSelector from './ColumnSelector';
 import Icon from '../ui/Icon';
 import { getColumnProperties } from '../../config/wheelProperties';
 
@@ -36,26 +35,7 @@ const MiniComparator = () => {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-x-6 lg:grid-cols-[320px_1fr] lg:grid-rows-[auto_1fr] w-fit mx-auto items-start">
-          {/* ColumnSelector: row 1, col 2 — desktop only */}
-          <div className="hidden lg:flex justify-end mb-3 lg:col-start-2 lg:row-start-1">
-            <ColumnSelector visibility={visibility} onToggle={handleToggle} />
-          </div>
-
-          {/* Mobile-only trigger: opens the filter drawer below lg */}
-          <div className="lg:hidden">
-            <button
-              type="button"
-              onClick={() => setFiltersOpen(true)}
-              aria-expanded={filtersOpen}
-              aria-controls="filters-drawer"
-              className="inline-flex items-center gap-2 rounded-xs border border-ink-4 bg-paper-0 px-4 py-2 text-sm font-semibold text-ink-11 hover:border-brass-8 hover:text-brass-8"
-            >
-              <Icon as={SlidersHorizontal} size={16} aria-hidden="true" />
-              {t('comparator.filtersButton')}
-            </button>
-          </div>
-
+        <div className="mt-12 grid gap-x-6 lg:grid-cols-[320px_1fr] w-fit mx-auto items-start">
           {/* Backdrop — only shown when the mobile drawer is open */}
           {filtersOpen && (
             <div
@@ -74,7 +54,7 @@ const MiniComparator = () => {
             aria-label={t('comparator.filtersDrawerLabel')}
             className={`fixed inset-y-0 left-0 z-50 flex w-80 max-w-[85vw] flex-col overflow-y-auto bg-paper-2 border-r border-ink-4 transition-transform duration-200 ease-out ${
               filtersOpen ? 'translate-x-0' : '-translate-x-full'
-            } lg:relative lg:inset-auto lg:z-auto lg:flex lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:border-r-0 lg:row-start-2`}
+            } lg:relative lg:inset-auto lg:z-auto lg:flex lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:border-r-0`}
           >
             {/* Mobile drawer header with close button */}
             <div className="flex items-center justify-between border-b border-ink-3 px-4 py-3 lg:hidden">
@@ -93,12 +73,14 @@ const MiniComparator = () => {
             </div>
           </div>
 
-          {/* ComparisonTable: row 2, col 2 — mobile also gets ColumnSelector here */}
-          <div className="min-w-0 lg:row-start-2">
-            <div className="flex justify-end mb-3 lg:hidden">
-              <ColumnSelector visibility={visibility} onToggle={handleToggle} />
-            </div>
-            <ComparisonTable visibility={visibility} />
+          {/* ComparisonTable: col 2 */}
+          <div className="min-w-0">
+            <ComparisonTable
+              visibility={visibility}
+              columnOnToggle={handleToggle}
+              onOpenFilters={() => setFiltersOpen(true)}
+              filtersOpen={filtersOpen}
+            />
           </div>
         </div>
 

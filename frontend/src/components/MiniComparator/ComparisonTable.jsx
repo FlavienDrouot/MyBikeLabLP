@@ -1,11 +1,12 @@
 import React, { useState, useRef, useLayoutEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, SlidersHorizontal } from 'lucide-react';
 import { selectFilteredWheels } from '../../store/selectors/wheelsSelectors';
 import { getColumnProperties } from '../../config/wheelProperties';
 import WheelDetailPanel from './WheelDetailPanel';
 import Icon from '../ui/Icon';
+import ColumnSelector from './ColumnSelector';
 
 const renderCellFor = (property) =>
   property.column?.renderCell ??
@@ -15,7 +16,7 @@ const cellClassFor = (property) => {
   return property.unit !== undefined ? `${base} font-mono tabular-nums` : base;
 };
 
-const ComparisonTable = ({ visibility }) => {
+const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpen }) => {
   const { t } = useTranslation();
   const wheels = useSelector(selectFilteredWheels);
   const total = useSelector((state) => state.wheels.items.length);
@@ -59,6 +60,20 @@ const ComparisonTable = ({ visibility }) => {
             — {wheels.length} {t('table.of')} {total}
           </span>
         </h3>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={onOpenFilters}
+            aria-expanded={filtersOpen}
+            aria-controls="filters-drawer"
+            className="lg:hidden inline-flex items-center gap-2 rounded-xs border border-ink-4 bg-paper-0 px-4 py-2 text-sm font-semibold text-ink-11 hover:border-brass-8 hover:text-brass-8"
+            style={{ transition: 'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard)' }}
+          >
+            <Icon as={SlidersHorizontal} size={16} aria-hidden="true" />
+            {t('comparator.filtersButton')}
+          </button>
+          <ColumnSelector visibility={visibility} onToggle={columnOnToggle} />
+        </div>
       </div>
       <hr className="rule" />
 
