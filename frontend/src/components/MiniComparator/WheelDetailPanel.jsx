@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import WheelImageCarousel from './WheelImageCarousel';
 
-const WheelDetailPanel = ({ wheel }) => {
+const WheelDetailPanel = ({ wheel, panelWidth }) => {
+  const isMobile = panelWidth < 870;
   const { t } = useTranslation();
   const { affiliateLinks, brand } = wheel;
   const manufacturer = affiliateLinks?.manufacturer;
@@ -13,7 +14,7 @@ const WheelDetailPanel = ({ wheel }) => {
   const sortedRetailers = [...retailers].sort((a, b) => a.price_eur - b.price_eur);
 
   return (
-    <div className="flex max-[900px]:flex-col items-start max-[900px]:items-center justify-evenly gap-5 px-5 py-3 bg-paper-2/60 border-t border-t-ink-3 border-b border-b-ink-4">
+    <div className={`flex ${isMobile ? 'flex-col items-center' : 'flex-row items-start'} justify-evenly gap-5 px-5 py-3 bg-paper-2/60 border-t border-t-ink-3 border-b border-b-ink-4`}>
       <WheelImageCarousel wheel={wheel} />
 
       <div className="w-[450px] max-w-full flex flex-col gap-2 overflow-y-auto py-0.5">

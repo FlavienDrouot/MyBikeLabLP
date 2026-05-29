@@ -21,6 +21,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   const wheels = useSelector(selectFilteredWheels);
   const total = useSelector((state) => state.wheels.items.length);
   const [expandedId, setExpandedId] = useState(null);
+  const [panelWidth, setPanelWidth] = useState(0);
 
   const scrollRef = useRef(null);
   const panelRef = useRef(null);
@@ -29,7 +30,9 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   const setPanelRef = useCallback((el) => {
     panelRef.current = el;
     if (el && scrollRef.current) {
-      el.style.width = `${scrollRef.current.clientWidth}px`;
+      const w = scrollRef.current.clientWidth;
+      el.style.width = `${w}px`;
+      setPanelWidth(w);
     }
   }, []);
 
@@ -38,7 +41,9 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     const el = scrollRef.current;
     if (!el) return;
     const ro = new ResizeObserver(() => {
-      if (panelRef.current) panelRef.current.style.width = `${el.clientWidth}px`;
+      const w = el.clientWidth;
+      if (panelRef.current) panelRef.current.style.width = `${w}px`;
+      setPanelWidth(w);
     });
     ro.observe(el);
     return () => ro.disconnect();
@@ -123,7 +128,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                           ref={setPanelRef}
                           style={{ position: 'sticky', left: 0 }}
                         >
-                          <WheelDetailPanel wheel={w} />
+                          <WheelDetailPanel wheel={w} panelWidth={panelWidth} />
                         </div>
                       </td>
                     </tr>
