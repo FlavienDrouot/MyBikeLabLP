@@ -84,7 +84,7 @@
         "tag": "Phase 3",
         "status": "Vision",
         "title": "Full bike configurator",
-        "description": "Build your dream bike from the frame up, simulate the full setup, then go buy it.",
+        "description": "Build a complete bike from the frame up, simulate the full setup, then go buy it.",
         "points": ["Frame to finish", "Performance preview", "Affiliate-ready"]
       }
     ]
@@ -118,7 +118,7 @@
       },
       {
         "title": "Resellers",
-        "description": "Plug into a high-intent comparison funnel built for road cyclists."
+        "description": "Reach cyclists who are actively comparing before they buy."
       }
     ]
   },
@@ -134,7 +134,7 @@
       "messageRequired": "Message is required"
     },
     "success": {
-      "title": "Thanks, {{name}}!",
+      "title": "Thanks, {{name}}.",
       "body": "We'll get back to you at {{email}} shortly."
     },
     "successFallbackName": "there"

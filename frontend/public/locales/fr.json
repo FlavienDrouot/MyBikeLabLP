@@ -55,7 +55,7 @@
     "whereToBuy": "Où acheter",
     "buyLink": "Acheter →",
     "noLinks": "Aucun lien affilié disponible pour cette roue.",
-    "priceAnnotation": "prix indicatif, source 2025-Q2"
+    "priceAnnotation": "prix indicatif, sourcé en 2025-Q2"
   },
   "badges": {
     "hookless": "Hookless",
@@ -77,14 +77,14 @@
         "tag": "Phase 2",
         "status": "Suivant",
         "title": "Simulateur d'impact",
-        "description": "Visualisez comment chaque pièce change votre montée : poids, aérodynamique, coût total, performance estimée.",
+        "description": "Visualisez comment chaque pièce change votre machine : poids, aérodynamique, coût total, performance estimée.",
         "points": ["Delta de poids", "Gains aéro", "Coût par watt"]
       },
       {
         "tag": "Phase 3",
         "status": "Vision",
         "title": "Configurateur vélo complet",
-        "description": "Construisez le vélo de vos rêves depuis le cadre, simulez le setup complet, puis achetez.",
+        "description": "Construisez un vélo complet depuis le cadre, simulez la configuration complète, puis achetez.",
         "points": ["Du cadre à la finition", "Aperçu des performances", "Prêt pour l'affiliation"]
       }
     ]
@@ -118,7 +118,7 @@
       },
       {
         "title": "Revendeurs",
-        "description": "Intégrez un tunnel de comparaison à haute intention d'achat, conçu pour les cyclistes route."
+        "description": "Touchez des cyclistes qui comparent activement avant d'acheter."
       }
     ]
   },
@@ -134,7 +134,7 @@
       "messageRequired": "Le message est requis"
     },
     "success": {
-      "title": "Merci, {{name}} !",
+      "title": "Merci, {{name}}.",
       "body": "Nous vous répondrons à {{email}} très prochainement."
     },
     "successFallbackName": "vous"
