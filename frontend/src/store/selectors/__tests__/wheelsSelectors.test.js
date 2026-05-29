@@ -25,9 +25,9 @@ const mockWheels = [
     brand: 'Roval',
     diameter_mm: 700,
     prices: [{ price_eur: 500 }],
-    rim: { material: 'Carbon', hookless: false, depth_mm: 30, externalWidth_mm: 25 },
+    rim: { material: 'carbon', hookless: false, depth_mm: 30, externalWidth_mm: 25 },
     hub: { brand: 'DT Swiss', model: '240' },
-    spokes: { brand: 'Sapim', model: 'CX-Ray', material: 'Stainless Steel' },
+    spokes: { brand: 'Sapim', model: 'CX-Ray', material: 'stainless_steel' },
   },
   {
     id: 2,
@@ -35,9 +35,9 @@ const mockWheels = [
     brand: 'Zipp',
     diameter_mm: 700,
     prices: [{ price_eur: 1000 }],
-    rim: { material: 'Aluminum', hookless: true, depth_mm: 50, externalWidth_mm: 30 },
+    rim: { material: 'aluminum', hookless: true, depth_mm: 50, externalWidth_mm: 30 },
     hub: { brand: 'Zipp', model: 'ZR1' },
-    spokes: { brand: 'Sapim', model: 'CX-Sprint', material: 'Stainless Steel' },
+    spokes: { brand: 'Sapim', model: 'CX-Sprint', material: 'stainless_steel' },
   },
   {
     id: 3,
@@ -45,9 +45,9 @@ const mockWheels = [
     brand: 'Roval',
     diameter_mm: 700,
     prices: [{ price_eur: 800 }, { price_eur: 750 }],
-    rim: { material: 'Carbon', hookless: false, depth_mm: 40, externalWidth_mm: 27 },
+    rim: { material: 'carbon', hookless: false, depth_mm: 40, externalWidth_mm: 27 },
     hub: { brand: 'DT Swiss', model: '350' },
-    spokes: { brand: 'DT Swiss', model: 'Aerolite', material: 'Stainless Steel' },
+    spokes: { brand: 'DT Swiss', model: 'Aerolite', material: 'stainless_steel' },
   },
 ];
 
@@ -104,8 +104,8 @@ describe('makeSelectContextualCountsFor', () => {
         brand: { value: ['Roval'], enabled: true },
       };
       const result = makeSelectContextualCountsFor('rimMaterial')(makeState(mockWheels, filtersState));
-      // Only the 2 Roval wheels survive; both have Carbon rims
-      expect(result).toEqual({ Carbon: 2 });
+      // Only the 2 Roval wheels survive; both have carbon rims
+      expect(result).toEqual({ carbon: 2 });
     });
 
     it('invalidates when brand filter changes', () => {
@@ -114,8 +114,8 @@ describe('makeSelectContextualCountsFor', () => {
       const stateB = makeState(mockWheels, { brand: { value: ['Zipp'], enabled: true } });
       const resultA = selectCounts(stateA);
       const resultB = selectCounts(stateB);
-      expect(resultA).toEqual({ Carbon: 2 });
-      expect(resultB).toEqual({ Aluminum: 1 });
+      expect(resultA).toEqual({ carbon: 2 });
+      expect(resultB).toEqual({ aluminum: 1 });
     });
   });
 

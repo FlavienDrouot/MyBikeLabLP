@@ -15,6 +15,7 @@ import { HookBadge } from '../components/MiniComparator/badges';
  * @property {string} id            Unique identifier (Redux key + column).
  * @property {string} label         Translation key for display label (filter + column + sort).
  * @property {string} group         'general' | 'rims' | 'subs'.
+ * @property {boolean} translatable Whether the property's value must be translated before display.
  * @property {(w: any) => any} accessor  Always a function (handles computed cases like min price).
  * @property {string} [unit]        Unit suffix used for default cell rendering.
  * @property {FilterSpec} [filter]  Absent => property not filterable.
@@ -57,6 +58,7 @@ export const WHEEL_PROPERTIES = [
     id: 'image',
     label: 'properties.image.label',
     group: 'general',
+    translatable: false,
     accessor: (w) => w.image,
     column: {
       headClassName: 'px-4 py-3 font-semibold',
@@ -71,6 +73,7 @@ export const WHEEL_PROPERTIES = [
     id: 'model',
     label: 'properties.model.label',
     group: 'general',
+    translatable: false,
     accessor: (w) => w.model,
     sorts: [
       { id: 'name', label: 'sorts.name', direction: 'localeCompare' },
@@ -93,6 +96,7 @@ export const WHEEL_PROPERTIES = [
     id: 'brand',
     label: 'properties.brand.label',
     group: 'general',
+    translatable: false,
     accessor: (w) => w.brand,
     filter: { type: 'multiSelect' },
     // Filterable but no dedicated column — brand is already visible in Model column.
@@ -103,6 +107,7 @@ export const WHEEL_PROPERTIES = [
     id: 'weight',
     label: 'properties.weight.label',
     group: 'general',
+    translatable: false,
     unit: ' g',
     accessor: (w) => w.weight_grams,
     filter: { type: 'range', step: 10 },
@@ -120,6 +125,7 @@ export const WHEEL_PROPERTIES = [
     id: 'price',
     label: 'properties.price.label',
     group: 'general',
+    translatable: false,
     unit: ' €',
     // Computed accessor: value is not in a direct field.
     accessor: minPrice,
@@ -141,6 +147,7 @@ export const WHEEL_PROPERTIES = [
     id: 'diameter',
     label: 'properties.diameter.label',
     group: 'general',
+    translatable: false,
     accessor: (w) => w.diameter_mm,
     filter: { type: 'multiSelect' },
     column: {
@@ -155,6 +162,7 @@ export const WHEEL_PROPERTIES = [
     id: 'rimMaterial',
     label: 'properties.rimMaterial.label',
     group: 'rims',
+    translatable: true,
     accessor: (w) => w.rim.material,
     filter: { type: 'multiSelect' },
     column: {
@@ -167,12 +175,12 @@ export const WHEEL_PROPERTIES = [
     id: 'hookless',
     label: 'properties.hookless.label',
     group: 'rims',
+    translatable: true,
     accessor: (w) => w.rim.hookless,
     filter: { type: 'triState', labels: ['filters.hookless.all', 'filters.hookless.hookless', 'filters.hookless.hooked'] },
     column: {
       headClassName: 'px-4 py-3 font-semibold',
       cellClassName: 'px-4 py-3',
-      // Display a badge instead of raw boolean.
       renderCell: (w) => <HookBadge hookless={w.rim.hookless} />,
     },
   },
@@ -181,6 +189,7 @@ export const WHEEL_PROPERTIES = [
     id: 'depth',
     label: 'properties.depth.label',
     group: 'rims',
+    translatable: false,
     unit: ' mm',
     accessor: (w) => w.rim.depth_mm,
     filter: { type: 'range' },
@@ -198,6 +207,7 @@ export const WHEEL_PROPERTIES = [
     id: 'rimWidth',
     label: 'properties.rimWidth.label',
     group: 'rims',
+    translatable: false,
     unit: ' mm',
     accessor: (w) => w.rim.externalWidth_mm,
     filter: { type: 'range' },
@@ -216,6 +226,7 @@ export const WHEEL_PROPERTIES = [
     id: 'hub',
     label: 'properties.hub.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => `${w.hub.brand} ${w.hub.model}`,
     column: {
       headClassName: 'px-4 py-3 font-semibold',
@@ -234,6 +245,7 @@ export const WHEEL_PROPERTIES = [
     id: 'hubBrand',
     label: 'properties.hubBrand.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => w.hub.brand,
     filter: { type: 'multiSelect' },
     column: { hidden: true },
@@ -243,6 +255,7 @@ export const WHEEL_PROPERTIES = [
     id: 'hubModel',
     label: 'properties.hubModel.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => w.hub.model,
     filter: { type: 'multiSelect' },
     column: { hidden: true },
@@ -252,6 +265,7 @@ export const WHEEL_PROPERTIES = [
     id: 'spokes',
     label: 'properties.spokes.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => `${w.spokes.brand} ${w.spokes.model}`,
     column: {
       defaultVisible: false,
@@ -271,6 +285,7 @@ export const WHEEL_PROPERTIES = [
     id: 'spokesBrand',
     label: 'properties.spokesBrand.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => w.spokes.brand,
     filter: { type: 'multiSelect' },
     column: { hidden: true },
@@ -280,6 +295,7 @@ export const WHEEL_PROPERTIES = [
     id: 'spokesModel',
     label: 'properties.spokesModel.label',
     group: 'subs',
+    translatable: false,
     accessor: (w) => w.spokes.model,
     filter: { type: 'multiSelect' },
     column: { hidden: true },
@@ -289,6 +305,7 @@ export const WHEEL_PROPERTIES = [
     id: 'spokeMaterial',
     label: 'properties.spokeMaterial.label',
     group: 'subs',
+    translatable: true,
     accessor: (w) => w.spokes.material,
     filter: { type: 'multiSelect' },
     column: {

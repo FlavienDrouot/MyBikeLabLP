@@ -189,5 +189,17 @@
       "hookless": "Hookless",
       "hooked": "Avec crochet"
     }
+  },
+  "rimMaterial": {
+    "carbon": "Carbone",
+    "aluminum": "Aluminium"
+  },
+  "spokeMaterial": {
+    "stainless_steel": "Acier inox",
+    "aluminum": "Aluminium"
+  },
+  "hookless": {
+    "true": "Hookless",
+    "false": "Avec crochet"
   }
 }

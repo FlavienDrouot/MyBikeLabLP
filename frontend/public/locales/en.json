@@ -189,5 +189,17 @@
       "hookless": "Hookless",
       "hooked": "Hooked"
     }
+  },
+  "rimMaterial": {
+    "carbon": "Carbon",
+    "aluminum": "Aluminum"
+  },
+  "spokeMaterial": {
+    "stainless_steel": "Stainless steel",
+    "aluminum": "Aluminum"
+  },
+  "hookless": {
+    "true": "Hookless",
+    "false": "Hooked"
   }
 }

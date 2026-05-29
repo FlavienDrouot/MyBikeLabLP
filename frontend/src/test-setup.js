@@ -1,5 +1,22 @@
 import React from 'react';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import enTranslations from '../public/locales/en.json';
+import xxTranslations from '../public/locales/xx.json';
+
 globalThis.React = React;
+
+i18n.use(initReactI18next).init({
+  lng: 'en',
+  fallbackLng: 'en',
+  ns: ['translation'],
+  defaultNS: 'translation',
+  resources: {
+    en: { translation: enTranslations },
+    xx: { translation: xxTranslations },
+  },
+  interpolation: { escapeValue: false },
+});
 
 // Flag the environment so React 19's `act(...)` does not emit a warning
 // when tests use it to flush effects after createRoot renders.

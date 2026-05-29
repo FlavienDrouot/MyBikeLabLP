@@ -1,0 +1,190 @@
+{
+  "nav": {
+    "tool": "XX",
+    "roadmap": "XX",
+    "partnerships": "XX",
+    "contact": "XX",
+    "openMenu": "XX",
+    "closeMenu": "XX",
+    "lang": {
+      "en": "XX",
+      "fr": "XX",
+      "switchTo": "XX"
+    }
+  },
+  "hero": {
+    "titleBefore": "XX",
+    "titleEmphasis": "XX",
+    "titleAfter": "XX",
+    "subtitle": "XX",
+    "ctaPrimary": "XX",
+    "ctaSecondary": "XX",
+    "stats": {
+      "wheels": "XX",
+      "filterAxes": "XX",
+      "phasesPlanned": "XX"
+    }
+  },
+  "comparator": {
+    "sectionIndex": "XX",
+    "title": "XX",
+    "subtitle": "XX",
+    "filtersButton": "XX",
+    "filtersDrawerLabel": "XX",
+    "footerNote": "XX"
+  },
+  "filterPanel": {
+    "heading": "XX",
+    "reset": "XX",
+    "sortBy": "XX",
+    "searchPlaceholder": "XX",
+    "noResults": "XX",
+    "enableFilter": "XX",
+    "closeFilters": "XX"
+  },
+  "columnSelector": {
+    "button": "XX"
+  },
+  "table": {
+    "heading": "XX",
+    "of": "XX",
+    "emptyState": "XX"
+  },
+  "wheelDetail": {
+    "manufacturer": "XX",
+    "whereToBuy": "XX",
+    "buyLink": "XX",
+    "noLinks": "XX",
+    "priceAnnotation": "XX"
+  },
+  "badges": {
+    "hookless": "XX",
+    "hooked": "XX"
+  },
+  "roadmap": {
+    "sectionIndex": "XX",
+    "title": "XX",
+    "subtitle": "XX",
+    "phases": [
+      {
+        "tag": "XX",
+        "status": "XX",
+        "title": "XX",
+        "description": "XX",
+        "points": ["XX", "XX", "XX"]
+      },
+      {
+        "tag": "XX",
+        "status": "XX",
+        "title": "XX",
+        "description": "XX",
+        "points": ["XX", "XX", "XX"]
+      },
+      {
+        "tag": "XX",
+        "status": "XX",
+        "title": "XX",
+        "description": "XX",
+        "points": ["XX", "XX", "XX"]
+      }
+    ]
+  },
+  "benefits": {
+    "sectionIndex": "XX",
+    "title": "XX",
+    "items": [
+      { "title": "XX", "description": "XX" },
+      { "title": "XX", "description": "XX" },
+      { "title": "XX", "description": "XX" }
+    ]
+  },
+  "partnership": {
+    "sectionIndex": "XX",
+    "title": "XX",
+    "intro": "XX",
+    "audiences": [
+      { "title": "XX", "description": "XX" },
+      { "title": "XX", "description": "XX" }
+    ]
+  },
+  "contact": {
+    "namePlaceholder": "XX",
+    "emailPlaceholder": "XX",
+    "companyPlaceholder": "XX",
+    "messagePlaceholder": "XX",
+    "submit": "XX",
+    "errors": {
+      "nameRequired": "XX",
+      "emailRequired": "XX",
+      "messageRequired": "XX"
+    },
+    "success": {
+      "title": "XX",
+      "body": "XX"
+    },
+    "successFallbackName": "XX"
+  },
+  "footer": {
+    "copyright": "XX",
+    "nav": {
+      "tool": "XX",
+      "roadmap": "XX",
+      "partnerships": "XX",
+      "contact": "XX"
+    }
+  },
+  "properties": {
+    "groups": {
+      "general": "XX",
+      "rims": "XX",
+      "subs": "XX"
+    },
+    "image": { "label": "XX" },
+    "model": { "label": "XX" },
+    "brand": { "label": "XX" },
+    "weight": { "label": "XX" },
+    "price": { "label": "XX" },
+    "diameter": { "label": "XX" },
+    "rimMaterial": { "label": "XX" },
+    "hookless": { "label": "XX" },
+    "depth": { "label": "XX" },
+    "rimWidth": { "label": "XX" },
+    "hub": { "label": "XX" },
+    "hubBrand": { "label": "XX" },
+    "hubModel": { "label": "XX" },
+    "spokes": { "label": "XX" },
+    "spokesBrand": { "label": "XX" },
+    "spokesModel": { "label": "XX" },
+    "spokeMaterial": { "label": "XX" }
+  },
+  "sorts": {
+    "name": "XX",
+    "weight_asc": "XX",
+    "weight_desc": "XX",
+    "price_asc": "XX",
+    "price_desc": "XX",
+    "depth_asc": "XX",
+    "depth_desc": "XX",
+    "rimWidth_asc": "XX",
+    "rimWidth_desc": "XX"
+  },
+  "filters": {
+    "hookless": {
+      "all": "XX",
+      "hookless": "XX",
+      "hooked": "XX"
+    }
+  },
+  "rimMaterial": {
+    "carbon": "XX",
+    "aluminum": "XX"
+  },
+  "spokeMaterial": {
+    "stainless_steel": "XX",
+    "aluminum": "XX"
+  },
+  "hookless": {
+    "true": "XX",
+    "false": "XX"
+  }
+}

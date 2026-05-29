@@ -144,7 +144,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                   >
                     {cols.map((p) => (
                       <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap overflow-hidden text-ellipsis`}>
-                        {renderCellFor(p)(w)}
+                        {renderCellFor(p, t)(w)}
                       </td>
                     ))}
                     <td className="px-4 py-3 text-ink-6">

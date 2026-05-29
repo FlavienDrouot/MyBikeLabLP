@@ -74,7 +74,7 @@ const MeasuringTable = ({ items, cols, onMeasure }) => {
           <tr key={w.id}>
             {cols.map((p) => (
               <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap`}>
-                {renderCellFor(p)(w)}
+                {renderCellFor(p, t)(w)}
               </td>
             ))}
           </tr>
