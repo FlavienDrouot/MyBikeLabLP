@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect, useCallback } from 'react';
+import React, { useState, useRef, useLayoutEffect, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, SlidersHorizontal } from 'lucide-react';
@@ -7,24 +7,37 @@ import { getColumnProperties } from '../../config/wheelProperties';
 import WheelDetailPanel from './WheelDetailPanel';
 import Icon from '../ui/Icon';
 import ColumnSelector from './ColumnSelector';
+import MeasuringTable from './MeasuringTable';
+import { renderCellFor, cellClassFor } from './columnCells';
 
-const renderCellFor = (property) =>
-  property.column?.renderCell ??
-  ((w) => `${property.accessor(w)}${property.unit ?? ''}`);
-const cellClassFor = (property) => {
-  const base = property.column?.cellClassName ?? `px-4 py-3 text-ink-11`;
-  return property.unit !== undefined ? `${base} font-mono tabular-nums` : base;
-};
+// Trailing chevron column: an icon (16px) inside px-4 padding (2×16px) — width
+// is deterministic, so it is pinned with a constant instead of being measured.
+const ACTIONS_COL_PX = 48;
 
 const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpen }) => {
   const { t } = useTranslation();
   const wheels = useSelector(selectFilteredWheels);
-  const total = useSelector((state) => state.wheels.items.length);
+  const allWheels = useSelector((state) => state.wheels.items);
+  const total = allWheels.length;
   const [expandedId, setExpandedId] = useState(null);
   const [panelWidth, setPanelWidth] = useState(0);
+  // Column widths measured on the full dataset (see MeasuringTable). Keyed by
+  // column id. Empty until the first measurement → table falls back to auto.
+  const [colWidths, setColWidths] = useState({});
 
   const scrollRef = useRef(null);
   const panelRef = useRef(null);
+
+  // Stable callback; bails out when widths are unchanged to avoid a render loop.
+  const handleMeasure = useCallback((widths) => {
+    setColWidths((prev) => {
+      const keys = Object.keys(widths);
+      const same =
+        keys.length === Object.keys(prev).length &&
+        keys.every((k) => prev[k] === widths[k]);
+      return same ? prev : widths;
+    });
+  }, []);
 
   // Called when the panel div mounts or unmounts — sets width immediately on mount.
   const setPanelRef = useCallback((el) => {
@@ -49,9 +62,20 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     return () => ro.disconnect();
   }, []);
 
-  const cols = getColumnProperties().filter(
-    (p) => p.column?.required || visibility[p.id]
+  // Memoized so its identity is stable across renders (it feeds MeasuringTable's
+  // measure effect deps); only changes when column visibility changes.
+  const cols = useMemo(
+    () =>
+      getColumnProperties().filter((p) => p.column?.required || visibility[p.id]),
+    [visibility]
   );
+
+  // Fixed layout only once every visible column has a real (> 0) measured width.
+  // A 0 (e.g. jsdom, which does no layout) falls back to auto rather than collapsing.
+  const widthsReady = cols.length > 0 && cols.every((p) => colWidths[p.id] > 0);
+  const totalWidth = widthsReady
+    ? cols.reduce((sum, p) => sum + colWidths[p.id], 0) + ACTIONS_COL_PX
+    : undefined;
 
   const toggleExpanded = (id) =>
     setExpandedId((prev) => (prev === id ? null : id));
@@ -88,7 +112,18 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
         </div>
       ) : (
         <div className="comparison-table-scroll overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]" ref={scrollRef}>
-          <table className="w-min text-sm bg-paper-0">
+          <table
+            className="text-sm bg-paper-0"
+            style={widthsReady ? { tableLayout: 'fixed', width: totalWidth } : undefined}
+          >
+            {widthsReady && (
+              <colgroup>
+                {cols.map((p) => (
+                  <col key={p.id} style={{ width: colWidths[p.id] }} />
+                ))}
+                <col style={{ width: ACTIONS_COL_PX }} />
+              </colgroup>
+            )}
             <thead className="bg-paper-2 text-ink-7 sticky top-0 z-10">
               <tr className="text-left">
                 {cols.map((p) => (
@@ -108,7 +143,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                     onClick={() => toggleExpanded(w.id)}
                   >
                     {cols.map((p) => (
-                      <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap`}>
+                      <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap overflow-hidden text-ellipsis`}>
                         {renderCellFor(p)(w)}
                       </td>
                     ))}
@@ -139,6 +174,10 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
           </table>
         </div>
       )}
+
+      {/* Hidden twin measured on the full dataset to pin column widths so the
+          layout stays still while filtering (EVO-030). Clipped by card overflow. */}
+      <MeasuringTable items={allWheels} cols={cols} onMeasure={handleMeasure} />
     </div>
   );
 };
