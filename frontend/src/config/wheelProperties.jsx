@@ -8,7 +8,6 @@
 // To add a new wheel property (filter + sort + column), simply add an entry
 // to WHEEL_PROPERTIES — no other files should need modification.
 
-import i18next from 'i18next';
 import { HookBadge } from '../components/MiniComparator/badges';
 
 /**
