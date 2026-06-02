@@ -32,7 +32,8 @@ import { HookBadge, TubelessBadge } from '../components/MiniComparator/badges';
  * // label: translation key resolved by consuming components via t()
  *
  * @typedef {{required?: boolean, headClassName?: string, cellClassName?: string,
- *           renderCell?: (w:any) => any, hidden?: boolean, defaultVisible?: boolean}} ColumnSpec
+ *           renderCell?: (w:any) => any, hidden?: boolean, defaultVisible?: boolean,
+ *           colWidth?: number}} ColumnSpec
  */
 
 // Exported helper because reused in multiple entries (price, price column).
@@ -326,6 +327,7 @@ export const WHEEL_PROPERTIES = [
     accessor: (w) => `${w.hub.brand} ${w.hub.model}`,
     column: {
       headClassName: 'px-4 py-3 font-semibold',
+      colWidth: 160,
       cellClassName: 'px-4 py-3 font-medium text-ink-11 max-w-[160px] overflow-hidden',
       renderCell: (w) => (
         <div>
@@ -384,6 +386,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
+      colWidth: 160,
       cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px]',
       // renderCell removed: ComparisonTable now uses FreehubCell for this column (EVO-036 TASK-005).
       // MeasuringTable still uses renderCellFor, which falls back to the default
@@ -414,6 +417,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
+      colWidth: 160,
       cellClassName: 'px-4 py-3 font-medium text-ink-11 max-w-[160px] overflow-hidden',
       renderCell: (w) => (
         <div>

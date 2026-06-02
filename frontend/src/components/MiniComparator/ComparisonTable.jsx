@@ -71,11 +71,20 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     [visibility]
   );
 
-  // Fixed layout only once every visible column has a real (> 0) measured width.
+  // Columns with a declared colWidth skip measurement — their width is already
+  // bounded by a max-w CSS class and known at config time.
+  const measuringCols = useMemo(
+    () => cols.filter((p) => !p.column?.colWidth),
+    [cols]
+  );
+
+  const getColWidth = (p) => colWidths[p.id] ?? p.column?.colWidth ?? 0;
+
+  // Fixed layout only once every visible column has a real (> 0) width.
   // A 0 (e.g. jsdom, which does no layout) falls back to auto rather than collapsing.
-  const widthsReady = cols.length > 0 && cols.every((p) => colWidths[p.id] > 0);
+  const widthsReady = cols.length > 0 && cols.every((p) => getColWidth(p) > 0);
   const totalWidth = widthsReady
-    ? cols.reduce((sum, p) => sum + colWidths[p.id], 0) + ACTIONS_COL_PX
+    ? cols.reduce((sum, p) => sum + getColWidth(p), 0) + ACTIONS_COL_PX
     : undefined;
 
   const toggleExpanded = (id) =>
@@ -120,7 +129,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
             {widthsReady && (
               <colgroup>
                 {cols.map((p) => (
-                  <col key={p.id} style={{ width: colWidths[p.id] }} />
+                  <col key={p.id} style={{ width: getColWidth(p) }} />
                 ))}
                 <col style={{ width: ACTIONS_COL_PX }} />
               </colgroup>
@@ -187,7 +196,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
 
       {/* Hidden twin measured on the full dataset to pin column widths so the
           layout stays still while filtering (EVO-030). Clipped by card overflow. */}
-      <MeasuringTable items={allWheels} cols={cols} onMeasure={handleMeasure} />
+      <MeasuringTable items={allWheels} cols={measuringCols} onMeasure={handleMeasure} />
     </div>
   );
 };
