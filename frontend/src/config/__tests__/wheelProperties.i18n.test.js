@@ -264,12 +264,20 @@ describe('renderCellFor — no raw dotted key across the whole dataset (AC-001)'
 // ---------------------------------------------------------------------------
 
 describe('renderCellFor — boolean false non-regression', () => {
+  // tubelessReady now has a renderCell override (TubelessBadge JSX).
+  // A synthetic property reusing its translation keys tests the core
+  // translatable-boolean path of renderCellFor without the JSX detour.
+  const syntheticBoolProperty = {
+    id: 'tubelessReady',
+    translatable: true,
+    accessor: (w) => w.rim?.tubeless_ready,
+  };
+
   for (const lng of LOCALES) {
     it(`a translatable boolean "false" resolves to its own translation, not the fallback, in "${lng}"`, () => {
       const t = (key, opts) => i18n.t(key, { lng, ...opts });
-      const tubelessReady = WHEEL_PROPERTIES.find((p) => p.id === 'tubelessReady');
       const fakeWheel = { rim: { tubeless_ready: false } };
-      const rendered = renderCellFor(tubelessReady, t)(fakeWheel);
+      const rendered = renderCellFor(syntheticBoolProperty, t)(fakeWheel);
 
       const ownTranslation = i18n.t('tubelessReady.false', { lng });
       const fallback = i18n.t('common.notAvailable', { lng });
