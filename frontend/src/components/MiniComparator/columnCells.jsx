@@ -25,7 +25,11 @@ export const renderCellFor = (property, t) => {
       });
     };
   }
-  return (w) => `${property.accessor(w)}${property.unit ?? ''}`;
+  return (w) => {
+    const value = property.accessor(w);
+    if (value === undefined || value === null || value === '') return safeT('common.notAvailable');
+    return `${value}${property.unit ?? ''}`;
+  };
 };
 
 export const cellClassFor = (property) => {

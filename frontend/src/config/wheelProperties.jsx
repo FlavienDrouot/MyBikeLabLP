@@ -143,9 +143,11 @@ export const WHEEL_PROPERTIES = [
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-right font-semibold text-ink-11 tabular-nums',
-      renderCell: (w) => w.prices?.length > 0
-        ? `${minPrice(w).toLocaleString('fr-FR')} €`
-        : null,
+      renderCell: (w, t) => {
+        const price = w.prices?.length > 0 ? minPrice(w) : null;
+        if (!price) return t ? t('common.notAvailable') : 'N/A';
+        return `${price.toLocaleString('fr-FR')} €`;
+      },
     },
   },
 
