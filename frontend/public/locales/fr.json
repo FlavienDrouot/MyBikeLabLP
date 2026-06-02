@@ -170,7 +170,16 @@
     "spokes": { "label": "Rayons" },
     "spokesBrand": { "label": "Marque de rayons" },
     "spokesModel": { "label": "Modèle de rayons" },
-    "spokeMaterial": { "label": "Matériau des rayons" }
+    "spokeMaterial": { "label": "Matériau des rayons" },
+    "brakeType": { "label": "Type de frein" },
+    "tubelessReady": { "label": "Tubeless" },
+    "internalWidth": { "label": "Largeur interne" },
+    "axleFront": { "label": "Axe avant" },
+    "axleRear": { "label": "Axe arrière" },
+    "freehubOptions": { "label": "Corps de roue libre" },
+    "maxSystemWeight": { "label": "Poids système max" },
+    "wheelsetCategory": { "label": "Catégorie" },
+    "discStandard": { "label": "Standard disque" }
   },
   "sorts": {
     "name": "Nom (A → Z)",
@@ -181,13 +190,20 @@
     "depth_asc": "Profil (faible → élevé)",
     "depth_desc": "Profil (élevé → faible)",
     "rimWidth_asc": "Largeur de jante (étroite → large)",
-    "rimWidth_desc": "Largeur de jante (large → étroite)"
+    "rimWidth_desc": "Largeur de jante (large → étroite)",
+    "internalWidth_asc": "Largeur interne (étroite → large)",
+    "internalWidth_desc": "Largeur interne (large → étroite)"
   },
   "filters": {
     "hookless": {
       "all": "Tous",
       "hookless": "Hookless",
       "hooked": "Avec crochet"
+    },
+    "tubelessReady": {
+      "all": "Tous",
+      "true": "Tubeless",
+      "false": "Non tubeless"
     }
   },
   "rimMaterial": {
@@ -201,5 +217,21 @@
   "hookless": {
     "true": "Hookless",
     "false": "Avec crochet"
+  },
+  "brakeType": {
+    "disc": "Disque",
+    "rim": "Patins",
+    "track": "Piste"
+  },
+  "tubelessReady": {
+    "true": "Tubeless",
+    "false": "Non tubeless"
+  },
+  "wheelsetCategory": {
+    "all-round": "Polyvalent",
+    "aero": "Aéro",
+    "climbing": "Grimpeur",
+    "endurance": "Endurance",
+    "all-road": "All-road"
   }
 }

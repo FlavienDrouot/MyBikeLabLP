@@ -279,17 +279,20 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
       <div className={filter.enabled ? '' : 'opacity-40 pointer-events-none'}>
         {filter.value.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-2">
-            {filter.value.map((v) => (
-              <button
-                key={String(v)}
-                type="button"
-                onClick={() => toggle(v)}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-brass-7 text-ink-12 hover:bg-brass-8 transition-colors"
-              >
-                {String(v)}
-                <span aria-hidden="true" className="text-ink-12/60">×</span>
-              </button>
-            ))}
+            {filter.value.map((v) => {
+              const valLabel = property.translatable ? t(`${property.id}.${v}`) : String(v);
+              return (
+                <button
+                  key={String(v)}
+                  type="button"
+                  onClick={() => toggle(v)}
+                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-brass-7 text-ink-12 hover:bg-brass-8 transition-colors"
+                >
+                  {valLabel}
+                  <span aria-hidden="true" className="text-ink-12/60">×</span>
+                </button>
+              );
+            })}
           </div>
         )}
         <input
@@ -304,6 +307,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
             const count = counts[String(opt)] ?? 0;
             const isActive = filter.value.includes(opt);
             const isMuted = count === 0 && !isActive;
+            const optLabel = property.translatable ? t(`${property.id}.${opt}`) : String(opt);
             return (
               <li key={String(opt)}>
                 <label className={`flex items-center gap-2 px-3 py-1.5 hover:bg-ink-2/60 cursor-pointer text-sm ${isMuted ? 'text-ink-4' : 'text-ink-11'}`}>
@@ -313,7 +317,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                     onChange={() => toggle(opt)}
                     className="h-4 w-4 rounded border-ink-4 accent-brass-7"
                   />
-                  {String(opt)} ({count})
+                  {optLabel} ({count})
                 </label>
               </li>
             );
@@ -367,6 +371,7 @@ const MultiSelectFilter = ({ property, filter }) => {
         {options.map((opt) => {
           const count = counts[String(opt)] ?? 0;
           const isActive = filter.value.includes(opt);
+          const optLabel = property.translatable ? t(`${property.id}.${opt}`) : String(opt);
           return (
             <Pill
               key={String(opt)}
@@ -374,7 +379,7 @@ const MultiSelectFilter = ({ property, filter }) => {
               muted={count === 0 && !isActive}
               onClick={() => toggle(opt)}
             >
-              {String(opt)} ({count})
+              {optLabel} ({count})
             </Pill>
           );
         })}
@@ -438,6 +443,7 @@ const TriStateFilter = ({ property, filter }) => {
 const FILTER_ADAPTERS = {
   range: RangeFilter,
   multiSelect: MultiSelectFilter,
+  multiSelectFlat: MultiSelectFilter,
   triState: TriStateFilter,
 };
 

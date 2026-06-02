@@ -25,6 +25,7 @@ import { HookBadge } from '../components/MiniComparator/badges';
  *
  * @typedef {{type: 'range', step?: number}
  *         | {type: 'multiSelect'}
+ *         | {type: 'multiSelectFlat'}
  *         | {type: 'triState', labels: [string, string, string]}} FilterSpec
  *
  * @typedef {{id: string, label: string, direction: 'asc' | 'desc' | 'localeCompare', accessor?: (w:any)=>any}} SortSpec
@@ -145,6 +146,147 @@ export const WHEEL_PROPERTIES = [
       renderCell: (w) => w.prices?.length > 0
         ? `${minPrice(w).toLocaleString('fr-FR')} €`
         : null,
+    },
+  },
+
+  {
+    id: 'brakeType',
+    label: 'properties.brakeType.label',
+    group: 'general',
+    translatable: true,
+    accessor: (w) => w.other_specs?.brake_type,
+    filter: { type: 'multiSelect' },
+    column: {
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'tubelessReady',
+    label: 'properties.tubelessReady.label',
+    group: 'rims',
+    translatable: true,
+    accessor: (w) => w.other_specs?.tubeless_ready,
+    filter: {
+      type: 'triState',
+      labels: [
+        'filters.tubelessReady.all',
+        'filters.tubelessReady.true',
+        'filters.tubelessReady.false',
+      ],
+    },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'internalWidth',
+    label: 'properties.internalWidth.label',
+    group: 'rims',
+    translatable: false,
+    unit: ' mm',
+    accessor: (w) => w.other_specs?.internal_width_mm,
+    filter: { type: 'range' },
+    sorts: [
+      { id: 'internalWidth_asc', label: 'sorts.internalWidth_asc', direction: 'asc' },
+      { id: 'internalWidth_desc', label: 'sorts.internalWidth_desc', direction: 'desc' },
+    ],
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+    },
+  },
+
+  {
+    id: 'axleFront',
+    label: 'properties.axleFront.label',
+    group: 'subs',
+    translatable: false,
+    accessor: (w) => w.other_specs?.axle_front_mm,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'axleRear',
+    label: 'properties.axleRear.label',
+    group: 'subs',
+    translatable: false,
+    accessor: (w) => w.other_specs?.axle_rear_mm,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'freehubOptions',
+    label: 'properties.freehubOptions.label',
+    group: 'subs',
+    translatable: false,
+    accessor: (w) => w.other_specs?.freehub_options,
+    filter: { type: 'multiSelectFlat' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+      renderCell: (w) => {
+        const arr = w.other_specs?.freehub_options;
+        return Array.isArray(arr) && arr.length > 0 ? arr.join(' / ') : null;
+      },
+    },
+  },
+
+  {
+    id: 'maxSystemWeight',
+    label: 'properties.maxSystemWeight.label',
+    group: 'general',
+    translatable: false,
+    unit: ' kg',
+    accessor: (w) => w.other_specs?.max_system_weight_kg,
+    filter: { type: 'range' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+    },
+  },
+
+  {
+    id: 'wheelsetCategory',
+    label: 'properties.wheelsetCategory.label',
+    group: 'general',
+    translatable: true,
+    accessor: (w) => w.other_specs?.wheelset_category,
+    filter: { type: 'multiSelect' },
+    column: {
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'discStandard',
+    label: 'properties.discStandard.label',
+    group: 'subs',
+    translatable: false,
+    accessor: (w) => w.other_specs?.disc_standard,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
     },
   },
 

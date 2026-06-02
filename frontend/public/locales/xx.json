@@ -155,7 +155,16 @@
     "spokes": { "label": "XX" },
     "spokesBrand": { "label": "XX" },
     "spokesModel": { "label": "XX" },
-    "spokeMaterial": { "label": "XX" }
+    "spokeMaterial": { "label": "XX" },
+    "brakeType": { "label": "XX" },
+    "tubelessReady": { "label": "XX" },
+    "internalWidth": { "label": "XX" },
+    "axleFront": { "label": "XX" },
+    "axleRear": { "label": "XX" },
+    "freehubOptions": { "label": "XX" },
+    "maxSystemWeight": { "label": "XX" },
+    "wheelsetCategory": { "label": "XX" },
+    "discStandard": { "label": "XX" }
   },
   "sorts": {
     "name": "XX",
@@ -166,13 +175,20 @@
     "depth_asc": "XX",
     "depth_desc": "XX",
     "rimWidth_asc": "XX",
-    "rimWidth_desc": "XX"
+    "rimWidth_desc": "XX",
+    "internalWidth_asc": "XX",
+    "internalWidth_desc": "XX"
   },
   "filters": {
     "hookless": {
       "all": "XX",
       "hookless": "XX",
       "hooked": "XX"
+    },
+    "tubelessReady": {
+      "all": "XX",
+      "true": "XX",
+      "false": "XX"
     }
   },
   "rimMaterial": {
@@ -186,5 +202,21 @@
   "hookless": {
     "true": "XX",
     "false": "XX"
+  },
+  "brakeType": {
+    "disc": "XX",
+    "rim": "XX",
+    "track": "XX"
+  },
+  "tubelessReady": {
+    "true": "XX",
+    "false": "XX"
+  },
+  "wheelsetCategory": {
+    "all-round": "XX",
+    "aero": "XX",
+    "climbing": "XX",
+    "endurance": "XX",
+    "all-road": "XX"
   }
 }

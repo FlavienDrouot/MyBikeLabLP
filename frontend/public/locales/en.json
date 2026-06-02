@@ -170,7 +170,16 @@
     "spokes": { "label": "Spokes" },
     "spokesBrand": { "label": "Spokes brand" },
     "spokesModel": { "label": "Spokes model" },
-    "spokeMaterial": { "label": "Spoke material" }
+    "spokeMaterial": { "label": "Spoke material" },
+    "brakeType": { "label": "Brake type" },
+    "tubelessReady": { "label": "Tubeless ready" },
+    "internalWidth": { "label": "Internal width" },
+    "axleFront": { "label": "Front axle" },
+    "axleRear": { "label": "Rear axle" },
+    "freehubOptions": { "label": "Freehub" },
+    "maxSystemWeight": { "label": "Max system weight" },
+    "wheelsetCategory": { "label": "Category" },
+    "discStandard": { "label": "Disc standard" }
   },
   "sorts": {
     "name": "Name (A → Z)",
@@ -181,13 +190,20 @@
     "depth_asc": "Depth (shallow → deep)",
     "depth_desc": "Depth (deep → shallow)",
     "rimWidth_asc": "Rim width (narrow → wide)",
-    "rimWidth_desc": "Rim width (wide → narrow)"
+    "rimWidth_desc": "Rim width (wide → narrow)",
+    "internalWidth_asc": "Internal width (narrow → wide)",
+    "internalWidth_desc": "Internal width (wide → narrow)"
   },
   "filters": {
     "hookless": {
       "all": "All",
       "hookless": "Hookless",
       "hooked": "Hooked"
+    },
+    "tubelessReady": {
+      "all": "All",
+      "true": "Tubeless",
+      "false": "Not tubeless"
     }
   },
   "rimMaterial": {
@@ -201,5 +217,21 @@
   "hookless": {
     "true": "Hookless",
     "false": "Hooked"
+  },
+  "brakeType": {
+    "disc": "Disc",
+    "rim": "Rim",
+    "track": "Track"
+  },
+  "tubelessReady": {
+    "true": "Tubeless",
+    "false": "Not tubeless"
+  },
+  "wheelsetCategory": {
+    "all-round": "All-round",
+    "aero": "Aero",
+    "climbing": "Climbing",
+    "endurance": "Endurance",
+    "all-road": "All-road"
   }
 }

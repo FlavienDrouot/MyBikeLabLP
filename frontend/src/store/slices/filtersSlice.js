@@ -38,6 +38,9 @@ const buildInitialFilters = () => {
       case 'multiSelect':
         value = [];
         break;
+      case 'multiSelectFlat':
+        value = [];
+        break;
       case 'triState':
         value = null;
         break;
