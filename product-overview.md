@@ -109,6 +109,8 @@ Three sequential phases addressing the cold start problem (small catalog → low
 
 Scrape public specs and prices from brand websites (Roval, Zipp, DT Swiss, Fulcrum, Shimano, Mavic…) and major retailers (Alltricks, Probikeshop, Canyon, Wiggle). Target: ~150–200 wheels with real specs, current prices, and actual product images.
 
+> **Workflow:** See [`workflows/datascraping/README.md`](../workflows/datascraping/README.md) for the full pipeline (scraping prompt → JSON → frontend JS), curation rules, transformation rules, and per-brand progress tracker.
+
 > **Note — SEO:** Without organic traffic, affiliate clicks will not come on their own. After Phase A, improving SEO (structured data, page titles, wheel-specific landing pages) is a prerequisite for Phase B to generate meaningful results.
 
 > **Note — Architecture:** Scaling from ~15 to ~200 wheels requires a decision on data management. The current inline `wheelsData.js` approach may need to migrate to an external JSON file or a lightweight backend before scraping begins.

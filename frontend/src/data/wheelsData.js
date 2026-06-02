@@ -1,8 +1,18 @@
-// Generic wheel dataset for the MVP comparator.
-// Future: replace with API thunk fetching from backend.
 import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
+import { mavicWheels } from './wheelsData_mavic';
+import { rovalWheels } from './wheelsData_roval';
+import { zippWheels } from './wheelsData_zipp';
+import { enveWheels } from './wheelsData_enve';
 
 export const wheelsData = [
+  ...mavicWheels,
+  ...rovalWheels,
+  ...zippWheels,
+  ...enveWheels,
+];
+
+// Legacy placeholder data kept below for reference during migration — remove once all brands are scraped.
+const _unused = [
   {
     id: 1,
     model: 'Alpinist CLX II',

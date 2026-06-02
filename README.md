@@ -17,6 +17,7 @@ git -C "MyBikeLab" <commande>
 |---|---|---|
 | `product-overview.md` | Functional product documentation — purpose, users, features, roadmap | `product-overview.md` |
 | `frontend/` | Application React (source, config, build) | `frontend/README.md` |
+| `scripts/` | Data ingestion scripts — affiliate and product feeds (gitignored) | `scripts/README.md` |
 | `evolutions/` | Specs d'évolution (planifiées et archivées) | `evolutions/README.md` |
 | `.github/workflows/deploy.yml` | Pipeline CI/CD — déploiement GitHub Pages | — |
 

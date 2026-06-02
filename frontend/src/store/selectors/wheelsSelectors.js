@@ -14,7 +14,7 @@ export { minPrice };
 // a case in `buildInitialFilters` on the slice side.
 const matchers = {
   range: (value, filter) =>
-    value >= filter.value.min && value <= filter.value.max,
+    !Number.isFinite(value) || (value >= filter.value.min && value <= filter.value.max),
   multiSelect: (value, filter) =>
     filter.value.length === 0 || filter.value.includes(value),
   triState: (value, filter) =>
