@@ -36,7 +36,10 @@ import { HookBadge, TubelessBadge } from '../components/MiniComparator/badges';
  */
 
 // Exported helper because reused in multiple entries (price, price column).
-export const minPrice = (wheel) => Math.min(...wheel.prices.map((p) => p.price_eur));
+export const minPrice = (wheel) => {
+  const valid = wheel.prices.map((p) => p.price_eur).filter(Number.isFinite);
+  return valid.length > 0 ? Math.min(...valid) : null;
+};
 
 const DIAMETER_LABEL_MAP = {
   700: '700C',
