@@ -206,26 +206,15 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
-    id: 'axleFront',
-    label: 'properties.axleFront.label',
+    id: 'axle',
+    label: 'properties.axle.label',
     group: 'subs',
     translatable: false,
-    accessor: (w) => w.hub?.axle_front_mm,
-    filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+    accessor: (w) => {
+      const f = w.hub?.axle_front_mm ?? '—';
+      const r = w.hub?.axle_rear_mm ?? '—';
+      return `${f} / ${r}`;
     },
-  },
-
-  {
-    id: 'axleRear',
-    label: 'properties.axleRear.label',
-    group: 'subs',
-    translatable: false,
-    accessor: (w) => w.hub?.axle_rear_mm,
-    filter: { type: 'multiSelect' },
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
