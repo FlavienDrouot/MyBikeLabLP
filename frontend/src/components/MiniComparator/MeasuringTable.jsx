@@ -23,7 +23,7 @@ const MEASURING_STYLE = {
 };
 
 const MeasuringTable = ({ items, cols, onMeasure }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const tableRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -53,7 +53,7 @@ const MeasuringTable = ({ items, cols, onMeasure }) => {
     return () => {
       cancelled = true;
     };
-  }, [items, cols, onMeasure]);
+  }, [items, cols, onMeasure, i18n.language]);
 
   return (
     <table ref={tableRef} aria-hidden="true" className="w-min text-sm" style={MEASURING_STYLE}>
