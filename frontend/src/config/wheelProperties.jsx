@@ -379,13 +379,13 @@ export const WHEEL_PROPERTIES = [
     accessor: (w) => `${w.hub.brand} ${w.hub.model}`,
     column: {
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 font-medium text-ink-11',
+      cellClassName: 'px-4 py-3 font-medium text-ink-11 max-w-[160px] overflow-hidden',
       renderCell: (w) => (
-        <>
+        <div>
           <span className="text-ink-500 font-normal text-xs">{w.hub.brand}</span>
           <br />
-          {w.hub.model}
-        </>
+          <span className="block truncate" title={w.hub.model}>{w.hub.model}</span>
+        </div>
       ),
     },
   },
@@ -419,13 +419,13 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 font-medium text-ink-11',
+      cellClassName: 'px-4 py-3 font-medium text-ink-11 max-w-[160px] overflow-hidden',
       renderCell: (w) => (
-        <>
+        <div>
           <span className="text-ink-500 font-normal text-xs">{w.spokes.brand}</span>
           <br />
-          {w.spokes.model}
-        </>
+          <span className="block truncate" title={w.spokes.model}>{w.spokes.model}</span>
+        </div>
       ),
     },
   },
