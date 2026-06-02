@@ -154,7 +154,7 @@ export const WHEEL_PROPERTIES = [
     label: 'properties.brakeType.label',
     group: 'general',
     translatable: true,
-    accessor: (w) => w.other_specs?.brake_type,
+    accessor: (w) => w.brake_type,
     filter: { type: 'multiSelect' },
     column: {
       headClassName: 'px-4 py-3 font-semibold',
@@ -167,7 +167,7 @@ export const WHEEL_PROPERTIES = [
     label: 'properties.tubelessReady.label',
     group: 'rims',
     translatable: true,
-    accessor: (w) => w.other_specs?.tubeless_ready,
+    accessor: (w) => w.rim?.tubeless_ready,
     filter: {
       type: 'triState',
       labels: [
@@ -189,7 +189,7 @@ export const WHEEL_PROPERTIES = [
     group: 'rims',
     translatable: false,
     unit: ' mm',
-    accessor: (w) => w.other_specs?.internal_width_mm,
+    accessor: (w) => w.rim?.internalWidth_mm,
     filter: { type: 'range' },
     sorts: [
       { id: 'internalWidth_asc', label: 'sorts.internalWidth_asc', direction: 'asc' },
@@ -207,7 +207,7 @@ export const WHEEL_PROPERTIES = [
     label: 'properties.axleFront.label',
     group: 'subs',
     translatable: false,
-    accessor: (w) => w.other_specs?.axle_front_mm,
+    accessor: (w) => w.hub?.axle_front_mm,
     filter: { type: 'multiSelect' },
     column: {
       defaultVisible: false,
@@ -221,7 +221,7 @@ export const WHEEL_PROPERTIES = [
     label: 'properties.axleRear.label',
     group: 'subs',
     translatable: false,
-    accessor: (w) => w.other_specs?.axle_rear_mm,
+    accessor: (w) => w.hub?.axle_rear_mm,
     filter: { type: 'multiSelect' },
     column: {
       defaultVisible: false,
@@ -235,14 +235,14 @@ export const WHEEL_PROPERTIES = [
     label: 'properties.freehubOptions.label',
     group: 'subs',
     translatable: false,
-    accessor: (w) => w.other_specs?.freehub_options,
+    accessor: (w) => w.hub?.freehub_options,
     filter: { type: 'multiSelectFlat' },
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       cellClassName: 'px-4 py-3 text-ink-11',
       renderCell: (w) => {
-        const arr = w.other_specs?.freehub_options;
+        const arr = w.hub?.freehub_options;
         return Array.isArray(arr) && arr.length > 0 ? arr.join(' / ') : null;
       },
     },
@@ -254,7 +254,7 @@ export const WHEEL_PROPERTIES = [
     group: 'general',
     translatable: false,
     unit: ' kg',
-    accessor: (w) => w.other_specs?.max_system_weight_kg,
+    accessor: (w) => w.max_system_weight_kg,
     filter: { type: 'range' },
     column: {
       defaultVisible: false,
@@ -268,7 +268,7 @@ export const WHEEL_PROPERTIES = [
     label: 'properties.wheelsetCategory.label',
     group: 'general',
     translatable: true,
-    accessor: (w) => w.other_specs?.wheelset_category,
+    accessor: (w) => w.wheelset_category,
     filter: { type: 'multiSelect' },
     column: {
       headClassName: 'px-4 py-3 font-semibold',
@@ -281,7 +281,7 @@ export const WHEEL_PROPERTIES = [
     label: 'properties.discStandard.label',
     group: 'subs',
     translatable: false,
-    accessor: (w) => w.other_specs?.disc_standard,
+    accessor: (w) => w.hub?.disc_standard,
     filter: { type: 'multiSelect' },
     column: {
       defaultVisible: false,

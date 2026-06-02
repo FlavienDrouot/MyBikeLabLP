@@ -6,6 +6,8 @@ React application for bike wheel comparison. Frontend-only MVP.
 
 ## Git Commands
 
+**Repo location:** `C:\Users\Flavien\Google Drive\VisualStudioCode\Claude\MyBikeLab\`
+
 Working directory is `Claude\` — run git from the project root with:
 ```
 git -C "MyBikeLab" <commande>
