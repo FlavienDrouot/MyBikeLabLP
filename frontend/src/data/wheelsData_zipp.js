@@ -10,7 +10,7 @@ export const zippWheels = [
     max_system_weight_kg: 115,
     rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23 },
     spokes: { model: 'Hyperlite', brand: 'Alpina', material: 'stainless_steel' },
-    hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1700, url: 'https://www.sram.com/en/zipp/models/wh-202-nsw-a1' }],
     images: [
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-f-12x100-dgry-a1-f-driveside.png',
@@ -52,7 +52,7 @@ export const zippWheels = [
     max_system_weight_kg: 114,
     rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25 },
     spokes: { model: null, brand: null, material: null },
-    hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 970, url: 'https://www.sram.com/en/zipp/models/wh-303-ftld-a1' }],
     images: [],
     affiliateLinks: {
@@ -87,7 +87,7 @@ export const zippWheels = [
     max_system_weight_kg: 114,
     rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: 27, internalWidth_mm: null },
     spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'stainless_steel' },
-    hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1329, url: 'https://www.sram.com/en/zipp/models/wh-303-ftud-a1' }],
     images: [
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-firecrest-tu-db-a1/rearv1s.png',
@@ -125,7 +125,7 @@ export const zippWheels = [
     max_system_weight_kg: 130,
     rim: { material: 'carbon', hookless: true, depth_mm: 45, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23 },
     spokes: { model: null, brand: null, material: null },
-    hub: { model: '176D / 76D', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: '176D / 76D', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 581, url: 'https://www.sram.com/en/zipp/models/wh-303-stld-a1' }],
     images: [
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-s-tl-disc-brake-a1/rears.png',
@@ -164,7 +164,7 @@ export const zippWheels = [
     max_system_weight_kg: 120,
     rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 25 },
     spokes: { model: null, brand: null, material: null },
-    hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 900, url: 'https://www.sram.com/en/zipp/models/wh-303-sw-a1' }],
     images: [],
     affiliateLinks: {
@@ -202,7 +202,7 @@ export const zippWheels = [
     max_system_weight_kg: 114,
     rim: { material: 'carbon', hookless: true, depth_mm: 45, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25 },
     spokes: { model: null, brand: null, material: null },
-    hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1688, url: 'https://www.sram.com/en/zipp/models/wh-353-ntld-a1' }],
     images: [],
     affiliateLinks: {
@@ -237,7 +237,7 @@ export const zippWheels = [
     wheelset_category: 'all-round',
     rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25 },
     spokes: { model: null, brand: null, material: null },
-    hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1750, url: 'https://www.sram.com/en/zipp/models/wh-353-nsw-b1' }],
     images: [],
     affiliateLinks: {
@@ -276,7 +276,7 @@ export const zippWheels = [
     max_system_weight_kg: 115,
     rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23 },
     spokes: { model: null, brand: null, material: null },
-    hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 923, url: 'https://www.sram.com/en/zipp/models/wh-404-ftld-b1' }],
     images: [],
     affiliateLinks: {
@@ -310,7 +310,7 @@ export const zippWheels = [
     max_system_weight_kg: 114,
     rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23 },
     spokes: { model: null, brand: null, material: null },
-    hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1688, url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-b1' }],
     images: [
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tl-dbcl-700f-12x100-std-b1-c-side-s.png',
@@ -355,7 +355,7 @@ export const zippWheels = [
     max_system_weight_kg: 115,
     rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23 },
     spokes: { model: null, brand: null, material: null },
-    hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1700, url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-c1' }],
     images: [],
     affiliateLinks: {
@@ -394,7 +394,7 @@ export const zippWheels = [
     max_system_weight_kg: 115,
     rim: { material: 'carbon', hookless: true, depth_mm: 80, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23 },
     spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'stainless_steel' },
-    hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
+    hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1225, url: 'https://www.sram.com/en/zipp/models/wh-808-ftld-b1' }],
     images: [],
     affiliateLinks: {
@@ -431,7 +431,7 @@ export const zippWheels = [
     max_system_weight_kg: 114,
     rim: { material: 'carbon', hookless: true, depth_mm: 85, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23 },
     spokes: { model: null, brand: null, material: null },
-    hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1775, url: 'https://www.sram.com/en/zipp/models/wh-858-ntld-c1' }],
     images: [],
     affiliateLinks: {
@@ -472,7 +472,7 @@ export const zippWheels = [
     max_system_weight_kg: 115,
     rim: { material: 'carbon', hookless: true, depth_mm: 85, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23 },
     spokes: { model: null, brand: null, material: null },
-    hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'SRAM/Shimano Road'], disc_standard: 'Center Lock' },
+    hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1700, url: 'https://www.sram.com/en/zipp/models/wh-858-ntld-d1' }],
     images: [],
     affiliateLinks: {

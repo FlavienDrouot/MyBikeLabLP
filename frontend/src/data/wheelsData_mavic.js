@@ -183,7 +183,7 @@ export const mavicWheels = [
     max_system_weight_kg: 120,
     rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23 },
     spokes: { model: '', brand: 'Mavic', material: 'stainless_steel' },
-    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano HG Light', 'Shimano MS', 'Campagnolo N3W', 'Campagnolo ED'], disc_standard: 'Center Lock' },
+    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo N3W', 'Campagnolo ED'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1299, url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-45-disc-23mm-rr2610' }],
     images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P00143806_0.png'],
     affiliateLinks: {
@@ -256,7 +256,7 @@ export const mavicWheels = [
     max_system_weight_kg: 120,
     rim: { material: 'carbon', hookless: false, depth_mm: 40, externalWidth_mm: 26, tubeless_ready: true, internalWidth_mm: 19 },
     spokes: { model: '', brand: 'Mavic', material: 'stainless_steel' },
-    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'Campagnolo', 'SRAM XD', 'Shimano MS'] },
+    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'Campagnolo ED', 'SRAM XD', 'Shimano Micro Spline'] },
     prices: [{ price_eur: 1299, url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-40-rr1225' }],
     images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13271_0.png'],
     affiliateLinks: {
@@ -293,7 +293,7 @@ export const mavicWheels = [
     max_system_weight_kg: 120,
     rim: { material: 'carbon', hookless: null, depth_mm: 42, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: '', brand: 'Mavic', material: 'stainless_steel' },
-    hub: { model: '', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano HG Light', 'Shimano MS', 'Campagnolo N3W', 'Campagnolo ED'], disc_standard: 'Center Lock' },
+    hub: { model: '', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo N3W', 'Campagnolo ED'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 999, url: 'https://www.mavic.com/fr-fr/p/cosmic-s-42-disc-rr2402' }],
     images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000790_0.png'],
     affiliateLinks: {
@@ -324,7 +324,7 @@ export const mavicWheels = [
     max_system_weight_kg: 120,
     rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19 },
     spokes: { model: '', brand: 'Mavic', material: 'stainless_steel' },
-    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano HG Light', 'Shimano MS', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
+    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 699, url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-disc-heritage-rr2603' }],
     images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001259_0.png'],
     affiliateLinks: {
@@ -397,7 +397,7 @@ export const mavicWheels = [
     max_system_weight_kg: 120,
     rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19 },
     spokes: { model: '', brand: 'Mavic', material: 'stainless_steel' },
-    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano HG Light', 'Shimano MS', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
+    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 499, url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-disc-rr1222' }],
     images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13261_0.png'],
     affiliateLinks: {
@@ -436,7 +436,7 @@ export const mavicWheels = [
     max_system_weight_kg: 120,
     rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19 },
     spokes: { model: '', brand: 'Mavic', material: 'steel' },
-    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano HG Light', 'Shimano MS', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
+    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 429, url: 'https://www.mavic.com/fr-fr/p/ksyrium-30-disc-rr2403' }],
     images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000795_0.png'],
     affiliateLinks: {
@@ -510,7 +510,7 @@ export const mavicWheels = [
     max_system_weight_kg: 120,
     rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19 },
     spokes: { model: '', brand: 'Mavic', material: 'stainless_steel' },
-    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano MS', 'Campagnolo ED', 'Campagnolo N3W'] },
+    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'] },
     prices: [{ price_eur: 699, url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-heritage-rr2604' }],
     images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001256_0.png'],
     affiliateLinks: {
@@ -549,7 +549,7 @@ export const mavicWheels = [
     max_system_weight_kg: 120,
     rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19 },
     spokes: { model: '', brand: 'Mavic', material: 'stainless_steel' },
-    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano HG Light', 'Shimano MS', 'Campagnolo ED', 'Campagnolo N3W'] },
+    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'] },
     prices: [{ price_eur: 699, url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-rr1223' }],
     images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13291_0.png'],
     affiliateLinks: {
@@ -588,7 +588,7 @@ export const mavicWheels = [
     max_system_weight_kg: 120,
     rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19 },
     spokes: { model: '', brand: 'Mavic', material: 'steel' },
-    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano HG Light', 'Shimano MS', 'Campagnolo ED', 'Campagnolo N3W'] },
+    hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'] },
     prices: [{ price_eur: 499, url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-rr1221' }],
     images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13251_0.png'],
     affiliateLinks: {

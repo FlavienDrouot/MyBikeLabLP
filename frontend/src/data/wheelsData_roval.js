@@ -10,7 +10,7 @@ export const rovalWheels = [
     max_system_weight_kg: 125,
     rim: { material: 'carbon', hookless: false, depth_mm: 48, externalWidth_mm: 31.3, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite' },
-    hub: { model: 'Low Flange Road Hub', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XD-R', 'Shimano HG 11/12-speed'], disc_standard: 'Center Lock' },
+    hub: { model: 'Low Flange Road Hub', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 3499, url: 'https://www.specialized.com/us/en/roval-rapide-clx-iii/p/1000256237' }],
     images: [],
     affiliateLinks: {
@@ -54,7 +54,7 @@ export const rovalWheels = [
     max_system_weight_kg: 125,
     rim: { material: 'carbon', hookless: false, depth_mm: 58, externalWidth_mm: 34.4, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite' },
-    hub: { model: 'Low Flange Road Hub', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XD-R', 'Shimano HG 11/12-speed'], disc_standard: 'Center Lock' },
+    hub: { model: 'Low Flange Road Hub', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-rapide-sprint-clx/p/1000218332' }],
     images: [],
     affiliateLinks: {
@@ -98,7 +98,7 @@ export const rovalWheels = [
     max_system_weight_kg: 125,
     rim: { material: 'carbon', hookless: false, depth_mm: 60, externalWidth_mm: 30.7, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: 'Aerolite T-head', brand: 'DT Swiss', material: 'stainless_steel' },
-    hub: { model: 'AFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG 11-speed'], disc_standard: 'Center Lock' },
+    hub: { model: 'AFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440' }],
     images: [],
     affiliateLinks: {
@@ -136,7 +136,7 @@ export const rovalWheels = [
     wheelset_category: 'aero',
     rim: { material: 'carbon', hookless: false, depth_mm: 48, externalWidth_mm: 31.3, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: 'Competition Race Straight Pull', brand: 'DT Swiss', material: 'stainless_steel' },
-    hub: { model: '350 EXP', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG 11-speed'], disc_standard: 'Center Lock' },
+    hub: { model: '350 EXP', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/c/wheels' }],
     images: [],
     affiliateLinks: {
@@ -174,7 +174,7 @@ export const rovalWheels = [
     max_system_weight_kg: 125,
     rim: { material: 'carbon', hookless: false, depth_mm: 60, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: 'Competition Race Straightpull', brand: 'DT Swiss', material: 'stainless_steel' },
-    hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG 11-speed'], disc_standard: 'Center Lock' },
+    hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214' }],
     images: [],
     affiliateLinks: {
@@ -213,7 +213,7 @@ export const rovalWheels = [
     max_system_weight_kg: 125,
     rim: { material: 'carbon', hookless: false, depth_mm: 38, externalWidth_mm: 26.6, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: 'Competition Race J-Bend', brand: 'DT Swiss', material: 'stainless_steel' },
-    hub: { model: '370 Classic Center Lock (Ratchet LN 18T)', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG 11-speed'], disc_standard: 'Center Lock' },
+    hub: { model: '370 Classic Center Lock (Ratchet LN 18T)', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-rapide-c-38/p/205534' }],
     images: [
       'https://images.excelsports.com/public/large/119322-1.jpg',
@@ -252,7 +252,7 @@ export const rovalWheels = [
     max_system_weight_kg: 125,
     rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 26.5, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite' },
-    hub: { model: 'Low Flange Road Hub (DT Swiss Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XD-R', 'Shimano HG 11/12-speed'], disc_standard: 'Center Lock' },
+    hub: { model: 'Low Flange Road Hub (DT Swiss Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320' }],
     images: [],
     affiliateLinks: {
@@ -290,7 +290,7 @@ export const rovalWheels = [
     max_system_weight_kg: 125,
     rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: 'Aerolite T-head', brand: 'DT Swiss', material: 'stainless_steel' },
-    hub: { model: 'LFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG 11-speed'], disc_standard: 'Center Lock' },
+    hub: { model: 'LFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389' }],
     images: [],
     affiliateLinks: {
@@ -325,7 +325,7 @@ export const rovalWheels = [
     max_system_weight_kg: 125,
     rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: 'Competition Race Straightpull', brand: 'DT Swiss', material: 'stainless_steel' },
-    hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG 11-speed'], disc_standard: 'Center Lock' },
+    hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-alpinist-cl-ii/p/205468' }],
     images: [],
     affiliateLinks: {
