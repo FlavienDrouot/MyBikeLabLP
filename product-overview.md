@@ -65,7 +65,7 @@ The comparator lets users browse, filter, sort, and compare road bike wheels sid
 | Rim material | Multi-select (Carbon / Aluminum) |
 | Hookless | Yes / No / All |
 | Rim depth | Range (20–80 mm) |
-| Rim width | Range (20–40 mm) |
+| External width | Range (20–40 mm) |
 | Hub brand | Multi-select |
 | Hub model | Multi-select |
 | Spokes brand | Multi-select |
@@ -74,7 +74,7 @@ The comparator lets users browse, filter, sort, and compare road bike wheels sid
 
 **Displayed columns (default visible):** Model/Brand, Weight, Price, Rim material, Hookless, Rim depth, Hub
 
-**Displayed columns (optional):** Diameter, Rim width, Spokes, Spoke material
+**Displayed columns (optional):** Diameter, External width, Spokes, Spoke material
 
 **Dataset:** ~15 road bike wheels from premium brands (Roval, Zipp, DT Swiss, Fulcrum, etc.), with placeholder images and indicative prices.
 

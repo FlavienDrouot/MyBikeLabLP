@@ -55,8 +55,8 @@ describe('WHEEL_PROPERTIES registry — translatable field', () => {
     expect(hookless?.translatable, 'hookless should be translatable: true').toBe(true);
   });
 
-  it('brand, model, hubBrand, hubModel, spokesBrand, spokesModel, weight, price, diameter, depth, rimWidth are translatable: false', () => {
-    const ids = ['brand', 'model', 'hubBrand', 'hubModel', 'spokesBrand', 'spokesModel', 'weight', 'price', 'diameter', 'depth', 'rimWidth'];
+  it('brand, model, hubBrand, hubModel, spokesBrand, spokesModel, weight, price, diameter, depth, externalWidth are translatable: false', () => {
+    const ids = ['brand', 'model', 'hubBrand', 'hubModel', 'spokesBrand', 'spokesModel', 'weight', 'price', 'diameter', 'depth', 'externalWidth'];
     for (const id of ids) {
       const property = WHEEL_PROPERTIES.find((p) => p.id === id);
       expect(property?.translatable, `"${id}" should be translatable: false`).toBe(false);

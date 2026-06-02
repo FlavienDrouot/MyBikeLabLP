@@ -353,16 +353,16 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
-    id: 'rimWidth',
-    label: 'properties.rimWidth.label',
+    id: 'externalWidth',
+    label: 'properties.externalWidth.label',
     group: 'rims',
     translatable: false,
     unit: ' mm',
     accessor: (w) => w.rim.externalWidth_mm,
     filter: { type: 'range' },
     sorts: [
-      { id: 'rimWidth_asc', label: 'sorts.rimWidth_asc', direction: 'asc' },
-      { id: 'rimWidth_desc', label: 'sorts.rimWidth_desc', direction: 'desc' },
+      { id: 'externalWidth_asc', label: 'sorts.externalWidth_asc', direction: 'asc' },
+      { id: 'externalWidth_desc', label: 'sorts.externalWidth_desc', direction: 'desc' },
     ],
     column: {
       defaultVisible: false,
