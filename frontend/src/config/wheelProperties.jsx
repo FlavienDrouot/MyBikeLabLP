@@ -9,7 +9,7 @@
 // to WHEEL_PROPERTIES — no other files should need modification.
 
 import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
-import { HookBadge } from '../components/MiniComparator/badges';
+import { HookBadge, TubelessBadge } from '../components/MiniComparator/badges';
 
 /**
  * @typedef {Object} WheelProperty
@@ -179,7 +179,8 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3',
+      renderCell: (w) => <TubelessBadge tubeless={w.rim?.tubeless_ready} />,
     },
   },
 

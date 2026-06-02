@@ -62,7 +62,9 @@
   },
   "badges": {
     "hookless": "Hookless",
-    "hooked": "Hooked"
+    "hooked": "Hooked",
+    "tubeless": "Tubeless",
+    "clincher": "Clincher"
   },
   "roadmap": {
     "sectionIndex": "ROADMAP",

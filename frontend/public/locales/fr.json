@@ -62,7 +62,9 @@
   },
   "badges": {
     "hookless": "Hookless",
-    "hooked": "Avec crochet"
+    "hooked": "Avec crochet",
+    "tubeless": "Tubeless",
+    "clincher": "Chambre à air"
   },
   "roadmap": {
     "sectionIndex": "ROADMAP",
