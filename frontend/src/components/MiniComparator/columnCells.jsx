@@ -11,7 +11,19 @@ export const renderCellFor = (property, t) => {
     return (w) => property.column.renderCell(w, safeT);
   }
   if (property.translatable && t) {
-    return (w) => t(property.id + '.' + property.accessor(w));
+    return (w) => {
+      const value = property.accessor(w);
+      // Missing/empty value → localized fallback. Note: boolean false and
+      // numeric 0 are real values and must keep resolving to their own keys.
+      if (value === undefined || value === null || value === '') {
+        return t('common.notAvailable');
+      }
+      // Present value: resolve its key, falling back to the localized label
+      // when no translation exists (so a raw dotted key never leaks to the UI).
+      return t(`${property.id}.${value}`, {
+        defaultValue: t('common.notAvailable'),
+      });
+    };
   }
   return (w) => `${property.accessor(w)}${property.unit ?? ''}`;
 };

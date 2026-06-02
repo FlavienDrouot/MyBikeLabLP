@@ -1,4 +1,7 @@
 {
+  "common": {
+    "notAvailable": "Inconnu"
+  },
   "nav": {
     "tool": "Outil",
     "roadmap": "Roadmap",
@@ -212,7 +215,10 @@
   },
   "spokeMaterial": {
     "stainless_steel": "Acier inox",
-    "aluminum": "Aluminium"
+    "aluminum": "Aluminium",
+    "carbon": "Carbone",
+    "carbon_composite": "Composite carbone",
+    "steel": "Acier"
   },
   "hookless": {
     "true": "Hookless",
