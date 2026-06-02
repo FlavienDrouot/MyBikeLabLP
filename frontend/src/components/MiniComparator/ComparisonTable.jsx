@@ -123,7 +123,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
       ) : (
         <div className="comparison-table-scroll overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]" ref={scrollRef}>
           <table
-            className="text-sm bg-paper-0"
+            className="text-sm bg-paper-0 border-separate border-spacing-0"
             style={widthsReady ? { tableLayout: 'fixed', width: totalWidth } : undefined}
           >
             {widthsReady && (
@@ -134,14 +134,14 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                 <col style={{ width: ACTIONS_COL_PX }} />
               </colgroup>
             )}
-            <thead className="bg-paper-2 text-ink-7 sticky top-0 z-10">
+            <thead className="text-ink-7">
               <tr className="text-left">
                 {cols.map((p) => (
-                  <th key={p.id} className="px-4 py-3 text-xs font-medium uppercase tracking-widest text-ink-7">
+                  <th key={p.id} className="px-4 py-3 text-xs font-medium uppercase tracking-widest text-ink-7 sticky top-0 z-10 bg-paper-2">
                     {t(p.label)}
                   </th>
                 ))}
-                <th className="px-4 py-3 w-10" />
+                <th className="px-4 py-3 w-10 sticky top-0 z-10 bg-paper-2" />
               </tr>
             </thead>
             <tbody>
@@ -149,7 +149,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                 <React.Fragment key={w.id}>
                   <tr
                     className="hover:bg-paper-2 cursor-pointer"
-                    style={{ borderBottom: '1px solid var(--rule-faint)', transition: 'background-color var(--duration-quick) var(--ease-standard)' }}
+                    style={{ transition: 'background-color var(--duration-quick) var(--ease-standard)' }}
                     onClick={() => toggleExpanded(w.id)}
                   >
                     {cols.map((p) => {
