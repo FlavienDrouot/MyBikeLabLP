@@ -1,5 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
-
 export const rovalWheels = [
   {
     id: 22,
@@ -11,7 +9,6 @@ export const rovalWheels = [
     spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite' },
     hub: { model: 'Low Flange Road Hub', brand: 'Roval' },
     prices: [{ price_eur: 3499, url: 'https://www.specialized.com/us/en/roval-rapide-clx-iii/p/1000256237' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-clx-iii/p/1000256237', price_eur: 3499 },
@@ -62,7 +59,6 @@ export const rovalWheels = [
     spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite' },
     hub: { model: 'Low Flange Road Hub', brand: 'Roval' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-rapide-sprint-clx/p/1000218332' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-sprint-clx/p/1000218332', price_eur: null },
@@ -113,7 +109,6 @@ export const rovalWheels = [
     spokes: { model: 'Aerolite T-head', brand: 'DT Swiss', material: 'stainless_steel' },
     hub: { model: 'AFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440', price_eur: null },
@@ -159,7 +154,6 @@ export const rovalWheels = [
     spokes: { model: 'Competition Race Straight Pull', brand: 'DT Swiss', material: 'stainless_steel' },
     hub: { model: '350 EXP', brand: 'DT Swiss' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/c/wheels' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.specialized.com/us/en/c/wheels', price_eur: null },
@@ -203,7 +197,6 @@ export const rovalWheels = [
     spokes: { model: 'Competition Race Straightpull', brand: 'DT Swiss', material: 'stainless_steel' },
     hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214', price_eur: null },
@@ -249,7 +242,6 @@ export const rovalWheels = [
     spokes: { model: 'Competition Race J-Bend', brand: 'DT Swiss', material: 'stainless_steel' },
     hub: { model: '370 Classic Center Lock (Ratchet LN 18T)', brand: 'DT Swiss' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-rapide-c-38/p/205534' }],
-    image: wheelPlaceholderUrl,
     images: [
       'https://images.excelsports.com/public/large/119322-1.jpg',
       'https://images.excelsports.com/public/large/119322-2.jpg',
@@ -295,7 +287,6 @@ export const rovalWheels = [
     spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite' },
     hub: { model: 'Low Flange Road Hub (DT Swiss Ratchet EXP 36T)', brand: 'Roval' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320', price_eur: null },
@@ -340,7 +331,6 @@ export const rovalWheels = [
     spokes: { model: 'Aerolite T-head', brand: 'DT Swiss', material: 'stainless_steel' },
     hub: { model: 'LFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389', price_eur: null },
@@ -382,7 +372,6 @@ export const rovalWheels = [
     spokes: { model: 'Competition Race Straightpull', brand: 'DT Swiss', material: 'stainless_steel' },
     hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss' },
     prices: [{ price_eur: null, url: 'https://www.specialized.com/us/en/roval-alpinist-cl-ii/p/205468' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-cl-ii/p/205468', price_eur: null },

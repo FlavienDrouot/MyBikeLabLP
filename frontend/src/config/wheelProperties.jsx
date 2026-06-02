@@ -8,6 +8,7 @@
 // To add a new wheel property (filter + sort + column), simply add an entry
 // to WHEEL_PROPERTIES — no other files should need modification.
 
+import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 import { HookBadge } from '../components/MiniComparator/badges';
 
 /**
@@ -59,12 +60,16 @@ export const WHEEL_PROPERTIES = [
     label: 'properties.image.label',
     group: 'general',
     translatable: false,
-    accessor: (w) => w.image,
+    accessor: (w) => w.images?.[0] ?? wheelPlaceholderUrl,
     column: {
       headClassName: 'px-4 py-3 font-semibold',
       cellClassName: 'px-2 py-2',
       renderCell: (w) => (
-        <img src={w.image} alt={w.model} className="w-16 h-16 object-contain rounded" />
+        <img
+          src={w.images?.[0] ?? wheelPlaceholderUrl}
+          alt={w.model}
+          className="w-16 h-16 object-contain rounded"
+        />
       ),
     },
   },

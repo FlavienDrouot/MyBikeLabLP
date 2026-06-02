@@ -1,5 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
-
 export const enveWheels = [
   {
     id: 44,
@@ -11,7 +9,6 @@ export const enveWheels = [
     spokes: { model: '', brand: '', material: '' },
     hub: { model: 'INNERDRIVE Premium Straight-Pull', brand: 'ENVE' },
     prices: [{ price_eur: null, url: 'https://enve.com/collections/road-wheels/products/ses-2-3' }],
-    image: 'https://enve.com/cdn/shop/files/SES_2.3_front_angle.jpg?v=1705021935',
     images: [
       'https://enve.com/cdn/shop/files/SES_2.3_front_angle.jpg?v=1705021935',
       'https://enve.com/cdn/shop/files/SES_2.3_front_side.jpg?v=1705021935',
@@ -65,7 +62,6 @@ export const enveWheels = [
     spokes: { model: '', brand: '', material: '' },
     hub: { model: 'INNERDRIVE Premium Straight-Pull', brand: 'ENVE' },
     prices: [{ price_eur: null, url: 'https://enve.com/collections/road-wheels/products/ses-3-4' }],
-    image: 'https://enve.com/cdn/shop/files/SES_3.4_front_angle.jpg?v=1774562893',
     images: [
       'https://enve.com/cdn/shop/files/SES_3.4_front_angle.jpg?v=1774562893',
       'https://enve.com/cdn/shop/files/SES_3.4_front_side.jpg?v=1774562893',
@@ -117,7 +113,6 @@ export const enveWheels = [
     spokes: { model: '', brand: '', material: '' },
     hub: { model: 'INNERDRIVE Premium Straight-Pull', brand: 'ENVE' },
     prices: [{ price_eur: null, url: 'https://enve.com/collections/road-wheels/products/ses-4-5' }],
-    image: 'https://enve.com/cdn/shop/files/SES_4.5_front_angle.jpg?v=1774562990',
     images: [
       'https://enve.com/cdn/shop/files/SES_4.5_front_angle.jpg?v=1774562990',
       'https://enve.com/cdn/shop/files/SES_4.5_Front_side.jpg?v=1774562990',
@@ -169,7 +164,6 @@ export const enveWheels = [
     spokes: { model: 'Ultralite Aero R5 (TCX 2/1.5/2)', brand: 'Alpina', material: 'stainless_steel' },
     hub: { model: 'INNERDRIVE PRO Straight-Pull', brand: 'ENVE' },
     prices: [{ price_eur: null, url: 'https://enve.com/collections/road-wheels/products/ses-4-5-pro' }],
-    image: 'https://enve.com/cdn/shop/files/SES_4.5-Pro-Tadej_front_angle_e87bd949-ae81-4324-9380-57b058c3271a.jpg?v=1751547788',
     images: [
       'https://enve.com/cdn/shop/files/SES_4.5-Pro-Tadej_front_angle_e87bd949-ae81-4324-9380-57b058c3271a.jpg?v=1751547788',
       'https://enve.com/cdn/shop/files/ENVE-SES_Pro_45_Tadej_front_side_0afd1202-a278-4366-9af4-6b102b63928d.jpg?v=1751547788',
@@ -229,7 +223,6 @@ export const enveWheels = [
     spokes: { model: '', brand: '', material: '' },
     hub: { model: 'INNERDRIVE Premium Straight-Pull', brand: 'ENVE' },
     prices: [{ price_eur: null, url: 'https://enve.com/collections/road-wheels/products/ses-6-7' }],
-    image: 'https://enve.com/cdn/shop/files/SES_6.7_Front_Side_2_a6bc05aa-3fa6-49dd-b387-9c88765992c7.jpg?v=1774562973',
     images: [
       'https://enve.com/cdn/shop/files/SES_6.7_Front_Side_2_a6bc05aa-3fa6-49dd-b387-9c88765992c7.jpg?v=1774562973',
       'https://enve.com/cdn/shop/files/SES_6.7_front_angle.jpg?v=1774562973',
@@ -284,7 +277,6 @@ export const enveWheels = [
     spokes: { model: 'CX-Ray J-Bend', brand: 'Sapim', material: 'stainless_steel' },
     hub: { model: 'INNERDRIVE Foundation', brand: 'ENVE' },
     prices: [{ price_eur: null, url: 'https://enve.com/products/ar40' }],
-    image: 'https://enve.com/cdn/shop/files/ENVE-AR40-Wheel-Low-Res-White-4455.jpg',
     images: [
       'https://enve.com/cdn/shop/files/ENVE-AR40-Wheel-Low-Res-White-4455.jpg',
       'https://enve.com/cdn/shop/files/ENVE-AR40-Wheel-Low-Res-White-4436.jpg',

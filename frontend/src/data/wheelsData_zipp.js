@@ -1,5 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
-
 export const zippWheels = [
   {
     id: 31,
@@ -11,7 +9,6 @@ export const zippWheels = [
     spokes: { model: 'Hyperlite', brand: 'Alpina', material: 'stainless_steel' },
     hub: { model: 'ZR1 SL', brand: 'Zipp' },
     prices: [{ price_eur: 1700, url: 'https://www.sram.com/en/zipp/models/wh-202-nsw-a1' }],
-    image: 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-f-12x100-dgry-a1-f-driveside.png',
     images: [
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-f-12x100-dgry-a1-f-driveside.png',
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-f-12x100-dgry-a1-c-3q-s.png',
@@ -60,7 +57,6 @@ export const zippWheels = [
     spokes: { model: null, brand: null, material: null },
     hub: { model: 'ZR1', brand: 'Zipp' },
     prices: [{ price_eur: 970, url: 'https://www.sram.com/en/zipp/models/wh-303-ftld-a1' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-303-ftld-a1', price_eur: 970 },
@@ -102,7 +98,6 @@ export const zippWheels = [
     spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'stainless_steel' },
     hub: { model: 'ZR1', brand: 'Zipp' },
     prices: [{ price_eur: 1329, url: 'https://www.sram.com/en/zipp/models/wh-303-ftud-a1' }],
-    image: 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-firecrest-tu-db-a1/rearv1s.png',
     images: [
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-firecrest-tu-db-a1/rearv1s.png',
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-firecrest-tu-db-a1/cfrontblacksides.png',
@@ -146,7 +141,6 @@ export const zippWheels = [
     spokes: { model: null, brand: null, material: null },
     hub: { model: '176D / 76D', brand: 'Zipp' },
     prices: [{ price_eur: 581, url: 'https://www.sram.com/en/zipp/models/wh-303-stld-a1' }],
-    image: 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-s-tl-disc-brake-a1/rears.png',
     images: [
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-s-tl-disc-brake-a1/rears.png',
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-s-tl-disc-brake-a1/cfrontdriveside3qheros.png',
@@ -192,7 +186,6 @@ export const zippWheels = [
     spokes: { model: null, brand: null, material: null },
     hub: { model: 'ZR1', brand: 'Zipp' },
     prices: [{ price_eur: 900, url: 'https://www.sram.com/en/zipp/models/wh-303-sw-a1' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-303-sw-a1', price_eur: 900 },
@@ -237,7 +230,6 @@ export const zippWheels = [
     spokes: { model: null, brand: null, material: null },
     hub: { model: 'Cognition V2', brand: 'Zipp' },
     prices: [{ price_eur: 1688, url: 'https://www.sram.com/en/zipp/models/wh-353-ntld-a1' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-353-ntld-a1', price_eur: 1688 },
@@ -280,7 +272,6 @@ export const zippWheels = [
     spokes: { model: null, brand: null, material: null },
     hub: { model: 'ZR1 SL', brand: 'Zipp' },
     prices: [{ price_eur: 1750, url: 'https://www.sram.com/en/zipp/models/wh-353-nsw-b1' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-353-nsw-b1', price_eur: 1750 },
@@ -325,7 +316,6 @@ export const zippWheels = [
     spokes: { model: null, brand: null, material: null },
     hub: { model: 'ZR1', brand: 'Zipp' },
     prices: [{ price_eur: 923, url: 'https://www.sram.com/en/zipp/models/wh-404-ftld-b1' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-404-ftld-b1', price_eur: 923 },
@@ -366,7 +356,6 @@ export const zippWheels = [
     spokes: { model: null, brand: null, material: null },
     hub: { model: 'Cognition V2', brand: 'Zipp' },
     prices: [{ price_eur: 1688, url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-b1' }],
-    image: 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tl-dbcl-700f-12x100-std-b1-c-side-s.png',
     images: [
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tl-dbcl-700f-12x100-std-b1-c-side-s.png',
       'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tl-dbcl-700f-12x100-std-b1-c-3q-s.png',
@@ -418,7 +407,6 @@ export const zippWheels = [
     spokes: { model: null, brand: null, material: null },
     hub: { model: 'ZR1 SL', brand: 'Zipp' },
     prices: [{ price_eur: 1700, url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-c1' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-c1', price_eur: 1700 },
@@ -464,7 +452,6 @@ export const zippWheels = [
     spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'stainless_steel' },
     hub: { model: 'ZR1', brand: 'Zipp' },
     prices: [{ price_eur: 1225, url: 'https://www.sram.com/en/zipp/models/wh-808-ftld-b1' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-808-ftld-b1', price_eur: 1225 },
@@ -508,7 +495,6 @@ export const zippWheels = [
     spokes: { model: null, brand: null, material: null },
     hub: { model: 'Cognition V2', brand: 'Zipp' },
     prices: [{ price_eur: 1775, url: 'https://www.sram.com/en/zipp/models/wh-858-ntld-c1' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-858-ntld-c1', price_eur: 1775 },
@@ -556,7 +542,6 @@ export const zippWheels = [
     spokes: { model: null, brand: null, material: null },
     hub: { model: 'ZR1 SL', brand: 'Zipp' },
     prices: [{ price_eur: 1700, url: 'https://www.sram.com/en/zipp/models/wh-858-ntld-d1' }],
-    image: wheelPlaceholderUrl,
     images: [],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-858-ntld-d1', price_eur: 1700 },
