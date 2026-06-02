@@ -307,7 +307,12 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
             const count = counts[String(opt)] ?? 0;
             const isActive = filter.value.includes(opt);
             const isMuted = count === 0 && !isActive;
-            const optLabel = property.translatable ? t(`${property.id}.${opt}`) : String(opt);
+            const isAbsent = opt === null || opt === undefined || opt === '';
+            const optLabel = isAbsent
+              ? t('common.notAvailable')
+              : property.translatable
+              ? t(`${property.id}.${opt}`)
+              : String(opt);
             return (
               <li key={String(opt)}>
                 <label className={`flex items-center gap-2 px-3 py-1.5 hover:bg-ink-2/60 cursor-pointer text-sm ${isMuted ? 'text-ink-4' : 'text-ink-11'}`}>
@@ -371,7 +376,12 @@ const MultiSelectFilter = ({ property, filter }) => {
         {options.map((opt) => {
           const count = counts[String(opt)] ?? 0;
           const isActive = filter.value.includes(opt);
-          const optLabel = property.translatable ? t(`${property.id}.${opt}`) : String(opt);
+          const isAbsent = opt === null || opt === undefined || opt === '';
+          const optLabel = isAbsent
+            ? t('common.notAvailable')
+            : property.translatable
+            ? t(`${property.id}.${opt}`)
+            : String(opt);
           return (
             <Pill
               key={String(opt)}
