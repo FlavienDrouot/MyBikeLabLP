@@ -166,7 +166,7 @@
     "internalWidth": { "label": "XX" },
     "axleFront": { "label": "XX" },
     "axleRear": { "label": "XX" },
-    "freehubOptions": { "label": "XX" },
+    "freehubOptions": { "label": "Freehub options", "popupTitle": "XX" },
     "maxSystemWeight": { "label": "XX" },
     "wheelsetCategory": { "label": "XX" },
     "discStandard": { "label": "XX" }

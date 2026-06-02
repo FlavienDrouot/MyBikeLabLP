@@ -8,6 +8,7 @@ import WheelDetailPanel from './WheelDetailPanel';
 import Icon from '../ui/Icon';
 import ColumnSelector from './ColumnSelector';
 import MeasuringTable from './MeasuringTable';
+import FreehubCell from './FreehubCell';
 import { renderCellFor, cellClassFor } from './columnCells';
 
 // Trailing chevron column: an icon (16px) inside px-4 padding (2×16px) — width
@@ -142,11 +143,20 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                     style={{ borderBottom: '1px solid var(--rule-faint)', transition: 'background-color var(--duration-quick) var(--ease-standard)' }}
                     onClick={() => toggleExpanded(w.id)}
                   >
-                    {cols.map((p) => (
-                      <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap overflow-hidden text-ellipsis`}>
-                        {renderCellFor(p, t)(w)}
-                      </td>
-                    ))}
+                    {cols.map((p) => {
+                      if (p.id === 'freehubOptions') {
+                        return (
+                          <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap overflow-hidden text-ellipsis`}>
+                            <FreehubCell wheel={w} t={t} />
+                          </td>
+                        );
+                      }
+                      return (
+                        <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap overflow-hidden text-ellipsis`}>
+                          {renderCellFor(p, t)(w)}
+                        </td>
+                      );
+                    })}
                     <td className="px-4 py-3 text-ink-6">
                       <Icon
                         as={ChevronDown}

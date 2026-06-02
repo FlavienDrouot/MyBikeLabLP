@@ -243,11 +243,10 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
-      renderCell: (w) => {
-        const arr = w.hub?.freehub_options;
-        return Array.isArray(arr) && arr.length > 0 ? arr.join(' / ') : null;
-      },
+      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px]',
+      // renderCell removed: ComparisonTable now uses FreehubCell for this column (EVO-036 TASK-005).
+      // MeasuringTable still uses renderCellFor, which falls back to the default
+      // accessor-based render — sufficient for width measurement only.
     },
   },
 
