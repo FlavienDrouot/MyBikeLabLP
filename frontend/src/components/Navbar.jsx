@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Icon from './ui/Icon';
-import logoWordmark from '../assets/logo-wordmark.svg';
+import LogoMark from './ui/LogoMark';
 
 const LANGUAGES = ['en', 'fr'];
 
@@ -22,8 +22,8 @@ const LanguageToggle = () => {
             aria-pressed={isActive}
             className={`px-2 py-1 rounded-xs text-xs font-semibold uppercase tracking-wide transition-colors ${
               isActive
-                ? 'bg-brass-7 text-paper-0'
-                : 'text-ink-8 hover:text-ink-11'
+                ? 'bg-ink-11 text-paper-0'
+                : 'text-fg-muted hover:text-fg-primary'
             }`}
             style={{
               transition:
@@ -80,11 +80,12 @@ const Navbar = () => {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-40 w-full border-b border-ink-3 bg-paper-1/88 backdrop-blur"
+      className="sticky top-0 z-40 w-full border-b border-border-default bg-paper-1/88 backdrop-blur"
     >
       <div className="container-page flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <img src={logoWordmark} alt="MyBikeLab" className="h-8 w-auto" />
+          <LogoMark size={26} />
+          <span className="text-sm font-semibold text-fg-primary">MyBikeLab</span>
         </a>
         <nav className="hidden md:flex items-center gap-1">
           <a href="#tool" className="btn-ghost">{t('nav.tool')}</a>
@@ -100,7 +101,7 @@ const Navbar = () => {
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
-            className="md:hidden inline-flex items-center justify-center rounded-xs p-2 text-ink-11 hover:text-brass-8 focus-visible:ring-2 focus-visible:ring-brass-8"
+            className="md:hidden inline-flex items-center justify-center rounded-xs p-2 text-fg-primary hover:text-fg-accent focus-visible:ring-2 focus-visible:ring-border-focus"
             style={{ transition: 'color var(--duration-quick) var(--ease-standard)' }}
           >
             {isOpen ? (
@@ -112,7 +113,7 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div id="mobile-menu" className="md:hidden border-t border-ink-3 bg-paper-1">
+        <div id="mobile-menu" className="md:hidden border-t border-border-default bg-bg-elevated">
           <nav className="container-page flex flex-col py-2">
             <a href="#tool" onClick={close} className="btn-ghost justify-start">{t('nav.tool')}</a>
             <a href="#roadmap" onClick={close} className="btn-ghost justify-start">{t('nav.roadmap')}</a>

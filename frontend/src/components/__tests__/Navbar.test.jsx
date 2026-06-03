@@ -7,9 +7,12 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import Navbar from '../Navbar';
 
 describe('Navbar', () => {
-  it('renders logo as an img element (not hardcoded markup)', () => {
+  it('renders the brand mark as an inline SVG with wordmark text', () => {
     const html = renderToStaticMarkup(createElement(Navbar, null));
-    expect(html).toContain('<img');
+    expect(html).toContain('<svg');
+    expect(html).toContain('aria-hidden="true"');
+    expect(html).toContain('MyBikeLab');
+    expect(html).not.toContain('<img');
     expect(html).not.toContain('>M<');
   });
 
