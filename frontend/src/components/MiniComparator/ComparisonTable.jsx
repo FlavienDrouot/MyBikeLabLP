@@ -9,6 +9,7 @@ import Icon from '../ui/Icon';
 import ColumnSelector from './ColumnSelector';
 import MeasuringTable from './MeasuringTable';
 import FreehubCell from './FreehubCell';
+import FilterChips from './FilterChips';
 import { renderCellFor, cellClassFor } from './columnCells';
 
 // Trailing chevron column: an icon (16px) inside px-4 padding (2×16px) — width
@@ -19,6 +20,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   const { t } = useTranslation();
   const wheels = useSelector(selectFilteredWheels);
   const allWheels = useSelector((state) => state.wheels.items);
+  const sortBy = useSelector((s) => s.filters.sortBy);
   const total = allWheels.length;
   const [expandedId, setExpandedId] = useState(null);
   const [panelWidth, setPanelWidth] = useState(0);
@@ -87,11 +89,13 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     ? cols.reduce((sum, p) => sum + getColWidth(p), 0) + ACTIONS_COL_PX
     : undefined;
 
+  const isSortedColumn = (p) => sortBy && sortBy.startsWith(p.id + '_');
+
   const toggleExpanded = (id) =>
     setExpandedId((prev) => (prev === id ? null : id));
 
   return (
-    <div className="card overflow-hidden w-fit max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden snap-start">
+    <div className="bg-paper-0 border border-ink-10 overflow-hidden w-fit max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden snap-start">
       <div className="flex items-center justify-between px-5 py-4">
         <h3 className="text-base font-semibold text-ink-11">
           {t('table.heading')}{' '}
@@ -115,6 +119,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
         </div>
       </div>
       <hr className="rule" />
+      <FilterChips />
 
       {wheels.length === 0 ? (
         <div className="p-10 text-center text-ink-7 text-sm">
@@ -134,21 +139,26 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                 <col style={{ width: ACTIONS_COL_PX }} />
               </colgroup>
             )}
-            <thead className="text-ink-7">
+            <thead className="bg-paper-1 text-ink-7">
               <tr className="text-left">
                 {cols.map((p) => (
-                  <th key={p.id} className="px-4 py-3 text-xs font-medium uppercase tracking-widest text-ink-7 sticky top-0 z-10 bg-paper-2">
+                  <th key={p.id} className={`px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] sticky top-0 z-10 bg-paper-1 border-b border-ink-10 ${
+                    isSortedColumn(p) ? 'text-ink-12' : 'text-ink-7'
+                  }`}>
                     {t(p.label)}
+                    {isSortedColumn(p) && (
+                      <span className="text-brass-8 ml-1" aria-hidden="true">↓</span>
+                    )}
                   </th>
                 ))}
-                <th className="px-4 py-3 w-10 sticky top-0 z-10 bg-paper-2" />
+                <th className="px-4 py-3 w-10 sticky top-0 z-10 bg-paper-1 border-b border-ink-10" />
               </tr>
             </thead>
             <tbody>
               {wheels.map((w) => (
                 <React.Fragment key={w.id}>
                   <tr
-                    className="hover:bg-paper-2 cursor-pointer"
+                    className="hover:bg-brass-1 cursor-pointer"
                     style={{ transition: 'background-color var(--duration-quick) var(--ease-standard)' }}
                     onClick={() => toggleExpanded(w.id)}
                   >

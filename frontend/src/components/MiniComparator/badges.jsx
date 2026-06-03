@@ -8,10 +8,10 @@ export const HookBadge = ({ hookless }) => {
   const { t } = useTranslation();
   return (
     <span
-      className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium ${
+      className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium border ${
         hookless
-          ? 'bg-ink-2 text-ink-8'
-          : 'bg-brass-3 text-brass-10'
+          ? 'bg-transparent border-ink-4 text-ink-9'
+          : 'bg-brass-2 border-brass-6 text-brass-10'
       }`}
     >
       {hookless ? t('badges.hookless') : t('badges.hooked')}
@@ -24,8 +24,10 @@ export const TubelessBadge = ({ tubeless }) => {
   if (tubeless == null) return <span className="text-ink-7 text-xs">{t('common.notAvailable')}</span>;
   return (
     <span
-      className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium ${
-        tubeless ? 'bg-brass-3 text-brass-10' : 'bg-ink-2 text-ink-8'
+      className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium border ${
+        tubeless
+          ? 'bg-brass-2 border-brass-6 text-brass-10'
+          : 'bg-transparent border-ink-4 text-ink-9'
       }`}
     >
       {tubeless ? t('badges.tubeless') : t('badges.clincher')}

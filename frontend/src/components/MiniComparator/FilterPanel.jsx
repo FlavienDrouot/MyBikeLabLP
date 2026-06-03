@@ -36,7 +36,7 @@ const FilterToggle = ({ enabled, onChange, ariaLabel }) => (
     aria-label={ariaLabel}
     onClick={() => onChange(!enabled)}
     className={`flex h-5 w-9 cursor-pointer items-center rounded-full p-0.5 transition-colors ${
-      enabled ? 'bg-brass-7 justify-end' : 'bg-ink-4 justify-start'
+      enabled ? 'bg-ink-12 justify-end' : 'bg-ink-4 justify-start'
     }`}
   >
     <span className="h-4 w-4 rounded-full bg-paper-0 transition-transform" />
@@ -79,7 +79,7 @@ const DualRangeRow = ({
   return (
     <div className="space-y-3">
       <div className="flex items-baseline justify-between text-sm">
-        <span className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-ink-7">
+        <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">
           {onToggleEnabled && (
             <FilterToggle
               enabled={enabled}
@@ -89,7 +89,7 @@ const DualRangeRow = ({
           )}
           {label}
         </span>
-        <span className="text-ink-7 tabular-nums font-mono">
+        <span className="font-mono text-xs text-ink-8 tabular-nums">
           {valueLow}
           {unit} — {valueHigh}
           {unit}
@@ -162,14 +162,14 @@ const DualRangeRow = ({
 const Section = ({ title, defaultOpen = false, children }) => {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="border-t border-ink-3 pt-4">
+    <div className="border-t border-ink-3 pt-3">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         className="flex w-full items-center justify-between text-left"
         aria-expanded={open}
       >
-        <span className="text-xs font-semibold uppercase tracking-widest text-ink-7">{title}</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">{title}</span>
         <Icon
           as={ChevronDown}
           size={16}
@@ -187,10 +187,10 @@ const Pill = ({ active, muted, onClick, children }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`px-3 py-1 rounded-xs text-xs font-medium border transition-colors
+    className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors
       ${active
-        ? 'bg-brass-7 text-ink-12 border-brass-7'
-        : 'bg-paper-0 text-ink-11 border-ink-4 hover:border-brass-8 hover:text-brass-8'
+        ? 'bg-ink-12 text-paper-1 border-ink-12'
+        : 'bg-paper-1 text-ink-9 border-ink-4 hover:border-ink-10 hover:text-ink-12'
       }
       ${muted ? 'opacity-40' : ''}`}
   >
@@ -274,7 +274,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{resolvedLabel}</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">{resolvedLabel}</span>
       </div>
       <div className={filter.enabled ? '' : 'opacity-40 pointer-events-none'}>
         {filter.value.length > 0 && (
@@ -286,10 +286,10 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                   key={String(v)}
                   type="button"
                   onClick={() => toggle(v)}
-                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-brass-7 text-ink-12 hover:bg-brass-8 transition-colors"
+                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-ink-12 text-paper-1 hover:bg-ink-10 transition-colors"
                 >
                   {valLabel}
-                  <span aria-hidden="true" className="text-ink-12/60">×</span>
+                  <span aria-hidden="true" className="text-paper-1/60">×</span>
                 </button>
               );
             })}
@@ -366,7 +366,7 @@ const MultiSelectFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{resolvedLabel}</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">{resolvedLabel}</span>
       </div>
       <div
         className={`flex flex-wrap gap-1.5 ${
@@ -424,7 +424,7 @@ const TriStateFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-xs font-medium uppercase tracking-widest text-ink-7">{resolvedLabel}</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">{resolvedLabel}</span>
       </div>
       <div className={`flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-40 pointer-events-none'}`}>
         <Pill active={filter.value === null} onClick={() => set(null)}>
@@ -478,11 +478,11 @@ const FilterPanel = () => {
 
   return (
     <aside
-      className="card p-5 lg:p-6 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto filter-panel-scroll"
+      className="bg-paper-0 border border-ink-4 p-5 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto filter-panel-scroll"
     >
       {/* Header with reset shortcut */}
-      <div className="flex items-center justify-between">
-        <h3 className="text-base font-semibold text-ink-11">{t('filterPanel.heading')}</h3>
+      <div className="flex items-center justify-between pb-3 border-b border-ink-10">
+        <h3 className="text-sm font-semibold text-ink-12 tracking-[-0.01em]">{t('filterPanel.heading')}</h3>
         <button
           type="button"
           onClick={() => dispatch(resetFilters())}
@@ -494,11 +494,11 @@ const FilterPanel = () => {
 
       {/* Sort — options generated from registry */}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-ink-11">{t('filterPanel.sortBy')}</label>
+        <label className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">{t('filterPanel.sortBy')}</label>
         <select
           value={sortBy ?? ''}
           onChange={(e) => dispatch(setSortBy(e.target.value))}
-          className="w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm"
+          className="w-full rounded-xs border border-ink-4 bg-paper-1 text-ink-11 px-2.5 py-2 text-sm"
         >
           {sorts.map((s) => (
             <option key={s.id} value={s.id}>

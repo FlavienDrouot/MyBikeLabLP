@@ -66,7 +66,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
         <div
           ref={popupRef}
           role="menu"
-          className="fixed z-50 max-h-[80vh] overflow-y-auto rounded-none border border-ink-4 bg-paper-0 shadow-menu p-3 flex flex-col gap-3 sm:flex-row sm:gap-4"
+          className="fixed z-50 max-h-[80vh] overflow-y-auto rounded-none border border-ink-10 bg-paper-0 shadow-menu p-3 flex flex-col gap-3 sm:flex-row sm:gap-4"
           style={popupStyle}
         >
           {COLUMN_GROUPS.map((group) => {
@@ -78,7 +78,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
             if (items.length === 0) return null;
             return (
               <div key={group.id} className="min-w-[9rem]">
-                <div className="text-xs font-semibold uppercase tracking-widest text-ink-7 mb-1.5">
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-7 mb-1.5">
                   {t(group.label)}
                 </div>
                 <ul className="space-y-1">

@@ -37,6 +37,9 @@
     "filtersDrawerLabel": "Filtres",
     "footerNote": "Sources officielles · Liens affiliés bientôt disponibles"
   },
+  "filterChips": {
+    "active": "Actifs"
+  },
   "filterPanel": {
     "heading": "Filtres",
     "reset": "Réinitialiser",
