@@ -21,6 +21,7 @@ git -C "MyBikeLab" <commande>
 | `frontend/` | Application React (source, config, build) | `frontend/README.md` |
 | `scripts/` | Data ingestion scripts — affiliate and product feeds (gitignored) | `scripts/README.md` |
 | `evolutions/` | Specs d'évolution (planifiées et archivées) | `evolutions/README.md` |
+| `design-system/` | Token source of truth, ui_kits, editorial rules — **read before any UI work** | `design-system/README.md` |
 | `.github/workflows/deploy.yml` | Pipeline CI/CD — déploiement GitHub Pages | — |
 
 ## Architecture Summary
@@ -42,6 +43,16 @@ git -C "MyBikeLab" <commande>
 
 ### Data Flow
 User filter → `FilterPanel` dispatches `setFilterValue` → `filtersSlice` → `selectFilteredWheels` recomputes → `ComparisonTable` re-renders
+
+### Design System
+
+All UI work must follow the design system defined in `design-system/`. Before implementing any new component or page surface:
+
+1. Read `design-system/README.md` — visual foundations, editorial hard rules
+2. Read `design-system/IMPLEMENTATION-GUIDE.md` — token usage, component checklist, ui_kit mapping protocol
+3. Check `design-system/ui_kits/<surface>/` for a reference implementation of the target surface
+
+The full migration of the production codebase to the design system is planned as EVO-039 through EVO-043 (see `evolutions/README.md`). Each evolution's `init.md` describes its scope and acceptance criteria.
 
 ### Important Conventions
 - **New wheel property** = one entry in `wheelProperties.jsx` only (no changes elsewhere)

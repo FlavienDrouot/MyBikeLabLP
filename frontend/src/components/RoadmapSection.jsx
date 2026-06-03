@@ -8,7 +8,7 @@ const RoadmapSection = () => {
     <section id="roadmap" className="section bg-paper-1">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="t-section-index">{t('roadmap.sectionIndex')}</p>
+          <p className="t-eyebrow">{t('roadmap.sectionIndex')}</p>
           <h2 className="section-title mt-2">{t('roadmap.title')}</h2>
           <p className="section-subtitle mx-auto">
             {t('roadmap.subtitle')}

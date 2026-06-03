@@ -26,7 +26,7 @@ const MiniComparator = () => {
     <section id="tool" className="section bg-paper-2">
       <div className="container-fluid">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="t-section-index">{t('comparator.sectionIndex')}</p>
+          <p className="t-eyebrow">{t('comparator.sectionIndex')}</p>
           <h2 className="section-title mt-2">
             {t('comparator.title')}
           </h2>

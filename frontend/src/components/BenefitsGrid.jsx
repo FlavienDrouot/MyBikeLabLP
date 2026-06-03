@@ -16,7 +16,7 @@ const BenefitsGrid = () => {
     <section className="section bg-paper-2">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="t-section-index">{t('benefits.sectionIndex')}</p>
+          <p className="t-eyebrow">{t('benefits.sectionIndex')}</p>
           <h2 className="section-title mt-2">{t('benefits.title')}</h2>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
