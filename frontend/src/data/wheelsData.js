@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 import { mavicWheels } from './wheelsData_mavic';
 import { rovalWheels } from './wheelsData_roval';
 import { zippWheels } from './wheelsData_zipp';
