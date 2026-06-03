@@ -10,22 +10,47 @@ import Icon from '../ui/Icon';
 const ColumnSelector = ({ visibility, onToggle }) => {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
-  const containerRef = useRef(null);
+  const [popupStyle, setPopupStyle] = useState({});
+  const buttonRef = useRef(null);
+  const popupRef = useRef(null);
+
+  const computePosition = () => {
+    if (!buttonRef.current) return;
+    const rect = buttonRef.current.getBoundingClientRect();
+    setPopupStyle({
+      top: rect.bottom + 8,
+      right: window.innerWidth - rect.right,
+    });
+  };
 
   useEffect(() => {
     if (!open) return undefined;
+    computePosition();
+
     const handleMouseDown = (e) => {
-      if (containerRef.current && !containerRef.current.contains(e.target)) {
+      if (
+        buttonRef.current && !buttonRef.current.contains(e.target) &&
+        popupRef.current && !popupRef.current.contains(e.target)
+      ) {
         setOpen(false);
       }
     };
+    const handleReposition = () => computePosition();
+
     document.addEventListener('mousedown', handleMouseDown);
-    return () => document.removeEventListener('mousedown', handleMouseDown);
+    window.addEventListener('resize', handleReposition);
+    window.addEventListener('scroll', handleReposition, true);
+    return () => {
+      document.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('resize', handleReposition);
+      window.removeEventListener('scroll', handleReposition, true);
+    };
   }, [open]);
 
   return (
-    <div ref={containerRef} className="relative inline-block">
+    <div className="inline-block">
       <button
+        ref={buttonRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="inline-flex items-center gap-2 rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm font-medium text-ink-11 hover:border-brass-8 hover:text-brass-8"
@@ -39,8 +64,10 @@ const ColumnSelector = ({ visibility, onToggle }) => {
 
       {open && (
         <div
+          ref={popupRef}
           role="menu"
-          className="absolute right-0 z-20 mt-2 w-64 max-w-[calc(100vw-1rem)] rounded-none border border-ink-4 bg-paper-0 shadow-menu p-3"
+          className="fixed z-50 max-h-[80vh] overflow-y-auto rounded-none border border-ink-4 bg-paper-0 shadow-menu p-3 flex flex-col gap-3 sm:flex-row sm:gap-4"
+          style={popupStyle}
         >
           {COLUMN_GROUPS.map((group) => {
             // Optional columns in the group (the `required` ones are always
@@ -50,7 +77,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
             );
             if (items.length === 0) return null;
             return (
-              <div key={group.id} className="mb-3 last:mb-0">
+              <div key={group.id} className="min-w-[9rem]">
                 <div className="text-xs font-semibold uppercase tracking-widest text-ink-7 mb-1.5">
                   {t(group.label)}
                 </div>
