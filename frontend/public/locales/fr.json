@@ -34,7 +34,7 @@
     "subtitle": "Filtrez et triez par marque, poids, profil de jante, prix et bien plus.",
     "filtersButton": "Filtres",
     "filtersDrawerLabel": "Filtres",
-    "footerNote": "Jeu de données d'exemple · Prix réels et partenaires bientôt disponibles"
+    "footerNote": "Sources officielles · Liens affiliés bientôt disponibles"
   },
   "filterPanel": {
     "heading": "Filtres",
@@ -58,7 +58,7 @@
     "whereToBuy": "Où acheter",
     "buyLink": "Acheter →",
     "noLinks": "Aucun lien affilié disponible pour cette roue.",
-    "priceAnnotation": "prix indicatif, sourcé en 2025-Q2"
+    "priceAnnotation": "prix indicatif, sourcé en 2026-Q2"
   },
   "badges": {
     "hookless": "Hookless",

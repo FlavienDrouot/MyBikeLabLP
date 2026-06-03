@@ -34,7 +34,7 @@
     "subtitle": "Filter and sort by brand, weight, rim depth, price, and many more.",
     "filtersButton": "Filters",
     "filtersDrawerLabel": "Filters",
-    "footerNote": "Sample dataset · Real prices & partners coming soon"
+    "footerNote": "Official sources · Affiliate links coming soon"
   },
   "filterPanel": {
     "heading": "Filters",
@@ -58,7 +58,7 @@
     "whereToBuy": "Where to buy",
     "buyLink": "Buy →",
     "noLinks": "No affiliate links available for this wheel.",
-    "priceAnnotation": "indicative price, sourced 2025-Q2"
+    "priceAnnotation": "indicative price, sourced 2026-Q2"
   },
   "badges": {
     "hookless": "Hookless",
