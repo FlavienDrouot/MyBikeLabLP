@@ -12,13 +12,24 @@ export { minPrice };
 
 // Filter type predicates. Adding a new filter type = add an entry here +
 // a case in `buildInitialFilters` on the slice side.
-const matchers = {
-  range: (value, filter) =>
-    value >= filter.value.min && value <= filter.value.max,
+export const matchers = {
+  range: (value, filter) => {
+    if (Array.isArray(value)) {
+      return value.some(
+        (v) => !Number.isFinite(v) || (v >= filter.value.min && v <= filter.value.max)
+      );
+    }
+    return !Number.isFinite(value) || (value >= filter.value.min && value <= filter.value.max);
+  },
   multiSelect: (value, filter) =>
     filter.value.length === 0 || filter.value.includes(value),
   triState: (value, filter) =>
     filter.value === null || value === filter.value,
+  multiSelectFlat: (value, filter) => {
+    if (filter.value.length === 0) return true;
+    if (!Array.isArray(value) || value.length === 0) return true; // null-pass
+    return filter.value.some((selected) => value.includes(selected));
+  },
 };
 
 // Main selector: filters then sorts the wheel list by looping over the registry.
@@ -38,7 +49,10 @@ export const selectFilteredWheels = createSelector(
           if (!f || !f.enabled) return true;
           const matcher = matchers[property.filter.type];
           if (!matcher) return true;
-          return matcher(property.accessor(wheel), f);
+          const rawValue = property.filterAccessor
+            ? property.filterAccessor(wheel)
+            : property.accessor(wheel);
+          return matcher(rawValue, f);
         })
       )
       .slice()
@@ -67,7 +81,23 @@ export const makeSelectOptionsFor = (propertyId) =>
     (items) => {
       const property = getPropertyById(propertyId);
       if (!property) return [];
-      return [...new Set(items.map(property.accessor))].sort();
+
+      if (property.filter?.type === 'multiSelectFlat') {
+        const all = [];
+        for (const item of items) {
+          const arr = property.accessor(item);
+          if (Array.isArray(arr)) {
+            for (const v of arr) {
+              if (v != null) all.push(v);
+            }
+          }
+        }
+        return [...new Set(all)].sort();
+      }
+
+      return [
+        ...new Set(items.map(property.accessor).filter((v) => v != null)),
+      ].sort();
     }
   );
 
@@ -86,14 +116,31 @@ export const makeSelectContextualCountsFor = (propertyId) =>
           if (!f || !f.enabled) return true;
           const matcher = matchers[p.filter.type];
           if (!matcher) return true;
-          return matcher(p.accessor(wheel), f);
+          const rawValue = p.filterAccessor
+            ? p.filterAccessor(wheel)
+            : p.accessor(wheel);
+          return matcher(rawValue, f);
         })
       );
 
       const counts = {};
-      for (const wheel of filteredItems) {
-        const key = String(property.accessor(wheel));
-        counts[key] = (counts[key] ?? 0) + 1;
+      if (property.filter?.type === 'multiSelectFlat') {
+        for (const wheel of filteredItems) {
+          const arr = property.accessor(wheel);
+          if (Array.isArray(arr)) {
+            for (const v of arr) {
+              if (v != null) {
+                const key = String(v);
+                counts[key] = (counts[key] ?? 0) + 1;
+              }
+            }
+          }
+        }
+      } else {
+        for (const wheel of filteredItems) {
+          const key = String(property.accessor(wheel));
+          counts[key] = (counts[key] ?? 0) + 1;
+        }
       }
       return counts;
     }

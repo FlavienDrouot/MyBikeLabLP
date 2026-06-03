@@ -1,8 +1,18 @@
-// Generic wheel dataset for the MVP comparator.
-// Future: replace with API thunk fetching from backend.
 import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
+import { mavicWheels } from './wheelsData_mavic';
+import { rovalWheels } from './wheelsData_roval';
+import { zippWheels } from './wheelsData_zipp';
+import { enveWheels } from './wheelsData_enve';
 
 export const wheelsData = [
+  ...mavicWheels,
+  ...rovalWheels,
+  ...zippWheels,
+  ...enveWheels,
+];
+
+// Legacy placeholder data kept below for reference during migration — remove once all brands are scraped.
+const _unused = [
   {
     id: 1,
     model: 'Alpinist CLX II',
@@ -16,7 +26,6 @@ export const wheelsData = [
       { price_eur: 1299, url: 'https://example-shop.com/roval-alpinist-clx' },
       { price_eur: 1349, url: 'https://another-shop.com/roval-alpinist-clx' },
     ],
-    image: wheelPlaceholderUrl,
     images: [wheelPlaceholderUrl, wheelPlaceholderUrl, wheelPlaceholderUrl],
     affiliateLinks: {
       manufacturer: { url: 'https://www.roval.com/alpinist-clx-ii', price_eur: 1399 },
@@ -38,7 +47,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 1750, url: 'https://example-shop.com/zipp-303-firecrest' },
     ],
-    image: wheelPlaceholderUrl,
     images: [wheelPlaceholderUrl, wheelPlaceholderUrl],
     affiliateLinks: {
       manufacturer: { url: 'https://www.sram.com/zipp/303-firecrest', price_eur: 1799 },
@@ -60,7 +68,6 @@ export const wheelsData = [
       { price_eur: 1990, url: 'https://example-shop.com/dt-swiss-arc-1100-62' },
       { price_eur: 2050, url: 'https://another-shop.com/dt-swiss-arc-1100-62' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: { url: 'https://www.dtswiss.com/arc-1100-dicut-62', price_eur: null },
       retailers: [
@@ -81,7 +88,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 1200, url: 'https://example-shop.com/fulcrum-racing-zero-carbon' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: { url: 'https://www.fulcrumwheels.com/racing-zero-carbon', price_eur: 1299 },
       retailers: [],
@@ -100,7 +106,6 @@ export const wheelsData = [
       { price_eur: 1600, url: 'https://example-shop.com/shimano-dura-ace-c50' },
       { price_eur: 1690, url: 'https://another-shop.com/shimano-dura-ace-c50' },
     ],
-    image: wheelPlaceholderUrl,
     images: [wheelPlaceholderUrl, wheelPlaceholderUrl, wheelPlaceholderUrl],
     affiliateLinks: {
       manufacturer: { url: 'https://bike.shimano.com/dura-ace-wh-r9270-c50', price_eur: null },
@@ -122,7 +127,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 899, url: 'https://example-shop.com/hunt-60-limitless' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: { url: 'https://www.huntwheels.com/60-limitless', price_eur: 899 },
       retailers: [
@@ -142,7 +146,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 2200, url: 'https://example-shop.com/campagnolo-bora-ultra-45' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: null,
       retailers: [
@@ -162,7 +165,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 1099, url: 'https://example-shop.com/mavic-cosmic-pro-carbon-sl' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: { url: 'https://www.mavic.com/cosmic-pro-carbon-sl', price_eur: 1199 },
       retailers: [
@@ -183,7 +185,6 @@ export const wheelsData = [
       { price_eur: 2000, url: 'https://example-shop.com/bontrager-aeolus-rsl-37' },
       { price_eur: 2100, url: 'https://another-shop.com/bontrager-aeolus-rsl-37' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: { url: 'https://www.trekbikes.com/bontrager-aeolus-rsl-37', price_eur: 2199 },
       retailers: [
@@ -204,7 +205,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 1800, url: 'https://example-shop.com/giant-slr-0-36' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: null,
       retailers: [
@@ -224,7 +224,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 2800, url: 'https://example-shop.com/enve-ses-4-5-ar' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: { url: 'https://www.enve.com/ses-4-5-ar', price_eur: 2999 },
       retailers: [
@@ -244,7 +243,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 750, url: 'https://example-shop.com/vittoria-elusion-45' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: null,
       retailers: [],
@@ -262,7 +260,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 1650, url: 'https://example-shop.com/reynolds-ar-58' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: { url: 'https://www.reynoldscycling.com/ar-58', price_eur: 1699 },
       retailers: [
@@ -282,7 +279,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 850, url: 'https://example-shop.com/boyd-altamont-60' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: null,
       retailers: [
@@ -302,7 +298,6 @@ export const wheelsData = [
     prices: [
       { price_eur: 2300, url: 'https://example-shop.com/princeton-grit-4540' },
     ],
-    image: wheelPlaceholderUrl,
     affiliateLinks: {
       manufacturer: { url: 'https://www.princetoncarbon.com/grit-4540', price_eur: 2399 },
       retailers: [

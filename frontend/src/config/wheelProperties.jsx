@@ -8,7 +8,9 @@
 // To add a new wheel property (filter + sort + column), simply add an entry
 // to WHEEL_PROPERTIES — no other files should need modification.
 
-import { HookBadge } from '../components/MiniComparator/badges';
+import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
+import { HookBadge, TubelessBadge } from '../components/MiniComparator/badges';
+import { resolveSpec } from '../data/wheelUtils';
 
 /**
  * @typedef {Object} WheelProperty
@@ -17,6 +19,9 @@ import { HookBadge } from '../components/MiniComparator/badges';
  * @property {string} group         'general' | 'rims' | 'subs'.
  * @property {boolean} translatable Whether the property's value must be translated before display.
  * @property {(w: any) => any} accessor  Always a function (handles computed cases like min price).
+ * @property {((w: any) => number | number[] | null) | undefined} [filterAccessor]
+ *   Optional. When present and the value is a divergent pair, returns [front, rear] for OR-semantics range filtering.
+ *   When absent, `accessor` is used for filtering (scalar path).
  * @property {string} [unit]        Unit suffix used for default cell rendering.
  * @property {FilterSpec} [filter]  Absent => property not filterable.
  * @property {SortSpec[]} [sorts]   Absent => not sortable.
@@ -24,17 +29,22 @@ import { HookBadge } from '../components/MiniComparator/badges';
  *
  * @typedef {{type: 'range', step?: number}
  *         | {type: 'multiSelect'}
+ *         | {type: 'multiSelectFlat'}
  *         | {type: 'triState', labels: [string, string, string]}} FilterSpec
  *
  * @typedef {{id: string, label: string, direction: 'asc' | 'desc' | 'localeCompare', accessor?: (w:any)=>any}} SortSpec
  * // label: translation key resolved by consuming components via t()
  *
  * @typedef {{required?: boolean, headClassName?: string, cellClassName?: string,
- *           renderCell?: (w:any) => any, hidden?: boolean, defaultVisible?: boolean}} ColumnSpec
+ *           renderCell?: (w:any) => any, hidden?: boolean, defaultVisible?: boolean,
+ *           colWidth?: number}} ColumnSpec
  */
 
 // Exported helper because reused in multiple entries (price, price column).
-export const minPrice = (wheel) => Math.min(...wheel.prices.map((p) => p.price_eur));
+export const minPrice = (wheel) => {
+  const valid = wheel.prices.map((p) => p.price_eur).filter(Number.isFinite);
+  return valid.length > 0 ? Math.min(...valid) : null;
+};
 
 const DIAMETER_LABEL_MAP = {
   700: '700C',
@@ -54,19 +64,35 @@ export const COLUMN_GROUPS = [
 
 /** @type {WheelProperty[]} */
 export const WHEEL_PROPERTIES = [
+  // ── general ──────────────────────────────────────────────────────────────
   {
     id: 'image',
     label: 'properties.image.label',
     group: 'general',
     translatable: false,
-    accessor: (w) => w.image,
+    accessor: (w) => w.images?.[0] ?? wheelPlaceholderUrl,
     column: {
       headClassName: 'px-4 py-3 font-semibold',
       cellClassName: 'px-2 py-2',
       renderCell: (w) => (
-        <img src={w.image} alt={w.model} className="w-16 h-16 object-contain rounded" />
+        <img
+          src={w.images?.[0] ?? wheelPlaceholderUrl}
+          alt={w.model}
+          className="w-16 h-16 object-contain rounded"
+        />
       ),
     },
+  },
+
+  {
+    id: 'brand',
+    label: 'properties.brand.label',
+    group: 'general',
+    translatable: false,
+    accessor: (w) => w.brand,
+    filter: { type: 'multiSelect' },
+    // Filterable but no dedicated column — brand is already visible in Model column.
+    column: { hidden: true },
   },
 
   {
@@ -93,35 +119,6 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
-    id: 'brand',
-    label: 'properties.brand.label',
-    group: 'general',
-    translatable: false,
-    accessor: (w) => w.brand,
-    filter: { type: 'multiSelect' },
-    // Filterable but no dedicated column — brand is already visible in Model column.
-    column: { hidden: true },
-  },
-
-  {
-    id: 'weight',
-    label: 'properties.weight.label',
-    group: 'general',
-    translatable: false,
-    unit: ' g',
-    accessor: (w) => w.weight_grams,
-    filter: { type: 'range', step: 10 },
-    sorts: [
-      { id: 'weight_asc', label: 'sorts.weight_asc', direction: 'asc' },
-      { id: 'weight_desc', label: 'sorts.weight_desc', direction: 'desc' },
-    ],
-    column: {
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
-    },
-  },
-
-  {
     id: 'price',
     label: 'properties.price.label',
     group: 'general',
@@ -137,9 +134,69 @@ export const WHEEL_PROPERTIES = [
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-right font-semibold text-ink-11 tabular-nums',
-      renderCell: (w) => w.prices?.length > 0
-        ? `${minPrice(w).toLocaleString('fr-FR')} €`
-        : null,
+      renderCell: (w, t) => {
+        const price = w.prices?.length > 0 ? minPrice(w) : null;
+        if (!price) return t ? t('common.notAvailable') : 'N/A';
+        return `${price.toLocaleString('fr-FR')} €`;
+      },
+    },
+  },
+
+  {
+    id: 'weight',
+    label: 'properties.weight.label',
+    group: 'general',
+    translatable: false,
+    unit: ' g',
+    accessor: (w) => {
+      const { total } = resolveSpec(w.weight_grams);
+      return total;
+    },
+    filter: { type: 'range', step: 10 },
+    sorts: [
+      { id: 'weight_asc', label: 'sorts.weight_asc', direction: 'asc' },
+      { id: 'weight_desc', label: 'sorts.weight_desc', direction: 'desc' },
+    ],
+    column: {
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => {
+        const { front, rear, total, isSingle } = resolveSpec(w.weight_grams);
+        if (total === null) return t('common.notAvailable');
+        if (isSingle) return `${total} g`;
+        return (
+          <div>
+            <span>{total} g</span>
+            <div className="text-xs text-ink-7 mt-0.5">{front} / {rear} g</div>
+          </div>
+        );
+      },
+    },
+  },
+
+  {
+    id: 'brakeType',
+    label: 'properties.brakeType.label',
+    group: 'general',
+    translatable: true,
+    accessor: (w) => w.brake_type,
+    filter: { type: 'multiSelect' },
+    column: {
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'wheelsetCategory',
+    label: 'properties.wheelsetCategory.label',
+    group: 'general',
+    translatable: true,
+    accessor: (w) => w.wheelset_category,
+    filter: { type: 'multiSelect' },
+    column: {
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
     },
   },
 
@@ -159,6 +216,22 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
+    id: 'maxSystemWeight',
+    label: 'properties.maxSystemWeight.label',
+    group: 'general',
+    translatable: false,
+    unit: ' kg',
+    accessor: (w) => w.max_system_weight_kg,
+    filter: { type: 'range' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+    },
+  },
+
+  // ── rims ─────────────────────────────────────────────────────────────────
+  {
     id: 'rimMaterial',
     label: 'properties.rimMaterial.label',
     group: 'rims',
@@ -168,6 +241,61 @@ export const WHEEL_PROPERTIES = [
     column: {
       headClassName: 'px-4 py-3 font-semibold',
       cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'depth',
+    label: 'properties.depth.label',
+    group: 'rims',
+    translatable: false,
+    unit: ' mm',
+    accessor: (w) => {
+      const { front, rear } = resolveSpec(w.rim.depth_mm);
+      if (front === null) return null;
+      return Math.max(front, rear);
+    },
+    filterAccessor: (w) => {
+      const { front, rear, isSingle } = resolveSpec(w.rim.depth_mm);
+      if (front === null) return null;
+      return isSingle ? front : [front, rear];
+    },
+    filter: { type: 'range' },
+    sorts: [
+      { id: 'depth_asc', label: 'sorts.depth_asc', direction: 'asc' },
+      { id: 'depth_desc', label: 'sorts.depth_desc', direction: 'desc' },
+    ],
+    column: {
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => {
+        const { front, rear, isSingle } = resolveSpec(w.rim.depth_mm);
+        if (front === null) return t('common.notAvailable');
+        if (isSingle) return `${front} mm`;
+        return `${front} / ${rear} mm`;
+      },
+    },
+  },
+
+  {
+    id: 'tubelessReady',
+    label: 'properties.tubelessReady.label',
+    group: 'rims',
+    translatable: true,
+    accessor: (w) => w.rim?.tubeless_ready,
+    filter: {
+      type: 'triState',
+      labels: [
+        'filters.tubelessReady.all',
+        'filters.tubelessReady.true',
+        'filters.tubelessReady.false',
+      ],
+    },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3',
+      renderCell: (w) => <TubelessBadge tubeless={w.rim?.tubeless_ready} />,
     },
   },
 
@@ -186,42 +314,74 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
-    id: 'depth',
-    label: 'properties.depth.label',
+    id: 'externalWidth',
+    label: 'properties.externalWidth.label',
     group: 'rims',
     translatable: false,
     unit: ' mm',
-    accessor: (w) => w.rim.depth_mm,
-    filter: { type: 'range' },
-    sorts: [
-      { id: 'depth_asc', label: 'sorts.depth_asc', direction: 'asc' },
-      { id: 'depth_desc', label: 'sorts.depth_desc', direction: 'desc' },
-    ],
-    column: {
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+    accessor: (w) => {
+      const { front, rear } = resolveSpec(w.rim.externalWidth_mm);
+      if (front === null) return null;
+      return Math.max(front, rear);
     },
-  },
-
-  {
-    id: 'rimWidth',
-    label: 'properties.rimWidth.label',
-    group: 'rims',
-    translatable: false,
-    unit: ' mm',
-    accessor: (w) => w.rim.externalWidth_mm,
+    filterAccessor: (w) => {
+      const { front, rear, isSingle } = resolveSpec(w.rim.externalWidth_mm);
+      if (front === null) return null;
+      return isSingle ? front : [front, rear];
+    },
     filter: { type: 'range' },
     sorts: [
-      { id: 'rimWidth_asc', label: 'sorts.rimWidth_asc', direction: 'asc' },
-      { id: 'rimWidth_desc', label: 'sorts.rimWidth_desc', direction: 'desc' },
+      { id: 'externalWidth_asc', label: 'sorts.externalWidth_asc', direction: 'asc' },
+      { id: 'externalWidth_desc', label: 'sorts.externalWidth_desc', direction: 'desc' },
     ],
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => {
+        const { front, rear, isSingle } = resolveSpec(w.rim.externalWidth_mm);
+        if (front === null) return t('common.notAvailable');
+        if (isSingle) return `${front} mm`;
+        return `${front} / ${rear} mm`;
+      },
     },
   },
 
+  {
+    id: 'internalWidth',
+    label: 'properties.internalWidth.label',
+    group: 'rims',
+    translatable: false,
+    unit: ' mm',
+    accessor: (w) => {
+      const { front, rear } = resolveSpec(w.rim?.internalWidth_mm);
+      if (front === null) return null;
+      return Math.max(front, rear);
+    },
+    filterAccessor: (w) => {
+      const { front, rear, isSingle } = resolveSpec(w.rim?.internalWidth_mm);
+      if (front === null) return null;
+      return isSingle ? front : [front, rear];
+    },
+    filter: { type: 'range' },
+    sorts: [
+      { id: 'internalWidth_asc', label: 'sorts.internalWidth_asc', direction: 'asc' },
+      { id: 'internalWidth_desc', label: 'sorts.internalWidth_desc', direction: 'desc' },
+    ],
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => {
+        const { front, rear, isSingle } = resolveSpec(w.rim?.internalWidth_mm);
+        if (front === null) return t('common.notAvailable');
+        if (isSingle) return `${front} mm`;
+        return `${front} / ${rear} mm`;
+      },
+    },
+  },
+
+  // ── subs ─────────────────────────────────────────────────────────────────
   {
     id: 'hub',
     label: 'properties.hub.label',
@@ -230,13 +390,14 @@ export const WHEEL_PROPERTIES = [
     accessor: (w) => `${w.hub.brand} ${w.hub.model}`,
     column: {
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 font-medium text-ink-11',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 font-medium text-ink-11 max-w-[160px] overflow-hidden',
       renderCell: (w) => (
-        <>
+        <div>
           <span className="text-ink-500 font-normal text-xs">{w.hub.brand}</span>
           <br />
-          {w.hub.model}
-        </>
+          <span className="block truncate" title={w.hub.model}>{w.hub.model}</span>
+        </div>
       ),
     },
   },
@@ -262,6 +423,55 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
+    id: 'axle',
+    label: 'properties.axle.label',
+    group: 'subs',
+    translatable: false,
+    accessor: (w) => {
+      const f = w.hub?.axle_front_mm ?? '—';
+      const r = w.hub?.axle_rear_mm ?? '—';
+      return `${f} / ${r}`;
+    },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'freehubOptions',
+    label: 'properties.freehubOptions.label',
+    group: 'subs',
+    translatable: false,
+    accessor: (w) => w.hub?.freehub_options,
+    filter: { type: 'multiSelectFlat' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px]',
+      // renderCell removed: ComparisonTable now uses FreehubCell for this column (EVO-036 TASK-005).
+      // MeasuringTable still uses renderCellFor, which falls back to the default
+      // accessor-based render — sufficient for width measurement only.
+    },
+  },
+
+  {
+    id: 'discStandard',
+    label: 'properties.discStandard.label',
+    group: 'subs',
+    translatable: false,
+    accessor: (w) => w.hub?.disc_standard,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
     id: 'spokes',
     label: 'properties.spokes.label',
     group: 'subs',
@@ -270,13 +480,14 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 font-medium text-ink-11',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 font-medium text-ink-11 max-w-[160px] overflow-hidden',
       renderCell: (w) => (
-        <>
+        <div>
           <span className="text-ink-500 font-normal text-xs">{w.spokes.brand}</span>
           <br />
-          {w.spokes.model}
-        </>
+          <span className="block truncate" title={w.spokes.model}>{w.spokes.model}</span>
+        </div>
       ),
     },
   },

@@ -51,6 +51,9 @@
   .comparison-table-scroll::-webkit-scrollbar-track {
     background: var(--paper-2);
   }
+  .comparison-table-scroll tbody td {
+    border-bottom: 1px solid var(--rule-faint);
+  }
   .filter-panel-scroll {
     scrollbar-width: thin;
     scrollbar-color: var(--ink-4) transparent;

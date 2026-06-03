@@ -65,7 +65,7 @@ The comparator lets users browse, filter, sort, and compare road bike wheels sid
 | Rim material | Multi-select (Carbon / Aluminum) |
 | Hookless | Yes / No / All |
 | Rim depth | Range (20–80 mm) |
-| Rim width | Range (20–40 mm) |
+| External width | Range (20–40 mm) |
 | Hub brand | Multi-select |
 | Hub model | Multi-select |
 | Spokes brand | Multi-select |
@@ -74,7 +74,7 @@ The comparator lets users browse, filter, sort, and compare road bike wheels sid
 
 **Displayed columns (default visible):** Model/Brand, Weight, Price, Rim material, Hookless, Rim depth, Hub
 
-**Displayed columns (optional):** Diameter, Rim width, Spokes, Spoke material
+**Displayed columns (optional):** Diameter, External width, Spokes, Spoke material
 
 **Dataset:** ~15 road bike wheels from premium brands (Roval, Zipp, DT Swiss, Fulcrum, etc.), with placeholder images and indicative prices.
 
@@ -108,6 +108,8 @@ Three sequential phases addressing the cold start problem (small catalog → low
 ### Phase A — Volume via scraping *(no dependency)*
 
 Scrape public specs and prices from brand websites (Roval, Zipp, DT Swiss, Fulcrum, Shimano, Mavic…) and major retailers (Alltricks, Probikeshop, Canyon, Wiggle). Target: ~150–200 wheels with real specs, current prices, and actual product images.
+
+> **Workflow:** See [`workflows/datascraping/README.md`](../workflows/datascraping/README.md) for the full pipeline (scraping prompt → JSON → frontend JS), curation rules, transformation rules, and per-brand progress tracker.
 
 > **Note — SEO:** Without organic traffic, affiliate clicks will not come on their own. After Phase A, improving SEO (structured data, page titles, wheel-specific landing pages) is a prerequisite for Phase B to generate meaningful results.
 

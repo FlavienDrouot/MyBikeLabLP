@@ -8,6 +8,7 @@ import WheelDetailPanel from './WheelDetailPanel';
 import Icon from '../ui/Icon';
 import ColumnSelector from './ColumnSelector';
 import MeasuringTable from './MeasuringTable';
+import FreehubCell from './FreehubCell';
 import { renderCellFor, cellClassFor } from './columnCells';
 
 // Trailing chevron column: an icon (16px) inside px-4 padding (2×16px) — width
@@ -70,11 +71,20 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     [visibility]
   );
 
-  // Fixed layout only once every visible column has a real (> 0) measured width.
+  // Columns with a declared colWidth skip measurement — their width is already
+  // bounded by a max-w CSS class and known at config time.
+  const measuringCols = useMemo(
+    () => cols.filter((p) => !p.column?.colWidth),
+    [cols]
+  );
+
+  const getColWidth = (p) => colWidths[p.id] ?? p.column?.colWidth ?? 0;
+
+  // Fixed layout only once every visible column has a real (> 0) width.
   // A 0 (e.g. jsdom, which does no layout) falls back to auto rather than collapsing.
-  const widthsReady = cols.length > 0 && cols.every((p) => colWidths[p.id] > 0);
+  const widthsReady = cols.length > 0 && cols.every((p) => getColWidth(p) > 0);
   const totalWidth = widthsReady
-    ? cols.reduce((sum, p) => sum + colWidths[p.id], 0) + ACTIONS_COL_PX
+    ? cols.reduce((sum, p) => sum + getColWidth(p), 0) + ACTIONS_COL_PX
     : undefined;
 
   const toggleExpanded = (id) =>
@@ -113,25 +123,25 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
       ) : (
         <div className="comparison-table-scroll overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]" ref={scrollRef}>
           <table
-            className="text-sm bg-paper-0"
+            className="text-sm bg-paper-0 border-separate border-spacing-0"
             style={widthsReady ? { tableLayout: 'fixed', width: totalWidth } : undefined}
           >
             {widthsReady && (
               <colgroup>
                 {cols.map((p) => (
-                  <col key={p.id} style={{ width: colWidths[p.id] }} />
+                  <col key={p.id} style={{ width: getColWidth(p) }} />
                 ))}
                 <col style={{ width: ACTIONS_COL_PX }} />
               </colgroup>
             )}
-            <thead className="bg-paper-2 text-ink-7 sticky top-0 z-10">
+            <thead className="text-ink-7">
               <tr className="text-left">
                 {cols.map((p) => (
-                  <th key={p.id} className="px-4 py-3 text-xs font-medium uppercase tracking-widest text-ink-7">
+                  <th key={p.id} className="px-4 py-3 text-xs font-medium uppercase tracking-widest text-ink-7 sticky top-0 z-10 bg-paper-2">
                     {t(p.label)}
                   </th>
                 ))}
-                <th className="px-4 py-3 w-10" />
+                <th className="px-4 py-3 w-10 sticky top-0 z-10 bg-paper-2" />
               </tr>
             </thead>
             <tbody>
@@ -139,14 +149,23 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                 <React.Fragment key={w.id}>
                   <tr
                     className="hover:bg-paper-2 cursor-pointer"
-                    style={{ borderBottom: '1px solid var(--rule-faint)', transition: 'background-color var(--duration-quick) var(--ease-standard)' }}
+                    style={{ transition: 'background-color var(--duration-quick) var(--ease-standard)' }}
                     onClick={() => toggleExpanded(w.id)}
                   >
-                    {cols.map((p) => (
-                      <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap overflow-hidden text-ellipsis`}>
-                        {renderCellFor(p, t)(w)}
-                      </td>
-                    ))}
+                    {cols.map((p) => {
+                      if (p.id === 'freehubOptions') {
+                        return (
+                          <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap overflow-hidden text-ellipsis`}>
+                            <FreehubCell wheel={w} t={t} />
+                          </td>
+                        );
+                      }
+                      return (
+                        <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap overflow-hidden text-ellipsis`}>
+                          {renderCellFor(p, t)(w)}
+                        </td>
+                      );
+                    })}
                     <td className="px-4 py-3 text-ink-6">
                       <Icon
                         as={ChevronDown}
@@ -177,7 +196,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
 
       {/* Hidden twin measured on the full dataset to pin column widths so the
           layout stays still while filtering (EVO-030). Clipped by card overflow. */}
-      <MeasuringTable items={allWheels} cols={cols} onMeasure={handleMeasure} />
+      <MeasuringTable items={allWheels} cols={measuringCols} onMeasure={handleMeasure} />
     </div>
   );
 };

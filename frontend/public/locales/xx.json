@@ -1,4 +1,7 @@
 {
+  "common": {
+    "notAvailable": "XX"
+  },
   "nav": {
     "tool": "XX",
     "roadmap": "XX",
@@ -59,7 +62,9 @@
   },
   "badges": {
     "hookless": "XX",
-    "hooked": "XX"
+    "hooked": "XX",
+    "tubeless": "XX",
+    "clincher": "XX"
   },
   "roadmap": {
     "sectionIndex": "XX",
@@ -148,14 +153,22 @@
     "rimMaterial": { "label": "XX" },
     "hookless": { "label": "XX" },
     "depth": { "label": "XX" },
-    "rimWidth": { "label": "XX" },
+    "externalWidth": { "label": "XX" },
     "hub": { "label": "XX" },
     "hubBrand": { "label": "XX" },
     "hubModel": { "label": "XX" },
     "spokes": { "label": "XX" },
     "spokesBrand": { "label": "XX" },
     "spokesModel": { "label": "XX" },
-    "spokeMaterial": { "label": "XX" }
+    "spokeMaterial": { "label": "XX" },
+    "brakeType": { "label": "XX" },
+    "tubelessReady": { "label": "XX" },
+    "internalWidth": { "label": "XX" },
+    "axle": { "label": "XX" },
+    "freehubOptions": { "label": "Freehub options", "popupTitle": "XX" },
+    "maxSystemWeight": { "label": "XX" },
+    "wheelsetCategory": { "label": "XX" },
+    "discStandard": { "label": "XX" }
   },
   "sorts": {
     "name": "XX",
@@ -165,14 +178,21 @@
     "price_desc": "XX",
     "depth_asc": "XX",
     "depth_desc": "XX",
-    "rimWidth_asc": "XX",
-    "rimWidth_desc": "XX"
+    "externalWidth_asc": "XX",
+    "externalWidth_desc": "XX",
+    "internalWidth_asc": "XX",
+    "internalWidth_desc": "XX"
   },
   "filters": {
     "hookless": {
       "all": "XX",
       "hookless": "XX",
       "hooked": "XX"
+    },
+    "tubelessReady": {
+      "all": "XX",
+      "true": "XX",
+      "false": "XX"
     }
   },
   "rimMaterial": {
@@ -181,10 +201,29 @@
   },
   "spokeMaterial": {
     "stainless_steel": "XX",
-    "aluminum": "XX"
+    "aluminum": "XX",
+    "carbon": "XX",
+    "carbon_composite": "XX",
+    "steel": "XX"
   },
   "hookless": {
     "true": "XX",
     "false": "XX"
+  },
+  "brakeType": {
+    "disc": "XX",
+    "rim": "XX",
+    "track": "XX"
+  },
+  "tubelessReady": {
+    "true": "XX",
+    "false": "XX"
+  },
+  "wheelsetCategory": {
+    "all-round": "XX",
+    "aero": "XX",
+    "climbing": "XX",
+    "endurance": "XX",
+    "all-road": "XX"
   }
 }

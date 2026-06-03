@@ -1,4 +1,7 @@
 {
+  "common": {
+    "notAvailable": "Unknown"
+  },
   "nav": {
     "tool": "Tool",
     "roadmap": "Roadmap",
@@ -31,7 +34,7 @@
     "subtitle": "Filter and sort by brand, weight, rim depth, price, and many more.",
     "filtersButton": "Filters",
     "filtersDrawerLabel": "Filters",
-    "footerNote": "Sample dataset · Real prices & partners coming soon"
+    "footerNote": "Official sources · Affiliate links coming soon"
   },
   "filterPanel": {
     "heading": "Filters",
@@ -55,11 +58,13 @@
     "whereToBuy": "Where to buy",
     "buyLink": "Buy →",
     "noLinks": "No affiliate links available for this wheel.",
-    "priceAnnotation": "indicative price, sourced 2025-Q2"
+    "priceAnnotation": "indicative price, sourced 2026-Q2"
   },
   "badges": {
     "hookless": "Hookless",
-    "hooked": "Hooked"
+    "hooked": "Hooked",
+    "tubeless": "Tubeless",
+    "clincher": "Clincher"
   },
   "roadmap": {
     "sectionIndex": "ROADMAP",
@@ -163,14 +168,22 @@
     "rimMaterial": { "label": "Rim material" },
     "hookless": { "label": "Hookless" },
     "depth": { "label": "Depth" },
-    "rimWidth": { "label": "Rim width" },
+    "externalWidth": { "label": "External width" },
     "hub": { "label": "Hub" },
     "hubBrand": { "label": "Hub brand" },
     "hubModel": { "label": "Hub model" },
     "spokes": { "label": "Spokes" },
     "spokesBrand": { "label": "Spokes brand" },
     "spokesModel": { "label": "Spokes model" },
-    "spokeMaterial": { "label": "Spoke material" }
+    "spokeMaterial": { "label": "Spoke material" },
+    "brakeType": { "label": "Brake type" },
+    "tubelessReady": { "label": "Tubeless ready" },
+    "internalWidth": { "label": "Internal width" },
+    "axle": { "label": "Axle (F / R)" },
+    "freehubOptions": { "label": "Freehub options", "popupTitle": "Freehub options" },
+    "maxSystemWeight": { "label": "Max system weight" },
+    "wheelsetCategory": { "label": "Category" },
+    "discStandard": { "label": "Disc standard" }
   },
   "sorts": {
     "name": "Name (A → Z)",
@@ -180,14 +193,21 @@
     "price_desc": "Price (high → low)",
     "depth_asc": "Depth (shallow → deep)",
     "depth_desc": "Depth (deep → shallow)",
-    "rimWidth_asc": "Rim width (narrow → wide)",
-    "rimWidth_desc": "Rim width (wide → narrow)"
+    "externalWidth_asc": "External width (narrow → wide)",
+    "externalWidth_desc": "External width (wide → narrow)",
+    "internalWidth_asc": "Internal width (narrow → wide)",
+    "internalWidth_desc": "Internal width (wide → narrow)"
   },
   "filters": {
     "hookless": {
       "all": "All",
       "hookless": "Hookless",
       "hooked": "Hooked"
+    },
+    "tubelessReady": {
+      "all": "All",
+      "true": "Tubeless",
+      "false": "Not tubeless"
     }
   },
   "rimMaterial": {
@@ -196,10 +216,29 @@
   },
   "spokeMaterial": {
     "stainless_steel": "Stainless steel",
-    "aluminum": "Aluminum"
+    "aluminum": "Aluminum",
+    "carbon": "Carbon",
+    "carbon_composite": "Carbon composite",
+    "steel": "Steel"
   },
   "hookless": {
     "true": "Hookless",
     "false": "Hooked"
+  },
+  "brakeType": {
+    "disc": "Disc",
+    "rim": "Rim",
+    "track": "Track"
+  },
+  "tubelessReady": {
+    "true": "Tubeless",
+    "false": "Not tubeless"
+  },
+  "wheelsetCategory": {
+    "all-round": "All-round",
+    "aero": "Aero",
+    "climbing": "Climbing",
+    "endurance": "Endurance",
+    "all-road": "All-road"
   }
 }

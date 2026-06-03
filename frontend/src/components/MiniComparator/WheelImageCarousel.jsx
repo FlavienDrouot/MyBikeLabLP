@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import wheelPlaceholderUrl from '../../assets/wheel-placeholder.svg';
 
 const prefersReducedMotion =
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const WheelImageCarousel = ({ wheel }) => {
-  const slides = wheel.images ?? [wheel.image];
+  const slides = wheel.images?.length > 0 ? wheel.images : [wheelPlaceholderUrl];
   const [activeIndex, setActiveIndex] = useState(0);
 
   const hasMultipleSlides = slides.length > 1;

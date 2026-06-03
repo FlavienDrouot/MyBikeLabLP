@@ -4,6 +4,16 @@ Canonical definitions for terms used across evolutions. Updated whenever an ambi
 
 ---
 
+## Catalog Model
+
+| Term | Definition |
+|---|---|
+| Wheelset (paire) | The fundamental catalog unit. One catalog entry represents a **front + rear pair sold together**, not an individual wheel. Per-wheel attributes are sub-values of a single wheelset entry. (Resolved EVO-038.) |
+| Divergent spec (av./arr.) | A numeric spec whose **front value may differ from its rear value** within the same wheelset (e.g. aero combos with front 50 mm / rear 60 mm rim depth, or differing per-wheel weights). Specs eligible for divergence: rim depth, external width, internal width, weight. When front = rear (the common case), the spec carries a single value. (Resolved EVO-038.) |
+| Weight (paire) | Always expressed as the **pair total (sum)** for filtering and primary display. The per-wheel front/rear breakdown is shown as detail *when available*, but is never the filtered value. Distinct from dimensional divergent specs. (Resolved EVO-038.) |
+
+---
+
 ## Design System — Surfaces
 
 | Term | Definition |

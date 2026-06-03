@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { getFilterableProperties } from '../config/wheelProperties';
+import { wheelsData } from '../data/wheelsData';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ const Hero = () => {
 
         <div className="mt-16 grid grid-cols-3 max-w-xl mx-auto gap-6 text-left">
           <div>
-            <div className="text-2xl font-bold text-brass-8 font-mono tabular-nums">15</div>
+            <div className="text-2xl font-bold text-brass-8 font-mono tabular-nums">{wheelsData.length}</div>
             <div className="text-sm text-ink-7">{t('hero.stats.wheels')}</div>
           </div>
           <div>
