@@ -10,6 +10,7 @@
 
 import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 import { HookBadge, TubelessBadge } from '../components/MiniComparator/badges';
+import { resolveSpec } from '../data/wheelUtils';
 
 /**
  * @typedef {Object} WheelProperty
@@ -18,6 +19,9 @@ import { HookBadge, TubelessBadge } from '../components/MiniComparator/badges';
  * @property {string} group         'general' | 'rims' | 'subs'.
  * @property {boolean} translatable Whether the property's value must be translated before display.
  * @property {(w: any) => any} accessor  Always a function (handles computed cases like min price).
+ * @property {((w: any) => number | number[] | null) | undefined} [filterAccessor]
+ *   Optional. When present and the value is a divergent pair, returns [front, rear] for OR-semantics range filtering.
+ *   When absent, `accessor` is used for filtering (scalar path).
  * @property {string} [unit]        Unit suffix used for default cell rendering.
  * @property {FilterSpec} [filter]  Absent => property not filterable.
  * @property {SortSpec[]} [sorts]   Absent => not sortable.
@@ -144,7 +148,10 @@ export const WHEEL_PROPERTIES = [
     group: 'general',
     translatable: false,
     unit: ' g',
-    accessor: (w) => w.weight_grams,
+    accessor: (w) => {
+      const { total } = resolveSpec(w.weight_grams);
+      return total;
+    },
     filter: { type: 'range', step: 10 },
     sorts: [
       { id: 'weight_asc', label: 'sorts.weight_asc', direction: 'asc' },
@@ -153,6 +160,17 @@ export const WHEEL_PROPERTIES = [
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => {
+        const { front, rear, total, isSingle } = resolveSpec(w.weight_grams);
+        if (total === null) return t('common.notAvailable');
+        if (isSingle) return `${total} g`;
+        return (
+          <div>
+            <span>{total} g</span>
+            <div className="text-xs text-ink-7 mt-0.5">{front} / {rear} g</div>
+          </div>
+        );
+      },
     },
   },
 
@@ -232,7 +250,16 @@ export const WHEEL_PROPERTIES = [
     group: 'rims',
     translatable: false,
     unit: ' mm',
-    accessor: (w) => w.rim.depth_mm,
+    accessor: (w) => {
+      const { front, rear } = resolveSpec(w.rim.depth_mm);
+      if (front === null) return null;
+      return Math.max(front, rear);
+    },
+    filterAccessor: (w) => {
+      const { front, rear, isSingle } = resolveSpec(w.rim.depth_mm);
+      if (front === null) return null;
+      return isSingle ? front : [front, rear];
+    },
     filter: { type: 'range' },
     sorts: [
       { id: 'depth_asc', label: 'sorts.depth_asc', direction: 'asc' },
@@ -241,6 +268,12 @@ export const WHEEL_PROPERTIES = [
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => {
+        const { front, rear, isSingle } = resolveSpec(w.rim.depth_mm);
+        if (front === null) return t('common.notAvailable');
+        if (isSingle) return `${front} mm`;
+        return `${front} / ${rear} mm`;
+      },
     },
   },
 
@@ -286,7 +319,16 @@ export const WHEEL_PROPERTIES = [
     group: 'rims',
     translatable: false,
     unit: ' mm',
-    accessor: (w) => w.rim.externalWidth_mm,
+    accessor: (w) => {
+      const { front, rear } = resolveSpec(w.rim.externalWidth_mm);
+      if (front === null) return null;
+      return Math.max(front, rear);
+    },
+    filterAccessor: (w) => {
+      const { front, rear, isSingle } = resolveSpec(w.rim.externalWidth_mm);
+      if (front === null) return null;
+      return isSingle ? front : [front, rear];
+    },
     filter: { type: 'range' },
     sorts: [
       { id: 'externalWidth_asc', label: 'sorts.externalWidth_asc', direction: 'asc' },
@@ -296,6 +338,12 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => {
+        const { front, rear, isSingle } = resolveSpec(w.rim.externalWidth_mm);
+        if (front === null) return t('common.notAvailable');
+        if (isSingle) return `${front} mm`;
+        return `${front} / ${rear} mm`;
+      },
     },
   },
 
@@ -305,7 +353,16 @@ export const WHEEL_PROPERTIES = [
     group: 'rims',
     translatable: false,
     unit: ' mm',
-    accessor: (w) => w.rim?.internalWidth_mm,
+    accessor: (w) => {
+      const { front, rear } = resolveSpec(w.rim?.internalWidth_mm);
+      if (front === null) return null;
+      return Math.max(front, rear);
+    },
+    filterAccessor: (w) => {
+      const { front, rear, isSingle } = resolveSpec(w.rim?.internalWidth_mm);
+      if (front === null) return null;
+      return isSingle ? front : [front, rear];
+    },
     filter: { type: 'range' },
     sorts: [
       { id: 'internalWidth_asc', label: 'sorts.internalWidth_asc', direction: 'asc' },
@@ -315,6 +372,12 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => {
+        const { front, rear, isSingle } = resolveSpec(w.rim?.internalWidth_mm);
+        if (front === null) return t('common.notAvailable');
+        if (isSingle) return `${front} mm`;
+        return `${front} / ${rear} mm`;
+      },
     },
   },
 

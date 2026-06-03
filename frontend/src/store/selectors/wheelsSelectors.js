@@ -12,9 +12,15 @@ export { minPrice };
 
 // Filter type predicates. Adding a new filter type = add an entry here +
 // a case in `buildInitialFilters` on the slice side.
-const matchers = {
-  range: (value, filter) =>
-    !Number.isFinite(value) || (value >= filter.value.min && value <= filter.value.max),
+export const matchers = {
+  range: (value, filter) => {
+    if (Array.isArray(value)) {
+      return value.some(
+        (v) => !Number.isFinite(v) || (v >= filter.value.min && v <= filter.value.max)
+      );
+    }
+    return !Number.isFinite(value) || (value >= filter.value.min && value <= filter.value.max);
+  },
   multiSelect: (value, filter) =>
     filter.value.length === 0 || filter.value.includes(value),
   triState: (value, filter) =>
@@ -43,7 +49,10 @@ export const selectFilteredWheels = createSelector(
           if (!f || !f.enabled) return true;
           const matcher = matchers[property.filter.type];
           if (!matcher) return true;
-          return matcher(property.accessor(wheel), f);
+          const rawValue = property.filterAccessor
+            ? property.filterAccessor(wheel)
+            : property.accessor(wheel);
+          return matcher(rawValue, f);
         })
       )
       .slice()
@@ -107,7 +116,10 @@ export const makeSelectContextualCountsFor = (propertyId) =>
           if (!f || !f.enabled) return true;
           const matcher = matchers[p.filter.type];
           if (!matcher) return true;
-          return matcher(p.accessor(wheel), f);
+          const rawValue = p.filterAccessor
+            ? p.filterAccessor(wheel)
+            : p.accessor(wheel);
+          return matcher(rawValue, f);
         })
       );
 

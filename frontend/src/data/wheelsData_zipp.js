@@ -501,4 +501,47 @@ export const zippWheels = [
       sku: 'WH-858-NTLD-D1',
     },
   },
+  // EVO-038: first entry using the canonical divergent pair form for depth and weight.
+  // Use weight_grams: { front, rear } — do NOT duplicate into other_specs.weight_front_g/rear.
+  {
+    id: 50,
+    model: '404/808 Firecrest Combo',
+    brand: 'Zipp',
+    weight_grams: { front: 740, rear: 895 },
+    diameter_mm: 700,
+    brake_type: 'disc',
+    wheelset_category: 'aero',
+    max_system_weight_kg: 115,
+    rim: {
+      material: 'carbon',
+      hookless: true,
+      depth_mm: { front: 58, rear: 80 },
+      externalWidth_mm: 27,
+      tubeless_ready: true,
+      internalWidth_mm: 23,
+    },
+    spokes: { model: null, brand: null, material: null },
+    hub: {
+      model: 'ZR1',
+      brand: 'Zipp',
+      axle_front_mm: '12x100',
+      axle_rear_mm: '12x142',
+      freehub_options: ['SRAM XDR', 'Shimano HG'],
+      disc_standard: 'Center Lock',
+    },
+    prices: [{ price_eur: 2150, url: 'https://www.sram.com/en/zipp' }],
+    images: [],
+    affiliateLinks: {
+      manufacturer: { url: 'https://www.sram.com/en/zipp', price_eur: 2150 },
+      retailers: [],
+    },
+    other_specs: {
+      weight_note: 'front: 404 Firecrest; rear: 808 Firecrest — lightest configuration',
+      bearing_type: 'Cartridge Steel',
+      points_of_engagement: 66,
+      max_tire_pressure_psi: 73,
+      tire_type: 'tubeless',
+      warranty: 'Lifetime',
+    },
+  },
 ];
