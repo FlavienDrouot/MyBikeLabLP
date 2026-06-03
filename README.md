@@ -48,3 +48,11 @@ User filter → `FilterPanel` dispatches `setFilterValue` → `filtersSlice` →
 - Filter types: `range` | `multiSelect` | `triState` — new type requires matcher + init in slice
 - Column visibility = local state in `MiniComparator`; filter/sort = Redux global
 - Tailwind tokens: `paper-*`, `ink-*`, `brass-*`, `sage-*`; shared classes in `src/index.css`
+
+### Data Schema Conventions
+Any evolution that changes the wheel data schema (adds, renames, restructures, or extends a field in `wheelsData_*.js`) **must include in its scope**:
+
+1. **Data migration** — update all existing `wheelsData_*.js` files to conform to the new schema. No entry may be left in the old format.
+2. **Scraping process update** — update `workflows/datascraping/wheel-format.json`, `scripts/DatascrapingPrompt.md`, and `workflows/datascraping/README.md` to reflect the new schema so that future scraping sessions produce conformant data from the start.
+
+These two items are not optional follow-ups — they are part of the evolution's definition of done.
