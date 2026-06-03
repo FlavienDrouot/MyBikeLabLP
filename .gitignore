@@ -49,3 +49,6 @@ design-system/
 
 # Scripts — credentials and generated output
 **/scripts/
+
+# Code reviews output (local, not versioned)
+reviews/
