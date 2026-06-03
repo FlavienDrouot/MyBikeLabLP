@@ -11,7 +11,7 @@ const Footer = () => {
         <div>
           <div className="flex items-center gap-2 text-fg-inverse">
             <LogoMark size={28} />
-            <span className="text-sm font-semibold">MyBikeLab</span>
+            <span className="text-sm font-semibold">{t('brand.name')}</span>
           </div>
           <div className="mt-1 text-xs text-fg-muted">
             {t('footer.copyright', { year: new Date().getFullYear() })}

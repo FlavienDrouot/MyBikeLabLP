@@ -6,17 +6,36 @@ import xxTranslations from '../public/locales/xx.json';
 
 globalThis.React = React;
 
-i18n.use(initReactI18next).init({
-  lng: 'en',
-  fallbackLng: 'en',
-  ns: ['translation'],
-  defaultNS: 'translation',
-  resources: {
-    en: { translation: enTranslations },
-    xx: { translation: xxTranslations },
+// Intercepts all translations for the xx pseudo-locale and returns 'XX' for
+// any string value. Array/object values (returnObjects: true) pass through so
+// that components that map over translation arrays still render correctly.
+// This means xx.json only needs to declare array-shaped translations; all
+// plain string keys are covered automatically.
+const xxPseudoLocaleProcessor = {
+  type: 'postProcessor',
+  name: 'xxPseudo',
+  process(value, key, options, translator) {
+    const lng = options.lng ?? translator.language;
+    if (lng === 'xx' && typeof value === 'string') return 'XX';
+    return value;
   },
-  interpolation: { escapeValue: false },
-});
+};
+
+i18n
+  .use(xxPseudoLocaleProcessor)
+  .use(initReactI18next)
+  .init({
+    lng: 'en',
+    fallbackLng: 'en',
+    ns: ['translation'],
+    defaultNS: 'translation',
+    resources: {
+      en: { translation: enTranslations },
+      xx: { translation: xxTranslations },
+    },
+    interpolation: { escapeValue: false },
+    postProcess: ['xxPseudo'],
+  });
 
 // Flag the environment so React 19's `act(...)` does not emit a warning
 // when tests use it to flush effects after createRoot renders.

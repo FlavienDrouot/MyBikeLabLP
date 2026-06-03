@@ -1,75 +1,5 @@
 {
-  "common": {
-    "notAvailable": "XX"
-  },
-  "nav": {
-    "tool": "XX",
-    "roadmap": "XX",
-    "partnerships": "XX",
-    "contact": "XX",
-    "openMenu": "XX",
-    "closeMenu": "XX",
-    "lang": {
-      "en": "XX",
-      "fr": "XX",
-      "switchTo": "XX"
-    }
-  },
-  "hero": {
-    "titleBefore": "XX",
-    "titleEmphasis": "XX",
-    "titleAfter": "XX",
-    "subtitle": "XX",
-    "ctaPrimary": "XX",
-    "ctaSecondary": "XX",
-    "stats": {
-      "wheels": "XX",
-      "filterAxes": "XX",
-      "phasesPlanned": "XX"
-    }
-  },
-  "comparator": {
-    "sectionIndex": "XX",
-    "title": "XX",
-    "subtitle": "XX",
-    "filtersButton": "XX",
-    "filtersDrawerLabel": "XX",
-    "footerNote": "XX"
-  },
-  "filterPanel": {
-    "heading": "XX",
-    "reset": "XX",
-    "sortBy": "XX",
-    "searchPlaceholder": "XX",
-    "noResults": "XX",
-    "enableFilter": "XX",
-    "closeFilters": "XX"
-  },
-  "columnSelector": {
-    "button": "XX"
-  },
-  "table": {
-    "heading": "XX",
-    "of": "XX",
-    "emptyState": "XX"
-  },
-  "wheelDetail": {
-    "manufacturer": "XX",
-    "whereToBuy": "XX",
-    "buyLink": "XX",
-    "noLinks": "XX",
-    "priceAnnotation": "XX"
-  },
-  "badges": {
-    "hookless": "XX",
-    "hooked": "XX",
-    "tubeless": "XX",
-    "clincher": "XX"
-  },
   "roadmap": {
-    "sectionIndex": "XX",
-    "title": "XX",
-    "subtitle": "XX",
     "phases": [
       {
         "tag": "XX",
@@ -95,8 +25,6 @@
     ]
   },
   "benefits": {
-    "sectionIndex": "XX",
-    "title": "XX",
     "items": [
       { "title": "XX", "description": "XX" },
       { "title": "XX", "description": "XX" },
@@ -104,126 +32,9 @@
     ]
   },
   "partnership": {
-    "sectionIndex": "XX",
-    "title": "XX",
-    "intro": "XX",
     "audiences": [
       { "title": "XX", "description": "XX" },
       { "title": "XX", "description": "XX" }
     ]
-  },
-  "contact": {
-    "namePlaceholder": "XX",
-    "emailPlaceholder": "XX",
-    "companyPlaceholder": "XX",
-    "messagePlaceholder": "XX",
-    "submit": "XX",
-    "errors": {
-      "nameRequired": "XX",
-      "emailRequired": "XX",
-      "messageRequired": "XX"
-    },
-    "success": {
-      "title": "XX",
-      "body": "XX"
-    },
-    "successFallbackName": "XX"
-  },
-  "footer": {
-    "copyright": "XX",
-    "nav": {
-      "tool": "XX",
-      "roadmap": "XX",
-      "partnerships": "XX",
-      "contact": "XX"
-    }
-  },
-  "properties": {
-    "groups": {
-      "general": "XX",
-      "rims": "XX",
-      "subs": "XX"
-    },
-    "image": { "label": "XX" },
-    "model": { "label": "XX" },
-    "brand": { "label": "XX" },
-    "weight": { "label": "XX" },
-    "price": { "label": "XX" },
-    "diameter": { "label": "XX" },
-    "rimMaterial": { "label": "XX" },
-    "hookless": { "label": "XX" },
-    "depth": { "label": "XX" },
-    "externalWidth": { "label": "XX" },
-    "hub": { "label": "XX" },
-    "hubBrand": { "label": "XX" },
-    "hubModel": { "label": "XX" },
-    "spokes": { "label": "XX" },
-    "spokesBrand": { "label": "XX" },
-    "spokesModel": { "label": "XX" },
-    "spokeMaterial": { "label": "XX" },
-    "brakeType": { "label": "XX" },
-    "tubelessReady": { "label": "XX" },
-    "internalWidth": { "label": "XX" },
-    "axle": { "label": "XX" },
-    "freehubOptions": { "label": "Freehub options", "popupTitle": "XX" },
-    "maxSystemWeight": { "label": "XX" },
-    "wheelsetCategory": { "label": "XX" },
-    "discStandard": { "label": "XX" }
-  },
-  "sorts": {
-    "name": "XX",
-    "weight_asc": "XX",
-    "weight_desc": "XX",
-    "price_asc": "XX",
-    "price_desc": "XX",
-    "depth_asc": "XX",
-    "depth_desc": "XX",
-    "externalWidth_asc": "XX",
-    "externalWidth_desc": "XX",
-    "internalWidth_asc": "XX",
-    "internalWidth_desc": "XX"
-  },
-  "filters": {
-    "hookless": {
-      "all": "XX",
-      "hookless": "XX",
-      "hooked": "XX"
-    },
-    "tubelessReady": {
-      "all": "XX",
-      "true": "XX",
-      "false": "XX"
-    }
-  },
-  "rimMaterial": {
-    "carbon": "XX",
-    "aluminum": "XX"
-  },
-  "spokeMaterial": {
-    "stainless_steel": "XX",
-    "aluminum": "XX",
-    "carbon": "XX",
-    "carbon_composite": "XX",
-    "steel": "XX"
-  },
-  "hookless": {
-    "true": "XX",
-    "false": "XX"
-  },
-  "brakeType": {
-    "disc": "XX",
-    "rim": "XX",
-    "track": "XX"
-  },
-  "tubelessReady": {
-    "true": "XX",
-    "false": "XX"
-  },
-  "wheelsetCategory": {
-    "all-round": "XX",
-    "aero": "XX",
-    "climbing": "XX",
-    "endurance": "XX",
-    "all-road": "XX"
   }
 }

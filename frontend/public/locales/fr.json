@@ -1,4 +1,7 @@
 {
+  "brand": {
+    "name": "MyBikeLab"
+  },
   "common": {
     "notAvailable": "Inconnu"
   },

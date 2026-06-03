@@ -85,7 +85,7 @@ const Navbar = () => {
       <div className="container-page flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
           <LogoMark size={26} />
-          <span className="text-sm font-semibold text-fg-primary">MyBikeLab</span>
+          <span className="text-sm font-semibold text-fg-primary">{t('brand.name')}</span>
         </a>
         <nav className="hidden md:flex items-center gap-1">
           <a href="#tool" className="btn-ghost">{t('nav.tool')}</a>
@@ -118,9 +118,6 @@ const Navbar = () => {
             <a href="#tool" onClick={close} className="btn-ghost justify-start">{t('nav.tool')}</a>
             <a href="#roadmap" onClick={close} className="btn-ghost justify-start">{t('nav.roadmap')}</a>
             <a href="#partnerships" onClick={close} className="btn-ghost justify-start">{t('nav.partnerships')}</a>
-            <div className="px-2 py-2">
-              <LanguageToggle />
-            </div>
           </nav>
         </div>
       )}

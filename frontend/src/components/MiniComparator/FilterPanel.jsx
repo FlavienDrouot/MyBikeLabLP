@@ -478,7 +478,7 @@ const FilterPanel = () => {
 
   return (
     <aside
-      className="bg-paper-0 border border-ink-4 p-5 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto filter-panel-scroll"
+      className="card bg-paper-0 border border-ink-4 p-5 lg:p-6 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto filter-panel-scroll"
     >
       {/* Header with reset shortcut */}
       <div className="flex items-center justify-between pb-3 border-b border-ink-10">
