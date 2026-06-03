@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "npm run test:summary",
+    "test:full": "vitest run",
+    "test:summary": "node tools/vitest-summary.mjs"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
