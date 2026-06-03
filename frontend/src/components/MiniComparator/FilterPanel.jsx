@@ -328,7 +328,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
             );
           })}
           {visible.length === 0 && (
-            <li className="px-3 py-2 text-sm text-ink-500 italic">{t('filterPanel.noResults')}</li>
+            <li className="px-3 py-2 text-sm text-ink-7 italic">{t('filterPanel.noResults')}</li>
           )}
         </ul>
       </div>

@@ -9,9 +9,13 @@ import { renderCellFor, cellClassFor } from './columnCells';
 // rows in/out can no longer change the table width, so the filter panel and the
 // table stay perfectly still during a range-slider drag (EVO-030).
 //
-// It mirrors the real table's sizing constraints exactly: `w-min` (min-content),
-// headers allowed to wrap, body cells `whitespace-nowrap`. Same content + same
-// classes => measured widths equal what the visible table would render.
+// It mirrors the real table's sizing constraints: `w-min` (min-content), headers
+// allowed to wrap, body cells `whitespace-nowrap`. The header uses the SAME
+// typographic classes as the visible table (ComparisonTable) and always reserves
+// the sort-arrow width on every column. The visible table only shows the `↓`
+// arrow on the currently sorted column; reserving it everywhere here guarantees
+// the measured width is never smaller than any rendered state, so the sorted
+// header can't be clipped by its fixed column width.
 
 const MEASURING_STYLE = {
   position: 'absolute',
@@ -62,9 +66,12 @@ const MeasuringTable = ({ items, cols, onMeasure }) => {
           {cols.map((p) => (
             <th
               key={p.id}
-              className="px-4 py-3 text-xs font-medium uppercase tracking-widest text-ink-7"
+              className="px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-7"
             >
               {t(p.label)}
+              {/* Always reserve the sort-arrow width (visible table renders it on
+                  the sorted column only) so the measured width is the worst case. */}
+              <span className="ml-1" aria-hidden="true">↓</span>
             </th>
           ))}
         </tr>

@@ -3,12 +3,7 @@ import {
   getFilterableProperties,
   getAllSorts,
   getPropertyById,
-  minPrice,
 } from '../../config/wheelProperties';
-
-// `minPrice` is re-exported from the registry to maintain backward compatibility
-// with potential third-party imports (e.g. used in future tests).
-export { minPrice };
 
 // Filter type predicates. Adding a new filter type = add an entry here +
 // a case in `buildInitialFilters` on the slice side.
@@ -62,6 +57,15 @@ export const selectFilteredWheels = createSelector(
         const vb = sort.accessor(b);
         if (sort.direction === 'localeCompare') {
           return String(va).localeCompare(String(vb));
+        }
+        // Missing values (null/undefined/NaN) always sort to the end,
+        // regardless of direction — a wheel without a known price/weight
+        // is not "cheaper" or "lighter".
+        const aMissing = va == null || Number.isNaN(va);
+        const bMissing = vb == null || Number.isNaN(vb);
+        if (aMissing || bMissing) {
+          if (aMissing && bMissing) return 0;
+          return aMissing ? 1 : -1;
         }
         return sort.direction === 'asc' ? va - vb : vb - va;
       });

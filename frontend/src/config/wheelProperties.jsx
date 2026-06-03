@@ -110,7 +110,7 @@ export const WHEEL_PROPERTIES = [
       cellClassName: 'px-4 py-3 font-medium text-ink-11',
       renderCell: (w) => (
         <>
-          <span className="text-ink-500 font-normal text-xs">{w.brand}</span>
+          <span className="text-ink-7 font-normal text-xs">{w.brand}</span>
           <br />
           {w.model}
         </>
@@ -394,7 +394,7 @@ export const WHEEL_PROPERTIES = [
       cellClassName: 'px-4 py-3 font-medium text-ink-11 max-w-[160px] overflow-hidden',
       renderCell: (w) => (
         <div>
-          <span className="text-ink-500 font-normal text-xs">{w.hub.brand}</span>
+          <span className="text-ink-7 font-normal text-xs">{w.hub.brand}</span>
           <br />
           <span className="block truncate" title={w.hub.model}>{w.hub.model}</span>
         </div>
@@ -484,7 +484,7 @@ export const WHEEL_PROPERTIES = [
       cellClassName: 'px-4 py-3 font-medium text-ink-11 max-w-[160px] overflow-hidden',
       renderCell: (w) => (
         <div>
-          <span className="text-ink-500 font-normal text-xs">{w.spokes.brand}</span>
+          <span className="text-ink-7 font-normal text-xs">{w.spokes.brand}</span>
           <br />
           <span className="block truncate" title={w.spokes.model}>{w.spokes.model}</span>
         </div>

@@ -13,9 +13,9 @@ import i18n from 'i18next';
 //   \d+        – hardcoded number (counts, stats)
 //   [a-z]{1,2} – measurement unit (g, mm…)
 //   [€$£%]     – currency / percentage symbol
-//   [—→]       – decorative symbols (range separator, roadmap arrow)
+//   [—→↓↑]     – decorative symbols (range separator, roadmap arrow, sort arrows)
 //   [A-Z]{2}   – 2-letter language code (EN, FR) from the language switcher
-const ALLOWED_TOKEN = /^(XX|\d+|[a-z]{1,2}|[€$£%]|[—→]|[A-Z]{2})$/;
+const ALLOWED_TOKEN = /^(XX|\d+|[a-z]{1,2}|[€$£%]|[—→↓↑]|[A-Z]{2})$/;
 
 function extractTextNodes(html) {
   return html

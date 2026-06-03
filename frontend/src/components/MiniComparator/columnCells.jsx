@@ -3,12 +3,8 @@
 // classes so the measured column widths match what the visible table displays.
 
 export const renderCellFor = (property, t) => {
-  // Safe fallback for legacy callers that have not yet been updated to pass t
-  // (TASK-005 will update them). Returns the translation key as-is rather than
-  // crashing when t is undefined.
-  const safeT = t ?? ((key) => key);
   if (property.column?.renderCell) {
-    return (w) => property.column.renderCell(w, safeT);
+    return (w) => property.column.renderCell(w, t);
   }
   if (property.translatable && t) {
     return (w) => {
@@ -27,7 +23,7 @@ export const renderCellFor = (property, t) => {
   }
   return (w) => {
     const value = property.accessor(w);
-    if (value === undefined || value === null || value === '') return safeT('common.notAvailable');
+    if (value === undefined || value === null || value === '') return t('common.notAvailable');
     return `${value}${property.unit ?? ''}`;
   };
 };

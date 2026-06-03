@@ -86,19 +86,12 @@ describe('renderCellFor — translatable branch (EVO-034 TASK-002)', () => {
 });
 
 describe('renderCellFor — unchanged branches', () => {
-  it('renderCell-override branch delegates to property.column.renderCell with safeT', () => {
+  it('renderCell-override branch delegates to property.column.renderCell with t', () => {
     const renderCell = vi.fn((w, t) => `custom:${w.x}:${t('any.key')}`);
     const property = { column: { renderCell } };
     const t = (key) => `T(${key})`;
     const cell = renderCellFor(property, t);
     expect(cell({ x: 5 })).toBe('custom:5:T(any.key)');
-  });
-
-  it('renderCell-override branch falls back to key-returning safeT when t is absent', () => {
-    const renderCell = vi.fn((w, t) => t('foo.bar'));
-    const property = { column: { renderCell } };
-    const cell = renderCellFor(property, undefined);
-    expect(cell({})).toBe('foo.bar');
   });
 
   it('non-translatable branch renders accessor value with the unit suffix', () => {
