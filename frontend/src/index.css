@@ -82,7 +82,7 @@
     @apply mx-auto px-4 sm:px-6 lg:px-8;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-xs bg-brass-7 px-5 py-2.5 text-sm font-semibold text-ink-12 hover:bg-brass-8;
+    @apply inline-flex items-center justify-center rounded-xs border border-brass-8 bg-brass-7 px-5 py-2.5 text-sm font-semibold text-ink-12 hover:bg-brass-6;
     transition: color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard);
   }
   .btn-ghost {
@@ -346,6 +346,51 @@
     --brass-8:#52805a; --brass-7:#7aa37b; --brass-6:#9cba9c; --brass-5:#bcd0bc;
     --brass-4:#d3e0d3; --brass-3:#e4ede4; --brass-2:#eef4ee; --brass-1:#f4f8f4;
     --accent:#7aa37b; --fg-accent:#52805a; --fg-link-hover:#52805a; --border-focus:#52805a;
+  }
+
+  /* Audience tile — used in ink-inverse (partnership) section */
+  .audience-tile {
+    border-top: 1px solid var(--ink-10);
+    padding: 24px 0;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+  }
+
+  .audience-tile:last-child {
+    border-bottom: 1px solid var(--ink-10);
+  }
+
+  .audience-tile-title {
+    font-weight: 600;
+    font-size: var(--text-base);
+    color: var(--paper-0);
+  }
+
+  .audience-tile-desc {
+    font-size: var(--text-sm);
+    color: var(--ink-4);
+    line-height: 1.5;
+  }
+
+  /* ROADMAP SECTION — keyline card layout */
+  /* TODO: mobile — stack roadmap phases vertically at sm breakpoint */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink-10);
+  }
+
+  .roadmap-phase {
+    padding: 32px 28px;
+    border-right: 1px solid var(--ink-3);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .roadmap-phase:last-child {
+    border-right: 0;
   }
 }
 

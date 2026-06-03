@@ -11,7 +11,8 @@ const Hero = () => {
       className="relative overflow-hidden hero-grid-bg"
     >
       <div className="container-page section text-center">
-        <h1 className="hero-title text-ink-10">
+        <p className="t-eyebrow">{t('hero.eyebrow')}</p>
+        <h1 className="hero-title text-ink-12">
           {t('hero.titleBefore')} <em>{t('hero.titleEmphasis')}</em> {t('hero.titleAfter')}
         </h1>
         <p className="mt-6 text-lg sm:text-xl text-ink-8 max-w-2xl mx-auto">
