@@ -1,7 +1,7 @@
 import React, { useState, useRef, useLayoutEffect, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown, SlidersHorizontal } from 'lucide-react';
+import { ChevronDown, SlidersHorizontal, X } from 'lucide-react';
 import { selectFilteredWheels } from '../../store/selectors/wheelsSelectors';
 import { getColumnProperties } from '../../config/wheelProperties';
 import WheelDetailPanel from './WheelDetailPanel';
@@ -23,6 +23,8 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   const sortBy = useSelector((s) => s.filters.sortBy);
   const total = allWheels.length;
   const [expandedId, setExpandedId] = useState(null);
+  const [renderedExpandedId, setRenderedExpandedId] = useState(null);
+  const [isPanelVisible, setIsPanelVisible] = useState(false);
   const [panelWidth, setPanelWidth] = useState(0);
   // Column widths measured on the full dataset (see MeasuringTable). Keyed by
   // column id. Empty until the first measurement → table falls back to auto.
@@ -91,8 +93,26 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
 
   const isSortedColumn = (p) => sortBy && sortBy.startsWith(p.id + '_');
 
-  const toggleExpanded = (id) =>
-    setExpandedId((prev) => (prev === id ? null : id));
+  const openExpandedPanel = (id) => {
+    setRenderedExpandedId(id);
+    setIsPanelVisible(true);
+    setExpandedId(id);
+  };
+
+  const closeExpandedPanel = () => {
+    setExpandedId(null);
+    setIsPanelVisible(false);
+    setRenderedExpandedId(null);
+  };
+
+  const toggleExpanded = (id) => {
+    if (expandedId === id) {
+      closeExpandedPanel();
+      return;
+    }
+
+    openExpandedPanel(id);
+  };
 
   return (
     <div className="bg-paper-0 border border-ink-10 overflow-hidden w-fit max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden snap-start">
@@ -185,13 +205,31 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                       />
                     </td>
                   </tr>
-                  {expandedId === w.id && (
+                  {renderedExpandedId === w.id && (
                     <tr>
                       <td colSpan={cols.length + 1} className="p-0">
                         <div
                           ref={setPanelRef}
-                          style={{ position: 'sticky', left: 0 }}
+                          className={`relative transition-[opacity,transform] duration-base-ds ease-standard motion-reduce:transform-none ${
+                            isPanelVisible ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0'
+                          }`}
+                          style={{
+                            position: 'sticky',
+                            left: 0,
+                            transitionProperty: 'opacity, transform',
+                            transitionDuration: 'var(--duration-base)',
+                            transitionTimingFunction: 'var(--ease-standard)',
+                          }}
                         >
+                          <button
+                            type="button"
+                            aria-label={t('nav.closeMenu')}
+                            onClick={closeExpandedPanel}
+                            className="absolute right-3 top-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-xs border border-ink-4 bg-paper-0 text-ink-11 hover:border-ink-10 hover:bg-paper-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8"
+                            style={{ transition: 'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard)' }}
+                          >
+                            <Icon as={X} size={16} aria-hidden="true" />
+                          </button>
                           <WheelDetailPanel wheel={w} panelWidth={panelWidth} />
                         </div>
                       </td>

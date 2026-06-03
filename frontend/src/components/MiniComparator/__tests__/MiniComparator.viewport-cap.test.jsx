@@ -155,10 +155,15 @@ describe('MiniComparator viewport-cap integration (EVO-025 TASK-004)', () => {
       );
     });
 
-    // FilterPanel root <aside> carries the `card` + cap classes.
-    const panelRoot = container.querySelector('aside.card');
-    // ComparisonTable card root carries the `card` + `lg:flex` classes.
-    const tableRoot = container.querySelector('div.card.lg\\:flex');
+    // FilterPanel root <aside> carries the desktop cap and scroll classes.
+    const panelRoot = Array.from(container.querySelectorAll('aside')).find((el) =>
+      el.className.includes('lg:max-h-[calc(100vh-var(--navbar-height)-12px)]')
+    );
+    // ComparisonTable root carries the same desktop cap plus flex layout.
+    const tableRoot = Array.from(container.querySelectorAll('div')).find((el) =>
+      el.className.includes('lg:flex') &&
+      el.className.includes('lg:max-h-[calc(100vh-var(--navbar-height)-12px)]')
+    );
     return { panelRoot, tableRoot };
   };
 

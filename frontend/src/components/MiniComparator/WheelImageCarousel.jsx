@@ -1,54 +1,137 @@
 import { useState } from 'react';
-import wheelPlaceholderUrl from '../../assets/wheel-placeholder.svg';
 
 const prefersReducedMotion =
   typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+const WheelSchematic = () => {
+  const spokes = Array.from({ length: 24 }).map((_, index) => {
+    const angle = (index / 24) * Math.PI * 2 - Math.PI / 2;
+    const innerX = 150 + 24 * Math.cos(angle);
+    const innerY = 150 + 24 * Math.sin(angle);
+    const outerX = 150 + 112 * Math.cos(angle);
+    const outerY = 150 + 112 * Math.sin(angle);
+
+    return (
+      <line
+        key={index}
+        x1={innerX}
+        y1={innerY}
+        x2={outerX}
+        y2={outerY}
+      />
+    );
+  });
+
+  return (
+    <svg
+      data-testid="wheel-schematic"
+      viewBox="0 0 300 300"
+      fill="none"
+      aria-hidden="true"
+      style={{
+        position: 'absolute',
+        inset: 0,
+        zIndex: 2,
+        width: '100%',
+        height: '100%',
+        color: 'var(--ink-11)',
+        pointerEvents: 'none',
+      }}
+    >
+      <circle cx="150" cy="150" r="138" stroke="currentColor" strokeWidth="1.4" />
+      <circle cx="150" cy="150" r="124" stroke="currentColor" strokeWidth="1.2" />
+      <circle cx="150" cy="150" r="112" stroke="currentColor" strokeWidth="0.8" />
+      <circle cx="150" cy="150" r="24" stroke="currentColor" strokeWidth="1.2" />
+      <circle cx="150" cy="150" r="6" fill="currentColor" />
+      <g stroke="currentColor" strokeWidth="0.6">{spokes}</g>
+      <g fontFamily="var(--font-mono)" fontSize="9" fill="currentColor">
+        <line x1="150" y1="6" x2="150" y2="12" stroke="currentColor" strokeWidth="0.8" />
+        <text x="158" y="12" letterSpacing="0.04em" fill="var(--ink-7)">700C</text>
+        <line x1="288" y1="150" x2="294" y2="150" stroke="currentColor" strokeWidth="0.8" />
+        <text x="254" y="167" letterSpacing="0.04em" fill="var(--ink-7)">rim</text>
+        <line x1="150" y1="294" x2="150" y2="288" stroke="currentColor" strokeWidth="0.8" />
+        <text x="132" y="285" letterSpacing="0.04em" fill="var(--ink-7)">hub</text>
+      </g>
+    </svg>
+  );
+};
+
 const WheelImageCarousel = ({ wheel }) => {
-  const slides = wheel.images?.length > 0 ? wheel.images : [wheelPlaceholderUrl];
+  const slides = Array.isArray(wheel.images) ? wheel.images.filter(Boolean) : [];
   const [activeIndex, setActiveIndex] = useState(0);
 
   const hasMultipleSlides = slides.length > 1;
+  const translateX = `translateX(-${(activeIndex * 100) / Math.max(slides.length, 1)}%)`;
 
   const handlePrev = () => setActiveIndex(i => Math.max(0, i - 1));
   const handleNext = () => setActiveIndex(i => Math.min(slides.length - 1, i + 1));
-
-  const translateX = -(activeIndex * 230 - 70);
+  const handleSelect = (index) => setActiveIndex(index);
 
   return (
-    <div>
-      <div style={{ width: '360px', overflow: 'hidden', position: 'relative' }}>
+    <div className="flex h-full min-h-[220px] w-full flex-col">
+      <div
+        style={{
+          width: '100%',
+          flex: '1 1 auto',
+          minHeight: 0,
+          position: 'relative',
+          color: 'var(--ink-11)',
+        }}
+      >
         <div
+          data-testid="wheel-image-clip"
           style={{
-            display: 'flex',
-            gap: '10px',
-            transform: `translateX(${translateX}px)`,
-            transition: prefersReducedMotion
-              ? 'opacity 0.28s ease'
-              : 'transform 0.28s ease, opacity 0.28s ease',
-            willChange: 'transform',
+            position: 'absolute',
+            inset: 0,
+            overflow: 'hidden',
+            borderRadius: '50%',
+            background: 'var(--paper-0)',
           }}
         >
-          {slides.map((slide, index) => (
+          {slides.length > 0 && (
             <div
-              key={index}
               style={{
-                width: '220px',
-                height: '220px',
-                flexShrink: 0,
-                opacity: index === activeIndex ? 1 : 0.45,
-                transition: 'opacity 0.28s ease',
+                display: 'flex',
+                width: `${slides.length * 100}%`,
+                height: '100%',
+                transform: translateX,
+                opacity: 1,
+                transition: prefersReducedMotion
+                  ? 'none'
+                  : 'transform var(--duration-base) var(--ease-standard), opacity var(--duration-base) var(--ease-standard)',
+                willChange: prefersReducedMotion ? 'auto' : 'transform',
               }}
             >
-              <img
-                src={slide}
-                alt={`${wheel.brand} ${wheel.model}`}
-                style={{ width: '220px', height: '220px', objectFit: 'contain' }}
-              />
+              {slides.map((slide, index) => (
+                <div
+                  key={slide}
+                  style={{
+                    width: `${100 / slides.length}%`,
+                    height: '100%',
+                    flexShrink: 0,
+                    opacity: index === activeIndex ? 1 : 0.35,
+                    transition: 'opacity var(--duration-base) var(--ease-standard)',
+                  }}
+                >
+                  <img
+                    src={slide}
+                    alt={`${wheel.brand} ${wheel.model}`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                      display: 'block',
+                    }}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
+
+        {slides.length === 0 && <WheelSchematic />}
 
         {hasMultipleSlides && (
           <>
@@ -56,71 +139,68 @@ const WheelImageCarousel = ({ wheel }) => {
               onClick={handlePrev}
               aria-label="Previous image"
               disabled={activeIndex === 0}
-              className="rounded-full bg-paper-2/80 text-ink-11 flex items-center justify-center hover:bg-paper-3"
+              className="rounded-xs bg-paper-2 text-ink-11 flex items-center justify-center hover:bg-paper-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8"
               style={{
                 position: 'absolute',
-                left: '54px',
+                left: 'var(--space-3)',
                 top: '50%',
                 transform: 'translateY(-50%)',
                 zIndex: 10,
                 width: '32px',
                 height: '32px',
-                fontSize: '20px',
-                border: 'none',
+                border: '1px solid var(--ink-4)',
                 cursor: activeIndex === 0 ? 'not-allowed' : 'pointer',
                 opacity: activeIndex === 0 ? 0.4 : 1,
-                transition: 'opacity 0.15s ease',
+                transition: 'opacity var(--duration-base) var(--ease-standard)',
               }}
             >
-              ‹
+              <span aria-hidden="true">&lt;</span>
             </button>
             <button
               onClick={handleNext}
               aria-label="Next image"
               disabled={activeIndex === slides.length - 1}
-              className="rounded-full bg-paper-2/80 text-ink-11 flex items-center justify-center hover:bg-paper-3"
+              className="rounded-xs bg-paper-2 text-ink-11 flex items-center justify-center hover:bg-paper-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8"
               style={{
                 position: 'absolute',
-                right: '54px',
+                right: 'var(--space-3)',
                 top: '50%',
                 transform: 'translateY(-50%)',
                 zIndex: 10,
                 width: '32px',
                 height: '32px',
-                fontSize: '20px',
-                border: 'none',
+                border: '1px solid var(--ink-4)',
                 cursor: activeIndex === slides.length - 1 ? 'not-allowed' : 'pointer',
                 opacity: activeIndex === slides.length - 1 ? 0.4 : 1,
-                transition: 'opacity 0.15s ease',
+                transition: 'opacity var(--duration-base) var(--ease-standard)',
               }}
             >
-              ›
+              <span aria-hidden="true">&gt;</span>
             </button>
           </>
         )}
       </div>
-
       {hasMultipleSlides && (
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '8px' }}>
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveIndex(i)}
-              aria-label={`Go to image ${i + 1}`}
-              style={{
-                width: i === activeIndex ? '18px' : '6px',
-                height: '6px',
-                borderRadius: '3px',
-                background: 'currentColor',
-                opacity: i === activeIndex ? 1 : 0.35,
-                border: 'none',
-                padding: 0,
-                cursor: 'pointer',
-                transition: 'width 0.2s ease, opacity 0.2s ease',
-                flexShrink: 0,
-              }}
-            />
-          ))}
+        <div
+          className="mt-3 flex items-center justify-center gap-2 text-ink-8"
+          aria-label={`Image ${activeIndex + 1} of ${slides.length}`}
+        >
+          <span className="t-numeric text-[10px] text-ink-7">
+            {activeIndex + 1} / {slides.length}
+          </span>
+          <span className="flex items-center gap-1.5">
+            {slides.map((slide, index) => (
+              <button
+                key={`marker-${slide}-${index}`}
+                type="button"
+                onClick={() => handleSelect(index)}
+                aria-label={`Show image ${index + 1}`}
+                className={`h-1.5 rounded-xs transition-[width,background-color,opacity] duration-quick ease-standard ${
+                  index === activeIndex ? 'w-4 bg-ink-9 opacity-100' : 'w-1.5 bg-ink-6 opacity-40'
+                }`}
+              />
+            ))}
+          </span>
         </div>
       )}
     </div>

@@ -1,88 +1,154 @@
 import { useTranslation } from 'react-i18next';
 import WheelImageCarousel from './WheelImageCarousel';
 
-const WheelDetailPanel = ({ wheel, panelWidth }) => {
-  const isMobile = panelWidth < 870;
-  const { t } = useTranslation();
-  const { affiliateLinks, brand } = wheel;
-  const manufacturer = affiliateLinks?.manufacturer;
-  const retailers = affiliateLinks?.retailers ?? [];
-  const hasManufacturer = !!manufacturer;
-  const hasRetailers = retailers.length > 0;
-  const hasNoLinks = !hasManufacturer && !hasRetailers;
+const STACKED_PANEL_BREAKPOINT_PX = 1040;
+const formatPrice = (value) => `${value.toLocaleString('fr-FR')} \u20ac`;
+const hasKnownPrice = (entry) => Number.isFinite(entry.price_eur);
 
-  const sortedRetailers = [...retailers].sort((a, b) => a.price_eur - b.price_eur);
+const buildLedgerEntries = (wheel) => {
+  const manufacturer = wheel.affiliateLinks?.manufacturer;
+  const retailers = wheel.affiliateLinks?.retailers ?? [];
+  const entries = [
+    ...(manufacturer ? [{ ...manufacturer, name: wheel.brand, isOfficial: true }] : []),
+    ...retailers.map((retailer) => ({ ...retailer, isOfficial: false })),
+  ]
+    .filter((entry) => entry.url)
+    .sort((a, b) => {
+      if (hasKnownPrice(a) && hasKnownPrice(b)) return a.price_eur - b.price_eur;
+      if (hasKnownPrice(a)) return -1;
+      if (hasKnownPrice(b)) return 1;
+      return 0;
+    });
+
+  const minPrice = entries.find(hasKnownPrice)?.price_eur;
+
+  return entries.map((entry) => ({
+    ...entry,
+    isBestPrice: minPrice != null && hasKnownPrice(entry) && entry.price_eur === minPrice,
+    delta: minPrice == null || !hasKnownPrice(entry) ? null : entry.price_eur - minPrice,
+  }));
+};
+
+const EntryMeta = ({ entry }) => {
+  const parts = [entry.region, entry.stock].filter(Boolean);
+
+  if (parts.length === 0) return null;
 
   return (
-    <div className={`flex ${isMobile ? 'flex-col items-center' : 'flex-row items-start'} justify-evenly gap-5 px-5 py-3 bg-paper-2/60 border-t border-t-ink-3 border-b border-b-ink-4`}>
-      <WheelImageCarousel wheel={wheel} />
+    <div className="mt-1 text-[10px] uppercase tracking-[0.1em] text-ink-6">
+      {parts.join(' \u00b7 ')}
+    </div>
+  );
+};
 
-      <div className="w-[450px] max-w-full flex flex-col gap-2 overflow-y-auto py-0.5">
-        {hasNoLinks ? (
-          <p className="text-xs text-ink-6 italic">{t('wheelDetail.noLinks')}</p>
-        ) : (
-          <>
-            {hasManufacturer && (
-              <div>
-                <p className="text-xs font-medium uppercase tracking-widest text-ink-6 mb-1">
-                  {t('wheelDetail.manufacturer')}
-                </p>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-ink-11">{brand}</span>
-                  <span className="flex items-center gap-3 flex-shrink-0">
-                    {manufacturer.price_eur != null && (
-                      <span className="flex flex-col items-end">
-                        <span className="font-semibold text-ink-11 font-mono tabular-nums">
-                          {manufacturer.price_eur.toLocaleString('fr-FR')} &euro;
-                        </span>
-                        <span className="t-annotation">{t('wheelDetail.priceAnnotation')}</span>
-                      </span>
-                    )}
-                    <a
-                      href={manufacturer.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs text-brass-8 hover:underline"
-                    >
-                      {t('wheelDetail.buyLink')}
-                    </a>
-                  </span>
+const LedgerRow = ({ entry, rank, ctaLabel, bestLabel }) => (
+  <div
+    data-testid="wheel-detail-ledger-row"
+    className={`relative grid grid-cols-[30px_minmax(0,1fr)_auto_150px] items-center gap-[18px] border-b border-ink-3 py-3 last:border-b-0 ${
+      entry.isBestPrice ? 'pl-4 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[3px] before:bg-brass-8' : ''
+    }`}
+  >
+    <span className={`t-numeric text-[13px] ${rank == null ? 'text-ink-5' : 'text-ink-6'}`}>
+      {rank == null ? '-' : String(rank).padStart(2, '0')}
+    </span>
+    <div className="min-w-0">
+      <div className="flex min-w-0 items-center gap-2">
+        <b className="min-w-0 truncate text-base font-semibold text-ink-11">{entry.name}</b>
+      </div>
+      <EntryMeta entry={entry} />
+    </div>
+    <div className="text-right">
+      <span className={`t-numeric text-[19px] font-medium tracking-normal ${entry.isBestPrice ? 'text-signal-up' : 'text-ink-11'}`}>
+        {hasKnownPrice(entry) ? formatPrice(entry.price_eur) : '-'}
+      </span>
+      {entry.delta != null && (
+        <span className={`t-numeric mt-0.5 block text-[11px] ${entry.isBestPrice ? 'text-signal-up' : 'text-ink-6'}`}>
+          {entry.delta === 0 ? bestLabel : `+${formatPrice(entry.delta)}`}
+        </span>
+      )}
+    </div>
+    <a
+      href={entry.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xs border px-3.5 py-2 text-sm font-semibold leading-none no-underline transition-colors duration-quick ease-standard focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8 ${
+        entry.isBestPrice
+          ? 'border-brass-7 bg-brass-7 text-ink-12 hover:border-brass-8 hover:bg-brass-8'
+          : 'border-ink-4 bg-transparent text-ink-11 hover:border-brass-8 hover:text-brass-8'
+      }`}
+    >
+      {ctaLabel}
+    </a>
+  </div>
+);
+
+const WheelDetailPanel = ({ wheel, panelWidth }) => {
+  const isStacked = panelWidth < STACKED_PANEL_BREAKPOINT_PX;
+  const { t } = useTranslation();
+  const entries = buildLedgerEntries(wheel);
+  const official = entries.find((entry) => entry.isOfficial);
+  const retailers = entries.filter((entry) => !entry.isOfficial);
+  const hasNoLinks = entries.length === 0;
+
+  return (
+    <div className="bg-paper-2 border-y border-ink-4 px-7 py-[26px]">
+      <div className={`mx-auto grid max-w-[1100px] items-start gap-12 ${isStacked ? 'grid-cols-1' : 'grid-cols-[380px_minmax(0,1fr)]'}`}>
+        <div className="mb-5 self-start border border-ink-4 bg-paper-0">
+          <div className="flex items-center justify-between border-b border-ink-3 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-7">
+            <span>{`FIG. 01 \u00b7 WHEEL`}</span>
+            <span>SCALE 1:1</span>
+          </div>
+          <div data-testid="wheel-detail-plate-image" className="h-[340px] p-6 text-ink-9">
+            <WheelImageCarousel wheel={wheel} />
+          </div>
+        </div>
+
+        <div className="min-w-0">
+          {hasNoLinks ? (
+            <div className="border-t border-ink-10 py-4">
+              <p className="text-sm italic text-ink-6">{t('wheelDetail.noLinks')}</p>
+            </div>
+          ) : (
+            <>
+              {official && (
+                <div>
+                  <div className="mb-0.5 flex items-baseline justify-between border-b border-ink-10 pb-2.5">
+                    <h4 className="m-0 text-base font-semibold text-ink-11">
+                      {t('wheelDetail.manufacturer')}
+                    </h4>
+                    <span className="t-eyebrow text-ink-7">{t('wheelDetail.priceAnnotation')}</span>
+                  </div>
+                  <LedgerRow
+                    entry={official}
+                    rank={null}
+                    ctaLabel={t('wheelDetail.buyLink')}
+                    bestLabel={t('wheelDetail.priceAnnotation')}
+                  />
                 </div>
-              </div>
-            )}
+              )}
 
-            {hasRetailers && (
-              <div>
-                <p className="text-xs font-medium uppercase tracking-widest text-ink-6 mb-1">
-                  {t('wheelDetail.whereToBuy')}
-                </p>
-                <ul className="space-y-1">
-                  {sortedRetailers.map((r, i) => (
-                    <li key={i} className="flex items-center justify-between text-sm">
-                      <span className="text-ink-11">{r.name}</span>
-                      <span className="flex items-center gap-3 flex-shrink-0">
-                        <span className="flex flex-col items-end">
-                          <span className="font-semibold text-ink-11 font-mono tabular-nums">
-                            {r.price_eur.toLocaleString('fr-FR')} &euro;
-                          </span>
-                          <span className="t-annotation">{t('wheelDetail.priceAnnotation')}</span>
-                        </span>
-                        <a
-                          href={r.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-brass-8 hover:underline"
-                        >
-                          {t('wheelDetail.buyLink')}
-                        </a>
-                      </span>
-                    </li>
+              {retailers.length > 0 && (
+                <div className={official ? 'mt-5' : ''}>
+                  <div className="mb-0.5 flex items-baseline justify-between border-b border-ink-10 pb-2.5">
+                    <h4 className="m-0 text-base font-semibold text-ink-11">
+                      {t('wheelDetail.whereToBuy')}
+                    </h4>
+                    <span className="t-eyebrow text-ink-7">{retailers.length}</span>
+                  </div>
+                  {retailers.map((entry, index) => (
+                    <LedgerRow
+                      key={`${entry.name}-${entry.url}`}
+                      entry={entry}
+                      rank={index + 1}
+                      ctaLabel={t('wheelDetail.buyLink')}
+                      bestLabel={t('wheelDetail.priceAnnotation')}
+                    />
                   ))}
-                </ul>
-              </div>
-            )}
-          </>
-        )}
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
