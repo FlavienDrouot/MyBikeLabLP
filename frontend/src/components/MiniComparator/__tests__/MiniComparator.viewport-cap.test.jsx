@@ -255,10 +255,12 @@ describe('MiniComparator viewport-cap integration (EVO-025 TASK-004)', () => {
     setDesktopMatchMedia();
     mount([minimalWheel(1), minimalWheel(2)]);
 
-    const thead = container.querySelector('thead');
-    expect(thead).not.toBeNull();
+    // Sticky positioning is applied to the <th> cells (CSS-standard approach),
+    // not to <thead> itself.
+    const th = container.querySelector('thead th');
+    expect(th).not.toBeNull();
 
-    const computed = window.getComputedStyle(thead);
+    const computed = window.getComputedStyle(th);
     expect(computed.position).toBe('sticky');
     expect(computed.top).toBe('0px');
   });

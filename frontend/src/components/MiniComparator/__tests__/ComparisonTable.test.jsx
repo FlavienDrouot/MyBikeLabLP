@@ -65,17 +65,17 @@ describe('ComparisonTable', () => {
       expect(html).toContain('lg:[scrollbar-gutter:stable]');
     });
 
-    it('<thead> carries sticky, top-0, z-10, and preserves bg-paper-2', () => {
+    it('<th> header cells carry sticky, top-0, z-10, and preserves bg-paper-2', () => {
       const html = renderWithStore([minimalWheel]);
-      // Locate the <thead ...> opening tag and assert all four classes
-      // appear on it (rather than elsewhere in the markup).
-      const match = html.match(/<thead[^>]*class="([^"]*)"/);
+      // Locate the first <th ...> opening tag and assert all four classes
+      // appear on it — sticky positioning lives on the cells, not on <thead>.
+      const match = html.match(/<th\b[^>]*class="([^"]*)"/);
       expect(match).not.toBeNull();
-      const theadClass = match[1];
-      expect(theadClass).toContain('sticky');
-      expect(theadClass).toContain('top-0');
-      expect(theadClass).toContain('z-10');
-      expect(theadClass).toContain('bg-paper-2');
+      const thClass = match[1];
+      expect(thClass).toContain('sticky');
+      expect(thClass).toContain('top-0');
+      expect(thClass).toContain('z-10');
+      expect(thClass).toContain('bg-paper-2');
     });
   });
 
