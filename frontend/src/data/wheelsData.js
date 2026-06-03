@@ -11,7 +11,7 @@ export const wheelsData = [
   ...enveWheels,
 ];
 
-// Legacy placeholder data kept below for reference during migration — remove once all brands are scraped.
+/* Legacy placeholder data — remove once all brands are scraped.
 const _unused = [
   {
     id: 1,
@@ -306,3 +306,4 @@ const _unused = [
     },
   },
 ];
+*/

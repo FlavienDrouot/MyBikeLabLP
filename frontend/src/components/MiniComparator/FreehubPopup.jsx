@@ -5,7 +5,7 @@ import { forwardRef } from 'react';
 // style: object       — fixed-position style injected by FreehubCell (via portal)
 // onClose: () => void — called when the user activates an explicit close action (optional)
 // t: TFunction        — react-i18next translation function
-const FreehubPopup = forwardRef(({ options, onClose, t, style }, ref) => {
+const FreehubPopup = forwardRef(({ options, t, style }, ref) => {
   const title = t('properties.freehubOptions.popupTitle');
 
   return (

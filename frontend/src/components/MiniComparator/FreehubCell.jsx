@@ -18,6 +18,7 @@ const FreehubCell = ({ wheel, t }) => {
   const popupRef = useRef(null);
 
   // Truncation detection — runs after every render so it re-checks when column width changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const el = textRef.current;
     if (el) setIsTruncated(el.scrollWidth > el.clientWidth);
