@@ -213,4 +213,21 @@ describe('WheelDetailPanel', () => {
     expect(container.textContent).toContain('Buy');
     expect(container.textContent).not.toContain('wheelDetail.');
   });
+
+  it('renders variant context for variant wheels', () => {
+    renderPanel({
+      ...withLinks({ manufacturer }),
+      variant: 'carbon_spokes',
+    });
+
+    expect(container.textContent).toContain('Variant');
+    expect(container.textContent).toContain('Carbon spokes');
+    expect(container.querySelector('.border-l.border-brass-7')).not.toBeNull();
+  });
+
+  it('does not render variant context for wheels without a variant', () => {
+    renderPanel(withLinks({ manufacturer }));
+
+    expect(container.textContent).not.toContain('Carbon spokes');
+  });
 });

@@ -66,6 +66,33 @@ describe('validateWheelEntry', () => {
     });
     expect(validateWheelEntry(entry)).toEqual([]);
   });
+
+  it('warns when comparable variant data is stored in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        weight_carbon_spoke_grams: 1030,
+        carbon_spoke_option: true,
+        external_width_options_mm: [{ externalWidth_mm: 37, weight_grams: 1310 }],
+        bearing_type: 'ABEC 5 cartridge',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(3);
+    expect(warnings[0]).toContain('other_specs.weight_carbon_spoke_grams');
+    expect(warnings[1]).toContain('other_specs.carbon_spoke_option');
+    expect(warnings[2]).toContain('other_specs.external_width_options_mm');
+  });
+
+  it('does not flag freehub options as variant data', () => {
+    const entry = makeEntry({
+      hub: {
+        brand: 'DT Swiss',
+        model: '240',
+        freehub_options: ['Shimano HG', 'SRAM XDR'],
+      },
+    });
+    expect(validateWheelEntry(entry)).toEqual([]);
+  });
 });
 
 describe('validateWheelsCatalog', () => {
@@ -78,5 +105,43 @@ describe('validateWheelsCatalog', () => {
     const warnings = validateWheelsCatalog([validEntry, invalidEntry]);
     expect(warnings.length).toBe(1);
     expect(warnings[0]).toContain('invalid-1');
+  });
+
+  it('returns no warnings for valid sibling variants sharing brand + model', () => {
+    const entries = [
+      makeEntry({ id: 'sib-1', model: 'Family A', variant: 'steel_spokes' }),
+      makeEntry({ id: 'sib-2', model: 'Family A', variant: 'carbon_spokes' }),
+    ];
+    expect(validateWheelsCatalog(entries)).toEqual([]);
+  });
+
+  it('warns when a sibling sharing brand + model has no variant', () => {
+    const entries = [
+      makeEntry({ id: 'sib-1', model: 'Family A', variant: 'steel_spokes' }),
+      makeEntry({ id: 'sib-2', model: 'Family A' }),
+    ];
+    const warnings = validateWheelsCatalog(entries);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('sib-2');
+    expect(warnings[0]).toContain('variant');
+  });
+
+  it('warns when siblings sharing brand + model duplicate a variant', () => {
+    const entries = [
+      makeEntry({ id: 'sib-1', model: 'Family A', variant: 'steel_spokes' }),
+      makeEntry({ id: 'sib-2', model: 'Family A', variant: 'steel_spokes' }),
+    ];
+    const warnings = validateWheelsCatalog(entries);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('duplicate variant');
+  });
+
+  it('warns when a single-configuration model carries a variant', () => {
+    const entries = [
+      makeEntry({ id: 'solo-1', model: 'Lone Model', variant: 'carbon_spokes' }),
+    ];
+    const warnings = validateWheelsCatalog(entries);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('single configuration');
   });
 });

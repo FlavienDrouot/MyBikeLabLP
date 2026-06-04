@@ -12,6 +12,74 @@ const makeState = (filters = {}, sortBy = null) => ({
   filters: { filters, sortBy },
 });
 
+describe('Caden variant catalog migration', () => {
+  const cadenEntries = wheelsData.filter((wheel) => wheel.brand === 'Caden');
+  const variantCadenEntries = cadenEntries.filter((wheel) => wheel.variant);
+  const forbiddenOtherSpecKeys = [
+    'weight_carbon_spoke_grams',
+    'carbon_spoke_option',
+    'external_width_options_mm',
+    'internal_width_options_mm',
+    'brake_type_options',
+    'brake_type_variants',
+    'price_variant_eur',
+    'variant_price_eur',
+  ];
+
+  it('uses reserved 200+ ids for newly exploded Caden configurations', () => {
+    const explodedIds = cadenEntries
+      .map((wheel) => wheel.id)
+      .filter((id) => id >= 200);
+
+    expect(explodedIds.length).toBeGreaterThan(0);
+    expect(explodedIds.every((id) => id >= 200)).toBe(true);
+  });
+
+  it('distinguishes Caden sibling variants by a unique variant key under a shared brand + model', () => {
+    const modelNames = new Set(variantCadenEntries.map((wheel) => wheel.model));
+
+    expect(modelNames).toContain('deCADENce 35mm Tubeless');
+    expect(modelNames).toContain('deCADENce 50mm Tubeless');
+
+    // No variant differentiator must remain embedded in the model string.
+    for (const wheel of cadenEntries) {
+      expect(wheel.model).not.toMatch(/\(/);
+    }
+
+    for (const model of modelNames) {
+      const siblings = variantCadenEntries.filter((wheel) => wheel.model === model);
+      expect(siblings.length).toBeGreaterThan(1);
+      // Siblings share one brand and carry unique, non-empty variant keys.
+      expect(new Set(siblings.map((wheel) => wheel.brand)).size).toBe(1);
+      const variants = siblings.map((wheel) => wheel.variant);
+      expect(variants.every((v) => typeof v === 'string' && v.length > 0)).toBe(true);
+      expect(new Set(variants).size).toBe(variants.length);
+    }
+  });
+
+  it('no longer carries model_group metadata on any Caden entry', () => {
+    for (const wheel of cadenEntries) {
+      expect(wheel.model_group).toBeUndefined();
+      expect(wheel.model_group_label).toBeUndefined();
+    }
+  });
+
+  it('does not leave comparable variant fields in Caden other_specs', () => {
+    for (const wheel of cadenEntries) {
+      const otherSpecKeys = Object.keys(wheel.other_specs ?? {});
+      for (const forbiddenKey of forbiddenOtherSpecKeys) {
+        expect(otherSpecKeys).not.toContain(forbiddenKey);
+      }
+    }
+  });
+
+  it('keeps Caden entries with missing price visible before filtering', () => {
+    const result = selectFilteredWheels(makeState());
+
+    expect(result.map((wheel) => wheel.id)).toContain(205);
+  });
+});
+
 const makeRangeFilter = (min, max) => ({ value: { min, max }, enabled: true });
 
 // ---------------------------------------------------------------------------

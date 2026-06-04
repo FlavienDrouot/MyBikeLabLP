@@ -190,6 +190,7 @@ export const zippWheels = [
   {
     id: 36,
     model: '353 NSW',
+    variant: 'cognition_v2_hub',
     brand: 'Zipp',
     weight_grams: 1308,
     diameter_mm: 700,
@@ -226,6 +227,7 @@ export const zippWheels = [
   {
     id: 37,
     model: '353 NSW',
+    variant: 'zr1_sl_hub',
     brand: 'Zipp',
     weight_grams: 1310,
     diameter_mm: 700,
@@ -298,6 +300,7 @@ export const zippWheels = [
   {
     id: 39,
     model: '454 NSW',
+    variant: 'cognition_v2_hub',
     brand: 'Zipp',
     weight_grams: 1428,
     diameter_mm: 700,
@@ -343,6 +346,7 @@ export const zippWheels = [
   {
     id: 40,
     model: '454 NSW',
+    variant: 'zr1_sl_hub',
     brand: 'Zipp',
     weight_grams: 1400,
     diameter_mm: 700,
@@ -417,6 +421,7 @@ export const zippWheels = [
   {
     id: 42,
     model: '858 NSW',
+    variant: 'cognition_v2_hub',
     brand: 'Zipp',
     weight_grams: { front: 719, rear: 811 },
     diameter_mm: 700,
@@ -456,6 +461,7 @@ export const zippWheels = [
   {
     id: 43,
     model: '858 NSW',
+    variant: 'zr1_sl_hub',
     brand: 'Zipp',
     weight_grams: 1500,
     diameter_mm: 700,

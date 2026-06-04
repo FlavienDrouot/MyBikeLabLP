@@ -141,6 +141,23 @@ describe('ComparisonTable', () => {
     });
   });
 
+  describe('variant marker', () => {
+    it('renders a variant marker for variant wheels', () => {
+      const variantWheel = {
+        ...minimalWheel,
+        variant: 'carbon_spokes',
+      };
+      const html = renderWithStore([variantWheel]);
+      expect(html).toContain('Carbon spokes');
+      expect(html).toContain('border-l border-brass-7');
+    });
+
+    it('does not render a variant marker for wheels without a variant', () => {
+      const html = renderWithStore([minimalWheel]);
+      expect(html).not.toContain('border-l border-brass-7');
+    });
+  });
+
   describe('expanded detail panel behavior (EVO-043 TASK-003)', () => {
     it('mounts one inline detail panel below the activated row', () => {
       mountInteractive([minimalWheel]);

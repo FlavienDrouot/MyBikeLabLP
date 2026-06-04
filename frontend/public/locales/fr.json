@@ -65,7 +65,8 @@
     "whereToBuy": "Où acheter",
     "buyLink": "Acheter →",
     "noLinks": "Aucun lien disponible pour cette roue.",
-    "priceAnnotation": "prix indicatif, sourcé en 2026-Q2"
+    "priceAnnotation": "prix indicatif, sourcé en 2026-Q2",
+    "variant": "Variante"
   },
   "badges": {
     "hookless": "Hookless",
@@ -190,7 +191,8 @@
     "freehubOptions": { "label": "Options de corps de roue libre", "popupTitle": "Options de corps de roue libre" },
     "maxSystemWeight": { "label": "Poids système max" },
     "wheelsetCategory": { "label": "Catégorie" },
-    "discStandard": { "label": "Standard disque" }
+    "discStandard": { "label": "Standard disque" },
+    "variant": { "label": "Variante" }
   },
   "sorts": {
     "name": "Nom (A → Z)",
@@ -247,5 +249,16 @@
     "climbing": "Grimpeur",
     "endurance": "Endurance",
     "all-road": "All-road"
+  },
+  "variant": {
+    "steel_spokes": "Rayons acier",
+    "carbon_spokes": "Rayons carbone",
+    "disc_brake": "Frein à disque",
+    "rim_brake": "Frein sur jante",
+    "external_34mm": "34 mm externe",
+    "external_37mm": "37 mm externe",
+    "external_40mm": "40 mm externe",
+    "cognition_v2_hub": "Moyeu Cognition V2",
+    "zr1_sl_hub": "Moyeu ZR1 SL"
   }
 }
