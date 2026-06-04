@@ -1,8 +1,9 @@
 import React, { useState, useRef, useLayoutEffect, useCallback, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, SlidersHorizontal, X } from 'lucide-react';
 import { selectFilteredWheels } from '../../store/selectors/wheelsSelectors';
+import { setSortBy } from '../../store/slices/filtersSlice';
 import { getColumnProperties } from '../../config/wheelProperties';
 import WheelDetailPanel from './WheelDetailPanel';
 import Icon from '../ui/Icon';
@@ -18,6 +19,7 @@ const ACTIONS_COL_PX = 48;
 
 const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpen }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const wheels = useSelector(selectFilteredWheels);
   const allWheels = useSelector((state) => state.wheels.items);
   const sortBy = useSelector((s) => s.filters.sortBy);
@@ -94,7 +96,31 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     ? cols.reduce((sum, p) => sum + getColWidth(p), 0) + ACTIONS_COL_PX
     : undefined;
 
-  const isSortedColumn = (p) => sortBy && sortBy.startsWith(p.id + '_');
+  // Sort ids declared in the registry for a column: the asc/desc SortSpec pair.
+  // A column is sortable from its header only when both directions exist.
+  const sortIdsFor = (p) => ({
+    asc: p.sorts?.find((s) => s.direction === 'asc')?.id ?? null,
+    desc: p.sorts?.find((s) => s.direction === 'desc')?.id ?? null,
+  });
+  const isSortable = (p) => {
+    const { asc, desc } = sortIdsFor(p);
+    return Boolean(asc && desc);
+  };
+  // Current sort direction of a column ('asc' | 'desc' | null) from `sortBy`.
+  const sortDirOf = (p) => {
+    const { asc, desc } = sortIdsFor(p);
+    if (asc && sortBy === asc) return 'asc';
+    if (desc && sortBy === desc) return 'desc';
+    return null;
+  };
+  // Header click cycle: none → asc → desc → none (catalog order).
+  const cycleSort = (p) => {
+    const { asc, desc } = sortIdsFor(p);
+    const dir = sortDirOf(p);
+    if (dir === 'asc') dispatch(setSortBy(desc));
+    else if (dir === 'desc') dispatch(setSortBy(null));
+    else dispatch(setSortBy(asc));
+  };
 
   const openExpandedPanel = (id) => {
     setRenderedExpandedId(id);
@@ -164,16 +190,42 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
             )}
             <thead className="bg-paper-1 text-ink-7">
               <tr className="text-left">
-                {cols.map((p) => (
-                  <th key={p.id} className={`px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] sticky top-0 z-10 bg-paper-1 border-b border-ink-10 ${
-                    isSortedColumn(p) ? 'text-ink-12' : 'text-ink-7'
-                  }`}>
-                    {t(p.label)}
-                    {isSortedColumn(p) && (
-                      <span className="text-brass-8 ml-1" aria-hidden="true">↓</span>
-                    )}
-                  </th>
-                ))}
+                {cols.map((p) => {
+                  const sortable = isSortable(p);
+                  const dir = sortable ? sortDirOf(p) : null;
+                  const ariaSort =
+                    dir === 'asc' ? 'ascending' : dir === 'desc' ? 'descending' : 'none';
+                  return (
+                    <th
+                      key={p.id}
+                      aria-sort={sortable ? ariaSort : undefined}
+                      className={`px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] sticky top-0 z-10 bg-paper-1 border-b border-ink-10 ${
+                        dir ? 'text-ink-12' : 'text-ink-7'
+                      }`}
+                    >
+                      {sortable ? (
+                        <button
+                          type="button"
+                          onClick={() => cycleSort(p)}
+                          aria-label={t('table.sortBy', { label: t(p.label) })}
+                          className="group inline-flex items-center gap-1 font-semibold uppercase tracking-[0.16em] hover:text-ink-12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8"
+                        >
+                          {t(p.label)}
+                          <span
+                            aria-hidden="true"
+                            className={
+                              dir ? 'text-brass-8' : 'text-ink-5 group-hover:text-ink-8'
+                            }
+                          >
+                            {dir === 'asc' ? '↑' : '↓'}
+                          </span>
+                        </button>
+                      ) : (
+                        t(p.label)
+                      )}
+                    </th>
+                  );
+                })}
                 <th className="px-4 py-3 w-10 sticky top-0 z-10 bg-paper-1 border-b border-ink-10" />
               </tr>
             </thead>

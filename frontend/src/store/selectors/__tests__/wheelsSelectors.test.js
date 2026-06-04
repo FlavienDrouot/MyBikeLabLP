@@ -448,7 +448,8 @@ describe('selectFilteredWheels', () => {
       const result = selectFilteredWheels(makeState(variantCatalog, {
         spokeMaterial: makeMultiSelectFilter(['carbon']),
       }));
-      expect(result.map((w) => w.id)).toEqual([302, 304]);
+      // Default sort is name A→Z (fix-019): 'Divergent pair' before 'Variant 35'.
+      expect(result.map((w) => w.id)).toEqual([304, 302]);
     });
 
     it('exposes steel spoke material as a single canonical option', () => {
@@ -474,7 +475,8 @@ describe('selectFilteredWheels', () => {
       const filtered = selectFilteredWheels(makeState(catalog, {
         spokeMaterial: makeMultiSelectFilter(['steel']),
       }));
-      expect(filtered.map((w) => w.id)).toEqual([301, 303, 305]);
+      // Default sort is name A→Z (fix-019): 'Steel alias', 'Variant 35', 'Variant 50'.
+      expect(filtered.map((w) => w.id)).toEqual([305, 301, 303]);
     });
 
     it('filters sibling variants independently by external width', () => {

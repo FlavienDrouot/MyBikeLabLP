@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  getFilterableProperties,
-  getDefaultSortId,
-} from '../../config/wheelProperties';
+import { getFilterableProperties } from '../../config/wheelProperties';
 import { wheelsData } from '../../data/wheelsData';
 import { convert, DEFAULT_CURRENCY } from '../../lib/currency';
 import { setDisplayCurrency } from './currencySlice';
@@ -58,7 +55,10 @@ const buildInitialFilters = () => {
 
 export const buildInitialState = () => ({
   filters: buildInitialFilters(),
-  sortBy: getDefaultSortId(),
+  // No active sort on load: rows appear in catalog order. `null` is the
+  // canonical "no sort" value (selectFilteredWheels falls back to a stable
+  // sort) and is also the reset target of the column-header sort cycle.
+  sortBy: null,
 });
 
 const filtersSlice = createSlice({

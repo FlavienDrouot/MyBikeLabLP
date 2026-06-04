@@ -63,7 +63,8 @@
   "table": {
     "heading": "Wheels",
     "of": "of",
-    "emptyState": "No wheels match your filters. Try resetting them."
+    "emptyState": "No wheels match your filters. Try resetting them.",
+    "sortBy": "Sort by {{label}}"
   },
   "wheelDetail": {
     "manufacturer": "Manufacturer",

@@ -63,7 +63,8 @@
   "table": {
     "heading": "Roues",
     "of": "sur",
-    "emptyState": "Aucune roue ne correspond à vos filtres. Essayez de les réinitialiser."
+    "emptyState": "Aucune roue ne correspond à vos filtres. Essayez de les réinitialiser.",
+    "sortBy": "Trier par {{label}}"
   },
   "wheelDetail": {
     "manufacturer": "Fabricant",

@@ -69,5 +69,6 @@ Canonical definitions for terms used across evolutions. Updated whenever an ambi
 | Term | Definition |
 |---|---|
 | Typographic glyphs | Unicode characters (`→`, `↓`, `↑`, `·`, `№`, `Ø`, `±`, `≈`) used in place of icon components in compact or data-dense UI contexts. Rendered in Inter (full coverage confirmed). |
+| `↑` / `↓` (sort indicators) | Column-header sort affordance (fix-019). A dimmed `↓` marks a sortable-but-inactive column; `↑` = ascending, `↓` = descending, both in the brass accent when active. |
 | `→` (CTA arrow) | Trailing directional glyph appended to primary CTA link text (e.g., "Open comparator →"). Signals navigation intent. Applied at the component level, not in data. |
 | `Ø` (diameter prefix) | Diameter symbol. Applied as a prefix to wheel diameter values only (e.g., `Ø 700C`). Must **not** be used for rim depth, which is a linear measurement rendered as `33 mm`. |

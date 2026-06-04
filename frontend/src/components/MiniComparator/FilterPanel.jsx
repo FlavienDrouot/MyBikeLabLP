@@ -5,7 +5,6 @@ import { ChevronDown } from 'lucide-react';
 import {
   setFilterValue,
   setFilterEnabled,
-  setSortBy,
   resetFilters,
 } from '../../store/slices/filtersSlice';
 import {
@@ -16,7 +15,6 @@ import {
 import {
   COLUMN_GROUPS,
   getFilterableProperties,
-  getAllSorts,
 } from '../../config/wheelProperties';
 import { roundToStep, clampLow, clampHigh } from './rangeMath';
 import styles from './FilterPanel.module.css';
@@ -472,8 +470,6 @@ const FilterField = ({ property }) => {
 const FilterPanel = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const sortBy = useSelector((s) => s.filters.sortBy);
-  const sorts = useMemo(() => getAllSorts(), []);
   const filterables = useMemo(() => getFilterableProperties(), []);
   const nonEmptyGroups = useMemo(
     () =>
@@ -501,21 +497,7 @@ const FilterPanel = () => {
         </button>
       </div>
 
-      {/* Sort — options generated from registry */}
-      <div className="space-y-2">
-        <label className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">{t('filterPanel.sortBy')}</label>
-        <select
-          value={sortBy ?? ''}
-          onChange={(e) => dispatch(setSortBy(e.target.value))}
-          className="w-full rounded-xs border border-ink-4 bg-paper-1 text-ink-11 px-2.5 py-2 text-sm"
-        >
-          {sorts.map((s) => (
-            <option key={s.id} value={s.id}>
-              {t(s.label)}
-            </option>
-          ))}
-        </select>
-      </div>
+      {/* Sorting moved to clickable column headers (fix-019). */}
 
       {/* Filters grouped by category. First non-empty group is open by default. */}
       {nonEmptyGroups.map((group) => {

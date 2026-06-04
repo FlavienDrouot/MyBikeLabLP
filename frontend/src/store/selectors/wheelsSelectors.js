@@ -2,6 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import {
   getFilterableProperties,
   getAllSorts,
+  getDefaultSortId,
   getPropertyById,
 } from '../../config/wheelProperties';
 
@@ -37,7 +38,11 @@ export const selectFilteredWheels = createSelector(
   ],
   (items, filtersState, displayCurrency) => {
     const filterables = getFilterableProperties();
-    const sort = getAllSorts().find((s) => s.id === filtersState.sortBy);
+    // No active column sort (sortBy null, e.g. on load or after a reset cycle)
+    // falls back to the default sort (name, A→Z), the historical base order.
+    const sort = getAllSorts().find(
+      (s) => s.id === (filtersState.sortBy ?? getDefaultSortId())
+    );
     const ctx = { displayCurrency };
 
     return items
