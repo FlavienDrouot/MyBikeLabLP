@@ -666,7 +666,7 @@ export const crwWorksWheels = [
     spokes: {
       model: "",
       brand: "",
-      material: "stainless_steel"
+      material: "steel"
     },
     hub: {
       model: "",
@@ -728,7 +728,7 @@ export const crwWorksWheels = [
     spokes: {
       model: "",
       brand: "",
-      material: "stainless_steel"
+      material: "steel"
     },
     hub: {
       model: "",

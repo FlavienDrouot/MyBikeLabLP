@@ -21,6 +21,7 @@ Canonical definitions for terms used across evolutions. Updated whenever an ambi
 | Term | Definition |
 |---|---|
 | Categorical value casing | Categorical data values (e.g. `disc_standard`, `freehub_options`) use **Title Case** as their canonical form: `Center Lock`, `Shimano HG`, `SRAM XDR`, `Campagnolo N3W`. Casing variants (`centerlock`, `center lock`) are non-canonical and must be normalized on ingestion, otherwise they produce duplicate filter options. Current catalog (Roval, Zipp, DT Swiss/Fulcrum, Mavic, ENVE) already conforms. (Resolved fix-013.) |
+| Spoke steel material | `steel` is the canonical comparator value for steel spoke material. Scraped or legacy values such as `stainless_steel` describe the same category and must be normalized to `steel` before they create filter options or display labels. (Resolved fix-016.) |
 
 ---
 

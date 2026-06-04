@@ -80,9 +80,9 @@ const makeWheel = ({
   },
 });
 
-const cSpokes = { model: 'Alpina Ultralite Aero / Sapim CX-Super', brand: 'Alpina / Sapim', material: 'stainless_steel' };
+const cSpokes = { model: 'Alpina Ultralite Aero / Sapim CX-Super', brand: 'Alpina / Sapim', material: 'steel' };
 const sSpokes = { model: '3.8 mm T-head carbon spoke', brand: 'FARSPORTS', material: 'carbon' };
-const airSpokes = { model: 'CX-Super', brand: 'Sapim', material: 'stainless_steel' };
+const airSpokes = { model: 'CX-Super', brand: 'Sapim', material: 'steel' };
 
 const discHub = (model, freehubOptions = freehubs) => ({
   model,
@@ -245,7 +245,7 @@ export const farsportsWheels = [
       depth: entry.depth,
       externalWidth: null,
       internalWidth: null,
-      spokes: { model: '', brand: '', material: 'stainless_steel' },
+      spokes: { model: '', brand: '', material: 'steel' },
       hub: entry.brakeType === 'disc' ? discHub('DT240 EXP', ufoFreehubs) : rimHub('DT240 EXP', ufoFreehubs),
       url: urls.ufo,
       priceUsd: entry.priceUsd,

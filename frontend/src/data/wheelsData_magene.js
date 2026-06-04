@@ -104,7 +104,7 @@ const proShared = {
   spokes: {
     model: 'Wing21',
     brand: 'Pillar',
-    material: 'stainless_steel',
+    material: 'steel',
   },
   hub: {
     model: 'EXAR 36T ratchet',

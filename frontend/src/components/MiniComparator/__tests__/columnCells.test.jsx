@@ -7,7 +7,7 @@ import { renderCellFor } from '../columnCells';
 //  - an unknown key with no `defaultValue` returns the raw key (key-return).
 const TRANSLATIONS = {
   'common.notAvailable': 'N/A',
-  'spokeMaterial.stainless_steel': 'Stainless steel',
+  'spokeMaterial.steel': 'Steel',
   'hookless.false': 'Hooked',
   'hookless.true': 'Hookless',
 };
@@ -28,7 +28,7 @@ describe('renderCellFor — translatable branch (EVO-034 TASK-002)', () => {
       accessor: (w) => w.spokes.material,
     };
     const cell = renderCellFor(property, t);
-    expect(cell({ spokes: { material: 'stainless_steel' } })).toBe('Stainless steel');
+    expect(cell({ spokes: { material: 'steel' } })).toBe('Steel');
   });
 
   it('returns the fallback label for undefined, null, and empty-string values', () => {

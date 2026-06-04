@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
+  makeSelectOptionsFor,
   makeSelectRangeBoundsFor,
   makeSelectContextualCountsFor,
   selectFilteredWheels,
@@ -29,7 +30,7 @@ const mockWheels = [
     prices: [{ price_eur: 500 }],
     rim: { material: 'carbon', hookless: false, depth_mm: 30, externalWidth_mm: 25 },
     hub: { brand: 'DT Swiss', model: '240' },
-    spokes: { brand: 'Sapim', model: 'CX-Ray', material: 'stainless_steel' },
+    spokes: { brand: 'Sapim', model: 'CX-Ray', material: 'steel' },
   },
   {
     id: 2,
@@ -39,7 +40,7 @@ const mockWheels = [
     prices: [{ price_eur: 1000 }],
     rim: { material: 'aluminum', hookless: true, depth_mm: 50, externalWidth_mm: 30 },
     hub: { brand: 'Zipp', model: 'ZR1' },
-    spokes: { brand: 'Sapim', model: 'CX-Sprint', material: 'stainless_steel' },
+    spokes: { brand: 'Sapim', model: 'CX-Sprint', material: 'steel' },
   },
   {
     id: 3,
@@ -49,7 +50,7 @@ const mockWheels = [
     prices: [{ price_eur: 800 }, { price_eur: 750 }],
     rim: { material: 'carbon', hookless: false, depth_mm: 40, externalWidth_mm: 27 },
     hub: { brand: 'DT Swiss', model: '350' },
-    spokes: { brand: 'DT Swiss', model: 'Aerolite', material: 'stainless_steel' },
+    spokes: { brand: 'DT Swiss', model: 'Aerolite', material: 'steel' },
   },
 ];
 
@@ -71,7 +72,7 @@ const mixedCatalog = [
     prices: [{ price_eur: 900 }],
     rim: { material: 'carbon', hookless: false, depth_mm: { front: 50, rear: 60 } },
     hub: { brand: 'Hunt', model: 'LIMITLESS' },
-    spokes: { brand: 'Sapim', model: 'CX-Ray', material: 'stainless_steel' },
+    spokes: { brand: 'Sapim', model: 'CX-Ray', material: 'steel' },
   },
   // pair depth front=40, rear=45
   {
@@ -82,7 +83,7 @@ const mixedCatalog = [
     prices: [{ price_eur: 600 }],
     rim: { material: 'aluminum', hookless: false, depth_mm: { front: 40, rear: 45 } },
     hub: { brand: 'Mavic', model: 'ID360' },
-    spokes: { brand: 'Mavic', model: 'ISM4D', material: 'stainless_steel' },
+    spokes: { brand: 'Mavic', model: 'ISM4D', material: 'steel' },
   },
 ];
 
@@ -400,7 +401,7 @@ describe('selectFilteredWheels', () => {
         prices: [{ price_eur: 1400 }],
         rim: { material: 'carbon', hookless: false, depth_mm: 35, externalWidth_mm: 32.8, internalWidth_mm: 24.5 },
         hub: { brand: 'Caden', model: 'Centrist', freehub_options: ['Shimano HG', 'SRAM XDR'] },
-        spokes: { brand: 'Caden', model: 'Aero', material: 'stainless_steel' },
+        spokes: { brand: 'Caden', model: 'Aero', material: 'steel' },
       },
       {
         id: 302,
@@ -426,7 +427,7 @@ describe('selectFilteredWheels', () => {
         prices: [],
         rim: { material: 'carbon', hookless: false, depth_mm: 50, externalWidth_mm: 40, internalWidth_mm: null },
         hub: { brand: 'Caden', model: 'Centrist', freehub_options: ['Shimano HG', 'SRAM XDR'] },
-        spokes: { brand: 'Caden', model: 'Aero', material: 'stainless_steel' },
+        spokes: { brand: 'Caden', model: 'Aero', material: 'steel' },
       },
       {
         id: 304,
@@ -447,6 +448,32 @@ describe('selectFilteredWheels', () => {
         spokeMaterial: makeMultiSelectFilter(['carbon']),
       }));
       expect(result.map((w) => w.id)).toEqual([302, 304]);
+    });
+
+    it('exposes steel spoke material as a single canonical option', () => {
+      const catalog = [
+        ...variantCatalog,
+        {
+          id: 305,
+          model: 'Steel alias',
+          weight_grams: 1500,
+          brand: 'Mavic',
+          diameter_mm: 700,
+          brake_type: 'disc',
+          prices: [{ price_eur: 1000 }],
+          rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: 25 },
+          hub: { brand: 'Mavic', model: 'ID360', freehub_options: ['Shimano HG'] },
+          spokes: { brand: 'Mavic', model: '', material: 'steel' },
+        },
+      ];
+
+      const selectSpokeMaterialOptions = makeSelectOptionsFor('spokeMaterial');
+      expect(selectSpokeMaterialOptions(makeState(catalog))).toEqual(['carbon', 'steel']);
+
+      const filtered = selectFilteredWheels(makeState(catalog, {
+        spokeMaterial: makeMultiSelectFilter(['steel']),
+      }));
+      expect(filtered.map((w) => w.id)).toEqual([301, 303, 305]);
     });
 
     it('filters sibling variants independently by external width', () => {

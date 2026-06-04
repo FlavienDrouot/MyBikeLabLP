@@ -9,7 +9,7 @@ export const zippWheels = [
     wheelset_category: 'climbing',
     max_system_weight_kg: 115,
     rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23 },
-    spokes: { model: 'Hyperlite', brand: 'Alpina', material: 'stainless_steel' },
+    spokes: { model: 'Hyperlite', brand: 'Alpina', material: 'steel' },
     hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1700, url: 'https://www.sram.com/en/zipp/models/wh-202-nsw-a1' }],
     images: [
@@ -86,7 +86,7 @@ export const zippWheels = [
     wheelset_category: 'all-round',
     max_system_weight_kg: 114,
     rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: 27, internalWidth_mm: null },
-    spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'stainless_steel' },
+    spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'steel' },
     hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1329, url: 'https://www.sram.com/en/zipp/models/wh-303-ftud-a1' }],
     images: [
@@ -393,7 +393,7 @@ export const zippWheels = [
     wheelset_category: 'aero',
     max_system_weight_kg: 115,
     rim: { material: 'carbon', hookless: true, depth_mm: 80, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23 },
-    spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'stainless_steel' },
+    spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'steel' },
     hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
     prices: [{ price_eur: 1225, url: 'https://www.sram.com/en/zipp/models/wh-808-ftld-b1' }],
     images: [],

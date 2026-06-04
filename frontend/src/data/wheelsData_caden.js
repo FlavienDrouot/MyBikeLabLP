@@ -77,7 +77,7 @@ const makeCadenWheel = ({
 const steelSpokes = {
   model: 'Aero straight-pull',
   brand: 'Caden',
-  material: 'stainless_steel',
+  material: 'steel',
 };
 
 const carbonSpokes = {

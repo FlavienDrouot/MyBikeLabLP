@@ -117,7 +117,7 @@ describe('en and fr locales — required categorical keys exist', () => {
   });
 
   it('en locale contains all required spokeMaterial keys', () => {
-    expect(enTranslations.spokeMaterial?.stainless_steel).toBeTruthy();
+    expect(enTranslations.spokeMaterial?.steel).toBeTruthy();
     expect(enTranslations.spokeMaterial?.aluminum).toBeTruthy();
   });
 
@@ -132,7 +132,7 @@ describe('en and fr locales — required categorical keys exist', () => {
   });
 
   it('fr locale contains all required spokeMaterial keys', () => {
-    expect(frTranslations.spokeMaterial?.stainless_steel).toBeTruthy();
+    expect(frTranslations.spokeMaterial?.steel).toBeTruthy();
     expect(frTranslations.spokeMaterial?.aluminum).toBeTruthy();
   });
 

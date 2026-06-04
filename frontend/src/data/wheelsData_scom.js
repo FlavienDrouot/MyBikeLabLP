@@ -109,7 +109,7 @@ const ultraSpokes = {
 const aeroliteSpokes = {
   model: 'CX-Ray',
   brand: 'Sapim',
-  material: 'stainless_steel',
+  material: 'steel',
 };
 
 const aeroliteHub = {

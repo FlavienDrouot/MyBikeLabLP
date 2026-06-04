@@ -113,7 +113,7 @@ export const arcarisWheels = [
     variant: 'max',
     weight_grams: 934.6,
     max_system_weight_kg: 100,
-    spokes: { model: 'Sapim CX-Super', brand: 'Sapim', material: 'stainless_steel' },
+    spokes: { model: 'Sapim CX-Super', brand: 'Sapim', material: 'steel' },
     hubModel: 'NONPLUS',
     hubBrand: 'NONPLUS',
     price_usd: 2499,

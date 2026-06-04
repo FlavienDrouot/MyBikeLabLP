@@ -31,7 +31,7 @@ export const exsWheels = [
     spokes: {
       model: 'CX-Ray',
       brand: 'Sapim',
-      material: 'stainless_steel',
+      material: 'steel',
     },
     hub: {
       model: 'AR-24',

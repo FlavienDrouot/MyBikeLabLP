@@ -1,4 +1,4 @@
-﻿import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
+import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const freehubOptions = ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'];
 
@@ -106,7 +106,7 @@ const carbonSpokes = {
 const sapimCxRaySpokes = {
   model: 'CX-Ray',
   brand: 'Sapim',
-  material: 'stainless_steel',
+  material: 'steel',
 };
 
 export const nineVeloWheels = [

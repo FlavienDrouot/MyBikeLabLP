@@ -23,7 +23,7 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, price_usd, url, wheel
   spokes: {
     model: 'Pillar WING 2.0 Aero',
     brand: 'Pillar',
-    material: 'stainless_steel',
+    material: 'steel',
   },
   hub: {
     model: 'NxT Ratchet System',

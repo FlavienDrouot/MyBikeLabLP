@@ -64,7 +64,7 @@ const makeShimanoWheel = ({
   spokes: {
     model: spokeModel,
     brand: 'Shimano',
-    material: 'stainless_steel',
+    material: 'steel',
   },
   hub: {
     ...sharedHub,
