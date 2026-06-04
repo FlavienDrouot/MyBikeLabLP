@@ -158,14 +158,14 @@ const DualRangeRow = ({
   );
 };
 
-// Accordion for grouping filters by category.
-const Section = ({ title, defaultOpen = false, children }) => {
-  const [open, setOpen] = useState(defaultOpen);
+// Accordion section for one filter category. Open state is owned by FilterPanel
+// so only one category can be expanded at a time.
+const Section = ({ title, open, onToggle, children }) => {
   return (
     <div className="border-t border-ink-3 pt-3">
       <button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={onToggle}
         className="flex w-full items-center justify-between text-left"
         aria-expanded={open}
       >
@@ -475,6 +475,15 @@ const FilterPanel = () => {
   const sortBy = useSelector((s) => s.filters.sortBy);
   const sorts = useMemo(() => getAllSorts(), []);
   const filterables = useMemo(() => getFilterableProperties(), []);
+  const nonEmptyGroups = useMemo(
+    () =>
+      COLUMN_GROUPS.map((group) => ({
+        ...group,
+        properties: filterables.filter((p) => p.group === group.id),
+      })).filter((group) => group.properties.length > 0),
+    [filterables]
+  );
+  const [openGroupId, setOpenGroupId] = useState(nonEmptyGroups[0]?.id ?? null);
 
   return (
     <aside
@@ -508,13 +517,17 @@ const FilterPanel = () => {
         </select>
       </div>
 
-      {/* Filters grouped by category — first group (general) open by default */}
-      {COLUMN_GROUPS.map((group, idx) => {
-        const props = filterables.filter((p) => p.group === group.id);
-        if (props.length === 0) return null;
+      {/* Filters grouped by category. First non-empty group is open by default. */}
+      {nonEmptyGroups.map((group) => {
+        const open = openGroupId === group.id;
         return (
-          <Section key={group.id} title={t(group.label)} defaultOpen={idx === 0}>
-            {props.map((p) => (
+          <Section
+            key={group.id}
+            title={t(group.label)}
+            open={open}
+            onToggle={() => setOpenGroupId(open ? null : group.id)}
+          >
+            {group.properties.map((p) => (
               <FilterField key={p.id} property={p} />
             ))}
           </Section>

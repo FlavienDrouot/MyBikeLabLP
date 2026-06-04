@@ -1,5 +1,9 @@
+// @vitest-environment jsdom
+
 import { createElement } from 'react';
 import { describe, it, expect } from 'vitest';
+import { createRoot } from 'react-dom/client';
+import { act } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { store } from '../../../store';
@@ -40,5 +44,51 @@ describe('FilterPanel (EVO-025 TASK-002 — viewport-bounded height)', () => {
     for (const cls of ['card', 'p-5', 'lg:p-6', 'space-y-6', 'h-fit']) {
       expect(html).toContain(cls);
     }
+  });
+
+  it('keeps only one filter group open at a time', async () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(
+        createElement(Provider, { store }, createElement(FilterPanel, null))
+      );
+    });
+
+    const groupButtons = () =>
+      Array.from(container.querySelectorAll('button[aria-expanded]'));
+
+    expect(groupButtons().map((button) => button.getAttribute('aria-expanded'))).toEqual([
+      'true',
+      'false',
+      'false',
+    ]);
+
+    await act(async () => {
+      groupButtons()[1].dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(groupButtons().map((button) => button.getAttribute('aria-expanded'))).toEqual([
+      'false',
+      'true',
+      'false',
+    ]);
+
+    await act(async () => {
+      groupButtons()[1].dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(groupButtons().map((button) => button.getAttribute('aria-expanded'))).toEqual([
+      'false',
+      'false',
+      'false',
+    ]);
+
+    await act(async () => {
+      root.unmount();
+    });
+    container.remove();
   });
 });
