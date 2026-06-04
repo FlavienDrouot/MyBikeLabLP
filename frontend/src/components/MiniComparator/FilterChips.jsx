@@ -9,13 +9,13 @@ import { getFilterableProperties } from '../../config/wheelProperties';
 
 // Single chip — brass-tinted, removable.
 const ActiveChip = ({ label, onRemove }) => (
-  <span className="inline-flex items-center gap-1.5 bg-brass-3 border border-brass-6 text-brass-11 px-2.5 py-1 rounded-xs text-xs font-medium">
-    {label}
+  <span className="inline-flex min-w-0 max-w-full items-center gap-1.5 bg-brass-3 border border-brass-6 text-brass-11 px-2.5 py-1 rounded-xs text-xs font-medium">
+    <span className="min-w-0 break-words">{label}</span>
     <button
       type="button"
       aria-label={`Remove filter: ${label}`}
       onClick={onRemove}
-      className="text-brass-10 font-mono text-xs leading-none cursor-pointer bg-transparent border-0 p-0"
+      className="shrink-0 text-brass-10 font-mono text-xs leading-none cursor-pointer bg-transparent border-0 p-0"
     >
       ×
     </button>
@@ -74,17 +74,19 @@ const FilterChips = () => {
   if (chips.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap gap-2 items-center px-5 py-3 border-b border-ink-3">
-      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-7 mr-1">
-        {t('filterChips.active')}
-      </span>
-      {chips.map((c) => (
-        <ActiveChip key={c.key} label={c.label} onRemove={c.onRemove} />
-      ))}
+    <div className="flex w-0 min-w-full gap-2 items-start px-5 py-3 border-b border-ink-3">
+      <div className="flex grow min-w-0 flex-wrap gap-2 items-center">
+        <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.18em] text-ink-7 mr-1">
+          {t('filterChips.active')}
+        </span>
+        {chips.map((c) => (
+          <ActiveChip key={c.key} label={c.label} onRemove={c.onRemove} />
+        ))}
+      </div>
       <button
         type="button"
         onClick={() => dispatch(resetFilters())}
-        className="ml-auto text-xs font-semibold uppercase tracking-[0.1em] text-ink-8 hover:text-ink-12 bg-transparent border-0 cursor-pointer p-0"
+        className="shrink-0 text-xs font-semibold uppercase tracking-[0.1em] text-ink-8 hover:text-ink-12 bg-transparent border-0 cursor-pointer p-0"
       >
         {t('filterPanel.reset')}
       </button>
