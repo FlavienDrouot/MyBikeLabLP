@@ -5,7 +5,7 @@ const FREEHUB_OPTIONS = ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'];
 // GOOSYNN Ti-Fi line: carbon Toray T700/T800 hooked tubeless rims, titanium-fiber
 // rope spokes, GOOSYNN straight-pull hubs, disc Center Lock, 12x100 / 12x142.
 // Base builds use CEMA/TPI ceramic bearings; PRO builds add 2:1 lacing on a
-// Race Pro hub with TPI steel bearings. Prices are USD only (price_eur: null).
+// Race Pro hub with TPI steel bearings. Prices are USD only (currency: 'USD').
 const makeGoosynn = ({
   id,
   model,
@@ -22,7 +22,7 @@ const makeGoosynn = ({
   spoke_lacing,
   tire_compatibility_c,
   recommended_rider_weight_kg,
-  price_usd,
+  priceUsd,
   url,
   retailerUrl,
   images,
@@ -57,15 +57,14 @@ const makeGoosynn = ({
     freehub_options: FREEHUB_OPTIONS,
     disc_standard: 'Center Lock',
   },
-  prices: [{ price_eur: null, url }],
+  prices: [{ amount: priceUsd, currency: 'USD', url }],
   image: images && images.length ? images[0] : wheelPlaceholderUrl,
   images: images || [],
   affiliateLinks: {
-    manufacturer: { url, price_eur: null },
-    retailers: [{ name: 'Panda Podium', price_eur: null, url: retailerUrl }],
+    manufacturer: { url, amount: priceUsd, currency: 'USD' },
+    retailers: [{ name: 'Panda Podium', amount: priceUsd, currency: 'USD', url: retailerUrl }],
   },
   other_specs: {
-    price_usd,
     bearing_type,
     spoke_count,
     spoke_lacing,
@@ -96,7 +95,7 @@ export const goosynnWheels = [
     spoke_lacing: '2X Cross (front/rear)',
     tire_compatibility_c: '30C - 50C',
     recommended_rider_weight_kg: '<85',
-    price_usd: 1828,
+    priceUsd: 1828,
     url: 'https://goosynn.com/product/ti-fi-r30-wheelset/',
     retailerUrl: 'https://www.pandapodium.cc/product/goosynn-tifi-titanium-fiber-spoke-r30-wheelset/',
     images: [
@@ -120,7 +119,7 @@ export const goosynnWheels = [
     spoke_lacing: '2X Cross / 3X Cross (2:1 lacing)',
     tire_compatibility_c: '30C - 50C',
     recommended_rider_weight_kg: '<95',
-    price_usd: 1969,
+    priceUsd: 1969,
     url: 'https://goosynn.com/product/ti-fi-r30-pro-wheelset/',
     retailerUrl: 'https://www.pandapodium.cc/product/goosynn-tifi-titanium-fiber-spoke-r30pro-wheelset/',
     images: [
@@ -145,7 +144,7 @@ export const goosynnWheels = [
     spoke_lacing: '2X Cross (front/rear)',
     tire_compatibility_c: '30C - 50C',
     recommended_rider_weight_kg: '<85',
-    price_usd: 1828,
+    priceUsd: 1828,
     url: 'https://goosynn.com/product/ti-fi-r50-wheelset/',
     retailerUrl: 'https://www.pandapodium.cc/product/goosynn-tifi-titanium-fiber-spoke-r50-wheelset/',
     images: [
@@ -169,7 +168,7 @@ export const goosynnWheels = [
     spoke_lacing: '2X Cross / 3X Cross (2:1 lacing)',
     tire_compatibility_c: '30C - 50C',
     recommended_rider_weight_kg: '<95',
-    price_usd: 1969,
+    priceUsd: 1969,
     url: 'https://goosynn.com/product/ti-fi-r50-pro-wheelset/',
     retailerUrl: 'https://www.pandapodium.cc/product/goosynn-tifi-titanium-fiber-spoke-r50pro-wheelset/',
     images: [
@@ -192,7 +191,7 @@ export const goosynnWheels = [
     spoke_lacing: '2X Cross / 3X Cross (2:1 lacing)',
     tire_compatibility_c: '35C - 70C',
     recommended_rider_weight_kg: '<95',
-    price_usd: 1969,
+    priceUsd: 1969,
     url: 'https://goosynn.com/product/ti-fi-g45-pro-wheelset/',
     retailerUrl: 'https://www.pandapodium.cc/product/goosynn-tifi-titanium-fiber-spoke-g45pro-wheelset/',
     images: [

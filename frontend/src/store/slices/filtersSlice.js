@@ -4,6 +4,8 @@ import {
   getDefaultSortId,
 } from '../../config/wheelProperties';
 import { wheelsData } from '../../data/wheelsData';
+import { convert, DEFAULT_CURRENCY } from '../../lib/currency';
+import { setDisplayCurrency } from './currencySlice';
 
 // State dynamically generated from the wheel properties registry.
 // Shape:
@@ -23,8 +25,10 @@ const buildInitialFilters = () => {
     let value;
     switch (property.filter.type) {
       case 'range': {
+        // Initial bounds are computed in the default display currency.
+        const ctx = { displayCurrency: DEFAULT_CURRENCY };
         const values = wheelsData
-          .map((w) => property.accessor(w))
+          .map((w) => property.accessor(w, ctx))
           .filter(Number.isFinite);
         const step = property.filter.step;
         const dataMin = values.length ? Math.min(...values) : 0;
@@ -78,6 +82,28 @@ const filtersSlice = createSlice({
     setSortBy: (state, action) => {
       state.sortBy = action.payload;
     },
+    // Re-expresses every enabled monetary range filter's stored { min, max }
+    // into a new display currency on a currency switch (AD-004). Iterates the
+    // registry by the `monetary` flag — no hardcoded property id.
+    reexpressMonetaryFilters: (state, action) => {
+      const { from, to } = action.payload;
+      if (from === to) return;
+      for (const property of getFilterableProperties()) {
+        if (!property.monetary || property.filter.type !== 'range') continue;
+        const entry = state.filters[property.id];
+        if (!entry || !entry.value) continue;
+        const step = property.filter.step;
+        const reexpress = (v) => {
+          const converted = convert(v, from, to);
+          if (!Number.isFinite(converted)) return v;
+          return step ? Math.round(converted / step) * step : converted;
+        };
+        entry.value = {
+          min: reexpress(entry.value.min),
+          max: reexpress(entry.value.max),
+        };
+      }
+    },
     resetFilters: () => buildInitialState(),
   },
 });
@@ -86,7 +112,17 @@ export const {
   setFilterValue,
   setFilterEnabled,
   setSortBy,
+  reexpressMonetaryFilters,
   resetFilters,
 } = filtersSlice.actions;
+
+// Switches the display currency and keeps the monetary filter selection
+// consistent: set the new currency, then re-express the stored range bounds.
+export const changeDisplayCurrency = (next) => (dispatch, getState) => {
+  const from = getState().currency.displayCurrency;
+  if (from === next) return;
+  dispatch(setDisplayCurrency(next));
+  dispatch(reexpressMonetaryFilters({ from, to: next }));
+};
 
 export default filtersSlice.reducer;

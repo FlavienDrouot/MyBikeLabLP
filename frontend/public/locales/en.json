@@ -12,6 +12,11 @@
     "contact": "Contact",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
+    "currency": "Currency",
+    "currencyOption": {
+      "EUR": "Show prices in euros",
+      "USD": "Show prices in dollars"
+    },
     "lang": {
       "en": "EN",
       "fr": "FR",

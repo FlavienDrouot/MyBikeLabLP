@@ -1,11 +1,15 @@
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import WheelImageCarousel from './WheelImageCarousel';
+import { convert, formatPrice, isSupportedCurrency } from '../../lib/currency';
 
 const STACKED_PANEL_BREAKPOINT_PX = 1040;
-const formatPrice = (value) => `${value.toLocaleString('fr-FR')} \u20ac`;
-const hasKnownPrice = (entry) => Number.isFinite(entry.price_eur);
+const hasKnownPrice = (entry) => Number.isFinite(entry.amount) && isSupportedCurrency(entry.currency);
+// Ledger prices follow the active display currency (TASK-004); converted rows
+// carry an `≈` hint when their source currency differs from the display one.
+const entryPriceIn = (entry, displayCurrency) => convert(entry.amount, entry.currency, displayCurrency);
 
-const buildLedgerEntries = (wheel) => {
+const buildLedgerEntries = (wheel, displayCurrency) => {
   const manufacturer = wheel.affiliateLinks?.manufacturer;
   const retailers = wheel.affiliateLinks?.retailers ?? [];
   const entries = [
@@ -14,19 +18,29 @@ const buildLedgerEntries = (wheel) => {
   ]
     .filter((entry) => entry.url)
     .sort((a, b) => {
-      if (hasKnownPrice(a) && hasKnownPrice(b)) return a.price_eur - b.price_eur;
+      if (hasKnownPrice(a) && hasKnownPrice(b)) {
+        return entryPriceIn(a, displayCurrency) - entryPriceIn(b, displayCurrency);
+      }
       if (hasKnownPrice(a)) return -1;
       if (hasKnownPrice(b)) return 1;
       return 0;
     });
 
-  const minPrice = entries.find(hasKnownPrice)?.price_eur;
+  const minPrice = entries
+    .filter(hasKnownPrice)
+    .map((entry) => entryPriceIn(entry, displayCurrency))
+    .sort((a, b) => a - b)[0];
 
-  return entries.map((entry) => ({
-    ...entry,
-    isBestPrice: minPrice != null && hasKnownPrice(entry) && entry.price_eur === minPrice,
-    delta: minPrice == null || !hasKnownPrice(entry) ? null : entry.price_eur - minPrice,
-  }));
+  return entries.map((entry) => {
+    const priceInDisplay = hasKnownPrice(entry) ? entryPriceIn(entry, displayCurrency) : null;
+    return {
+      ...entry,
+      priceInDisplay,
+      approx: priceInDisplay != null && entry.currency !== displayCurrency,
+      isBestPrice: minPrice != null && priceInDisplay != null && priceInDisplay === minPrice,
+      delta: minPrice == null || priceInDisplay == null ? null : priceInDisplay - minPrice,
+    };
+  });
 };
 
 const EntryMeta = ({ entry }) => {
@@ -41,7 +55,7 @@ const EntryMeta = ({ entry }) => {
   );
 };
 
-const LedgerRow = ({ entry, rank, ctaLabel, bestLabel }) => (
+const LedgerRow = ({ entry, rank, ctaLabel, bestLabel, displayCurrency }) => (
   <div
     data-testid="wheel-detail-ledger-row"
     className={`relative grid grid-cols-[30px_minmax(0,1fr)_auto_150px] items-center gap-[18px] border-b border-ink-3 py-3 last:border-b-0 ${
@@ -59,11 +73,13 @@ const LedgerRow = ({ entry, rank, ctaLabel, bestLabel }) => (
     </div>
     <div className="text-right">
       <span className={`t-numeric text-[19px] font-medium tracking-normal ${entry.isBestPrice ? 'text-signal-up' : 'text-ink-11'}`}>
-        {hasKnownPrice(entry) ? formatPrice(entry.price_eur) : '-'}
+        {entry.priceInDisplay != null
+          ? formatPrice(entry.priceInDisplay, displayCurrency, { approx: entry.approx })
+          : '-'}
       </span>
       {entry.delta != null && (
         <span className={`t-numeric mt-0.5 block text-[11px] ${entry.isBestPrice ? 'text-signal-up' : 'text-ink-6'}`}>
-          {entry.delta === 0 ? bestLabel : `+${formatPrice(entry.delta)}`}
+          {entry.delta === 0 ? bestLabel : `+${formatPrice(entry.delta, displayCurrency)}`}
         </span>
       )}
     </div>
@@ -85,7 +101,8 @@ const LedgerRow = ({ entry, rank, ctaLabel, bestLabel }) => (
 const WheelDetailPanel = ({ wheel, panelWidth }) => {
   const isStacked = panelWidth < STACKED_PANEL_BREAKPOINT_PX;
   const { t } = useTranslation();
-  const entries = buildLedgerEntries(wheel);
+  const displayCurrency = useSelector((s) => s.currency.displayCurrency);
+  const entries = buildLedgerEntries(wheel, displayCurrency);
   const official = entries.find((entry) => entry.isOfficial);
   const retailers = entries.filter((entry) => !entry.isOfficial);
   const hasNoLinks = entries.length === 0;
@@ -132,6 +149,7 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
                     rank={null}
                     ctaLabel={t('wheelDetail.buyLink')}
                     bestLabel={t('wheelDetail.priceAnnotation')}
+                    displayCurrency={displayCurrency}
                   />
                 </div>
               )}
@@ -151,6 +169,7 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
                       rank={index + 1}
                       ctaLabel={t('wheelDetail.buyLink')}
                       bestLabel={t('wheelDetail.priceAnnotation')}
+                      displayCurrency={displayCurrency}
                     />
                   ))}
                 </div>

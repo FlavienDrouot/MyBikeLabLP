@@ -10,7 +10,7 @@ export const enveWheels = [
     rim: { material: 'carbon', hookless: true, depth_mm: { front: 28, rear: 32 }, externalWidth_mm: 25, tubeless_ready: true, internalWidth_mm: 21 },
     spokes: { model: '', brand: '', material: '' },
     hub: { model: 'INNERDRIVE Premium Straight-Pull', brand: 'ENVE', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
-    prices: [{ price_eur: null, url: 'https://enve.com/collections/road-wheels/products/ses-2-3' }],
+    prices: [{ amount: 2850, currency: 'USD', url: 'https://enve.com/collections/road-wheels/products/ses-2-3' }],
     images: [
       'https://enve.com/cdn/shop/files/SES_2.3_front_angle.jpg?v=1705021935',
       'https://enve.com/cdn/shop/files/SES_2.3_front_side.jpg?v=1705021935',
@@ -18,7 +18,7 @@ export const enveWheels = [
       'https://enve.com/cdn/shop/files/SES_2.3_rear_side.jpg?v=1705021935',
     ],
     affiliateLinks: {
-      manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-2-3', price_eur: null },
+      manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-2-3', amount: 2850, currency: 'USD' },
       retailers: [],
     },
     other_specs: {
@@ -38,8 +38,6 @@ export const enveWheels = [
       front_rim_weight_g: 275,
       rear_rim_weight_g: 280,
       weight_note: '±3%, includes tape and valve',
-      price_usd_front: 1282.50,
-      price_usd_rear: 1567.50,
       usage_note: 'Not suitable for off-road/gravel applications',
     },
   },
@@ -53,7 +51,7 @@ export const enveWheels = [
     rim: { material: 'carbon', hookless: true, depth_mm: { front: 39, rear: 43 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25 },
     spokes: { model: '', brand: '', material: '' },
     hub: { model: 'INNERDRIVE Premium Straight-Pull', brand: 'ENVE', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W', 'Shimano Micro Spline'], disc_standard: 'Center Lock' },
-    prices: [{ price_eur: null, url: 'https://enve.com/collections/road-wheels/products/ses-3-4' }],
+    prices: [{ amount: 2850, currency: 'USD', url: 'https://enve.com/collections/road-wheels/products/ses-3-4' }],
     images: [
       'https://enve.com/cdn/shop/files/SES_3.4_front_angle.jpg?v=1774562893',
       'https://enve.com/cdn/shop/files/SES_3.4_front_side.jpg?v=1774562893',
@@ -61,7 +59,7 @@ export const enveWheels = [
       'https://enve.com/cdn/shop/files/SES_3.4_rear_side.jpg?v=1774562893',
     ],
     affiliateLinks: {
-      manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-3-4', price_eur: null },
+      manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-3-4', amount: 2850, currency: 'USD' },
       retailers: [],
     },
     other_specs: {
@@ -81,8 +79,6 @@ export const enveWheels = [
       front_rim_weight_g: 370,
       rear_rim_weight_g: 378,
       weight_note: '±3%',
-      price_usd_front: 1282.50,
-      price_usd_rear: 1567.50,
     },
   },
   {
@@ -95,7 +91,7 @@ export const enveWheels = [
     rim: { material: 'carbon', hookless: true, depth_mm: { front: 50, rear: 56 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25 },
     spokes: { model: '', brand: '', material: '' },
     hub: { model: 'INNERDRIVE Premium Straight-Pull', brand: 'ENVE', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W', 'Shimano Micro Spline'], disc_standard: 'Center Lock' },
-    prices: [{ price_eur: null, url: 'https://enve.com/collections/road-wheels/products/ses-4-5' }],
+    prices: [{ amount: 2850, currency: 'USD', url: 'https://enve.com/collections/road-wheels/products/ses-4-5' }],
     images: [
       'https://enve.com/cdn/shop/files/SES_4.5_front_angle.jpg?v=1774562990',
       'https://enve.com/cdn/shop/files/SES_4.5_Front_side.jpg?v=1774562990',
@@ -103,7 +99,7 @@ export const enveWheels = [
       'https://enve.com/cdn/shop/files/SES_4.5_rear_side.jpg?v=1723475605',
     ],
     affiliateLinks: {
-      manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-4-5', price_eur: null },
+      manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-4-5', amount: 2850, currency: 'USD' },
       retailers: [],
     },
     other_specs: {
@@ -123,8 +119,6 @@ export const enveWheels = [
       front_rim_weight_g: 411,
       rear_rim_weight_g: 415,
       weight_note: '±3%',
-      price_usd_front: 1282.50,
-      price_usd_rear: 1567.50,
     },
   },
   {
@@ -137,7 +131,7 @@ export const enveWheels = [
     rim: { material: 'carbon', hookless: true, depth_mm: { front: 49, rear: 55 }, externalWidth_mm: 30.8, tubeless_ready: true, internalWidth_mm: 23.5 },
     spokes: { model: 'Ultralite Aero R5 (TCX 2/1.5/2)', brand: 'Alpina', material: 'steel' },
     hub: { model: 'INNERDRIVE PRO Straight-Pull', brand: 'ENVE', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
-    prices: [{ price_eur: null, url: 'https://enve.com/collections/road-wheels/products/ses-4-5-pro' }],
+    prices: [{ amount: 3750, currency: 'USD', url: 'https://enve.com/collections/road-wheels/products/ses-4-5-pro' }],
     images: [
       'https://enve.com/cdn/shop/files/SES_4.5-Pro-Tadej_front_angle_e87bd949-ae81-4324-9380-57b058c3271a.jpg?v=1751547788',
       'https://enve.com/cdn/shop/files/ENVE-SES_Pro_45_Tadej_front_side_0afd1202-a278-4366-9af4-6b102b63928d.jpg?v=1751547788',
@@ -145,7 +139,7 @@ export const enveWheels = [
       'https://enve.com/cdn/shop/files/ENVE-SES_Pro_45_Tadej_rear_side_20c53404-0ecd-4d23-a792-7c1a9da83a7c.jpg?v=1751547788',
     ],
     affiliateLinks: {
-      manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-4-5-pro', price_eur: null },
+      manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-4-5-pro', amount: 3750, currency: 'USD' },
       retailers: [],
     },
     other_specs: {
@@ -170,9 +164,6 @@ export const enveWheels = [
       front_rim_weight_g: 369,
       rear_rim_weight_g: 383,
       weight_note: '±3%',
-      price_usd_front: 1700,
-      price_usd_rear: 2050,
-      price_usd_wheelset: 3750,
     },
   },
   {
@@ -186,7 +177,7 @@ export const enveWheels = [
     rim: { material: 'carbon', hookless: true, depth_mm: { front: 60, rear: 67 }, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 23 },
     spokes: { model: '', brand: '', material: '' },
     hub: { model: 'INNERDRIVE Premium Straight-Pull', brand: 'ENVE', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'], disc_standard: 'Center Lock' },
-    prices: [{ price_eur: null, url: 'https://enve.com/collections/road-wheels/products/ses-6-7' }],
+    prices: [{ amount: 2850, currency: 'USD', url: 'https://enve.com/collections/road-wheels/products/ses-6-7' }],
     images: [
       'https://enve.com/cdn/shop/files/SES_6.7_Front_Side_2_a6bc05aa-3fa6-49dd-b387-9c88765992c7.jpg?v=1774562973',
       'https://enve.com/cdn/shop/files/SES_6.7_front_angle.jpg?v=1774562973',
@@ -194,7 +185,7 @@ export const enveWheels = [
       'https://enve.com/cdn/shop/files/SES_6.7_rear_angle.jpg?v=1774562973',
     ],
     affiliateLinks: {
-      manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-6-7', price_eur: null },
+      manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-6-7', amount: 2850, currency: 'USD' },
       retailers: [],
     },
     other_specs: {
@@ -215,8 +206,6 @@ export const enveWheels = [
       front_rim_weight_g: 430,
       rear_rim_weight_g: 449,
       weight_note: '±3%',
-      price_usd_front: 1282.50,
-      price_usd_rear: 1567.50,
       usage_note: 'Not suitable for off-road/gravel applications',
     },
   },
@@ -231,14 +220,14 @@ export const enveWheels = [
     rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 25 },
     spokes: { model: 'CX-Ray J-Bend', brand: 'Sapim', material: 'steel' },
     hub: { model: 'INNERDRIVE Foundation', brand: 'ENVE', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XDR', 'Shimano Micro Spline'], disc_standard: 'Center Lock' },
-    prices: [{ price_eur: null, url: 'https://enve.com/products/ar40' }],
+    prices: [{ amount: 1400, currency: 'USD', url: 'https://enve.com/products/ar40' }],
     images: [
       'https://enve.com/cdn/shop/files/ENVE-AR40-Wheel-Low-Res-White-4455.jpg',
       'https://enve.com/cdn/shop/files/ENVE-AR40-Wheel-Low-Res-White-4436.jpg',
       'https://enve.com/cdn/shop/files/ENVE-AR40-Wheel-Low-Res-White-4435.jpg',
     ],
     affiliateLinks: {
-      manufacturer: { url: 'https://enve.com/products/ar40', price_eur: null },
+      manufacturer: { url: 'https://enve.com/products/ar40', amount: 1400, currency: 'USD' },
       retailers: [],
     },
     other_specs: {
@@ -258,8 +247,6 @@ export const enveWheels = [
       tire_type: 'tubeless only',
       wheel_size: '700c',
       weight_note: '±3%, includes tape and valves with HG freehub',
-      price_usd_front: 630,
-      price_usd_rear: 770,
     },
   },
 ];

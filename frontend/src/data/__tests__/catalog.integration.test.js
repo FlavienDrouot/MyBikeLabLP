@@ -7,9 +7,10 @@ import { selectFilteredWheels } from '../../store/selectors/wheelsSelectors';
 // Helpers
 // ---------------------------------------------------------------------------
 
-const makeState = (filters = {}, sortBy = null) => ({
+const makeState = (filters = {}, sortBy = null, displayCurrency = 'EUR') => ({
   wheels: { items: wheelsData },
   filters: { filters, sortBy },
+  currency: { displayCurrency },
 });
 
 const makeMultiSelectFilter = (value) => ({ value, enabled: true });
@@ -77,8 +78,8 @@ describe('Caden variant catalog migration', () => {
 
   it('keeps entries with a missing price visible before filtering', () => {
     const hasPrice = (wheel) =>
-      Number.isFinite(wheel.prices?.[0]?.price_eur) ||
-      Number.isFinite(wheel.affiliateLinks?.manufacturer?.price_eur);
+      Number.isFinite(wheel.prices?.[0]?.amount) ||
+      Number.isFinite(wheel.affiliateLinks?.manufacturer?.amount);
     const missingPriceEntry = wheelsData.find((wheel) => !hasPrice(wheel));
 
     // Guard: the assertion is only meaningful if the catalog still has a price-less entry.

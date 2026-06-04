@@ -21,6 +21,9 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   const wheels = useSelector(selectFilteredWheels);
   const allWheels = useSelector((state) => state.wheels.items);
   const sortBy = useSelector((s) => s.filters.sortBy);
+  const displayCurrency = useSelector((s) => s.currency.displayCurrency);
+  // Accessor context threaded into currency-aware cells (AD-001).
+  const ctx = useMemo(() => ({ displayCurrency }), [displayCurrency]);
   const total = allWheels.length;
   const [expandedId, setExpandedId] = useState(null);
   const [renderedExpandedId, setRenderedExpandedId] = useState(null);
@@ -192,7 +195,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                       }
                       return (
                         <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap overflow-hidden text-ellipsis`}>
-                          {renderCellFor(p, t)(w)}
+                          {renderCellFor(p, t, ctx)(w)}
                         </td>
                       );
                     })}

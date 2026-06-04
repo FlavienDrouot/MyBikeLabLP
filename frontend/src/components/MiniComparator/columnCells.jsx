@@ -2,13 +2,13 @@
 // measuring twin (MeasuringTable). Both must render identical cell content and
 // classes so the measured column widths match what the visible table displays.
 
-export const renderCellFor = (property, t) => {
+export const renderCellFor = (property, t, ctx) => {
   if (property.column?.renderCell) {
-    return (w) => property.column.renderCell(w, t);
+    return (w) => property.column.renderCell(w, t, ctx);
   }
   if (property.translatable && t) {
     return (w) => {
-      const value = property.accessor(w);
+      const value = property.accessor(w, ctx);
       // Missing/empty value → localized fallback. Note: boolean false and
       // numeric 0 are real values and must keep resolving to their own keys.
       if (value === undefined || value === null || value === '') {
@@ -22,7 +22,7 @@ export const renderCellFor = (property, t) => {
     };
   }
   return (w) => {
-    const value = property.accessor(w);
+    const value = property.accessor(w, ctx);
     if (value === undefined || value === null || value === '') return t('common.notAvailable');
     return `${value}${property.unit ?? ''}`;
   };

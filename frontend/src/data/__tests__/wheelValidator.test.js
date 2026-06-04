@@ -145,3 +145,42 @@ describe('validateWheelsCatalog', () => {
     expect(warnings[0]).toContain('single configuration');
   });
 });
+
+describe('validateWheelEntry — per-offer currency schema (EVO-046)', () => {
+  const canonicalOffers = {
+    prices: [{ amount: 1500, currency: 'EUR', url: 'https://example.test/p' }],
+    affiliateLinks: {
+      manufacturer: { url: 'https://example.test/p', amount: 1500, currency: 'EUR' },
+      retailers: [{ name: 'Shop', url: 'https://example.test/r', amount: null, currency: 'USD' }],
+    },
+  };
+
+  it('returns no warnings for canonical { amount, currency } offers', () => {
+    expect(validateWheelEntry(makeEntry(canonicalOffers))).toEqual([]);
+  });
+
+  it('flags a legacy price_eur field on an offer', () => {
+    const entry = makeEntry({
+      prices: [{ price_eur: 1299, url: 'https://example.test/p' }],
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings.some((w) => w.includes('price_eur'))).toBe(true);
+  });
+
+  it('flags a legacy price_usd field in other_specs', () => {
+    const entry = makeEntry({
+      prices: [{ amount: 1000, currency: 'USD', url: 'https://example.test/p' }],
+      other_specs: { price_usd: 1000 },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings.some((w) => w.includes('other_specs.price_usd'))).toBe(true);
+  });
+
+  it('flags an offer with a missing or unsupported currency', () => {
+    const entry = makeEntry({
+      prices: [{ amount: 1000, currency: 'GBP', url: 'https://example.test/p' }],
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings.some((w) => w.includes('unsupported currency'))).toBe(true);
+  });
+});

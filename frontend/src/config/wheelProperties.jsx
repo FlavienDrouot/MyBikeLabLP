@@ -11,6 +11,7 @@
 import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 import { HookBadge, TubelessBadge } from '../components/MiniComparator/badges';
 import { resolveSpec } from '../data/wheelUtils';
+import { convert, formatPrice, isSupportedCurrency } from '../lib/currency';
 
 /**
  * @typedef {Object} WheelProperty
@@ -40,11 +41,32 @@ import { resolveSpec } from '../data/wheelUtils';
  *           colWidth?: number}} ColumnSpec
  */
 
-// Exported helper because reused in multiple entries (price, price column).
-export const minPrice = (wheel) => {
-  const valid = wheel.prices.map((p) => p.price_eur).filter(Number.isFinite);
-  return valid.length > 0 ? Math.min(...valid) : null;
+// Selects the cheapest usable offer after converting every offer to the display
+// currency. Returns `{ valueInDisplay, sourceCurrency }` or null when no offer
+// has a finite amount in a supported currency. `sourceCurrency` drives the `≈`
+// hint (shown when it differs from the display currency).
+export const selectMinOffer = (wheel, displayCurrency = 'EUR') => {
+  let best = null;
+  for (const offer of wheel.prices ?? []) {
+    if (!Number.isFinite(offer.amount) || !isSupportedCurrency(offer.currency)) continue;
+    const valueInDisplay = convert(offer.amount, offer.currency, displayCurrency);
+    if (!Number.isFinite(valueInDisplay)) continue;
+    if (best === null || valueInDisplay < best.valueInDisplay) {
+      best = { valueInDisplay, sourceCurrency: offer.currency };
+    }
+  }
+  return best;
 };
+
+// Lowest offer converted to the display currency, or null. The display currency
+// is threaded in via the accessor context (AD-001); callers default to EUR.
+export const minPriceIn = (wheel, displayCurrency = 'EUR') => {
+  const offer = selectMinOffer(wheel, displayCurrency);
+  return offer ? offer.valueInDisplay : null;
+};
+
+// Exported helper kept for the EUR baseline (consumers/tests predating TASK-004).
+export const minPrice = (wheel) => minPriceIn(wheel, 'EUR');
 
 const DIAMETER_LABEL_MAP = {
   700: '700C',
@@ -127,9 +149,10 @@ export const WHEEL_PROPERTIES = [
     label: 'properties.price.label',
     group: 'general',
     translatable: false,
+    monetary: true,
     unit: ' €',
-    // Computed accessor: value is not in a direct field.
-    accessor: minPrice,
+    // Computed, currency-aware accessor: lowest offer in the display currency.
+    accessor: (w, ctx) => minPriceIn(w, ctx?.displayCurrency ?? 'EUR'),
     filter: { type: 'range', step: 50 },
     sorts: [
       { id: 'price_asc', label: 'sorts.price_asc', direction: 'asc' },
@@ -138,10 +161,12 @@ export const WHEEL_PROPERTIES = [
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-right font-semibold text-ink-11 tabular-nums',
-      renderCell: (w, t) => {
-        const price = w.prices?.length > 0 ? minPrice(w) : null;
-        if (!price) return t ? t('common.notAvailable') : 'N/A';
-        return `${price.toLocaleString('fr-FR')} €`;
+      renderCell: (w, t, ctx) => {
+        const displayCurrency = ctx?.displayCurrency ?? 'EUR';
+        const offer = selectMinOffer(w, displayCurrency);
+        if (!offer) return t ? t('common.notAvailable') : 'N/A';
+        const approx = offer.sourceCurrency !== displayCurrency;
+        return formatPrice(offer.valueInDisplay, displayCurrency, { approx });
       },
     },
   },

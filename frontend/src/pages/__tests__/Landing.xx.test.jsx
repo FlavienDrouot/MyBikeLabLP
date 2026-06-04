@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import wheelsReducer from '../../store/slices/wheelsSlice';
 import filtersReducer from '../../store/slices/filtersSlice';
+import currencyReducer from '../../store/slices/currencySlice';
 import Landing from '../Landing';
 import i18n from 'i18next';
 
@@ -30,7 +31,7 @@ function isNodeAllowed(node) {
 }
 
 const emptyWheelsStore = configureStore({
-  reducer: { wheels: wheelsReducer, filters: filtersReducer },
+  reducer: { wheels: wheelsReducer, filters: filtersReducer, currency: currencyReducer },
   preloadedState: { wheels: { items: [], loading: false, error: null } },
 });
 

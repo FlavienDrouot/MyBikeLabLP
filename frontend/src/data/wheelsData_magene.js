@@ -9,16 +9,14 @@ const urls = {
 const freehubOptions = ['Shimano HG', 'Campagnolo N3W', 'SRAM XDR'];
 
 const makeLinks = (url, priceUsd) => ({
-  prices: [{ price_eur: null, url }],
+  prices: [{ amount: priceUsd, currency: 'USD', url }],
   image: wheelPlaceholderUrl,
   images: [],
   affiliateLinks: {
-    manufacturer: { url, price_eur: null },
+    manufacturer: { url, amount: priceUsd, currency: 'USD' },
     retailers: [],
   },
-  other_specs: {
-    price_usd: priceUsd,
-  },
+  other_specs: {},
 });
 
 const ultraShared = {

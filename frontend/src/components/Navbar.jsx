@@ -1,10 +1,49 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import Icon from './ui/Icon';
 import LogoMark from './ui/LogoMark';
+import { SUPPORTED_CURRENCIES } from '../lib/currency';
+import { changeDisplayCurrency } from '../store/slices/filtersSlice';
 
 const LANGUAGES = ['en', 'fr'];
+
+const CURRENCY_SYMBOLS = { EUR: '€', USD: '$' };
+
+const CurrencyToggle = () => {
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const displayCurrency = useSelector((s) => s.currency.displayCurrency);
+
+  return (
+    <div className="flex items-center gap-0.5" role="group" aria-label={t('nav.currency')}>
+      {SUPPORTED_CURRENCIES.map((code) => {
+        const isActive = displayCurrency === code;
+        return (
+          <button
+            key={code}
+            type="button"
+            onClick={() => dispatch(changeDisplayCurrency(code))}
+            aria-pressed={isActive}
+            aria-label={t(`nav.currencyOption.${code}`)}
+            className={`px-2 py-1 rounded-xs text-xs font-semibold tracking-wide transition-colors ${
+              isActive
+                ? 'bg-ink-11 text-paper-0'
+                : 'text-fg-muted hover:text-fg-primary'
+            }`}
+            style={{
+              transition:
+                'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard)',
+            }}
+          >
+            {CURRENCY_SYMBOLS[code] ?? code}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
 
 const LanguageToggle = () => {
   const { i18n } = useTranslation();
@@ -93,6 +132,7 @@ const Navbar = () => {
           <a href="#partnerships" className="btn-ghost">{t('nav.partnerships')}</a>
         </nav>
         <div className="flex items-center gap-2">
+          <CurrencyToggle />
           <LanguageToggle />
           <a href="#contact" className="btn-primary">{t('nav.contact')}</a>
           <button

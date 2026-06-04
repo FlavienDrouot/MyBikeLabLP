@@ -82,6 +82,47 @@ function collectOtherSpecWarnings(entry, id) {
     .map((key) => `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`);
 }
 
+// EVO-046: every price offer carries `{ amount, currency }`; the legacy `price_eur`
+// field and the ad-hoc `price_usd` (top-level or in other_specs) are forbidden, and
+// each offer's currency must be in the supported set.
+const SUPPORTED_CURRENCIES = new Set(['EUR', 'USD']);
+
+function collectOffers(entry) {
+  const offers = [];
+  for (const price of entry?.prices ?? []) offers.push({ path: 'prices[]', offer: price });
+  const manufacturer = entry?.affiliateLinks?.manufacturer;
+  if (manufacturer) offers.push({ path: 'affiliateLinks.manufacturer', offer: manufacturer });
+  for (const retailer of entry?.affiliateLinks?.retailers ?? []) {
+    offers.push({ path: 'affiliateLinks.retailers[]', offer: retailer });
+  }
+  return offers;
+}
+
+function collectPriceSchemaWarnings(entry, id) {
+  const warnings = [];
+
+  if ('price_usd' in (entry ?? {})) {
+    warnings.push(`price_usd on entry ${id}: legacy field, use { amount, currency } on each offer`);
+  }
+  if ('price_usd' in (entry?.other_specs ?? {})) {
+    warnings.push(`other_specs.price_usd on entry ${id}: legacy field, use { amount, currency } on each offer`);
+  }
+
+  for (const { path, offer } of collectOffers(entry)) {
+    if ('price_eur' in offer) {
+      warnings.push(`${path} on entry ${id}: legacy price_eur field, use { amount, currency }`);
+    }
+    if ('price_usd' in offer) {
+      warnings.push(`${path} on entry ${id}: legacy price_usd field, use { amount, currency }`);
+    }
+    if (!SUPPORTED_CURRENCIES.has(offer.currency)) {
+      warnings.push(`${path} on entry ${id}: missing or unsupported currency "${offer.currency}"`);
+    }
+  }
+
+  return warnings;
+}
+
 /**
  * Validates a single wheel entry against divergent spec rules.
  *
@@ -114,6 +155,11 @@ export function validateWheelEntry(entry) {
   }
 
   for (const warning of collectOtherSpecWarnings(entry, id)) {
+    console.warn(warning);
+    warnings.push(warning);
+  }
+
+  for (const warning of collectPriceSchemaWarnings(entry, id)) {
     console.warn(warning);
     warnings.push(warning);
   }

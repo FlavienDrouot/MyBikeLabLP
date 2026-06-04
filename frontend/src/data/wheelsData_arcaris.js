@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const FREEHUB_OPTIONS = ['Shimano HG', 'SRAM XDR'];
 
@@ -30,7 +29,7 @@ const makeArcarisWheel = ({
   spokes,
   hubModel,
   hubBrand,
-  price_usd,
+  priceUsd,
   other_specs = {},
 }) => ({
   id,
@@ -59,16 +58,15 @@ const makeArcarisWheel = ({
     freehub_options: FREEHUB_OPTIONS,
     disc_standard: null,
   },
-  prices: [{ price_eur: null, url: PRODUCT_URL }],
+  prices: [{ amount: priceUsd, currency: 'USD', url: PRODUCT_URL }],
   image: IMAGES[0],
   images: IMAGES,
   affiliateLinks: {
-    manufacturer: { url: PRODUCT_URL, price_eur: null },
-    retailers: [{ name: 'Panda Podium', price_eur: null, url: PRODUCT_URL }],
+    manufacturer: { url: PRODUCT_URL, amount: priceUsd, currency: 'USD' },
+    retailers: [{ name: 'Panda Podium', amount: priceUsd, currency: 'USD', url: PRODUCT_URL }],
   },
   other_specs: {
     ...baseOtherSpecs,
-    price_usd,
     ...other_specs,
   },
 });
@@ -82,7 +80,7 @@ export const arcarisWheels = [
     spokes: { model: 'VONOA Carbon', brand: 'VONOA', material: 'carbon' },
     hubModel: '8848 H-WORKS',
     hubBrand: 'H-WORKS',
-    price_usd: 1599,
+    priceUsd: 1599,
     other_specs: {
       bearing_type: 'Steel (TPI)',
       spoke_count_front: 16,
@@ -99,7 +97,7 @@ export const arcarisWheels = [
     spokes: { model: 'VONOA Carbon w/ Titanium Fittings', brand: 'VONOA', material: 'carbon' },
     hubModel: '8848 H-WORKS',
     hubBrand: 'H-WORKS',
-    price_usd: 1899,
+    priceUsd: 1899,
     other_specs: {
       bearing_type: 'Hybrid Ceramic (TPI)',
       spoke_count_front: 16,
@@ -116,7 +114,7 @@ export const arcarisWheels = [
     spokes: { model: 'Sapim CX-Super', brand: 'Sapim', material: 'steel' },
     hubModel: 'NONPLUS',
     hubBrand: 'NONPLUS',
-    price_usd: 2499,
+    priceUsd: 2499,
     other_specs: {
       bearing_type: 'Steel (Enduro)',
       spoke_count_front: 24,

@@ -1,5 +1,6 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { renderCellFor, cellClassFor } from './columnCells';
 
 // Hidden, off-flow copy of the comparison table rendered from the FULL dataset.
@@ -28,6 +29,8 @@ const MEASURING_STYLE = {
 
 const MeasuringTable = ({ items, cols, onMeasure }) => {
   const { t, i18n } = useTranslation();
+  const displayCurrency = useSelector((s) => s.currency.displayCurrency);
+  const ctx = useMemo(() => ({ displayCurrency }), [displayCurrency]);
   const tableRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -81,7 +84,7 @@ const MeasuringTable = ({ items, cols, onMeasure }) => {
           <tr key={w.id}>
             {cols.map((p) => (
               <td key={p.id} className={`${cellClassFor(p)} whitespace-nowrap`}>
-                {renderCellFor(p, t)(w)}
+                {renderCellFor(p, t, ctx)(w)}
               </td>
             ))}
           </tr>

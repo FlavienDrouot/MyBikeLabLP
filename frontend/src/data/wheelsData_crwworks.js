@@ -44,12 +44,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 56912,
-      price_usd: 2399,
       source_note: "Panda Podium product page; no independent CRW Works catalogue found in this pass."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 2399, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-ultimo6060-road-disc-brake-wheelset/"
       }
     ],
@@ -62,12 +61,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-ultimo6060-road-disc-brake-wheelset/",
-        price_eur: null
+        amount: 2399, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 2399, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-ultimo6060-road-disc-brake-wheelset/"
         }
       ]
@@ -120,12 +119,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 52777,
-      price_usd: 2399,
       source_note: "Panda Podium product page; no independent CRW Works catalogue found in this pass."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 2399, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-ultimo5060-road-disc-brake-wheelset/"
       }
     ],
@@ -138,12 +136,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-ultimo5060-road-disc-brake-wheelset/",
-        price_eur: null
+        amount: 2399, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 2399, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-ultimo5060-road-disc-brake-wheelset/"
         }
       ]
@@ -196,12 +194,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 30691,
-      price_usd: 1680,
       source_note: "Panda Podium product page; US warehouse clearance duplicate excluded."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 1680, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-2026-cs4045-road-disc-brake-wheelset/"
       }
     ],
@@ -215,12 +212,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-2026-cs4045-road-disc-brake-wheelset/",
-        price_eur: null
+        amount: 1680, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 1680, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-2026-cs4045-road-disc-brake-wheelset/"
         }
       ]
@@ -273,12 +270,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 31200,
-      price_usd: 1680,
       source_note: "Panda Podium product page; no independent CRW Works catalogue found in this pass."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 1680, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-2026-cs5060-road-disc-brake-wheelset/"
       }
     ],
@@ -294,12 +290,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-2026-cs5060-road-disc-brake-wheelset/",
-        price_eur: null
+        amount: 1680, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 1680, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-2026-cs5060-road-disc-brake-wheelset/"
         }
       ]
@@ -346,12 +342,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 2476,
-      price_usd: 1680,
       source_note: "Panda Podium product page; image not yet model-specific per retailer note."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 1680, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-cs5055-road-disc-brake-wheelset/"
       }
     ],
@@ -361,12 +356,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-cs5055-road-disc-brake-wheelset/",
-        price_eur: null
+        amount: 1680, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 1680, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-cs5055-road-disc-brake-wheelset/"
         }
       ]
@@ -419,12 +414,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 47385,
-      price_usd: 1680,
       source_note: "Panda Podium product page; no independent CRW Works catalogue found in this pass."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 1680, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-2026-cs6575-road-disc-brake-wheelset/"
       }
     ],
@@ -434,12 +428,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-2026-cs6575-road-disc-brake-wheelset/",
-        price_eur: null
+        amount: 1680, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 1680, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-2026-cs6575-road-disc-brake-wheelset/"
         }
       ]
@@ -486,12 +480,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 3535,
-      price_usd: 1680,
       source_note: "Panda Podium product page; US warehouse clearance duplicate excluded."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 1680, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-cs4045-road-disc-brake-wheelset/"
       }
     ],
@@ -501,12 +494,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-cs4045-road-disc-brake-wheelset/",
-        price_eur: null
+        amount: 1680, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 1680, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-cs4045-road-disc-brake-wheelset/"
         }
       ]
@@ -553,12 +546,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 2482,
-      price_usd: 1680,
       source_note: "Panda Podium product page; no independent CRW Works catalogue found in this pass."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 1680, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-cs5060-disc-brake-wheelset/"
       }
     ],
@@ -568,12 +560,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-cs5060-disc-brake-wheelset/",
-        price_eur: null
+        amount: 1680, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 1680, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-cs5060-disc-brake-wheelset/"
         }
       ]
@@ -620,12 +612,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 8376,
-      price_usd: 1680,
       source_note: "Panda Podium product page; no independent CRW Works catalogue found in this pass."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 1680, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-cs6575-disc-brake-wheelset/"
       }
     ],
@@ -635,12 +626,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-cs6575-disc-brake-wheelset/",
-        price_eur: null
+        amount: 1680, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 1680, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-cs6575-disc-brake-wheelset/"
         }
       ]
@@ -682,12 +673,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 2488,
-      price_usd: 1199,
       source_note: "Panda Podium product page; no independent CRW Works catalogue found in this pass."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 1199, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-d45-disc-brake-wheelset/"
       }
     ],
@@ -697,12 +687,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-d45-disc-brake-wheelset/",
-        price_eur: null
+        amount: 1199, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 1199, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-d45-disc-brake-wheelset/"
         }
       ]
@@ -744,12 +734,11 @@ export const crwWorksWheels = [
     other_specs: {
       source: "Panda Podium WooCommerce Store API + product page",
       source_product_id: 2493,
-      price_usd: 1199,
       source_note: "Panda Podium product page; no independent CRW Works catalogue found in this pass."
     },
     prices: [
       {
-        price_eur: null,
+        amount: 1199, currency: 'USD',
         url: "https://www.pandapodium.cc/product/crw-works-d55-disc-brake-wheelset/"
       }
     ],
@@ -759,12 +748,12 @@ export const crwWorksWheels = [
     affiliateLinks: {
       manufacturer: {
         url: "https://www.pandapodium.cc/product/crw-works-d55-disc-brake-wheelset/",
-        price_eur: null
+        amount: 1199, currency: 'USD'
       },
       retailers: [
         {
           name: "Panda Podium",
-          price_eur: null,
+          amount: 1199, currency: 'USD',
           url: "https://www.pandapodium.cc/product/crw-works-d55-disc-brake-wheelset/"
         }
       ]

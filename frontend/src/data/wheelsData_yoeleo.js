@@ -3,7 +3,7 @@ import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 const NXT_FREEHUB_OPTIONS = ['Shimano HG', 'Campagnolo N3W', 'SRAM XDR'];
 const QIANKUN_FREEHUB_OPTIONS = ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'];
 
-const makeNxTWheel = ({ id, model, weight_grams, depth_mm, price_usd, url, wheelset_category }) => ({
+const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheelset_category }) => ({
   id,
   model,
   brand: 'YOELEO',
@@ -33,15 +33,14 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, price_usd, url, wheel
     freehub_options: NXT_FREEHUB_OPTIONS,
     disc_standard: null,
   },
-  prices: [{ price_eur: null, url }],
+  prices: [{ amount: priceUsd, currency: 'USD', url }],
   image: wheelPlaceholderUrl,
   images: [],
   affiliateLinks: {
-    manufacturer: { url, price_eur: null },
+    manufacturer: { url, amount: priceUsd, currency: 'USD' },
     retailers: [],
   },
   other_specs: {
-    price_usd,
     weight_tolerance_percent: 5,
     range_of_use: 'Road & Gravel',
     rim_shape: 'Offset/U-Shaped',
@@ -99,15 +98,14 @@ const makeQianKunWheel = ({
     freehub_options: QIANKUN_FREEHUB_OPTIONS,
     disc_standard: null,
   },
-  prices: [{ price_eur: null, url }],
+  prices: [{ amount: 1650, currency: 'USD', url }],
   image: wheelPlaceholderUrl,
   images: [],
   affiliateLinks: {
-    manufacturer: { url, price_eur: null },
+    manufacturer: { url, amount: 1650, currency: 'USD' },
     retailers: [],
   },
   other_specs: {
-    price_usd: 1650,
     weight_tolerance_percent: 3,
     range_of_use,
     rim_material_detail: 'HI-MOD T1000 Carbon Fiber',
@@ -135,7 +133,7 @@ export const yoeleoWheels = [
     model: 'SAT C35 DB PRO NxT SL2',
     weight_grams: 1260,
     depth_mm: 35,
-    price_usd: 999,
+    priceUsd: 999,
     url: 'https://www.yoeleo.com/products/sat-c35-db-pro-nxt-sl2',
     wheelset_category: 'climbing',
   }),
@@ -144,7 +142,7 @@ export const yoeleoWheels = [
     model: 'SAT C50 DB PRO NxT SL2',
     weight_grams: 1320,
     depth_mm: 50,
-    price_usd: 999,
+    priceUsd: 999,
     url: 'https://www.yoeleo.com/products/sat-c50-db-pro-nxt-sl2',
     wheelset_category: 'all-round',
   }),
@@ -153,7 +151,7 @@ export const yoeleoWheels = [
     model: 'SAT C60 DB PRO NxT SL2',
     weight_grams: 1340,
     depth_mm: 60,
-    price_usd: 1049,
+    priceUsd: 1049,
     url: 'https://www.yoeleo.com/products/sat-c60-db-pro-nxt-sl2',
     wheelset_category: 'aero',
   }),
@@ -162,7 +160,7 @@ export const yoeleoWheels = [
     model: 'SAT C88 DB PRO NxT SL2',
     weight_grams: 1720,
     depth_mm: 88,
-    price_usd: 1099,
+    priceUsd: 1099,
     url: 'https://www.yoeleo.com/products/disc-brake-carbon-tubeless-wheelset-c88-road-db',
     wheelset_category: 'aero',
   }),

@@ -30,10 +30,15 @@ export const matchers = {
 // Main selector: filters then sorts the wheel list by looping over the registry.
 // No filters are hardcoded here.
 export const selectFilteredWheels = createSelector(
-  [(state) => state.wheels.items, (state) => state.filters],
-  (items, filtersState) => {
+  [
+    (state) => state.wheels.items,
+    (state) => state.filters,
+    (state) => state.currency.displayCurrency,
+  ],
+  (items, filtersState, displayCurrency) => {
     const filterables = getFilterableProperties();
     const sort = getAllSorts().find((s) => s.id === filtersState.sortBy);
+    const ctx = { displayCurrency };
 
     return items
       .filter((wheel) =>
@@ -45,16 +50,16 @@ export const selectFilteredWheels = createSelector(
           const matcher = matchers[property.filter.type];
           if (!matcher) return true;
           const rawValue = property.filterAccessor
-            ? property.filterAccessor(wheel)
-            : property.accessor(wheel);
+            ? property.filterAccessor(wheel, ctx)
+            : property.accessor(wheel, ctx);
           return matcher(rawValue, f);
         })
       )
       .slice()
       .sort((a, b) => {
         if (!sort) return 0;
-        const va = sort.accessor(a);
-        const vb = sort.accessor(b);
+        const va = sort.accessor(a, ctx);
+        const vb = sort.accessor(b, ctx);
         if (sort.direction === 'localeCompare') {
           return String(va).localeCompare(String(vb));
         }
@@ -81,15 +86,16 @@ export const selectFilteredWheels = createSelector(
 // or more simply via the useOptionsFor hook (cf. FilterPanel).
 export const makeSelectOptionsFor = (propertyId) =>
   createSelector(
-    [(state) => state.wheels.items],
-    (items) => {
+    [(state) => state.wheels.items, (state) => state.currency.displayCurrency],
+    (items, displayCurrency) => {
       const property = getPropertyById(propertyId);
       if (!property) return [];
+      const ctx = { displayCurrency };
 
       if (property.filter?.type === 'multiSelectFlat') {
         const all = [];
         for (const item of items) {
-          const arr = property.accessor(item);
+          const arr = property.accessor(item, ctx);
           if (Array.isArray(arr)) {
             for (const v of arr) {
               if (v != null) all.push(v);
@@ -100,19 +106,24 @@ export const makeSelectOptionsFor = (propertyId) =>
       }
 
       return [
-        ...new Set(items.map(property.accessor).filter((v) => v != null)),
+        ...new Set(items.map((item) => property.accessor(item, ctx)).filter((v) => v != null)),
       ].sort();
     }
   );
 
 export const makeSelectContextualCountsFor = (propertyId) =>
   createSelector(
-    [(state) => state.wheels.items, (state) => state.filters],
-    (items, filtersState) => {
+    [
+      (state) => state.wheels.items,
+      (state) => state.filters,
+      (state) => state.currency.displayCurrency,
+    ],
+    (items, filtersState, displayCurrency) => {
       const property = getPropertyById(propertyId);
       if (!property) return {};
 
       const otherFilterables = getFilterableProperties().filter((p) => p.id !== propertyId);
+      const ctx = { displayCurrency };
 
       const filteredItems = items.filter((wheel) =>
         otherFilterables.every((p) => {
@@ -121,8 +132,8 @@ export const makeSelectContextualCountsFor = (propertyId) =>
           const matcher = matchers[p.filter.type];
           if (!matcher) return true;
           const rawValue = p.filterAccessor
-            ? p.filterAccessor(wheel)
-            : p.accessor(wheel);
+            ? p.filterAccessor(wheel, ctx)
+            : p.accessor(wheel, ctx);
           return matcher(rawValue, f);
         })
       );
@@ -130,7 +141,7 @@ export const makeSelectContextualCountsFor = (propertyId) =>
       const counts = {};
       if (property.filter?.type === 'multiSelectFlat') {
         for (const wheel of filteredItems) {
-          const arr = property.accessor(wheel);
+          const arr = property.accessor(wheel, ctx);
           if (Array.isArray(arr)) {
             for (const v of arr) {
               if (v != null) {
@@ -142,7 +153,7 @@ export const makeSelectContextualCountsFor = (propertyId) =>
         }
       } else {
         for (const wheel of filteredItems) {
-          const key = String(property.accessor(wheel));
+          const key = String(property.accessor(wheel, ctx));
           counts[key] = (counts[key] ?? 0) + 1;
         }
       }
@@ -152,11 +163,12 @@ export const makeSelectContextualCountsFor = (propertyId) =>
 
 export const makeSelectRangeBoundsFor = (propertyId) =>
   createSelector(
-    [(state) => state.wheels.items],
-    (items) => {
+    [(state) => state.wheels.items, (state) => state.currency.displayCurrency],
+    (items, displayCurrency) => {
       const property = getPropertyById(propertyId);
       if (!property) return { min: 0, max: 0 };
-      const values = items.map(property.accessor).filter(Number.isFinite);
+      const ctx = { displayCurrency };
+      const values = items.map((item) => property.accessor(item, ctx)).filter(Number.isFinite);
       if (!values.length) return { min: 0, max: 0 };
       const dataMin = Math.min(...values);
       const dataMax = Math.max(...values);

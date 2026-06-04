@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const FREEHUB_OPTIONS = ['Shimano HG', 'SRAM XDR'];
 
@@ -8,8 +7,9 @@ const RETAILER_URL =
 const PANDA_URL =
   'https://www.pandapodium.cc/product/overfast-50mm-ultralight-wheelset/';
 
+const PRICE_USD = 2250;
+
 const baseOtherSpecs = {
-  price_usd: 2250,
   weight_tolerance_grams: 15,
   bearing_type: 'TPI ceramic',
   spoke_count_front: 20,
@@ -61,14 +61,14 @@ const makeOverfastWheel = ({
     freehub_options: FREEHUB_OPTIONS,
     disc_standard: 'Center Lock',
   },
-  prices: [{ price_eur: null, url: RETAILER_URL }],
+  prices: [{ amount: PRICE_USD, currency: 'USD', url: RETAILER_URL }],
   image,
   images: [image],
   affiliateLinks: {
-    manufacturer: { url: MANUFACTURER_URL, price_eur: null },
+    manufacturer: { url: MANUFACTURER_URL, amount: PRICE_USD, currency: 'USD' },
     retailers: [
-      { name: 'Underdogs Cycling', price_eur: null, url: RETAILER_URL },
-      { name: 'Panda Podium', price_eur: null, url: PANDA_URL },
+      { name: 'Underdogs Cycling', amount: PRICE_USD, currency: 'USD', url: RETAILER_URL },
+      { name: 'Panda Podium', amount: PRICE_USD, currency: 'USD', url: PANDA_URL },
     ],
   },
   other_specs: {

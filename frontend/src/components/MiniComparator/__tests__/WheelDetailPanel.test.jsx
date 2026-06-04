@@ -3,6 +3,8 @@
 import { createElement, act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { Provider } from 'react-redux';
+import { store } from '../../../store';
 import WheelDetailPanel from '../WheelDetailPanel';
 
 const baseWheel = {
@@ -12,25 +14,25 @@ const baseWheel = {
 };
 
 const manufacturer = {
-  price_eur: 1299,
+  currency: 'EUR', amount: 1299,
   url: 'https://manufacturer.example/alpinist',
   region: 'EU',
   stock: 'In stock',
 };
 
 const manufacturerWithoutPrice = {
-  price_eur: null,
+  currency: 'EUR', amount: null,
   url: 'https://manufacturer.example/rapide-c38',
 };
 
 const retailers = [
-  { name: 'Retailer C', price_eur: 1450, url: 'https://retailer-c.example/alpinist' },
-  { name: 'Retailer A', price_eur: 1199, url: 'https://retailer-a.example/alpinist' },
-  { name: 'Retailer B', price_eur: 1325, url: 'https://retailer-b.example/alpinist' },
+  { name: 'Retailer C', currency: 'EUR', amount: 1450, url: 'https://retailer-c.example/alpinist' },
+  { name: 'Retailer A', currency: 'EUR', amount: 1199, url: 'https://retailer-a.example/alpinist' },
+  { name: 'Retailer B', currency: 'EUR', amount: 1325, url: 'https://retailer-b.example/alpinist' },
 ];
 
 const retailersWithoutPrice = [
-  { name: 'Excel Sports', price_eur: null, url: 'https://www.excelsports.com/roval-rapide-c-38-disc-wheelset' },
+  { name: 'Excel Sports', currency: 'EUR', amount: null, url: 'https://www.excelsports.com/roval-rapide-c-38-disc-wheelset' },
 ];
 
 const withLinks = (affiliateLinks) => ({
@@ -63,7 +65,9 @@ describe('WheelDetailPanel', () => {
 
   const renderPanel = (wheel, panelWidth = 1024) => {
     act(() => {
-      root.render(createElement(WheelDetailPanel, { wheel, panelWidth }));
+      root.render(
+        createElement(Provider, { store }, createElement(WheelDetailPanel, { wheel, panelWidth })),
+      );
     });
   };
 

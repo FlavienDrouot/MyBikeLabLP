@@ -18,6 +18,7 @@ const makeStore = (wheels) => {
     initialState: {
       wheels: { items: wheels },
       filters: { filters: {}, sortBy: null },
+      currency: { displayCurrency: 'EUR' },
     },
     reducers: {},
   });
@@ -36,7 +37,7 @@ const minimalWheel = {
   rim: { material: 'Carbon', hookless: false, depth_mm: 33, externalWidth_mm: 25.5 },
   spokes: { model: 'Sapim CX-Ray', brand: 'Sapim', material: 'Stainless Steel' },
   hub: { model: 'DT 240', brand: 'DT Swiss' },
-  prices: [{ price_eur: 1299 }],
+  prices: [{ currency: 'EUR', amount: 1299 }],
   image: 'placeholder.svg',
   affiliateLinks: {},
 };
@@ -255,3 +256,37 @@ describe('ComparisonTable', () => {
     });
   });
 });
+
+  describe('display-currency price cells (EVO-046)', () => {
+    const usdWheel = { ...minimalWheel, id: 7, prices: [{ amount: 1200, currency: 'USD', url: 'u' }] };
+    const eurWheel = { ...minimalWheel, id: 8, prices: [{ amount: 1000, currency: 'EUR', url: 'u' }] };
+
+    const renderInCurrency = (wheels, displayCurrency) => {
+      const slice = createSlice({
+        name: 'root',
+        initialState: {
+          wheels: { items: wheels },
+          filters: { filters: {}, sortBy: null },
+          currency: { displayCurrency },
+        },
+        reducers: {},
+      });
+      const store = configureStore({ reducer: slice.reducer });
+      return renderToStaticMarkup(
+        createElement(Provider, { store }, createElement(ComparisonTable, { visibility: { price: true } })),
+      );
+    };
+
+    it('prefixes a converted (USD→EUR) price with the approx marker and shows native EUR plainly', () => {
+      const html = renderInCurrency([usdWheel, eurWheel], 'EUR');
+      expect(html).toContain('≈');
+      expect(html).toContain('€');
+    });
+
+    it('shows a native USD price without the approx marker in USD display', () => {
+      const html = renderInCurrency([usdWheel], 'USD');
+      expect(html).toContain('$');
+      // The single USD offer is native in USD display → no approx marker.
+      expect(html).not.toContain('≈');
+    });
+  });

@@ -89,15 +89,14 @@ const baseWheel = ({
     disc_standard: brakeType === 'disc' ? null : null,
     ...hub,
   },
-  prices: [{ price_eur: null, url }],
+  prices: [{ amount: priceUsd, currency: 'USD', url }],
   image: images[0] || wheelPlaceholderUrl,
   images,
   affiliateLinks: {
-    manufacturer: { url, price_eur: null },
+    manufacturer: { url, amount: priceUsd, currency: 'USD' },
     retailers,
   },
   other_specs: {
-    price_usd: priceUsd,
     tire_compatibility: 'Clincher/Tubeless',
     bearing_type: 'Ceramic',
     ...otherSpecs,
@@ -116,7 +115,7 @@ export const pertualWheels = [
     url: urls.acme,
     priceUsd: 2000,
     images: pandaImages.acme,
-    retailers: [{ name: 'Panda Podium', price_eur: null, url: pandaUrls.acme }],
+    retailers: [{ name: 'Panda Podium', amount: null, currency: 'EUR', url: pandaUrls.acme }],
     otherSpecs: {
       bearing_upgrade_option: 'CeramicSpeed',
       spoke_count: { front: 16, rear: 16 },
@@ -147,7 +146,7 @@ export const pertualWheels = [
     url: urls.sharp3641,
     priceUsd: 1300,
     images: pandaImages.sharp3641,
-    retailers: [{ name: 'Panda Podium', price_eur: null, url: pandaUrls.sharp3641 }],
+    retailers: [{ name: 'Panda Podium', amount: null, currency: 'EUR', url: pandaUrls.sharp3641 }],
     otherSpecs: { spoke_count: { front: 21, rear: 21 } },
   }),
   baseWheel({
@@ -186,7 +185,7 @@ export const pertualWheels = [
     url: urls.sharpAdv4758,
     priceUsd: 1600,
     images: pandaImages.sharp4758,
-    retailers: [{ name: 'Panda Podium', price_eur: null, url: pandaUrls.sharp4758 }],
+    retailers: [{ name: 'Panda Podium', amount: null, currency: 'EUR', url: pandaUrls.sharp4758 }],
     otherSpecs: {
       wave_depth_mm: { front: '47/53', rear: '52/58' },
       spoke_count: { front: 21, rear: 21 },
@@ -204,7 +203,7 @@ export const pertualWheels = [
     url: urls.sharp5258Rim,
     priceUsd: 1350,
     images: pandaImages.sharp5258Rim,
-    retailers: [{ name: 'Panda Podium', price_eur: null, url: pandaUrls.sharp5258Rim }],
+    retailers: [{ name: 'Panda Podium', amount: null, currency: 'EUR', url: pandaUrls.sharp5258Rim }],
     otherSpecs: { spoke_count: { front: 18, rear: 21 } },
   }),
   baseWheel({
@@ -244,7 +243,7 @@ export const pertualWheels = [
     url: urls.sharp6270,
     priceUsd: 1500,
     images: pandaImages.sharp6270,
-    retailers: [{ name: 'Panda Podium', price_eur: null, url: pandaUrls.sharp6270 }],
+    retailers: [{ name: 'Panda Podium', amount: null, currency: 'EUR', url: pandaUrls.sharp6270 }],
     otherSpecs: { spoke_count: { front: 21, rear: 21 } },
   }),
   baseWheel({

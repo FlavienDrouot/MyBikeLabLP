@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const PRODUCT_URL = 'https://exs-cycling.com/products/granfondo-43';
 const RETAILER_URL =
@@ -41,15 +40,14 @@ export const exsWheels = [
       freehub_options: ['Shimano HG', 'SRAM XDR'],
       disc_standard: 'Center Lock',
     },
-    prices: [{ price_eur: null, url: PRODUCT_URL }],
+    prices: [{ amount: 1000, currency: 'USD', url: PRODUCT_URL }],
     image: IMAGES[0],
     images: IMAGES,
     affiliateLinks: {
-      manufacturer: { url: PRODUCT_URL, price_eur: null },
-      retailers: [{ name: 'Panda Podium', price_eur: null, url: RETAILER_URL }],
+      manufacturer: { url: PRODUCT_URL, amount: 1000, currency: 'USD' },
+      retailers: [{ name: 'Panda Podium', amount: 1000, currency: 'USD', url: RETAILER_URL }],
     },
     other_specs: {
-      price_usd: 1000,
       bearing_type: 'SKF',
       tire_compatibility: 'Clincher/Tubeless',
       recommended_max_tire_size_c: 32,

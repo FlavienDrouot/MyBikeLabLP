@@ -41,6 +41,7 @@ const makeStore = (wheels) => {
     initialState: {
       wheels: { items: wheels },
       filters: { filters: {}, sortBy: null },
+      currency: { displayCurrency: 'EUR' },
     },
     reducers: {},
   });
@@ -56,7 +57,7 @@ const minimalWheel = (id) => ({
   rim: { material: 'Carbon', hookless: false, depth_mm: 33, externalWidth_mm: 25.5 },
   spokes: { model: 'CX-Ray', brand: 'Sapim', material: 'Stainless Steel' },
   hub: { model: 'DT 240', brand: 'DT Swiss' },
-  prices: [{ price_eur: 1000 + id }],
+  prices: [{ currency: 'EUR', amount: 1000 + id }],
   image: 'placeholder.svg',
 });
 

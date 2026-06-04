@@ -4,11 +4,25 @@ import { createElement, act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { Provider } from 'react-redux';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
+import filtersReducer from '../../store/slices/filtersSlice';
+import currencyReducer from '../../store/slices/currencySlice';
 import Navbar from '../Navbar';
+
+// Real filters + currency reducers so the changeDisplayCurrency thunk works;
+// a minimal wheels slice satisfies the filters slice's initial-bounds build.
+const wheelsSlice = createSlice({ name: 'wheels', initialState: { items: [] }, reducers: {} });
+const makeStore = () =>
+  configureStore({
+    reducer: { wheels: wheelsSlice.reducer, filters: filtersReducer, currency: currencyReducer },
+  });
+
+const withStore = (store, node) => createElement(Provider, { store }, node);
 
 describe('Navbar', () => {
   it('renders the brand mark as an inline SVG with wordmark text', () => {
-    const html = renderToStaticMarkup(createElement(Navbar, null));
+    const html = renderToStaticMarkup(withStore(makeStore(), createElement(Navbar, null)));
     expect(html).toContain('<svg');
     expect(html).toContain('aria-hidden="true"');
     expect(html).toContain('MyBikeLab');
@@ -67,7 +81,7 @@ describe('Navbar', () => {
 
     it('writes the measured header height to --navbar-height on mount', () => {
       act(() => {
-        root.render(createElement(Navbar, null));
+        root.render(withStore(makeStore(), createElement(Navbar, null)));
       });
 
       expect(
@@ -77,7 +91,7 @@ describe('Navbar', () => {
 
     it('updates --navbar-height when the header is resized', () => {
       act(() => {
-        root.render(createElement(Navbar, null));
+        root.render(withStore(makeStore(), createElement(Navbar, null)));
       });
 
       // Simulate a resized header by changing the stubbed offsetHeight and
@@ -104,7 +118,7 @@ describe('Navbar', () => {
 
     it('removes the inline --navbar-height override on unmount', () => {
       act(() => {
-        root.render(createElement(Navbar, null));
+        root.render(withStore(makeStore(), createElement(Navbar, null)));
       });
 
       expect(
@@ -123,5 +137,61 @@ describe('Navbar', () => {
         document.documentElement.style.getPropertyValue('--navbar-height')
       ).toBe('');
     });
+  });
+});
+
+describe('Navbar currency selector (EVO-046)', () => {
+  let container;
+  let root;
+
+  beforeEach(() => {
+    container = document.createElement('div');
+    document.body.appendChild(container);
+    root = createRoot(container);
+  });
+
+  afterEach(() => {
+    act(() => root.unmount());
+    container.remove();
+  });
+
+  const mount = (store) => {
+    act(() => {
+      root.render(withStore(store, createElement(Navbar, null)));
+    });
+  };
+
+  const currencyGroup = () =>
+    container.querySelector('[role="group"][aria-label="nav.currency"]')
+    ?? container.querySelector('[role="group"][aria-label="Currency"]');
+
+  it('renders both currency buttons with EUR active by default', () => {
+    mount(makeStore());
+    const group = currencyGroup();
+    expect(group).not.toBeNull();
+    const buttons = Array.from(group.querySelectorAll('button'));
+    expect(buttons.map((b) => b.textContent)).toEqual(['€', '$']);
+    expect(buttons[0].getAttribute('aria-pressed')).toBe('true');
+    expect(buttons[1].getAttribute('aria-pressed')).toBe('false');
+  });
+
+  it('switches the store display currency to USD when $ is clicked', () => {
+    const store = makeStore();
+    mount(store);
+    const usdButton = Array.from(currencyGroup().querySelectorAll('button')).find(
+      (b) => b.textContent === '$',
+    );
+    act(() => {
+      usdButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+    expect(store.getState().currency.displayCurrency).toBe('USD');
+  });
+
+  it('exposes a localized group aria-label and per-button aria-labels', () => {
+    mount(makeStore());
+    const group = currencyGroup();
+    const buttons = Array.from(group.querySelectorAll('button'));
+    expect(buttons[0].getAttribute('aria-label')).toBeTruthy();
+    expect(buttons[1].getAttribute('aria-label')).toBeTruthy();
   });
 });

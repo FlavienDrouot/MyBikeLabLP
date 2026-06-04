@@ -23,15 +23,14 @@ const images = {
 };
 
 const withLinks = (url, priceUsd, productImages, sourceNote) => ({
-  prices: [{ price_eur: null, url }],
+  prices: [{ amount: priceUsd, currency: 'USD', url }],
   image: productImages.length ? productImages[0] : wheelPlaceholderUrl,
   images: productImages,
   affiliateLinks: {
-    manufacturer: { url, price_eur: null },
+    manufacturer: { url, amount: priceUsd, currency: 'USD' },
     retailers: [],
   },
   other_specs: {
-    price_usd: priceUsd,
     source_note: sourceNote,
   },
 });

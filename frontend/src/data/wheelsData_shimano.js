@@ -14,11 +14,11 @@ const urls = {
 };
 
 const makeLinks = (url) => ({
-  prices: [{ price_eur: null, url }],
+  prices: [{ amount: null, currency: 'EUR', url }],
   image: wheelPlaceholderUrl,
   images: [],
   affiliateLinks: {
-    manufacturer: { url, price_eur: null },
+    manufacturer: { url, amount: null, currency: 'EUR' },
     retailers: [],
   },
 });

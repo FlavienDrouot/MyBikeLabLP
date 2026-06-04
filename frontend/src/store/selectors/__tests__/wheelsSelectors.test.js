@@ -11,12 +11,13 @@ import {
 // Shared mock helpers
 // ---------------------------------------------------------------------------
 
-const makeState = (items, filtersOverride = {}, sortBy = null) => ({
+const makeState = (items, filtersOverride = {}, sortBy = null, displayCurrency = 'EUR') => ({
   wheels: { items },
   filters: {
     filters: filtersOverride,
     sortBy,
   },
+  currency: { displayCurrency },
 });
 
 const noFilters = {};
@@ -27,7 +28,7 @@ const mockWheels = [
     weight_grams: 1000,
     brand: 'Roval',
     diameter_mm: 700,
-    prices: [{ price_eur: 500 }],
+    prices: [{ currency: 'EUR', amount: 500 }],
     rim: { material: 'carbon', hookless: false, depth_mm: 30, externalWidth_mm: 25 },
     hub: { brand: 'DT Swiss', model: '240' },
     spokes: { brand: 'Sapim', model: 'CX-Ray', material: 'steel' },
@@ -37,7 +38,7 @@ const mockWheels = [
     weight_grams: 1500,
     brand: 'Zipp',
     diameter_mm: 700,
-    prices: [{ price_eur: 1000 }],
+    prices: [{ currency: 'EUR', amount: 1000 }],
     rim: { material: 'aluminum', hookless: true, depth_mm: 50, externalWidth_mm: 30 },
     hub: { brand: 'Zipp', model: 'ZR1' },
     spokes: { brand: 'Sapim', model: 'CX-Sprint', material: 'steel' },
@@ -47,7 +48,7 @@ const mockWheels = [
     weight_grams: 1200,
     brand: 'Roval',
     diameter_mm: 700,
-    prices: [{ price_eur: 800 }, { price_eur: 750 }],
+    prices: [{ currency: 'EUR', amount: 800 }, { currency: 'EUR', amount: 750 }],
     rim: { material: 'carbon', hookless: false, depth_mm: 40, externalWidth_mm: 27 },
     hub: { brand: 'DT Swiss', model: '350' },
     spokes: { brand: 'DT Swiss', model: 'Aerolite', material: 'steel' },
@@ -69,7 +70,7 @@ const mixedCatalog = [
     weight_grams: { front: 720, rear: 850 },
     brand: 'Hunt',
     diameter_mm: 700,
-    prices: [{ price_eur: 900 }],
+    prices: [{ currency: 'EUR', amount: 900 }],
     rim: { material: 'carbon', hookless: false, depth_mm: { front: 50, rear: 60 } },
     hub: { brand: 'Hunt', model: 'LIMITLESS' },
     spokes: { brand: 'Sapim', model: 'CX-Ray', material: 'steel' },
@@ -80,7 +81,7 @@ const mixedCatalog = [
     weight_grams: 1400,
     brand: 'Mavic',
     diameter_mm: 700,
-    prices: [{ price_eur: 600 }],
+    prices: [{ currency: 'EUR', amount: 600 }],
     rim: { material: 'aluminum', hookless: false, depth_mm: { front: 40, rear: 45 } },
     hub: { brand: 'Mavic', model: 'ID360' },
     spokes: { brand: 'Mavic', model: 'ISM4D', material: 'steel' },
@@ -398,7 +399,7 @@ describe('selectFilteredWheels', () => {
         brand: 'Caden',
         diameter_mm: 700,
         brake_type: 'disc',
-        prices: [{ price_eur: 1400 }],
+        prices: [{ currency: 'EUR', amount: 1400 }],
         rim: { material: 'carbon', hookless: false, depth_mm: 35, externalWidth_mm: 32.8, internalWidth_mm: 24.5 },
         hub: { brand: 'Caden', model: 'Centrist', freehub_options: ['Shimano HG', 'SRAM XDR'] },
         spokes: { brand: 'Caden', model: 'Aero', material: 'steel' },
@@ -411,7 +412,7 @@ describe('selectFilteredWheels', () => {
         brand: 'Caden',
         diameter_mm: 700,
         brake_type: 'disc',
-        prices: [{ price_eur: 1550 }],
+        prices: [{ currency: 'EUR', amount: 1550 }],
         rim: { material: 'carbon', hookless: false, depth_mm: 35, externalWidth_mm: 32.8, internalWidth_mm: 24.5 },
         hub: { brand: 'Caden', model: 'Centrist', freehub_options: ['Shimano HG', 'SRAM XDR'] },
         spokes: { brand: 'Caden', model: 'Captured', material: 'carbon' },
@@ -436,7 +437,7 @@ describe('selectFilteredWheels', () => {
         brand: 'Caden',
         diameter_mm: 700,
         brake_type: 'disc',
-        prices: [{ price_eur: 1200 }],
+        prices: [{ currency: 'EUR', amount: 1200 }],
         rim: { material: 'carbon', hookless: false, depth_mm: { front: 85, rear: 74 }, externalWidth_mm: { front: 36, rear: 30.9 }, internalWidth_mm: null },
         hub: { brand: 'Caden', model: 'Centrist', freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo ED'] },
         spokes: { brand: 'Caden', model: 'Tri', material: 'carbon' },
@@ -460,7 +461,7 @@ describe('selectFilteredWheels', () => {
           brand: 'Mavic',
           diameter_mm: 700,
           brake_type: 'disc',
-          prices: [{ price_eur: 1000 }],
+          prices: [{ currency: 'EUR', amount: 1000 }],
           rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: 25 },
           hub: { brand: 'Mavic', model: 'ID360', freehub_options: ['Shimano HG'] },
           spokes: { brand: 'Mavic', model: '', material: 'steel' },
@@ -518,5 +519,59 @@ describe('selectFilteredWheels', () => {
       }));
       expect(result.map((w) => w.id)).toEqual([304]);
     });
+  });
+});
+
+// ---------------------------------------------------------------------------
+// EVO-046: display-currency aware price filter / sort
+// ---------------------------------------------------------------------------
+
+describe('selectFilteredWheels — display currency (EVO-046)', () => {
+  const priceWheel = (id, amount, currency) => ({
+    id,
+    model: `M${id}`,
+    brand: 'B',
+    prices: [{ amount, currency, url: 'u' }],
+  });
+
+  // A EUR wheel and a former-USD-only wheel on one scale.
+  const catalog = [
+    priceWheel(1, 1000, 'EUR'),
+    priceWheel(2, 1200, 'USD'), // ≈ 1034 EUR
+  ];
+
+  it('filters a former-USD-only wheel into a EUR price range', () => {
+    const state = {
+      wheels: { items: catalog },
+      filters: { filters: { price: { value: { min: 0, max: 1100 }, enabled: true } }, sortBy: null },
+      currency: { displayCurrency: 'EUR' },
+    };
+    const ids = selectFilteredWheels(state).map((w) => w.id);
+    // 1200 USD ≈ 1034 EUR, within 0–1100; both wheels pass.
+    expect(ids).toContain(1);
+    expect(ids).toContain(2);
+  });
+
+  it('keeps the price sort order consistent across a currency switch', () => {
+    const make = (displayCurrency) => ({
+      wheels: { items: catalog },
+      filters: { filters: {}, sortBy: 'price_asc' },
+      currency: { displayCurrency },
+    });
+    const eurOrder = selectFilteredWheels(make('EUR')).map((w) => w.id);
+    const usdOrder = selectFilteredWheels(make('USD')).map((w) => w.id);
+    // Conversion is a single positive scale factor, so relative order is stable.
+    expect(usdOrder).toEqual(eurOrder);
+  });
+
+  it('sorts a missing-price wheel to the end regardless of currency', () => {
+    const withMissing = [...catalog, { id: 3, model: 'M3', brand: 'B', prices: [{ amount: null, currency: 'EUR' }] }];
+    const state = {
+      wheels: { items: withMissing },
+      filters: { filters: {}, sortBy: 'price_asc' },
+      currency: { displayCurrency: 'USD' },
+    };
+    const ids = selectFilteredWheels(state).map((w) => w.id);
+    expect(ids[ids.length - 1]).toBe(3);
   });
 });
