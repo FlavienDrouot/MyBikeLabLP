@@ -87,6 +87,7 @@ const mixedCatalog = [
 ];
 
 const makeRangeFilter = (min, max) => ({ value: { min, max }, enabled: true });
+const makeMultiSelectFilter = (value) => ({ value, enabled: true });
 
 // ---------------------------------------------------------------------------
 // matchers.range — unit tests
@@ -383,6 +384,115 @@ describe('selectFilteredWheels', () => {
       for (let i = 0; i < depths.length - 1; i++) {
         expect(depths[i]).toBeGreaterThanOrEqual(depths[i + 1]);
       }
+    });
+  });
+
+  describe('variant entry behavior', () => {
+    const variantCatalog = [
+      {
+        id: 301,
+        model: 'Variant 35 (steel)',
+        model_group: 'variant-35',
+        model_group_label: 'Variant 35',
+        weight_grams: 1140,
+        brand: 'Caden',
+        diameter_mm: 700,
+        brake_type: 'disc',
+        prices: [{ price_eur: 1400 }],
+        rim: { material: 'carbon', hookless: false, depth_mm: 35, externalWidth_mm: 32.8, internalWidth_mm: 24.5 },
+        hub: { brand: 'Caden', model: 'Centrist', freehub_options: ['Shimano HG', 'SRAM XDR'] },
+        spokes: { brand: 'Caden', model: 'Aero', material: 'stainless_steel' },
+      },
+      {
+        id: 302,
+        model: 'Variant 35 (carbon)',
+        model_group: 'variant-35',
+        model_group_label: 'Variant 35',
+        weight_grams: 1030,
+        brand: 'Caden',
+        diameter_mm: 700,
+        brake_type: 'disc',
+        prices: [{ price_eur: 1550 }],
+        rim: { material: 'carbon', hookless: false, depth_mm: 35, externalWidth_mm: 32.8, internalWidth_mm: 24.5 },
+        hub: { brand: 'Caden', model: 'Centrist', freehub_options: ['Shimano HG', 'SRAM XDR'] },
+        spokes: { brand: 'Caden', model: 'Captured', material: 'carbon' },
+      },
+      {
+        id: 303,
+        model: 'Variant 50 (wide)',
+        model_group: 'variant-50',
+        model_group_label: 'Variant 50',
+        weight_grams: null,
+        brand: 'Caden',
+        diameter_mm: 700,
+        brake_type: 'rim',
+        prices: [],
+        rim: { material: 'carbon', hookless: false, depth_mm: 50, externalWidth_mm: 40, internalWidth_mm: null },
+        hub: { brand: 'Caden', model: 'Centrist', freehub_options: ['Shimano HG', 'SRAM XDR'] },
+        spokes: { brand: 'Caden', model: 'Aero', material: 'stainless_steel' },
+      },
+      {
+        id: 304,
+        model: 'Divergent pair',
+        weight_grams: 1670,
+        brand: 'Caden',
+        diameter_mm: 700,
+        brake_type: 'disc',
+        prices: [{ price_eur: 1200 }],
+        rim: { material: 'carbon', hookless: false, depth_mm: { front: 85, rear: 74 }, externalWidth_mm: { front: 36, rear: 30.9 }, internalWidth_mm: null },
+        hub: { brand: 'Caden', model: 'Centrist', freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo ED'] },
+        spokes: { brand: 'Caden', model: 'Tri', material: 'carbon' },
+      },
+    ];
+
+    it('filters sibling variants independently by spoke material', () => {
+      const result = selectFilteredWheels(makeState(variantCatalog, {
+        spokeMaterial: makeMultiSelectFilter(['carbon']),
+      }));
+      expect(result.map((w) => w.id)).toEqual([302, 304]);
+    });
+
+    it('filters sibling variants independently by external width', () => {
+      const result = selectFilteredWheels(makeState(variantCatalog, {
+        externalWidth: makeRangeFilter(39, 41),
+      }));
+      expect(result.map((w) => w.id)).toEqual([303]);
+    });
+
+    it('filters sibling variants independently by brake type', () => {
+      const result = selectFilteredWheels(makeState(variantCatalog, {
+        brakeType: makeMultiSelectFilter(['rim']),
+      }));
+      expect(result.map((w) => w.id)).toEqual([303]);
+    });
+
+    it('sorts sibling variants by their own external width values', () => {
+      const result = selectFilteredWheels(makeState(variantCatalog.slice(0, 3), noFilters, 'externalWidth_asc'));
+      expect(result.map((w) => w.id)).toEqual([301, 302, 303]);
+    });
+
+    it('keeps entries with missing price or weight visible and sorts them last', () => {
+      const priceSorted = selectFilteredWheels(makeState(variantCatalog, noFilters, 'price_asc'));
+      const weightSorted = selectFilteredWheels(makeState(variantCatalog, noFilters, 'weight_asc'));
+
+      expect(priceSorted.map((w) => w.id)).toContain(303);
+      expect(priceSorted.at(-1).id).toBe(303);
+      expect(weightSorted.map((w) => w.id)).toContain(303);
+      expect(weightSorted.at(-1).id).toBe(303);
+    });
+
+    it('keeps freehub options as one entry instead of duplicating by option count', () => {
+      const result = selectFilteredWheels(makeState([variantCatalog[0]], {
+        freehubOptions: makeMultiSelectFilter(['SRAM XDR']),
+      }));
+      expect(result.map((w) => w.id)).toEqual([301]);
+    });
+
+    it('keeps front and rear divergent dimensions on one entry', () => {
+      const result = selectFilteredWheels(makeState([variantCatalog[3]], {
+        externalWidth: makeRangeFilter(35, 37),
+      }));
+      expect(result.map((w) => w.id)).toEqual([304]);
     });
   });
 });

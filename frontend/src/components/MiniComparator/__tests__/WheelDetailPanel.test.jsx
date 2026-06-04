@@ -213,4 +213,22 @@ describe('WheelDetailPanel', () => {
     expect(container.textContent).toContain('Buy');
     expect(container.textContent).not.toContain('wheelDetail.');
   });
+
+  it('renders model family context for grouped wheels', () => {
+    renderPanel({
+      ...withLinks({ manufacturer }),
+      model_group: 'roval-alpinist',
+      model_group_label: 'Alpinist family',
+    });
+
+    expect(container.textContent).toContain('Model family');
+    expect(container.textContent).toContain('Alpinist family');
+    expect(container.querySelector('.border-l.border-brass-7')).not.toBeNull();
+  });
+
+  it('does not render model family context for ungrouped wheels', () => {
+    renderPanel(withLinks({ manufacturer }));
+
+    expect(container.textContent).not.toContain('Model family');
+  });
 });

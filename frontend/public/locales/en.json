@@ -58,14 +58,16 @@
   "table": {
     "heading": "Wheels",
     "of": "of",
-    "emptyState": "No wheels match your filters. Try resetting them."
+    "emptyState": "No wheels match your filters. Try resetting them.",
+    "modelFamily": "Family: {{family}}"
   },
   "wheelDetail": {
     "manufacturer": "Manufacturer",
     "whereToBuy": "Where to buy",
     "buyLink": "Buy →",
     "noLinks": "No links available for this wheel.",
-    "priceAnnotation": "indicative price, sourced 2026-Q2"
+    "priceAnnotation": "indicative price, sourced 2026-Q2",
+    "modelFamily": "Model family"
   },
   "badges": {
     "hookless": "Hookless",

@@ -107,13 +107,17 @@ export const WHEEL_PROPERTIES = [
     column: {
       required: true,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 font-medium text-ink-11',
-      renderCell: (w) => (
-        <>
-          <span className="text-ink-7 font-normal text-xs">{w.brand}</span>
-          <br />
-          {w.model}
-        </>
+      cellClassName: 'px-4 py-3 font-medium text-ink-11 min-w-[220px] max-w-[260px]',
+      renderCell: (w, t) => (
+        <div className="min-w-0">
+          <span className="block text-ink-7 font-normal text-xs">{w.brand}</span>
+          <span className="block whitespace-normal leading-snug">{w.model}</span>
+          {w.model_group && w.model_group_label && (
+            <span className="mt-1 block whitespace-normal border-l border-brass-7 pl-2 text-[11px] font-normal leading-snug text-ink-7">
+              {t ? t('table.modelFamily', { family: w.model_group_label }) : w.model_group_label}
+            </span>
+          )}
+        </div>
       ),
     },
   },

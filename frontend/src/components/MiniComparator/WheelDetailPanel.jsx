@@ -104,6 +104,15 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
         </div>
 
         <div className="min-w-0">
+          {wheel.model_group && wheel.model_group_label && (
+            <div className="mb-5 border-l border-brass-7 pl-3">
+              <p className="m-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-7">
+                {t('wheelDetail.modelFamily')}
+              </p>
+              <p className="m-0 mt-1 text-sm font-semibold text-ink-11">{wheel.model_group_label}</p>
+            </div>
+          )}
+
           {hasNoLinks ? (
             <div className="border-t border-ink-10 py-4">
               <p className="text-sm italic text-ink-6">{t('wheelDetail.noLinks')}</p>

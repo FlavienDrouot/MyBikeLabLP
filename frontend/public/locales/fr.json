@@ -58,14 +58,16 @@
   "table": {
     "heading": "Roues",
     "of": "sur",
-    "emptyState": "Aucune roue ne correspond à vos filtres. Essayez de les réinitialiser."
+    "emptyState": "Aucune roue ne correspond à vos filtres. Essayez de les réinitialiser.",
+    "modelFamily": "Famille : {{family}}"
   },
   "wheelDetail": {
     "manufacturer": "Fabricant",
     "whereToBuy": "Où acheter",
     "buyLink": "Acheter →",
     "noLinks": "Aucun lien disponible pour cette roue.",
-    "priceAnnotation": "prix indicatif, sourcé en 2026-Q2"
+    "priceAnnotation": "prix indicatif, sourcé en 2026-Q2",
+    "modelFamily": "Famille modèle"
   },
   "badges": {
     "hookless": "Hookless",

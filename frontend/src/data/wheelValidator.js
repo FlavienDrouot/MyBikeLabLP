@@ -21,6 +21,30 @@ const ELIGIBLE_FIELDS = [
 
 const INELIGIBLE_TOP_LEVEL_EXCLUSIONS = new Set(['rim', 'other_specs', 'prices', 'images', 'affiliateLinks', 'spokes', 'hub']);
 
+const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
+  'weight_carbon_spoke_grams',
+  'carbon_spoke_option',
+  'external_width_options_mm',
+  'internal_width_options_mm',
+  'brake_type_options',
+  'brake_type_variants',
+  'price_variant_eur',
+  'variant_price_eur',
+]);
+
+const FORBIDDEN_OTHER_SPEC_PATTERNS = [
+  /carbon[_-]?spoke/i,
+  /spoke.*variant/i,
+  /spoke.*option/i,
+  /external.*width.*option/i,
+  /internal.*width.*option/i,
+  /rim.*width.*variant/i,
+  /brake.*variant/i,
+  /brake.*option/i,
+  /variant.*weight/i,
+  /variant.*price/i,
+];
+
 // Top-level eligible field keys — skipped by the ineligible-pair scan because they are
 // validated as canonical divergent specs by the ELIGIBLE_FIELDS loop above.
 const ELIGIBLE_TOP_LEVEL_KEYS = new Set(
@@ -42,6 +66,20 @@ function isCompletePair(value) {
 
 function isIncompletePair(value) {
   return isPairObject(value) && !isCompletePair(value);
+}
+
+function hasNonEmptyString(value) {
+  return typeof value === 'string' && value.trim().length > 0;
+}
+
+function isForbiddenOtherSpecKey(key) {
+  return FORBIDDEN_OTHER_SPEC_KEYS.has(key) || FORBIDDEN_OTHER_SPEC_PATTERNS.some((pattern) => pattern.test(key));
+}
+
+function collectOtherSpecWarnings(entry, id) {
+  return Object.keys(entry?.other_specs ?? {})
+    .filter(isForbiddenOtherSpecKey)
+    .map((key) => `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`);
 }
 
 /**
@@ -75,6 +113,45 @@ export function validateWheelEntry(entry) {
     warnings.push(warning);
   }
 
+  for (const warning of collectOtherSpecWarnings(entry, id)) {
+    console.warn(warning);
+    warnings.push(warning);
+  }
+
+  if (hasNonEmptyString(entry?.model_group) && !hasNonEmptyString(entry?.model_group_label)) {
+    const warning = `model_group on entry ${id}: grouped entries require a non-empty model_group_label`;
+    console.warn(warning);
+    warnings.push(warning);
+  }
+
+  return warnings;
+}
+
+function collectGroupWarnings(entries) {
+  const warnings = [];
+  const groups = new Map();
+
+  for (const entry of entries ?? []) {
+    if (!hasNonEmptyString(entry?.model_group)) continue;
+    const groupEntries = groups.get(entry.model_group) ?? [];
+    groupEntries.push(entry);
+    groups.set(entry.model_group, groupEntries);
+  }
+
+  for (const [modelGroup, groupEntries] of groups) {
+    if (groupEntries.length < 2) continue;
+
+    const brands = new Set(groupEntries.map((entry) => entry.brand));
+    if (brands.size > 1) {
+      warnings.push(`model_group ${modelGroup}: sibling entries must share one brand`);
+    }
+
+    const labels = new Set(groupEntries.map((entry) => entry.model_group_label));
+    if (labels.size > 1 || [...labels].some((label) => !hasNonEmptyString(label))) {
+      warnings.push(`model_group ${modelGroup}: sibling entries must share one non-empty model_group_label`);
+    }
+  }
+
   return warnings;
 }
 
@@ -85,5 +162,12 @@ export function validateWheelEntry(entry) {
  * @returns {string[]} Flat array of all warnings from all entries.
  */
 export function validateWheelsCatalog(entries) {
-  return entries.flatMap((entry) => validateWheelEntry(entry));
+  const entryWarnings = entries.flatMap((entry) => validateWheelEntry(entry));
+  const groupWarnings = collectGroupWarnings(entries);
+
+  for (const warning of groupWarnings) {
+    console.warn(warning);
+  }
+
+  return [...entryWarnings, ...groupWarnings];
 }

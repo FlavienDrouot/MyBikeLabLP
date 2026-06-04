@@ -12,6 +12,58 @@ const makeState = (filters = {}, sortBy = null) => ({
   filters: { filters, sortBy },
 });
 
+describe('Caden variant catalog migration', () => {
+  const cadenEntries = wheelsData.filter((wheel) => wheel.brand === 'Caden');
+  const groupedCadenEntries = cadenEntries.filter((wheel) => wheel.model_group);
+  const forbiddenOtherSpecKeys = [
+    'weight_carbon_spoke_grams',
+    'carbon_spoke_option',
+    'external_width_options_mm',
+    'internal_width_options_mm',
+    'brake_type_options',
+    'brake_type_variants',
+    'price_variant_eur',
+    'variant_price_eur',
+  ];
+
+  it('uses reserved 200+ ids for newly exploded Caden configurations', () => {
+    const explodedIds = cadenEntries
+      .map((wheel) => wheel.id)
+      .filter((id) => id >= 200);
+
+    expect(explodedIds.length).toBeGreaterThan(0);
+    expect(explodedIds.every((id) => id >= 200)).toBe(true);
+  });
+
+  it('groups sibling Caden variants under shared model family labels', () => {
+    const groupIds = new Set(groupedCadenEntries.map((wheel) => wheel.model_group));
+
+    expect(groupIds).toContain('caden-decadence-35-tubeless');
+    expect(groupIds).toContain('caden-decadence-50-tubeless');
+
+    for (const groupId of groupIds) {
+      const siblings = groupedCadenEntries.filter((wheel) => wheel.model_group === groupId);
+      expect(siblings.length).toBeGreaterThan(1);
+      expect(new Set(siblings.map((wheel) => wheel.model_group_label)).size).toBe(1);
+    }
+  });
+
+  it('does not leave comparable variant fields in Caden other_specs', () => {
+    for (const wheel of cadenEntries) {
+      const otherSpecKeys = Object.keys(wheel.other_specs ?? {});
+      for (const forbiddenKey of forbiddenOtherSpecKeys) {
+        expect(otherSpecKeys).not.toContain(forbiddenKey);
+      }
+    }
+  });
+
+  it('keeps Caden entries with missing price visible before filtering', () => {
+    const result = selectFilteredWheels(makeState());
+
+    expect(result.map((wheel) => wheel.id)).toContain(205);
+  });
+});
+
 const makeRangeFilter = (min, max) => ({ value: { min, max }, enabled: true });
 
 // ---------------------------------------------------------------------------
