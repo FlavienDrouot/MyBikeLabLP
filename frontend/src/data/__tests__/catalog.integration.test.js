@@ -12,6 +12,8 @@ const makeState = (filters = {}, sortBy = null) => ({
   filters: { filters, sortBy },
 });
 
+const makeMultiSelectFilter = (value) => ({ value, enabled: true });
+
 describe('Caden variant catalog migration', () => {
   const cadenEntries = wheelsData.filter((wheel) => wheel.brand === 'Caden');
   const variantCadenEntries = cadenEntries.filter((wheel) => wheel.variant);
@@ -73,10 +75,17 @@ describe('Caden variant catalog migration', () => {
     }
   });
 
-  it('keeps Caden entries with missing price visible before filtering', () => {
-    const result = selectFilteredWheels(makeState());
+  it('keeps entries with a missing price visible before filtering', () => {
+    const hasPrice = (wheel) =>
+      Number.isFinite(wheel.prices?.[0]?.price_eur) ||
+      Number.isFinite(wheel.affiliateLinks?.manufacturer?.price_eur);
+    const missingPriceEntry = wheelsData.find((wheel) => !hasPrice(wheel));
 
-    expect(result.map((wheel) => wheel.id)).toContain(205);
+    // Guard: the assertion is only meaningful if the catalog still has a price-less entry.
+    expect(missingPriceEntry).toBeDefined();
+
+    const result = selectFilteredWheels(makeState());
+    expect(result.map((wheel) => wheel.id)).toContain(missingPriceEntry.id);
   });
 });
 
@@ -90,6 +99,45 @@ describe('full catalog validation', () => {
   it('validateWheelsCatalog returns zero warnings for the full catalog', () => {
     const warnings = validateWheelsCatalog(wheelsData);
     expect(warnings).toHaveLength(0);
+  });
+
+  it('uses globally unique wheel ids for stable table rendering across filters', () => {
+    const idCounts = wheelsData.reduce((counts, wheel) => {
+      counts.set(wheel.id, (counts.get(wheel.id) ?? 0) + 1);
+      return counts;
+    }, new Map());
+    const duplicateIds = Array.from(idCounts.entries())
+      .filter(([, count]) => count > 1)
+      .map(([id]) => id);
+
+    expect(duplicateIds).toEqual([]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Integration: brand filtering around Arcaris variants
+// ---------------------------------------------------------------------------
+
+describe('selectFilteredWheels - Arcaris brand filter regression', () => {
+  it('excludes Arcaris entries when filtering by another brand', () => {
+    const result = selectFilteredWheels(makeState({
+      brand: makeMultiSelectFilter(['Caden']),
+    }));
+
+    expect(result.length).toBeGreaterThan(0);
+    expect(result.every((wheel) => wheel.brand === 'Caden')).toBe(true);
+    expect(result.some((wheel) => wheel.brand === 'Arcaris')).toBe(false);
+  });
+
+  it('keeps the three Arcaris variants exactly once when filtering by Arcaris', () => {
+    const result = selectFilteredWheels(makeState({
+      brand: makeMultiSelectFilter(['Arcaris']),
+    }));
+    const ids = result.map((wheel) => wheel.id);
+
+    expect(result.every((wheel) => wheel.brand === 'Arcaris')).toBe(true);
+    expect(ids).toEqual([219, 220, 221]);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 });
 
