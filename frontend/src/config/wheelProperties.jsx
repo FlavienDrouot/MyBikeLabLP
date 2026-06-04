@@ -112,9 +112,9 @@ export const WHEEL_PROPERTIES = [
         <div className="min-w-0">
           <span className="block text-ink-7 font-normal text-xs">{w.brand}</span>
           <span className="block whitespace-normal leading-snug">{w.model}</span>
-          {w.model_group && w.model_group_label && (
+          {w.variant && (
             <span className="mt-1 block whitespace-normal border-l border-brass-7 pl-2 text-[11px] font-normal leading-snug text-ink-7">
-              {t ? t('table.modelFamily', { family: w.model_group_label }) : w.model_group_label}
+              {t ? t(`variant.${w.variant}`) : w.variant}
             </span>
           )}
         </div>

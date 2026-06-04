@@ -214,21 +214,20 @@ describe('WheelDetailPanel', () => {
     expect(container.textContent).not.toContain('wheelDetail.');
   });
 
-  it('renders model family context for grouped wheels', () => {
+  it('renders variant context for variant wheels', () => {
     renderPanel({
       ...withLinks({ manufacturer }),
-      model_group: 'roval-alpinist',
-      model_group_label: 'Alpinist family',
+      variant: 'carbon_spokes',
     });
 
-    expect(container.textContent).toContain('Model family');
-    expect(container.textContent).toContain('Alpinist family');
+    expect(container.textContent).toContain('Variant');
+    expect(container.textContent).toContain('Carbon spokes');
     expect(container.querySelector('.border-l.border-brass-7')).not.toBeNull();
   });
 
-  it('does not render model family context for ungrouped wheels', () => {
+  it('does not render variant context for wheels without a variant', () => {
     renderPanel(withLinks({ manufacturer }));
 
-    expect(container.textContent).not.toContain('Model family');
+    expect(container.textContent).not.toContain('Carbon spokes');
   });
 });

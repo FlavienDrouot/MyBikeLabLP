@@ -104,12 +104,12 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
         </div>
 
         <div className="min-w-0">
-          {wheel.model_group && wheel.model_group_label && (
+          {wheel.variant && (
             <div className="mb-5 border-l border-brass-7 pl-3">
               <p className="m-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-7">
-                {t('wheelDetail.modelFamily')}
+                {t('wheelDetail.variant')}
               </p>
-              <p className="m-0 mt-1 text-sm font-semibold text-ink-11">{wheel.model_group_label}</p>
+              <p className="m-0 mt-1 text-sm font-semibold text-ink-11">{t(`variant.${wheel.variant}`)}</p>
             </div>
           )}
 

@@ -118,37 +118,43 @@ export function validateWheelEntry(entry) {
     warnings.push(warning);
   }
 
-  if (hasNonEmptyString(entry?.model_group) && !hasNonEmptyString(entry?.model_group_label)) {
-    const warning = `model_group on entry ${id}: grouped entries require a non-empty model_group_label`;
-    console.warn(warning);
-    warnings.push(warning);
-  }
-
   return warnings;
 }
 
-function collectGroupWarnings(entries) {
+// EVO-045: variants are flat rows sharing the same brand + model, distinguished by a
+// `variant` key. Sibling sets (>1 entry sharing brand+model) must each carry a unique,
+// non-empty `variant`; a model sold in a single configuration must NOT carry one.
+function collectVariantWarnings(entries) {
   const warnings = [];
   const groups = new Map();
 
   for (const entry of entries ?? []) {
-    if (!hasNonEmptyString(entry?.model_group)) continue;
-    const groupEntries = groups.get(entry.model_group) ?? [];
+    if (!hasNonEmptyString(entry?.brand) || !hasNonEmptyString(entry?.model)) continue;
+    const key = `${entry.brand}|${entry.model}`;
+    const groupEntries = groups.get(key) ?? [];
     groupEntries.push(entry);
-    groups.set(entry.model_group, groupEntries);
+    groups.set(key, groupEntries);
   }
 
-  for (const [modelGroup, groupEntries] of groups) {
-    if (groupEntries.length < 2) continue;
-
-    const brands = new Set(groupEntries.map((entry) => entry.brand));
-    if (brands.size > 1) {
-      warnings.push(`model_group ${modelGroup}: sibling entries must share one brand`);
+  for (const [key, groupEntries] of groups) {
+    if (groupEntries.length < 2) {
+      const [only] = groupEntries;
+      if (hasNonEmptyString(only?.variant)) {
+        warnings.push(`variant on entry ${only.id ?? 'unknown'}: a model sold in a single configuration (${key}) must not carry a variant`);
+      }
+      continue;
     }
 
-    const labels = new Set(groupEntries.map((entry) => entry.model_group_label));
-    if (labels.size > 1 || [...labels].some((label) => !hasNonEmptyString(label))) {
-      warnings.push(`model_group ${modelGroup}: sibling entries must share one non-empty model_group_label`);
+    const seen = new Set();
+    for (const entry of groupEntries) {
+      if (!hasNonEmptyString(entry?.variant)) {
+        warnings.push(`variant on entry ${entry.id ?? 'unknown'}: sibling entries sharing ${key} require a non-empty variant`);
+        continue;
+      }
+      if (seen.has(entry.variant)) {
+        warnings.push(`variant ${entry.variant} on entry ${entry.id ?? 'unknown'}: duplicate variant within ${key}`);
+      }
+      seen.add(entry.variant);
     }
   }
 
@@ -163,11 +169,11 @@ function collectGroupWarnings(entries) {
  */
 export function validateWheelsCatalog(entries) {
   const entryWarnings = entries.flatMap((entry) => validateWheelEntry(entry));
-  const groupWarnings = collectGroupWarnings(entries);
+  const variantWarnings = collectVariantWarnings(entries);
 
-  for (const warning of groupWarnings) {
+  for (const warning of variantWarnings) {
     console.warn(warning);
   }
 
-  return [...entryWarnings, ...groupWarnings];
+  return [...entryWarnings, ...variantWarnings];
 }

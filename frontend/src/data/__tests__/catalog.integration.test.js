@@ -14,7 +14,7 @@ const makeState = (filters = {}, sortBy = null) => ({
 
 describe('Caden variant catalog migration', () => {
   const cadenEntries = wheelsData.filter((wheel) => wheel.brand === 'Caden');
-  const groupedCadenEntries = cadenEntries.filter((wheel) => wheel.model_group);
+  const variantCadenEntries = cadenEntries.filter((wheel) => wheel.variant);
   const forbiddenOtherSpecKeys = [
     'weight_carbon_spoke_grams',
     'carbon_spoke_option',
@@ -35,16 +35,32 @@ describe('Caden variant catalog migration', () => {
     expect(explodedIds.every((id) => id >= 200)).toBe(true);
   });
 
-  it('groups sibling Caden variants under shared model family labels', () => {
-    const groupIds = new Set(groupedCadenEntries.map((wheel) => wheel.model_group));
+  it('distinguishes Caden sibling variants by a unique variant key under a shared brand + model', () => {
+    const modelNames = new Set(variantCadenEntries.map((wheel) => wheel.model));
 
-    expect(groupIds).toContain('caden-decadence-35-tubeless');
-    expect(groupIds).toContain('caden-decadence-50-tubeless');
+    expect(modelNames).toContain('deCADENce 35mm Tubeless');
+    expect(modelNames).toContain('deCADENce 50mm Tubeless');
 
-    for (const groupId of groupIds) {
-      const siblings = groupedCadenEntries.filter((wheel) => wheel.model_group === groupId);
+    // No variant differentiator must remain embedded in the model string.
+    for (const wheel of cadenEntries) {
+      expect(wheel.model).not.toMatch(/\(/);
+    }
+
+    for (const model of modelNames) {
+      const siblings = variantCadenEntries.filter((wheel) => wheel.model === model);
       expect(siblings.length).toBeGreaterThan(1);
-      expect(new Set(siblings.map((wheel) => wheel.model_group_label)).size).toBe(1);
+      // Siblings share one brand and carry unique, non-empty variant keys.
+      expect(new Set(siblings.map((wheel) => wheel.brand)).size).toBe(1);
+      const variants = siblings.map((wheel) => wheel.variant);
+      expect(variants.every((v) => typeof v === 'string' && v.length > 0)).toBe(true);
+      expect(new Set(variants).size).toBe(variants.length);
+    }
+  });
+
+  it('no longer carries model_group metadata on any Caden entry', () => {
+    for (const wheel of cadenEntries) {
+      expect(wheel.model_group).toBeUndefined();
+      expect(wheel.model_group_label).toBeUndefined();
     }
   });
 

@@ -391,9 +391,8 @@ describe('selectFilteredWheels', () => {
     const variantCatalog = [
       {
         id: 301,
-        model: 'Variant 35 (steel)',
-        model_group: 'variant-35',
-        model_group_label: 'Variant 35',
+        model: 'Variant 35',
+        variant: 'steel_spokes',
         weight_grams: 1140,
         brand: 'Caden',
         diameter_mm: 700,
@@ -405,9 +404,8 @@ describe('selectFilteredWheels', () => {
       },
       {
         id: 302,
-        model: 'Variant 35 (carbon)',
-        model_group: 'variant-35',
-        model_group_label: 'Variant 35',
+        model: 'Variant 35',
+        variant: 'carbon_spokes',
         weight_grams: 1030,
         brand: 'Caden',
         diameter_mm: 700,
@@ -419,9 +417,8 @@ describe('selectFilteredWheels', () => {
       },
       {
         id: 303,
-        model: 'Variant 50 (wide)',
-        model_group: 'variant-50',
-        model_group_label: 'Variant 50',
+        model: 'Variant 50',
+        variant: 'external_40mm',
         weight_grams: null,
         brand: 'Caden',
         diameter_mm: 700,

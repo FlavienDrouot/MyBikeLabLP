@@ -141,21 +141,19 @@ describe('ComparisonTable', () => {
     });
   });
 
-  describe('model family marker', () => {
-    it('renders a family marker for grouped wheels', () => {
-      const groupedWheel = {
+  describe('variant marker', () => {
+    it('renders a variant marker for variant wheels', () => {
+      const variantWheel = {
         ...minimalWheel,
-        model_group: 'roval-alpinist',
-        model_group_label: 'Alpinist family',
+        variant: 'carbon_spokes',
       };
-      const html = renderWithStore([groupedWheel]);
-      expect(html).toContain('Family: Alpinist family');
+      const html = renderWithStore([variantWheel]);
+      expect(html).toContain('Carbon spokes');
       expect(html).toContain('border-l border-brass-7');
     });
 
-    it('does not render a family marker for ungrouped wheels', () => {
+    it('does not render a variant marker for wheels without a variant', () => {
       const html = renderWithStore([minimalWheel]);
-      expect(html).not.toContain('Family:');
       expect(html).not.toContain('border-l border-brass-7');
     });
   });

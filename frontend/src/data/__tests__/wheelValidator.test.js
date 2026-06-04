@@ -83,13 +83,6 @@ describe('validateWheelEntry', () => {
     expect(warnings[2]).toContain('other_specs.external_width_options_mm');
   });
 
-  it('warns when model_group has no model_group_label', () => {
-    const warnings = validateWheelEntry(makeEntry({ model_group: 'caden-35' }));
-    expect(warnings).toHaveLength(1);
-    expect(warnings[0]).toContain('model_group');
-    expect(warnings[0]).toContain('model_group_label');
-  });
-
   it('does not flag freehub options as variant data', () => {
     const entry = makeEntry({
       hub: {
@@ -114,31 +107,41 @@ describe('validateWheelsCatalog', () => {
     expect(warnings[0]).toContain('invalid-1');
   });
 
-  it('returns no warnings for valid grouped siblings', () => {
+  it('returns no warnings for valid sibling variants sharing brand + model', () => {
     const entries = [
-      makeEntry({ id: 'group-1', model_group: 'family-a', model_group_label: 'Family A' }),
-      makeEntry({ id: 'group-2', model_group: 'family-a', model_group_label: 'Family A' }),
+      makeEntry({ id: 'sib-1', model: 'Family A', variant: 'steel_spokes' }),
+      makeEntry({ id: 'sib-2', model: 'Family A', variant: 'carbon_spokes' }),
     ];
     expect(validateWheelsCatalog(entries)).toEqual([]);
   });
 
-  it('warns when grouped siblings use inconsistent brands', () => {
+  it('warns when a sibling sharing brand + model has no variant', () => {
     const entries = [
-      makeEntry({ id: 'group-1', brand: 'Caden', model_group: 'family-a', model_group_label: 'Family A' }),
-      makeEntry({ id: 'group-2', brand: 'Roval', model_group: 'family-a', model_group_label: 'Family A' }),
+      makeEntry({ id: 'sib-1', model: 'Family A', variant: 'steel_spokes' }),
+      makeEntry({ id: 'sib-2', model: 'Family A' }),
     ];
     const warnings = validateWheelsCatalog(entries);
     expect(warnings).toHaveLength(1);
-    expect(warnings[0]).toContain('one brand');
+    expect(warnings[0]).toContain('sib-2');
+    expect(warnings[0]).toContain('variant');
   });
 
-  it('warns when grouped siblings use inconsistent labels', () => {
+  it('warns when siblings sharing brand + model duplicate a variant', () => {
     const entries = [
-      makeEntry({ id: 'group-1', model_group: 'family-a', model_group_label: 'Family A' }),
-      makeEntry({ id: 'group-2', model_group: 'family-a', model_group_label: 'Family B' }),
+      makeEntry({ id: 'sib-1', model: 'Family A', variant: 'steel_spokes' }),
+      makeEntry({ id: 'sib-2', model: 'Family A', variant: 'steel_spokes' }),
     ];
     const warnings = validateWheelsCatalog(entries);
     expect(warnings).toHaveLength(1);
-    expect(warnings[0]).toContain('model_group_label');
+    expect(warnings[0]).toContain('duplicate variant');
+  });
+
+  it('warns when a single-configuration model carries a variant', () => {
+    const entries = [
+      makeEntry({ id: 'solo-1', model: 'Lone Model', variant: 'carbon_spokes' }),
+    ];
+    const warnings = validateWheelsCatalog(entries);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('single configuration');
   });
 });

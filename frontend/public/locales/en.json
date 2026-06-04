@@ -58,8 +58,7 @@
   "table": {
     "heading": "Wheels",
     "of": "of",
-    "emptyState": "No wheels match your filters. Try resetting them.",
-    "modelFamily": "Family: {{family}}"
+    "emptyState": "No wheels match your filters. Try resetting them."
   },
   "wheelDetail": {
     "manufacturer": "Manufacturer",
@@ -67,7 +66,7 @@
     "buyLink": "Buy →",
     "noLinks": "No links available for this wheel.",
     "priceAnnotation": "indicative price, sourced 2026-Q2",
-    "modelFamily": "Model family"
+    "variant": "Variant"
   },
   "badges": {
     "hookless": "Hookless",
@@ -192,7 +191,8 @@
     "freehubOptions": { "label": "Freehub options", "popupTitle": "Freehub options" },
     "maxSystemWeight": { "label": "Max system weight" },
     "wheelsetCategory": { "label": "Category" },
-    "discStandard": { "label": "Disc standard" }
+    "discStandard": { "label": "Disc standard" },
+    "variant": { "label": "Variant" }
   },
   "sorts": {
     "name": "Name (A → Z)",
@@ -249,5 +249,16 @@
     "climbing": "Climbing",
     "endurance": "Endurance",
     "all-road": "All-road"
+  },
+  "variant": {
+    "steel_spokes": "Steel spokes",
+    "carbon_spokes": "Carbon spokes",
+    "disc_brake": "Disc brake",
+    "rim_brake": "Rim brake",
+    "external_34mm": "34 mm external",
+    "external_37mm": "37 mm external",
+    "external_40mm": "40 mm external",
+    "cognition_v2_hub": "Cognition V2 hub",
+    "zr1_sl_hub": "ZR1 SL hub"
   }
 }
