@@ -158,9 +158,9 @@ const DualRangeRow = ({
 
 // Accordion section for one filter category. Open state is owned by FilterPanel
 // so only one category can be expanded at a time.
-const Section = ({ title, open, onToggle, children }) => {
+const Section = ({ title, open, onToggle, children, first = false }) => {
   return (
-    <div className="border-t border-ink-3 pt-3">
+    <div className={first ? '' : 'border-t border-ink-3 pt-3'}>
       <button
         type="button"
         onClick={onToggle}
@@ -500,13 +500,14 @@ const FilterPanel = () => {
       {/* Sorting moved to clickable column headers (fix-019). */}
 
       {/* Filters grouped by category. First non-empty group is open by default. */}
-      {nonEmptyGroups.map((group) => {
+      {nonEmptyGroups.map((group, index) => {
         const open = openGroupId === group.id;
         return (
           <Section
             key={group.id}
             title={t(group.label)}
             open={open}
+            first={index === 0}
             onToggle={() => setOpenGroupId(open ? null : group.id)}
           >
             {group.properties.map((p) => (
