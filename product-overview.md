@@ -13,7 +13,7 @@ Road cyclists who:
 - want to understand the real impact of a component change (weight, aerodynamics, cost)
 - are overwhelmed by the number of products and conflicting marketing claims
 
-Primary audience: international, English-speaking, technically curious cyclists.
+Primary audience: international, technically curious cyclists. The interface is bilingual (English / French).
 
 ---
 
@@ -29,15 +29,15 @@ MyBikeLab addresses this by providing a single place with structured, comparable
 
 ---
 
-## Current Product — MVP v0.1
+## Current Product
 
-The current product is a single-page landing site with one interactive feature: a road wheel comparator.
+The current product is a single-page landing site built on a shared design system, with one fully developed interactive feature: a road wheel comparator backed by a ~220-entry catalog and a per-wheel detail panel. It is bilingual (EN / FR) and supports multi-currency price display.
 
 ### Landing Page Structure
 
 | Section | Content |
 |---|---|
-| Hero | Value proposition, key stats (15+ wheels, 13 filter axes), CTAs |
+| Hero | Value proposition, key stats (200+ wheels, 20 filter axes), CTAs |
 | Wheel Comparator | Main interactive tool — see below |
 | Roadmap | 3-phase vision (comparison → simulation → configurator) |
 | Benefits | Platform value proposition for cyclists |
@@ -46,37 +46,48 @@ The current product is a single-page landing site with one interactive feature: 
 
 ### Wheel Comparator
 
-The comparator lets users browse, filter, sort, and compare road bike wheels side by side.
+The comparator lets users browse, filter, sort, and compare road bike wheels side by side, and open a detail panel for any wheel.
 
 **What users can do:**
-- Filter wheels by multiple criteria simultaneously
+- Filter wheels by multiple criteria simultaneously (20 filter axes)
 - Sort the list by a chosen criterion
 - Show or hide columns to focus on what matters to them
-- See the minimum available price per wheel across known retailers
+- Open a per-wheel detail panel with the full spec sheet
+- See the minimum available price per wheel, converted to the selected display currency
+- Switch interface language (EN / FR) and display currency
 
-**Filterable properties:**
+**Filterable properties (20 axes):**
 
 | Property | Filter type |
 |---|---|
 | Brand | Multi-select |
-| Weight | Range (700–2000 g) |
-| Price | Range (200–5000 €) |
+| Price | Range |
+| Weight | Range |
+| Brake type | Multi-select (Disc / Rim) |
+| Wheelset category | Multi-select (aero, climbing, …) |
 | Diameter | Multi-select |
+| Max system weight | Range |
 | Rim material | Multi-select (Carbon / Aluminum) |
+| Rim depth | Range |
+| Tubeless ready | Yes / No / All |
 | Hookless | Yes / No / All |
-| Rim depth | Range (20–80 mm) |
-| External width | Range (20–40 mm) |
+| External width | Range |
+| Internal width | Range |
 | Hub brand | Multi-select |
 | Hub model | Multi-select |
+| Freehub options | Multi-select (flat) |
+| Disc standard | Multi-select |
 | Spokes brand | Multi-select |
 | Spokes model | Multi-select |
 | Spoke material | Multi-select |
 
-**Displayed columns (default visible):** Model/Brand, Weight, Price, Rim material, Hookless, Rim depth, Hub
+Front/rear divergent specs (weight, rim depth, widths) are supported, and several specs are filtered with OR-semantics across the front and rear values.
 
-**Displayed columns (optional):** Diameter, External width, Spokes, Spoke material
+**Displayed columns (default visible):** Image, Model/Brand, Price, Weight, Brake type, Wheelset category, Rim material, Tubeless, Hookless, Hub
 
-**Dataset:** ~15 road bike wheels from premium brands (Roval, Zipp, DT Swiss, Fulcrum, etc.), with placeholder images and indicative prices.
+**Displayed columns (optional):** Diameter, Max system weight, External width, Internal width, Axle, Freehub options, Disc standard, Spokes, Spoke material. Additional specs (bearings, lacing, spoke count, tire pressure/width range, UCI / e-bike approval, warranty, …) are surfaced in the per-wheel detail panel.
+
+**Dataset:** ~220 road wheel entries (counting variants) across 18 brands — including Roval, Zipp, Enve, Mavic, Shimano, Caden, Arcaris, EXS, Overfast, Yoeleo, No6, Goosynn, Pertual, Scom, Magene, 9Velo, CRW Works, Farsports. Most entries have real product images and manufacturer-sourced specs and prices. Each product can carry several **variants** (e.g. freehub or axle options) rendered as distinct rows.
 
 ---
 
@@ -95,7 +106,7 @@ Build a complete bike component by component, simulate different setups, compare
 
 ## Business Model
 
-- **Affiliate links**: each wheel price entry links to a retailer; these links are intended to be affiliate-tracked.
+- **Affiliate links**: the data model carries an `affiliateLinks` structure (manufacturer + retailers) per wheel, but today links are almost exclusively non-affiliated manufacturer URLs — no affiliate partnership or tracked link has been acquired yet.
 - **Brand partnerships**: brands supply structured product data; in return they get qualified traffic and visibility.
 - **Landing page as B2B credibility tool**: the current site is partly designed to support outreach to manufacturers and retailers.
 
@@ -105,15 +116,17 @@ Build a complete bike component by component, simulate different setups, compare
 
 Three sequential phases addressing the cold start problem (small catalog → low value → no partners).
 
-### Phase A — Volume via scraping *(no dependency)*
+### Phase A — Volume via scraping *(largely achieved)*
 
-Scrape public specs and prices from brand websites (Roval, Zipp, DT Swiss, Fulcrum, Shimano, Mavic…) and major retailers (Alltricks, Probikeshop, Canyon, Wiggle). Target: ~150–200 wheels with real specs, current prices, and actual product images.
+Scrape public specs and prices from brand websites and retailers to build catalog volume. The original target (~150–200 wheels) is essentially met: ~220 entries across 18 brands have been collected with real specs, prices, and (for most) actual product images.
+
+> **Status caveat:** Data comes from one-shot ("unitary") scraping sessions — there is **no automated data pipeline and no price/spec refresh**. Figures are a point-in-time snapshot and drift over time.
 
 > **Workflow:** See [`workflows/datascraping/README.md`](../workflows/datascraping/README.md) for the full pipeline (scraping prompt → JSON → frontend JS), curation rules, transformation rules, and per-brand progress tracker.
 
-> **Note — SEO:** Without organic traffic, affiliate clicks will not come on their own. After Phase A, improving SEO (structured data, page titles, wheel-specific landing pages) is a prerequisite for Phase B to generate meaningful results.
+> **Note — SEO:** Without organic traffic, affiliate clicks will not come on their own. Improving SEO (structured data, page titles, wheel-specific landing pages) is a prerequisite for Phase B to generate meaningful results.
 
-> **Note — Architecture:** Scaling from ~15 to ~200 wheels requires a decision on data management. The current inline `wheelsData.js` approach may need to migrate to an external JSON file or a lightweight backend before scraping begins.
+> **Note — Architecture:** The catalog has already moved from a single inline `wheelsData.js` to one file per brand aggregated at build time. Further scaling or live pricing would still require a decision on external data storage or a lightweight backend.
 
 ### Phase B — Self-service affiliate monetization *(requires: Phase A catalog)*
 
@@ -125,23 +138,23 @@ Approach retailer e-commerce managers and premium brands with traffic metrics. P
 
 ### Sequence summary
 
-| Step | Action | Dependency | Output |
-|---|---|---|---|
-| A | Scraping specs + prices | none | 150+ wheels in catalog |
-| A+ | SEO improvements | Phase A catalog | organic traffic |
-| B | Self-service affiliate sign-up | existing catalog | active monetization |
-| C | Direct partner outreach | measurable traffic | better rates + data feeds |
+| Step | Action | Dependency | Output | Status |
+|---|---|---|---|---|
+| A | Scraping specs + prices | none | 150+ wheels in catalog | ~220 entries collected (no auto-refresh) |
+| A+ | SEO improvements | Phase A catalog | organic traffic | Not started |
+| B | Self-service affiliate sign-up | existing catalog | active monetization | Not started — no affiliate link yet |
+| C | Direct partner outreach | measurable traffic | better rates + data feeds | Not started |
 
 ---
 
 ## Current Limitations and Known Gaps
 
-- Dataset is small (~15 wheels) and manually maintained — no backend, no data pipeline
-- Prices are indicative only; no real-time sourcing
-- Wheel images are placeholders — no actual product photos
+- Data comes from one-shot scraping — no automated pipeline, no backend, no price/spec refresh (point-in-time snapshot)
+- Prices are sourced once at scraping time; no real-time sourcing
+- A minority of wheels still lack real product images (placeholder fallback)
 - No user accounts, no saved comparisons, no sharing
 - No simulation features yet (Phase 2 is not built)
-- No real affiliate tracking implemented yet
+- No affiliate link acquired yet — links are mostly non-affiliated manufacturer URLs; no tracking implemented
 - No analytics or click tracking in place — required to measure affiliate performance and build the case for direct partnerships (Phase C)
 
 ---
