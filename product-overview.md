@@ -132,6 +132,8 @@ Scrape public specs and prices from brand websites and retailers to build catalo
 
 Sign up for self-service affiliate programs (Awin, Amazon Associates, TradeTracker) and replace direct product links with tracked affiliate links. No partner negotiation required — full control.
 
+> **Source evaluation — Channel3 product-data API (2026-06-05):** A trial fetch of the Channel3 "Bicycle Wheel Parts" category returned 247 products, but only **2 were road wheel *pairs*** in scope (Industry Nine Solix SL AR25, ICAN Alpha 38/52 Disc Pro); the rest were rims, single wheels, or MTB/BMX/e-bike. Conclusion: this feed is a poor fit for the road-wheel-pairs scope (~0.8% relevant) and not worth a recurring pipeline as-is. The two relevant pairs were curated into the catalog data layer. Awin remains the primary affiliate path to evaluate.
+
 ### Phase C — Direct partner outreach *(requires: measurable traffic)*
 
 Approach retailer e-commerce managers and premium brands with traffic metrics. Pitch: "Your products are already listed. Affiliate links let you measure and reward the qualified traffic we send." Unlocks better commission rates and direct product data feeds.

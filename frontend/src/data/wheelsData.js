@@ -16,6 +16,7 @@ import { nineVeloWheels } from './wheelsData_9velo';
 import { crwWorksWheels } from './wheelsData_crwworks';
 import { farsportsWheels } from './wheelsData_farsports';
 import { shimanoWheels } from './wheelsData_shimano';
+import { channel3Wheels } from './wheelsData_channel3';
 
 export const wheelsData = [
   ...mavicWheels,
@@ -36,4 +37,5 @@ export const wheelsData = [
   ...crwWorksWheels,
   ...farsportsWheels,
   ...shimanoWheels,
+  ...channel3Wheels,
 ];

@@ -14,6 +14,15 @@ if (!API_KEY) {
   process.exit(1);
 }
 
+// Optional regional settings. When set, they are sent as a `config` object on
+// each search call. The Channel3 API mirrors the country/currency selector in
+// the web UI: if all are unset it defaults to en / US / USD; if only country is
+// set the server infers a matching currency and language.
+// Valid examples: COUNTRY=FR, CURRENCY=EUR, LANGUAGE=fr.
+const COUNTRY  = process.env.CHANNEL3_COUNTRY  || null;
+const CURRENCY = process.env.CHANNEL3_CURRENCY || null;
+const LANGUAGE = process.env.CHANNEL3_LANGUAGE || null;
+
 const SEARCH_ENDPOINT = 'https://api.trychannel3.com/v1/search';
 
 // Category ID for "Bicycle Wheel Parts" in the Channel3 taxonomy.
@@ -45,6 +54,16 @@ function buildRequestBody(pageToken) {
     },
     limit: RESULTS_PER_PAGE,
   };
+
+  // Only attach a config object when at least one regional setting is provided,
+  // so the default (en / US / USD) behavior is preserved otherwise.
+  const config = {};
+  if (LANGUAGE) config.language = LANGUAGE;
+  if (COUNTRY)  config.country  = COUNTRY;
+  if (CURRENCY) config.currency = CURRENCY;
+  if (Object.keys(config).length > 0) {
+    body.config = config;
+  }
 
   if (pageToken !== null) {
     body.page_token = pageToken;
@@ -104,6 +123,11 @@ async function fetchOnePage(requestBody) {
 // ---------------------------------------------------------------------------
 
 async function main() {
+  console.log(
+    `Region: country=${COUNTRY || 'default(US)'}, ` +
+    `currency=${CURRENCY || 'default(USD)'}, language=${LANGUAGE || 'default(en)'}`
+  );
+
   const accumulatedProducts = [];
   let pageToken = null;
   let pageNumber = 0;
