@@ -203,8 +203,8 @@ export const crwWorksWheels = [
       }
     ],
     images: [
-      "https://www.pandapodium.cc/wp-content/uploads/2025/04/é»‘è‰²-1.png",
-      "https://www.pandapodium.cc/wp-content/uploads/2025/04/ç™½è‰².png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/04/%E9%BB%91%E8%89%B2-1.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/04/%E7%99%BD%E8%89%B2.png",
       "https://www.pandapodium.cc/wp-content/uploads/2025/04/5-3.png",
       "https://www.pandapodium.cc/wp-content/uploads/2025/04/4-5.png",
       "https://www.pandapodium.cc/wp-content/uploads/2025/04/3-7.png"
@@ -279,10 +279,10 @@ export const crwWorksWheels = [
       }
     ],
     images: [
-      "https://www.pandapodium.cc/wp-content/uploads/2025/05/é»‘æ ‡-2.png",
-      "https://www.pandapodium.cc/wp-content/uploads/2025/05/ç™½æ ‡-1.png",
-      "https://www.pandapodium.cc/wp-content/uploads/2025/05/å† å†›é…è‰².png",
-      "https://www.pandapodium.cc/wp-content/uploads/2025/05/å† å†›é…è‰²2.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/05/%E9%BB%91%E6%A0%87-2.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/05/%E7%99%BD%E6%A0%87-1.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/05/%E5%86%A0%E5%86%9B%E9%85%8D%E8%89%B2.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/05/%E5%86%A0%E5%86%9B%E9%85%8D%E8%89%B22.png",
       "https://www.pandapodium.cc/wp-content/uploads/2025/05/4-2.png",
       "https://www.pandapodium.cc/wp-content/uploads/2025/05/5-2.png",
       "https://www.pandapodium.cc/wp-content/uploads/2025/05/3-2.png"
