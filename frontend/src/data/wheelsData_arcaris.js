@@ -21,6 +21,18 @@ const baseOtherSpecs = {
   warranty: '2-year limited (manufacturing defects)',
 };
 
+const splitHubSpecs = (otherSpecs = {}) => {
+  const { hubBearingType, hubBearingModels = [], hubMaterial = null, ...rest } = otherSpecs;
+  return {
+    hubSpecs: {
+      bearing_type: hubBearingType ?? null,
+      bearing_models: hubBearingModels,
+      material: hubMaterial,
+    },
+    otherSpecs: rest,
+  };
+};
+
 const makeArcarisWheel = ({
   id,
   variant,
@@ -32,6 +44,9 @@ const makeArcarisWheel = ({
   priceUsd,
   other_specs = {},
 }) => ({
+  ...(() => {
+    const promoted = splitHubSpecs(other_specs);
+    return {
   id,
   model: '8848 Climbers Wheelset',
   brand: 'Arcaris',
@@ -57,6 +72,7 @@ const makeArcarisWheel = ({
     axle_rear_mm: null,
     freehub_options: FREEHUB_OPTIONS,
     disc_standard: null,
+    ...promoted.hubSpecs,
   },
   prices: [{ amount: priceUsd, currency: 'USD', url: PRODUCT_URL }],
   image: IMAGES[0],
@@ -67,8 +83,10 @@ const makeArcarisWheel = ({
   },
   other_specs: {
     ...baseOtherSpecs,
-    ...other_specs,
+    ...promoted.otherSpecs,
   },
+    };
+  })(),
 });
 
 export const arcarisWheels = [
@@ -82,7 +100,7 @@ export const arcarisWheels = [
     hubBrand: 'H-WORKS',
     priceUsd: 1599,
     other_specs: {
-      bearing_type: 'Steel (TPI)',
+      hubBearingType: 'Steel (TPI)',
       spoke_count_front: 16,
       spoke_count_rear: 18,
       recommended_rider_weight_kg: 75,
@@ -99,7 +117,7 @@ export const arcarisWheels = [
     hubBrand: 'H-WORKS',
     priceUsd: 1899,
     other_specs: {
-      bearing_type: 'Hybrid Ceramic (TPI)',
+      hubBearingType: 'Hybrid Ceramic (TPI)',
       spoke_count_front: 16,
       spoke_count_rear: 18,
       recommended_rider_weight_kg: 75,
@@ -116,7 +134,7 @@ export const arcarisWheels = [
     hubBrand: 'NONPLUS',
     priceUsd: 2499,
     other_specs: {
-      bearing_type: 'Steel (Enduro)',
+      hubBearingType: 'Steel (Enduro)',
       spoke_count_front: 24,
       spoke_count_rear: 24,
       recommended_rider_weight_kg: 90,

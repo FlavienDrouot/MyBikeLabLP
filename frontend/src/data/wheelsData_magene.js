@@ -19,6 +19,18 @@ const makeLinks = (url, priceUsd) => ({
   other_specs: {},
 });
 
+const splitHubSpecs = (otherSpecs = {}) => {
+  const { hubBearingType, hubBearingModels = [], hubMaterial = null, ...rest } = otherSpecs;
+  return {
+    hubSpecs: {
+      bearing_type: hubBearingType && hubBearingType.trim() ? hubBearingType : null,
+      bearing_models: hubBearingModels,
+      material: hubMaterial,
+    },
+    otherSpecs: rest,
+  };
+};
+
 const ultraShared = {
   brand: 'Magene',
   model: 'EXAR Carbon Fiber Wheelset Ultra Series',
@@ -47,7 +59,7 @@ const ultraShared = {
 };
 
 const ultraOtherSpecs = {
-  bearing_type: 'Ceramic',
+  hubBearingType: 'Ceramic',
   spoke_count_front: 21,
   spoke_count_rear: 21,
   front_wheel_spoke_lacing: '21H 2:1, brake side x2, non-brake side radial lacing',
@@ -66,11 +78,14 @@ const ultraOtherSpecs = {
 
 const ultraDarkOtherSpecs = {
   ...ultraOtherSpecs,
-  bearing_type: 'Steel',
+  hubBearingType: 'Steel',
   source_note: 'Official Magene EXAR UltraDark 2024 product page.',
 };
 
 const makeUltra = ({ id, model, variant, weight, category, depth, externalWidth, source, otherSpecs }) => ({
+  ...(() => {
+    const promoted = splitHubSpecs(otherSpecs);
+    return {
   ...ultraShared,
   id,
   model: model ?? ultraShared.model,
@@ -82,11 +97,17 @@ const makeUltra = ({ id, model, variant, weight, category, depth, externalWidth,
     depth_mm: depth,
     externalWidth_mm: externalWidth,
   },
+  hub: {
+    ...ultraShared.hub,
+    ...promoted.hubSpecs,
+  },
   ...makeLinks(source.url, source.priceUsd),
   other_specs: {
     ...makeLinks(source.url, source.priceUsd).other_specs,
-    ...otherSpecs,
+    ...promoted.otherSpecs,
   },
+    };
+  })(),
 });
 
 const proShared = {
@@ -113,7 +134,7 @@ const proShared = {
 };
 
 const proOtherSpecs = {
-  bearing_type: '',
+  hubBearingType: '',
   ratchet: '36T, compatible with DT system; replaceable with different tooth count',
   rear_wheel_spoke_tension:
     'Rim brake: drive side 120kgf +/-10%, non-drive side 100kgf +/-10%; disc brake: drive side 120kgf +/-10%, non-drive side 110kgf +/-10%',
@@ -138,6 +159,9 @@ const makePro = ({
   discStandard,
   otherSpecs,
 }) => ({
+  ...(() => {
+    const promoted = splitHubSpecs({ ...proOtherSpecs, ...otherSpecs });
+    return {
   ...proShared,
   id,
   variant,
@@ -155,13 +179,15 @@ const makePro = ({
     axle_front_mm: axleFront,
     axle_rear_mm: axleRear,
     disc_standard: discStandard,
+    ...promoted.hubSpecs,
   },
   ...makeLinks(urls.pro, 649),
   other_specs: {
     ...makeLinks(urls.pro, 649).other_specs,
-    ...proOtherSpecs,
-    ...otherSpecs,
+    ...promoted.otherSpecs,
   },
+    };
+  })(),
 });
 
 export const mageneWheels = [

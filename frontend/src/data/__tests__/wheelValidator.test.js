@@ -73,7 +73,7 @@ describe('validateWheelEntry', () => {
         weight_carbon_spoke_grams: 1030,
         carbon_spoke_option: true,
         external_width_options_mm: [{ externalWidth_mm: 37, weight_grams: 1310 }],
-        bearing_type: 'ABEC 5 cartridge',
+        warranty: '2 years',
       },
     });
     const warnings = validateWheelEntry(entry);
@@ -92,6 +92,23 @@ describe('validateWheelEntry', () => {
       },
     });
     expect(validateWheelEntry(entry)).toEqual([]);
+  });
+
+  it('warns when promoted hub bearing fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        bearing_type: 'ABEC 5 cartridge',
+        bearing_models: ['61803'],
+        hub_material: 'forged aluminium',
+        hub_build: 'dt180_disc',
+        hub_internals: 'DT Swiss Ratchet EXP 36T',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(3);
+    expect(warnings[0]).toContain('other_specs.bearing_type');
+    expect(warnings[1]).toContain('other_specs.bearing_models');
+    expect(warnings[2]).toContain('other_specs.hub_material');
   });
 });
 

@@ -54,6 +54,8 @@ Some formerly free-form `other_specs` fields are progressively promoted into can
 
 If the source page uses synonym labels for a promoted field, normalize them into the canonical field. Keep only genuinely unstructured or not-yet-promoted information in `other_specs`.
 
+For hub bearing and material specs, write source labels such as `bearing_type`, `bearing_models`, and `hub_material` into `hub.bearing_type`, `hub.bearing_models`, and `hub.material`. Do not duplicate those labels in `other_specs`.
+
 ### Data Quality Requirements
 
 * Never invent values.
@@ -115,7 +117,6 @@ Examples include (but are not limited to):
 * rider weight limit
 * tire compatibility / recommended tire width
 * spoke count (front/rear)
-* bearing type
 * rim construction technologies / hub technologies
 * aerodynamic claims / stiffness metrics
 * certifications / warranty information
@@ -129,7 +130,6 @@ Example:
 
 ```json
 "other_specs": {
-  "bearing_type": "Ceramic",
   "spoke_count_front": 24,
   "spoke_count_rear": 24,
   "recommended_tire_width_mm": "28-45",

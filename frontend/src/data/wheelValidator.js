@@ -22,6 +22,9 @@ const ELIGIBLE_FIELDS = [
 const INELIGIBLE_TOP_LEVEL_EXCLUSIONS = new Set(['rim', 'other_specs', 'prices', 'images', 'affiliateLinks', 'spokes', 'hub']);
 
 const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
+  'bearing_type',
+  'bearing_models',
+  'hub_material',
   'weight_carbon_spoke_grams',
   'carbon_spoke_option',
   'external_width_options_mm',
@@ -79,7 +82,12 @@ function isForbiddenOtherSpecKey(key) {
 function collectOtherSpecWarnings(entry, id) {
   return Object.keys(entry?.other_specs ?? {})
     .filter(isForbiddenOtherSpecKey)
-    .map((key) => `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`);
+    .map((key) => {
+      if (key === 'bearing_type' || key === 'bearing_models' || key === 'hub_material') {
+        return `other_specs.${key} on entry ${id}: promoted hub data must use hub.* fields`;
+      }
+      return `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`;
+    });
 }
 
 // EVO-046: every price offer carries `{ amount, currency }`; the legacy `price_eur`

@@ -9,9 +9,14 @@ const PANDA_URL =
 
 const PRICE_USD = 2250;
 
+const baseHubSpecs = {
+  bearing_type: 'TPI ceramic',
+  bearing_models: [],
+  material: null,
+};
+
 const baseOtherSpecs = {
   weight_tolerance_grams: 15,
-  bearing_type: 'TPI ceramic',
   spoke_count_front: 20,
   spoke_count_rear: 20,
   lacing: '1:1',
@@ -60,6 +65,7 @@ const makeOverfastWheel = ({
     axle_rear_mm: '12x142',
     freehub_options: FREEHUB_OPTIONS,
     disc_standard: 'Center Lock',
+    ...baseHubSpecs,
   },
   prices: [{ amount: PRICE_USD, currency: 'USD', url: RETAILER_URL }],
   image,

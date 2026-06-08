@@ -187,6 +187,8 @@
     "hub": { "label": "Hub" },
     "hubBrand": { "label": "Hub brand" },
     "hubModel": { "label": "Hub model" },
+    "hubBearingType": { "label": "Hub bearings" },
+    "hubMaterial": { "label": "Hub material" },
     "spokes": { "label": "Spokes" },
     "spokesBrand": { "label": "Spokes brand" },
     "spokesModel": { "label": "Spokes model" },

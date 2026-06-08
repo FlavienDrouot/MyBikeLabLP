@@ -7,6 +7,12 @@ const FREEHUB_OPTIONS = ['Shimano HG', 'SRAM XDR', 'Campagnolo ED'];
 
 const pandaUrl = (slug) => `https://www.pandapodium.cc/product/${slug}/`;
 
+const HUB_SPECS = {
+  bearing_type: 'Enduro',
+  bearing_models: [],
+  material: null,
+};
+
 const ultraImages = {
   disc_4545: ['https://www.pandapodium.cc/wp-content/uploads/2023/08/4545.jpg'],
   disc_4967: ['https://www.pandapodium.cc/wp-content/uploads/2023/08/4967.jpg'],
@@ -63,7 +69,10 @@ const makeScom = ({
     tubeless_ready: true,
   },
   spokes,
-  hub,
+  hub: {
+    ...hub,
+    ...HUB_SPECS,
+  },
   prices: [{ amount: priceUsd, currency: priceUsd ? 'USD' : 'EUR', url: productUrl }],
   image: images.length ? images[0] : wheelPlaceholderUrl,
   images,
@@ -73,7 +82,6 @@ const makeScom = ({
   },
   other_specs: {
     source_note,
-    bearing_type: 'Enduro',
     tire_compatibility: 'Clincher/Tubeless',
     rim_construction: 'Zero-coating filament-wound carbon rim',
     warranty_years: 5,

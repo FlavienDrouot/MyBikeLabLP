@@ -12,6 +12,13 @@ node scripts/codemods/other-specs-promote.mjs --concept foundation --dry-run
 
 The harness scans every `frontend/src/data/wheelsData_*.js` module and reports whether a concept migration would change it.
 
+EVO-048 promotes hub bearing and material fields:
+
+```powershell
+node scripts/codemods/other-specs-promote.mjs --concept hub-bearing-material --dry-run
+node scripts/codemods/other-specs-promote.mjs --concept hub-bearing-material --write
+```
+
 Rules for later PROJ-001 child evolutions:
 
 - Add one concept migration at a time.

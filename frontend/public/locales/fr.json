@@ -187,6 +187,8 @@
     "hub": { "label": "Moyeu" },
     "hubBrand": { "label": "Marque de moyeu" },
     "hubModel": { "label": "Modèle de moyeu" },
+    "hubBearingType": { "label": "Roulements de moyeu" },
+    "hubMaterial": { "label": "Matériau de moyeu" },
     "spokes": { "label": "Rayons" },
     "spokesBrand": { "label": "Marque de rayons" },
     "spokesModel": { "label": "Modèle de rayons" },

@@ -502,6 +502,34 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
+    id: 'hubBearingType',
+    label: 'properties.hubBearingType.label',
+    group: 'hub',
+    translatable: false,
+    accessor: (w) => w.hub?.bearing_type,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'hubMaterial',
+    label: 'properties.hubMaterial.label',
+    group: 'hub',
+    translatable: false,
+    accessor: (w) => w.hub?.material,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
     id: 'spokes',
     label: 'properties.spokes.label',
     group: 'spokes',

@@ -26,6 +26,18 @@ const makeLinks = (url, priceUsd) => ({
   },
 });
 
+const splitHubSpecs = (otherSpecs = {}) => {
+  const { hubBearingType, hubBearingModels = [], hubMaterial = null, ...rest } = otherSpecs;
+  return {
+    hubSpecs: {
+      bearing_type: hubBearingType ?? null,
+      bearing_models: hubBearingModels,
+      material: hubMaterial,
+    },
+    otherSpecs: rest,
+  };
+};
+
 const makeWheel = ({
   id,
   model,
@@ -43,6 +55,9 @@ const makeWheel = ({
   priceUsd,
   otherSpecs = {},
 }) => ({
+  ...(() => {
+    const promoted = splitHubSpecs(otherSpecs);
+    return {
   id,
   brand: '9Velo',
   model,
@@ -61,12 +76,17 @@ const makeWheel = ({
     tubeless_ready: true,
   },
   spokes,
-  hub,
+  hub: {
+    ...hub,
+    ...promoted.hubSpecs,
+  },
   ...makeLinks(url, priceUsd),
   other_specs: {
     ...makeLinks(url, priceUsd).other_specs,
-    ...otherSpecs,
+    ...promoted.otherSpecs,
   },
+    };
+  })(),
 });
 
 const discCarbonSpokeHub = {
@@ -127,7 +147,7 @@ export const nineVeloWheels = [
     url: urls.extreme,
     priceUsd: 1799,
     otherSpecs: {
-      bearing_type: 'Steel bearings',
+      hubBearingType: 'Steel bearings',
       spoke_count_front: 20,
       spoke_count_rear: 20,
       spoke_lacing: '1:1 pattern',
@@ -153,7 +173,7 @@ export const nineVeloWheels = [
     url: urls.extreme,
     priceUsd: 1799,
     otherSpecs: {
-      bearing_type: 'Steel bearings',
+      hubBearingType: 'Steel bearings',
       spoke_count_front: 20,
       spoke_count_rear: 20,
       spoke_lacing: '1:1 pattern',
@@ -179,7 +199,7 @@ export const nineVeloWheels = [
     url: urls.extreme,
     priceUsd: 1799,
     otherSpecs: {
-      bearing_type: 'Steel bearings',
+      hubBearingType: 'Steel bearings',
       spoke_count_front: 20,
       spoke_count_rear: 20,
       spoke_lacing: '1:1 pattern',
@@ -201,7 +221,7 @@ export const nineVeloWheels = [
     url: urls.cdWide,
     priceUsd: 1289,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
+      hubBearingType: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
       spoke_count_front: 20,
       spoke_count_rear: 20,
       spoke_lacing: '1:1 pattern',
@@ -224,7 +244,7 @@ export const nineVeloWheels = [
     url: urls.cdWide,
     priceUsd: 1289,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
+      hubBearingType: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
       spoke_count_front: 20,
       spoke_count_rear: 20,
       spoke_lacing: '1:1 pattern',
@@ -247,7 +267,7 @@ export const nineVeloWheels = [
     url: urls.cdWide,
     priceUsd: 1289,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
+      hubBearingType: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
       spoke_count_front: 20,
       spoke_count_rear: 20,
       spoke_lacing: '1:1 pattern',
@@ -270,7 +290,7 @@ export const nineVeloWheels = [
     url: urls.lvWide,
     priceUsd: 1039,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
+      hubBearingType: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
       spoke_count_front: 24,
       spoke_count_rear: 24,
       spoke_lacing: '2X front, 2X rear',
@@ -293,7 +313,7 @@ export const nineVeloWheels = [
     url: urls.lvWide,
     priceUsd: 1039,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
+      hubBearingType: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
       spoke_count_front: 24,
       spoke_count_rear: 24,
       spoke_lacing: '2X front, 2X rear',
@@ -316,7 +336,7 @@ export const nineVeloWheels = [
     url: urls.cd20,
     priceUsd: 989,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
+      hubBearingType: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
       spoke_count_front: 20,
       spoke_count_rear: 20,
       spoke_lacing: '1:1 pattern',
@@ -339,7 +359,7 @@ export const nineVeloWheels = [
     url: urls.cd20,
     priceUsd: 989,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
+      hubBearingType: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
       spoke_count_front: 20,
       spoke_count_rear: 20,
       spoke_lacing: '1:1 pattern',
@@ -362,7 +382,7 @@ export const nineVeloWheels = [
     url: urls.lv20,
     priceUsd: 989,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
+      hubBearingType: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
       spoke_count_front: 24,
       spoke_count_rear: 24,
       spoke_lacing: '2X front, 2X rear',
@@ -385,7 +405,7 @@ export const nineVeloWheels = [
     url: urls.lv20,
     priceUsd: 989,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
+      hubBearingType: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
       spoke_count_front: 24,
       spoke_count_rear: 24,
       spoke_lacing: '2X front, 2X rear',
@@ -408,7 +428,7 @@ export const nineVeloWheels = [
     url: urls.lv20,
     priceUsd: 989,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
+      hubBearingType: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
       spoke_count_front: 24,
       spoke_count_rear: 24,
       spoke_lacing: '2X front, 2X rear',
@@ -432,7 +452,7 @@ export const nineVeloWheels = [
     url: urls.rl,
     priceUsd: 964,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6803, rear: 1x15267 + 3x6802',
+      hubBearingType: 'Steel bearings, front: 2x6803, rear: 1x15267 + 3x6802',
       spoke_count_front: 20,
       spoke_count_rear: 24,
       tire_compatibility: 'Tubeless/clincher; 700x23c-700x45c',
@@ -455,7 +475,7 @@ export const nineVeloWheels = [
     url: urls.rl,
     priceUsd: 964,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6803, rear: 1x15267 + 3x6802',
+      hubBearingType: 'Steel bearings, front: 2x6803, rear: 1x15267 + 3x6802',
       spoke_count_front: 20,
       spoke_count_rear: 24,
       tire_compatibility: 'Tubeless/clincher; 700x23c-700x45c',
@@ -485,7 +505,7 @@ export const nineVeloWheels = [
     url: urls.cv,
     priceUsd: 899,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6802, rear: 3x6802 + 1x15267',
+      hubBearingType: 'Steel bearings, front: 2x6802, rear: 3x6802 + 1x15267',
       spoke_count_front: 18,
       spoke_count_rear: 21,
       spoke_lacing: 'Radial front, 2X rear',
@@ -515,7 +535,7 @@ export const nineVeloWheels = [
     url: urls.cv,
     priceUsd: 899,
     otherSpecs: {
-      bearing_type: 'Steel bearings, front: 2x6802, rear: 3x6802 + 1x15267',
+      hubBearingType: 'Steel bearings, front: 2x6802, rear: 3x6802 + 1x15267',
       spoke_count_front: 18,
       spoke_count_rear: 21,
       spoke_lacing: 'Radial front, 2X rear',

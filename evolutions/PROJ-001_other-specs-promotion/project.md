@@ -189,7 +189,7 @@ Kept in sync as children are created. Each child is also registered in the Evolu
 | ID | Slug | Type | Status |
 | --- | --- | --- | --- |
 | EVO-047 | foundation | Light | Done |
-| EVO-048 | hub-bearing-material | Light | Planned |
+| EVO-048 | hub-bearing-material | Light | Done |
 | EVO-049 | spokes-count | Light | Planned |
 | EVO-050 | spokes-detail | Light | Planned |
 | EVO-051 | rim-material-construction | Light | Planned |

@@ -13,9 +13,13 @@ const IMG = {
   d105: 'https://carbonbikewheels.com.au/cdn/images/2026%20Images/105mm%20profile%202026-1000x1000.jpg',
 };
 
-const baseOtherSpecs = {
-  hub_material: 'forged aluminium T7075',
+const baseHubSpecs = {
   bearing_type: 'ABEC 5 stainless steel cartridge',
+  bearing_models: [],
+  material: 'forged aluminium T7075',
+};
+
+const baseOtherSpecs = {
   nipples: 'SAPIM Secure Lock external',
   rim_construction: 'UCI-approved high-temperature mould, High TG heat-resistant resin, reinforced nipple bed, formed (enveloped) rim hook',
   tire_type: 'tubeless ready (tubes also possible)',
@@ -59,6 +63,7 @@ const makeCadenWheel = ({
     axle_rear_mm: null,
     freehub_options: FREEHUB_OPTIONS,
     disc_standard: null,
+    ...baseHubSpecs,
   },
   prices: Number.isFinite(priceEur) ? [{ amount: priceEur, currency: 'EUR', url }] : [],
   image: imageUrl || wheelPlaceholderUrl,

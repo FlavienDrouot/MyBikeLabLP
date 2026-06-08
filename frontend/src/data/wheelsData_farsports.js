@@ -35,6 +35,18 @@ const withLinks = (url, priceUsd, productImages, sourceNote) => ({
   },
 });
 
+const splitHubSpecs = (otherSpecs = {}) => {
+  const { hubBearingType, hubBearingModels = [], hubMaterial = null, ...rest } = otherSpecs;
+  return {
+    hubSpecs: {
+      bearing_type: hubBearingType ?? null,
+      bearing_models: hubBearingModels,
+      material: hubMaterial,
+    },
+    otherSpecs: rest,
+  };
+};
+
 const makeWheel = ({
   id,
   model,
@@ -53,6 +65,9 @@ const makeWheel = ({
   productImages,
   otherSpecs = {},
 }) => ({
+  ...(() => {
+    const promoted = splitHubSpecs(otherSpecs);
+    return {
   id,
   brand: 'FARSPORTS',
   model,
@@ -71,12 +86,17 @@ const makeWheel = ({
     tubeless_ready: true,
   },
   spokes,
-  hub,
+  hub: {
+    ...hub,
+    ...promoted.hubSpecs,
+  },
   ...withLinks(url, priceUsd, productImages, 'Official FARSPORTS Shopify product page.'),
   other_specs: {
     ...withLinks(url, priceUsd, productImages, 'Official FARSPORTS Shopify product page.').other_specs,
-    ...otherSpecs,
+    ...promoted.otherSpecs,
   },
+    };
+  })(),
 });
 
 const cSpokes = { model: 'Alpina Ultralite Aero / Sapim CX-Super', brand: 'Alpina / Sapim', material: 'steel' };
@@ -127,7 +147,7 @@ const makeSeries = ({ startId, model, variantPrefix, weightKey, spokes, hubModel
       priceUsd,
       productImages,
       otherSpecs: {
-        bearing_type: bearingType,
+        hubBearingType: bearingType,
         spoke_count: spokes.material === 'carbon' ? '18/18H, 2:1 lacing' : '21/24H, 2:1 lacing',
         uci_approved: true,
         weight_tolerance: '+/- 5%',

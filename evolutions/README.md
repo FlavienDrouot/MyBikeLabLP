@@ -19,6 +19,7 @@ A Project groups several evolutions sharing one goal and definition of done. Chi
 | ID | Slug | Phase | Status | Project |
 |---|---|---|---|---|
 | EVO-047 | foundation | Light EVO | Done | PROJ-001 |
+| EVO-048 | hub-bearing-material | Light EVO | Done | PROJ-001 |
 
 ## Fixes
 

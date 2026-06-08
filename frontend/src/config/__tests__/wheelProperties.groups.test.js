@@ -22,7 +22,7 @@ describe('WHEEL_PROPERTIES registry groups', () => {
   });
 
   it('assigns current hub properties to the hub group', () => {
-    const hubPropertyIds = ['hub', 'hubBrand', 'hubModel', 'axle', 'freehubOptions', 'discStandard'];
+    const hubPropertyIds = ['hub', 'hubBrand', 'hubModel', 'axle', 'freehubOptions', 'discStandard', 'hubBearingType', 'hubMaterial'];
 
     for (const id of hubPropertyIds) {
       const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === id);
@@ -36,6 +36,16 @@ describe('WHEEL_PROPERTIES registry groups', () => {
     for (const id of spokePropertyIds) {
       const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === id);
       expect(property?.group, `${id} should belong to spokes`).toBe('spokes');
+    }
+  });
+
+  it('declares promoted hub fields as multi-select filters', () => {
+    const filterableHubPropertyIds = ['hubBearingType', 'hubMaterial'];
+
+    for (const id of filterableHubPropertyIds) {
+      const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === id);
+      expect(property?.group, `${id} should belong to hub`).toBe('hub');
+      expect(property?.filter, `${id} should be filterable`).toEqual({ type: 'multiSelect' });
     }
   });
 });
