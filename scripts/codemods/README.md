@@ -33,19 +33,23 @@ node scripts/codemods/other-specs-promote.mjs --concept spokes-detail --dry-run
 node scripts/codemods/other-specs-promote.mjs --concept spokes-detail --write
 ```
 
-<<<<<<< HEAD
 EVO-051 promotes rim material/construction fields:
 
 ```powershell
 node scripts/codemods/other-specs-promote.mjs --concept rim-material-construction --dry-run
 node scripts/codemods/other-specs-promote.mjs --concept rim-material-construction --write
-=======
 EVO-052 promotes rim max tire pressure fields:
 
 ```powershell
 node scripts/codemods/other-specs-promote.mjs --concept rim-max-tire-pressure --dry-run
 node scripts/codemods/other-specs-promote.mjs --concept rim-max-tire-pressure --write
->>>>>>> evo-052-rim-max-tire-pressure
+```
+
+EVO-054 promotes certification fields:
+
+```powershell
+node scripts/codemods/other-specs-promote.mjs --concept certification --dry-run
+node scripts/codemods/other-specs-promote.mjs --concept certification --write
 ```
 
 Rules for later PROJ-001 child evolutions:

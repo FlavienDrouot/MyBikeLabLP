@@ -206,6 +206,9 @@
     "axle": { "label": "Axle (F / R)" },
     "freehubOptions": { "label": "Freehub options", "popupTitle": "Freehub options" },
     "maxSystemWeight": { "label": "Max system weight" },
+    "uciApproved": { "label": "UCI approved" },
+    "astmCategory": { "label": "ASTM category" },
+    "ebikeApproved": { "label": "E-bike approved" },
     "wheelsetCategory": { "label": "Category" },
     "discStandard": { "label": "Disc standard" },
     "variant": { "label": "Variant" }
@@ -237,6 +240,16 @@
       "all": "All",
       "true": "Tubeless",
       "false": "Not tubeless"
+    },
+    "uciApproved": {
+      "all": "All",
+      "true": "UCI approved",
+      "false": "Not UCI approved"
+    },
+    "ebikeApproved": {
+      "all": "All",
+      "true": "E-bike approved",
+      "false": "Not e-bike approved"
     }
   },
   "rimMaterial": {
@@ -262,6 +275,14 @@
   "tubelessReady": {
     "true": "Tubeless",
     "false": "Not tubeless"
+  },
+  "uciApproved": {
+    "true": "UCI approved",
+    "false": "Not UCI approved"
+  },
+  "ebikeApproved": {
+    "true": "E-bike approved",
+    "false": "Not e-bike approved"
   },
   "wheelsetCategory": {
     "all-round": "All-round",

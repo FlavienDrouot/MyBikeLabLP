@@ -41,14 +41,12 @@ const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
   'rear_wheel_spoke_lacing',
   'lacing',
   'rear_lacing',
-<<<<<<< HEAD
   'rim_material_name',
   'rim_material_detail',
   'rim_construction',
   'rim_technology',
   'rim_construction_technology',
-=======
-  'max_tire_pressure_psi',
+'max_tire_pressure_psi',
   'max_tire_pressure_bar',
   'maximum_tire_pressure',
   'max_tire_pressure_tubeless_psi',
@@ -56,7 +54,10 @@ const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
   'max_tire_pressure_psi_28c',
   'max_tire_pressure_psi_clincher',
   'max_tire_pressure_psi_tubeless',
->>>>>>> evo-052-rim-max-tire-pressure
+  'uci_approved',
+  'astm_category',
+  'e_bike_approved',
+  'certification',
   'weight_carbon_spoke_grams',
   'carbon_spoke_option',
   'external_width_options_mm',
@@ -138,7 +139,6 @@ function collectOtherSpecWarnings(entry, id) {
         return `other_specs.${key} on entry ${id}: promoted spoke detail data must use spokes.* fields`;
       }
       if (
-<<<<<<< HEAD
         key === 'rim_material_name' ||
         key === 'rim_material_detail' ||
         key === 'rim_construction' ||
@@ -146,7 +146,8 @@ function collectOtherSpecWarnings(entry, id) {
         key === 'rim_construction_technology'
       ) {
         return `other_specs.${key} on entry ${id}: promoted rim material/construction data must use rim.* fields`;
-=======
+      }
+      if (
         key === 'max_tire_pressure_psi' ||
         key === 'max_tire_pressure_bar' ||
         key === 'maximum_tire_pressure' ||
@@ -157,7 +158,14 @@ function collectOtherSpecWarnings(entry, id) {
         key === 'max_tire_pressure_psi_tubeless'
       ) {
         return `other_specs.${key} on entry ${id}: promoted tire pressure data must use rim.max_tire_pressure`;
->>>>>>> evo-052-rim-max-tire-pressure
+      }
+      if (
+        key === 'uci_approved' ||
+        key === 'astm_category' ||
+        key === 'e_bike_approved' ||
+        key === 'certification'
+      ) {
+        return `other_specs.${key} on entry ${id}: promoted certification data must use certification.* fields`;
       }
       return `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`;
     });

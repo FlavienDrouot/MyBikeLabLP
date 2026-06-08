@@ -5,8 +5,7 @@ const FREEHUB_OPTIONS = ['Shimano HG', 'Shimano Micro Spline', 'SRAM XDR', 'Camp
 const baseOtherSpecs = {
   engagement_ratchet: 'Vapor 45T',
   tire_compatibility: 'Tubeless/clincher',
-  recommended_tire_size_c: '28-30 aero optimized; compatible with 28-35',
-  certification: 'UCI approved'
+  recommended_tire_size_c: '28-30 aero optimized; compatible with 28-35'
 };
 
 const makeNo6Wheel = ({
@@ -74,7 +73,7 @@ const makeNo6Wheel = ({
 
 
 
-    hubBearingType, bearing_models: [], material: null }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: image ?? wheelPlaceholderUrl, images, affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers: [] }, other_specs: { ...baseOtherSpecs,
+    hubBearingType, bearing_models: [], material: null }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: image ?? wheelPlaceholderUrl, images, affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers: [] }, certification: { uci: true, astm: null, ebike: null }, other_specs: { ...baseOtherSpecs,
     engagement_ratchet,
 
 

@@ -192,15 +192,10 @@ Kept in sync as children are created. Each child is also registered in the Evolu
 | EVO-048 | hub-bearing-material | Light | Done |
 | EVO-049 | spokes-count | Light | Done |
 | EVO-050 | spokes-detail | Light | Done |
-<<<<<<< HEAD
 | EVO-051 | rim-material-construction | Light | Done |
-| EVO-052 | rim-max-tire-pressure | Light | Planned |
-=======
-| EVO-051 | rim-material-construction | Light | Planned |
 | EVO-052 | rim-max-tire-pressure | Light | Done |
->>>>>>> evo-052-rim-max-tire-pressure
 | EVO-053 | warranty | Light | Planned |
-| EVO-054 | certification | Light | Planned |
+| EVO-054 | certification | Light | Done |
 | EVO-055 | weight-tolerance | Light | Planned |
 | EVO-056 | tire-compatibility | Light (Standard fallback) | Planned |
 | EVO-057 | hub-engagement | Light (Standard fallback) | Planned |

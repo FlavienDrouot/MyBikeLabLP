@@ -149,9 +149,9 @@ makeWheel({
   otherSpecs: {
     hubBearingType: bearingType,
 
-    uci_approved: true,
+
     weight_tolerance: '+/- 5%'
-  }
+  }, certification: { uci: true, astm: null, ebike: null }
 })
 );
 

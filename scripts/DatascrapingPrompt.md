@@ -60,11 +60,11 @@ For spoke count specs, write source labels such as `spoke_count`, `spoke_count_f
 
 For spoke detail specs, write source labels such as `nipples`, `spoke_nipple`, `spoke_nipples`, `spoke_type`, `spoke_profile`, `spoke_lacing`, `spoke_lacing_front`, `spoke_lacing_rear`, `front_wheel_spoke_lacing`, `rear_wheel_spoke_lacing`, `lacing`, and `rear_lacing` into `spokes.nipple`, `spokes.type`, `spokes.profile`, and `spokes.lacing`. Use `{ "front": value, "rear": value }` for a single wheelset lacing value, or map explicit front/rear values to the matching side. Normalize simple lacing shorthand such as `2x` to `2-cross` when unambiguous. Do not duplicate those labels in `other_specs`.
 
-<<<<<<< HEAD
 For rim material and construction specs, keep the high-level material category in `rim.material` (`carbon` or `aluminum`). Write source labels such as `rim_material_name`, `rim_material_detail`, `rim_construction`, `rim_technology`, and `rim_construction_technology` into `rim.construction` when they contain material names, layup, resin, welding, laminate, or construction technology details. Do not duplicate those labels in `other_specs`.
-=======
+
 For maximum tire pressure specs, write source labels such as `max_tire_pressure_psi`, `max_tire_pressure_bar`, `maximum_tire_pressure`, `max_tire_pressure_tubeless_psi`, `max_tire_pressure_tubed_psi`, `max_tire_pressure_psi_28c`, `max_tire_pressure_psi_clincher`, and `max_tire_pressure_psi_tubeless` into `rim.max_tire_pressure`. Store `{ "psi": number|null, "bar": number|null, "note": string|null }`. Convert the missing unit when only one unit is published (`psi = round(bar * 14.5038)`, `bar = round((psi / 14.5038) * 10) / 10`). Preserve conditional wording such as tubeless/tubed or tire-width-specific limits in `note`. Do not duplicate those labels in `other_specs`.
->>>>>>> evo-052-rim-max-tire-pressure
+
+For certification specs, write source labels such as `uci_approved`, `astm_category`, `e_bike_approved`, and explicit free-text `certification` statements into top-level `certification`. Store `{ "uci": boolean|null, "astm": number|null, "ebike": boolean|null }`. Parse only explicit UCI approval, ASTM category, and e-bike approval statements. Do not infer certification from category, hookless/tubeless state, or general marketing claims. Do not duplicate those labels in `other_specs`.
 
 ### Data Quality Requirements
 

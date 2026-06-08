@@ -62,17 +62,22 @@ const migrations = {
       return promoteSpokesDetail(source);
     },
   },
-<<<<<<< HEAD
   'rim-material-construction': {
     description: 'Promote rim material/construction fields from other_specs into rim for EVO-051.',
     transform(source) {
       return promoteRimMaterialConstruction(source);
-=======
+    },
+  },
   'rim-max-tire-pressure': {
     description: 'Promote max tire pressure fields from other_specs into rim.max_tire_pressure for EVO-052.',
     transform(source) {
       return promoteRimMaxTirePressure(source);
->>>>>>> evo-052-rim-max-tire-pressure
+    },
+  },
+  certification: {
+    description: 'Promote certification fields from other_specs into certification for EVO-054.',
+    transform(source) {
+      return promoteCertification(source);
     },
   },
 };
@@ -105,14 +110,14 @@ const consumedSpokesDetailOtherSpecKeys = new Set([
   'rear_lacing',
 ]);
 
-<<<<<<< HEAD
 const consumedRimMaterialConstructionOtherSpecKeys = new Set([
   'rim_material_name',
   'rim_material_detail',
   'rim_construction',
   'rim_technology',
   'rim_construction_technology',
-=======
+]);
+
 const consumedRimMaxTirePressureOtherSpecKeys = new Set([
   'max_tire_pressure_psi',
   'max_tire_pressure_bar',
@@ -122,7 +127,13 @@ const consumedRimMaxTirePressureOtherSpecKeys = new Set([
   'max_tire_pressure_psi_28c',
   'max_tire_pressure_psi_clincher',
   'max_tire_pressure_psi_tubeless',
->>>>>>> evo-052-rim-max-tire-pressure
+]);
+
+const consumedCertificationOtherSpecKeys = new Set([
+  'uci_approved',
+  'astm_category',
+  'e_bike_approved',
+  'certification',
 ]);
 
 const getPropertyName = (property) => {
@@ -545,7 +556,6 @@ const promoteSpokesDetail = (source) => {
   }, source).code;
 };
 
-<<<<<<< HEAD
 const normalizedTextFromNode = (value) => {
   if (t.isStringLiteral(value)) return value.value.trim();
   return null;
@@ -557,7 +567,10 @@ const categoryMaterialFromText = (value) => {
   if (/\bcarbon\b/.test(text)) return 'carbon';
   if (/\balum(?:inum|inium)?\b/.test(text) || /\bmaxtal\b/.test(text) || /\bs6000\b/.test(text)) {
     return 'aluminum';
-=======
+  }
+  return null;
+};
+
 const PSI_PER_BAR = 14.5038;
 
 const parsePressureNumber = (value) => {
@@ -565,12 +578,10 @@ const parsePressureNumber = (value) => {
   if (t.isStringLiteral(value)) {
     const match = value.value.trim().match(/\d+(?:[.,]\d+)?/);
     if (match) return Number(match[0].replace(',', '.'));
->>>>>>> evo-052-rim-max-tire-pressure
   }
   return null;
 };
 
-<<<<<<< HEAD
 const isEmptyStringLiteral = (value) => t.isStringLiteral(value) && value.value.trim() === '';
 
 const constructionNodeFromValues = (values) => {
@@ -605,7 +616,89 @@ const shouldKeepMaterialNameAsConstruction = (value) => {
 };
 
 const promoteRimMaterialConstructionInObjectExpression = (objectExpression) => {
-=======
+  const rimProperty = getObjectProperty(objectExpression, 'rim');
+  const otherSpecsProperty =
+    getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
+
+  if (!rimProperty || !otherSpecsProperty || !t.isObjectProperty(rimProperty) || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(otherSpecsProperty.value)) {
+    return false;
+  }
+
+  const otherSpecsObject = otherSpecsProperty.value;
+  const remainingOtherSpecsProperties = [];
+  let changed = false;
+  let materialName = null;
+  const constructionValues = [];
+
+  for (const property of otherSpecsObject.properties) {
+    const sourceName = getPropertyName(property);
+
+    if (!consumedRimMaterialConstructionOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+      remainingOtherSpecsProperties.push(property);
+      continue;
+    }
+
+    if (sourceName === 'rim_material_name') {
+      materialName ??= property.value;
+      if (shouldKeepMaterialNameAsConstruction(property.value)) {
+        constructionValues.push(property.value);
+      }
+    } else {
+      constructionValues.push(property.value);
+    }
+
+    changed = true;
+  }
+
+  if (!changed) return false;
+
+  otherSpecsObject.properties = remainingOtherSpecsProperties;
+
+  if (!t.isObjectExpression(rimProperty.value)) {
+    return true;
+  }
+
+  const rimObject = rimProperty.value;
+  const materialProperty = getObjectProperty(rimObject, 'material');
+  const materialCategory = materialName ? categoryMaterialFromText(materialName) : null;
+
+  if (materialCategory && (!materialProperty || !t.isObjectProperty(materialProperty) || isEmptyStringLiteral(materialProperty.value))) {
+    if (materialProperty && t.isObjectProperty(materialProperty)) {
+      materialProperty.value = t.stringLiteral(materialCategory);
+    } else {
+      rimObject.properties.unshift(t.objectProperty(t.identifier('material'), t.stringLiteral(materialCategory)));
+    }
+  }
+
+  if (constructionValues.length > 0 && !hasProperty(rimObject, 'construction')) {
+    rimObject.properties.push(t.objectProperty(t.identifier('construction'), constructionNodeFromValues(constructionValues)));
+  }
+
+  return true;
+};
+
+const promoteRimMaterialConstruction = (source) => {
+  const ast = parser.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
+  let changed = false;
+
+  traverse(ast, {
+    ObjectExpression(path) {
+      if (promoteRimMaterialConstructionInObjectExpression(path.node)) {
+        changed = true;
+      }
+    },
+  });
+
+  if (!changed) return source;
+  return generator(ast, {
+    retainLines: true,
+    jsescOption: { minimal: true },
+  }, source).code;
+};
+
 const roundPsi = (value) => Math.round(value);
 const roundBar = (value) => Math.round(value * 10) / 10;
 
@@ -681,22 +774,10 @@ const normalizePressure = ({ genericPsi, genericBar, conditionalPsiValues, noteP
 };
 
 const promoteRimMaxTirePressureInObjectExpression = (objectExpression) => {
->>>>>>> evo-052-rim-max-tire-pressure
   const rimProperty = getObjectProperty(objectExpression, 'rim');
   const otherSpecsProperty =
     getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
 
-<<<<<<< HEAD
-  if (!rimProperty || !otherSpecsProperty || !t.isObjectProperty(rimProperty) || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(otherSpecsProperty.value)) {
-    return false;
-  }
-
-  const otherSpecsObject = otherSpecsProperty.value;
-  const remainingOtherSpecsProperties = [];
-  let changed = false;
-  let materialName = null;
-  const constructionValues = [];
-=======
   if (!rimProperty || !otherSpecsProperty || !t.isObjectProperty(rimProperty) || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(rimProperty.value) || !t.isObjectExpression(otherSpecsProperty.value)) {
     return false;
   }
@@ -709,29 +790,15 @@ const promoteRimMaxTirePressureInObjectExpression = (objectExpression) => {
   let genericBar = null;
   const conditionalPsiValues = [];
   const noteParts = [];
->>>>>>> evo-052-rim-max-tire-pressure
 
   for (const property of otherSpecsObject.properties) {
     const sourceName = getPropertyName(property);
 
-<<<<<<< HEAD
-    if (!consumedRimMaterialConstructionOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
-=======
     if (!consumedRimMaxTirePressureOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
->>>>>>> evo-052-rim-max-tire-pressure
       remainingOtherSpecsProperties.push(property);
       continue;
     }
 
-<<<<<<< HEAD
-    if (sourceName === 'rim_material_name') {
-      materialName ??= property.value;
-      if (shouldKeepMaterialNameAsConstruction(property.value)) {
-        constructionValues.push(property.value);
-      }
-    } else {
-      constructionValues.push(property.value);
-=======
     if (sourceName === 'max_tire_pressure_psi') {
       genericPsi ??= parsePressureNumber(property.value);
     } else if (sourceName === 'max_tire_pressure_bar') {
@@ -746,7 +813,6 @@ const promoteRimMaxTirePressureInObjectExpression = (objectExpression) => {
       if (conditionalPsi !== null) conditionalPsiValues.push(conditionalPsi);
       const note = pressureText(property);
       if (note) noteParts.push(note);
->>>>>>> evo-052-rim-max-tire-pressure
     }
 
     changed = true;
@@ -756,26 +822,6 @@ const promoteRimMaxTirePressureInObjectExpression = (objectExpression) => {
 
   otherSpecsObject.properties = remainingOtherSpecsProperties;
 
-<<<<<<< HEAD
-  if (!t.isObjectExpression(rimProperty.value)) {
-    return true;
-  }
-
-  const rimObject = rimProperty.value;
-  const materialProperty = getObjectProperty(rimObject, 'material');
-  const materialCategory = materialName ? categoryMaterialFromText(materialName) : null;
-
-  if (materialCategory && (!materialProperty || !t.isObjectProperty(materialProperty) || isEmptyStringLiteral(materialProperty.value))) {
-    if (materialProperty && t.isObjectProperty(materialProperty)) {
-      materialProperty.value = t.stringLiteral(materialCategory);
-    } else {
-      rimObject.properties.unshift(t.objectProperty(t.identifier('material'), t.stringLiteral(materialCategory)));
-    }
-  }
-
-  if (constructionValues.length > 0 && !hasProperty(rimObject, 'construction')) {
-    rimObject.properties.push(t.objectProperty(t.identifier('construction'), constructionNodeFromValues(constructionValues)));
-=======
   const pressure = normalizePressure({ genericPsi, genericBar, conditionalPsiValues, noteParts });
   if (pressure.psi === null && pressure.bar === null && pressure.note === null) {
     return true;
@@ -783,17 +829,12 @@ const promoteRimMaxTirePressureInObjectExpression = (objectExpression) => {
 
   if (!hasProperty(rimObject, 'max_tire_pressure')) {
     rimObject.properties.push(pressureObjectProperty(pressure));
->>>>>>> evo-052-rim-max-tire-pressure
   }
 
   return true;
 };
 
-<<<<<<< HEAD
-const promoteRimMaterialConstruction = (source) => {
-=======
 const promoteRimMaxTirePressure = (source) => {
->>>>>>> evo-052-rim-max-tire-pressure
   const ast = parser.parse(source, {
     sourceType: 'module',
     plugins: ['jsx'],
@@ -802,11 +843,152 @@ const promoteRimMaxTirePressure = (source) => {
 
   traverse(ast, {
     ObjectExpression(path) {
-<<<<<<< HEAD
-      if (promoteRimMaterialConstructionInObjectExpression(path.node)) {
-=======
       if (promoteRimMaxTirePressureInObjectExpression(path.node)) {
->>>>>>> evo-052-rim-max-tire-pressure
+        changed = true;
+      }
+    },
+  });
+
+  if (!changed) return source;
+  return generator(ast, {
+    retainLines: true,
+    jsescOption: { minimal: true },
+  }, source).code;
+};
+
+const parseBooleanNode = (value) => {
+  if (t.isBooleanLiteral(value)) return value.value;
+  if (t.isStringLiteral(value)) {
+    const text = value.value.trim().toLowerCase();
+    if (['true', 'yes', 'approved', 'uci approved', 'e-bike approved', 'ebike approved'].includes(text)) return true;
+    if (['false', 'no', 'not approved', 'not uci approved', 'not e-bike approved', 'not ebike approved'].includes(text)) return false;
+  }
+  return null;
+};
+
+const parseAstmCategoryNode = (value) => {
+  if (t.isNumericLiteral(value)) return value.value;
+  if (t.isStringLiteral(value)) {
+    const match = value.value.trim().match(/\b(?:astm(?:\s*f2043)?\s*)?(?:category|cat\.?)?\s*([1-5])\b/i);
+    if (match) return Number(match[1]);
+  }
+  return null;
+};
+
+const parseCertificationText = (value) => {
+  if (!t.isStringLiteral(value)) return { uci: null, astm: null, ebike: null };
+  const text = value.value.trim();
+  if (!text) return { uci: null, astm: null, ebike: null };
+  const lower = text.toLowerCase();
+
+  const uci =
+    /\buci\b/.test(lower) && /\b(approved|certified|compliant)\b/.test(lower)
+      ? true
+      : /\bnot\s+uci\b|\buci\b.*\b(not approved|not certified)\b/.test(lower)
+        ? false
+        : null;
+  const astm = parseAstmCategoryNode(value);
+  const ebike =
+    /\be[-\s]?bike\b/.test(lower) && /\b(approved|compatible|certified)\b/.test(lower)
+      ? true
+      : /\bnot\s+e[-\s]?bike\b|\be[-\s]?bike\b.*\b(not approved|not compatible|not certified)\b/.test(lower)
+        ? false
+        : null;
+
+  return { uci, astm, ebike };
+};
+
+const valueNode = (value) => (
+  value === null ? t.nullLiteral() : typeof value === 'boolean' ? t.booleanLiteral(value) : t.numericLiteral(value)
+);
+
+const certificationObjectProperty = ({ uci, astm, ebike }) =>
+  t.objectProperty(
+    t.identifier('certification'),
+    t.objectExpression([
+      t.objectProperty(t.identifier('uci'), valueNode(uci)),
+      t.objectProperty(t.identifier('astm'), valueNode(astm)),
+      t.objectProperty(t.identifier('ebike'), valueNode(ebike)),
+    ]),
+  );
+
+const setCertificationField = (certificationObject, key, value) => {
+  if (value === null) return;
+  const existing = getObjectProperty(certificationObject, key);
+  if (existing && t.isObjectProperty(existing)) {
+    existing.value = valueNode(value);
+  } else {
+    certificationObject.properties.push(t.objectProperty(t.identifier(key), valueNode(value)));
+  }
+};
+
+const promoteCertificationInObjectExpression = (objectExpression) => {
+  const otherSpecsProperty =
+    getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
+
+  if (!otherSpecsProperty || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(otherSpecsProperty.value)) {
+    return false;
+  }
+
+  const otherSpecsObject = otherSpecsProperty.value;
+  const remainingOtherSpecsProperties = [];
+  let changed = false;
+  const certification = { uci: null, astm: null, ebike: null };
+
+  for (const property of otherSpecsObject.properties) {
+    const sourceName = getPropertyName(property);
+
+    if (!consumedCertificationOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+      remainingOtherSpecsProperties.push(property);
+      continue;
+    }
+
+    if (sourceName === 'uci_approved') {
+      certification.uci ??= parseBooleanNode(property.value);
+    } else if (sourceName === 'astm_category') {
+      certification.astm ??= parseAstmCategoryNode(property.value);
+    } else if (sourceName === 'e_bike_approved') {
+      certification.ebike ??= parseBooleanNode(property.value);
+    } else if (sourceName === 'certification') {
+      const parsed = parseCertificationText(property.value);
+      certification.uci ??= parsed.uci;
+      certification.astm ??= parsed.astm;
+      certification.ebike ??= parsed.ebike;
+    }
+
+    changed = true;
+  }
+
+  if (!changed) return false;
+
+  otherSpecsObject.properties = remainingOtherSpecsProperties;
+
+  if (certification.uci === null && certification.astm === null && certification.ebike === null) {
+    return true;
+  }
+
+  const existing = getObjectProperty(objectExpression, 'certification');
+  if (existing && t.isObjectProperty(existing) && t.isObjectExpression(existing.value)) {
+    setCertificationField(existing.value, 'uci', certification.uci);
+    setCertificationField(existing.value, 'astm', certification.astm);
+    setCertificationField(existing.value, 'ebike', certification.ebike);
+  } else if (!existing) {
+    objectExpression.properties.push(certificationObjectProperty(certification));
+  }
+
+  return true;
+};
+
+const promoteCertification = (source) => {
+  const ast = parser.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
+  let changed = false;
+
+  traverse(ast, {
+    ObjectExpression(path) {
+      if (promoteCertificationInObjectExpression(path.node)) {
         changed = true;
       }
     },

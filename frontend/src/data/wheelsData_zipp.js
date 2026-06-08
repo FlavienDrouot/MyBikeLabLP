@@ -8,11 +8,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 115,
-<<<<<<< HEAD
-  rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23, construction: "Biomimetic Laminate, mixed-modulus carbon" },
-=======
-  rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null } },
->>>>>>> evo-052-rim-max-tire-pressure
+  rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23, construction: "Biomimetic Laminate, mixed-modulus carbon", max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: 'Hyperlite', brand: 'Alpina', material: 'steel', count: { front: 20, rear: 20 }, lacing: { front: "2-cross", rear: "2-cross" } },
   hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
