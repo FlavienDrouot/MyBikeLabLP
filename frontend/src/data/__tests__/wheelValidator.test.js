@@ -118,7 +118,6 @@ describe('validateWheelEntry', () => {
         spoke_count_front: 21,
         spoke_count_rear: 24,
         spoke_count_disc: '21 front and rear',
-        nipples: 'Sapim Secure Lock',
       },
     });
     const warnings = validateWheelEntry(entry);
@@ -127,6 +126,31 @@ describe('validateWheelEntry', () => {
     expect(warnings[1]).toContain('other_specs.spoke_count_front');
     expect(warnings[2]).toContain('other_specs.spoke_count_rear');
     expect(warnings[3]).toContain('other_specs.spoke_count_disc');
+  });
+
+  it('warns when promoted spoke detail fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        nipples: 'Sapim Secure Lock',
+        spoke_nipple: 'DT Swiss Pro Lock',
+        spoke_nipples: 'ABS black',
+        spoke_type: 'straight-pull',
+        spoke_profile: 'flat double-butted',
+        spoke_lacing: '2x',
+        spoke_lacing_front: 'radial',
+        spoke_lacing_rear: '2-cross',
+        front_wheel_spoke_lacing: 'radial',
+        rear_wheel_spoke_lacing: '2-cross',
+        lacing: '1:1',
+        rear_lacing: '2:1',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(12);
+    expect(warnings[0]).toContain('other_specs.nipples');
+    expect(warnings[3]).toContain('other_specs.spoke_type');
+    expect(warnings[5]).toContain('other_specs.spoke_lacing');
+    expect(warnings[10]).toContain('other_specs.lacing');
   });
 });
 

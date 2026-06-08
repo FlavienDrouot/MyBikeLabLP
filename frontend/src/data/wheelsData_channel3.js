@@ -89,7 +89,7 @@ export const channel3Wheels = [
   spokes: {
     model: 'SA1423',
     brand: 'Pillar',
-    material: 'steel', count: { front: 24, rear: 24 }
+    material: 'steel', count: { front: 24, rear: 24 }, lacing: { front: "2-cross", rear: "2-cross" }
   },
   hub: {
     model: 'D21',
@@ -112,7 +112,7 @@ export const channel3Wheels = [
     pawls: 6,
     engagements: 72,
 
-    lacing: '2-cross',
+
     tire_compatibility: '700x25-28c, Clincher/Tubeless',
     warranty_years: 2
   }

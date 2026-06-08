@@ -17,7 +17,6 @@ const baseHubSpecs = {
 
 const baseOtherSpecs = {
   weight_tolerance_grams: 15,
-  lacing: '1:1',
   max_tire_pressure_psi_28c: 110,
   rim_construction:
     'In-house manufactured carbon (Toray T1100/T800+), laser-guided layup, UV-shaped hooked-bead profile; validated to 100 J impact (UCI requirement 40 J)',
@@ -56,6 +55,7 @@ const makeOverfastWheel = ({
     brand: 'OVERFAST',
     material: 'carbon',
     count: { front: 20, rear: 20 },
+    lacing: { front: '1:1', rear: '1:1' },
   },
   hub: {
     model: 'Overfast Hub',

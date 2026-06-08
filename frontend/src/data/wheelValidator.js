@@ -29,6 +29,18 @@ const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
   'spoke_count_front',
   'spoke_count_rear',
   'spoke_count_disc',
+  'nipples',
+  'spoke_nipple',
+  'spoke_nipples',
+  'spoke_type',
+  'spoke_profile',
+  'spoke_lacing',
+  'spoke_lacing_front',
+  'spoke_lacing_rear',
+  'front_wheel_spoke_lacing',
+  'rear_wheel_spoke_lacing',
+  'lacing',
+  'rear_lacing',
   'weight_carbon_spoke_grams',
   'carbon_spoke_option',
   'external_width_options_mm',
@@ -92,6 +104,22 @@ function collectOtherSpecWarnings(entry, id) {
       }
       if (key === 'spoke_count' || key === 'spoke_count_front' || key === 'spoke_count_rear' || key === 'spoke_count_disc') {
         return `other_specs.${key} on entry ${id}: promoted spoke count data must use spokes.count`;
+      }
+      if (
+        key === 'nipples' ||
+        key === 'spoke_nipple' ||
+        key === 'spoke_nipples' ||
+        key === 'spoke_type' ||
+        key === 'spoke_profile' ||
+        key === 'spoke_lacing' ||
+        key === 'spoke_lacing_front' ||
+        key === 'spoke_lacing_rear' ||
+        key === 'front_wheel_spoke_lacing' ||
+        key === 'rear_wheel_spoke_lacing' ||
+        key === 'lacing' ||
+        key === 'rear_lacing'
+      ) {
+        return `other_specs.${key} on entry ${id}: promoted spoke detail data must use spokes.* fields`;
       }
       return `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`;
     });

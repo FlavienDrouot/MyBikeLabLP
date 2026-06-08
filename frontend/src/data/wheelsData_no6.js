@@ -8,7 +8,6 @@ const baseOtherSpecs = {
   tire_compatibility: 'Tubeless/clincher',
   recommended_tire_size_c: '28-30 aero optimized; compatible with 28-35',
   rim_construction: 'Toray T700/T800 carbon, UD glossy paintless finish',
-  nipples: 'Aerotitanium Alloy',
   certification: 'UCI approved'
 };
 
@@ -55,7 +54,8 @@ const makeNo6Wheel = ({
     model: `Carbon aero spoke ${carbon_spoke_diameter_mm}`,
     brand: 'NO.6',
     material: 'carbon',
-    count: { front: spokeCountFront, rear: spokeCountRear }
+    count: { front: spokeCountFront, rear: spokeCountRear },
+    nipple: 'Aerotitanium Alloy'
   },
   hub: {
     model: hub_model,

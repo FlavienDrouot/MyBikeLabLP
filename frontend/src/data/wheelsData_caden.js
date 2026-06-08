@@ -20,7 +20,6 @@ const baseHubSpecs = {
 };
 
 const baseOtherSpecs = {
-  nipples: 'SAPIM Secure Lock external',
   rim_construction: 'UCI-approved high-temperature mould, High TG heat-resistant resin, reinforced nipple bed, formed (enveloped) rim hook',
   tire_type: 'tubeless ready (tubes also possible)',
   discount_pct: 35,
@@ -84,6 +83,8 @@ const steelSpokes = {
   brand: 'Caden',
   material: 'steel',
   count: { front: 16, rear: 21 },
+  nipple: 'SAPIM Secure Lock external',
+  type: 'straight-pull aero',
 };
 
 const carbonSpokes = {
@@ -91,15 +92,15 @@ const carbonSpokes = {
   brand: 'Caden',
   material: 'carbon',
   count: { front: 16, rear: 21 },
+  nipple: 'SAPIM Secure Lock external',
+  type: 'captured carbon straight-pull aero',
 };
 
 const standardOtherSpecs = {
-  spoke_type: 'straight-pull aero',
   brake_note: 'Disc brake only, no rim brake model',
 };
 
 const carbonSpokeOtherSpecs = {
-  spoke_type: 'captured carbon straight-pull aero',
   brake_note: 'Disc brake only, no rim brake model',
   captured_spoke_safety_note: 'Custom captured-spoke carbon hub (not open flange) for added safety',
 };

@@ -95,7 +95,7 @@ makeArcarisWheel({
   variant: 'base',
   weight_grams: 948.3,
   max_system_weight_kg: 90,
-  spokes: { model: 'VONOA Carbon', brand: 'VONOA', material: 'carbon', count: { front: 16, rear: 18 } },
+  spokes: { model: 'VONOA Carbon', brand: 'VONOA', material: 'carbon', count: { front: 16, rear: 18 }, lacing: { front: null, rear: "2:1" } },
   hubModel: '8848 H-WORKS',
   hubBrand: 'H-WORKS',
   priceUsd: 1599,
@@ -103,8 +103,8 @@ makeArcarisWheel({
     hubBearingType: 'Steel (TPI)',
 
 
-    recommended_rider_weight_kg: 75,
-    rear_lacing: '2:1'
+    recommended_rider_weight_kg: 75
+
   }
 }),
 makeArcarisWheel({
@@ -112,7 +112,7 @@ makeArcarisWheel({
   variant: 'pro',
   weight_grams: 884.8,
   max_system_weight_kg: 90,
-  spokes: { model: 'VONOA Carbon w/ Titanium Fittings', brand: 'VONOA', material: 'carbon', count: { front: 16, rear: 18 } },
+  spokes: { model: 'VONOA Carbon w/ Titanium Fittings', brand: 'VONOA', material: 'carbon', count: { front: 16, rear: 18 }, lacing: { front: null, rear: "2:1" } },
   hubModel: '8848 H-WORKS',
   hubBrand: 'H-WORKS',
   priceUsd: 1899,
@@ -120,8 +120,8 @@ makeArcarisWheel({
     hubBearingType: 'Hybrid Ceramic (TPI)',
 
 
-    recommended_rider_weight_kg: 75,
-    rear_lacing: '2:1'
+    recommended_rider_weight_kg: 75
+
   }
 }),
 makeArcarisWheel({

@@ -56,6 +56,12 @@ const migrations = {
       return promoteSpokesCount(source);
     },
   },
+  'spokes-detail': {
+    description: 'Promote spoke nipple/type/profile/lacing fields from other_specs into spokes for EVO-050.',
+    transform(source) {
+      return promoteSpokesDetail(source);
+    },
+  },
 };
 
 const consumedHubOtherSpecKeys = new Map([
@@ -69,6 +75,21 @@ const consumedSpokesCountOtherSpecKeys = new Set([
   'spoke_count_front',
   'spoke_count_rear',
   'spoke_count_disc',
+]);
+
+const consumedSpokesDetailOtherSpecKeys = new Set([
+  'nipples',
+  'spoke_nipple',
+  'spoke_nipples',
+  'spoke_type',
+  'spoke_profile',
+  'spoke_lacing',
+  'spoke_lacing_front',
+  'spoke_lacing_rear',
+  'front_wheel_spoke_lacing',
+  'rear_wheel_spoke_lacing',
+  'lacing',
+  'rear_lacing',
 ]);
 
 const getPropertyName = (property) => {
@@ -312,6 +333,173 @@ const promoteSpokesCount = (source) => {
   traverse(ast, {
     ObjectExpression(path) {
       if (promoteSpokesCountInObjectExpression(path.node)) {
+        changed = true;
+      }
+    },
+  });
+
+  if (!changed) return source;
+  return generator(ast, {
+    retainLines: true,
+    jsescOption: { minimal: true },
+  }, source).code;
+};
+
+const cloneTextValue = (value) => {
+  const cloned = t.cloneNode(value);
+  if (t.isStringLiteral(cloned) && cloned.value.trim() === '') {
+    return t.nullLiteral();
+  }
+  return cloned;
+};
+
+const normalizedLacingText = (value) => {
+  const trimmed = value.trim();
+  if (!trimmed) return '';
+
+  const lower = trimmed.toLowerCase();
+  if (lower === 'radial') return 'radial';
+  if (/^2x(?:\s+cross)?$/.test(lower)) return '2-cross';
+  return trimmed;
+};
+
+const lacingValueNode = (value) => {
+  if (value === null) return t.nullLiteral();
+  if (t.isStringLiteral(value)) {
+    const normalized = normalizedLacingText(value.value);
+    return normalized ? t.stringLiteral(normalized) : t.nullLiteral();
+  }
+  return t.cloneNode(value);
+};
+
+const lacingObjectProperty = ({ front, rear }) =>
+  t.objectProperty(
+    t.identifier('lacing'),
+    t.objectExpression([
+      t.objectProperty(t.identifier('front'), lacingValueNode(front)),
+      t.objectProperty(t.identifier('rear'), lacingValueNode(rear)),
+    ]),
+  );
+
+const pairFromGlobalLacing = (value) => ({ front: value, rear: value });
+
+const getLacingPairFromValue = (value) => {
+  if (t.isObjectExpression(value)) {
+    const front = getObjectProperty(value, 'front');
+    const rear = getObjectProperty(value, 'rear');
+    return {
+      front: front && t.isObjectProperty(front) ? front.value : null,
+      rear: rear && t.isObjectProperty(rear) ? rear.value : null,
+    };
+  }
+
+  if (t.isStringLiteral(value)) {
+    const text = value.value.trim();
+    const lower = text.toLowerCase();
+
+    const frontRearMatch = lower.match(/(.+?)\s+front\s*,?\s*(.+?)\s+rear/);
+    if (frontRearMatch) {
+      return {
+        front: t.stringLiteral(frontRearMatch[1].trim()),
+        rear: t.stringLiteral(frontRearMatch[2].trim()),
+      };
+    }
+
+    const radialFrontMatch = lower.match(/radial\s+front\s*,?\s*(.+?)\s+rear/);
+    if (radialFrontMatch) {
+      return {
+        front: t.stringLiteral('radial'),
+        rear: t.stringLiteral(radialFrontMatch[1].trim()),
+      };
+    }
+  }
+
+  return pairFromGlobalLacing(value);
+};
+
+const mergeLacingPair = (current, next) => ({
+  front: next.front ?? current.front,
+  rear: next.rear ?? current.rear,
+});
+
+const promoteSpokesDetailInObjectExpression = (objectExpression) => {
+  const spokesProperty = getObjectProperty(objectExpression, 'spokes');
+  const otherSpecsProperty =
+    getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
+
+  if (!spokesProperty || !otherSpecsProperty || !t.isObjectProperty(spokesProperty) || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(otherSpecsProperty.value)) {
+    return false;
+  }
+
+  const otherSpecsObject = otherSpecsProperty.value;
+  const remainingOtherSpecsProperties = [];
+  let changed = false;
+  let nipple = null;
+  let spokeType = null;
+  let profile = null;
+  let lacing = { front: null, rear: null };
+
+  for (const property of otherSpecsObject.properties) {
+    const sourceName = getPropertyName(property);
+
+    if (!consumedSpokesDetailOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+      remainingOtherSpecsProperties.push(property);
+      continue;
+    }
+
+    if (sourceName === 'nipples' || sourceName === 'spoke_nipple' || sourceName === 'spoke_nipples') {
+      nipple ??= property.value;
+    } else if (sourceName === 'spoke_type') {
+      spokeType ??= property.value;
+    } else if (sourceName === 'spoke_profile') {
+      profile ??= property.value;
+    } else if (sourceName === 'spoke_lacing' || sourceName === 'lacing') {
+      lacing = mergeLacingPair(lacing, getLacingPairFromValue(property.value));
+    } else if (sourceName === 'spoke_lacing_front' || sourceName === 'front_wheel_spoke_lacing') {
+      lacing.front = property.value;
+    } else if (sourceName === 'spoke_lacing_rear' || sourceName === 'rear_wheel_spoke_lacing' || sourceName === 'rear_lacing') {
+      lacing.rear = property.value;
+    }
+
+    changed = true;
+  }
+
+  if (!changed) return false;
+
+  otherSpecsObject.properties = remainingOtherSpecsProperties;
+
+  if (!t.isObjectExpression(spokesProperty.value)) {
+    return true;
+  }
+
+  const spokesObject = spokesProperty.value;
+
+  if (nipple !== null && !hasProperty(spokesObject, 'nipple')) {
+    spokesObject.properties.push(t.objectProperty(t.identifier('nipple'), cloneTextValue(nipple)));
+  }
+  if (spokeType !== null && !hasProperty(spokesObject, 'type')) {
+    spokesObject.properties.push(t.objectProperty(t.identifier('type'), cloneTextValue(spokeType)));
+  }
+  if (profile !== null && !hasProperty(spokesObject, 'profile')) {
+    spokesObject.properties.push(t.objectProperty(t.identifier('profile'), cloneTextValue(profile)));
+  }
+  if ((lacing.front !== null || lacing.rear !== null) && !hasProperty(spokesObject, 'lacing')) {
+    spokesObject.properties.push(lacingObjectProperty(lacing));
+  }
+
+  return true;
+};
+
+const promoteSpokesDetail = (source) => {
+  const ast = parser.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
+  let changed = false;
+
+  traverse(ast, {
+    ObjectExpression(path) {
+      if (promoteSpokesDetailInObjectExpression(path.node)) {
         changed = true;
       }
     },

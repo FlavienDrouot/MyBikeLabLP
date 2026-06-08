@@ -616,6 +616,66 @@ export const WHEEL_PROPERTIES = [
       },
     },
   },
+
+  {
+    id: 'spokeNipple',
+    label: 'properties.spokeNipple.label',
+    group: 'spokes',
+    translatable: false,
+    accessor: (w) => w.spokes?.nipple,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'spokeType',
+    label: 'properties.spokeType.label',
+    group: 'spokes',
+    translatable: false,
+    accessor: (w) => w.spokes?.type,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'spokeProfile',
+    label: 'properties.spokeProfile.label',
+    group: 'spokes',
+    translatable: false,
+    accessor: (w) => w.spokes?.profile,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'spokeLacing',
+    label: 'properties.spokeLacing.label',
+    group: 'spokes',
+    translatable: false,
+    accessor: (w) => {
+      const { front, rear } = resolveSpec(w.spokes?.lacing);
+      if (front === null) return null;
+      return front === rear ? front : `${front} / ${rear}`;
+    },
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
 ];
 
 // --- Registry reading helpers ---

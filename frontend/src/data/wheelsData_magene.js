@@ -31,6 +31,22 @@ const splitHubSpecs = (otherSpecs = {}) => {
   };
 };
 
+const splitSpokeDetails = (otherSpecs = {}) => {
+  const {
+    frontWheelSpokeLacing = null,
+    rearWheelSpokeLacing = null,
+    ...rest
+  } = otherSpecs;
+
+  return {
+    spokeDetails:
+      frontWheelSpokeLacing || rearWheelSpokeLacing
+        ? { lacing: { front: frontWheelSpokeLacing, rear: rearWheelSpokeLacing } }
+        : {},
+    otherSpecs: rest,
+  };
+};
+
 const ultraShared = {
   brand: 'Magene',
   model: 'EXAR Carbon Fiber Wheelset Ultra Series',
@@ -61,8 +77,8 @@ const ultraShared = {
 
 const ultraOtherSpecs = {
   hubBearingType: 'Ceramic',
-  front_wheel_spoke_lacing: '21H 2:1, brake side x2, non-brake side radial lacing',
-  rear_wheel_spoke_lacing: '21H 2:1, drive side x2, brake side radial lacing',
+  frontWheelSpokeLacing: '21H 2:1, brake side x2, non-brake side radial lacing',
+  rearWheelSpokeLacing: '21H 2:1, drive side x2, brake side radial lacing',
   front_wheel_spoke_tension: '110kgf +/-10%',
   rear_wheel_spoke_tension: 'Drive side 130kgf +/-10%, non-drive side 110kgf +/-10%',
   ratchet: '36T, compatible with DT system; replaceable with different tooth count',
@@ -84,6 +100,7 @@ const ultraDarkOtherSpecs = {
 const makeUltra = ({ id, model, variant, weight, category, depth, externalWidth, source, otherSpecs }) => ({
   ...(() => {
     const promoted = splitHubSpecs(otherSpecs);
+    const spokePromotion = splitSpokeDetails(promoted.otherSpecs);
     return {
   ...ultraShared,
   id,
@@ -96,6 +113,10 @@ const makeUltra = ({ id, model, variant, weight, category, depth, externalWidth,
     depth_mm: depth,
     externalWidth_mm: externalWidth,
   },
+  spokes: {
+    ...ultraShared.spokes,
+    ...spokePromotion.spokeDetails,
+  },
   hub: {
     ...ultraShared.hub,
     ...promoted.hubSpecs,
@@ -103,7 +124,7 @@ const makeUltra = ({ id, model, variant, weight, category, depth, externalWidth,
   ...makeLinks(source.url, source.priceUsd),
   other_specs: {
     ...makeLinks(source.url, source.priceUsd).other_specs,
-    ...promoted.otherSpecs,
+    ...spokePromotion.otherSpecs,
   },
     };
   })(),
@@ -160,6 +181,7 @@ const makePro = ({
 }) => ({
   ...(() => {
     const promoted = splitHubSpecs({ ...proOtherSpecs, ...otherSpecs });
+    const spokePromotion = splitSpokeDetails(promoted.otherSpecs);
     return {
   ...proShared,
   id,
@@ -173,6 +195,10 @@ const makePro = ({
     externalWidth_mm: externalWidth,
     internalWidth_mm: internalWidth,
   },
+  spokes: {
+    ...proShared.spokes,
+    ...spokePromotion.spokeDetails,
+  },
   hub: {
     ...proShared.hub,
     axle_front_mm: axleFront,
@@ -183,7 +209,7 @@ const makePro = ({
   ...makeLinks(urls.pro, 649),
   other_specs: {
     ...makeLinks(urls.pro, 649).other_specs,
-    ...promoted.otherSpecs,
+    ...spokePromotion.otherSpecs,
   },
     };
   })(),
@@ -256,8 +282,8 @@ export const mageneWheels = [
     discStandard: null,
     otherSpecs: {
       brake_track: 'Dewatering line design; carbon fiber composite brake blocks included',
-      front_wheel_spoke_lacing: 'Radial lacing, 16H',
-      rear_wheel_spoke_lacing: '21H 2:1, drive side x2, non-drive side radial lacing',
+      frontWheelSpokeLacing: 'Radial lacing, 16H',
+      rearWheelSpokeLacing: '21H 2:1, drive side x2, non-drive side radial lacing',
       package_standard:
         'Carbon fiber front wheel x1, carbon fiber rear wheel x1, factory-installed tubeless rim tape x2, instruction manual x1, special carbon fiber brake block x4, quick release x2, tubeless valve x2',
     },
@@ -276,8 +302,8 @@ export const mageneWheels = [
     discStandard: null,
     otherSpecs: {
       brake_track: 'Dewatering line design; carbon fiber composite brake blocks included',
-      front_wheel_spoke_lacing: 'Radial lacing, 16H',
-      rear_wheel_spoke_lacing: '21H 2:1, drive side x2, non-drive side radial lacing',
+      frontWheelSpokeLacing: 'Radial lacing, 16H',
+      rearWheelSpokeLacing: '21H 2:1, drive side x2, non-drive side radial lacing',
       package_standard:
         'Carbon fiber front wheel x1, carbon fiber rear wheel x1, factory-installed tubeless rim tape x2, instruction manual x1, special carbon fiber brake block x4, quick release x2, tubeless valve x2',
     },
@@ -296,8 +322,8 @@ export const mageneWheels = [
     discStandard: 'Center Lock',
     otherSpecs: {
       alternate_frame_spacing: '100/135mm quick release available separately',
-      front_wheel_spoke_lacing: '21H 2:1, brake side x2, non-brake side radial lacing',
-      rear_wheel_spoke_lacing: '24H 2:1, drive side x2, brake side x2',
+      frontWheelSpokeLacing: '21H 2:1, brake side x2, non-brake side radial lacing',
+      rearWheelSpokeLacing: '24H 2:1, drive side x2, brake side x2',
       package_standard:
         'Carbon fiber front wheel x1, carbon fiber rear wheel x1, factory-installed tubeless rim tape x2, instruction manual x1, tubeless valve x2',
     },
@@ -316,8 +342,8 @@ export const mageneWheels = [
     discStandard: 'Center Lock',
     otherSpecs: {
       alternate_frame_spacing: '100/135mm quick release available separately',
-      front_wheel_spoke_lacing: '21H 2:1, brake side x2, non-brake side radial lacing',
-      rear_wheel_spoke_lacing: '24H 2:1, drive side x2, brake side x2',
+      frontWheelSpokeLacing: '21H 2:1, brake side x2, non-brake side radial lacing',
+      rearWheelSpokeLacing: '24H 2:1, drive side x2, brake side x2',
       package_standard:
         'Carbon fiber front wheel x1, carbon fiber rear wheel x1, factory-installed tubeless rim tape x2, instruction manual x1, tubeless valve x2',
     },

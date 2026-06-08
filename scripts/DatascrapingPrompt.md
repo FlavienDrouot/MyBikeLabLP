@@ -58,6 +58,8 @@ For hub bearing and material specs, write source labels such as `bearing_type`, 
 
 For spoke count specs, write source labels such as `spoke_count`, `spoke_count_front`, `spoke_count_rear`, and `spoke_count_disc` into `spokes.count`. Use `{ "front": n, "rear": n }` for a single wheelset count, or map explicit front/rear values to the matching side. Do not duplicate those labels in `other_specs`.
 
+For spoke detail specs, write source labels such as `nipples`, `spoke_nipple`, `spoke_nipples`, `spoke_type`, `spoke_profile`, `spoke_lacing`, `spoke_lacing_front`, `spoke_lacing_rear`, `front_wheel_spoke_lacing`, `rear_wheel_spoke_lacing`, `lacing`, and `rear_lacing` into `spokes.nipple`, `spokes.type`, `spokes.profile`, and `spokes.lacing`. Use `{ "front": value, "rear": value }` for a single wheelset lacing value, or map explicit front/rear values to the matching side. Normalize simple lacing shorthand such as `2x` to `2-cross` when unambiguous. Do not duplicate those labels in `other_specs`.
+
 ### Data Quality Requirements
 
 * Never invent values.
@@ -118,7 +120,7 @@ Examples include (but are not limited to):
 
 * rider weight limit
 * tire compatibility / recommended tire width
-* spoke count (front/rear)
+* spoke length / tension / replacement part numbers
 * rim construction technologies / hub technologies
 * aerodynamic claims / stiffness metrics
 * certifications / warranty information

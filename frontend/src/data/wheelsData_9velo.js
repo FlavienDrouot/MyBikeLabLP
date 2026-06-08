@@ -139,7 +139,7 @@ makeWheel({
   externalWidth: 30,
   internalWidth: 23.6,
   maxWeight: 95,
-  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 } },
+  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 }, lacing: { front: "1:1 pattern", rear: "1:1 pattern" } },
   hub: {
     ...discCarbonSpokeHub,
     model: 'X21 ultra-lightweight carbon-spoke ratchet'
@@ -150,7 +150,7 @@ makeWheel({
     hubBearingType: 'Steel bearings',
 
 
-    spoke_lacing: '1:1 pattern',
+
     tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
     rim_bed: 'Drilled'
   }
@@ -165,7 +165,7 @@ makeWheel({
   externalWidth: 30,
   internalWidth: 23.6,
   maxWeight: 95,
-  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 } },
+  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 }, lacing: { front: "1:1 pattern", rear: "1:1 pattern" } },
   hub: {
     ...discCarbonSpokeHub,
     model: 'X21 ultra-lightweight carbon-spoke ratchet'
@@ -176,7 +176,7 @@ makeWheel({
     hubBearingType: 'Steel bearings',
 
 
-    spoke_lacing: '1:1 pattern',
+
     tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
     rim_bed: 'Drilled'
   }
@@ -191,7 +191,7 @@ makeWheel({
   externalWidth: 30,
   internalWidth: 23.6,
   maxWeight: 95,
-  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 } },
+  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 }, lacing: { front: "1:1 pattern", rear: "1:1 pattern" } },
   hub: {
     ...discCarbonSpokeHub,
     model: 'X21 ultra-lightweight carbon-spoke ratchet'
@@ -202,7 +202,7 @@ makeWheel({
     hubBearingType: 'Steel bearings',
 
 
-    spoke_lacing: '1:1 pattern',
+
     tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
     rim_bed: 'Drilled'
   }
@@ -216,7 +216,7 @@ makeWheel({
   depth: 50,
   externalWidth: 30,
   internalWidth: 24,
-  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 } },
+  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 }, lacing: { front: "1:1 pattern", rear: "1:1 pattern" } },
   hub: discCarbonSpokeHub,
   url: urls.cdWide,
   priceUsd: 1289,
@@ -224,7 +224,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
 
 
-    spoke_lacing: '1:1 pattern',
+
     tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
     rim_bed: 'Drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
@@ -239,7 +239,7 @@ makeWheel({
   depth: 58,
   externalWidth: 30,
   internalWidth: 24,
-  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 } },
+  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 }, lacing: { front: "1:1 pattern", rear: "1:1 pattern" } },
   hub: discCarbonSpokeHub,
   url: urls.cdWide,
   priceUsd: 1289,
@@ -247,7 +247,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
 
 
-    spoke_lacing: '1:1 pattern',
+
     tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
     rim_bed: 'Drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
@@ -262,7 +262,7 @@ makeWheel({
   depth: 65,
   externalWidth: 30,
   internalWidth: 24,
-  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 } },
+  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 }, lacing: { front: "1:1 pattern", rear: "1:1 pattern" } },
   hub: discCarbonSpokeHub,
   url: urls.cdWide,
   priceUsd: 1289,
@@ -270,7 +270,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
 
 
-    spoke_lacing: '1:1 pattern',
+
     tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
     rim_bed: 'Drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
@@ -285,7 +285,7 @@ makeWheel({
   depth: 50,
   externalWidth: 30,
   internalWidth: 24,
-  spokes: { ...sapimCxRaySpokes, count: { front: 24, rear: 24 } },
+  spokes: { ...sapimCxRaySpokes, count: { front: 24, rear: 24 }, lacing: { front: "2-cross", rear: "2-cross" } },
   hub: discSteelSpokeHub,
   url: urls.lvWide,
   priceUsd: 1039,
@@ -293,7 +293,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
 
 
-    spoke_lacing: '2X front, 2X rear',
+
     tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
     rim_bed: 'No holes drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
@@ -308,7 +308,7 @@ makeWheel({
   depth: 58,
   externalWidth: 30,
   internalWidth: 24,
-  spokes: { ...sapimCxRaySpokes, count: { front: 24, rear: 24 } },
+  spokes: { ...sapimCxRaySpokes, count: { front: 24, rear: 24 }, lacing: { front: "2-cross", rear: "2-cross" } },
   hub: discSteelSpokeHub,
   url: urls.lvWide,
   priceUsd: 1039,
@@ -316,7 +316,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
 
 
-    spoke_lacing: '2X front, 2X rear',
+
     tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
     rim_bed: 'No holes drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
@@ -331,7 +331,7 @@ makeWheel({
   depth: 45,
   externalWidth: 28.3,
   internalWidth: 21,
-  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 } },
+  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 }, lacing: { front: "1:1 pattern", rear: "1:1 pattern" } },
   hub: discCarbonSpokeHub,
   url: urls.cd20,
   priceUsd: 989,
@@ -339,7 +339,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
 
 
-    spoke_lacing: '1:1 pattern',
+
     tire_compatibility: 'Tubeless/clincher; 700x25c-700x47c',
     rim_bed: 'Drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
@@ -354,7 +354,7 @@ makeWheel({
   depth: 58,
   externalWidth: 28.7,
   internalWidth: 21,
-  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 } },
+  spokes: { ...carbonSpokes, count: { front: 20, rear: 20 }, lacing: { front: "1:1 pattern", rear: "1:1 pattern" } },
   hub: discCarbonSpokeHub,
   url: urls.cd20,
   priceUsd: 989,
@@ -362,7 +362,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802',
 
 
-    spoke_lacing: '1:1 pattern',
+
     tire_compatibility: 'Tubeless/clincher; 700x25c-700x47c',
     rim_bed: 'Drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
@@ -377,7 +377,7 @@ makeWheel({
   depth: 35,
   externalWidth: 28,
   internalWidth: 21,
-  spokes: { ...sapimCxRaySpokes, count: { front: 24, rear: 24 } },
+  spokes: { ...sapimCxRaySpokes, count: { front: 24, rear: 24 }, lacing: { front: "2-cross", rear: "2-cross" } },
   hub: discSteelSpokeHub,
   url: urls.lv20,
   priceUsd: 989,
@@ -385,7 +385,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
 
 
-    spoke_lacing: '2X front, 2X rear',
+
     tire_compatibility: 'Tubeless/clincher; 700x25c-700x47c',
     rim_bed: 'No holes drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
@@ -400,7 +400,7 @@ makeWheel({
   depth: 45,
   externalWidth: 28,
   internalWidth: 21,
-  spokes: { ...sapimCxRaySpokes, count: { front: 24, rear: 24 } },
+  spokes: { ...sapimCxRaySpokes, count: { front: 24, rear: 24 }, lacing: { front: "2-cross", rear: "2-cross" } },
   hub: discSteelSpokeHub,
   url: urls.lv20,
   priceUsd: 989,
@@ -408,7 +408,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
 
 
-    spoke_lacing: '2X front, 2X rear',
+
     tire_compatibility: 'Tubeless/clincher; 700x25c-700x47c',
     rim_bed: 'No holes drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
@@ -423,7 +423,7 @@ makeWheel({
   depth: 55,
   externalWidth: 28,
   internalWidth: 21,
-  spokes: { ...sapimCxRaySpokes, count: { front: 24, rear: 24 } },
+  spokes: { ...sapimCxRaySpokes, count: { front: 24, rear: 24 }, lacing: { front: "2-cross", rear: "2-cross" } },
   hub: discSteelSpokeHub,
   url: urls.lv20,
   priceUsd: 989,
@@ -431,7 +431,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802',
 
 
-    spoke_lacing: '2X front, 2X rear',
+
     tire_compatibility: 'Tubeless/clincher; 700x25c-700x47c',
     rim_bed: 'No holes drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
@@ -493,7 +493,7 @@ makeWheel({
   depth: 40,
   externalWidth: 26,
   internalWidth: 19,
-  spokes: { ...carbonSpokes, count: { front: 18, rear: 21 } },
+  spokes: { ...carbonSpokes, count: { front: 18, rear: 21 }, lacing: { front: "radial", rear: "2-cross" } },
   hub: {
     model: 'V350 straight-pull ratchet',
     brand: '9Velo',
@@ -508,7 +508,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6802, rear: 3x6802 + 1x15267',
 
 
-    spoke_lacing: 'Radial front, 2X rear',
+
     tire_compatibility: 'Tubeless; 700x23c-700x45c',
     brake_track: '9Velo-specific brake pads included'
   }
@@ -523,7 +523,7 @@ makeWheel({
   depth: 55,
   externalWidth: 26,
   internalWidth: 19,
-  spokes: { ...carbonSpokes, count: { front: 18, rear: 21 } },
+  spokes: { ...carbonSpokes, count: { front: 18, rear: 21 }, lacing: { front: "radial", rear: "2-cross" } },
   hub: {
     model: 'V350 straight-pull ratchet',
     brand: '9Velo',
@@ -538,7 +538,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6802, rear: 3x6802 + 1x15267',
 
 
-    spoke_lacing: 'Radial front, 2X rear',
+
     tire_compatibility: 'Tubeless; 700x23c-700x45c',
     brake_track: '9Velo-specific brake pads included'
   }

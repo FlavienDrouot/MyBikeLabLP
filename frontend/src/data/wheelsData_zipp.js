@@ -9,7 +9,7 @@ export const zippWheels = [
   wheelset_category: 'climbing',
   max_system_weight_kg: 115,
   rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23 },
-  spokes: { model: 'Hyperlite', brand: 'Alpina', material: 'steel', count: { front: 20, rear: 20 } },
+  spokes: { model: 'Hyperlite', brand: 'Alpina', material: 'steel', count: { front: 20, rear: 20 }, lacing: { front: "2-cross", rear: "2-cross" } },
   hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
 
@@ -29,7 +29,7 @@ export const zippWheels = [
     ['61803', '61903'] }, prices: [{ amount: 1700, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-202-nsw-a1' }], images: ['https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-f-12x100-dgry-a1-f-driveside.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-f-12x100-dgry-a1-c-3q-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-r-xdr-12x142-dgry-a1-c-3q-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-r-xdr-12x142-dgry-a1-c-driveside-s.png'], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-202-nsw-a1', amount: 1700, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
     points_of_engagement: 66,
 
-    spoke_lacing: '2-cross',
+
     spoke_length_ds_mm: [280, 284],
     spoke_length_nds_mm: [282],
     max_tire_pressure_psi: 73,
