@@ -52,6 +52,13 @@ node scripts/codemods/other-specs-promote.mjs --concept warranty --dry-run
 node scripts/codemods/other-specs-promote.mjs --concept warranty --write
 ```
 
+EVO-055 promotes weight tolerance fields:
+
+```bash
+node scripts/codemods/other-specs-promote.mjs --concept weight-tolerance --dry-run
+node scripts/codemods/other-specs-promote.mjs --concept weight-tolerance --write
+```
+
 Rules for later PROJ-001 child evolutions:
 
 - Add one concept migration at a time.

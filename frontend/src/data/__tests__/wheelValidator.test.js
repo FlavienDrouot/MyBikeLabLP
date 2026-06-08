@@ -204,6 +204,21 @@ describe('validateWheelEntry', () => {
     expect(warnings[0]).toContain('other_specs.warranty');
     expect(warnings[1]).toContain('other_specs.warranty_years');
   });
+
+  it('warns when promoted weight tolerance fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        weight_tolerance: '+/- 5%',
+        weight_tolerance_percent: 5,
+        weight_tolerance_grams: 15,
+        rim_weight_tolerance_percent: 3,
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(4);
+    expect(warnings[0]).toContain('other_specs.weight_tolerance');
+    expect(warnings[3]).toContain('weight_tolerance_percent');
+  });
 });
 
 describe('validateWheelsCatalog', () => {

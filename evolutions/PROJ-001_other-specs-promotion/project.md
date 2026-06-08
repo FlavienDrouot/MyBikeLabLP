@@ -196,7 +196,7 @@ Kept in sync as children are created. Each child is also registered in the Evolu
 | EVO-052 | rim-max-tire-pressure | Light | Done |
 | EVO-053 | warranty | Light | Done |
 | EVO-054 | certification | Light | Planned |
-| EVO-055 | weight-tolerance | Light | Planned |
+| EVO-055 | weight-tolerance | Light | Done |
 | EVO-056 | tire-compatibility | Light (Standard fallback) | Planned |
 | EVO-057 | hub-engagement | Light (Standard fallback) | Planned |
 | EVO-058 | tire-width-mm | Light (Standard fallback) | Planned |

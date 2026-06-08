@@ -15,9 +15,7 @@ const baseHubSpecs = {
   material: null,
 };
 
-const baseOtherSpecs = {
-  weight_tolerance_grams: 15,
-};
+const WEIGHT_TOLERANCE_GRAMS = 15;
 
 const makeOverfastWheel = ({
   id,
@@ -34,6 +32,7 @@ const makeOverfastWheel = ({
   brand: 'OVERFAST',
   variant,
   weight_grams,
+  weight_tolerance_percent: Math.round((WEIGHT_TOLERANCE_GRAMS / (weight_grams.front + weight_grams.rear)) * 1000) / 10,
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'all-round',
@@ -77,7 +76,6 @@ const makeOverfastWheel = ({
   },
   warranty: { text: '2-year manufacturer warranty', years: 2 },
   other_specs: {
-    ...baseOtherSpecs,
     claimed_pair_weight_grams,
     rim_weight_each_grams,
   },

@@ -64,6 +64,8 @@ For spoke detail specs, write source labels such as `nipples`, `spoke_nipple`, `
 For rim material and construction specs, keep the high-level material category in `rim.material` (`carbon` or `aluminum`). Write source labels such as `rim_material_name`, `rim_material_detail`, `rim_construction`, `rim_technology`, and `rim_construction_technology` into `rim.construction` when they contain material names, layup, resin, welding, laminate, or construction technology details. Do not duplicate those labels in `other_specs`.
 =======
 For maximum tire pressure specs, write source labels such as `max_tire_pressure_psi`, `max_tire_pressure_bar`, `maximum_tire_pressure`, `max_tire_pressure_tubeless_psi`, `max_tire_pressure_tubed_psi`, `max_tire_pressure_psi_28c`, `max_tire_pressure_psi_clincher`, and `max_tire_pressure_psi_tubeless` into `rim.max_tire_pressure`. Store `{ "psi": number|null, "bar": number|null, "note": string|null }`. Convert the missing unit when only one unit is published (`psi = round(bar * 14.5038)`, `bar = round((psi / 14.5038) * 10) / 10`). Preserve conditional wording such as tubeless/tubed or tire-width-specific limits in `note`. Do not duplicate those labels in `other_specs`.
+
+For weight tolerance specs, write source labels such as `weight_tolerance`, `weight_tolerance_percent`, `weight_tolerance_grams`, and `rim_weight_tolerance_percent` into the top-level `weight_tolerance_percent` field. Store a numeric percentage only (`5` means `+/- 5%`). Convert gram tolerances with the published wheelset weight when possible: `round((grams / total_weight_grams) * 1000) / 10`. Do not duplicate those labels in `other_specs`.
 >>>>>>> evo-052-rim-max-tire-pressure
 
 ### Data Quality Requirements
@@ -81,6 +83,7 @@ Four fields support a front/rear pair form for wheelsets where the front and rea
 | Field | Single value | Divergent pair |
 |---|---|---|
 | `weight_grams` | `1450` | `{ "front": 650, "rear": 800 }` |
+| `weight_tolerance_percent` | `5` | `1.5` |
 | `rim.depth_mm` | `50` | `{ "front": 40, "rear": 60 }` |
 | `rim.externalWidth_mm` | `28` | `{ "front": 27, "rear": 30 }` |
 | `rim.internalWidth_mm` | `21` | `{ "front": 19, "rear": 23 }` |

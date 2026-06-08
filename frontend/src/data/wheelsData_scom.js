@@ -74,6 +74,7 @@ const makeScom = ({
     ...HUB_SPECS
   },
   prices: [{ amount: priceUsd, currency: priceUsd ? 'USD' : 'EUR', url: productUrl }],
+  weight_tolerance_percent: 3,
   image: images.length ? images[0] : wheelPlaceholderUrl,
   images,
   affiliateLinks: {
@@ -82,10 +83,7 @@ const makeScom = ({
   },
   other_specs: {
     source_note,
-    tire_compatibility: 'Clincher/Tubeless',
-
-
-    weight_tolerance_percent: 3
+    tire_compatibility: 'Clincher/Tubeless'
   }, warranty: { text: null, years: 5 }
 });
 
