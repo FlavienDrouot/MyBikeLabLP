@@ -26,6 +26,7 @@ A Project groups several evolutions sharing one goal and definition of done. Chi
 | EVO-052 | rim-max-tire-pressure | Light EVO | Done | PROJ-001 |
 | EVO-053 | warranty | Light EVO | Done | PROJ-001 |
 | EVO-054 | certification | Light EVO | Done | PROJ-001 |
+| EVO-055 | weight-tolerance | Light EVO | Done | PROJ-001 |
 
 ## Fixes
 

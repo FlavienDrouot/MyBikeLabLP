@@ -66,6 +66,8 @@ For maximum tire pressure specs, write source labels such as `max_tire_pressure_
 
 For certification specs, write source labels such as `uci_approved`, `astm_category`, `e_bike_approved`, and explicit free-text `certification` statements into top-level `certification`. Store `{ "uci": boolean|null, "astm": number|null, "ebike": boolean|null }`. Parse only explicit UCI approval, ASTM category, and e-bike approval statements. Do not infer certification from category, hookless/tubeless state, or general marketing claims. Do not duplicate those labels in `other_specs`.
 
+For weight tolerance specs, write source labels such as `weight_tolerance`, `weight_tolerance_percent`, `weight_tolerance_grams`, and `rim_weight_tolerance_percent` into the top-level `weight_tolerance_percent` field. Store a numeric percentage only (`5` means `+/- 5%`). Convert gram tolerances with the published wheelset weight when possible: `round((grams / total_weight_grams) * 1000) / 10`. Do not duplicate those labels in `other_specs`.
+
 ### Data Quality Requirements
 
 * Never invent values.
@@ -81,6 +83,7 @@ Four fields support a front/rear pair form for wheelsets where the front and rea
 | Field | Single value | Divergent pair |
 |---|---|---|
 | `weight_grams` | `1450` | `{ "front": 650, "rear": 800 }` |
+| `weight_tolerance_percent` | `5` | `1.5` |
 | `rim.depth_mm` | `50` | `{ "front": 40, "rear": 60 }` |
 | `rim.externalWidth_mm` | `28` | `{ "front": 27, "rear": 30 }` |
 | `rim.internalWidth_mm` | `21` | `{ "front": 19, "rear": 23 }` |

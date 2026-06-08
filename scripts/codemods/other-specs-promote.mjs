@@ -86,6 +86,12 @@ const migrations = {
       return promoteCertification(source);
     },
   },
+  'weight-tolerance': {
+    description: 'Promote weight tolerance fields from other_specs into weight_tolerance_percent for EVO-055.',
+    transform(source) {
+      return promoteWeightTolerance(source);
+    },
+  },
 };
 
 const consumedHubOtherSpecKeys = new Map([
@@ -145,6 +151,13 @@ const consumedCertificationOtherSpecKeys = new Set([
   'astm_category',
   'e_bike_approved',
   'certification',
+]);
+
+const consumedWeightToleranceOtherSpecKeys = new Set([
+  'weight_tolerance',
+  'weight_tolerance_percent',
+  'weight_tolerance_grams',
+  'rim_weight_tolerance_percent',
 ]);
 
 const getPropertyName = (property) => {
@@ -1099,6 +1112,125 @@ const promoteCertification = (source) => {
   traverse(ast, {
     ObjectExpression(path) {
       if (promoteCertificationInObjectExpression(path.node)) {
+        changed = true;
+      }
+    },
+  });
+
+  if (!changed) return source;
+  return generator(ast, {
+    retainLines: true,
+    jsescOption: { minimal: true },
+  }, source).code;
+};
+
+const parseSpecTotal = (value) => {
+  if (t.isNumericLiteral(value)) return value.value;
+  if (!t.isObjectExpression(value)) return null;
+
+  const frontProperty = getObjectProperty(value, 'front');
+  const rearProperty = getObjectProperty(value, 'rear');
+  if (!frontProperty || !rearProperty) return null;
+
+  const front = parseNumericLiteral(frontProperty.value);
+  const rear = parseNumericLiteral(rearProperty.value);
+  if (!Number.isFinite(front) || !Number.isFinite(rear)) return null;
+  return front + rear;
+};
+
+const parseTolerancePercent = (value) => {
+  if (t.isNumericLiteral(value)) return value.value;
+  if (!t.isStringLiteral(value)) return null;
+
+  const text = value.value.trim().toLowerCase();
+  if (!text) return null;
+  const match = text.match(/(\d+(?:[.,]\d+)?)\s*%/);
+  if (!match) return null;
+  return Number(match[1].replace(',', '.'));
+};
+
+const parseToleranceGrams = (value) => {
+  if (t.isNumericLiteral(value)) return value.value;
+  if (!t.isStringLiteral(value)) return null;
+
+  const text = value.value.trim().toLowerCase();
+  if (!text) return null;
+  const match = text.match(/(\d+(?:[.,]\d+)?)\s*g/);
+  if (!match && /^\d+(?:[.,]\d+)?$/.test(text)) return Number(text.replace(',', '.'));
+  if (!match) return null;
+  return Number(match[1].replace(',', '.'));
+};
+
+const roundPercent = (value) => Math.round(value * 10) / 10;
+
+const promoteWeightToleranceInObjectExpression = (objectExpression) => {
+  const otherSpecsProperty =
+    getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
+
+  if (!otherSpecsProperty || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(otherSpecsProperty.value)) {
+    return false;
+  }
+
+  const otherSpecsObject = otherSpecsProperty.value;
+  const remainingOtherSpecsProperties = [];
+  const weightProperty = getObjectProperty(objectExpression, 'weight_grams');
+  const referenceWeight = weightProperty && t.isObjectProperty(weightProperty)
+    ? parseSpecTotal(weightProperty.value)
+    : null;
+  let changed = false;
+  let percent = null;
+  let grams = null;
+
+  for (const property of otherSpecsObject.properties) {
+    const sourceName = getPropertyName(property);
+
+    if (!consumedWeightToleranceOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+      remainingOtherSpecsProperties.push(property);
+      continue;
+    }
+
+    if (
+      sourceName === 'weight_tolerance_percent' ||
+      sourceName === 'rim_weight_tolerance_percent' ||
+      sourceName === 'weight_tolerance'
+    ) {
+      percent ??= parseTolerancePercent(property.value);
+    }
+
+    if (sourceName === 'weight_tolerance_grams') {
+      grams ??= parseToleranceGrams(property.value);
+    }
+
+    changed = true;
+  }
+
+  if (!changed) return false;
+
+  if (percent === null && grams !== null && Number.isFinite(referenceWeight) && referenceWeight > 0) {
+    percent = roundPercent((grams / referenceWeight) * 100);
+  }
+
+  otherSpecsObject.properties = remainingOtherSpecsProperties;
+
+  if (percent !== null && Number.isFinite(percent) && !hasProperty(objectExpression, 'weight_tolerance_percent')) {
+    objectExpression.properties.push(
+      t.objectProperty(t.identifier('weight_tolerance_percent'), t.numericLiteral(percent)),
+    );
+  }
+
+  return true;
+};
+
+const promoteWeightTolerance = (source) => {
+  const ast = parser.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
+  let changed = false;
+
+  traverse(ast, {
+    ObjectExpression(path) {
+      if (promoteWeightToleranceInObjectExpression(path.node)) {
         changed = true;
       }
     },

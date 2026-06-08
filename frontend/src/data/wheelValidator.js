@@ -60,6 +60,10 @@ const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
   'astm_category',
   'e_bike_approved',
   'certification',
+  'weight_tolerance',
+  'weight_tolerance_percent',
+  'weight_tolerance_grams',
+  'rim_weight_tolerance_percent',
   'weight_carbon_spoke_grams',
   'carbon_spoke_option',
   'external_width_options_mm',
@@ -171,6 +175,14 @@ function collectOtherSpecWarnings(entry, id) {
         key === 'certification'
       ) {
         return `other_specs.${key} on entry ${id}: promoted certification data must use certification.* fields`;
+      }
+      if (
+        key === 'weight_tolerance' ||
+        key === 'weight_tolerance_percent' ||
+        key === 'weight_tolerance_grams' ||
+        key === 'rim_weight_tolerance_percent'
+      ) {
+        return `other_specs.${key} on entry ${id}: promoted weight tolerance data must use weight_tolerance_percent`;
       }
       return `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`;
     });

@@ -36,6 +36,7 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
     disc_standard: null
   },
   prices: [{ amount: priceUsd, currency: 'USD', url }],
+  weight_tolerance_percent: 5,
   image: wheelPlaceholderUrl,
   images: [],
   affiliateLinks: {
@@ -43,7 +44,6 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
     retailers: []
   },
   other_specs: {
-    weight_tolerance_percent: 5,
     range_of_use: 'Road & Gravel',
     rim_shape: 'Offset/U-Shaped',
 
@@ -114,9 +114,8 @@ const makeQianKunWheel = ({
 
 
 
-    'Ceramic-sealed bearings' }, prices: [{ amount: 1650, currency: 'USD', url }], image: wheelPlaceholderUrl, images: [], affiliateLinks: { manufacturer: { url, amount: 1650, currency: 'USD' }, retailers: [] }, other_specs: { weight_tolerance_percent: 3, range_of_use, ratchet_teeth: 36,
+    'Ceramic-sealed bearings' }, prices: [{ amount: 1650, currency: 'USD', url }], weight_tolerance_percent: 3, image: wheelPlaceholderUrl, images: [], affiliateLinks: { manufacturer: { url, amount: 1650, currency: 'USD' }, retailers: [] }, other_specs: { range_of_use, ratchet_teeth: 36,
     rim_weight_each_grams: 420,
-    rim_weight_tolerance_percent: 3,
     compatible_tire_type: 'Clincher Tire, Tubeless Tire',
     compatible_tire_width_mm: '25c-45c',
     recommended_tire_width_mm: 28,

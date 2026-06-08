@@ -63,6 +63,7 @@ const makeWheel = ({
   url,
   priceUsd,
   productImages,
+  weightTolerancePercent,
   otherSpecs = {}
 }) => ({
   ...(() => {
@@ -73,6 +74,7 @@ const makeWheel = ({
       model,
       variant,
       weight_grams: weight,
+      ...(weightTolerancePercent ? { weight_tolerance_percent: weightTolerancePercent } : {}),
       diameter_mm: 700,
       brake_type: brakeType,
       wheelset_category: category,
@@ -137,6 +139,7 @@ makeWheel({
   model,
   variant: `${variantPrefix}_${entry.key}`,
   weight: entry[weightKey],
+  weightTolerancePercent: 5,
   category: entry.category,
   depth: entry.depth,
   externalWidth: 31.5,
@@ -149,9 +152,8 @@ makeWheel({
   otherSpecs: {
     hubBearingType: bearingType,
 
-
-    weight_tolerance: '+/- 5%'
-  }, certification: { uci: true, astm: null, ebike: null }
+  },
+  certification: { uci: true, astm: null, ebike: null }
 })
 );
 

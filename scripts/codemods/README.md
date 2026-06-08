@@ -61,6 +61,13 @@ node scripts/codemods/other-specs-promote.mjs --concept certification --dry-run
 node scripts/codemods/other-specs-promote.mjs --concept certification --write
 ```
 
+EVO-055 promotes weight tolerance fields:
+
+```powershell
+node scripts/codemods/other-specs-promote.mjs --concept weight-tolerance --dry-run
+node scripts/codemods/other-specs-promote.mjs --concept weight-tolerance --write
+```
+
 Rules for later PROJ-001 child evolutions:
 
 - Add one concept migration at a time.
