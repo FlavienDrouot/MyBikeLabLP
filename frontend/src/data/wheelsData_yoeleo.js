@@ -18,7 +18,7 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
     depth_mm,
     externalWidth_mm: 32,
     internalWidth_mm: 23,
-    tubeless_ready: true
+    tubeless_ready: true, max_tire_pressure: { psi: 120, bar: 8.3, note: "clincher: 120 psi; tubeless: 90 psi" }
   },
   spokes: {
     model: 'Pillar WING 2.0 Aero',
@@ -50,8 +50,8 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
     ratchet_teeth: 36,
     compatible_cassette: 'Shimano HG / SRAM / Campagnolo',
     compatible_tire_type: 'Clincher Tire, Tubeless Tire',
-    max_tire_pressure_psi_clincher: 120,
-    max_tire_pressure_psi_tubeless: 90,
+
+
     compatible_tire_width_mm: '25c and above',
     suggested_tire_width_mm: '28c-47c',
 

@@ -193,7 +193,7 @@ Kept in sync as children are created. Each child is also registered in the Evolu
 | EVO-049 | spokes-count | Light | Done |
 | EVO-050 | spokes-detail | Light | Done |
 | EVO-051 | rim-material-construction | Light | Planned |
-| EVO-052 | rim-max-tire-pressure | Light | Planned |
+| EVO-052 | rim-max-tire-pressure | Light | Done |
 | EVO-053 | warranty | Light | Planned |
 | EVO-054 | certification | Light | Planned |
 | EVO-055 | weight-tolerance | Light | Planned |

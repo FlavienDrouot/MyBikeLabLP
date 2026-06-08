@@ -152,6 +152,27 @@ describe('validateWheelEntry', () => {
     expect(warnings[5]).toContain('other_specs.spoke_lacing');
     expect(warnings[10]).toContain('other_specs.lacing');
   });
+
+  it('warns when promoted tire pressure fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        max_tire_pressure_psi: 73,
+        max_tire_pressure_bar: 5,
+        maximum_tire_pressure: '110 psi',
+        max_tire_pressure_tubeless_psi: 90,
+        max_tire_pressure_tubed_psi: 120,
+        max_tire_pressure_psi_28c: 110,
+        max_tire_pressure_psi_clincher: 120,
+        max_tire_pressure_psi_tubeless: 90,
+        tire_pressure_monitoring: true,
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(8);
+    expect(warnings[0]).toContain('other_specs.max_tire_pressure_psi');
+    expect(warnings[2]).toContain('other_specs.maximum_tire_pressure');
+    expect(warnings[7]).toContain('rim.max_tire_pressure');
+  });
 });
 
 describe('validateWheelsCatalog', () => {

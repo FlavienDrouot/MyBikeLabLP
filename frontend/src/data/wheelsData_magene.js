@@ -84,8 +84,6 @@ const ultraOtherSpecs = {
   ratchet: '36T, compatible with DT system; replaceable with different tooth count',
   tire_compatibility: 'Clincher/tubeless',
   compatible_tire_width: '25c and above; suggested 28c-32c',
-  maximum_tire_pressure:
-    'Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c',
   package_standard:
     'Carbon fiber front wheel x1, carbon fiber rear wheel x1, tubeless rim tape x2, rim plug x50, tubeless tire valve x2, manual x1',
   source_note: 'Official Magene EXAR Ultra 2025 product page.',
@@ -112,6 +110,11 @@ const makeUltra = ({ id, model, variant, weight, category, depth, externalWidth,
     ...ultraShared.rim,
     depth_mm: depth,
     externalWidth_mm: externalWidth,
+    max_tire_pressure: {
+      psi: 110,
+      bar: 7.6,
+      note: 'Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c',
+    },
   },
   spokes: {
     ...ultraShared.spokes,
@@ -160,8 +163,6 @@ const proOtherSpecs = {
     'Rim brake: drive side 120kgf +/-10%, non-drive side 100kgf +/-10%; disc brake: drive side 120kgf +/-10%, non-drive side 110kgf +/-10%',
   tire_compatibility: 'Clincher/tubeless',
   compatible_tire_width: '25c and above; suggested 28c-32c',
-  maximum_tire_pressure:
-    'Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c',
   source_note: 'Official Magene EXAR Pro 2025 product page.',
 };
 
@@ -194,6 +195,11 @@ const makePro = ({
     depth_mm: depth,
     externalWidth_mm: externalWidth,
     internalWidth_mm: internalWidth,
+    max_tire_pressure: {
+      psi: 110,
+      bar: 7.6,
+      note: 'Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c',
+    },
   },
   spokes: {
     ...proShared.spokes,

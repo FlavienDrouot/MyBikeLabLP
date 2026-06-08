@@ -7,7 +7,7 @@ export const enveWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'climbing',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 28, rear: 32 }, externalWidth_mm: 25, tubeless_ready: true, internalWidth_mm: 21 },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 28, rear: 32 }, externalWidth_mm: 25, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 90, bar: 6.2, note: null } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -29,8 +29,8 @@ export const enveWheels = [
     ratchet_options_tooth: [40, 60, 80, 100],
     min_tire_size_mm: 25,
     optimized_tire_size_mm: 27,
-    max_tire_pressure_psi: 90,
-    max_tire_pressure_bar: 6.2,
+
+
     tire_type: 'tubeless only',
     wheel_size: '700c',
     effective_rim_diameter_front_mm: 604,
@@ -48,7 +48,7 @@ export const enveWheels = [
   weight_grams: 1380,
   diameter_mm: 700,
   brake_type: 'disc',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 39, rear: 43 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25 },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 39, rear: 43 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -70,8 +70,8 @@ export const enveWheels = [
     ratchet_options_tooth: [40, 60, 80, 100],
     min_tire_size_mm: 27,
     optimized_tire_size_mm: 28,
-    max_tire_pressure_psi: 80,
-    max_tire_pressure_bar: 5.5,
+
+
     tire_type: 'tubeless only',
     wheel_size: '700c',
     effective_rim_diameter_front_mm: 578,
@@ -88,7 +88,7 @@ export const enveWheels = [
   weight_grams: 1432,
   diameter_mm: 700,
   brake_type: 'disc',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 50, rear: 56 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25 },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 50, rear: 56 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -110,8 +110,8 @@ export const enveWheels = [
     ratchet_options_tooth: [40, 60, 80, 100],
     min_tire_size_mm: 27,
     optimized_tire_size_mm: 28,
-    max_tire_pressure_psi: 80,
-    max_tire_pressure_bar: 5.5,
+
+
     tire_type: 'tubeless only',
     wheel_size: '700c',
     effective_rim_diameter_front_mm: 558,
@@ -128,7 +128,7 @@ export const enveWheels = [
   weight_grams: { front: 587, rear: 708 },
   diameter_mm: 700,
   brake_type: 'disc',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 49, rear: 55 }, externalWidth_mm: 30.8, tubeless_ready: true, internalWidth_mm: 23.5 },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 49, rear: 55 }, externalWidth_mm: 30.8, tubeless_ready: true, internalWidth_mm: 23.5, max_tire_pressure: { psi: 100, bar: 6.8, note: null } },
   spokes: { model: 'Ultralite Aero R5 (TCX 2/1.5/2)', brand: 'Alpina', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -155,8 +155,8 @@ export const enveWheels = [
     tubeless_tape_width_mm: 29,
     min_tire_size_mm: 28,
     optimized_tire_size_mm: 28,
-    max_tire_pressure_psi: 100,
-    max_tire_pressure_bar: 6.8,
+
+
     tire_type: 'tubeless only',
     wheel_size: '700c',
     effective_rim_diameter_front_mm: 563,
@@ -174,7 +174,7 @@ export const enveWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'aero',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 60, rear: 67 }, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 60, rear: 67 }, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 90, bar: 6.2, note: null } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -197,8 +197,8 @@ export const enveWheels = [
     tubeless_tape_width_mm: 26.5,
     min_tire_size_mm: 25,
     optimized_tire_size_mm: 28,
-    max_tire_pressure_psi: 90,
-    max_tire_pressure_bar: 6.2,
+
+
     tire_type: 'tubeless only',
     wheel_size: '700c',
     effective_rim_diameter_front_mm: 538,
@@ -217,7 +217,7 @@ export const enveWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'all-road',
-  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 25 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null } },
   spokes: { model: 'CX-Ray J-Bend', brand: 'Sapim', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -242,8 +242,8 @@ export const enveWheels = [
     valve_length_mm: 61,
     recommended_tire_width_mm: '27-50',
     min_tire_size_mm: 27,
-    max_tire_pressure_psi: 80,
-    max_tire_pressure_bar: 5.5,
+
+
     tire_type: 'tubeless only',
     wheel_size: '700c',
     weight_note: '±3%, includes tape and valves with HG freehub'
