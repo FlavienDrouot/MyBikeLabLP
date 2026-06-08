@@ -185,6 +185,7 @@
     "hookless": { "label": "Hookless" },
     "depth": { "label": "Profil" },
     "externalWidth": { "label": "Largeur externe" },
+    "maxTirePressure": { "label": "Pression pneu max" },
     "hub": { "label": "Moyeu" },
     "hubBrand": { "label": "Marque de moyeu" },
     "hubModel": { "label": "Modèle de moyeu" },
@@ -221,6 +222,8 @@
     "externalWidth_desc": "Largeur externe (large → étroite)",
     "internalWidth_asc": "Largeur interne (étroite → large)",
     "internalWidth_desc": "Largeur interne (large → étroite)",
+    "maxTirePressure_asc": "Pression pneu max (croissante)",
+    "maxTirePressure_desc": "Pression pneu max (décroissante)",
     "spokeCount_asc": "Nombre de rayons (croissant)",
     "spokeCount_desc": "Nombre de rayons (décroissant)"
   },

@@ -66,10 +66,22 @@ describe('WHEEL_PROPERTIES registry groups', () => {
     }
   });
 
+<<<<<<< HEAD
   it('declares promoted rim construction as a multi-select filter', () => {
     const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'rimConstruction');
 
     expect(property?.group).toBe('rims');
     expect(property?.filter).toEqual({ type: 'multiSelect' });
+=======
+  it('declares promoted rim max tire pressure as a range filter with sorts', () => {
+    const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'maxTirePressure');
+
+    expect(property?.group).toBe('rims');
+    expect(property?.filter).toEqual({ type: 'range' });
+    expect(property?.sorts?.map((sort) => sort.id)).toEqual([
+      'maxTirePressure_asc',
+      'maxTirePressure_desc',
+    ]);
+>>>>>>> evo-052-rim-max-tire-pressure
   });
 });

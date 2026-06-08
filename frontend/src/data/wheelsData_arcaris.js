@@ -14,7 +14,12 @@ const IMAGES = [
 const baseOtherSpecs = {
   min_tire_size_c: 25,
   max_tire_size_c: 38,
+<<<<<<< HEAD
   max_tire_pressure_psi_28c: 110,
+=======
+  rim_construction:
+  'VAMspeed wind-tunnel-tested rim profile, Optiply high-modulus layup, hidden nipples, DSR-Lock patent-pending captive spokes, hooked (clincher & tubeless ready)',
+>>>>>>> evo-052-rim-max-tire-pressure
   uci_approved: true,
   warranty: '2-year limited (manufacturing defects)'
 };
@@ -62,7 +67,8 @@ const makeArcarisWheel = ({
         depth_mm: 27,
         externalWidth_mm: 28.3,
         internalWidth_mm: 23,
-        tubeless_ready: true
+        tubeless_ready: true,
+        max_tire_pressure: { psi: 110, bar: 7.6, note: '28c limit' }
       },
       spokes,
       hub: {

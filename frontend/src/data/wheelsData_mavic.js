@@ -8,7 +8,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 80, bar: 5.5, note: null } },
   spokes: { model: 'R2R', brand: 'Mavic', material: 'carbon', count: { front: 20, rear: 20 }, lacing: { front: "radial", rear: "radial" } },
   hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type:
 
@@ -21,7 +21,7 @@ export const mavicWheels = [
 
 
 
-    'Mavic Ceramic' }, prices: [{ amount: 4399, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-ultimate-45-disc-23mm-rr2608' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-ultimate-45-disc-23mm-rr2608', amount: 4399, currency: 'EUR' }, retailers: [] }, other_specs: { max_tire_width_mm: 64, max_tire_pressure_bar: 5.5, freehub_technology: 'Instant Drive 360',
+    'Mavic Ceramic' }, prices: [{ amount: 4399, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-ultimate-45-disc-23mm-rr2608' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-ultimate-45-disc-23mm-rr2608', amount: 4399, currency: 'EUR' }, retailers: [] }, other_specs: { max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360',
     axle_convertible: true,
 
 
@@ -105,7 +105,11 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'carbon', hookless: true, depth_mm: 32, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, construction: "Fore Carbon" },
+=======
+  rim: { material: 'carbon', hookless: true, depth_mm: 32, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 88, bar: 6.1, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -124,8 +128,13 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'straight aero butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'Mavic Ceramic' }, prices: [{ amount: 1999, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-32-disc-21mm-rr2606' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001288_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-32-disc-21mm-rr2606', amount: 1999, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 25, max_tire_width_mm: 64, max_tire_pressure_bar: 6.1, freehub_technology: 'Instant Drive 360', axle_convertible: true,
 
+=======
+    'straight aero butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'Mavic Ceramic' }, prices: [{ amount: 1999, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-32-disc-21mm-rr2606' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001288_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-32-disc-21mm-rr2606', amount: 1999, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 25, max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    rim_technology: 'Fore Carbon',
+>>>>>>> evo-052-rim-max-tire-pressure
     warranty: 'lifetime (with registration)'
   }
 },
@@ -138,7 +147,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: null, depth_mm: 65, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: null, depth_mm: 65, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 80, bar: 5.5, note: null } },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -157,7 +166,7 @@ export const mavicWheels = [
 
 
 
-    'straight flat anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-65-disc-23mm-rr2505' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000934_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-65-disc-23mm-rr2505', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 28, max_tire_width_mm: 64, max_tire_pressure_bar: 5.5, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    'straight flat anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-65-disc-23mm-rr2505' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000934_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-65-disc-23mm-rr2505', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 28, max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360', axle_convertible: true,
     astm_category: 2,
     warranty: 'lifetime (with registration)'
   }
@@ -204,7 +213,11 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'carbon', hookless: false, depth_mm: 32, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, construction: "NACA-inspired profile" },
+=======
+  rim: { material: 'carbon', hookless: false, depth_mm: 32, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -225,8 +238,13 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'ABS black', profile: 'flat double-butted straight anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-32-disc-21mm-rr2609' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001422_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-32-disc-21mm-rr2609', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x21TC', min_tire_width_mm: 23, max_tire_width_mm: 62, max_tire_pressure_bar: 6.75, freehub_technology: 'Instant Drive 360', axle_convertible: true,
 
+=======
+    'ABS black', profile: 'flat double-butted straight anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-32-disc-21mm-rr2609' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001422_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-32-disc-21mm-rr2609', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x21TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    rim_technology: 'NACA-inspired profile',
+>>>>>>> evo-052-rim-max-tire-pressure
     astm_category: 2,
     warranty: 'lifetime (with registration)'
   }
@@ -240,7 +258,11 @@ export const mavicWheels = [
   brake_type: 'rim',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'carbon', hookless: false, depth_mm: 40, externalWidth_mm: 26, tubeless_ready: true, internalWidth_mm: 19, construction: "iTgMAX laser-treated braking surface" },
+=======
+  rim: { material: 'carbon', hookless: false, depth_mm: 40, externalWidth_mm: 26, tubeless_ready: true, internalWidth_mm: 19, max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 18, rear: 24 }, profile:
 
 
@@ -260,7 +282,7 @@ export const mavicWheels = [
 
 
 
-    'flat butted', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'Campagnolo ED', 'SRAM XD', 'Shimano Micro Spline'], bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-40-rr1225' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13271_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-40-rr1225', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { max_tire_width_mm: 62, min_tire_pressure_bar: 3.8, max_tire_pressure_bar: 6.75, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
+    'flat butted', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'Campagnolo ED', 'SRAM XD', 'Shimano Micro Spline'], bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-40-rr1225' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13271_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-40-rr1225', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { max_tire_width_mm: 62, min_tire_pressure_bar: 3.8, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
     spoke_technology: 'Isopulse',
 
     astm_category: 1,
@@ -304,7 +326,11 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal" },
+=======
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -324,8 +350,13 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'brass black', profile: 'straight aero anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-disc-heritage-rr2603' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001259_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-disc-heritage-rr2603', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 62, max_tire_pressure_bar: 6.75, freehub_technology: 'Instant Drive 360', axle_convertible: true,
 
+=======
+    'brass black', profile: 'straight aero anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-disc-heritage-rr2603' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001259_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-disc-heritage-rr2603', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    rim_material_name: 'Maxtal',
+>>>>>>> evo-052-rim-max-tire-pressure
     warranty: '3 years (with registration)',
     heritage_edition: true
   }
@@ -339,7 +370,11 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal" },
+=======
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -359,8 +394,13 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'brass black', profile: 'straight aero double-butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-disc-rr1244' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13361_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-disc-rr1244', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 62, max_tire_pressure_bar: 6.75, freehub_technology: 'Instant Drive 360', axle_convertible: true,
 
+=======
+    'brass black', profile: 'straight aero double-butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-disc-rr1244' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13361_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-disc-rr1244', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    rim_material_name: 'Maxtal',
+>>>>>>> evo-052-rim-max-tire-pressure
     warranty: '3 years (with registration)'
   }
 },
@@ -373,7 +413,11 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal; SUP welding, Fore tubeless" },
+=======
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -394,9 +438,15 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'brass black', profile: 'extra-flat straight anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 499, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-disc-rr1222' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13261_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-disc-rr1222', amount: 499, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, max_tire_pressure_bar: 6.75, freehub_technology: 'Instant Drive 360', axle_convertible: true,
 
 
+=======
+    'brass black', profile: 'extra-flat straight anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 499, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-disc-rr1222' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13261_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-disc-rr1222', amount: 499, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    rim_material_name: 'Maxtal',
+    rim_technology: 'SUP welding, Fore tubeless',
+>>>>>>> evo-052-rim-max-tire-pressure
     astm_category: 2,
     warranty: '3 years (with registration)'
   }
@@ -410,7 +460,11 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal" },
+=======
+  rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, max_tire_pressure: { psi: 55, bar: 3.8, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -430,8 +484,13 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'steel black', profile: 'straight extra-flat double-butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 429, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-30-disc-rr2403' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000795_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-30-disc-rr2403', amount: 429, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', max_tire_width_mm: 62, max_tire_pressure_bar: 3.8, freehub_technology: 'Instant Drive 360', axle_convertible: true,
 
+=======
+    'steel black', profile: 'straight extra-flat double-butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 429, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-30-disc-rr2403' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000795_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-30-disc-rr2403', amount: 429, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    rim_material_name: 'Maxtal',
+>>>>>>> evo-052-rim-max-tire-pressure
     astm_category: 2,
     warranty: '2 years'
   }
@@ -445,7 +504,11 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'endurance',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'aluminum', hookless: false, depth_mm: 21, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, construction: "S6000 aluminum" },
+=======
+  rim: { material: 'aluminum', hookless: false, depth_mm: 21, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 88, bar: 6.1, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -465,8 +528,13 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'bent round', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/aksium-1-disc-rr2303' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P00018106_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/aksium-1-disc-rr2303', amount: 299, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x21TC', min_tire_width_mm: 25, max_tire_width_mm: 64, max_tire_pressure_bar: 6.1, freehub_technology: 'Instant Drive 360', axle_convertible: true,
 
+=======
+    'bent round', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/aksium-1-disc-rr2303' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P00018106_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/aksium-1-disc-rr2303', amount: 299, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x21TC', min_tire_width_mm: 25, max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    rim_material_name: 'S6000 aluminum',
+>>>>>>> evo-052-rim-max-tire-pressure
     astm_category: 2,
     warranty: '3 years (with registration)'
   }
@@ -480,7 +548,11 @@ export const mavicWheels = [
   brake_type: 'rim',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal" },
+=======
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -501,8 +573,13 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'straight aero swaged anti-rotation', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-heritage-rr2604' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001256_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-heritage-rr2604', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, max_tire_pressure_bar: 6.75, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
 
+=======
+    'straight aero swaged anti-rotation', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-heritage-rr2604' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001256_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-heritage-rr2604', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
+    rim_material_name: 'Maxtal',
+>>>>>>> evo-052-rim-max-tire-pressure
     astm_category: 2,
     warranty: '3 years (with registration)',
     heritage_edition: true
@@ -517,7 +594,11 @@ export const mavicWheels = [
   brake_type: 'rim',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal" },
+=======
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 18, rear: 24 }, nipple:
 
 
@@ -539,8 +620,13 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'brass black', profile: 'aerodynamic double-butted elliptical', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-rr1223' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13291_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-rr1223', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, max_tire_pressure_bar: 6.75, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
 
+=======
+    'brass black', profile: 'aerodynamic double-butted elliptical', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-rr1223' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13291_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-rr1223', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
+    rim_material_name: 'Maxtal',
+>>>>>>> evo-052-rim-max-tire-pressure
     astm_category: 2,
     warranty: '3 years (with registration)'
   }
@@ -554,7 +640,11 @@ export const mavicWheels = [
   brake_type: 'rim',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal; Fore tubeless, SUP welding" },
+=======
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 18, rear: 24 }, profile:
 
 
@@ -574,9 +664,15 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'straight extra-flat ADR+ swaged', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 499, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-rr1221' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13251_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-rr1221', amount: 499, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 62, max_tire_pressure_bar: 6.75, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
 
 
+=======
+    'straight extra-flat ADR+ swaged', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 499, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-rr1221' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13251_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-rr1221', amount: 499, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
+    rim_material_name: 'Maxtal',
+    rim_technology: 'Fore tubeless, SUP welding',
+>>>>>>> evo-052-rim-max-tire-pressure
     astm_category: 2,
     warranty: '3 years (with registration)'
   }
@@ -590,7 +686,11 @@ export const mavicWheels = [
   brake_type: 'rim',
   wheelset_category: 'endurance',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'aluminum', hookless: false, depth_mm: 21, externalWidth_mm: null, tubeless_ready: false, internalWidth_mm: 17, construction: "S6000 aluminum" },
+=======
+  rim: { material: 'aluminum', hookless: false, depth_mm: 21, externalWidth_mm: null, tubeless_ready: false, internalWidth_mm: 17, max_tire_pressure: { psi: 116, bar: 8, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 20, rear: 20 }, profile:
 
 
@@ -611,8 +711,13 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'straight flat tapered', lacing: { front: "radial", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG'], bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/aksium-rr0988' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P86941_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/aksium-rr0988', amount: 299, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 52, max_tire_pressure_bar: 8, freehub_technology: 'FTS-L', axle_type: 'quick-release only', axle_material_rear: 'steel',
 
+=======
+    'straight flat tapered', lacing: { front: "radial", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG'], bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/aksium-rr0988' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P86941_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/aksium-rr0988', amount: 299, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 52, freehub_technology: 'FTS-L', axle_type: 'quick-release only', axle_material_rear: 'steel',
+    rim_material_name: 'S6000 aluminum',
+>>>>>>> evo-052-rim-max-tire-pressure
     astm_category: 1,
     warranty: '3 years (with registration)'
   }
@@ -625,7 +730,11 @@ export const mavicWheels = [
   diameter_mm: 700,
   brake_type: 'track',
   max_system_weight_kg: 120,
+<<<<<<< HEAD
   rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: null, tubeless_ready: false, internalWidth_mm: 15, construction: "Maxtal" },
+=======
+  rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: null, tubeless_ready: false, internalWidth_mm: 15, max_tire_pressure: { psi: 131, bar: 9, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 20, rear: 20 }, profile:
 
 
@@ -647,8 +756,13 @@ export const mavicWheels = [
 
 
 
+<<<<<<< HEAD
     'straight extra-flat tapered', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x120', bearing_type: 'QRM+ auto-adjusting cartridge' }, prices: [{ amount: 529, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ellipse-rr0713' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P78501_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ellipse-rr0713', amount: 529, currency: 'EUR' }, retailers: [] }, other_specs: { tire_type: 'clincher', min_tire_width_mm: 23, max_tire_width_mm: 32, max_tire_pressure_bar: 9, hub_body_material: 'aluminum', hub_axle_material: 'steel', rear_hub_type: 'flip-flop (dual fixed cog)', cog_thread: '1.37x24TPI',
 
+=======
+    'straight extra-flat tapered', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x120', bearing_type: 'QRM+ auto-adjusting cartridge' }, prices: [{ amount: 529, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ellipse-rr0713' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P78501_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ellipse-rr0713', amount: 529, currency: 'EUR' }, retailers: [] }, other_specs: { tire_type: 'clincher', min_tire_width_mm: 23, max_tire_width_mm: 32, hub_body_material: 'aluminum', hub_axle_material: 'steel', rear_hub_type: 'flip-flop (dual fixed cog)', cog_thread: '1.37x24TPI',
+    rim_material_name: 'Maxtal',
+>>>>>>> evo-052-rim-max-tire-pressure
     rim_joint: 'SUP welding',
     astm_category: 1,
     usage: 'track',

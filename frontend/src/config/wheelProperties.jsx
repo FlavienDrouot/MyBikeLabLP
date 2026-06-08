@@ -425,6 +425,42 @@ export const WHEEL_PROPERTIES = [
     },
   },
 
+  {
+    id: 'maxTirePressure',
+    label: 'properties.maxTirePressure.label',
+    group: 'rims',
+    translatable: false,
+    unit: ' psi',
+    accessor: (w) => w.rim?.max_tire_pressure?.psi ?? null,
+    filter: { type: 'range' },
+    sorts: [
+      { id: 'maxTirePressure_asc', label: 'sorts.maxTirePressure_asc', direction: 'asc' },
+      { id: 'maxTirePressure_desc', label: 'sorts.maxTirePressure_desc', direction: 'desc' },
+    ],
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => {
+        const pressure = w.rim?.max_tire_pressure;
+        if (!pressure?.psi && !pressure?.bar) return t('common.notAvailable');
+
+        const primary = pressure.psi ? `${pressure.psi} psi` : null;
+        const secondary = pressure.bar ? `${pressure.bar} bar` : null;
+        const value = [primary, secondary].filter(Boolean).join(' / ');
+
+        if (!pressure.note) return value;
+
+        return (
+          <div>
+            <span>{value}</span>
+            <div className="text-xs text-ink-7 mt-0.5">{pressure.note}</div>
+          </div>
+        );
+      },
+    },
+  },
+
   // ── hub and spokes ───────────────────────────────────────────────────────
   {
     id: 'hub',

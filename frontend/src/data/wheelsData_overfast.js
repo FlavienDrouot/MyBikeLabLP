@@ -17,7 +17,12 @@ const baseHubSpecs = {
 
 const baseOtherSpecs = {
   weight_tolerance_grams: 15,
+<<<<<<< HEAD
   max_tire_pressure_psi_28c: 110,
+=======
+  rim_construction:
+    'In-house manufactured carbon (Toray T1100/T800+), laser-guided layup, UV-shaped hooked-bead profile; validated to 100 J impact (UCI requirement 40 J)',
+>>>>>>> evo-052-rim-max-tire-pressure
   warranty: '2-year manufacturer warranty',
 };
 
@@ -49,6 +54,7 @@ const makeOverfastWheel = ({
     externalWidth_mm,
     internalWidth_mm: 23,
     tubeless_ready: true,
+    max_tire_pressure: { psi: 110, bar: 7.6, note: '28c limit' },
   },
   spokes: {
     model: 'Overfast Carbon Spoke (3.5-1.5)',

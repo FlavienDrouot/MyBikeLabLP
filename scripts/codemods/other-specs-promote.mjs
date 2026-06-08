@@ -62,10 +62,17 @@ const migrations = {
       return promoteSpokesDetail(source);
     },
   },
+<<<<<<< HEAD
   'rim-material-construction': {
     description: 'Promote rim material/construction fields from other_specs into rim for EVO-051.',
     transform(source) {
       return promoteRimMaterialConstruction(source);
+=======
+  'rim-max-tire-pressure': {
+    description: 'Promote max tire pressure fields from other_specs into rim.max_tire_pressure for EVO-052.',
+    transform(source) {
+      return promoteRimMaxTirePressure(source);
+>>>>>>> evo-052-rim-max-tire-pressure
     },
   },
 };
@@ -98,12 +105,24 @@ const consumedSpokesDetailOtherSpecKeys = new Set([
   'rear_lacing',
 ]);
 
+<<<<<<< HEAD
 const consumedRimMaterialConstructionOtherSpecKeys = new Set([
   'rim_material_name',
   'rim_material_detail',
   'rim_construction',
   'rim_technology',
   'rim_construction_technology',
+=======
+const consumedRimMaxTirePressureOtherSpecKeys = new Set([
+  'max_tire_pressure_psi',
+  'max_tire_pressure_bar',
+  'maximum_tire_pressure',
+  'max_tire_pressure_tubeless_psi',
+  'max_tire_pressure_tubed_psi',
+  'max_tire_pressure_psi_28c',
+  'max_tire_pressure_psi_clincher',
+  'max_tire_pressure_psi_tubeless',
+>>>>>>> evo-052-rim-max-tire-pressure
 ]);
 
 const getPropertyName = (property) => {
@@ -526,6 +545,7 @@ const promoteSpokesDetail = (source) => {
   }, source).code;
 };
 
+<<<<<<< HEAD
 const normalizedTextFromNode = (value) => {
   if (t.isStringLiteral(value)) return value.value.trim();
   return null;
@@ -537,10 +557,20 @@ const categoryMaterialFromText = (value) => {
   if (/\bcarbon\b/.test(text)) return 'carbon';
   if (/\balum(?:inum|inium)?\b/.test(text) || /\bmaxtal\b/.test(text) || /\bs6000\b/.test(text)) {
     return 'aluminum';
+=======
+const PSI_PER_BAR = 14.5038;
+
+const parsePressureNumber = (value) => {
+  if (t.isNumericLiteral(value)) return value.value;
+  if (t.isStringLiteral(value)) {
+    const match = value.value.trim().match(/\d+(?:[.,]\d+)?/);
+    if (match) return Number(match[0].replace(',', '.'));
+>>>>>>> evo-052-rim-max-tire-pressure
   }
   return null;
 };
 
+<<<<<<< HEAD
 const isEmptyStringLiteral = (value) => t.isStringLiteral(value) && value.value.trim() === '';
 
 const constructionNodeFromValues = (values) => {
@@ -575,10 +605,88 @@ const shouldKeepMaterialNameAsConstruction = (value) => {
 };
 
 const promoteRimMaterialConstructionInObjectExpression = (objectExpression) => {
+=======
+const roundPsi = (value) => Math.round(value);
+const roundBar = (value) => Math.round(value * 10) / 10;
+
+const pressureText = (property) => {
+  const key = getPropertyName(property);
+  if (!t.isObjectProperty(property)) return null;
+  const labels = {
+    max_tire_pressure_tubeless_psi: 'tubeless',
+    max_tire_pressure_tubed_psi: 'tubed',
+    max_tire_pressure_psi_28c: '28c',
+    max_tire_pressure_psi_clincher: 'clincher',
+    max_tire_pressure_psi_tubeless: 'tubeless',
+  };
+  const label = labels[key] ?? key;
+  if (t.isStringLiteral(property.value)) return `${label}: ${property.value.value} psi`;
+  if (t.isNumericLiteral(property.value)) return `${label}: ${property.value.value} psi`;
+  return null;
+};
+
+const pressureValueNode = (value) => (
+  value === null ? t.nullLiteral() : t.numericLiteral(value)
+);
+
+const pressureObjectProperty = ({ psi, bar, note }) =>
+  t.objectProperty(
+    t.identifier('max_tire_pressure'),
+    t.objectExpression([
+      t.objectProperty(t.identifier('psi'), pressureValueNode(psi)),
+      t.objectProperty(t.identifier('bar'), pressureValueNode(bar)),
+      t.objectProperty(t.identifier('note'), note ? t.stringLiteral(note) : t.nullLiteral()),
+    ]),
+  );
+
+const parseFreeTextPressure = (value) => {
+  if (!t.isStringLiteral(value)) return { psi: null, bar: null, note: null };
+  const text = value.value.trim();
+  if (!text) return { psi: null, bar: null, note: null };
+
+  const psiMatch = text.match(/(\d+(?:[.,]\d+)?)\s*psi/i);
+  const barMatch = text.match(/(\d+(?:[.,]\d+)?)\s*bar/i);
+  const psi = psiMatch ? Number(psiMatch[1].replace(',', '.')) : null;
+  const bar = barMatch ? Number(barMatch[1].replace(',', '.')) : null;
+  const plain = /^(\d+(?:[.,]\d+)?)\s*(psi|bar)$/i.test(text);
+
+  return {
+    psi,
+    bar,
+    note: plain ? null : text,
+  };
+};
+
+const normalizePressure = ({ genericPsi, genericBar, conditionalPsiValues, noteParts }) => {
+  let psi = genericPsi;
+  let bar = genericBar;
+
+  if (psi === null && conditionalPsiValues.length > 0) {
+    psi = Math.max(...conditionalPsiValues);
+  }
+
+  if (psi === null && bar !== null) {
+    psi = roundPsi(bar * PSI_PER_BAR);
+  }
+
+  if (bar === null && psi !== null) {
+    bar = roundBar(psi / PSI_PER_BAR);
+  }
+
+  return {
+    psi,
+    bar,
+    note: noteParts.length > 0 ? noteParts.join('; ') : null,
+  };
+};
+
+const promoteRimMaxTirePressureInObjectExpression = (objectExpression) => {
+>>>>>>> evo-052-rim-max-tire-pressure
   const rimProperty = getObjectProperty(objectExpression, 'rim');
   const otherSpecsProperty =
     getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
 
+<<<<<<< HEAD
   if (!rimProperty || !otherSpecsProperty || !t.isObjectProperty(rimProperty) || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(otherSpecsProperty.value)) {
     return false;
   }
@@ -588,15 +696,34 @@ const promoteRimMaterialConstructionInObjectExpression = (objectExpression) => {
   let changed = false;
   let materialName = null;
   const constructionValues = [];
+=======
+  if (!rimProperty || !otherSpecsProperty || !t.isObjectProperty(rimProperty) || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(rimProperty.value) || !t.isObjectExpression(otherSpecsProperty.value)) {
+    return false;
+  }
+
+  const rimObject = rimProperty.value;
+  const otherSpecsObject = otherSpecsProperty.value;
+  const remainingOtherSpecsProperties = [];
+  let changed = false;
+  let genericPsi = null;
+  let genericBar = null;
+  const conditionalPsiValues = [];
+  const noteParts = [];
+>>>>>>> evo-052-rim-max-tire-pressure
 
   for (const property of otherSpecsObject.properties) {
     const sourceName = getPropertyName(property);
 
+<<<<<<< HEAD
     if (!consumedRimMaterialConstructionOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+=======
+    if (!consumedRimMaxTirePressureOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+>>>>>>> evo-052-rim-max-tire-pressure
       remainingOtherSpecsProperties.push(property);
       continue;
     }
 
+<<<<<<< HEAD
     if (sourceName === 'rim_material_name') {
       materialName ??= property.value;
       if (shouldKeepMaterialNameAsConstruction(property.value)) {
@@ -604,6 +731,22 @@ const promoteRimMaterialConstructionInObjectExpression = (objectExpression) => {
       }
     } else {
       constructionValues.push(property.value);
+=======
+    if (sourceName === 'max_tire_pressure_psi') {
+      genericPsi ??= parsePressureNumber(property.value);
+    } else if (sourceName === 'max_tire_pressure_bar') {
+      genericBar ??= parsePressureNumber(property.value);
+    } else if (sourceName === 'maximum_tire_pressure') {
+      const parsed = parseFreeTextPressure(property.value);
+      genericPsi ??= parsed.psi;
+      genericBar ??= parsed.bar;
+      if (parsed.note) noteParts.push(parsed.note);
+    } else {
+      const conditionalPsi = parsePressureNumber(property.value);
+      if (conditionalPsi !== null) conditionalPsiValues.push(conditionalPsi);
+      const note = pressureText(property);
+      if (note) noteParts.push(note);
+>>>>>>> evo-052-rim-max-tire-pressure
     }
 
     changed = true;
@@ -613,6 +756,7 @@ const promoteRimMaterialConstructionInObjectExpression = (objectExpression) => {
 
   otherSpecsObject.properties = remainingOtherSpecsProperties;
 
+<<<<<<< HEAD
   if (!t.isObjectExpression(rimProperty.value)) {
     return true;
   }
@@ -631,12 +775,25 @@ const promoteRimMaterialConstructionInObjectExpression = (objectExpression) => {
 
   if (constructionValues.length > 0 && !hasProperty(rimObject, 'construction')) {
     rimObject.properties.push(t.objectProperty(t.identifier('construction'), constructionNodeFromValues(constructionValues)));
+=======
+  const pressure = normalizePressure({ genericPsi, genericBar, conditionalPsiValues, noteParts });
+  if (pressure.psi === null && pressure.bar === null && pressure.note === null) {
+    return true;
+  }
+
+  if (!hasProperty(rimObject, 'max_tire_pressure')) {
+    rimObject.properties.push(pressureObjectProperty(pressure));
+>>>>>>> evo-052-rim-max-tire-pressure
   }
 
   return true;
 };
 
+<<<<<<< HEAD
 const promoteRimMaterialConstruction = (source) => {
+=======
+const promoteRimMaxTirePressure = (source) => {
+>>>>>>> evo-052-rim-max-tire-pressure
   const ast = parser.parse(source, {
     sourceType: 'module',
     plugins: ['jsx'],
@@ -645,7 +802,11 @@ const promoteRimMaterialConstruction = (source) => {
 
   traverse(ast, {
     ObjectExpression(path) {
+<<<<<<< HEAD
       if (promoteRimMaterialConstructionInObjectExpression(path.node)) {
+=======
+      if (promoteRimMaxTirePressureInObjectExpression(path.node)) {
+>>>>>>> evo-052-rim-max-tire-pressure
         changed = true;
       }
     },

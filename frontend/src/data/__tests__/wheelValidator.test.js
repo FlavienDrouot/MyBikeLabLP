@@ -153,6 +153,7 @@ describe('validateWheelEntry', () => {
     expect(warnings[10]).toContain('other_specs.lacing');
   });
 
+<<<<<<< HEAD
   it('warns when promoted rim material/construction fields remain in other_specs', () => {
     const entry = makeEntry({
       other_specs: {
@@ -170,6 +171,27 @@ describe('validateWheelEntry', () => {
     expect(warnings[2]).toContain('other_specs.rim_construction');
     expect(warnings[3]).toContain('other_specs.rim_technology');
     expect(warnings[4]).toContain('other_specs.rim_construction_technology');
+=======
+  it('warns when promoted tire pressure fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        max_tire_pressure_psi: 73,
+        max_tire_pressure_bar: 5,
+        maximum_tire_pressure: '110 psi',
+        max_tire_pressure_tubeless_psi: 90,
+        max_tire_pressure_tubed_psi: 120,
+        max_tire_pressure_psi_28c: 110,
+        max_tire_pressure_psi_clincher: 120,
+        max_tire_pressure_psi_tubeless: 90,
+        tire_pressure_monitoring: true,
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(8);
+    expect(warnings[0]).toContain('other_specs.max_tire_pressure_psi');
+    expect(warnings[2]).toContain('other_specs.maximum_tire_pressure');
+    expect(warnings[7]).toContain('rim.max_tire_pressure');
+>>>>>>> evo-052-rim-max-tire-pressure
   });
 });
 

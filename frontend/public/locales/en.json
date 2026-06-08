@@ -185,6 +185,7 @@
     "hookless": { "label": "Hookless" },
     "depth": { "label": "Depth" },
     "externalWidth": { "label": "External width" },
+    "maxTirePressure": { "label": "Max tire pressure" },
     "hub": { "label": "Hub" },
     "hubBrand": { "label": "Hub brand" },
     "hubModel": { "label": "Hub model" },
@@ -221,6 +222,8 @@
     "externalWidth_desc": "External width (wide → narrow)",
     "internalWidth_asc": "Internal width (narrow → wide)",
     "internalWidth_desc": "Internal width (wide → narrow)",
+    "maxTirePressure_asc": "Max tire pressure (low → high)",
+    "maxTirePressure_desc": "Max tire pressure (high → low)",
     "spokeCount_asc": "Spoke count (low → high)",
     "spokeCount_desc": "Spoke count (high → low)"
   },

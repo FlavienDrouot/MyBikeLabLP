@@ -8,7 +8,11 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 115,
+<<<<<<< HEAD
   rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23, construction: "Biomimetic Laminate, mixed-modulus carbon" },
+=======
+  rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null } },
+>>>>>>> evo-052-rim-max-tire-pressure
   spokes: { model: 'Hyperlite', brand: 'Alpina', material: 'steel', count: { front: 20, rear: 20 }, lacing: { front: "2-cross", rear: "2-cross" } },
   hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -32,7 +36,7 @@ export const zippWheels = [
 
     spoke_length_ds_mm: [280, 284],
     spoke_length_nds_mm: [282],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'ISO/TSS Compatible tubeless tires (28-32c)',
     tire_type: 'tubeless',
     rim_finish: 'UD fiber with ImPress technology',
@@ -50,7 +54,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 114,
-  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -66,7 +70,7 @@ export const zippWheels = [
     points_of_engagement: 66,
     spoke_length_ds_mm: [266, 272],
     spoke_length_nds_mm: [270],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'Tubeless tires only',
     tire_type: 'tubeless',
     rim_finish: 'UD fiber with adhesive decals',
@@ -85,7 +89,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 114,
-  rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: 27, internalWidth_mm: null },
+  rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: 27, internalWidth_mm: null, max_tire_pressure: { psi: 125, bar: 8.6, note: null } },
   spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'steel' },
   hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -104,7 +108,7 @@ export const zippWheels = [
     points_of_engagement: 66,
     spoke_length_ds_mm: [260, 268],
     spoke_length_nds_mm: [266],
-    max_tire_pressure_psi: 125,
+
     rim_finish: 'UD fiber with adhesive decals',
     rim_profile: 'Symmetrical',
     aero_technology: 'ABLC Sawtooth dimple design',
@@ -121,7 +125,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'endurance',
   max_system_weight_kg: 130,
-  rim: { material: 'carbon', hookless: true, depth_mm: 45, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 45, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: '176D / 76D', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -139,7 +143,7 @@ export const zippWheels = [
     'Cartridge Steel' }, prices: [{ amount: 581, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-303-stld-a1' }], images: ['https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-s-tl-disc-brake-a1/rears.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-s-tl-disc-brake-a1/cfrontdriveside3qheros.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-s-tl-disc-brake-a1/creardriveside3qs2.png'], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-303-stld-a1', amount: 581, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body',
     spoke_length_ds_mm: [264, 266],
     spoke_length_nds_mm: [266, 268],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'Tubeless tires only (28-50mm)',
     tire_type: 'tubeless',
     rim_finish: 'UD fiber, Bake-On labels, Matte clear coat',
@@ -158,7 +162,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 25 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -174,7 +178,7 @@ export const zippWheels = [
     ['61903'] }, prices: [{ amount: 900, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-303-sw-a1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-303-sw-a1', amount: 900, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body', campagnolo_body: 'sold separately',
     spoke_length_ds_mm: [272, 274],
     spoke_length_nds_mm: [276],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'ISO/TSS Compatible tubeless tires (30-44c)',
     tire_optimized_for_mm: '30-35',
     tire_type: 'tubeless',
@@ -197,7 +201,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 114,
-  rim: { material: 'carbon', hookless: true, depth_mm: 45, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 45, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -214,7 +218,7 @@ export const zippWheels = [
     points_of_engagement: 36,
     spoke_length_ds_mm: [258, 260, 266],
     spoke_length_nds_mm: [264, 266],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'Tubeless tires only',
     tire_type: 'tubeless',
     rim_finish: 'UD fiber with ImPress direct-print graphics',
@@ -233,7 +237,7 @@ export const zippWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'all-round',
-  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -249,7 +253,7 @@ export const zippWheels = [
     points_of_engagement: 66,
     spoke_length_ds_mm: [274, 276],
     spoke_length_nds_mm: [276, 278],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'ISO/TSS Compatible tubeless tires (29-35c)',
     tire_optimized_for_mm: 30,
     tire_type: 'tubeless',
@@ -272,7 +276,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 115,
-  rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -288,7 +292,7 @@ export const zippWheels = [
     points_of_engagement: 66,
     spoke_length_ds_mm: [250, 256],
     spoke_length_nds_mm: [252, 254],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'ISO/TSS Compatible tubeless tires (28-35c)',
     tire_type: 'tubeless',
     rim_finish: 'UD fiber with adhesive decals',
@@ -307,7 +311,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 114,
-  rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -332,7 +336,7 @@ export const zippWheels = [
     points_of_engagement: 36,
     spoke_length_ds_mm: [248, 254],
     spoke_length_nds_mm: [252, 254],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'Tubeless tires only',
     tire_optimized_for_mm: 28,
     tire_type: 'tubeless',
@@ -353,7 +357,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 115,
-  rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -373,7 +377,7 @@ export const zippWheels = [
     points_of_engagement: 66,
     spoke_length_ds_mm: [252, 254],
     spoke_length_nds_mm: [256],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'ISO/TSS tubeless (28-35mm)',
     tire_type: 'tubeless',
     rim_finish: 'UD fiber with ImPress direct-print',
@@ -392,7 +396,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 115,
-  rim: { material: 'carbon', hookless: true, depth_mm: 80, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 80, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'steel' },
   hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type:
 
@@ -408,7 +412,7 @@ export const zippWheels = [
     points_of_engagement: 66,
     spoke_length_ds_mm: [224, 236],
     spoke_length_nds_mm: [238, 240],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'ISO/TSS compatible tubeless tires (28-32c)',
     tire_optimized_for_mm: 28,
     tire_type: 'tubeless',
@@ -428,7 +432,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 114,
-  rim: { material: 'carbon', hookless: true, depth_mm: 85, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 85, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -447,7 +451,7 @@ export const zippWheels = [
     hub_technology: 'Axial Clutch V2',
     spoke_length_ds_mm: [218, 230],
     spoke_length_nds_mm: [232],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'Tubeless tires only',
     tire_optimized_for_mm: 28,
     tire_type: 'tubeless',
@@ -468,7 +472,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 115,
-  rim: { material: 'carbon', hookless: true, depth_mm: 85, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 85, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -488,7 +492,7 @@ export const zippWheels = [
     points_of_engagement: 66,
     spoke_length_ds_mm: [220, 230],
     spoke_length_nds_mm: [232],
-    max_tire_pressure_psi: 73,
+
     tire_compatibility: 'ISO/TSS Compatible tubeless tires (28-32c)',
     tire_optimized_for_mm: 30,
     tire_type: 'tubeless',
@@ -516,7 +520,7 @@ export const zippWheels = [
     depth_mm: { front: 58, rear: 80 },
     externalWidth_mm: 27,
     tubeless_ready: true,
-    internalWidth_mm: 23
+    internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null }
   },
   spokes: { model: null, brand: null, material: null },
   hub: {
@@ -537,7 +541,7 @@ export const zippWheels = [
 
     'Cartridge Steel' }, prices: [{ amount: 2150, currency: 'EUR', url: 'https://www.sram.com/en/zipp' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp', amount: 2150, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'front: 404 Firecrest; rear: 808 Firecrest — lightest configuration',
     points_of_engagement: 66,
-    max_tire_pressure_psi: 73,
+
     tire_type: 'tubeless',
     warranty: 'Lifetime'
   }
