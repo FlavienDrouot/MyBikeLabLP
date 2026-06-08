@@ -20,7 +20,6 @@ const baseHubSpecs = {
 };
 
 const baseOtherSpecs = {
-  rim_construction: 'UCI-approved high-temperature mould, High TG heat-resistant resin, reinforced nipple bed, formed (enveloped) rim hook',
   tire_type: 'tubeless ready (tubes also possible)',
   discount_pct: 35,
   shipping: 'free worldwide',
@@ -50,6 +49,7 @@ const makeCadenWheel = ({
   max_system_weight_kg: 120,
   rim: {
     material: 'carbon',
+    construction: 'UCI-approved high-temperature mould, High TG heat-resistant resin, reinforced nipple bed, formed (enveloped) rim hook',
     hookless: false,
     tubeless_ready: true,
     ...rim,

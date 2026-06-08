@@ -152,6 +152,25 @@ describe('validateWheelEntry', () => {
     expect(warnings[5]).toContain('other_specs.spoke_lacing');
     expect(warnings[10]).toContain('other_specs.lacing');
   });
+
+  it('warns when promoted rim material/construction fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        rim_material_name: 'Maxtal',
+        rim_material_detail: 'HI-MOD T800 Carbon Fiber',
+        rim_construction: 'Carbon with SAT Tech',
+        rim_technology: 'Fore Carbon',
+        rim_construction_technology: 'Biomimetic Laminate',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(5);
+    expect(warnings[0]).toContain('other_specs.rim_material_name');
+    expect(warnings[1]).toContain('other_specs.rim_material_detail');
+    expect(warnings[2]).toContain('other_specs.rim_construction');
+    expect(warnings[3]).toContain('other_specs.rim_technology');
+    expect(warnings[4]).toContain('other_specs.rim_construction_technology');
+  });
 });
 
 describe('validateWheelsCatalog', () => {

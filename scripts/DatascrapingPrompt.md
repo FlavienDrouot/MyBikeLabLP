@@ -60,6 +60,8 @@ For spoke count specs, write source labels such as `spoke_count`, `spoke_count_f
 
 For spoke detail specs, write source labels such as `nipples`, `spoke_nipple`, `spoke_nipples`, `spoke_type`, `spoke_profile`, `spoke_lacing`, `spoke_lacing_front`, `spoke_lacing_rear`, `front_wheel_spoke_lacing`, `rear_wheel_spoke_lacing`, `lacing`, and `rear_lacing` into `spokes.nipple`, `spokes.type`, `spokes.profile`, and `spokes.lacing`. Use `{ "front": value, "rear": value }` for a single wheelset lacing value, or map explicit front/rear values to the matching side. Normalize simple lacing shorthand such as `2x` to `2-cross` when unambiguous. Do not duplicate those labels in `other_specs`.
 
+For rim material and construction specs, keep the high-level material category in `rim.material` (`carbon` or `aluminum`). Write source labels such as `rim_material_name`, `rim_material_detail`, `rim_construction`, `rim_technology`, and `rim_construction_technology` into `rim.construction` when they contain material names, layup, resin, welding, laminate, or construction technology details. Do not duplicate those labels in `other_specs`.
+
 ### Data Quality Requirements
 
 * Never invent values.
@@ -106,7 +108,7 @@ Rules:
 3. **`variant` is a localized key.** Store the snake_case key only; its display label and translation live in the frontend `variant.*` i18n namespace. Never store free display text.
 4. **`variant` ≠ filter axis.** The three comparable axes remain the structured filterable/sortable fields and must still be populated. `variant` is a display differentiator that may name a non-axis difference (e.g. hub/build tier) when that is what makes two same-`model` products distinct buyable configurations.
 5. Use **canonical axis keys** exactly as above; one physical option = one key. Do not store Title Case for these axes — the frontend i18n layer handles display.
-6. **Never** put spoke material, rim width, brake type, per-variant weight or any price in `other_specs` (no `carbon_spoke_option`, `weight_carbon_spoke_grams`, `external_width_options_mm`, and no `price_eur` / `price_usd` / `price_usd_front` / `price_usd_rear` / `price_usd_wheelset`). Every price is an offer `{ amount, currency }`.
+6. **Never** put spoke material, rim width, rim construction, brake type, per-variant weight or any price in `other_specs` (no `carbon_spoke_option`, `weight_carbon_spoke_grams`, `external_width_options_mm`, `rim_material_detail`, `rim_construction`, and no `price_eur` / `price_usd` / `price_usd_front` / `price_usd_rear` / `price_usd_wheelset`). Every price is an offer `{ amount, currency }`.
 7. New configuration `id`s start at **200+**; never reuse reserved ranges 50–128 or 129–137.
 8. Siblings often have **distinct** prices (source each as `{ amount, currency }` in its native currency; `amount: null` if unavailable — never copy a sibling's price). Rim-width siblings that share one price inherit the base model's price.
 

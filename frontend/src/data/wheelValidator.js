@@ -41,6 +41,11 @@ const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
   'rear_wheel_spoke_lacing',
   'lacing',
   'rear_lacing',
+  'rim_material_name',
+  'rim_material_detail',
+  'rim_construction',
+  'rim_technology',
+  'rim_construction_technology',
   'weight_carbon_spoke_grams',
   'carbon_spoke_option',
   'external_width_options_mm',
@@ -120,6 +125,15 @@ function collectOtherSpecWarnings(entry, id) {
         key === 'rear_lacing'
       ) {
         return `other_specs.${key} on entry ${id}: promoted spoke detail data must use spokes.* fields`;
+      }
+      if (
+        key === 'rim_material_name' ||
+        key === 'rim_material_detail' ||
+        key === 'rim_construction' ||
+        key === 'rim_technology' ||
+        key === 'rim_construction_technology'
+      ) {
+        return `other_specs.${key} on entry ${id}: promoted rim material/construction data must use rim.* fields`;
       }
       return `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`;
     });

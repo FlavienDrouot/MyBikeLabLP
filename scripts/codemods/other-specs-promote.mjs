@@ -62,6 +62,12 @@ const migrations = {
       return promoteSpokesDetail(source);
     },
   },
+  'rim-material-construction': {
+    description: 'Promote rim material/construction fields from other_specs into rim for EVO-051.',
+    transform(source) {
+      return promoteRimMaterialConstruction(source);
+    },
+  },
 };
 
 const consumedHubOtherSpecKeys = new Map([
@@ -90,6 +96,14 @@ const consumedSpokesDetailOtherSpecKeys = new Set([
   'rear_wheel_spoke_lacing',
   'lacing',
   'rear_lacing',
+]);
+
+const consumedRimMaterialConstructionOtherSpecKeys = new Set([
+  'rim_material_name',
+  'rim_material_detail',
+  'rim_construction',
+  'rim_technology',
+  'rim_construction_technology',
 ]);
 
 const getPropertyName = (property) => {
@@ -500,6 +514,138 @@ const promoteSpokesDetail = (source) => {
   traverse(ast, {
     ObjectExpression(path) {
       if (promoteSpokesDetailInObjectExpression(path.node)) {
+        changed = true;
+      }
+    },
+  });
+
+  if (!changed) return source;
+  return generator(ast, {
+    retainLines: true,
+    jsescOption: { minimal: true },
+  }, source).code;
+};
+
+const normalizedTextFromNode = (value) => {
+  if (t.isStringLiteral(value)) return value.value.trim();
+  return null;
+};
+
+const categoryMaterialFromText = (value) => {
+  const text = normalizedTextFromNode(value)?.toLowerCase();
+  if (!text) return null;
+  if (/\bcarbon\b/.test(text)) return 'carbon';
+  if (/\balum(?:inum|inium)?\b/.test(text) || /\bmaxtal\b/.test(text) || /\bs6000\b/.test(text)) {
+    return 'aluminum';
+  }
+  return null;
+};
+
+const isEmptyStringLiteral = (value) => t.isStringLiteral(value) && value.value.trim() === '';
+
+const constructionNodeFromValues = (values) => {
+  const distinct = [];
+
+  for (const value of values) {
+    if (isEmptyStringLiteral(value)) continue;
+    if (!t.isStringLiteral(value)) {
+      distinct.push(t.cloneNode(value));
+      continue;
+    }
+
+    const text = value.value.trim();
+    if (!text || distinct.some((item) => t.isStringLiteral(item) && item.value === text)) continue;
+    distinct.push(t.stringLiteral(text));
+  }
+
+  if (distinct.length === 0) return t.nullLiteral();
+  if (distinct.length === 1) return distinct[0];
+
+  if (distinct.every((item) => t.isStringLiteral(item))) {
+    return t.stringLiteral(distinct.map((item) => item.value).join('; '));
+  }
+
+  return t.arrayExpression(distinct);
+};
+
+const shouldKeepMaterialNameAsConstruction = (value) => {
+  const category = categoryMaterialFromText(value);
+  const text = normalizedTextFromNode(value);
+  return Boolean(text && text.toLowerCase() !== category);
+};
+
+const promoteRimMaterialConstructionInObjectExpression = (objectExpression) => {
+  const rimProperty = getObjectProperty(objectExpression, 'rim');
+  const otherSpecsProperty =
+    getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
+
+  if (!rimProperty || !otherSpecsProperty || !t.isObjectProperty(rimProperty) || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(otherSpecsProperty.value)) {
+    return false;
+  }
+
+  const otherSpecsObject = otherSpecsProperty.value;
+  const remainingOtherSpecsProperties = [];
+  let changed = false;
+  let materialName = null;
+  const constructionValues = [];
+
+  for (const property of otherSpecsObject.properties) {
+    const sourceName = getPropertyName(property);
+
+    if (!consumedRimMaterialConstructionOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+      remainingOtherSpecsProperties.push(property);
+      continue;
+    }
+
+    if (sourceName === 'rim_material_name') {
+      materialName ??= property.value;
+      if (shouldKeepMaterialNameAsConstruction(property.value)) {
+        constructionValues.push(property.value);
+      }
+    } else {
+      constructionValues.push(property.value);
+    }
+
+    changed = true;
+  }
+
+  if (!changed) return false;
+
+  otherSpecsObject.properties = remainingOtherSpecsProperties;
+
+  if (!t.isObjectExpression(rimProperty.value)) {
+    return true;
+  }
+
+  const rimObject = rimProperty.value;
+  const materialProperty = getObjectProperty(rimObject, 'material');
+  const materialCategory = materialName ? categoryMaterialFromText(materialName) : null;
+
+  if (materialCategory && (!materialProperty || !t.isObjectProperty(materialProperty) || isEmptyStringLiteral(materialProperty.value))) {
+    if (materialProperty && t.isObjectProperty(materialProperty)) {
+      materialProperty.value = t.stringLiteral(materialCategory);
+    } else {
+      rimObject.properties.unshift(t.objectProperty(t.identifier('material'), t.stringLiteral(materialCategory)));
+    }
+  }
+
+  if (constructionValues.length > 0 && !hasProperty(rimObject, 'construction')) {
+    rimObject.properties.push(t.objectProperty(t.identifier('construction'), constructionNodeFromValues(constructionValues)));
+  }
+
+  return true;
+};
+
+const promoteRimMaterialConstruction = (source) => {
+  const ast = parser.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
+  let changed = false;
+
+  traverse(ast, {
+    ObjectExpression(path) {
+      if (promoteRimMaterialConstructionInObjectExpression(path.node)) {
         changed = true;
       }
     },

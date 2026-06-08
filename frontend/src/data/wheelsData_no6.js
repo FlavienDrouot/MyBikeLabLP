@@ -7,7 +7,6 @@ const baseOtherSpecs = {
   max_tire_pressure_psi: 110,
   tire_compatibility: 'Tubeless/clincher',
   recommended_tire_size_c: '28-30 aero optimized; compatible with 28-35',
-  rim_construction: 'Toray T700/T800 carbon, UD glossy paintless finish',
   certification: 'UCI approved'
 };
 
@@ -44,6 +43,7 @@ const makeNo6Wheel = ({
   max_system_weight_kg,
   rim: {
     material: 'carbon',
+    construction: 'Toray T700/T800 carbon, UD glossy paintless finish',
     hookless: false,
     depth_mm,
     externalWidth_mm,

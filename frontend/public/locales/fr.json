@@ -181,6 +181,7 @@
     "price": { "label": "Prix" },
     "diameter": { "label": "Diamètre" },
     "rimMaterial": { "label": "Matériau de jante" },
+    "rimConstruction": { "label": "Construction de jante" },
     "hookless": { "label": "Hookless" },
     "depth": { "label": "Profil" },
     "externalWidth": { "label": "Largeur externe" },

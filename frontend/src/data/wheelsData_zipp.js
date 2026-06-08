@@ -8,7 +8,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 115,
-  rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23, construction: "Biomimetic Laminate, mixed-modulus carbon" },
   spokes: { model: 'Hyperlite', brand: 'Alpina', material: 'steel', count: { front: 20, rear: 20 }, lacing: { front: "2-cross", rear: "2-cross" } },
   hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -36,7 +36,7 @@ export const zippWheels = [
     tire_compatibility: 'ISO/TSS Compatible tubeless tires (28-32c)',
     tire_type: 'tubeless',
     rim_finish: 'UD fiber with ImPress technology',
-    rim_construction_technology: 'Biomimetic Laminate, mixed-modulus carbon',
+
     warranty: 'Lifetime',
     sku: 'WH-202-NSW-A1'
   }

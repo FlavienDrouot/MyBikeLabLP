@@ -181,6 +181,7 @@
     "price": { "label": "Price" },
     "diameter": { "label": "Diameter" },
     "rimMaterial": { "label": "Rim material" },
+    "rimConstruction": { "label": "Rim construction" },
     "hookless": { "label": "Hookless" },
     "depth": { "label": "Depth" },
     "externalWidth": { "label": "External width" },

@@ -25,7 +25,7 @@ export const exsWheels = [
     depth_mm: 42.5,
     externalWidth_mm: 30,
     internalWidth_mm: 24,
-    tubeless_ready: true
+    tubeless_ready: true, construction: "Hooked tubeless-ready carbon rim (avoids hookless 73psi pressure limit); wind-tunnel-tested profile"
   },
   spokes: {
     model: 'CX-Ray',
@@ -51,8 +51,8 @@ export const exsWheels = [
     'SKF' }, prices: [{ amount: 1000, currency: 'USD', url: PRODUCT_URL }], image: IMAGES[0], images: IMAGES, affiliateLinks: { manufacturer: { url: PRODUCT_URL, amount: 1000, currency: 'USD' }, retailers: [{ name: 'Panda Podium', amount: 1000, currency: 'USD', url: RETAILER_URL }] }, other_specs: {
     tire_compatibility: 'Clincher/Tubeless',
     recommended_max_tire_size_c: 32,
-    rim_construction:
-    'Hooked tubeless-ready carbon rim (avoids hookless 73psi pressure limit); wind-tunnel-tested profile',
+
+
     warranty: '2-year (crash replacement covered)'
   }
 }];

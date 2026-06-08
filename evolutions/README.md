@@ -22,6 +22,7 @@ A Project groups several evolutions sharing one goal and definition of done. Chi
 | EVO-048 | hub-bearing-material | Light EVO | Done | PROJ-001 |
 | EVO-049 | spokes-count | Light EVO | Done | PROJ-001 |
 | EVO-050 | spokes-detail | Light EVO | Done | PROJ-001 |
+| EVO-051 | rim-material-construction | Light EVO | Done | PROJ-001 |
 
 ## Fixes
 

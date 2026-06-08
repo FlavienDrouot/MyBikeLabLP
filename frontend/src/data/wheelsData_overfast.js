@@ -18,8 +18,6 @@ const baseHubSpecs = {
 const baseOtherSpecs = {
   weight_tolerance_grams: 15,
   max_tire_pressure_psi_28c: 110,
-  rim_construction:
-    'In-house manufactured carbon (Toray T1100/T800+), laser-guided layup, UV-shaped hooked-bead profile; validated to 100 J impact (UCI requirement 40 J)',
   warranty: '2-year manufacturer warranty',
 };
 
@@ -44,6 +42,8 @@ const makeOverfastWheel = ({
   max_system_weight_kg: 100,
   rim: {
     material: 'carbon',
+    construction:
+      'In-house manufactured carbon (Toray T1100/T800+), laser-guided layup, UV-shaped hooked-bead profile; validated to 100 J impact (UCI requirement 40 J)',
     hookless: false,
     depth_mm,
     externalWidth_mm,

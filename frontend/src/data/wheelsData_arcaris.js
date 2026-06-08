@@ -15,8 +15,6 @@ const baseOtherSpecs = {
   min_tire_size_c: 25,
   max_tire_size_c: 38,
   max_tire_pressure_psi_28c: 110,
-  rim_construction:
-  'VAMspeed wind-tunnel-tested rim profile, Optiply high-modulus layup, hidden nipples, DSR-Lock patent-pending captive spokes, hooked (clincher & tubeless ready)',
   uci_approved: true,
   warranty: '2-year limited (manufacturing defects)'
 };
@@ -58,6 +56,8 @@ const makeArcarisWheel = ({
       max_system_weight_kg,
       rim: {
         material: 'carbon',
+        construction:
+          'VAMspeed wind-tunnel-tested rim profile, Optiply high-modulus layup, hidden nipples, DSR-Lock patent-pending captive spokes, hooked (clincher & tubeless ready)',
         hookless: false,
         depth_mm: 27,
         externalWidth_mm: 28.3,

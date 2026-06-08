@@ -42,7 +42,7 @@ const makeGoosynn = ({
     depth_mm,
     externalWidth_mm,
     internalWidth_mm,
-    tubeless_ready: true
+    tubeless_ready: true, construction: "Toray T700 & T800"
   },
   spokes: {
     model: 'Ti-Fi',
@@ -53,7 +53,7 @@ const makeGoosynn = ({
   },
   hub: { model: hub_model, brand: 'GOOSYNN', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: FREEHUB_OPTIONS, disc_standard: 'Center Lock', bearing_type: hubBearingType }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: images && images.length ? images[0] : wheelPlaceholderUrl, images: images || [], affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers: [{ name: 'Panda Podium', amount: priceUsd, currency: 'USD', url: retailerUrl }] }, other_specs: {
     neck_type: 'Straight Pull',
-    rim_material_detail: 'Toray T700 & T800',
+
     bead_type: 'Hooked',
     tire_compatibility_c,
     recommended_rider_weight_kg,

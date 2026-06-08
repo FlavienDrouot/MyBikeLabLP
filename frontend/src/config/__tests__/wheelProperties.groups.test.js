@@ -65,4 +65,11 @@ describe('WHEEL_PROPERTIES registry groups', () => {
       expect(property?.filter, `${id} should be filterable`).toEqual({ type: 'multiSelect' });
     }
   });
+
+  it('declares promoted rim construction as a multi-select filter', () => {
+    const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'rimConstruction');
+
+    expect(property?.group).toBe('rims');
+    expect(property?.filter).toEqual({ type: 'multiSelect' });
+  });
 });

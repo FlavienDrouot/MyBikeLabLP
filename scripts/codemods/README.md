@@ -33,6 +33,13 @@ node scripts/codemods/other-specs-promote.mjs --concept spokes-detail --dry-run
 node scripts/codemods/other-specs-promote.mjs --concept spokes-detail --write
 ```
 
+EVO-051 promotes rim material/construction fields:
+
+```powershell
+node scripts/codemods/other-specs-promote.mjs --concept rim-material-construction --dry-run
+node scripts/codemods/other-specs-promote.mjs --concept rim-material-construction --write
+```
+
 Rules for later PROJ-001 child evolutions:
 
 - Add one concept migration at a time.

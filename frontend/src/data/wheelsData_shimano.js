@@ -59,7 +59,7 @@ const makeShimanoWheel = ({
     depth_mm: depth,
     externalWidth_mm: 28,
     internalWidth_mm: tubeless ? 21 : null,
-    tubeless_ready: tubeless
+    tubeless_ready: tubeless, construction: "D2 rim"
   },
   spokes: {
     model: spokeModel,
@@ -80,7 +80,7 @@ const makeShimanoWheel = ({
     freehub_note: series.includes('DURA-ACE') ?
     'HG spline L2, Shimano road 12-speed dedicated' :
     'HG spline L, road 12/11-speed',
-    rim_technology: 'D2 rim',
+
     weight_note: 'Average weight without quick release, rim tape, tubeless tape, valve stem, lock ring',
     source_note: sourceNote
   },
