@@ -31,7 +31,7 @@ describe('WHEEL_PROPERTIES registry groups', () => {
   });
 
   it('assigns current spoke properties to the spokes group', () => {
-    const spokePropertyIds = ['spokes', 'spokesBrand', 'spokesModel', 'spokeMaterial'];
+    const spokePropertyIds = ['spokes', 'spokesBrand', 'spokesModel', 'spokeMaterial', 'spokeCount'];
 
     for (const id of spokePropertyIds) {
       const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === id);
@@ -47,5 +47,12 @@ describe('WHEEL_PROPERTIES registry groups', () => {
       expect(property?.group, `${id} should belong to hub`).toBe('hub');
       expect(property?.filter, `${id} should be filterable`).toEqual({ type: 'multiSelect' });
     }
+  });
+
+  it('declares promoted spoke count as a range filter', () => {
+    const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'spokeCount');
+
+    expect(property?.group).toBe('spokes');
+    expect(property?.filter).toEqual({ type: 'range' });
   });
 });

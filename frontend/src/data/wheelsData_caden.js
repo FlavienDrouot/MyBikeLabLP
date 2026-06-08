@@ -83,27 +83,23 @@ const steelSpokes = {
   model: 'Aero straight-pull',
   brand: 'Caden',
   material: 'steel',
+  count: { front: 16, rear: 21 },
 };
 
 const carbonSpokes = {
   model: 'Captured carbon straight-pull',
   brand: 'Caden',
   material: 'carbon',
+  count: { front: 16, rear: 21 },
 };
 
 const standardOtherSpecs = {
   spoke_type: 'straight-pull aero',
-  spoke_count_front: 16,
-  spoke_count_rear: 21,
-  spoke_count_disc: '21 front and rear',
   brake_note: 'Disc brake only, no rim brake model',
 };
 
 const carbonSpokeOtherSpecs = {
   spoke_type: 'captured carbon straight-pull aero',
-  spoke_count_front: 16,
-  spoke_count_rear: 21,
-  spoke_count_disc: '21 front and rear',
   brake_note: 'Disc brake only, no rim brake model',
   captured_spoke_safety_note: 'Custom captured-spoke carbon hub (not open flange) for added safety',
 };

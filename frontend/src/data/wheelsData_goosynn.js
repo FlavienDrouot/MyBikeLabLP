@@ -18,7 +18,7 @@ const makeGoosynn = ({
   max_system_weight_kg,
   hub_model,
   hubBearingType,
-  spoke_count,
+  spokeCount,
   spoke_lacing,
   tire_compatibility_c,
   recommended_rider_weight_kg,
@@ -47,7 +47,8 @@ const makeGoosynn = ({
   spokes: {
     model: 'Ti-Fi',
     brand: 'GOOSYNN',
-    material: 'titanium'
+    material: 'titanium',
+    count: { front: spokeCount, rear: spokeCount }
   },
   hub: {
     model: hub_model,
@@ -66,7 +67,7 @@ const makeGoosynn = ({
 
 
     hubBearingType }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: images && images.length ? images[0] : wheelPlaceholderUrl, images: images || [], affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers: [{ name: 'Panda Podium', amount: priceUsd, currency: 'USD', url: retailerUrl }] }, other_specs: {
-    spoke_count,
+
     spoke_lacing,
     neck_type: 'Straight Pull',
     rim_material_detail: 'Toray T700 & T800',
@@ -91,7 +92,7 @@ makeGoosynn({
   max_system_weight_kg: 100,
   hub_model: 'GOOSYNN Hub',
   hubBearingType: 'CEMA/TPI Ceramic Bearing',
-  spoke_count: 40,
+  spokeCount: 40,
   spoke_lacing: '2X Cross (front/rear)',
   tire_compatibility_c: '30C - 50C',
   recommended_rider_weight_kg: '<85',
@@ -115,7 +116,7 @@ makeGoosynn({
   max_system_weight_kg: 110,
   hub_model: 'GOOSYNN Race Pro Hub',
   hubBearingType: 'TPI Steel Bearing',
-  spoke_count: 45,
+  spokeCount: 45,
   spoke_lacing: '2X Cross / 3X Cross (2:1 lacing)',
   tire_compatibility_c: '30C - 50C',
   recommended_rider_weight_kg: '<95',
@@ -140,7 +141,7 @@ makeGoosynn({
   max_system_weight_kg: 100,
   hub_model: 'GOOSYNN Hub',
   hubBearingType: 'CEMA/TPI Ceramic Bearing',
-  spoke_count: 40,
+  spokeCount: 40,
   spoke_lacing: '2X Cross (front/rear)',
   tire_compatibility_c: '30C - 50C',
   recommended_rider_weight_kg: '<85',
@@ -164,7 +165,7 @@ makeGoosynn({
   max_system_weight_kg: 110,
   hub_model: 'GOOSYNN Race Pro Hub',
   hubBearingType: 'TPI Steel Bearing',
-  spoke_count: 45,
+  spokeCount: 45,
   spoke_lacing: '2X Cross / 3X Cross (2:1 lacing)',
   tire_compatibility_c: '30C - 50C',
   recommended_rider_weight_kg: '<95',
@@ -187,7 +188,7 @@ makeGoosynn({
   max_system_weight_kg: 110,
   hub_model: 'GOOSYNN Race Pro Hub',
   hubBearingType: 'TPI Steel Bearing',
-  spoke_count: 45,
+  spokeCount: 45,
   spoke_lacing: '2X Cross / 3X Cross (2:1 lacing)',
   tire_compatibility_c: '35C - 70C',
   recommended_rider_weight_kg: '<95',

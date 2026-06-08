@@ -193,6 +193,7 @@
     "spokesBrand": { "label": "Marque de rayons" },
     "spokesModel": { "label": "Modèle de rayons" },
     "spokeMaterial": { "label": "Matériau des rayons" },
+    "spokeCount": { "label": "Nombre de rayons" },
     "brakeType": { "label": "Type de frein" },
     "tubelessReady": { "label": "Tubeless" },
     "internalWidth": { "label": "Largeur interne" },
@@ -214,7 +215,9 @@
     "externalWidth_asc": "Largeur externe (étroite → large)",
     "externalWidth_desc": "Largeur externe (large → étroite)",
     "internalWidth_asc": "Largeur interne (étroite → large)",
-    "internalWidth_desc": "Largeur interne (large → étroite)"
+    "internalWidth_desc": "Largeur interne (large → étroite)",
+    "spokeCount_asc": "Nombre de rayons (croissant)",
+    "spokeCount_desc": "Nombre de rayons (décroissant)"
   },
   "filters": {
     "hookless": {

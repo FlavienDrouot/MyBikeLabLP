@@ -17,8 +17,6 @@ const baseHubSpecs = {
 
 const baseOtherSpecs = {
   weight_tolerance_grams: 15,
-  spoke_count_front: 20,
-  spoke_count_rear: 20,
   lacing: '1:1',
   max_tire_pressure_psi_28c: 110,
   rim_construction:
@@ -57,6 +55,7 @@ const makeOverfastWheel = ({
     model: 'Overfast Carbon Spoke (3.5-1.5)',
     brand: 'OVERFAST',
     material: 'carbon',
+    count: { front: 20, rear: 20 },
   },
   hub: {
     model: 'Overfast Hub',

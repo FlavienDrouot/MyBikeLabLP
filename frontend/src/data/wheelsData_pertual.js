@@ -110,15 +110,15 @@ baseWheel({
   weight: 1190,
   category: 'aero',
   rim: { depth_mm: { front: 45, rear: 62 }, externalWidth_mm: 31, internalWidth_mm: 23 },
-  spokes: { model: 'Integrated Carbon Spoke', brand: 'PERTUAL', material: 'carbon' },
+  spokes: { model: 'Integrated Carbon Spoke', brand: 'PERTUAL', material: 'carbon', count: { front: 16, rear: 16 } },
   hub: { model: 'Premium Road Disc', brand: 'PERTUAL' },
   url: urls.acme,
   priceUsd: 2000,
   images: pandaImages.acme,
   retailers: [{ name: 'Panda Podium', amount: null, currency: 'EUR', url: pandaUrls.acme }],
   otherSpecs: {
-    bearing_upgrade_option: 'CeramicSpeed',
-    spoke_count: { front: 16, rear: 16 }
+    bearing_upgrade_option: 'CeramicSpeed'
+
   }
 }),
 baseWheel({
@@ -128,11 +128,11 @@ baseWheel({
   weight: 1295,
   category: 'all-round',
   rim: { depth_mm: { front: 36, rear: 41 }, externalWidth_mm: 28, internalWidth_mm: 21 },
-  spokes: { model: '', brand: 'Sapim', material: 'steel' },
+  spokes: { model: '', brand: 'Sapim', material: 'steel', count: { front: 21, rear: 21 } },
   hub: { model: 'Premium Road Disc', brand: 'PERTUAL' },
   url: urls.sharpPro3641,
   priceUsd: 1000,
-  otherSpecs: { spoke_count: { front: 21, rear: 21 } }
+  otherSpecs: {}
 }),
 baseWheel({
   id: 236,
@@ -141,13 +141,13 @@ baseWheel({
   weight: 1280,
   category: 'all-round',
   rim: { depth_mm: { front: 36, rear: 41 }, externalWidth_mm: 28, internalWidth_mm: 21 },
-  spokes: { model: 'Carbon Spoke', brand: 'PERTUAL', material: 'carbon' },
+  spokes: { model: 'Carbon Spoke', brand: 'PERTUAL', material: 'carbon', count: { front: 21, rear: 21 } },
   hub: { model: 'Premium Road Disc', brand: 'PERTUAL' },
   url: urls.sharp3641,
   priceUsd: 1300,
   images: pandaImages.sharp3641,
   retailers: [{ name: 'Panda Podium', amount: null, currency: 'EUR', url: pandaUrls.sharp3641 }],
-  otherSpecs: { spoke_count: { front: 21, rear: 21 } }
+  otherSpecs: {}
 }),
 baseWheel({
   id: 237,
@@ -160,13 +160,13 @@ baseWheel({
     externalWidth_mm: { front: 31, rear: 28 },
     internalWidth_mm: { front: 23, rear: 22 }
   },
-  spokes: { model: '', brand: 'Sapim', material: 'steel' },
+  spokes: { model: '', brand: 'Sapim', material: 'steel', count: { front: 21, rear: 21 } },
   hub: { model: 'Premium Road Disc', brand: 'PERTUAL' },
   url: urls.sharpPro4758,
   priceUsd: 1000,
   otherSpecs: {
-    wave_depth_mm: { front: '47/53', rear: '52/58' },
-    spoke_count: { front: 21, rear: 21 }
+    wave_depth_mm: { front: '47/53', rear: '52/58' }
+
   }
 }),
 baseWheel({
@@ -180,15 +180,15 @@ baseWheel({
     externalWidth_mm: { front: 31, rear: 28 },
     internalWidth_mm: { front: 23, rear: 22 }
   },
-  spokes: { model: 'Integrated Carbon Spoke', brand: 'PERTUAL', material: 'carbon' },
+  spokes: { model: 'Integrated Carbon Spoke', brand: 'PERTUAL', material: 'carbon', count: { front: 21, rear: 21 } },
   hub: { model: 'Premium Road Disc', brand: 'PERTUAL' },
   url: urls.sharpAdv4758,
   priceUsd: 1600,
   images: pandaImages.sharp4758,
   retailers: [{ name: 'Panda Podium', amount: null, currency: 'EUR', url: pandaUrls.sharp4758 }],
   otherSpecs: {
-    wave_depth_mm: { front: '47/53', rear: '52/58' },
-    spoke_count: { front: 21, rear: 21 }
+    wave_depth_mm: { front: '47/53', rear: '52/58' }
+
   }
 }),
 baseWheel({
@@ -198,13 +198,13 @@ baseWheel({
   brakeType: 'rim',
   category: 'aero',
   rim: { depth_mm: { front: 52, rear: 58 }, externalWidth_mm: 28, internalWidth_mm: 21 },
-  spokes: { model: 'Carbon Spoke', brand: 'PERTUAL', material: 'carbon' },
+  spokes: { model: 'Carbon Spoke', brand: 'PERTUAL', material: 'carbon', count: { front: 18, rear: 21 } },
   hub: { model: 'Premium Road Rim', brand: 'PERTUAL', disc_standard: null },
   url: urls.sharp5258Rim,
   priceUsd: 1350,
   images: pandaImages.sharp5258Rim,
   retailers: [{ name: 'Panda Podium', amount: null, currency: 'EUR', url: pandaUrls.sharp5258Rim }],
-  otherSpecs: { spoke_count: { front: 18, rear: 21 } }
+  otherSpecs: {}
 }),
 baseWheel({
   id: 240,
@@ -212,11 +212,11 @@ baseWheel({
   weight: 1380,
   category: 'aero',
   rim: { depth_mm: { front: 52, rear: 58 }, externalWidth_mm: 28, internalWidth_mm: 21 },
-  spokes: { model: 'Carbon Spoke', brand: 'PERTUAL', material: 'carbon' },
+  spokes: { model: 'Carbon Spoke', brand: 'PERTUAL', material: 'carbon', count: { front: 21, rear: 21 } },
   hub: { model: 'Premium Road Disc', brand: 'PERTUAL' },
   url: urls.sharp5258Disc,
   priceUsd: 1350,
-  otherSpecs: { spoke_count: { front: 21, rear: 21 } }
+  otherSpecs: {}
 }),
 baseWheel({
   id: 241,
@@ -225,11 +225,11 @@ baseWheel({
   weight: 1475,
   category: 'aero',
   rim: { depth_mm: { front: 62, rear: 70 }, externalWidth_mm: 30, internalWidth_mm: 23 },
-  spokes: { model: '', brand: 'Sapim', material: 'steel' },
+  spokes: { model: '', brand: 'Sapim', material: 'steel', count: { front: 21, rear: 21 } },
   hub: { model: 'Premium Road Disc', brand: 'PERTUAL' },
   url: urls.sharpPro6270,
   priceUsd: 1000,
-  otherSpecs: { spoke_count: { front: 21, rear: 21 } }
+  otherSpecs: {}
 }),
 baseWheel({
   id: 242,
@@ -238,13 +238,13 @@ baseWheel({
   weight: 1480,
   category: 'aero',
   rim: { depth_mm: { front: 62, rear: 70 }, externalWidth_mm: 30, internalWidth_mm: 21 },
-  spokes: { model: 'Carbon Spoke', brand: 'PERTUAL', material: 'carbon' },
+  spokes: { model: 'Carbon Spoke', brand: 'PERTUAL', material: 'carbon', count: { front: 21, rear: 21 } },
   hub: { model: 'Premium Road Disc', brand: 'PERTUAL' },
   url: urls.sharp6270,
   priceUsd: 1500,
   images: pandaImages.sharp6270,
   retailers: [{ name: 'Panda Podium', amount: null, currency: 'EUR', url: pandaUrls.sharp6270 }],
-  otherSpecs: { spoke_count: { front: 21, rear: 21 } }
+  otherSpecs: {}
 }),
 baseWheel({
   id: 243,
@@ -252,12 +252,12 @@ baseWheel({
   weight: 1430,
   category: 'all-round',
   rim: { depth_mm: 47, externalWidth_mm: 28, internalWidth_mm: 22.5 },
-  spokes: { model: '', brand: '', material: 'steel' },
+  spokes: { model: '', brand: '', material: 'steel', count: { front: 24, rear: 24 } },
   hub: { model: 'Classic Road Disc', brand: 'PERTUAL' },
   url: urls.speed47,
   priceUsd: 800,
   otherSpecs: {
-    hubBearingType: 'Steel',
-    spoke_count: { front: 24, rear: 24 }
+    hubBearingType: 'Steel'
+
   }
 })];

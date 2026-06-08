@@ -193,6 +193,7 @@
     "spokesBrand": { "label": "Spokes brand" },
     "spokesModel": { "label": "Spokes model" },
     "spokeMaterial": { "label": "Spoke material" },
+    "spokeCount": { "label": "Spoke count" },
     "brakeType": { "label": "Brake type" },
     "tubelessReady": { "label": "Tubeless ready" },
     "internalWidth": { "label": "Internal width" },
@@ -214,7 +215,9 @@
     "externalWidth_asc": "External width (narrow → wide)",
     "externalWidth_desc": "External width (wide → narrow)",
     "internalWidth_asc": "Internal width (narrow → wide)",
-    "internalWidth_desc": "Internal width (wide → narrow)"
+    "internalWidth_desc": "Internal width (wide → narrow)",
+    "spokeCount_asc": "Spoke count (low → high)",
+    "spokeCount_desc": "Spoke count (high → low)"
   },
   "filters": {
     "hookless": {

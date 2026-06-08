@@ -19,6 +19,13 @@ node scripts/codemods/other-specs-promote.mjs --concept hub-bearing-material --d
 node scripts/codemods/other-specs-promote.mjs --concept hub-bearing-material --write
 ```
 
+EVO-049 promotes spoke count fields:
+
+```powershell
+node scripts/codemods/other-specs-promote.mjs --concept spokes-count --dry-run
+node scripts/codemods/other-specs-promote.mjs --concept spokes-count --write
+```
+
 Rules for later PROJ-001 child evolutions:
 
 - Add one concept migration at a time.

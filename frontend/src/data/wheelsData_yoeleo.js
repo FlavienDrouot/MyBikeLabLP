@@ -23,7 +23,7 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
   spokes: {
     model: 'Pillar WING 2.0 Aero',
     brand: 'Pillar',
-    material: 'steel'
+    material: 'steel', count: { front: 24, rear: 24 }
   },
   hub: {
     model: 'NxT Ratchet System',
@@ -54,8 +54,8 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
     max_tire_pressure_psi_tubeless: 90,
     compatible_tire_width_mm: '25c and above',
     suggested_tire_width_mm: '28c-47c',
-    spoke_count_front: 24,
-    spoke_count_rear: 24,
+
+
     warranty_years: 3
   }
 });
@@ -88,7 +88,7 @@ const makeQianKunWheel = ({
   spokes: {
     model: 'Aero variable-section T-Head carbon',
     brand: 'YOELEO',
-    material: 'carbon'
+    material: 'carbon', count: { front: 21, rear: 24 }
   },
   hub: {
     model: 'QianKun Pro-PreLock Ratchet System',
@@ -112,7 +112,7 @@ const makeQianKunWheel = ({
 
 
 
-    'Ceramic-sealed bearings' }, prices: [{ amount: 1650, currency: 'USD', url }], image: wheelPlaceholderUrl, images: [], affiliateLinks: { manufacturer: { url, amount: 1650, currency: 'USD' }, retailers: [] }, other_specs: { weight_tolerance_percent: 3, range_of_use, rim_material_detail: 'HI-MOD T1000 Carbon Fiber', spoke_count_front: 21, spoke_count_rear: 24, ratchet_teeth: 36,
+    'Ceramic-sealed bearings' }, prices: [{ amount: 1650, currency: 'USD', url }], image: wheelPlaceholderUrl, images: [], affiliateLinks: { manufacturer: { url, amount: 1650, currency: 'USD' }, retailers: [] }, other_specs: { weight_tolerance_percent: 3, range_of_use, rim_material_detail: 'HI-MOD T1000 Carbon Fiber', ratchet_teeth: 36,
     rim_weight_each_grams: 420,
     rim_weight_tolerance_percent: 3,
     compatible_tire_type: 'Clincher Tire, Tubeless Tire',

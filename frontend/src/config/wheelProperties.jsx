@@ -583,6 +583,39 @@ export const WHEEL_PROPERTIES = [
       cellClassName: 'px-4 py-3 text-ink-11',
     },
   },
+
+  {
+    id: 'spokeCount',
+    label: 'properties.spokeCount.label',
+    group: 'spokes',
+    translatable: false,
+    accessor: (w) => {
+      const { front, rear } = resolveSpec(w.spokes?.count);
+      if (front === null) return null;
+      return Math.max(front, rear);
+    },
+    filterAccessor: (w) => {
+      const { front, rear, isSingle } = resolveSpec(w.spokes?.count);
+      if (front === null) return null;
+      return isSingle ? front : [front, rear];
+    },
+    filter: { type: 'range' },
+    sorts: [
+      { id: 'spokeCount_asc', label: 'sorts.spokeCount_asc', direction: 'asc' },
+      { id: 'spokeCount_desc', label: 'sorts.spokeCount_desc', direction: 'desc' },
+    ],
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => {
+        const { front, rear, isSingle } = resolveSpec(w.spokes?.count);
+        if (front === null) return t('common.notAvailable');
+        if (isSingle) return `${front}`;
+        return `${front} / ${rear}`;
+      },
+    },
+  },
 ];
 
 // --- Registry reading helpers ---

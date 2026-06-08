@@ -110,6 +110,24 @@ describe('validateWheelEntry', () => {
     expect(warnings[1]).toContain('other_specs.bearing_models');
     expect(warnings[2]).toContain('other_specs.hub_material');
   });
+
+  it('warns when promoted spoke count fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        spoke_count: 24,
+        spoke_count_front: 21,
+        spoke_count_rear: 24,
+        spoke_count_disc: '21 front and rear',
+        nipples: 'Sapim Secure Lock',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(4);
+    expect(warnings[0]).toContain('other_specs.spoke_count');
+    expect(warnings[1]).toContain('other_specs.spoke_count_front');
+    expect(warnings[2]).toContain('other_specs.spoke_count_rear');
+    expect(warnings[3]).toContain('other_specs.spoke_count_disc');
+  });
 });
 
 describe('validateWheelsCatalog', () => {

@@ -56,6 +56,8 @@ If the source page uses synonym labels for a promoted field, normalize them into
 
 For hub bearing and material specs, write source labels such as `bearing_type`, `bearing_models`, and `hub_material` into `hub.bearing_type`, `hub.bearing_models`, and `hub.material`. Do not duplicate those labels in `other_specs`.
 
+For spoke count specs, write source labels such as `spoke_count`, `spoke_count_front`, `spoke_count_rear`, and `spoke_count_disc` into `spokes.count`. Use `{ "front": n, "rear": n }` for a single wheelset count, or map explicit front/rear values to the matching side. Do not duplicate those labels in `other_specs`.
+
 ### Data Quality Requirements
 
 * Never invent values.
@@ -130,8 +132,6 @@ Example:
 
 ```json
 "other_specs": {
-  "spoke_count_front": 24,
-  "spoke_count_rear": 24,
   "recommended_tire_width_mm": "28-45",
   "aero_technology": "Aero+",
   "warranty_years": 5

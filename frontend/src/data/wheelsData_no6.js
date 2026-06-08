@@ -4,8 +4,6 @@ const FREEHUB_OPTIONS = ['Shimano HG', 'Shimano Micro Spline', 'SRAM XDR', 'Camp
 
 const baseOtherSpecs = {
   engagement_ratchet: 'Vapor 45T',
-  spoke_count_front: 16,
-  spoke_count_rear: 20,
   max_tire_pressure_psi: 110,
   tire_compatibility: 'Tubeless/clincher',
   recommended_tire_size_c: '28-30 aero optimized; compatible with 28-35',
@@ -32,8 +30,8 @@ const makeNo6Wheel = ({
   freehub_options = FREEHUB_OPTIONS,
   hubBearingType = 'Tripeak Ceramic',
   engagement_ratchet = 'Vapor 45T',
-  spoke_count_front = 16,
-  spoke_count_rear = 20,
+  spokeCountFront = 16,
+  spokeCountRear = 20,
   recommended_tire_size_c = '28-30 aero optimized; compatible with 28-35'
 }) => ({
   id,
@@ -56,7 +54,8 @@ const makeNo6Wheel = ({
   spokes: {
     model: `Carbon aero spoke ${carbon_spoke_diameter_mm}`,
     brand: 'NO.6',
-    material: 'carbon'
+    material: 'carbon',
+    count: { front: spokeCountFront, rear: spokeCountRear }
   },
   hub: {
     model: hub_model,
@@ -77,8 +76,8 @@ const makeNo6Wheel = ({
 
     hubBearingType, bearing_models: [], material: null }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: image ?? wheelPlaceholderUrl, images, affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers: [] }, other_specs: { ...baseOtherSpecs,
     engagement_ratchet,
-    spoke_count_front,
-    spoke_count_rear,
+
+
     recommended_tire_size_c
   }
 });
@@ -119,8 +118,8 @@ makeNo6Wheel({
   freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'],
   hubBearingType: 'Enduro steel',
   engagement_ratchet: '36T Ratchet',
-  spoke_count_front: 20,
-  spoke_count_rear: 20,
+  spokeCountFront: 20,
+  spokeCountRear: 20,
   recommended_tire_size_c: 'Minimum 28'
 }),
 makeNo6Wheel({
@@ -164,8 +163,8 @@ makeNo6Wheel({
   freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'],
   hubBearingType: 'Enduro steel',
   engagement_ratchet: '36T Ratchet',
-  spoke_count_front: 20,
-  spoke_count_rear: 20,
+  spokeCountFront: 20,
+  spokeCountRear: 20,
   recommended_tire_size_c: 'Minimum 28'
 }),
 makeNo6Wheel({
@@ -190,8 +189,8 @@ makeNo6Wheel({
   freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'],
   hubBearingType: 'Enduro steel',
   engagement_ratchet: '36T Ratchet',
-  spoke_count_front: 20,
-  spoke_count_rear: 20
+  spokeCountFront: 20,
+  spokeCountRear: 20
 }),
 makeNo6Wheel({
   id: 224,

@@ -47,6 +47,7 @@ const ultraShared = {
     model: 'HI-MOD carbon fiber',
     brand: 'VONOA',
     material: 'carbon',
+    count: { front: 21, rear: 21 },
   },
   hub: {
     model: 'EXAR 36T ratchet',
@@ -60,8 +61,6 @@ const ultraShared = {
 
 const ultraOtherSpecs = {
   hubBearingType: 'Ceramic',
-  spoke_count_front: 21,
-  spoke_count_rear: 21,
   front_wheel_spoke_lacing: '21H 2:1, brake side x2, non-brake side radial lacing',
   rear_wheel_spoke_lacing: '21H 2:1, drive side x2, brake side radial lacing',
   front_wheel_spoke_tension: '110kgf +/-10%',

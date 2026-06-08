@@ -25,6 +25,10 @@ const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
   'bearing_type',
   'bearing_models',
   'hub_material',
+  'spoke_count',
+  'spoke_count_front',
+  'spoke_count_rear',
+  'spoke_count_disc',
   'weight_carbon_spoke_grams',
   'carbon_spoke_option',
   'external_width_options_mm',
@@ -85,6 +89,9 @@ function collectOtherSpecWarnings(entry, id) {
     .map((key) => {
       if (key === 'bearing_type' || key === 'bearing_models' || key === 'hub_material') {
         return `other_specs.${key} on entry ${id}: promoted hub data must use hub.* fields`;
+      }
+      if (key === 'spoke_count' || key === 'spoke_count_front' || key === 'spoke_count_rear' || key === 'spoke_count_disc') {
+        return `other_specs.${key} on entry ${id}: promoted spoke count data must use spokes.count`;
       }
       return `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`;
     });
