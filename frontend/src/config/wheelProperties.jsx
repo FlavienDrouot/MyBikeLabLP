@@ -1,4 +1,4 @@
-// Central registry of wheel properties consumed across the entire chain:
+﻿// Central registry of wheel properties consumed across the entire chain:
 //   - filtersSlice.js  : generates Redux filter state
 //   - wheelsSelectors  : iterates for filtering/sorting
 //   - FilterPanel      : renders filter and sort UI
@@ -6,7 +6,7 @@
 //   - ColumnSelector   : controls column visibility
 //
 // To add a new wheel property (filter + sort + column), simply add an entry
-// to WHEEL_PROPERTIES — no other files should need modification.
+// to WHEEL_PROPERTIES â€” no other files should need modification.
 
 import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 import { HookBadge, TubelessBadge } from '../components/MiniComparator/badges';
@@ -43,7 +43,7 @@ import { convert, formatPrice, isSupportedCurrency } from '../lib/currency';
 
 // Selects the cheapest usable offer after converting every offer to the display
 // currency. Returns `{ valueInDisplay, sourceCurrency }` or null when no offer
-// has a finite amount in a supported currency. `sourceCurrency` drives the `≈`
+// has a finite amount in a supported currency. `sourceCurrency` drives the `â‰ˆ`
 // hint (shown when it differs from the display currency).
 export const selectMinOffer = (wheel, displayCurrency = 'EUR') => {
   let best = null;
@@ -75,7 +75,7 @@ const DIAMETER_LABEL_MAP = {
 
 export const formatDiameter = (rawMm) => {
   const label = DIAMETER_LABEL_MAP[rawMm] ?? String(rawMm);
-  return `Ø ${label}`;
+  return `Ã˜ ${label}`;
 };
 
 export const COLUMN_GROUPS = [
@@ -87,7 +87,7 @@ export const COLUMN_GROUPS = [
 
 /** @type {WheelProperty[]} */
 export const WHEEL_PROPERTIES = [
-  // ── general ──────────────────────────────────────────────────────────────
+  // â”€â”€ general â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'image',
     label: 'properties.image.label',
@@ -114,7 +114,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.brand,
     filter: { type: 'multiSelect' },
-    // Filterable but no dedicated column — brand is already visible in Model column.
+    // Filterable but no dedicated column â€” brand is already visible in Model column.
     column: { hidden: true },
   },
 
@@ -151,7 +151,7 @@ export const WHEEL_PROPERTIES = [
     group: 'general',
     translatable: false,
     monetary: true,
-    unit: ' €',
+    unit: ' â‚¬',
     // Computed, currency-aware accessor: lowest offer in the display currency.
     accessor: (w, ctx) => minPriceIn(w, ctx?.displayCurrency ?? 'EUR'),
     filter: { type: 'range', step: 50 },
@@ -260,7 +260,62 @@ export const WHEEL_PROPERTIES = [
     },
   },
 
-  // ── rims ─────────────────────────────────────────────────────────────────
+  {
+    id: 'uciApproved',
+    label: 'properties.uciApproved.label',
+    group: 'general',
+    translatable: true,
+    accessor: (w) => w.certification?.uci,
+    filter: {
+      type: 'triState',
+      labels: [
+        'filters.uciApproved.all',
+        'filters.uciApproved.true',
+        'filters.uciApproved.false',
+      ],
+    },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'astmCategory',
+    label: 'properties.astmCategory.label',
+    group: 'general',
+    translatable: false,
+    accessor: (w) => w.certification?.astm,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+    },
+  },
+
+  {
+    id: 'ebikeApproved',
+    label: 'properties.ebikeApproved.label',
+    group: 'general',
+    translatable: true,
+    accessor: (w) => w.certification?.ebike,
+    filter: {
+      type: 'triState',
+      labels: [
+        'filters.ebikeApproved.all',
+        'filters.ebikeApproved.true',
+        'filters.ebikeApproved.false',
+      ],
+    },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+  // â”€â”€ rims â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'rimMaterial',
     label: 'properties.rimMaterial.label',
@@ -461,7 +516,7 @@ export const WHEEL_PROPERTIES = [
     },
   },
 
-  // ── hub and spokes ───────────────────────────────────────────────────────
+  // â”€â”€ hub and spokes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     id: 'warrantyYears',
     label: 'properties.warrantyYears.label',
@@ -532,8 +587,8 @@ export const WHEEL_PROPERTIES = [
     group: 'hub',
     translatable: false,
     accessor: (w) => {
-      const f = w.hub?.axle_front_mm ?? '—';
-      const r = w.hub?.axle_rear_mm ?? '—';
+      const f = w.hub?.axle_front_mm ?? 'â€”';
+      const r = w.hub?.axle_rear_mm ?? 'â€”';
       return `${f} / ${r}`;
     },
     column: {
@@ -557,7 +612,7 @@ export const WHEEL_PROPERTIES = [
       cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px]',
       // renderCell removed: ComparisonTable now uses FreehubCell for this column (EVO-036 TASK-005).
       // MeasuringTable still uses renderCellFor, which falls back to the default
-      // accessor-based render — sufficient for width measurement only.
+      // accessor-based render â€” sufficient for width measurement only.
     },
   },
 

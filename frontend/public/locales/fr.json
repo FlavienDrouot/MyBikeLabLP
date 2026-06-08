@@ -1,4 +1,4 @@
-{
+﻿{
   "brand": {
     "name": "MyBikeLab"
   },
@@ -207,6 +207,9 @@
     "axle": { "label": "Axe (AV / AR)" },
     "freehubOptions": { "label": "Options de corps de roue libre", "popupTitle": "Options de corps de roue libre" },
     "maxSystemWeight": { "label": "Poids système max" },
+    "uciApproved": { "label": "Approuvé UCI" },
+    "astmCategory": { "label": "Catégorie ASTM" },
+    "ebikeApproved": { "label": "Approuvé e-bike" },
     "wheelsetCategory": { "label": "Catégorie" },
     "discStandard": { "label": "Standard disque" },
     "variant": { "label": "Variante" }
@@ -240,6 +243,16 @@
       "all": "Tous",
       "true": "Tubeless",
       "false": "Non tubeless"
+    },
+    "uciApproved": {
+      "all": "Tous",
+      "true": "Approuvé UCI",
+      "false": "Non approuvé UCI"
+    },
+    "ebikeApproved": {
+      "all": "Tous",
+      "true": "Approuvé e-bike",
+      "false": "Non approuvé e-bike"
     }
   },
   "rimMaterial": {
@@ -265,6 +278,14 @@
   "tubelessReady": {
     "true": "Tubeless",
     "false": "Non tubeless"
+  },
+  "uciApproved": {
+    "true": "Approuvé UCI",
+    "false": "Non approuvé UCI"
+  },
+  "ebikeApproved": {
+    "true": "Approuvé e-bike",
+    "false": "Non approuvé e-bike"
   },
   "wheelsetCategory": {
     "all-round": "Polyvalent",

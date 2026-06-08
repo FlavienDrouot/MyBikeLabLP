@@ -204,6 +204,23 @@ describe('validateWheelEntry', () => {
     expect(warnings[0]).toContain('other_specs.warranty');
     expect(warnings[1]).toContain('other_specs.warranty_years');
   });
+
+  it('warns when promoted certification fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        uci_approved: true,
+        astm_category: 2,
+        e_bike_approved: false,
+        certification: 'UCI approved',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(4);
+    expect(warnings[0]).toContain('other_specs.uci_approved');
+    expect(warnings[1]).toContain('other_specs.astm_category');
+    expect(warnings[2]).toContain('other_specs.e_bike_approved');
+    expect(warnings[3]).toContain('other_specs.certification');
+  });
 });
 
 describe('validateWheelsCatalog', () => {

@@ -56,6 +56,10 @@ const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
   'max_tire_pressure_psi_tubeless',
   'warranty',
   'warranty_years',
+  'uci_approved',
+  'astm_category',
+  'e_bike_approved',
+  'certification',
   'weight_carbon_spoke_grams',
   'carbon_spoke_option',
   'external_width_options_mm',
@@ -159,6 +163,14 @@ function collectOtherSpecWarnings(entry, id) {
       }
       if (key === 'warranty' || key === 'warranty_years') {
         return `other_specs.${key} on entry ${id}: promoted warranty data must use warranty.* fields`;
+      }
+      if (
+        key === 'uci_approved' ||
+        key === 'astm_category' ||
+        key === 'e_bike_approved' ||
+        key === 'certification'
+      ) {
+        return `other_specs.${key} on entry ${id}: promoted certification data must use certification.* fields`;
       }
       return `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`;
     });

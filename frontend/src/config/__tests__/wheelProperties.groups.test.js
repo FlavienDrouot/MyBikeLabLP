@@ -84,6 +84,19 @@ describe('WHEEL_PROPERTIES registry groups', () => {
     ]);
   });
 
+  it('declares promoted certification fields as filterable general properties', () => {
+    const uci = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'uciApproved');
+    const astm = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'astmCategory');
+    const ebike = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'ebikeApproved');
+
+    expect(uci?.group).toBe('general');
+    expect(uci?.filter?.type).toBe('triState');
+    expect(astm?.group).toBe('general');
+    expect(astm?.filter).toEqual({ type: 'multiSelect' });
+    expect(ebike?.group).toBe('general');
+    expect(ebike?.filter?.type).toBe('triState');
+  });
+
   it('declares promoted warranty years as a range filter with sorts', () => {
     const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'warrantyYears');
 

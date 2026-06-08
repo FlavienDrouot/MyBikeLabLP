@@ -13,8 +13,7 @@ const IMAGES = [
 
 const baseOtherSpecs = {
   min_tire_size_c: 25,
-  max_tire_size_c: 38,
-  uci_approved: true
+  max_tire_size_c: 38
 };
 
 const splitHubSpecs = (otherSpecs = {}) => {
@@ -80,6 +79,7 @@ const makeArcarisWheel = ({
         manufacturer: { url: PRODUCT_URL, amount: priceUsd, currency: 'USD' },
         retailers: [{ name: 'Panda Podium', amount: priceUsd, currency: 'USD', url: PRODUCT_URL }]
       },
+      certification: { uci: true, astm: null, ebike: null },
       warranty: { text: '2-year limited (manufacturing defects)', years: 2 },
       other_specs: {
         ...baseOtherSpecs,

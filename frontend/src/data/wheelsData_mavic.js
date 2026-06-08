@@ -26,10 +26,11 @@ export const mavicWheels = [
 
 
 
-    spoke_technology: 'R2R carbon spokes',
-    astm_category: 1
+    spoke_technology: 'R2R carbon spokes'
 
-  }, warranty: { text: "lifetime (with registration)", years: null }
+
+  }, warranty: { text: "lifetime (with registration)", years: null },
+  certification: { uci: null, astm: 1, ebike: null }
 },
 {
   id: 2,
@@ -57,10 +58,11 @@ export const mavicWheels = [
 
 
 
-    'straight flat tapered', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1999, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-45-silver-rr2717' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-45-silver-rr2717', amount: 1999, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x23TC', freehub_technology: 'Instant Drive 360', axle_convertible: true,
-    astm_category: 2
+    'straight flat tapered', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1999, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-45-silver-rr2717' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-45-silver-rr2717', amount: 1999, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x23TC', freehub_technology: 'Instant Drive 360', axle_convertible: true
 
-  }, warranty: { text: "lifetime (with registration)", years: null }
+
+  }, warranty: { text: "lifetime (with registration)", years: null },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 3,
@@ -90,11 +92,12 @@ export const mavicWheels = [
 
 
 
-    'straight aero butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'Mavic Ceramic' }, prices: [{ amount: 1999, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-45-disc-23mm-rr2607' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001294_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-45-disc-23mm-rr2607', amount: 1999, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x23TC', min_tire_width_mm: 28, max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    'straight aero butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'Mavic Ceramic' }, prices: [{ amount: 1999, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-45-disc-23mm-rr2607' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001294_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-45-disc-23mm-rr2607', amount: 1999, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x23TC', min_tire_width_mm: 28, max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360', axle_convertible: true
 
-    astm_category: 2
 
-  }, warranty: { text: "lifetime (with registration)", years: null }
+
+  }, warranty: { text: "lifetime (with registration)", years: null },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 4,
@@ -127,7 +130,8 @@ export const mavicWheels = [
     'straight aero butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'Mavic Ceramic' }, prices: [{ amount: 1999, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-32-disc-21mm-rr2606' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001288_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-slr-32-disc-21mm-rr2606', amount: 1999, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 25, max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360', axle_convertible: true
 
 
-  }, warranty: { text: "lifetime (with registration)", years: null }
+  }, warranty: { text: "lifetime (with registration)", years: null },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 5,
@@ -157,10 +161,10 @@ export const mavicWheels = [
 
 
 
-    'straight flat anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-65-disc-23mm-rr2505' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000934_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-65-disc-23mm-rr2505', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 28, max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360', axle_convertible: true,
-    astm_category: 2
+    'straight flat anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-65-disc-23mm-rr2505' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000934_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-65-disc-23mm-rr2505', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 28, max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360', axle_convertible: true
 
-  }, warranty: { text: "lifetime (with registration)", years: null }
+
+  }, warranty: { text: "lifetime (with registration)", years: null }, certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 6,
@@ -190,10 +194,11 @@ export const mavicWheels = [
 
 
     'ABS black', profile: 'straight flat butted', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo N3W', 'Campagnolo ED'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-45-disc-23mm-rr2610' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P00143806_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-45-disc-23mm-rr2610', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x23TC', freehub_technology: 'Instant Drive 360', axle_convertible: true,
-    aero_validation: 'wind tunnel tested',
-    astm_category: 2
+    aero_validation: 'wind tunnel tested'
 
-  }, warranty: { text: "lifetime (with registration)", years: null }
+
+  }, warranty: { text: "lifetime (with registration)", years: null },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 7,
@@ -225,11 +230,12 @@ export const mavicWheels = [
 
 
 
-    'ABS black', profile: 'flat double-butted straight anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-32-disc-21mm-rr2609' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001422_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-32-disc-21mm-rr2609', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x21TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    'ABS black', profile: 'flat double-butted straight anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-32-disc-21mm-rr2609' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001422_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-32-disc-21mm-rr2609', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x21TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true
 
-    astm_category: 2
 
-  }, warranty: { text: "lifetime (with registration)", years: null }
+
+  }, warranty: { text: "lifetime (with registration)", years: null },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 8,
@@ -261,11 +267,12 @@ export const mavicWheels = [
 
 
     'flat butted', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'Campagnolo ED', 'SRAM XD', 'Shimano Micro Spline'], bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 1299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-40-rr1225' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13271_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-sl-40-rr1225', amount: 1299, currency: 'EUR' }, retailers: [] }, other_specs: { max_tire_width_mm: 62, min_tire_pressure_bar: 3.8, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
-    spoke_technology: 'Isopulse',
+    spoke_technology: 'Isopulse'
 
-    astm_category: 1
 
-  }, warranty: { text: "lifetime (with registration)", years: null }
+
+  }, warranty: { text: "lifetime (with registration)", years: null },
+  certification: { uci: null, astm: 1, ebike: null }
 },
 {
   id: 9,
@@ -293,7 +300,8 @@ export const mavicWheels = [
 
     'bent round', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo N3W', 'Campagnolo ED'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 999, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/cosmic-s-42-disc-rr2402' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000790_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/cosmic-s-42-disc-rr2402', amount: 999, currency: 'EUR' }, retailers: [] }, other_specs: { freehub_technology: 'Instant Drive 360', axle_convertible: true
 
-  }, warranty: { text: "lifetime (with registration)", years: null }
+  }, warranty: { text: "lifetime (with registration)", years: null },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 10,
@@ -394,12 +402,12 @@ export const mavicWheels = [
 
 
 
-    'brass black', profile: 'extra-flat straight anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 499, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-disc-rr1222' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13261_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-disc-rr1222', amount: 499, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    'brass black', profile: 'extra-flat straight anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 499, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-disc-rr1222' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13261_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-disc-rr1222', amount: 499, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true
 
 
-    astm_category: 2
 
-  }, warranty: { text: "3 years (with registration)", years: 3 }
+
+  }, warranty: { text: "3 years (with registration)", years: 3 }, certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 13,
@@ -430,11 +438,12 @@ export const mavicWheels = [
 
 
 
-    'steel black', profile: 'straight extra-flat double-butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 429, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-30-disc-rr2403' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000795_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-30-disc-rr2403', amount: 429, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    'steel black', profile: 'straight extra-flat double-butted anti-rotation', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 429, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-30-disc-rr2403' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P000795_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-30-disc-rr2403', amount: 429, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_convertible: true
 
-    astm_category: 2
 
-  }, warranty: { text: "2 years", years: 2 }
+
+  }, warranty: { text: "2 years", years: 2 },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 14,
@@ -465,11 +474,12 @@ export const mavicWheels = [
 
 
 
-    'bent round', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/aksium-1-disc-rr2303' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P00018106_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/aksium-1-disc-rr2303', amount: 299, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x21TC', min_tire_width_mm: 25, max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360', axle_convertible: true,
+    'bent round', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/aksium-1-disc-rr2303' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P00018106_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/aksium-1-disc-rr2303', amount: 299, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x21TC', min_tire_width_mm: 25, max_tire_width_mm: 64, freehub_technology: 'Instant Drive 360', axle_convertible: true
 
-    astm_category: 2
 
-  }, warranty: { text: "3 years (with registration)", years: 3 }
+
+  }, warranty: { text: "3 years (with registration)", years: 3 },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 15,
@@ -503,10 +513,11 @@ export const mavicWheels = [
 
     'straight aero swaged anti-rotation', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-heritage-rr2604' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P001256_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-heritage-rr2604', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
 
-    astm_category: 2,
+
 
     heritage_edition: true
-  }, warranty: { text: "3 years (with registration)", years: 3 }
+  }, warranty: { text: "3 years (with registration)", years: 3 },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 16,
@@ -539,11 +550,12 @@ export const mavicWheels = [
 
 
 
-    'brass black', profile: 'aerodynamic double-butted elliptical', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-rr1223' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13291_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-rr1223', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
+    'brass black', profile: 'aerodynamic double-butted elliptical', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 699, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-rr1223' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13291_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-sl-rr1223', amount: 699, currency: 'EUR' }, retailers: [] }, other_specs: { etrto: '622x19TC', min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only'
 
-    astm_category: 2
 
-  }, warranty: { text: "3 years (with registration)", years: 3 }
+
+  }, warranty: { text: "3 years (with registration)", years: 3 },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 17,
@@ -574,12 +586,13 @@ export const mavicWheels = [
 
 
 
-    'straight extra-flat ADR+ swaged', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 499, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-rr1221' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13251_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-rr1221', amount: 499, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only',
+    'straight extra-flat ADR+ swaged', lacing: { front: "radial", rear: "Isopulse" } }, hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG', 'SRAM XD', 'Shimano Micro Spline', 'Campagnolo ED', 'Campagnolo N3W'], bearing_type: 'QRM Auto sealed cartridge C3' }, prices: [{ amount: 499, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-rr1221' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P13251_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ksyrium-s-rr1221', amount: 499, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 62, freehub_technology: 'Instant Drive 360', axle_type: 'quick-release only'
 
 
-    astm_category: 2
 
-  }, warranty: { text: "3 years (with registration)", years: 3 }
+
+  }, warranty: { text: "3 years (with registration)", years: 3 },
+  certification: { uci: null, astm: 2, ebike: null }
 },
 {
   id: 18,
@@ -611,11 +624,12 @@ export const mavicWheels = [
 
 
 
-    'straight flat tapered', lacing: { front: "radial", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG'], bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/aksium-rr0988' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P86941_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/aksium-rr0988', amount: 299, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 52, freehub_technology: 'FTS-L', axle_type: 'quick-release only', axle_material_rear: 'steel',
+    'straight flat tapered', lacing: { front: "radial", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x130', freehub_options: ['Shimano HG'], bearing_type: 'QRM Auto sealed cartridge' }, prices: [{ amount: 299, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/aksium-rr0988' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P86941_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/aksium-rr0988', amount: 299, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 52, freehub_technology: 'FTS-L', axle_type: 'quick-release only', axle_material_rear: 'steel'
 
-    astm_category: 1
 
-  }, warranty: { text: "3 years (with registration)", years: 3 }
+
+  }, warranty: { text: "3 years (with registration)", years: 3 },
+  certification: { uci: null, astm: 1, ebike: null }
 },
 {
   id: 21,
@@ -650,8 +664,9 @@ export const mavicWheels = [
     'straight extra-flat tapered', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x120', bearing_type: 'QRM+ auto-adjusting cartridge' }, prices: [{ amount: 529, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ellipse-rr0713' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P78501_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ellipse-rr0713', amount: 529, currency: 'EUR' }, retailers: [] }, other_specs: { tire_type: 'clincher', min_tire_width_mm: 23, max_tire_width_mm: 32, hub_body_material: 'aluminum', hub_axle_material: 'steel', rear_hub_type: 'flip-flop (dual fixed cog)', cog_thread: '1.37x24TPI',
 
     rim_joint: 'SUP welding',
-    astm_category: 1,
+
     usage: 'track'
 
-  }, warranty: { text: "3 years (with registration)", years: 3 }
+  }, warranty: { text: "3 years (with registration)", years: 3 },
+  certification: { uci: null, astm: 1, ebike: null }
 }];

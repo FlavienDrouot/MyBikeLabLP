@@ -31,11 +31,12 @@ export const rovalWheels = [
 
     tire_width_range_mm: '24-38',
     tire_optimized_for_mm: 28,
-    flatstop_bead_hooks: true,
-    e_bike_approved: false,
-    uci_approved: true
+    flatstop_bead_hooks: true
 
-  }, warranty: { text: "Limited Lifetime", years: null }
+
+
+  }, warranty: { text: "Limited Lifetime", years: null },
+  certification: { uci: true, astm: null, ebike: false }
 },
 {
   id: 23,
@@ -68,11 +69,12 @@ export const rovalWheels = [
 
 
     tire_width_range_mm: '24-38',
-    tire_optimized_for_mm: 28,
-    e_bike_approved: false,
-    uci_approved: true
+    tire_optimized_for_mm: 28
 
-  }, warranty: { text: "Limited Lifetime", years: null }
+
+
+  }, warranty: { text: "Limited Lifetime", years: null },
+  certification: { uci: true, astm: null, ebike: false }
 },
 {
   id: 24,
@@ -104,7 +106,8 @@ export const rovalWheels = [
 
     tire_width_range_mm: '24-38'
 
-  }, warranty: { text: "Limited Lifetime", years: null }
+  }, warranty: { text: "Limited Lifetime", years: null },
+  certification: { uci: null, astm: null, ebike: false }
 },
 {
   id: 25,
@@ -234,10 +237,10 @@ export const rovalWheels = [
 
 
     tire_width_range_mm: '24-38',
-    tire_optimized_for_mm: 28,
-    e_bike_approved: false
+    tire_optimized_for_mm: 28
 
-  }, warranty: { text: "Limited Lifetime", years: null }
+
+  }, warranty: { text: "Limited Lifetime", years: null }, certification: { uci: null, astm: null, ebike: false }
 },
 {
   id: 29,

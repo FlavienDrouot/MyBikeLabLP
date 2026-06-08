@@ -80,6 +80,12 @@ const migrations = {
       return promoteWarranty(source);
     },
   },
+  certification: {
+    description: 'Promote certification fields from other_specs into certification for EVO-054.',
+    transform(source) {
+      return promoteCertification(source);
+    },
+  },
 };
 
 const consumedHubOtherSpecKeys = new Map([
@@ -132,6 +138,13 @@ const consumedRimMaxTirePressureOtherSpecKeys = new Set([
 const consumedWarrantyOtherSpecKeys = new Set([
   'warranty',
   'warranty_years',
+]);
+
+const consumedCertificationOtherSpecKeys = new Set([
+  'uci_approved',
+  'astm_category',
+  'e_bike_approved',
+  'certification',
 ]);
 
 const getPropertyName = (property) => {
@@ -941,6 +954,151 @@ const promoteWarranty = (source) => {
   traverse(ast, {
     ObjectExpression(path) {
       if (promoteWarrantyInObjectExpression(path.node)) {
+        changed = true;
+      }
+    },
+  });
+
+  if (!changed) return source;
+  return generator(ast, {
+    retainLines: true,
+    jsescOption: { minimal: true },
+  }, source).code;
+};
+
+const parseBooleanNode = (value) => {
+  if (t.isBooleanLiteral(value)) return value.value;
+  if (t.isStringLiteral(value)) {
+    const text = value.value.trim().toLowerCase();
+    if (['true', 'yes', 'approved', 'uci approved', 'e-bike approved', 'ebike approved'].includes(text)) return true;
+    if (['false', 'no', 'not approved', 'not uci approved', 'not e-bike approved', 'not ebike approved'].includes(text)) return false;
+  }
+  return null;
+};
+
+const parseAstmCategoryNode = (value) => {
+  if (t.isNumericLiteral(value)) return value.value;
+  if (t.isStringLiteral(value)) {
+    const match = value.value.trim().match(/\b(?:astm(?:\s*f2043)?\s*)?(?:category|cat\.?)?\s*([1-5])\b/i);
+    if (match) return Number(match[1]);
+  }
+  return null;
+};
+
+const parseCertificationText = (value) => {
+  if (!t.isStringLiteral(value)) return { uci: null, astm: null, ebike: null };
+  const text = value.value.trim();
+  if (!text) return { uci: null, astm: null, ebike: null };
+  const lower = text.toLowerCase();
+
+  const uci =
+    /\buci\b/.test(lower) && /\b(approved|certified|compliant)\b/.test(lower)
+      ? true
+      : /\bnot\s+uci\b|\buci\b.*\b(not approved|not certified)\b/.test(lower)
+        ? false
+        : null;
+  const astm = parseAstmCategoryNode(value);
+  const ebike =
+    /\be[-\s]?bike\b/.test(lower) && /\b(approved|compatible|certified)\b/.test(lower)
+      ? true
+      : /\bnot\s+e[-\s]?bike\b|\be[-\s]?bike\b.*\b(not approved|not compatible|not certified)\b/.test(lower)
+        ? false
+        : null;
+
+  return { uci, astm, ebike };
+};
+
+const valueNode = (value) => (
+  value === null ? t.nullLiteral() : typeof value === 'boolean' ? t.booleanLiteral(value) : t.numericLiteral(value)
+);
+
+const certificationObjectProperty = ({ uci, astm, ebike }) =>
+  t.objectProperty(
+    t.identifier('certification'),
+    t.objectExpression([
+      t.objectProperty(t.identifier('uci'), valueNode(uci)),
+      t.objectProperty(t.identifier('astm'), valueNode(astm)),
+      t.objectProperty(t.identifier('ebike'), valueNode(ebike)),
+    ]),
+  );
+
+const setCertificationField = (certificationObject, key, value) => {
+  if (value === null) return;
+  const existing = getObjectProperty(certificationObject, key);
+  if (existing && t.isObjectProperty(existing)) {
+    existing.value = valueNode(value);
+  } else {
+    certificationObject.properties.push(t.objectProperty(t.identifier(key), valueNode(value)));
+  }
+};
+
+const promoteCertificationInObjectExpression = (objectExpression) => {
+  const otherSpecsProperty =
+    getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
+
+  if (!otherSpecsProperty || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(otherSpecsProperty.value)) {
+    return false;
+  }
+
+  const otherSpecsObject = otherSpecsProperty.value;
+  const remainingOtherSpecsProperties = [];
+  let changed = false;
+  const certification = { uci: null, astm: null, ebike: null };
+
+  for (const property of otherSpecsObject.properties) {
+    const sourceName = getPropertyName(property);
+
+    if (!consumedCertificationOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+      remainingOtherSpecsProperties.push(property);
+      continue;
+    }
+
+    if (sourceName === 'uci_approved') {
+      certification.uci ??= parseBooleanNode(property.value);
+    } else if (sourceName === 'astm_category') {
+      certification.astm ??= parseAstmCategoryNode(property.value);
+    } else if (sourceName === 'e_bike_approved') {
+      certification.ebike ??= parseBooleanNode(property.value);
+    } else if (sourceName === 'certification') {
+      const parsed = parseCertificationText(property.value);
+      certification.uci ??= parsed.uci;
+      certification.astm ??= parsed.astm;
+      certification.ebike ??= parsed.ebike;
+    }
+
+    changed = true;
+  }
+
+  if (!changed) return false;
+
+  otherSpecsObject.properties = remainingOtherSpecsProperties;
+
+  if (certification.uci === null && certification.astm === null && certification.ebike === null) {
+    return true;
+  }
+
+  const existing = getObjectProperty(objectExpression, 'certification');
+  if (existing && t.isObjectProperty(existing) && t.isObjectExpression(existing.value)) {
+    setCertificationField(existing.value, 'uci', certification.uci);
+    setCertificationField(existing.value, 'astm', certification.astm);
+    setCertificationField(existing.value, 'ebike', certification.ebike);
+  } else if (!existing) {
+    objectExpression.properties.push(certificationObjectProperty(certification));
+  }
+
+  return true;
+};
+
+const promoteCertification = (source) => {
+  const ast = parser.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
+  let changed = false;
+
+  traverse(ast, {
+    ObjectExpression(path) {
+      if (promoteCertificationInObjectExpression(path.node)) {
         changed = true;
       }
     },

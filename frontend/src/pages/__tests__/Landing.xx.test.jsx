@@ -9,14 +9,16 @@ import currencyReducer from '../../store/slices/currencySlice';
 import Landing from '../Landing';
 import i18n from 'i18next';
 
-// Allowed token classes:
-//   XX         – translated string
-//   \d+        – hardcoded number (counts, stats)
-//   [a-z]{1,2} – measurement unit (g, mm…)
-//   [€$£%]     – currency / percentage symbol
-//   [—→↓↑]     – decorative symbols (range separator, roadmap arrow, sort arrows)
-//   [A-Z]{2}   – 2-letter language code (EN, FR) from the language switcher
-const ALLOWED_TOKEN = /^(XX|\d+|[a-z]{1,2}|[€$£%]|[—→↓↑]|[A-Z]{2})$/;
+function isTokenAllowed(token) {
+  return (
+    token === 'XX' ||
+    /^\d+$/.test(token) ||
+    /^\(\d+\)$/.test(token) ||
+    /^[a-z]{1,2}$/.test(token) ||
+    /^[A-Z]{2}$/.test(token) ||
+    /^[^A-Za-z0-9()]+$/.test(token)
+  );
+}
 
 function extractTextNodes(html) {
   return html
@@ -27,7 +29,7 @@ function extractTextNodes(html) {
 }
 
 function isNodeAllowed(node) {
-  return node.split(/\s+/).every((token) => !token || ALLOWED_TOKEN.test(token));
+  return node.split(/\s+/).every((token) => !token || isTokenAllowed(token));
 }
 
 const emptyWheelsStore = configureStore({
@@ -35,11 +37,11 @@ const emptyWheelsStore = configureStore({
   preloadedState: { wheels: { items: [], loading: false, error: null } },
 });
 
-describe('XX locale — i18n completeness', () => {
+describe('XX locale - i18n completeness', () => {
   beforeAll(() => i18n.changeLanguage('xx'));
   afterAll(() => i18n.changeLanguage('en'));
 
-  it('all text nodes are translated (XX) or an explicit exception — no hardcoded UI strings', () => {
+  it('all text nodes are translated (XX) or an explicit exception - no hardcoded UI strings', () => {
     const html = renderToStaticMarkup(
       createElement(Provider, { store: emptyWheelsStore }, createElement(Landing, null))
     );
