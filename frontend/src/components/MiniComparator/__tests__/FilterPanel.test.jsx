@@ -64,6 +64,7 @@ describe('FilterPanel (EVO-025 TASK-002 — viewport-bounded height)', () => {
       'true',
       'false',
       'false',
+      'false',
     ]);
 
     await act(async () => {
@@ -74,6 +75,7 @@ describe('FilterPanel (EVO-025 TASK-002 — viewport-bounded height)', () => {
       'false',
       'true',
       'false',
+      'false',
     ]);
 
     await act(async () => {
@@ -81,6 +83,7 @@ describe('FilterPanel (EVO-025 TASK-002 — viewport-bounded height)', () => {
     });
 
     expect(groupButtons().map((button) => button.getAttribute('aria-expanded'))).toEqual([
+      'false',
       'false',
       'false',
       'false',

@@ -171,7 +171,8 @@
     "groups": {
       "general": "Caractéristiques générales",
       "rims": "Jantes",
-      "subs": "Sous-composants"
+      "hub": "Moyeu",
+      "spokes": "Rayons"
     },
     "image": { "label": "Image" },
     "model": { "label": "Modèle" },

@@ -1,0 +1,41 @@
+import { describe, expect, it } from 'vitest';
+import { COLUMN_GROUPS, WHEEL_PROPERTIES } from '../wheelProperties';
+
+const declaredGroupIds = COLUMN_GROUPS.map((group) => group.id);
+
+describe('WHEEL_PROPERTIES registry groups', () => {
+  it('declares every group used by a property', () => {
+    for (const property of WHEEL_PROPERTIES) {
+      expect(
+        declaredGroupIds,
+        `Property "${property.id}" uses undeclared group "${property.group}"`,
+      ).toContain(property.group);
+    }
+  });
+
+  it('does not use the legacy subs group', () => {
+    expect(declaredGroupIds).not.toContain('subs');
+
+    for (const property of WHEEL_PROPERTIES) {
+      expect(property.group, `Property "${property.id}" still uses subs`).not.toBe('subs');
+    }
+  });
+
+  it('assigns current hub properties to the hub group', () => {
+    const hubPropertyIds = ['hub', 'hubBrand', 'hubModel', 'axle', 'freehubOptions', 'discStandard'];
+
+    for (const id of hubPropertyIds) {
+      const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === id);
+      expect(property?.group, `${id} should belong to hub`).toBe('hub');
+    }
+  });
+
+  it('assigns current spoke properties to the spokes group', () => {
+    const spokePropertyIds = ['spokes', 'spokesBrand', 'spokesModel', 'spokeMaterial'];
+
+    for (const id of spokePropertyIds) {
+      const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === id);
+      expect(property?.group, `${id} should belong to spokes`).toBe('spokes');
+    }
+  });
+});

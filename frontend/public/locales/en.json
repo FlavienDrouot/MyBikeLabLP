@@ -171,7 +171,8 @@
     "groups": {
       "general": "General specs",
       "rims": "Rims",
-      "subs": "Subcomponents"
+      "hub": "Hub",
+      "spokes": "Spokes"
     },
     "image": { "label": "Image" },
     "model": { "label": "Model" },

@@ -17,7 +17,7 @@ import { convert, formatPrice, isSupportedCurrency } from '../lib/currency';
  * @typedef {Object} WheelProperty
  * @property {string} id            Unique identifier (Redux key + column).
  * @property {string} label         Translation key for display label (filter + column + sort).
- * @property {string} group         'general' | 'rims' | 'subs'.
+ * @property {string} group         'general' | 'rims' | 'hub' | 'spokes'.
  * @property {boolean} translatable Whether the property's value must be translated before display.
  * @property {(w: any) => any} accessor  Always a function (handles computed cases like min price).
  * @property {((w: any) => number | number[] | null) | undefined} [filterAccessor]
@@ -81,7 +81,8 @@ export const formatDiameter = (rawMm) => {
 export const COLUMN_GROUPS = [
   { id: 'general', label: 'properties.groups.general' },
   { id: 'rims', label: 'properties.groups.rims' },
-  { id: 'subs', label: 'properties.groups.subs' },
+  { id: 'hub', label: 'properties.groups.hub' },
+  { id: 'spokes', label: 'properties.groups.spokes' },
 ];
 
 /** @type {WheelProperty[]} */
@@ -410,11 +411,11 @@ export const WHEEL_PROPERTIES = [
     },
   },
 
-  // ── subs ─────────────────────────────────────────────────────────────────
+  // ── hub and spokes ───────────────────────────────────────────────────────
   {
     id: 'hub',
     label: 'properties.hub.label',
-    group: 'subs',
+    group: 'hub',
     translatable: false,
     accessor: (w) => `${w.hub.brand} ${w.hub.model}`,
     column: {
@@ -434,7 +435,7 @@ export const WHEEL_PROPERTIES = [
   {
     id: 'hubBrand',
     label: 'properties.hubBrand.label',
-    group: 'subs',
+    group: 'hub',
     translatable: false,
     accessor: (w) => w.hub.brand,
     filter: { type: 'multiSelect' },
@@ -444,7 +445,7 @@ export const WHEEL_PROPERTIES = [
   {
     id: 'hubModel',
     label: 'properties.hubModel.label',
-    group: 'subs',
+    group: 'hub',
     translatable: false,
     accessor: (w) => w.hub.model,
     filter: { type: 'multiSelect' },
@@ -454,7 +455,7 @@ export const WHEEL_PROPERTIES = [
   {
     id: 'axle',
     label: 'properties.axle.label',
-    group: 'subs',
+    group: 'hub',
     translatable: false,
     accessor: (w) => {
       const f = w.hub?.axle_front_mm ?? '—';
@@ -471,7 +472,7 @@ export const WHEEL_PROPERTIES = [
   {
     id: 'freehubOptions',
     label: 'properties.freehubOptions.label',
-    group: 'subs',
+    group: 'hub',
     translatable: false,
     accessor: (w) => w.hub?.freehub_options,
     filter: { type: 'multiSelectFlat' },
@@ -489,7 +490,7 @@ export const WHEEL_PROPERTIES = [
   {
     id: 'discStandard',
     label: 'properties.discStandard.label',
-    group: 'subs',
+    group: 'hub',
     translatable: false,
     accessor: (w) => w.hub?.disc_standard,
     filter: { type: 'multiSelect' },
@@ -503,7 +504,7 @@ export const WHEEL_PROPERTIES = [
   {
     id: 'spokes',
     label: 'properties.spokes.label',
-    group: 'subs',
+    group: 'spokes',
     translatable: false,
     accessor: (w) => `${w.spokes.brand} ${w.spokes.model}`,
     column: {
@@ -524,7 +525,7 @@ export const WHEEL_PROPERTIES = [
   {
     id: 'spokesBrand',
     label: 'properties.spokesBrand.label',
-    group: 'subs',
+    group: 'spokes',
     translatable: false,
     accessor: (w) => w.spokes.brand,
     filter: { type: 'multiSelect' },
@@ -534,7 +535,7 @@ export const WHEEL_PROPERTIES = [
   {
     id: 'spokesModel',
     label: 'properties.spokesModel.label',
-    group: 'subs',
+    group: 'spokes',
     translatable: false,
     accessor: (w) => w.spokes.model,
     filter: { type: 'multiSelect' },
@@ -544,7 +545,7 @@ export const WHEEL_PROPERTIES = [
   {
     id: 'spokeMaterial',
     label: 'properties.spokeMaterial.label',
-    group: 'subs',
+    group: 'spokes',
     translatable: true,
     accessor: (w) => w.spokes.material,
     filter: { type: 'multiSelect' },
