@@ -50,9 +50,9 @@ export const exsWheels = [
 
     'SKF' }, prices: [{ amount: 1000, currency: 'USD', url: PRODUCT_URL }], image: IMAGES[0], images: IMAGES, affiliateLinks: { manufacturer: { url: PRODUCT_URL, amount: 1000, currency: 'USD' }, retailers: [{ name: 'Panda Podium', amount: 1000, currency: 'USD', url: RETAILER_URL }] }, other_specs: {
     tire_compatibility: 'Clincher/Tubeless',
-    recommended_max_tire_size_c: 32,
+    recommended_max_tire_size_c: 32
 
 
-    warranty: '2-year (crash replacement covered)'
-  }
+
+  }, warranty: { text: "2-year (crash replacement covered)", years: null }
 }];

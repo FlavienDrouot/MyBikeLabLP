@@ -463,6 +463,30 @@ export const WHEEL_PROPERTIES = [
 
   // ── hub and spokes ───────────────────────────────────────────────────────
   {
+    id: 'warrantyYears',
+    label: 'properties.warrantyYears.label',
+    group: 'general',
+    translatable: false,
+    accessor: (w) => w.warranty?.years ?? null,
+    filter: { type: 'range' },
+    sorts: [
+      { id: 'warrantyYears_asc', label: 'sorts.warrantyYears_asc', direction: 'asc' },
+      { id: 'warrantyYears_desc', label: 'sorts.warrantyYears_desc', direction: 'desc' },
+    ],
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+      renderCell: (w, t) => {
+        const warranty = w.warranty;
+        if (!warranty?.text && !warranty?.years) return t('common.notAvailable');
+        if (warranty.text) return warranty.text;
+        return `${warranty.years} years`;
+      },
+    },
+  },
+
+  {
     id: 'hub',
     label: 'properties.hub.label',
     group: 'hub',

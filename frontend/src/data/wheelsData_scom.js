@@ -84,9 +84,9 @@ const makeScom = ({
     source_note,
     tire_compatibility: 'Clincher/Tubeless',
 
-    warranty_years: 5,
+
     weight_tolerance_percent: 3
-  }
+  }, warranty: { text: null, years: 5 }
 });
 
 const ultraDiscHub = {

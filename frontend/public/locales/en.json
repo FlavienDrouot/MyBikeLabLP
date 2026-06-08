@@ -186,6 +186,7 @@
     "depth": { "label": "Depth" },
     "externalWidth": { "label": "External width" },
     "maxTirePressure": { "label": "Max tire pressure" },
+    "warrantyYears": { "label": "Warranty" },
     "hub": { "label": "Hub" },
     "hubBrand": { "label": "Hub brand" },
     "hubModel": { "label": "Hub model" },
@@ -224,6 +225,8 @@
     "internalWidth_desc": "Internal width (wide → narrow)",
     "maxTirePressure_asc": "Max tire pressure (low → high)",
     "maxTirePressure_desc": "Max tire pressure (high → low)",
+    "warrantyYears_asc": "Warranty (short → long)",
+    "warrantyYears_desc": "Warranty (long → short)",
     "spokeCount_asc": "Spoke count (low → high)",
     "spokeCount_desc": "Spoke count (high → low)"
   },

@@ -73,7 +73,6 @@ describe('validateWheelEntry', () => {
         weight_carbon_spoke_grams: 1030,
         carbon_spoke_option: true,
         external_width_options_mm: [{ externalWidth_mm: 37, weight_grams: 1310 }],
-        warranty: '2 years',
       },
     });
     const warnings = validateWheelEntry(entry);
@@ -153,7 +152,6 @@ describe('validateWheelEntry', () => {
     expect(warnings[10]).toContain('other_specs.lacing');
   });
 
-<<<<<<< HEAD
   it('warns when promoted rim material/construction fields remain in other_specs', () => {
     const entry = makeEntry({
       other_specs: {
@@ -171,7 +169,8 @@ describe('validateWheelEntry', () => {
     expect(warnings[2]).toContain('other_specs.rim_construction');
     expect(warnings[3]).toContain('other_specs.rim_technology');
     expect(warnings[4]).toContain('other_specs.rim_construction_technology');
-=======
+  });
+
   it('warns when promoted tire pressure fields remain in other_specs', () => {
     const entry = makeEntry({
       other_specs: {
@@ -191,7 +190,19 @@ describe('validateWheelEntry', () => {
     expect(warnings[0]).toContain('other_specs.max_tire_pressure_psi');
     expect(warnings[2]).toContain('other_specs.maximum_tire_pressure');
     expect(warnings[7]).toContain('rim.max_tire_pressure');
->>>>>>> evo-052-rim-max-tire-pressure
+  });
+
+  it('warns when promoted warranty fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        warranty: '2 years',
+        warranty_years: 2,
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(2);
+    expect(warnings[0]).toContain('other_specs.warranty');
+    expect(warnings[1]).toContain('other_specs.warranty_years');
   });
 });
 

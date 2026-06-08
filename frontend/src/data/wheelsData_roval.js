@@ -33,9 +33,9 @@ export const rovalWheels = [
     tire_optimized_for_mm: 28,
     flatstop_bead_hooks: true,
     e_bike_approved: false,
-    uci_approved: true,
-    warranty: 'Limited Lifetime'
-  }
+    uci_approved: true
+
+  }, warranty: { text: "Limited Lifetime", years: null }
 },
 {
   id: 23,
@@ -70,9 +70,9 @@ export const rovalWheels = [
     tire_width_range_mm: '24-38',
     tire_optimized_for_mm: 28,
     e_bike_approved: false,
-    uci_approved: true,
-    warranty: 'Limited Lifetime'
-  }
+    uci_approved: true
+
+  }, warranty: { text: "Limited Lifetime", years: null }
 },
 {
   id: 24,
@@ -102,9 +102,9 @@ export const rovalWheels = [
     'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/one-cross (2:1)", rear: "one-cross/two-cross (2:1)" } }, hub: { model: 'AFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic' }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: { hub_internals: 'DT Swiss 180 Ratchet EXP 36T',
 
 
-    tire_width_range_mm: '24-38',
-    warranty: 'Limited Lifetime'
-  }
+    tire_width_range_mm: '24-38'
+
+  }, warranty: { text: "Limited Lifetime", years: null }
 },
 {
   id: 25,
@@ -164,9 +164,9 @@ export const rovalWheels = [
     'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/two-cross (2:1)", rear: "two-cross (1:1)" } }, hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sealed Steel Cartridge' }, prices: [{ amount: 1750, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214', amount: 1750, currency: 'USD' }, retailers: [] }, other_specs: { hub_internals: 'Star Ratchet 36T (10-degree engagement)',
 
 
-    tire_width_range_mm: '24-38',
-    warranty: 'Limited Lifetime'
-  }
+    tire_width_range_mm: '24-38'
+
+  }, warranty: { text: "Limited Lifetime", years: null }
 },
 {
   id: 27,
@@ -235,9 +235,9 @@ export const rovalWheels = [
 
     tire_width_range_mm: '24-38',
     tire_optimized_for_mm: 28,
-    e_bike_approved: false,
-    warranty: 'Limited Lifetime'
-  }
+    e_bike_approved: false
+
+  }, warranty: { text: "Limited Lifetime", years: null }
 },
 {
   id: 29,
@@ -267,9 +267,9 @@ export const rovalWheels = [
     'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/one-cross (2:1)", rear: "one-cross/two-cross (2:1)" } }, hub: { model: 'LFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic' }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: { hub_internals: 'DT Swiss 180 Ratchet EXP 36T',
 
 
-    tire_width_range_mm: '24-38',
-    warranty: 'Limited Lifetime'
-  }
+    tire_width_range_mm: '24-38'
+
+  }, warranty: { text: "Limited Lifetime", years: null }
 },
 {
   id: 30,

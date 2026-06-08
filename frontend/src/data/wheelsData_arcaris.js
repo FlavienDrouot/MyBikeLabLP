@@ -14,14 +14,7 @@ const IMAGES = [
 const baseOtherSpecs = {
   min_tire_size_c: 25,
   max_tire_size_c: 38,
-<<<<<<< HEAD
-  max_tire_pressure_psi_28c: 110,
-=======
-  rim_construction:
-  'VAMspeed wind-tunnel-tested rim profile, Optiply high-modulus layup, hidden nipples, DSR-Lock patent-pending captive spokes, hooked (clincher & tubeless ready)',
->>>>>>> evo-052-rim-max-tire-pressure
-  uci_approved: true,
-  warranty: '2-year limited (manufacturing defects)'
+  uci_approved: true
 };
 
 const splitHubSpecs = (otherSpecs = {}) => {
@@ -87,6 +80,7 @@ const makeArcarisWheel = ({
         manufacturer: { url: PRODUCT_URL, amount: priceUsd, currency: 'USD' },
         retailers: [{ name: 'Panda Podium', amount: priceUsd, currency: 'USD', url: PRODUCT_URL }]
       },
+      warranty: { text: '2-year limited (manufacturing defects)', years: 2 },
       other_specs: {
         ...baseOtherSpecs,
         ...promoted.otherSpecs

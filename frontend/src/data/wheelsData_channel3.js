@@ -61,9 +61,9 @@ export const channel3Wheels = [
     source_note: 'Specs from official Industry Nine Solix SL AR25 page (1520g, 25mm depth, 21.5mm internal, 25-55mm tire range); USD price/image from Channel3 offer (Garage Cycles), captured 2026-06-05. Some retailers list 1470g.',
     points_of_engagement: 605,
 
-    tire_compatibility: '700x25-55c, Clincher/Tubeless',
-    warranty_years: 2
-  }
+    tire_compatibility: '700x25-55c, Clincher/Tubeless'
+
+  }, warranty: { text: null, years: 2 }
 },
 
 // ---------------------------------------------------------------------------
@@ -113,7 +113,7 @@ export const channel3Wheels = [
     engagements: 72,
 
 
-    tire_compatibility: '700x25-28c, Clincher/Tubeless',
-    warranty_years: 2
-  }
+    tire_compatibility: '700x25-28c, Clincher/Tubeless'
+
+  }, warranty: { text: null, years: 2 }
 }];

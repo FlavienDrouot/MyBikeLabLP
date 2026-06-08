@@ -18,11 +18,9 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
     depth_mm,
     externalWidth_mm: 32,
     internalWidth_mm: 23,
-<<<<<<< HEAD
-    tubeless_ready: true, construction: "Carbon with SAT Tech; HI-MOD T800 Carbon Fiber"
-=======
-    tubeless_ready: true, max_tire_pressure: { psi: 120, bar: 8.3, note: "clincher: 120 psi; tubeless: 90 psi" }
->>>>>>> evo-052-rim-max-tire-pressure
+    tubeless_ready: true,
+    construction: "Carbon with SAT Tech; HI-MOD T800 Carbon Fiber",
+    max_tire_pressure: { psi: 120, bar: 8.3, note: "clincher: 120 psi; tubeless: 90 psi" }
   },
   spokes: {
     model: 'Pillar WING 2.0 Aero',
@@ -57,11 +55,11 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
 
 
     compatible_tire_width_mm: '25c and above',
-    suggested_tire_width_mm: '28c-47c',
+    suggested_tire_width_mm: '28c-47c'
 
 
-    warranty_years: 3
-  }
+
+  }, warranty: { text: null, years: 3 }
 });
 
 const makeQianKunWheel = ({
@@ -126,9 +124,9 @@ const makeQianKunWheel = ({
     spoke_pull_test_kgf: 600,
     hub_torque_test_nm: 230,
     hub_torque_test_cycles: 52000,
-    warranty_years: 3,
+
     crash_replacement_discount_percent: 30
-  }
+  }, warranty: { text: null, years: 3 }
 });
 
 export const yoeleoWheels = [

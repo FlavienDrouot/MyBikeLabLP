@@ -8,11 +8,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 115,
-<<<<<<< HEAD
-  rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23, construction: "Biomimetic Laminate, mixed-modulus carbon" },
-=======
-  rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null } },
->>>>>>> evo-052-rim-max-tire-pressure
+  rim: { material: 'carbon', hookless: true, depth_mm: 35, externalWidth_mm: 27.5, tubeless_ready: true, internalWidth_mm: 23, construction: "Biomimetic Laminate, mixed-modulus carbon", max_tire_pressure: { psi: 73, bar: 5, note: null } },
   spokes: { model: 'Hyperlite', brand: 'Alpina', material: 'steel', count: { front: 20, rear: 20 }, lacing: { front: "2-cross", rear: "2-cross" } },
   hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -41,9 +37,9 @@ export const zippWheels = [
     tire_type: 'tubeless',
     rim_finish: 'UD fiber with ImPress technology',
 
-    warranty: 'Lifetime',
+
     sku: 'WH-202-NSW-A1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 32,
@@ -76,9 +72,9 @@ export const zippWheels = [
     rim_finish: 'UD fiber with adhesive decals',
     rim_profile: 'Symmetrical',
     aero_technology: 'ABLC SawTooth, AeroBalance, TSE (Total System Efficiency)',
-    warranty: 'Lifetime',
+
     sku: 'WH-303-FTLD-A1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 33,
@@ -112,9 +108,9 @@ export const zippWheels = [
     rim_finish: 'UD fiber with adhesive decals',
     rim_profile: 'Symmetrical',
     aero_technology: 'ABLC Sawtooth dimple design',
-    warranty: 'Lifetime',
+
     sku: 'WH-303-FTUD-A1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 34,
@@ -149,9 +145,9 @@ export const zippWheels = [
     rim_finish: 'UD fiber, Bake-On labels, Matte clear coat',
     rim_profile: 'Symmetrical',
     compatible_rotors: ['CenterLine XR', 'Paceline'],
-    warranty: 'Lifetime',
+
     sku: 'WH-303-STLD-A1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 35,
@@ -187,9 +183,9 @@ export const zippWheels = [
     sram_axs_connected: true,
     tire_pressure_monitoring: true,
     impact_strength_improvement_pct: 10,
-    warranty: 'Lifetime',
+
     sku: 'WH-303-SW-A1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 36,
@@ -224,9 +220,9 @@ export const zippWheels = [
     rim_finish: 'UD fiber with ImPress direct-print graphics',
     rim_profile: 'Symmetrical',
     aero_technology: 'Sawtooth, TSE (Total System Efficiency)',
-    warranty: 'Lifetime',
+
     sku: 'WH-353-NTLD-A1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 37,
@@ -263,9 +259,9 @@ export const zippWheels = [
     sram_axs_connected: true,
     tire_pressure_monitoring: true,
     impact_strength_improvement_pct: 16,
-    warranty: 'Lifetime',
+
     sku: 'WH-353-NSW-B1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 38,
@@ -297,9 +293,9 @@ export const zippWheels = [
     tire_type: 'tubeless',
     rim_finish: 'UD fiber with adhesive decals',
     rim_profile: 'Symmetrical',
-    warranty: 'Lifetime',
+
     sku: 'WH-404-FTLD-B1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 39,
@@ -343,9 +339,9 @@ export const zippWheels = [
     rim_finish: 'UD fiber with ImPress technology',
     rim_profile: 'Symmetrical',
     aero_technology: 'Sawtooth, Hyperfoil nodes, HexFin ABLC dimples, TSE',
-    warranty: 'Lifetime',
+
     sku: 'WH-454-NTLD-B1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 40,
@@ -383,9 +379,9 @@ export const zippWheels = [
     rim_finish: 'UD fiber with ImPress direct-print',
     rim_profile: 'Symmetrical',
     aero_technology: 'Sawtooth, Hyperfoil nodes, HexFin ABLC dimples, TSE',
-    warranty: 'Lifetime',
+
     sku: 'WH-454-NTLD-C1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 41,
@@ -418,9 +414,9 @@ export const zippWheels = [
     tire_type: 'tubeless',
     rim_finish: 'UD fiber with adhesive decals',
     rim_profile: 'Symmetrical',
-    warranty: 'Lifetime',
+
     sku: 'WH-808-FTLD-B1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 42,
@@ -458,9 +454,9 @@ export const zippWheels = [
     rim_finish: 'UD fiber with HexFin ABLC dimples, Sawtooth design',
     rim_profile: 'Symmetrical',
     aero_technology: 'HexFin ABLC dimples, Sawtooth',
-    warranty: 'Lifetime',
+
     sku: 'WH-858-NTLD-C1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 {
   id: 43,
@@ -499,9 +495,9 @@ export const zippWheels = [
     rim_finish: 'UD fiber with ImPress direct-print',
     rim_profile: 'Symmetrical',
     aero_technology: 'HexFin ABLC dimples, Sawtooth',
-    warranty: 'Lifetime',
+
     sku: 'WH-858-NTLD-D1'
-  }
+  }, warranty: { text: "Lifetime", years: null }
 },
 // EVO-038: first entry using the canonical divergent pair form for depth and weight.
 // Use weight_grams: { front, rear } — do NOT duplicate into other_specs.weight_front_g/rear.
@@ -542,7 +538,7 @@ export const zippWheels = [
     'Cartridge Steel' }, prices: [{ amount: 2150, currency: 'EUR', url: 'https://www.sram.com/en/zipp' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp', amount: 2150, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'front: 404 Firecrest; rear: 808 Firecrest — lightest configuration',
     points_of_engagement: 66,
 
-    tire_type: 'tubeless',
-    warranty: 'Lifetime'
-  }
+    tire_type: 'tubeless'
+
+  }, warranty: { text: "Lifetime", years: null }
 }];

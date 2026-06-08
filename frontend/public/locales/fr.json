@@ -186,6 +186,7 @@
     "depth": { "label": "Profil" },
     "externalWidth": { "label": "Largeur externe" },
     "maxTirePressure": { "label": "Pression pneu max" },
+    "warrantyYears": { "label": "Garantie" },
     "hub": { "label": "Moyeu" },
     "hubBrand": { "label": "Marque de moyeu" },
     "hubModel": { "label": "Modèle de moyeu" },
@@ -224,6 +225,8 @@
     "internalWidth_desc": "Largeur interne (large → étroite)",
     "maxTirePressure_asc": "Pression pneu max (croissante)",
     "maxTirePressure_desc": "Pression pneu max (décroissante)",
+    "warrantyYears_asc": "Garantie (croissante)",
+    "warrantyYears_desc": "Garantie (décroissante)",
     "spokeCount_asc": "Nombre de rayons (croissant)",
     "spokeCount_desc": "Nombre de rayons (décroissant)"
   },

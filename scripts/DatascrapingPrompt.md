@@ -129,7 +129,7 @@ Examples include (but are not limited to):
 * spoke length / tension / replacement part numbers
 * rim construction technologies / hub technologies
 * aerodynamic claims / stiffness metrics
-* certifications / warranty information
+* certifications
 * country of manufacture / included accessories
 * ETRTO dimensions
 * any manufacturer-specific technology names
@@ -141,8 +141,16 @@ Example:
 ```json
 "other_specs": {
   "recommended_tire_width_mm": "28-45",
-  "aero_technology": "Aero+",
-  "warranty_years": 5
+  "aero_technology": "Aero+"
+}
+```
+
+Warranty information belongs in the top-level `warranty` object:
+
+```json
+"warranty": {
+  "text": "2 years",
+  "years": 2
 }
 ```
 

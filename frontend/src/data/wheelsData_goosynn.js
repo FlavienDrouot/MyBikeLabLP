@@ -57,9 +57,9 @@ const makeGoosynn = ({
     bead_type: 'Hooked',
     tire_compatibility_c,
     recommended_rider_weight_kg,
-    warranty_years: 5,
+
     weight_tolerance_percent: 5
-  }
+  }, warranty: { text: null, years: 5 }
 });
 
 export const goosynnWheels = [

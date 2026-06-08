@@ -17,13 +17,6 @@ const baseHubSpecs = {
 
 const baseOtherSpecs = {
   weight_tolerance_grams: 15,
-<<<<<<< HEAD
-  max_tire_pressure_psi_28c: 110,
-=======
-  rim_construction:
-    'In-house manufactured carbon (Toray T1100/T800+), laser-guided layup, UV-shaped hooked-bead profile; validated to 100 J impact (UCI requirement 40 J)',
->>>>>>> evo-052-rim-max-tire-pressure
-  warranty: '2-year manufacturer warranty',
 };
 
 const makeOverfastWheel = ({
@@ -82,6 +75,7 @@ const makeOverfastWheel = ({
       { name: 'Panda Podium', amount: PRICE_USD, currency: 'USD', url: PANDA_URL },
     ],
   },
+  warranty: { text: '2-year manufacturer warranty', years: 2 },
   other_specs: {
     ...baseOtherSpecs,
     claimed_pair_weight_grams,
