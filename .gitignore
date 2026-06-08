@@ -52,3 +52,6 @@ design-system/
 
 # Code reviews output (local, not versioned)
 reviews/
+
+# Local planning artifacts
+roadmap.html
