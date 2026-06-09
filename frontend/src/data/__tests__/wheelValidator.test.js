@@ -236,6 +236,50 @@ describe('validateWheelEntry', () => {
     expect(warnings[0]).toContain('other_specs.weight_tolerance');
     expect(warnings[3]).toContain('weight_tolerance_percent');
   });
+
+  it('warns when promoted tire compatibility fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        tire_type: 'tubeless',
+        tire_compatibility: 'Clincher/tubeless',
+        compatible_tire_type: 'Tubeless Tire',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(3);
+    expect(warnings[0]).toContain('other_specs.tire_type');
+    expect(warnings[2]).toContain('rim.tire_compatibility');
+  });
+
+  it('warns when tubeless_ready is inconsistent with tire compatibility', () => {
+    const entry = makeEntry({
+      rim: {
+        depth_mm: 40,
+        externalWidth_mm: 30,
+        internalWidth_mm: 23,
+        tire_compatibility: ['clincher', 'tubeless'],
+        tubeless_ready: false,
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('rim.tubeless_ready');
+  });
+
+  it('warns when tire compatibility contains an unsupported type', () => {
+    const entry = makeEntry({
+      rim: {
+        depth_mm: 40,
+        externalWidth_mm: 30,
+        internalWidth_mm: 23,
+        tire_compatibility: ['solid'],
+        tubeless_ready: false,
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('unsupported tire type');
+  });
 });
 
 describe('validateWheelsCatalog', () => {

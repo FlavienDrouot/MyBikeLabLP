@@ -4,7 +4,6 @@ const FREEHUB_OPTIONS = ['Shimano HG', 'Shimano Micro Spline', 'SRAM XDR', 'Camp
 
 const baseOtherSpecs = {
   engagement_ratchet: 'Vapor 45T',
-  tire_compatibility: 'Tubeless/clincher',
   recommended_tire_size_c: '28-30 aero optimized; compatible with 28-35'
 };
 
@@ -47,7 +46,8 @@ const makeNo6Wheel = ({
     externalWidth_mm,
     internalWidth_mm,
     tubeless_ready: true,
-    max_tire_pressure: { psi: 110, bar: 7.6, note: null }
+    max_tire_pressure: { psi: 110, bar: 7.6, note: null },
+    tire_compatibility: ['clincher', 'tubeless']
   },
   spokes: {
     model: `Carbon aero spoke ${carbon_spoke_diameter_mm}`,

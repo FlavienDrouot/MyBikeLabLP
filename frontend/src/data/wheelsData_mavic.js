@@ -8,7 +8,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 80, bar: 5.5, note: null } },
+  rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: 'R2R', brand: 'Mavic', material: 'carbon', count: { front: 20, rear: 20 }, lacing: { front: "radial", rear: "radial" } },
   hub: { model: 'Infinity', brand: 'Mavic', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XD'], disc_standard: 'Center Lock', bearing_type:
 
@@ -41,7 +41,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: false, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: false, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -73,7 +73,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: true, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, construction: "Fore Carbon" },
+  rim: { material: 'carbon', hookless: true, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, construction: "Fore Carbon", tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -108,7 +108,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: true, depth_mm: 32, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, construction: "Fore Carbon", max_tire_pressure: { psi: 88, bar: 6.1, note: null } },
+  rim: { material: 'carbon', hookless: true, depth_mm: 32, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, construction: "Fore Carbon", max_tire_pressure: { psi: 88, bar: 6.1, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -142,7 +142,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: null, depth_mm: 65, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 80, bar: 5.5, note: null } },
+  rim: { material: 'carbon', hookless: null, depth_mm: 65, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -175,7 +175,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23 },
+  rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -209,7 +209,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: false, depth_mm: 32, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, construction: "NACA-inspired profile", max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+  rim: { material: 'carbon', hookless: false, depth_mm: 32, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, construction: "NACA-inspired profile", max_tire_pressure: { psi: 98, bar: 6.75, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -246,7 +246,7 @@ export const mavicWheels = [
   brake_type: 'rim',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: false, depth_mm: 40, externalWidth_mm: 26, tubeless_ready: true, internalWidth_mm: 19, construction: "iTgMAX laser-treated braking surface", max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+  rim: { material: 'carbon', hookless: false, depth_mm: 40, externalWidth_mm: 26, tubeless_ready: true, internalWidth_mm: 19, construction: "iTgMAX laser-treated braking surface", max_tire_pressure: { psi: 98, bar: 6.75, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 18, rear: 24 }, profile:
 
 
@@ -282,7 +282,7 @@ export const mavicWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: null, depth_mm: 42, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21 },
+  rim: { material: 'carbon', hookless: null, depth_mm: 42, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -312,7 +312,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal", max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal", max_tire_pressure: { psi: 98, bar: 6.75, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -347,7 +347,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal", max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal", max_tire_pressure: { psi: 98, bar: 6.75, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -381,7 +381,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal; SUP welding, Fore tubeless", max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal; SUP welding, Fore tubeless", max_tire_pressure: { psi: 98, bar: 6.75, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -418,7 +418,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal", max_tire_pressure: { psi: 55, bar: 3.8, note: null } },
+  rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal", max_tire_pressure: { psi: 55, bar: 3.8, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -454,7 +454,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'endurance',
   max_system_weight_kg: 120,
-  rim: { material: 'aluminum', hookless: false, depth_mm: 21, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, construction: "S6000 aluminum", max_tire_pressure: { psi: 88, bar: 6.1, note: null } },
+  rim: { material: 'aluminum', hookless: false, depth_mm: 21, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 21, construction: "S6000 aluminum", max_tire_pressure: { psi: 88, bar: 6.1, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -490,7 +490,7 @@ export const mavicWheels = [
   brake_type: 'rim',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal", max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal", max_tire_pressure: { psi: 98, bar: 6.75, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -528,7 +528,7 @@ export const mavicWheels = [
   brake_type: 'rim',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal", max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal", max_tire_pressure: { psi: 98, bar: 6.75, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 18, rear: 24 }, nipple:
 
 
@@ -566,7 +566,7 @@ export const mavicWheels = [
   brake_type: 'rim',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal; Fore tubeless, SUP welding", max_tire_pressure: { psi: 98, bar: 6.75, note: null } },
+  rim: { material: 'aluminum', hookless: false, depth_mm: 22, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 19, construction: "Maxtal; Fore tubeless, SUP welding", max_tire_pressure: { psi: 98, bar: 6.75, note: null }, tire_compatibility: ["tubeless"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 18, rear: 24 }, profile:
 
 
@@ -603,7 +603,7 @@ export const mavicWheels = [
   brake_type: 'rim',
   wheelset_category: 'endurance',
   max_system_weight_kg: 120,
-  rim: { material: 'aluminum', hookless: false, depth_mm: 21, externalWidth_mm: null, tubeless_ready: false, internalWidth_mm: 17, construction: "S6000 aluminum", max_tire_pressure: { psi: 116, bar: 8, note: null } },
+  rim: { material: 'aluminum', hookless: false, depth_mm: 21, externalWidth_mm: null, tubeless_ready: null, internalWidth_mm: 17, construction: "S6000 aluminum", max_tire_pressure: { psi: 116, bar: 8, note: null }, tire_compatibility: [] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 20, rear: 20 }, profile:
 
 
@@ -639,7 +639,7 @@ export const mavicWheels = [
   diameter_mm: 700,
   brake_type: 'track',
   max_system_weight_kg: 120,
-  rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: null, tubeless_ready: false, internalWidth_mm: 15, construction: "Maxtal", max_tire_pressure: { psi: 131, bar: 9, note: null } },
+  rim: { material: 'aluminum', hookless: false, depth_mm: 30, externalWidth_mm: null, tubeless_ready: false, internalWidth_mm: 15, construction: "Maxtal", max_tire_pressure: { psi: 131, bar: 9, note: null }, tire_compatibility: ["clincher"] },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 20, rear: 20 }, profile:
 
 
@@ -661,7 +661,7 @@ export const mavicWheels = [
 
 
 
-    'straight extra-flat tapered', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x120', bearing_type: 'QRM+ auto-adjusting cartridge' }, prices: [{ amount: 529, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ellipse-rr0713' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P78501_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ellipse-rr0713', amount: 529, currency: 'EUR' }, retailers: [] }, other_specs: { tire_type: 'clincher', min_tire_width_mm: 23, max_tire_width_mm: 32, hub_body_material: 'aluminum', hub_axle_material: 'steel', rear_hub_type: 'flip-flop (dual fixed cog)', cog_thread: '1.37x24TPI',
+    'straight extra-flat tapered', lacing: { front: "2-cross", rear: "2-cross" } }, hub: { model: '', brand: 'Mavic', axle_front_mm: '9x100', axle_rear_mm: '9x120', bearing_type: 'QRM+ auto-adjusting cartridge' }, prices: [{ amount: 529, currency: 'EUR', url: 'https://www.mavic.com/fr-fr/p/ellipse-rr0713' }], images: ['https://cdn.mavic.com/media/cache/resolve/product_thumbnail/dam/P78501_0.png'], affiliateLinks: { manufacturer: { url: 'https://www.mavic.com/fr-fr/p/ellipse-rr0713', amount: 529, currency: 'EUR' }, retailers: [] }, other_specs: { min_tire_width_mm: 23, max_tire_width_mm: 32, hub_body_material: 'aluminum', hub_axle_material: 'steel', rear_hub_type: 'flip-flop (dual fixed cog)', cog_thread: '1.37x24TPI',
 
     rim_joint: 'SUP welding',
 

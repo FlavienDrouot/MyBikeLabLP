@@ -20,7 +20,7 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
     internalWidth_mm: 23,
     tubeless_ready: true,
     construction: "Carbon with SAT Tech; HI-MOD T800 Carbon Fiber",
-    max_tire_pressure: { psi: 120, bar: 8.3, note: "clincher: 120 psi; tubeless: 90 psi" }
+    max_tire_pressure: { psi: 120, bar: 8.3, note: "clincher: 120 psi; tubeless: 90 psi" }, tire_compatibility: ["clincher", "tubeless"]
   },
   spokes: {
     model: 'Pillar WING 2.0 Aero',
@@ -51,7 +51,7 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
 
     ratchet_teeth: 36,
     compatible_cassette: 'Shimano HG / SRAM / Campagnolo',
-    compatible_tire_type: 'Clincher Tire, Tubeless Tire',
+
 
 
     compatible_tire_width_mm: '25c and above',
@@ -85,7 +85,7 @@ const makeQianKunWheel = ({
     depth_mm,
     externalWidth_mm: 32,
     internalWidth_mm: 23,
-    tubeless_ready: true, construction: "HI-MOD T1000 Carbon Fiber"
+    tubeless_ready: true, construction: "HI-MOD T1000 Carbon Fiber", tire_compatibility: ["clincher", "tubeless"]
   },
   spokes: {
     model: 'Aero variable-section T-Head carbon',
@@ -116,7 +116,7 @@ const makeQianKunWheel = ({
 
     'Ceramic-sealed bearings' }, prices: [{ amount: 1650, currency: 'USD', url }], weight_tolerance_percent: 3, image: wheelPlaceholderUrl, images: [], affiliateLinks: { manufacturer: { url, amount: 1650, currency: 'USD' }, retailers: [] }, other_specs: { range_of_use, ratchet_teeth: 36,
     rim_weight_each_grams: 420,
-    compatible_tire_type: 'Clincher Tire, Tubeless Tire',
+
     compatible_tire_width_mm: '25c-45c',
     recommended_tire_width_mm: 28,
     rim_impact_test_joules: 120,

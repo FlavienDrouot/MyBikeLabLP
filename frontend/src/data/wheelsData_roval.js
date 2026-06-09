@@ -8,7 +8,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 48 }, externalWidth_mm: { front: 35, rear: 31.3 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" } },
+  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 48 }, externalWidth_mm: { front: 35, rear: 31.3 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
   spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite', count: { front: 18, rear: 24 }, nipple:
 
 
@@ -47,7 +47,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: { front: 63, rear: 58 }, externalWidth_mm: { front: 35, rear: 34.4 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" } },
+  rim: { material: 'carbon', hookless: false, depth_mm: { front: 63, rear: 58 }, externalWidth_mm: { front: 35, rear: 34.4 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
   spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite', count: { front: 18, rear: 24 }, nipple:
 
 
@@ -85,7 +85,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 60 }, externalWidth_mm: { front: 35, rear: 30.7 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" } },
+  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 60 }, externalWidth_mm: { front: 35, rear: 30.7 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
   spokes: { model: 'Aerolite T-head', brand: 'DT Swiss', material: 'steel', count: { front: 18, rear: 24 }, nipple:
 
 
@@ -117,7 +117,7 @@ export const rovalWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'aero',
-  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 48 }, externalWidth_mm: { front: 35, rear: 31.3 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" } },
+  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 48 }, externalWidth_mm: { front: 35, rear: 31.3 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
   spokes: { model: 'Competition Race Straight Pull', brand: 'DT Swiss', material: 'steel', count: { front: 18, rear: 24 }, lacing: { front: "two-cross/radial", rear: "one-cross/three-cross" } },
   hub: { model: '350 EXP', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -148,7 +148,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 60 }, externalWidth_mm: { front: 35, rear: 30 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" } },
+  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 60 }, externalWidth_mm: { front: 35, rear: 30 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
   spokes: { model: 'Competition Race Straightpull', brand: 'DT Swiss', material: 'steel', count: { front: 18, rear: 24 }, nipple:
 
 
@@ -180,7 +180,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: 38, externalWidth_mm: 26.6, tubeless_ready: true, internalWidth_mm: 21 },
+  rim: { material: 'carbon', hookless: false, depth_mm: 38, externalWidth_mm: 26.6, tubeless_ready: true, internalWidth_mm: 21, tire_compatibility: ["tubeless"] },
   spokes: { model: 'Competition Race J-Bend', brand: 'DT Swiss', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -216,7 +216,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 26.5, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" } },
+  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 26.5, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
   spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite', count: { front: 21, rear: 24 }, nipple:
 
 
@@ -251,7 +251,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" } },
+  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
   spokes: { model: 'Aerolite T-head', brand: 'DT Swiss', material: 'steel', count: { front: 21, rear: 24 }, nipple:
 
 
@@ -283,7 +283,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" } },
+  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
   spokes: { model: 'Competition Race Straightpull', brand: 'DT Swiss', material: 'steel', count: { front: 21, rear: 24 }, nipple:
 
 

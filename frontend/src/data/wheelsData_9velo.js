@@ -27,13 +27,14 @@ const makeLinks = (url, priceUsd) => ({
 });
 
 const splitHubSpecs = (otherSpecs = {}) => {
-  const { hubBearingType, hubBearingModels = [], hubMaterial = null, ...rest } = otherSpecs;
+  const { hubBearingType, hubBearingModels = [], hubMaterial = null, tireCompatibility, ...rest } = otherSpecs;
   return {
     hubSpecs: {
       bearing_type: hubBearingType ?? null,
       bearing_models: hubBearingModels,
       material: hubMaterial
     },
+    tireCompatibility,
     otherSpecs: rest
   };
 };
@@ -51,6 +52,7 @@ const makeWheel = ({
   maxWeight = 120,
   spokes,
   hub,
+  tireCompatibility = ['tubeless'],
   url,
   priceUsd,
   otherSpecs = {}
@@ -73,7 +75,8 @@ const makeWheel = ({
         depth_mm: depth,
         externalWidth_mm: externalWidth,
         internalWidth_mm: internalWidth,
-        tubeless_ready: true
+        tubeless_ready: (promoted.tireCompatibility ?? tireCompatibility).includes('tubeless'),
+        tire_compatibility: promoted.tireCompatibility ?? tireCompatibility
       },
       spokes,
       hub: {
@@ -151,7 +154,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'Drilled'
   }
 }),
@@ -177,7 +180,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'Drilled'
   }
 }),
@@ -203,7 +206,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'Drilled'
   }
 }),
@@ -225,7 +228,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'Drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
   }
@@ -248,7 +251,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'Drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
   }
@@ -271,7 +274,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'Drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
   }
@@ -294,7 +297,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'No holes drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
   }
@@ -317,7 +320,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x28c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'No holes drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
   }
@@ -340,7 +343,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x25c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'Drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
   }
@@ -363,7 +366,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x25c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'Drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
   }
@@ -386,7 +389,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x25c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'No holes drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
   }
@@ -409,7 +412,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x25c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'No holes drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
   }
@@ -432,7 +435,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x25c-700x47c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'No holes drilled',
     titanium_freehub_upgrade_weight_delta_grams: 18
   }
@@ -455,7 +458,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6803, rear: 1x15267 + 3x6802',
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x23c-700x45c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'No holes drilled',
     brake_track: 'Specific heat-resistant rim-brake track; brake pads included'
   }
@@ -478,7 +481,7 @@ makeWheel({
     hubBearingType: 'Steel bearings, front: 2x6803, rear: 1x15267 + 3x6802',
 
 
-    tire_compatibility: 'Tubeless/clincher; 700x23c-700x45c',
+    tireCompatibility: ['clincher', 'tubeless'],
     rim_bed: 'No holes drilled',
     brake_track: 'Specific heat-resistant rim-brake track; brake pads included'
   }
@@ -509,7 +512,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless; 700x23c-700x45c',
+    tireCompatibility: ['tubeless'],
     brake_track: '9Velo-specific brake pads included'
   }
 }),
@@ -539,7 +542,7 @@ makeWheel({
 
 
 
-    tire_compatibility: 'Tubeless; 700x23c-700x45c',
+    tireCompatibility: ['tubeless'],
     brake_track: '9Velo-specific brake pads included'
   }
 })];

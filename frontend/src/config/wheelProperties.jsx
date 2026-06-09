@@ -9,7 +9,7 @@
 // to WHEEL_PROPERTIES â€” no other files should need modification.
 
 import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
-import { HookBadge, TubelessBadge } from '../components/MiniComparator/badges';
+import { HookBadge } from '../components/MiniComparator/badges';
 import { resolveSpec } from '../data/wheelUtils';
 import { convert, formatPrice, isSupportedCurrency } from '../lib/currency';
 
@@ -377,24 +377,21 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
-    id: 'tubelessReady',
-    label: 'properties.tubelessReady.label',
+    id: 'tireCompatibility',
+    label: 'properties.tireCompatibility.label',
     group: 'rims',
     translatable: true,
-    accessor: (w) => w.rim?.tubeless_ready,
-    filter: {
-      type: 'triState',
-      labels: [
-        'filters.tubelessReady.all',
-        'filters.tubelessReady.true',
-        'filters.tubelessReady.false',
-      ],
-    },
+    accessor: (w) => w.rim?.tire_compatibility,
+    filter: { type: 'multiSelectFlat' },
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3',
-      renderCell: (w) => <TubelessBadge tubeless={w.rim?.tubeless_ready} />,
+      cellClassName: 'px-4 py-3 text-ink-11',
+      renderCell: (w, t) => {
+        const types = w.rim?.tire_compatibility;
+        if (!Array.isArray(types) || types.length === 0) return t('common.notAvailable');
+        return types.map((type) => t(`tireCompatibility.${type}`)).join(' / ');
+      },
     },
   },
 

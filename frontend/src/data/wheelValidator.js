@@ -64,6 +64,9 @@ const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
   'weight_tolerance_percent',
   'weight_tolerance_grams',
   'rim_weight_tolerance_percent',
+  'tire_type',
+  'tire_compatibility',
+  'compatible_tire_type',
   'weight_carbon_spoke_grams',
   'carbon_spoke_option',
   'external_width_options_mm',
@@ -184,8 +187,41 @@ function collectOtherSpecWarnings(entry, id) {
       ) {
         return `other_specs.${key} on entry ${id}: promoted weight tolerance data must use weight_tolerance_percent`;
       }
+      if (
+        key === 'tire_type' ||
+        key === 'tire_compatibility' ||
+        key === 'compatible_tire_type'
+      ) {
+        return `other_specs.${key} on entry ${id}: promoted tire compatibility data must use rim.tire_compatibility`;
+      }
       return `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`;
     });
+}
+
+function collectTireCompatibilityWarnings(entry, id) {
+  const warnings = [];
+  const types = entry?.rim?.tire_compatibility;
+
+  if (types !== undefined && !Array.isArray(types)) {
+    warnings.push(`rim.tire_compatibility on entry ${id}: must be an array of canonical tire type keys`);
+    return warnings;
+  }
+
+  if (Array.isArray(types)) {
+    const allowed = new Set(['clincher', 'tubeless', 'tubular']);
+    for (const type of types) {
+      if (!allowed.has(type)) {
+        warnings.push(`rim.tire_compatibility on entry ${id}: unsupported tire type "${type}"`);
+      }
+    }
+
+    const expectedTubelessReady = types.length === 0 ? null : types.includes('tubeless');
+    if (entry?.rim?.tubeless_ready !== expectedTubelessReady) {
+      warnings.push(`rim.tubeless_ready on entry ${id}: must be derived from rim.tire_compatibility`);
+    }
+  }
+
+  return warnings;
 }
 
 // EVO-046: every price offer carries `{ amount, currency }`; the legacy `price_eur`
@@ -261,6 +297,11 @@ export function validateWheelEntry(entry) {
   }
 
   for (const warning of collectOtherSpecWarnings(entry, id)) {
+    console.warn(warning);
+    warnings.push(warning);
+  }
+
+  for (const warning of collectTireCompatibilityWarnings(entry, id)) {
     console.warn(warning);
     warnings.push(warning);
   }

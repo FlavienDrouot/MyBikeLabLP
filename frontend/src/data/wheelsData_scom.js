@@ -66,7 +66,7 @@ const makeScom = ({
     depth_mm,
     externalWidth_mm,
     internalWidth_mm,
-    tubeless_ready: true, construction: "Zero-coating filament-wound carbon rim"
+    tubeless_ready: true, construction: "Zero-coating filament-wound carbon rim", tire_compatibility: ["clincher", "tubeless"]
   },
   spokes,
   hub: {
@@ -82,8 +82,8 @@ const makeScom = ({
     retailers: retailerUrl ? [{ name: 'Panda Podium', amount: priceUsd, currency: priceUsd ? 'USD' : 'EUR', url: retailerUrl }] : []
   },
   other_specs: {
-    source_note,
-    tire_compatibility: 'Clincher/Tubeless'
+    source_note
+
   }, warranty: { text: null, years: 5 }
 });
 

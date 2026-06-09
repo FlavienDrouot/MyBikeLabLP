@@ -84,6 +84,13 @@ describe('WHEEL_PROPERTIES registry groups', () => {
     ]);
   });
 
+  it('declares promoted tire compatibility as a flat multi-select rim filter', () => {
+    const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'tireCompatibility');
+
+    expect(property?.group).toBe('rims');
+    expect(property?.filter).toEqual({ type: 'multiSelectFlat' });
+  });
+
   it('declares promoted certification fields as filterable general properties', () => {
     const uci = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'uciApproved');
     const astm = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'astmCategory');

@@ -35,7 +35,7 @@ export const channel3Wheels = [
     depth_mm: 25,
     externalWidth_mm: 25,
     internalWidth_mm: 21.5,
-    tubeless_ready: true
+    tubeless_ready: true, tire_compatibility: ["clincher", "tubeless"]
   },
   spokes: {
     model: 'CX-Ray',
@@ -59,9 +59,9 @@ export const channel3Wheels = [
   },
   other_specs: {
     source_note: 'Specs from official Industry Nine Solix SL AR25 page (1520g, 25mm depth, 21.5mm internal, 25-55mm tire range); USD price/image from Channel3 offer (Garage Cycles), captured 2026-06-05. Some retailers list 1470g.',
-    points_of_engagement: 605,
+    points_of_engagement: 605
 
-    tire_compatibility: '700x25-55c, Clincher/Tubeless'
+
 
   }, warranty: { text: null, years: 2 }
 },
@@ -84,7 +84,7 @@ export const channel3Wheels = [
     depth_mm: { front: 38, rear: 52 },
     externalWidth_mm: { front: 27.3, rear: 30 },
     internalWidth_mm: 21,
-    tubeless_ready: true
+    tubeless_ready: true, tire_compatibility: ["clincher", "tubeless"]
   },
   spokes: {
     model: 'SA1423',
@@ -110,10 +110,10 @@ export const channel3Wheels = [
     source_note: 'Specs from official ICAN Alpha Disc Pro pages (Toray T700/T800, 21mm internal, D21 hub 6-pawl/72 engagements, Pillar SA1423 24/24, Center Lock, 12x100/142) cross-checked with Channel3 record; USD price from Channel3 offer (icancycling.com), captured 2026-06-05. Depth is mixed 38mm front / 52mm rear; external widths approximate (38mm rim ~27.3mm, 52mm rim ~30mm). No clean manufacturer image captured — placeholder used.',
     construction: 'Carbon Fiber Toray T700 & T800',
     pawls: 6,
-    engagements: 72,
+    engagements: 72
 
 
-    tire_compatibility: '700x25-28c, Clincher/Tubeless'
+
 
   }, warranty: { text: null, years: 2 }
 }];

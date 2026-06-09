@@ -85,7 +85,7 @@ const makeWheel = ({
         depth_mm: depth,
         externalWidth_mm: externalWidth,
         internalWidth_mm: internalWidth,
-        tubeless_ready: true
+        tubeless_ready: true, tire_compatibility: ["tubeless"]
       },
       spokes,
       hub: {
@@ -150,7 +150,7 @@ makeWheel({
   priceUsd,
   productImages,
   otherSpecs: {
-    hubBearingType: bearingType,
+    hubBearingType: bearingType
 
   },
   certification: { uci: true, astm: null, ebike: null }

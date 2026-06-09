@@ -92,6 +92,12 @@ const migrations = {
       return promoteWeightTolerance(source);
     },
   },
+  'tire-compatibility': {
+    description: 'Promote tire compatibility fields from other_specs into rim.tire_compatibility for EVO-056.',
+    transform(source) {
+      return promoteTireCompatibility(source);
+    },
+  },
 };
 
 const consumedHubOtherSpecKeys = new Map([
@@ -158,6 +164,12 @@ const consumedWeightToleranceOtherSpecKeys = new Set([
   'weight_tolerance_percent',
   'weight_tolerance_grams',
   'rim_weight_tolerance_percent',
+]);
+
+const consumedTireCompatibilityOtherSpecKeys = new Set([
+  'tire_type',
+  'tire_compatibility',
+  'compatible_tire_type',
 ]);
 
 const getPropertyName = (property) => {
@@ -1231,6 +1243,151 @@ const promoteWeightTolerance = (source) => {
   traverse(ast, {
     ObjectExpression(path) {
       if (promoteWeightToleranceInObjectExpression(path.node)) {
+        changed = true;
+      }
+    },
+  });
+
+  if (!changed) return source;
+  return generator(ast, {
+    retainLines: true,
+    jsescOption: { minimal: true },
+  }, source).code;
+};
+
+const TIRE_COMPATIBILITY_ORDER = ['clincher', 'tubeless', 'tubular'];
+
+const addTireCompatibilityType = (types, type) => {
+  if (TIRE_COMPATIBILITY_ORDER.includes(type)) types.add(type);
+};
+
+const parseTireCompatibilityTypes = (value) => {
+  const types = new Set();
+
+  if (t.isArrayExpression(value)) {
+    for (const element of value.elements) {
+      for (const type of parseTireCompatibilityTypes(element)) {
+        addTireCompatibilityType(types, type);
+      }
+    }
+    return types;
+  }
+
+  if (!t.isStringLiteral(value)) return types;
+
+  const text = value.value.trim().toLowerCase();
+  if (!text) return types;
+
+  if (/\btubeless\b|\btlr\b|\bust\b/.test(text)) {
+    addTireCompatibilityType(types, 'tubeless');
+  }
+  if (/\bclincher\b|\bclinchers\b|\btube(?:d|s)?\b|\binner\s+tube\b|\btubes?\s+also\b|\bpneu\b/.test(text)) {
+    addTireCompatibilityType(types, 'clincher');
+  }
+  if (/\btubular\b|\bboyau\b/.test(text)) {
+    addTireCompatibilityType(types, 'tubular');
+  }
+
+  return types;
+};
+
+const parseExistingTireCompatibilityTypes = (rimObject) => {
+  const property = getObjectProperty(rimObject, 'tire_compatibility');
+  if (!property || !t.isObjectProperty(property)) return new Set();
+  return parseTireCompatibilityTypes(property.value);
+};
+
+const orderedTireCompatibilityTypes = (types) =>
+  TIRE_COMPATIBILITY_ORDER.filter((type) => types.has(type));
+
+const tireCompatibilityArrayNode = (types) =>
+  t.arrayExpression(orderedTireCompatibilityTypes(types).map((type) => t.stringLiteral(type)));
+
+const setRimBooleanField = (rimObject, key, value) => {
+  const existing = getObjectProperty(rimObject, key);
+  const node = value === null ? t.nullLiteral() : t.booleanLiteral(value);
+  if (existing && t.isObjectProperty(existing)) {
+    existing.value = node;
+  } else {
+    rimObject.properties.push(t.objectProperty(t.identifier(key), node));
+  }
+};
+
+const setRimTireCompatibility = (rimObject, types) => {
+  const existing = getObjectProperty(rimObject, 'tire_compatibility');
+  const node = tireCompatibilityArrayNode(types);
+  if (existing && t.isObjectProperty(existing)) {
+    existing.value = node;
+  } else {
+    rimObject.properties.push(t.objectProperty(t.identifier('tire_compatibility'), node));
+  }
+};
+
+const promoteTireCompatibilityInObjectExpression = (objectExpression) => {
+  const rimProperty = getObjectProperty(objectExpression, 'rim');
+  const otherSpecsProperty =
+    getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
+
+  if (!rimProperty || !t.isObjectProperty(rimProperty) || !t.isObjectExpression(rimProperty.value)) {
+    return false;
+  }
+
+  const rimObject = rimProperty.value;
+  const types = parseExistingTireCompatibilityTypes(rimObject);
+  const tubelessReadyProperty = getObjectProperty(rimObject, 'tubeless_ready');
+  const hadTubelessReady = tubelessReadyProperty && t.isObjectProperty(tubelessReadyProperty);
+
+  if (hadTubelessReady && t.isBooleanLiteral(tubelessReadyProperty.value) && tubelessReadyProperty.value.value === true) {
+    addTireCompatibilityType(types, 'tubeless');
+  }
+
+  let changed = false;
+
+  if (otherSpecsProperty && t.isObjectProperty(otherSpecsProperty) && t.isObjectExpression(otherSpecsProperty.value)) {
+    const otherSpecsObject = otherSpecsProperty.value;
+    const remainingOtherSpecsProperties = [];
+
+    for (const property of otherSpecsObject.properties) {
+      const sourceName = getPropertyName(property);
+
+      if (!consumedTireCompatibilityOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+        remainingOtherSpecsProperties.push(property);
+        continue;
+      }
+
+      const parsed = parseTireCompatibilityTypes(property.value);
+      if (parsed.size === 0) {
+        remainingOtherSpecsProperties.push(property);
+        continue;
+      }
+
+      for (const type of parsed) addTireCompatibilityType(types, type);
+      changed = true;
+    }
+
+    if (changed) {
+      otherSpecsObject.properties = remainingOtherSpecsProperties;
+    }
+  }
+
+  if (types.size === 0 && !hadTubelessReady) return changed;
+
+  setRimTireCompatibility(rimObject, types);
+  setRimBooleanField(rimObject, 'tubeless_ready', types.size === 0 ? null : types.has('tubeless'));
+
+  return changed || types.size > 0 || hadTubelessReady;
+};
+
+const promoteTireCompatibility = (source) => {
+  const ast = parser.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
+  let changed = false;
+
+  traverse(ast, {
+    ObjectExpression(path) {
+      if (promoteTireCompatibilityInObjectExpression(path.node)) {
         changed = true;
       }
     },

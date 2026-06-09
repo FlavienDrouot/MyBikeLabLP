@@ -64,6 +64,8 @@ For rim material and construction specs, keep the high-level material category i
 
 For maximum tire pressure specs, write source labels such as `max_tire_pressure_psi`, `max_tire_pressure_bar`, `maximum_tire_pressure`, `max_tire_pressure_tubeless_psi`, `max_tire_pressure_tubed_psi`, `max_tire_pressure_psi_28c`, `max_tire_pressure_psi_clincher`, and `max_tire_pressure_psi_tubeless` into `rim.max_tire_pressure`. Store `{ "psi": number|null, "bar": number|null, "note": string|null }`. Convert the missing unit when only one unit is published (`psi = round(bar * 14.5038)`, `bar = round((psi / 14.5038) * 10) / 10`). Preserve conditional wording such as tubeless/tubed or tire-width-specific limits in `note`. Do not duplicate those labels in `other_specs`.
 
+For tire compatibility specs, write source labels such as `tire_type`, `tire_compatibility`, and `compatible_tire_type` into `rim.tire_compatibility`. Store an array of canonical keys only: `clincher`, `tubeless`, and `tubular`. Set `rim.tubeless_ready` from that array: `true` when it contains `tubeless`, `false` when compatibility is known and lacks `tubeless`, and `null` when unknown. Do not duplicate those labels in `other_specs`.
+
 For certification specs, write source labels such as `uci_approved`, `astm_category`, `e_bike_approved`, and explicit free-text `certification` statements into top-level `certification`. Store `{ "uci": boolean|null, "astm": number|null, "ebike": boolean|null }`. Parse only explicit UCI approval, ASTM category, and e-bike approval statements. Do not infer certification from category, hookless/tubeless state, or general marketing claims. Do not duplicate those labels in `other_specs`.
 
 For weight tolerance specs, write source labels such as `weight_tolerance`, `weight_tolerance_percent`, `weight_tolerance_grams`, and `rim_weight_tolerance_percent` into the top-level `weight_tolerance_percent` field. Store a numeric percentage only (`5` means `+/- 5%`). Convert gram tolerances with the published wheelset weight when possible: `round((grams / total_weight_grams) * 1000) / 10`. Do not duplicate those labels in `other_specs`.
@@ -128,7 +130,7 @@ The `other_specs` object must act as a complete repository of any additional pro
 Examples include (but are not limited to):
 
 * rider weight limit
-* tire compatibility / recommended tire width
+* recommended tire width
 * spoke length / tension / replacement part numbers
 * rim construction technologies / hub technologies
 * aerodynamic claims / stiffness metrics

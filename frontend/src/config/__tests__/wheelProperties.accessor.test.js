@@ -31,6 +31,18 @@ describe('depth — accessor', () => {
   });
 });
 
+describe('tireCompatibility accessor', () => {
+  it('returns the rim tire compatibility set', () => {
+    expect(property('tireCompatibility').accessor({
+      rim: { tire_compatibility: ['clincher', 'tubeless'] },
+    })).toEqual(['clincher', 'tubeless']);
+  });
+
+  it('returns undefined when the rim is missing', () => {
+    expect(property('tireCompatibility').accessor({})).toBeUndefined();
+  });
+});
+
 describe('depth — filterAccessor', () => {
   it('returns the scalar for a scalar input (not wrapped in array)', () => {
     expect(property('depth').filterAccessor({ rim: { depth_mm: 45 } })).toBe(45);

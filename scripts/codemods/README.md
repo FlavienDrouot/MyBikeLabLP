@@ -68,6 +68,13 @@ node scripts/codemods/other-specs-promote.mjs --concept weight-tolerance --dry-r
 node scripts/codemods/other-specs-promote.mjs --concept weight-tolerance --write
 ```
 
+EVO-056 promotes tire compatibility fields:
+
+```powershell
+node scripts/codemods/other-specs-promote.mjs --concept tire-compatibility --dry-run
+node scripts/codemods/other-specs-promote.mjs --concept tire-compatibility --write
+```
+
 Rules for later PROJ-001 child evolutions:
 
 - Add one concept migration at a time.

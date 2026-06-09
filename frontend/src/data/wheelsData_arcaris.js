@@ -54,13 +54,13 @@ const makeArcarisWheel = ({
       rim: {
         material: 'carbon',
         construction:
-          'VAMspeed wind-tunnel-tested rim profile, Optiply high-modulus layup, hidden nipples, DSR-Lock patent-pending captive spokes, hooked (clincher & tubeless ready)',
+        'VAMspeed wind-tunnel-tested rim profile, Optiply high-modulus layup, hidden nipples, DSR-Lock patent-pending captive spokes, hooked (clincher & tubeless ready)',
         hookless: false,
         depth_mm: 27,
         externalWidth_mm: 28.3,
         internalWidth_mm: 23,
         tubeless_ready: true,
-        max_tire_pressure: { psi: 110, bar: 7.6, note: '28c limit' }
+        max_tire_pressure: { psi: 110, bar: 7.6, note: '28c limit' }, tire_compatibility: ["tubeless"]
       },
       spokes,
       hub: {

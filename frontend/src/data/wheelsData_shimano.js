@@ -59,7 +59,9 @@ const makeShimanoWheel = ({
     depth_mm: depth,
     externalWidth_mm: 28,
     internalWidth_mm: tubeless ? 21 : null,
-    tubeless_ready: tubeless, construction: "D2 rim"
+    tubeless_ready: tubeless,
+    construction: "D2 rim",
+    tire_compatibility: tubeless ? ['tubeless'] : ['tubular']
   },
   spokes: {
     model: spokeModel,
@@ -72,7 +74,6 @@ const makeShimanoWheel = ({
   },
   other_specs: {
     series,
-    tire_type: tubeless ? 'Tubeless' : 'Tubular',
     ...(tubeless ? { recommended_tire_size: '25-622 - 32-622' } : {}),
 
 

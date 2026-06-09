@@ -69,7 +69,7 @@ The comparator lets users browse, filter, sort, and compare road bike wheels sid
 | Max system weight | Range |
 | Rim material | Multi-select (Carbon / Aluminum) |
 | Rim depth | Range |
-| Tubeless ready | Yes / No / All |
+| Tire compatibility | Multi-select (Clincher / Tubeless / Tubular) |
 | Hookless | Yes / No / All |
 | External width | Range |
 | Internal width | Range |
@@ -83,9 +83,9 @@ The comparator lets users browse, filter, sort, and compare road bike wheels sid
 
 Front/rear divergent specs (weight, rim depth, widths) are supported, and several specs are filtered with OR semantics across the front and rear values.
 
-**Displayed columns (default visible):** Image, Model/Brand, Price, Weight, Brake type, Wheelset category, Rim material, Tubeless, Hookless, Hub
+**Displayed columns (default visible):** Image, Model/Brand, Price, Weight, Brake type, Wheelset category, Rim material, Hookless, Hub
 
-**Displayed columns (optional):** Diameter, Max system weight, External width, Internal width, Axle, Freehub options, Disc standard, Spokes, Spoke material. Additional specs (bearings, lacing, spoke count, tire pressure/width range, UCI / e-bike approval, warranty, etc.) are surfaced in the per-wheel detail panel.
+**Displayed columns (optional):** Diameter, Max system weight, Tire compatibility, External width, Internal width, Axle, Freehub options, Disc standard, Spokes, Spoke material. Additional specs (bearings, lacing, spoke count, tire pressure/width range, UCI / e-bike approval, warranty, etc.) are surfaced in the per-wheel detail panel.
 
 **Dataset:** ~220 road wheel entries (counting variants) across 18 brands, including Roval, Zipp, Enve, Mavic, Shimano, Caden, Arcaris, EXS, Overfast, Yoeleo, No6, Goosynn, Pertual, Scom, Magene, 9Velo, CRW Works, Farsports. Most entries have real product images and manufacturer-sourced specs and prices. Each product can carry several variants (e.g. freehub or axle options) rendered as distinct rows.
 

@@ -20,7 +20,7 @@ const makeGoosynn = ({
   hubBearingType,
   spokeCount,
   spokeLacing,
-  tire_compatibility_c,
+  tire_width_c,
   recommended_rider_weight_kg,
   priceUsd,
   url,
@@ -42,7 +42,7 @@ const makeGoosynn = ({
     depth_mm,
     externalWidth_mm,
     internalWidth_mm,
-    tubeless_ready: true, construction: "Toray T700 & T800"
+    tubeless_ready: true, construction: "Toray T700 & T800", tire_compatibility: ["tubeless"]
   },
   spokes: {
     model: 'Ti-Fi',
@@ -55,8 +55,8 @@ const makeGoosynn = ({
     neck_type: 'Straight Pull',
 
     bead_type: 'Hooked',
-    tire_compatibility_c,
-    recommended_rider_weight_kg,
+    tire_width_c,
+    recommended_rider_weight_kg
   }, warranty: { text: null, years: 5 }
 });
 
@@ -75,7 +75,7 @@ makeGoosynn({
   hubBearingType: 'CEMA/TPI Ceramic Bearing',
   spokeCount: 40,
   spokeLacing: '2X Cross (front/rear)',
-  tire_compatibility_c: '30C - 50C',
+  tire_width_c: '30C - 50C',
   recommended_rider_weight_kg: '<85',
   priceUsd: 1828,
   url: 'https://goosynn.com/product/ti-fi-r30-wheelset/',
@@ -99,7 +99,7 @@ makeGoosynn({
   hubBearingType: 'TPI Steel Bearing',
   spokeCount: 45,
   spokeLacing: '2X Cross / 3X Cross (2:1 lacing)',
-  tire_compatibility_c: '30C - 50C',
+  tire_width_c: '30C - 50C',
   recommended_rider_weight_kg: '<95',
   priceUsd: 1969,
   url: 'https://goosynn.com/product/ti-fi-r30-pro-wheelset/',
@@ -124,7 +124,7 @@ makeGoosynn({
   hubBearingType: 'CEMA/TPI Ceramic Bearing',
   spokeCount: 40,
   spokeLacing: '2X Cross (front/rear)',
-  tire_compatibility_c: '30C - 50C',
+  tire_width_c: '30C - 50C',
   recommended_rider_weight_kg: '<85',
   priceUsd: 1828,
   url: 'https://goosynn.com/product/ti-fi-r50-wheelset/',
@@ -148,7 +148,7 @@ makeGoosynn({
   hubBearingType: 'TPI Steel Bearing',
   spokeCount: 45,
   spokeLacing: '2X Cross / 3X Cross (2:1 lacing)',
-  tire_compatibility_c: '30C - 50C',
+  tire_width_c: '30C - 50C',
   recommended_rider_weight_kg: '<95',
   priceUsd: 1969,
   url: 'https://goosynn.com/product/ti-fi-r50-pro-wheelset/',
@@ -171,7 +171,7 @@ makeGoosynn({
   hubBearingType: 'TPI Steel Bearing',
   spokeCount: 45,
   spokeLacing: '2X Cross / 3X Cross (2:1 lacing)',
-  tire_compatibility_c: '35C - 70C',
+  tire_width_c: '35C - 70C',
   recommended_rider_weight_kg: '<95',
   priceUsd: 1969,
   url: 'https://goosynn.com/product/ti-fi-g45-pro-wheelset/',

@@ -202,7 +202,7 @@
     "spokeProfile": { "label": "Spoke profile" },
     "spokeLacing": { "label": "Spoke lacing" },
     "brakeType": { "label": "Brake type" },
-    "tubelessReady": { "label": "Tubeless ready" },
+    "tireCompatibility": { "label": "Tire compatibility" },
     "internalWidth": { "label": "Internal width" },
     "axle": { "label": "Axle (F / R)" },
     "freehubOptions": { "label": "Freehub options", "popupTitle": "Freehub options" },
@@ -278,6 +278,11 @@
   "tubelessReady": {
     "true": "Tubeless",
     "false": "Not tubeless"
+  },
+  "tireCompatibility": {
+    "clincher": "Clincher",
+    "tubeless": "Tubeless",
+    "tubular": "Tubular"
   },
   "uciApproved": {
     "true": "UCI approved",

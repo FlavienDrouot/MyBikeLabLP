@@ -79,7 +79,7 @@ const baseWheel = ({
     material: 'carbon',
     hookless: false,
     tubeless_ready: true,
-    ...rim
+    ...rim, tire_compatibility: ["clincher", "tubeless"]
   },
   spokes,
   hub: {
@@ -98,7 +98,7 @@ const baseWheel = ({
 
 
 
-    'Ceramic' }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: images[0] || wheelPlaceholderUrl, images, affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers }, other_specs: { tire_compatibility: 'Clincher/Tubeless',
+    'Ceramic' }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: images[0] || wheelPlaceholderUrl, images, affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers }, other_specs: {
     ...otherSpecs
   }
 });
