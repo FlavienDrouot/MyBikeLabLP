@@ -563,7 +563,8 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
     },
   },
 
@@ -692,7 +693,8 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
     },
   },
 
@@ -842,7 +844,8 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
     },
   },
 
@@ -870,7 +873,8 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
     },
   },
 
