@@ -198,5 +198,5 @@ Kept in sync as children are created. Each child is also registered in the Evolu
 | EVO-054 | certification | Light | Done |
 | EVO-055 | weight-tolerance | Light | Done |
 | EVO-056 | tire-compatibility | Light (Standard fallback) | Done |
-| EVO-057 | hub-engagement | Light (Standard fallback) | Draft |
-| EVO-058 | tire-width-mm | Light (Standard fallback) | Planned |
+| EVO-057 | hub-engagement | Light (Standard fallback) | Done |
+| EVO-058 | tire-width-mm | Light (Standard fallback) | Draft |

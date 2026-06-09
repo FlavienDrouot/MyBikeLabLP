@@ -192,6 +192,8 @@
     "hubModel": { "label": "Modèle de moyeu" },
     "hubBearingType": { "label": "Roulements de moyeu" },
     "hubMaterial": { "label": "Matériau de moyeu" },
+    "hubEngagementType": { "label": "Type d'engagement" },
+    "hubEngagementPoints": { "label": "Points d'engagement" },
     "spokes": { "label": "Rayons" },
     "spokesBrand": { "label": "Marque de rayons" },
     "spokesModel": { "label": "Modèle de rayons" },
@@ -230,6 +232,8 @@
     "maxTirePressure_desc": "Pression pneu max (décroissante)",
     "warrantyYears_asc": "Garantie (croissante)",
     "warrantyYears_desc": "Garantie (décroissante)",
+    "hubEngagementPoints_asc": "Points d'engagement (croissant)",
+    "hubEngagementPoints_desc": "Points d'engagement (décroissant)",
     "spokeCount_asc": "Nombre de rayons (croissant)",
     "spokeCount_desc": "Nombre de rayons (décroissant)"
   },
@@ -283,6 +287,12 @@
     "clincher": "Chambre a air",
     "tubeless": "Tubeless",
     "tubular": "Boyau"
+  },
+  "hubEngagementType": {
+    "star-ratchet": "Star ratchet",
+    "ratchet": "Ratchet",
+    "pawl": "Cliquets",
+    "other": "Autre"
   },
   "uciApproved": {
     "true": "Approuvé UCI",

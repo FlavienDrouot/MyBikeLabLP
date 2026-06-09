@@ -24,7 +24,7 @@ export const rovalWheels = [
 
 
 
-    'Arris MK4 Alloy 6mm', lacing: { front: "two-cross/radial (2:1)", rear: "one-cross/three-cross (2:1)" } }, hub: { model: 'Low Flange Road Hub', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic' }, prices: [{ amount: 3499, currency: 'EUR', url: 'https://www.specialized.com/us/en/roval-rapide-clx-iii/p/1000256237' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-clx-iii/p/1000256237', amount: 3499, currency: 'EUR' }, retailers: [] }, other_specs: { hub_internals: 'DT Swiss Ratchet EXP 36T',
+    'Arris MK4 Alloy 6mm', lacing: { front: "two-cross/radial (2:1)", rear: "one-cross/three-cross (2:1)" } }, hub: { model: 'Low Flange Road Hub', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: 3499, currency: 'EUR', url: 'https://www.specialized.com/us/en/roval-rapide-clx-iii/p/1000256237' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-clx-iii/p/1000256237', amount: 3499, currency: 'EUR' }, retailers: [] }, other_specs: {
     bead_hook_width_front_mm: 5.5,
     bead_hook_width_rear_mm: 4.1,
 
@@ -63,7 +63,7 @@ export const rovalWheels = [
 
 
 
-    'Arris MK4 Alloy 6mm', lacing: { front: "two-cross/radial (2:1)", rear: "one-cross/three-cross (2:1)" } }, hub: { model: 'Low Flange Road Hub', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic' }, prices: [{ amount: null, currency: 'EUR', url: 'https://www.specialized.com/us/en/roval-rapide-sprint-clx/p/1000218332' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-sprint-clx/p/1000218332', amount: null, currency: 'EUR' }, retailers: [] }, other_specs: { hub_internals: 'DT Swiss Ratchet EXP 36T',
+    'Arris MK4 Alloy 6mm', lacing: { front: "two-cross/radial (2:1)", rear: "one-cross/three-cross (2:1)" } }, hub: { model: 'Low Flange Road Hub', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: null, currency: 'EUR', url: 'https://www.specialized.com/us/en/roval-rapide-sprint-clx/p/1000218332' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-sprint-clx/p/1000218332', amount: null, currency: 'EUR' }, retailers: [] }, other_specs: {
     bead_hook_width_front_mm: 4.3,
     bead_hook_width_rear_mm: 4.2,
 
@@ -101,7 +101,7 @@ export const rovalWheels = [
 
 
 
-    'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/one-cross (2:1)", rear: "one-cross/two-cross (2:1)" } }, hub: { model: 'AFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic' }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: { hub_internals: 'DT Swiss 180 Ratchet EXP 36T',
+    'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/one-cross (2:1)", rear: "one-cross/two-cross (2:1)" } }, hub: { model: 'AFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: {
 
 
     tire_width_range_mm: '24-38'
@@ -127,8 +127,8 @@ export const rovalWheels = [
 
 
 
-    'Stainless steel 6902 cartridge' }, prices: [{ amount: 1600, currency: 'USD', url: 'https://www.specialized.com/us/en/c/wheels' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/c/wheels', amount: 1600, currency: 'USD' }, retailers: [] }, other_specs: {
-    hub_internals: 'DT Swiss 350 EXP 36T',
+    'Stainless steel 6902 cartridge', engagement: { type: null, points: 36 } }, prices: [{ amount: 1600, currency: 'USD', url: 'https://www.specialized.com/us/en/c/wheels' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/c/wheels', amount: 1600, currency: 'USD' }, retailers: [] }, other_specs: {
+
 
 
     spoke_gauge_mm: '2.0x1.6',
@@ -164,7 +164,7 @@ export const rovalWheels = [
 
 
 
-    'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/two-cross (2:1)", rear: "two-cross (1:1)" } }, hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sealed Steel Cartridge' }, prices: [{ amount: 1750, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214', amount: 1750, currency: 'USD' }, retailers: [] }, other_specs: { hub_internals: 'Star Ratchet 36T (10-degree engagement)',
+    'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/two-cross (2:1)", rear: "two-cross (1:1)" } }, hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sealed Steel Cartridge', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: 1750, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214', amount: 1750, currency: 'USD' }, retailers: [] }, other_specs: {
 
 
     tire_width_range_mm: '24-38'
@@ -202,7 +202,7 @@ export const rovalWheels = [
 
 
 
-    'DT Swiss Pro Lock Alloy hexagonal', lacing: { front: "2-cross disc / radial non-disc", rear: "2-cross / 2-cross" } }, hub: { model: '370 Classic Center Lock (Ratchet LN 18T)', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'Sealed cartridge' }, prices: [{ amount: 1100, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-c-38/p/205534' }], images: ['https://images.excelsports.com/public/large/119322-1.jpg', 'https://images.excelsports.com/public/large/119322-2.jpg', 'https://images.excelsports.com/public/large/119322-3.jpg'], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-c-38/p/205534', amount: 1100, currency: 'USD' }, retailers: [{ name: 'Excel Sports', amount: 1100, currency: 'USD', url: 'https://www.excelsports.com/roval-rapide-c-38-disc-wheelset' }] }, other_specs: { hub_internals: 'DT Swiss Ratchet LN 18T (20-degree engagement)',
+    'DT Swiss Pro Lock Alloy hexagonal', lacing: { front: "2-cross disc / radial non-disc", rear: "2-cross / 2-cross" } }, hub: { model: '370 Classic Center Lock (Ratchet LN 18T)', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'Sealed cartridge', engagement: { type: "star-ratchet", points: 18 } }, prices: [{ amount: 1100, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-c-38/p/205534' }], images: ['https://images.excelsports.com/public/large/119322-1.jpg', 'https://images.excelsports.com/public/large/119322-2.jpg', 'https://images.excelsports.com/public/large/119322-3.jpg'], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-c-38/p/205534', amount: 1100, currency: 'USD' }, retailers: [{ name: 'Excel Sports', amount: 1100, currency: 'USD', url: 'https://www.excelsports.com/roval-rapide-c-38-disc-wheelset' }] }, other_specs: {
     tire_width_range_mm: '22-47',
     tire_optimized_for_mm: 28
   }
@@ -233,7 +233,7 @@ export const rovalWheels = [
 
 
 
-    'Arris MK4 Alloy 6mm', lacing: { front: "radial (2:1)", rear: "one-cross (1:1)" } }, hub: { model: 'Low Flange Road Hub (DT Swiss Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic' }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: { bead_hook_width_mm: 2.75, hub_internals: 'DT Swiss Ratchet EXP 36T',
+    'Arris MK4 Alloy 6mm', lacing: { front: "radial (2:1)", rear: "one-cross (1:1)" } }, hub: { model: 'Low Flange Road Hub (DT Swiss Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: { bead_hook_width_mm: 2.75,
 
 
     tire_width_range_mm: '24-38',
@@ -267,7 +267,7 @@ export const rovalWheels = [
 
 
 
-    'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/one-cross (2:1)", rear: "one-cross/two-cross (2:1)" } }, hub: { model: 'LFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic' }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: { hub_internals: 'DT Swiss 180 Ratchet EXP 36T',
+    'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/one-cross (2:1)", rear: "one-cross/two-cross (2:1)" } }, hub: { model: 'LFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: {
 
 
     tire_width_range_mm: '24-38'
@@ -299,7 +299,7 @@ export const rovalWheels = [
 
 
 
-    'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/two-cross (2:1)", rear: "two-cross (1:1)" } }, hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sealed Steel Cartridge' }, prices: [{ amount: null, currency: 'EUR', url: 'https://www.specialized.com/us/en/roval-alpinist-cl-ii/p/205468' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-cl-ii/p/205468', amount: null, currency: 'EUR' }, retailers: [] }, other_specs: { hub_internals: 'Star Ratchet 36T (10-degree engagement)',
+    'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/two-cross (2:1)", rear: "two-cross (1:1)" } }, hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sealed Steel Cartridge', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: null, currency: 'EUR', url: 'https://www.specialized.com/us/en/roval-alpinist-cl-ii/p/205468' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-cl-ii/p/205468', amount: null, currency: 'EUR' }, retailers: [] }, other_specs: {
 
 
     tire_width_range_mm: '24-38'

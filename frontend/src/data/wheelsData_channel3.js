@@ -48,7 +48,7 @@ export const channel3Wheels = [
     axle_front_mm: '12x100',
     axle_rear_mm: '12x142',
     freehub_options: ['SRAM XDR'], // Channel3 offer is XDR; other bodies available from I9
-    disc_standard: 'Center Lock'
+    disc_standard: 'Center Lock', engagement: { type: null, points: 605 }
   },
   prices: [{ amount: 1265, currency: 'USD', url: 'https://garagecycles.cc/products/industry-nine-solix-sl-ar25-700c-disc-wheels' }],
   image: 'https://cdn.shopify.com/s/files/1/0685/5147/5487/files/industry-nine-solix-sl-ar25-700c-disc-wheels-6851786.jpg?v=1751668842',
@@ -58,8 +58,8 @@ export const channel3Wheels = [
     retailers: [{ name: 'Garage Cycles', amount: 1265, currency: 'USD', url: 'https://garagecycles.cc/products/industry-nine-solix-sl-ar25-700c-disc-wheels' }]
   },
   other_specs: {
-    source_note: 'Specs from official Industry Nine Solix SL AR25 page (1520g, 25mm depth, 21.5mm internal, 25-55mm tire range); USD price/image from Channel3 offer (Garage Cycles), captured 2026-06-05. Some retailers list 1470g.',
-    points_of_engagement: 605
+    source_note: 'Specs from official Industry Nine Solix SL AR25 page (1520g, 25mm depth, 21.5mm internal, 25-55mm tire range); USD price/image from Channel3 offer (Garage Cycles), captured 2026-06-05. Some retailers list 1470g.'
+
 
 
 

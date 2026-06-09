@@ -20,12 +20,16 @@ const makeLinks = (url, priceUsd) => ({
 });
 
 const splitHubSpecs = (otherSpecs = {}) => {
-  const { hubBearingType, hubBearingModels = [], hubMaterial = null, tireCompatibility, ...rest } = otherSpecs;
+  const { hubBearingType, hubBearingModels = [], hubMaterial = null, tireCompatibility, ratchet, ...rest } = otherSpecs;
+  const ratchetPoints = typeof ratchet === 'string' ? Number(ratchet.match(/(\d+)\s*T/i)?.[1] ?? NaN) : NaN;
   return {
     hubSpecs: {
       bearing_type: hubBearingType && hubBearingType.trim() ? hubBearingType : null,
       bearing_models: hubBearingModels,
-      material: hubMaterial
+      material: hubMaterial,
+      ...(Number.isFinite(ratchetPoints)
+        ? { engagement: { type: 'ratchet', points: ratchetPoints } }
+        : {})
     },
     tireCompatibility,
     otherSpecs: rest

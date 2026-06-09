@@ -100,7 +100,6 @@ describe('validateWheelEntry', () => {
         bearing_models: ['61803'],
         hub_material: 'forged aluminium',
         hub_build: 'dt180_disc',
-        hub_internals: 'DT Swiss Ratchet EXP 36T',
       },
     });
     const warnings = validateWheelEntry(entry);
@@ -249,6 +248,47 @@ describe('validateWheelEntry', () => {
     expect(warnings).toHaveLength(3);
     expect(warnings[0]).toContain('other_specs.tire_type');
     expect(warnings[2]).toContain('rim.tire_compatibility');
+  });
+
+  it('warns when promoted hub engagement fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        points_of_engagement: 66,
+        ratchet_teeth: 36,
+        ratchet: '36T ratchet',
+        hub_internals: 'DT Swiss Ratchet EXP 36T',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(4);
+    expect(warnings[0]).toContain('other_specs.points_of_engagement');
+    expect(warnings[3]).toContain('hub.engagement');
+  });
+
+  it('warns when hub engagement has an unsupported type', () => {
+    const entry = makeEntry({
+      hub: {
+        brand: 'DT Swiss',
+        model: '240',
+        engagement: { type: 'sprag-clutch', points: 36 },
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('unsupported engagement type');
+  });
+
+  it('warns when hub engagement points are not positive', () => {
+    const entry = makeEntry({
+      hub: {
+        brand: 'DT Swiss',
+        model: '240',
+        engagement: { type: 'star-ratchet', points: 0 },
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('hub.engagement.points');
   });
 
   it('warns when tubeless_ready is inconsistent with tire compatibility', () => {

@@ -192,6 +192,8 @@
     "hubModel": { "label": "Hub model" },
     "hubBearingType": { "label": "Hub bearings" },
     "hubMaterial": { "label": "Hub material" },
+    "hubEngagementType": { "label": "Engagement type" },
+    "hubEngagementPoints": { "label": "Engagement points" },
     "spokes": { "label": "Spokes" },
     "spokesBrand": { "label": "Spokes brand" },
     "spokesModel": { "label": "Spokes model" },
@@ -230,6 +232,8 @@
     "maxTirePressure_desc": "Max tire pressure (high → low)",
     "warrantyYears_asc": "Warranty (short → long)",
     "warrantyYears_desc": "Warranty (long → short)",
+    "hubEngagementPoints_asc": "Engagement points (low → high)",
+    "hubEngagementPoints_desc": "Engagement points (high → low)",
     "spokeCount_asc": "Spoke count (low → high)",
     "spokeCount_desc": "Spoke count (high → low)"
   },
@@ -283,6 +287,12 @@
     "clincher": "Clincher",
     "tubeless": "Tubeless",
     "tubular": "Tubular"
+  },
+  "hubEngagementType": {
+    "star-ratchet": "Star ratchet",
+    "ratchet": "Ratchet",
+    "pawl": "Pawl",
+    "other": "Other"
   },
   "uciApproved": {
     "true": "UCI approved",

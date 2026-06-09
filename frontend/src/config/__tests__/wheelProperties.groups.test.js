@@ -22,7 +22,7 @@ describe('WHEEL_PROPERTIES registry groups', () => {
   });
 
   it('assigns current hub properties to the hub group', () => {
-    const hubPropertyIds = ['hub', 'hubBrand', 'hubModel', 'axle', 'freehubOptions', 'discStandard', 'hubBearingType', 'hubMaterial'];
+    const hubPropertyIds = ['hub', 'hubBrand', 'hubModel', 'axle', 'freehubOptions', 'discStandard', 'hubBearingType', 'hubMaterial', 'hubEngagementType', 'hubEngagementPoints'];
 
     for (const id of hubPropertyIds) {
       const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === id);
@@ -40,7 +40,7 @@ describe('WHEEL_PROPERTIES registry groups', () => {
   });
 
   it('declares promoted hub fields as multi-select filters', () => {
-    const filterableHubPropertyIds = ['hubBearingType', 'hubMaterial'];
+    const filterableHubPropertyIds = ['hubBearingType', 'hubMaterial', 'hubEngagementType'];
 
     for (const id of filterableHubPropertyIds) {
       const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === id);
@@ -81,6 +81,17 @@ describe('WHEEL_PROPERTIES registry groups', () => {
     expect(property?.sorts?.map((sort) => sort.id)).toEqual([
       'maxTirePressure_asc',
       'maxTirePressure_desc',
+    ]);
+  });
+
+  it('declares promoted hub engagement points as a range filter with sorts', () => {
+    const property = WHEEL_PROPERTIES.find((candidate) => candidate.id === 'hubEngagementPoints');
+
+    expect(property?.group).toBe('hub');
+    expect(property?.filter).toEqual({ type: 'range' });
+    expect(property?.sorts?.map((sort) => sort.id)).toEqual([
+      'hubEngagementPoints_asc',
+      'hubEngagementPoints_desc',
     ]);
   });
 

@@ -98,6 +98,12 @@ const migrations = {
       return promoteTireCompatibility(source);
     },
   },
+  'hub-engagement': {
+    description: 'Promote hub engagement fields from other_specs into hub.engagement for EVO-057.',
+    transform(source) {
+      return promoteHubEngagement(source);
+    },
+  },
 };
 
 const consumedHubOtherSpecKeys = new Map([
@@ -170,6 +176,13 @@ const consumedTireCompatibilityOtherSpecKeys = new Set([
   'tire_type',
   'tire_compatibility',
   'compatible_tire_type',
+]);
+
+const consumedHubEngagementOtherSpecKeys = new Set([
+  'points_of_engagement',
+  'ratchet_teeth',
+  'ratchet',
+  'hub_internals',
 ]);
 
 const getPropertyName = (property) => {
@@ -1388,6 +1401,164 @@ const promoteTireCompatibility = (source) => {
   traverse(ast, {
     ObjectExpression(path) {
       if (promoteTireCompatibilityInObjectExpression(path.node)) {
+        changed = true;
+      }
+    },
+  });
+
+  if (!changed) return source;
+  return generator(ast, {
+    retainLines: true,
+    jsescOption: { minimal: true },
+  }, source).code;
+};
+
+const ENGAGEMENT_TYPES = ['star-ratchet', 'ratchet', 'pawl', 'other'];
+
+const parsePositiveNumber = (value) => {
+  if (t.isNumericLiteral(value) && Number.isFinite(value.value) && value.value > 0) {
+    return value.value;
+  }
+
+  if (!t.isStringLiteral(value)) return null;
+  const text = value.value.trim();
+  if (!text) return null;
+  const match = text.match(/(\d+(?:[.,]\d+)?)/);
+  if (!match) return null;
+  const parsed = Number(match[1].replace(',', '.'));
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+};
+
+const parseEngagementFromText = (value) => {
+  if (!t.isStringLiteral(value)) return { type: null, points: null };
+
+  const text = value.value.trim().toLowerCase();
+  if (!text) return { type: null, points: null };
+
+  let type = null;
+  if (/\bdt\s*swiss\b.*\bratchet\b|\bratchet\s*exp\b|\bstar[-\s]?ratchet\b/.test(text)) {
+    type = 'star-ratchet';
+  } else if (/\bratchet\b/.test(text)) {
+    type = 'ratchet';
+  } else if (/\bpawl(?:s)?\b/.test(text)) {
+    type = 'pawl';
+  } else if (/\bengagement\b|\bdrive\s*system\b|\bclutch\b/.test(text)) {
+    type = 'other';
+  }
+
+  const toothMatch = text.match(/(\d+(?:[.,]\d+)?)\s*t\b/);
+  const pointsMatch = text.match(/(\d+(?:[.,]\d+)?)\s*(?:poe|points?\s+of\s+engagement|engagement\s+points?)/);
+  const points = toothMatch
+    ? Number(toothMatch[1].replace(',', '.'))
+    : pointsMatch
+      ? Number(pointsMatch[1].replace(',', '.'))
+      : null;
+
+  return {
+    type,
+    points: Number.isFinite(points) && points > 0 ? points : null,
+  };
+};
+
+const parseExistingHubEngagement = (hubObject) => {
+  const existing = getObjectProperty(hubObject, 'engagement');
+  const result = { type: null, points: null };
+  if (!existing || !t.isObjectProperty(existing) || !t.isObjectExpression(existing.value)) return result;
+
+  const typeProperty = getObjectProperty(existing.value, 'type');
+  if (typeProperty && t.isObjectProperty(typeProperty) && t.isStringLiteral(typeProperty.value)) {
+    result.type = ENGAGEMENT_TYPES.includes(typeProperty.value.value) ? typeProperty.value.value : null;
+  }
+
+  const pointsProperty = getObjectProperty(existing.value, 'points');
+  if (pointsProperty && t.isObjectProperty(pointsProperty)) {
+    result.points = parsePositiveNumber(pointsProperty.value);
+  }
+
+  return result;
+};
+
+const setHubEngagement = (hubObject, engagement) => {
+  const typeNode = engagement.type ? t.stringLiteral(engagement.type) : t.nullLiteral();
+  const pointsNode = engagement.points !== null ? t.numericLiteral(engagement.points) : t.nullLiteral();
+  const node = t.objectExpression([
+    t.objectProperty(t.identifier('type'), typeNode),
+    t.objectProperty(t.identifier('points'), pointsNode),
+  ]);
+  const existing = getObjectProperty(hubObject, 'engagement');
+
+  if (existing && t.isObjectProperty(existing)) {
+    existing.value = node;
+  } else {
+    hubObject.properties.push(t.objectProperty(t.identifier('engagement'), node));
+  }
+};
+
+const promoteHubEngagementInObjectExpression = (objectExpression) => {
+  const hubProperty = getObjectProperty(objectExpression, 'hub');
+  const otherSpecsProperty =
+    getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
+
+  if (!hubProperty || !t.isObjectProperty(hubProperty) || !t.isObjectExpression(hubProperty.value)) {
+    return false;
+  }
+  if (!otherSpecsProperty || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(otherSpecsProperty.value)) {
+    return false;
+  }
+
+  const hubObject = hubProperty.value;
+  const otherSpecsObject = otherSpecsProperty.value;
+  const engagement = parseExistingHubEngagement(hubObject);
+  const remainingOtherSpecsProperties = [];
+  let changed = false;
+
+  for (const property of otherSpecsObject.properties) {
+    const sourceName = getPropertyName(property);
+
+    if (!consumedHubEngagementOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+      remainingOtherSpecsProperties.push(property);
+      continue;
+    }
+
+    let parsed = { type: null, points: null };
+    if (sourceName === 'points_of_engagement' || sourceName === 'ratchet_teeth') {
+      parsed.points = parsePositiveNumber(property.value);
+      if (sourceName === 'ratchet_teeth' && parsed.points !== null) parsed.type = 'ratchet';
+    } else {
+      parsed = parseEngagementFromText(property.value);
+    }
+
+    if (parsed.type === null && parsed.points === null) {
+      remainingOtherSpecsProperties.push(property);
+      continue;
+    }
+
+    if (sourceName === 'points_of_engagement') {
+      engagement.points = parsed.points ?? engagement.points;
+    } else {
+      engagement.type ??= parsed.type;
+      engagement.points ??= parsed.points;
+    }
+    changed = true;
+  }
+
+  if (!changed) return false;
+
+  otherSpecsObject.properties = remainingOtherSpecsProperties;
+  setHubEngagement(hubObject, engagement);
+  return true;
+};
+
+const promoteHubEngagement = (source) => {
+  const ast = parser.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
+  let changed = false;
+
+  traverse(ast, {
+    ObjectExpression(path) {
+      if (promoteHubEngagementInObjectExpression(path.node)) {
         changed = true;
       }
     },

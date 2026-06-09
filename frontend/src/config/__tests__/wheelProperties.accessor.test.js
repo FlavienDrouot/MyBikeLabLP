@@ -43,6 +43,24 @@ describe('tireCompatibility accessor', () => {
   });
 });
 
+describe('hub engagement accessors', () => {
+  it('returns the hub engagement type', () => {
+    expect(property('hubEngagementType').accessor({
+      hub: { engagement: { type: 'star-ratchet', points: 36 } },
+    })).toBe('star-ratchet');
+  });
+
+  it('returns the hub engagement points', () => {
+    expect(property('hubEngagementPoints').accessor({
+      hub: { engagement: { type: 'star-ratchet', points: 36 } },
+    })).toBe(36);
+  });
+
+  it('returns null for missing hub engagement points', () => {
+    expect(property('hubEngagementPoints').accessor({ hub: {} })).toBeNull();
+  });
+});
+
 describe('depth — filterAccessor', () => {
   it('returns the scalar for a scalar input (not wrapped in array)', () => {
     expect(property('depth').filterAccessor({ rim: { depth_mm: 45 } })).toBe(45);

@@ -75,6 +75,13 @@ node scripts/codemods/other-specs-promote.mjs --concept tire-compatibility --dry
 node scripts/codemods/other-specs-promote.mjs --concept tire-compatibility --write
 ```
 
+EVO-057 promotes hub engagement fields:
+
+```powershell
+node scripts/codemods/other-specs-promote.mjs --concept hub-engagement --dry-run
+node scripts/codemods/other-specs-promote.mjs --concept hub-engagement --write
+```
+
 Rules for later PROJ-001 child evolutions:
 
 - Add one concept migration at a time.

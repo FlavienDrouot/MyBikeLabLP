@@ -67,6 +67,10 @@ const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
   'tire_type',
   'tire_compatibility',
   'compatible_tire_type',
+  'points_of_engagement',
+  'ratchet_teeth',
+  'ratchet',
+  'hub_internals',
   'weight_carbon_spoke_grams',
   'carbon_spoke_option',
   'external_width_options_mm',
@@ -194,8 +198,40 @@ function collectOtherSpecWarnings(entry, id) {
       ) {
         return `other_specs.${key} on entry ${id}: promoted tire compatibility data must use rim.tire_compatibility`;
       }
+      if (
+        key === 'points_of_engagement' ||
+        key === 'ratchet_teeth' ||
+        key === 'ratchet' ||
+        key === 'hub_internals'
+      ) {
+        return `other_specs.${key} on entry ${id}: promoted hub engagement data must use hub.engagement`;
+      }
       return `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`;
     });
+}
+
+function collectHubEngagementWarnings(entry, id) {
+  const warnings = [];
+  const engagement = entry?.hub?.engagement;
+  if (engagement === undefined) return warnings;
+
+  if (engagement === null || typeof engagement !== 'object' || Array.isArray(engagement)) {
+    warnings.push(`hub.engagement on entry ${id}: must be an object with type and points`);
+    return warnings;
+  }
+
+  const allowedTypes = new Set(['star-ratchet', 'ratchet', 'pawl', 'other', null]);
+  if (!allowedTypes.has(engagement.type)) {
+    warnings.push(`hub.engagement.type on entry ${id}: unsupported engagement type "${engagement.type}"`);
+  }
+
+  if (engagement.points !== null && engagement.points !== undefined) {
+    if (!Number.isFinite(engagement.points) || engagement.points <= 0) {
+      warnings.push(`hub.engagement.points on entry ${id}: must be a positive number or null`);
+    }
+  }
+
+  return warnings;
 }
 
 function collectTireCompatibilityWarnings(entry, id) {
@@ -302,6 +338,11 @@ export function validateWheelEntry(entry) {
   }
 
   for (const warning of collectTireCompatibilityWarnings(entry, id)) {
+    console.warn(warning);
+    warnings.push(warning);
+  }
+
+  for (const warning of collectHubEngagementWarnings(entry, id)) {
     console.warn(warning);
     warnings.push(warning);
   }

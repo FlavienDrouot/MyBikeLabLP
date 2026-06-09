@@ -656,6 +656,39 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
+    id: 'hubEngagementType',
+    label: 'properties.hubEngagementType.label',
+    group: 'hub',
+    translatable: true,
+    accessor: (w) => w.hub?.engagement?.type,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
+    },
+  },
+
+  {
+    id: 'hubEngagementPoints',
+    label: 'properties.hubEngagementPoints.label',
+    group: 'hub',
+    translatable: false,
+    unit: ' pts',
+    accessor: (w) => w.hub?.engagement?.points ?? null,
+    filter: { type: 'range' },
+    sorts: [
+      { id: 'hubEngagementPoints_asc', label: 'sorts.hubEngagementPoints_asc', direction: 'asc' },
+      { id: 'hubEngagementPoints_desc', label: 'sorts.hubEngagementPoints_desc', direction: 'desc' },
+    ],
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+    },
+  },
+
+  {
     id: 'spokes',
     label: 'properties.spokes.label',
     group: 'spokes',

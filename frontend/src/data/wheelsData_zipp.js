@@ -26,8 +26,8 @@ export const zippWheels = [
 
 
     'Custom Hybrid Ceramic', bearing_models:
-    ['61803', '61903'] }, prices: [{ amount: 1700, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-202-nsw-a1' }], images: ['https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-f-12x100-dgry-a1-f-driveside.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-f-12x100-dgry-a1-c-3q-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-r-xdr-12x142-dgry-a1-c-3q-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-r-xdr-12x142-dgry-a1-c-driveside-s.png'], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-202-nsw-a1', amount: 1700, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
-    points_of_engagement: 66,
+    ['61803', '61903'], engagement: { type: null, points: 66 } }, prices: [{ amount: 1700, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-202-nsw-a1' }], images: ['https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-f-12x100-dgry-a1-f-driveside.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-f-12x100-dgry-a1-c-3q-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-r-xdr-12x142-dgry-a1-c-3q-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-202-nest-speed-weaponry-a1/productassets_wh-202-nsw-a1_fg/wh-202-nsw-cl-r-xdr-12x142-dgry-a1-c-driveside-s.png'], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-202-nsw-a1', amount: 1700, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
+
 
 
     spoke_length_ds_mm: [280, 284],
@@ -62,8 +62,8 @@ export const zippWheels = [
 
 
 
-    'Cartridge Steel' }, prices: [{ amount: 970, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-303-ftld-a1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-303-ftld-a1', amount: 970, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
-    points_of_engagement: 66,
+    'Cartridge Steel', engagement: { type: null, points: 66 } }, prices: [{ amount: 970, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-303-ftld-a1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-303-ftld-a1', amount: 970, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
+
     spoke_length_ds_mm: [266, 272],
     spoke_length_nds_mm: [270],
 
@@ -100,8 +100,8 @@ export const zippWheels = [
 
 
 
-    'Cartridge Steel' }, prices: [{ amount: 1329, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-303-ftud-a1' }], images: ['https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-firecrest-tu-db-a1/rearv1s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-firecrest-tu-db-a1/cfrontblacksides.png'], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-303-ftud-a1', amount: 1329, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body',
-    points_of_engagement: 66,
+    'Cartridge Steel', engagement: { type: null, points: 66 } }, prices: [{ amount: 1329, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-303-ftud-a1' }], images: ['https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-firecrest-tu-db-a1/rearv1s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-303-firecrest-tu-db-a1/cfrontblacksides.png'], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-303-ftud-a1', amount: 1329, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body',
+
     spoke_length_ds_mm: [260, 268],
     spoke_length_nds_mm: [266],
 
@@ -209,9 +209,9 @@ export const zippWheels = [
 
 
 
-    'Cartridge Stainless Steel' }, prices: [{ amount: 1688, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-353-ntld-a1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-353-ntld-a1', amount: 1688, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
+    'Cartridge Stainless Steel', engagement: { type: null, points: 36 } }, prices: [{ amount: 1688, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-353-ntld-a1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-353-ntld-a1', amount: 1688, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
     hub_technology: 'Axial Clutch V2',
-    points_of_engagement: 36,
+
     spoke_length_ds_mm: [258, 260, 266],
     spoke_length_nds_mm: [264, 266],
 
@@ -245,8 +245,8 @@ export const zippWheels = [
 
 
 
-    'Custom Hybrid Ceramic' }, prices: [{ amount: 1750, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-353-nsw-b1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-353-nsw-b1', amount: 1750, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body', campagnolo_body: 'sold separately',
-    points_of_engagement: 66,
+    'Custom Hybrid Ceramic', engagement: { type: null, points: 66 } }, prices: [{ amount: 1750, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-353-nsw-b1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-353-nsw-b1', amount: 1750, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body', campagnolo_body: 'sold separately',
+
     spoke_length_ds_mm: [274, 276],
     spoke_length_nds_mm: [276, 278],
 
@@ -284,8 +284,8 @@ export const zippWheels = [
 
 
 
-    'Cartridge Steel' }, prices: [{ amount: 923, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-404-ftld-b1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-404-ftld-b1', amount: 923, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
-    points_of_engagement: 66,
+    'Cartridge Steel', engagement: { type: null, points: 66 } }, prices: [{ amount: 923, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-404-ftld-b1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-404-ftld-b1', amount: 923, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
+
     spoke_length_ds_mm: [250, 256],
     spoke_length_nds_mm: [252, 254],
 
@@ -327,9 +327,9 @@ export const zippWheels = [
 
 
 
-    'Cartridge Stainless Steel' }, prices: [{ amount: 1688, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-b1' }], images: ['https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tl-dbcl-700f-12x100-std-b1-c-side-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tl-dbcl-700f-12x100-std-b1-c-3q-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tldbcl-700r-xdr-12x142-std-b1-c-3q-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tldbcl-700r-xdr-12x142-std-b1-c-side-s.png'], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-b1', amount: 1688, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', rim_depth_variable: true, rim_depth_min_mm: 53, rim_depth_max_mm: 58, campagnolo_body: 'sold separately',
+    'Cartridge Stainless Steel', engagement: { type: null, points: 36 } }, prices: [{ amount: 1688, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-b1' }], images: ['https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tl-dbcl-700f-12x100-std-b1-c-side-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tl-dbcl-700f-12x100-std-b1-c-3q-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tldbcl-700r-xdr-12x142-std-b1-c-3q-s.png', 'https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/wheels/wheels/wh-454-nsw-tl-disc-brake-b1/productassets_wh-454-ntld-b1_fg/wh-454-nsw-tldbcl-700r-xdr-12x142-std-b1-c-side-s.png'], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-b1', amount: 1688, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', rim_depth_variable: true, rim_depth_min_mm: 53, rim_depth_max_mm: 58, campagnolo_body: 'sold separately',
     hub_technology: 'Axial Clutch V2',
-    points_of_engagement: 36,
+
     spoke_length_ds_mm: [248, 254],
     spoke_length_nds_mm: [252, 254],
 
@@ -369,8 +369,8 @@ export const zippWheels = [
 
 
     'Custom Hybrid Ceramic', bearing_models:
-    ['61803', '61803/61903'] }, prices: [{ amount: 1700, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-c1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-c1', amount: 1700, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body', rim_depth_variable: true, rim_depth_min_mm: 53, rim_depth_max_mm: 58, campagnolo_body: 'sold separately',
-    points_of_engagement: 66,
+    ['61803', '61803/61903'], engagement: { type: null, points: 66 } }, prices: [{ amount: 1700, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-c1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-454-ntld-c1', amount: 1700, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body', rim_depth_variable: true, rim_depth_min_mm: 53, rim_depth_max_mm: 58, campagnolo_body: 'sold separately',
+
     spoke_length_ds_mm: [252, 254],
     spoke_length_nds_mm: [256],
 
@@ -404,8 +404,8 @@ export const zippWheels = [
 
 
 
-    'Cartridge Steel' }, prices: [{ amount: 1225, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-808-ftld-b1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-808-ftld-b1', amount: 1225, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
-    points_of_engagement: 66,
+    'Cartridge Steel', engagement: { type: null, points: 66 } }, prices: [{ amount: 1225, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-808-ftld-b1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-808-ftld-b1', amount: 1225, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body, no tape or valve', campagnolo_body: 'sold separately',
+
     spoke_length_ds_mm: [224, 236],
     spoke_length_nds_mm: [238, 240],
 
@@ -484,8 +484,8 @@ export const zippWheels = [
 
 
     'Custom Hybrid Ceramic', bearing_models:
-    ['61803', '61803/61903'] }, prices: [{ amount: 1700, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-858-ntld-d1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-858-ntld-d1', amount: 1700, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body', rim_depth_variable: true, rim_depth_min_mm: 82, rim_depth_max_mm: 85, campagnolo_body: 'sold separately',
-    points_of_engagement: 66,
+    ['61803', '61803/61903'], engagement: { type: null, points: 66 } }, prices: [{ amount: 1700, currency: 'EUR', url: 'https://www.sram.com/en/zipp/models/wh-858-ntld-d1' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp/models/wh-858-ntld-d1', amount: 1700, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'lightest configuration: 12mm through axles and XDR body', rim_depth_variable: true, rim_depth_min_mm: 82, rim_depth_max_mm: 85, campagnolo_body: 'sold separately',
+
     spoke_length_ds_mm: [220, 230],
     spoke_length_nds_mm: [232],
 
@@ -535,8 +535,8 @@ export const zippWheels = [
 
 
 
-    'Cartridge Steel' }, prices: [{ amount: 2150, currency: 'EUR', url: 'https://www.sram.com/en/zipp' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp', amount: 2150, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'front: 404 Firecrest; rear: 808 Firecrest — lightest configuration',
-    points_of_engagement: 66
+    'Cartridge Steel', engagement: { type: null, points: 66 } }, prices: [{ amount: 2150, currency: 'EUR', url: 'https://www.sram.com/en/zipp' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.sram.com/en/zipp', amount: 2150, currency: 'EUR' }, retailers: [] }, other_specs: { weight_note: 'front: 404 Firecrest; rear: 808 Firecrest — lightest configuration'
+
 
 
 
