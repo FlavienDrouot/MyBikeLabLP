@@ -161,6 +161,23 @@ describe('matchers.range', () => {
       expect(matchers.range([null, 80], makeRangeFilter(55, 70))).toBe(true);
     });
   });
+  describe('range-object input - interval overlap semantics', () => {
+    it('passes when a closed interval overlaps the filter range', () => {
+      expect(matchers.range({ min: 25, max: 32 }, makeRangeFilter(30, 35))).toBe(true);
+    });
+
+    it('passes when an open-high interval overlaps above its minimum', () => {
+      expect(matchers.range({ min: 28, max: null }, makeRangeFilter(30, 30))).toBe(true);
+    });
+
+    it('fails when an open-high interval starts above the filter range', () => {
+      expect(matchers.range({ min: 28, max: null }, makeRangeFilter(24, 27))).toBe(false);
+    });
+
+    it('passes when an open-low interval overlaps below its maximum', () => {
+      expect(matchers.range({ min: null, max: 30 }, makeRangeFilter(28, 32))).toBe(true);
+    });
+  });
 });
 
 // ---------------------------------------------------------------------------
@@ -530,6 +547,17 @@ describe('selectFilteredWheels', () => {
       const catalog = [
         { ...variantCatalog[0], rim: { ...variantCatalog[0].rim, tire_width_mm: { min: 25, max: 32 } } },
         { ...variantCatalog[1], rim: { ...variantCatalog[1].rim, tire_width_mm: { min: 35, max: 50 } } },
+      ];
+      const result = selectFilteredWheels(makeState(catalog, {
+        tireWidth: makeRangeFilter(30, 30),
+      }));
+      expect(result.map((w) => w.id)).toEqual([301]);
+    });
+
+    it('filters open tire-width intervals by interval overlap', () => {
+      const catalog = [
+        { ...variantCatalog[0], rim: { ...variantCatalog[0].rim, tire_width_mm: { min: 28, max: null } } },
+        { ...variantCatalog[1], rim: { ...variantCatalog[1].rim, tire_width_mm: { min: 25, max: 27 } } },
       ];
       const result = selectFilteredWheels(makeState(catalog, {
         tireWidth: makeRangeFilter(30, 30),

@@ -82,14 +82,7 @@ const tireWidthRangeValues = (tireWidth) => {
   const min = tireWidth?.min ?? null;
   const max = tireWidth?.max ?? null;
   if (!Number.isFinite(min) && !Number.isFinite(max)) return null;
-  if (Number.isFinite(min) && Number.isFinite(max)) {
-    const start = Math.min(min, max);
-    const end = Math.max(min, max);
-    const values = [];
-    for (let value = start; value <= end; value += 1) values.push(value);
-    return values;
-  }
-  return Number.isFinite(min) ? min : max;
+  return { min, max };
 };
 
 const formatTireWidthRange = (tireWidth, t) => {

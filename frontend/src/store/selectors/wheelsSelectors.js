@@ -8,8 +8,23 @@ import {
 
 // Filter type predicates. Adding a new filter type = add an entry here +
 // a case in `buildInitialFilters` on the slice side.
+const isRangeObject = (value) =>
+  value != null &&
+  typeof value === 'object' &&
+  !Array.isArray(value) &&
+  ('min' in value || 'max' in value);
+
+const matchesRangeObject = (value, filter) => {
+  const valueMin = Number.isFinite(value.min) ? value.min : -Infinity;
+  const valueMax = Number.isFinite(value.max) ? value.max : Infinity;
+  return valueMin <= filter.value.max && valueMax >= filter.value.min;
+};
+
 export const matchers = {
   range: (value, filter) => {
+    if (isRangeObject(value)) {
+      return matchesRangeObject(value, filter);
+    }
     if (Array.isArray(value)) {
       return value.some(
         (v) => !Number.isFinite(v) || (v >= filter.value.min && v <= filter.value.max)

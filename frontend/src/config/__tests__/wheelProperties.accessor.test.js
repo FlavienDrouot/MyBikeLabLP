@@ -174,8 +174,12 @@ describe('tireWidth accessors', () => {
     expect(property('tireWidth').accessor({ rim: { tire_width_mm: { min: 25, max: null } } })).toBe(25);
   });
 
-  it('returns all integer widths for range filtering', () => {
-    expect(property('tireWidth').filterAccessor({ rim: { tire_width_mm: { min: 28, max: 32 } } })).toEqual([28, 29, 30, 31, 32]);
+  it('returns the canonical interval for range filtering', () => {
+    expect(property('tireWidth').filterAccessor({ rim: { tire_width_mm: { min: 28, max: 32 } } })).toEqual({ min: 28, max: 32 });
+  });
+
+  it('preserves open intervals for range filtering', () => {
+    expect(property('tireWidth').filterAccessor({ rim: { tire_width_mm: { min: 28, max: null } } })).toEqual({ min: 28, max: null });
   });
 
   it('returns null when tire width is missing', () => {
