@@ -22,6 +22,8 @@ Canonical definitions for terms used across evolutions. Updated whenever an ambi
 |---|---|
 | Categorical value casing | Categorical data values (e.g. `disc_standard`, `freehub_options`) use **Title Case** as their canonical form: `Center Lock`, `Shimano HG`, `SRAM XDR`, `Campagnolo N3W`. Casing variants (`centerlock`, `center lock`) are non-canonical and must be normalized on ingestion, otherwise they produce duplicate filter options. Current catalog (Roval, Zipp, DT Swiss/Fulcrum, Mavic, ENVE) already conforms. (Resolved fix-013.) |
 | Spoke steel material | `steel` is the canonical comparator value for steel spoke material. Scraped or legacy values such as `stainless_steel` describe the same category and must be normalized to `steel` before they create filter options or display labels. (Resolved fix-016.) |
+| Spoke attachment | User-facing label for `spokes.type`. The field stores the spoke attachment/head type only, currently `straight-pull` or `j-bend`; material terms belong in `spokes.material`, and shape/profile terms belong in `spokes.profile`. (Resolved fix-024.) |
+| Spoke profile | `spokes.profile` stores spoke shape/profile wording such as `aero`, `round`, `flat butted`, `elliptical`, `tapered`, or `anti-rotation`. Attachment words such as `straight` and `bent` must be normalized into `spokes.type` instead. (Resolved fix-024.) |
 | Tire compatibility | Canonical rim tire type set stored at `rim.tire_compatibility`. Values are `clincher`, `tubeless`, and `tubular`; the legacy `rim.tubeless_ready` boolean is derived from whether the set contains `tubeless`. Tire width ranges remain separate and are not part of this field. (Resolved EVO-056.) |
 
 ---

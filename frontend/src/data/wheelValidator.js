@@ -292,6 +292,23 @@ function collectHubEngagementWarnings(entry, id) {
   return warnings;
 }
 
+function collectSpokeDetailWarnings(entry, id) {
+  const warnings = [];
+  const spokes = entry?.spokes;
+  if (spokes === undefined) return warnings;
+
+  const allowedTypes = new Set(['straight-pull', 'j-bend', null]);
+  if (spokes.type !== undefined && !allowedTypes.has(spokes.type)) {
+    warnings.push(`spokes.type on entry ${id}: unsupported spoke attachment "${spokes.type}"`);
+  }
+
+  if (typeof spokes.profile === 'string' && /\b(straight|bent)\b/i.test(spokes.profile)) {
+    warnings.push(`spokes.profile on entry ${id}: attachment wording must use spokes.type`);
+  }
+
+  return warnings;
+}
+
 function collectTireCompatibilityWarnings(entry, id) {
   const warnings = [];
   const types = entry?.rim?.tire_compatibility;
@@ -401,6 +418,11 @@ export function validateWheelEntry(entry) {
   }
 
   for (const warning of collectHubEngagementWarnings(entry, id)) {
+    console.warn(warning);
+    warnings.push(warning);
+  }
+
+  for (const warning of collectSpokeDetailWarnings(entry, id)) {
     console.warn(warning);
     warnings.push(warning);
   }

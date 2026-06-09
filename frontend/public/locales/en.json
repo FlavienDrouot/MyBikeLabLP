@@ -200,7 +200,7 @@
     "spokeMaterial": { "label": "Spoke material" },
     "spokeCount": { "label": "Spoke count" },
     "spokeNipple": { "label": "Spoke nipples" },
-    "spokeType": { "label": "Spoke type" },
+    "spokeType": { "label": "Spoke attachment" },
     "spokeProfile": { "label": "Spoke profile" },
     "spokeLacing": { "label": "Spoke lacing" },
     "brakeType": { "label": "Brake type" },

@@ -200,7 +200,7 @@
     "spokeMaterial": { "label": "Matériau des rayons" },
     "spokeCount": { "label": "Nombre de rayons" },
     "spokeNipple": { "label": "Écrous de rayons" },
-    "spokeType": { "label": "Type de rayon" },
+    "spokeType": { "label": "Attache du rayon" },
     "spokeProfile": { "label": "Profil de rayon" },
     "spokeLacing": { "label": "Laçage des rayons" },
     "brakeType": { "label": "Type de frein" },

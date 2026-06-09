@@ -316,6 +316,35 @@ describe('validateWheelEntry', () => {
     expect(warnings[0]).toContain('hub.engagement.points');
   });
 
+  it('warns when spoke type contains profile or material wording', () => {
+    const entry = makeEntry({
+      spokes: {
+        brand: 'Caden',
+        model: 'Captured carbon straight-pull',
+        material: 'carbon',
+        type: 'captured carbon straight-pull aero',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('unsupported spoke attachment');
+  });
+
+  it('warns when spoke profile contains attachment wording', () => {
+    const entry = makeEntry({
+      spokes: {
+        brand: 'Mavic',
+        model: '',
+        material: 'steel',
+        type: undefined,
+        profile: 'straight flat tapered',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('attachment wording');
+  });
+
   it('warns when tubeless_ready is inconsistent with tire compatibility', () => {
     const entry = makeEntry({
       rim: {

@@ -84,7 +84,8 @@ const steelSpokes = {
   material: 'steel',
   count: { front: 16, rear: 21 },
   nipple: 'SAPIM Secure Lock external',
-  type: 'straight-pull aero'
+  type: 'straight-pull',
+  profile: 'aero'
 };
 
 const carbonSpokes = {
@@ -93,7 +94,8 @@ const carbonSpokes = {
   material: 'carbon',
   count: { front: 16, rear: 21 },
   nipple: 'SAPIM Secure Lock external',
-  type: 'captured carbon straight-pull aero'
+  type: 'straight-pull',
+  profile: 'aero'
 };
 
 const standardOtherSpecs = {
