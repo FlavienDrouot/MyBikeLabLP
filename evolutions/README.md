@@ -58,6 +58,7 @@ Small fixes — single condensed document, no subfolder. See `workflows/ai-dev-p
 | fix-019 | column-header-sort | Done |
 | fix-020 | filter-panel-double-separator | Done |
 | fix-021 | crwworks-image-mojibake | Done |
+| fix-022 | column-max-widths | Done |
 
 ## Archive
 

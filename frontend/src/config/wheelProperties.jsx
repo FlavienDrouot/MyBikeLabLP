@@ -518,7 +518,8 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums max-w-[160px] overflow-hidden',
       renderCell: (w, t) => {
         const pressure = w.rim?.max_tire_pressure;
         if (!pressure?.psi && !pressure?.bar) return t('common.notAvailable');
@@ -575,7 +576,8 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
       renderCell: (w, t) => {
         const warranty = w.warranty;
         if (!warranty?.text && !warranty?.years) return t('common.notAvailable');
@@ -712,7 +714,8 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
     },
   },
 
@@ -879,7 +882,8 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      colWidth: 160,
+      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
     },
   },
 ];

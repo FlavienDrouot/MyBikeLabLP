@@ -3,7 +3,7 @@
 - **ID:** PROJ-001
 - **Date:** 2026-06-05
 - **Status:** Draft
-- **Child ID span:** EVO-047 … EVO-058
+- **Child ID span:** EVO-047 … EVO-058, fix-022
 
 ---
 
@@ -200,3 +200,4 @@ Kept in sync as children are created. Each child is also registered in the Evolu
 | EVO-056 | tire-compatibility | Light (Standard fallback) | Done |
 | EVO-057 | hub-engagement | Light (Standard fallback) | Done |
 | EVO-058 | tire-width-mm | Light (Standard fallback) | Done |
+| fix-022 | column-max-widths | Fix | Done |
