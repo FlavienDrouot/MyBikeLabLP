@@ -61,7 +61,8 @@ const makeShimanoWheel = ({
     internalWidth_mm: tubeless ? 21 : null,
     tubeless_ready: tubeless,
     construction: "D2 rim",
-    tire_compatibility: tubeless ? ['tubeless'] : ['tubular']
+    tire_compatibility: tubeless ? ['tubeless'] : ['tubular'],
+    tire_width_mm: tubeless ? { min: 25, max: 32 } : undefined
   },
   spokes: {
     model: spokeModel,
@@ -74,7 +75,6 @@ const makeShimanoWheel = ({
   },
   other_specs: {
     series,
-    ...(tubeless ? { recommended_tire_size: '25-622 - 32-622' } : {}),
 
 
     rear_speeds: series.includes('DURA-ACE') ? 12 : '12/11',

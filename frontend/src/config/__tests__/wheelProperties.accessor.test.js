@@ -165,6 +165,25 @@ describe('internalWidth — filterAccessor', () => {
 
 // ── weight ────────────────────────────────────────────────────────────────────
 
+describe('tireWidth accessors', () => {
+  it('returns max as the sortable scalar when a range is available', () => {
+    expect(property('tireWidth').accessor({ rim: { tire_width_mm: { min: 25, max: 32 } } })).toBe(32);
+  });
+
+  it('returns min as the sortable scalar when max is missing', () => {
+    expect(property('tireWidth').accessor({ rim: { tire_width_mm: { min: 25, max: null } } })).toBe(25);
+  });
+
+  it('returns all integer widths for range filtering', () => {
+    expect(property('tireWidth').filterAccessor({ rim: { tire_width_mm: { min: 28, max: 32 } } })).toEqual([28, 29, 30, 31, 32]);
+  });
+
+  it('returns null when tire width is missing', () => {
+    expect(property('tireWidth').accessor({ rim: {} })).toBeNull();
+    expect(property('tireWidth').filterAccessor({ rim: {} })).toBeNull();
+  });
+});
+
 describe('weight — accessor', () => {
   it('returns the scalar directly for a scalar input', () => {
     expect(property('weight').accessor({ weight_grams: 1492 })).toBe(1492);

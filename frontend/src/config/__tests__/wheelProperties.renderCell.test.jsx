@@ -103,6 +103,24 @@ describe('internalWidth — renderCell', () => {
 
 // ── weight ────────────────────────────────────────────────────────────────────
 
+describe('tireWidth — renderCell', () => {
+  it('renders a closed range', () => {
+    expect(render('tireWidth', { rim: { tire_width_mm: { min: 25, max: 32 } } })).toBe('25-32 mm');
+  });
+
+  it('renders a fixed recommended width', () => {
+    expect(render('tireWidth', { rim: { tire_width_mm: { min: 28, max: 28 } } })).toBe('28 mm');
+  });
+
+  it('renders a minimum-only width', () => {
+    expect(render('tireWidth', { rim: { tire_width_mm: { min: 25, max: null } } })).toBe('25+ mm');
+  });
+
+  it('renders missing width as the not-available key', () => {
+    expect(render('tireWidth', { rim: {} })).toBe('common.notAvailable');
+  });
+});
+
 describe('weight — renderCell', () => {
   it('renders scalar input as "{total} g" with no sub-line', () => {
     const result = render('weight', { weight_grams: 1492 });

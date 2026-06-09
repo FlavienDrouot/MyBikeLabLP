@@ -7,7 +7,7 @@ export const enveWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'climbing',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 28, rear: 32 }, externalWidth_mm: 25, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 90, bar: 6.2, note: null }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 28, rear: 32 }, externalWidth_mm: 25, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 90, bar: 6.2, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 27, max: 27 } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -28,7 +28,7 @@ export const enveWheels = [
     tubeless_tape_width_mm: 25,
     ratchet_options_tooth: [40, 60, 80, 100],
     min_tire_size_mm: 25,
-    optimized_tire_size_mm: 27,
+
 
 
 
@@ -48,7 +48,7 @@ export const enveWheels = [
   weight_grams: 1380,
   diameter_mm: 700,
   brake_type: 'disc',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 39, rear: 43 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 39, rear: 43 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -69,7 +69,7 @@ export const enveWheels = [
     tubeless_tape_width_mm: 29,
     ratchet_options_tooth: [40, 60, 80, 100],
     min_tire_size_mm: 27,
-    optimized_tire_size_mm: 28,
+
 
 
 
@@ -88,7 +88,7 @@ export const enveWheels = [
   weight_grams: 1432,
   diameter_mm: 700,
   brake_type: 'disc',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 50, rear: 56 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 50, rear: 56 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -109,7 +109,7 @@ export const enveWheels = [
     tubeless_tape_width_mm: 29,
     ratchet_options_tooth: [40, 60, 80, 100],
     min_tire_size_mm: 27,
-    optimized_tire_size_mm: 28,
+
 
 
 
@@ -128,7 +128,7 @@ export const enveWheels = [
   weight_grams: { front: 587, rear: 708 },
   diameter_mm: 700,
   brake_type: 'disc',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 49, rear: 55 }, externalWidth_mm: 30.8, tubeless_ready: true, internalWidth_mm: 23.5, max_tire_pressure: { psi: 100, bar: 6.8, note: null }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 49, rear: 55 }, externalWidth_mm: 30.8, tubeless_ready: true, internalWidth_mm: 23.5, max_tire_pressure: { psi: 100, bar: 6.8, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
   spokes: { model: 'Ultralite Aero R5 (TCX 2/1.5/2)', brand: 'Alpina', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -154,7 +154,7 @@ export const enveWheels = [
     'Alpina Nylock Alloy', type: 'straight-pull' }, hub: { model: 'INNERDRIVE PRO Straight-Pull', brand: 'ENVE', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type: 'PRO Ceramic' }, prices: [{ amount: 3750, currency: 'USD', url: 'https://enve.com/collections/road-wheels/products/ses-4-5-pro' }], images: ['https://enve.com/cdn/shop/files/SES_4.5-Pro-Tadej_front_angle_e87bd949-ae81-4324-9380-57b058c3271a.jpg?v=1751547788', 'https://enve.com/cdn/shop/files/ENVE-SES_Pro_45_Tadej_front_side_0afd1202-a278-4366-9af4-6b102b63928d.jpg?v=1751547788', 'https://enve.com/cdn/shop/files/SES_4.5-Pro-Tadej_rear_angle_2fce177f-fd4c-463b-9637-d71dd130f561.jpg?v=1751547788', 'https://enve.com/cdn/shop/files/ENVE-SES_Pro_45_Tadej_rear_side_20c53404-0ecd-4d23-a792-7c1a9da83a7c.jpg?v=1751547788'], affiliateLinks: { manufacturer: { url: 'https://enve.com/collections/road-wheels/products/ses-4-5-pro', amount: 3750, currency: 'USD' }, retailers: [] }, other_specs: { hook_depth_mm: 0.5, spoke_tension_kgf: 120, spoke_length_front_mm: [276, 278], spoke_length_rear_mm: [270, 272],
     tubeless_tape_width_mm: 29,
     min_tire_size_mm: 28,
-    optimized_tire_size_mm: 28,
+
 
 
 
@@ -174,7 +174,7 @@ export const enveWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'aero',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 60, rear: 67 }, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 90, bar: 6.2, note: null }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 60, rear: 67 }, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 90, bar: 6.2, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -196,7 +196,7 @@ export const enveWheels = [
     ratchet_options_tooth: [40, 60, 80, 100],
     tubeless_tape_width_mm: 26.5,
     min_tire_size_mm: 25,
-    optimized_tire_size_mm: 28,
+
 
 
 
@@ -217,7 +217,7 @@ export const enveWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'all-road',
-  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 27, max: 50 } },
   spokes: { model: 'CX-Ray J-Bend', brand: 'Sapim', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -240,7 +240,7 @@ export const enveWheels = [
     effective_rim_diameter_mm: 579,
     tubeless_tape_width_mm: 29,
     valve_length_mm: 61,
-    recommended_tire_width_mm: '27-50',
+
     min_tire_size_mm: 27,
 
 

@@ -42,7 +42,10 @@ const makeGoosynn = ({
     depth_mm,
     externalWidth_mm,
     internalWidth_mm,
-    tubeless_ready: true, construction: "Toray T700 & T800", tire_compatibility: ["tubeless"]
+    tubeless_ready: true,
+    construction: "Toray T700 & T800",
+    tire_compatibility: ["tubeless"],
+    tire_width_mm: tire_width_c === '35C - 70C' ? { min: 35, max: 70 } : { min: 30, max: 50 }
   },
   spokes: {
     model: 'Ti-Fi',
@@ -55,7 +58,6 @@ const makeGoosynn = ({
     neck_type: 'Straight Pull',
 
     bead_type: 'Hooked',
-    tire_width_c,
     recommended_rider_weight_kg
   }, warranty: { text: null, years: 5 }
 });

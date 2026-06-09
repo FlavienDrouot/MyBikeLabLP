@@ -71,6 +71,19 @@ const FORBIDDEN_OTHER_SPEC_KEYS = new Set([
   'ratchet_teeth',
   'ratchet',
   'hub_internals',
+  'min_tire_width_mm',
+  'max_tire_width_mm',
+  'tire_width_range_mm',
+  'tire_optimized_for_mm',
+  'optimized_tire_size_mm',
+  'recommended_tire_width_mm',
+  'recommended_tire_size',
+  'recommended_tire_size_c',
+  'compatible_tire_width',
+  'compatible_tire_width_mm',
+  'suggested_tire_width_mm',
+  'tire_width_c',
+  'etrto',
   'weight_carbon_spoke_grams',
   'carbon_spoke_option',
   'external_width_options_mm',
@@ -206,8 +219,53 @@ function collectOtherSpecWarnings(entry, id) {
       ) {
         return `other_specs.${key} on entry ${id}: promoted hub engagement data must use hub.engagement`;
       }
+      if (
+        key === 'min_tire_width_mm' ||
+        key === 'max_tire_width_mm' ||
+        key === 'tire_width_range_mm' ||
+        key === 'tire_optimized_for_mm' ||
+        key === 'optimized_tire_size_mm' ||
+        key === 'recommended_tire_width_mm' ||
+        key === 'recommended_tire_size' ||
+        key === 'recommended_tire_size_c' ||
+        key === 'compatible_tire_width' ||
+        key === 'compatible_tire_width_mm' ||
+        key === 'suggested_tire_width_mm' ||
+        key === 'tire_width_c' ||
+        key === 'etrto'
+      ) {
+        return `other_specs.${key} on entry ${id}: promoted tire width data must use rim.tire_width_mm`;
+      }
       return `other_specs.${key} on entry ${id}: comparable variant data must use structured fields`;
     });
+}
+
+function collectTireWidthWarnings(entry, id) {
+  const warnings = [];
+  const tireWidth = entry?.rim?.tire_width_mm;
+  if (tireWidth === undefined) return warnings;
+
+  if (tireWidth === null || typeof tireWidth !== 'object' || Array.isArray(tireWidth)) {
+    warnings.push(`rim.tire_width_mm on entry ${id}: must be an object with min and max`);
+    return warnings;
+  }
+
+  for (const bound of ['min', 'max']) {
+    const value = tireWidth[bound];
+    if (value !== null && value !== undefined && (!Number.isFinite(value) || value <= 0)) {
+      warnings.push(`rim.tire_width_mm.${bound} on entry ${id}: must be a positive number or null`);
+    }
+  }
+
+  if (
+    Number.isFinite(tireWidth.min) &&
+    Number.isFinite(tireWidth.max) &&
+    tireWidth.min > tireWidth.max
+  ) {
+    warnings.push(`rim.tire_width_mm on entry ${id}: min must be lower than or equal to max`);
+  }
+
+  return warnings;
 }
 
 function collectHubEngagementWarnings(entry, id) {
@@ -343,6 +401,11 @@ export function validateWheelEntry(entry) {
   }
 
   for (const warning of collectHubEngagementWarnings(entry, id)) {
+    console.warn(warning);
+    warnings.push(warning);
+  }
+
+  for (const warning of collectTireWidthWarnings(entry, id)) {
     console.warn(warning);
     warnings.push(warning);
   }

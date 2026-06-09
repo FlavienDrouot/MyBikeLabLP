@@ -3,8 +3,7 @@ import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 const FREEHUB_OPTIONS = ['Shimano HG', 'Shimano Micro Spline', 'SRAM XDR', 'Campagnolo N3W'];
 
 const baseOtherSpecs = {
-  engagement_ratchet: 'Vapor 45T',
-  recommended_tire_size_c: '28-30 aero optimized; compatible with 28-35'
+  engagement_ratchet: 'Vapor 45T'
 };
 
 const makeNo6Wheel = ({
@@ -47,7 +46,8 @@ const makeNo6Wheel = ({
     internalWidth_mm,
     tubeless_ready: true,
     max_tire_pressure: { psi: 110, bar: 7.6, note: null },
-    tire_compatibility: ['clincher', 'tubeless']
+    tire_compatibility: ['clincher', 'tubeless'],
+    tire_width_mm: recommended_tire_size_c === 'Minimum 28' ? { min: 28, max: null } : { min: 28, max: 35 }
   },
   spokes: {
     model: `Carbon aero spoke ${carbon_spoke_diameter_mm}`,
@@ -77,7 +77,6 @@ const makeNo6Wheel = ({
     engagement_ratchet,
 
 
-    recommended_tire_size_c
   }
 });
 

@@ -82,6 +82,13 @@ node scripts/codemods/other-specs-promote.mjs --concept hub-engagement --dry-run
 node scripts/codemods/other-specs-promote.mjs --concept hub-engagement --write
 ```
 
+EVO-058 promotes tire width fields:
+
+```powershell
+node scripts/codemods/other-specs-promote.mjs --concept tire-width-mm --dry-run
+node scripts/codemods/other-specs-promote.mjs --concept tire-width-mm --write
+```
+
 Rules for later PROJ-001 child evolutions:
 
 - Add one concept migration at a time.

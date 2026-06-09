@@ -104,6 +104,12 @@ const migrations = {
       return promoteHubEngagement(source);
     },
   },
+  'tire-width-mm': {
+    description: 'Promote tire width fields from other_specs into rim.tire_width_mm for EVO-058.',
+    transform(source) {
+      return promoteTireWidthMm(source);
+    },
+  },
 };
 
 const consumedHubOtherSpecKeys = new Map([
@@ -183,6 +189,22 @@ const consumedHubEngagementOtherSpecKeys = new Set([
   'ratchet_teeth',
   'ratchet',
   'hub_internals',
+]);
+
+const consumedTireWidthOtherSpecKeys = new Set([
+  'min_tire_width_mm',
+  'max_tire_width_mm',
+  'tire_width_range_mm',
+  'tire_optimized_for_mm',
+  'optimized_tire_size_mm',
+  'recommended_tire_width_mm',
+  'recommended_tire_size',
+  'recommended_tire_size_c',
+  'compatible_tire_width',
+  'compatible_tire_width_mm',
+  'suggested_tire_width_mm',
+  'tire_width_c',
+  'etrto',
 ]);
 
 const getPropertyName = (property) => {
@@ -1559,6 +1581,172 @@ const promoteHubEngagement = (source) => {
   traverse(ast, {
     ObjectExpression(path) {
       if (promoteHubEngagementInObjectExpression(path.node)) {
+        changed = true;
+      }
+    },
+  });
+
+  if (!changed) return source;
+  return generator(ast, {
+    retainLines: true,
+    jsescOption: { minimal: true },
+  }, source).code;
+};
+
+const parseTireWidthNumber = (value) => {
+  if (t.isNumericLiteral(value) && Number.isFinite(value.value) && value.value > 0) {
+    return value.value;
+  }
+
+  if (!t.isStringLiteral(value)) return null;
+  const text = value.value.trim();
+  if (!text) return null;
+  const match = text.match(/(\d+(?:[.,]\d+)?)/);
+  if (!match) return null;
+  const parsed = Number(match[1].replace(',', '.'));
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+};
+
+const parseTireWidthRange = (value) => {
+  const single = parseTireWidthNumber(value);
+  if (t.isNumericLiteral(value)) return { min: single, max: single };
+  if (!t.isStringLiteral(value)) return { min: null, max: null };
+
+  const text = value.value.trim().toLowerCase();
+  if (!text) return { min: null, max: null };
+
+  const rangeMatch = text.match(/(\d+(?:[.,]\d+)?)\s*(?:c|mm)?\s*(?:-|–|—|to|à|a)\s*(\d+(?:[.,]\d+)?)\s*(?:c|mm)?/);
+  if (rangeMatch) {
+    const first = Number(rangeMatch[1].replace(',', '.'));
+    const second = Number(rangeMatch[2].replace(',', '.'));
+    if (Number.isFinite(first) && Number.isFinite(second) && first > 0 && second > 0) {
+      return { min: Math.min(first, second), max: Math.max(first, second) };
+    }
+  }
+
+  const etrtoRangeMatch = text.match(/\b(\d+(?:[.,]\d+)?)\s*-\s*622\s*-\s*(\d+(?:[.,]\d+)?)\s*-\s*622\b/);
+  if (etrtoRangeMatch) {
+    const first = Number(etrtoRangeMatch[1].replace(',', '.'));
+    const second = Number(etrtoRangeMatch[2].replace(',', '.'));
+    if (Number.isFinite(first) && Number.isFinite(second) && first > 0 && second > 0) {
+      return { min: Math.min(first, second), max: Math.max(first, second) };
+    }
+  }
+
+  const etrtoSingleMatch = text.match(/\b(\d+(?:[.,]\d+)?)\s*-\s*622\b/);
+  if (etrtoSingleMatch) {
+    const width = Number(etrtoSingleMatch[1].replace(',', '.'));
+    if (Number.isFinite(width) && width > 0) return { min: width, max: width };
+  }
+
+  const etrtoRimMatch = text.match(/\b622\s*x\s*(\d+(?:[.,]\d+)?)/);
+  if (etrtoRimMatch) {
+    const width = Number(etrtoRimMatch[1].replace(',', '.'));
+    if (Number.isFinite(width) && width > 0) return { min: width, max: width };
+  }
+
+  const aboveMatch = text.match(/(\d+(?:[.,]\d+)?)\s*(?:c|mm)?\s*(?:and\s+above|\+|minimum|min\.?|above)/);
+  if (aboveMatch) {
+    const min = Number(aboveMatch[1].replace(',', '.'));
+    if (Number.isFinite(min) && min > 0) return { min, max: null };
+  }
+
+  if (/^\d+(?:[.,]\d+)?\s*(?:c|mm)?$/.test(text)) {
+    const width = parseTireWidthNumber(value);
+    return { min: width, max: width };
+  }
+
+  return { min: null, max: null };
+};
+
+const parseExistingTireWidth = (rimObject) => {
+  const existing = getObjectProperty(rimObject, 'tire_width_mm');
+  const result = { min: null, max: null };
+  if (!existing || !t.isObjectProperty(existing) || !t.isObjectExpression(existing.value)) return result;
+
+  const minProperty = getObjectProperty(existing.value, 'min');
+  const maxProperty = getObjectProperty(existing.value, 'max');
+  if (minProperty && t.isObjectProperty(minProperty)) result.min = parseTireWidthNumber(minProperty.value);
+  if (maxProperty && t.isObjectProperty(maxProperty)) result.max = parseTireWidthNumber(maxProperty.value);
+  return result;
+};
+
+const setRimTireWidth = (rimObject, width) => {
+  const node = t.objectExpression([
+    t.objectProperty(t.identifier('min'), width.min !== null ? t.numericLiteral(width.min) : t.nullLiteral()),
+    t.objectProperty(t.identifier('max'), width.max !== null ? t.numericLiteral(width.max) : t.nullLiteral()),
+  ]);
+  const existing = getObjectProperty(rimObject, 'tire_width_mm');
+
+  if (existing && t.isObjectProperty(existing)) {
+    existing.value = node;
+  } else {
+    rimObject.properties.push(t.objectProperty(t.identifier('tire_width_mm'), node));
+  }
+};
+
+const promoteTireWidthMmInObjectExpression = (objectExpression) => {
+  const rimProperty = getObjectProperty(objectExpression, 'rim');
+  const otherSpecsProperty =
+    getObjectProperty(objectExpression, 'other_specs') ?? getObjectProperty(objectExpression, 'otherSpecs');
+
+  if (!rimProperty || !t.isObjectProperty(rimProperty) || !t.isObjectExpression(rimProperty.value)) {
+    return false;
+  }
+  if (!otherSpecsProperty || !t.isObjectProperty(otherSpecsProperty) || !t.isObjectExpression(otherSpecsProperty.value)) {
+    return false;
+  }
+
+  const rimObject = rimProperty.value;
+  const otherSpecsObject = otherSpecsProperty.value;
+  const width = parseExistingTireWidth(rimObject);
+  const remainingOtherSpecsProperties = [];
+  let changed = false;
+
+  for (const property of otherSpecsObject.properties) {
+    const sourceName = getPropertyName(property);
+
+    if (!consumedTireWidthOtherSpecKeys.has(sourceName) || !t.isObjectProperty(property)) {
+      remainingOtherSpecsProperties.push(property);
+      continue;
+    }
+
+    let parsed = { min: null, max: null };
+    if (sourceName === 'min_tire_width_mm') {
+      parsed.min = parseTireWidthNumber(property.value);
+    } else if (sourceName === 'max_tire_width_mm') {
+      parsed.max = parseTireWidthNumber(property.value);
+    } else {
+      parsed = parseTireWidthRange(property.value);
+    }
+
+    if (parsed.min === null && parsed.max === null) {
+      remainingOtherSpecsProperties.push(property);
+      continue;
+    }
+
+    width.min ??= parsed.min;
+    width.max ??= parsed.max;
+    changed = true;
+  }
+
+  if (!changed) return false;
+
+  otherSpecsObject.properties = remainingOtherSpecsProperties;
+  setRimTireWidth(rimObject, width);
+  return true;
+};
+
+const promoteTireWidthMm = (source) => {
+  const ast = parser.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx'],
+  });
+  let changed = false;
+
+  traverse(ast, {
+    ObjectExpression(path) {
+      if (promoteTireWidthMmInObjectExpression(path.node)) {
         changed = true;
       }
     },

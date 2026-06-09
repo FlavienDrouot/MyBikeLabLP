@@ -78,6 +78,32 @@ export const formatDiameter = (rawMm) => {
   return `Ã˜ ${label}`;
 };
 
+const tireWidthRangeValues = (tireWidth) => {
+  const min = tireWidth?.min ?? null;
+  const max = tireWidth?.max ?? null;
+  if (!Number.isFinite(min) && !Number.isFinite(max)) return null;
+  if (Number.isFinite(min) && Number.isFinite(max)) {
+    const start = Math.min(min, max);
+    const end = Math.max(min, max);
+    const values = [];
+    for (let value = start; value <= end; value += 1) values.push(value);
+    return values;
+  }
+  return Number.isFinite(min) ? min : max;
+};
+
+const formatTireWidthRange = (tireWidth, t) => {
+  const min = tireWidth?.min ?? null;
+  const max = tireWidth?.max ?? null;
+  if (!Number.isFinite(min) && !Number.isFinite(max)) return t('common.notAvailable');
+  if (Number.isFinite(min) && Number.isFinite(max)) {
+    if (min === max) return `${min} mm`;
+    return `${min}-${max} mm`;
+  }
+  if (Number.isFinite(min)) return `${min}+ mm`;
+  return `<= ${max} mm`;
+};
+
 export const COLUMN_GROUPS = [
   { id: 'general', label: 'properties.groups.general' },
   { id: 'rims', label: 'properties.groups.rims' },
@@ -510,6 +536,27 @@ export const WHEEL_PROPERTIES = [
           </div>
         );
       },
+    },
+  },
+
+  {
+    id: 'tireWidth',
+    label: 'properties.tireWidth.label',
+    group: 'rims',
+    translatable: false,
+    unit: ' mm',
+    accessor: (w) => w.rim?.tire_width_mm?.max ?? w.rim?.tire_width_mm?.min ?? null,
+    filterAccessor: (w) => tireWidthRangeValues(w.rim?.tire_width_mm),
+    filter: { type: 'range' },
+    sorts: [
+      { id: 'tireWidth_asc', label: 'sorts.tireWidth_asc', direction: 'asc' },
+      { id: 'tireWidth_desc', label: 'sorts.tireWidth_desc', direction: 'desc' },
+    ],
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold text-right',
+      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      renderCell: (w, t) => formatTireWidthRange(w.rim?.tire_width_mm, t),
     },
   },
 

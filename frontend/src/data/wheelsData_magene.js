@@ -20,7 +20,7 @@ const makeLinks = (url, priceUsd) => ({
 });
 
 const splitHubSpecs = (otherSpecs = {}) => {
-  const { hubBearingType, hubBearingModels = [], hubMaterial = null, tireCompatibility, ratchet, ...rest } = otherSpecs;
+  const { hubBearingType, hubBearingModels = [], hubMaterial = null, tireCompatibility, compatible_tire_width, ratchet, ...rest } = otherSpecs;
   const ratchetPoints = typeof ratchet === 'string' ? Number(ratchet.match(/(\d+)\s*T/i)?.[1] ?? NaN) : NaN;
   return {
     hubSpecs: {
@@ -32,6 +32,7 @@ const splitHubSpecs = (otherSpecs = {}) => {
         : {})
     },
     tireCompatibility,
+    tireWidth: compatible_tire_width ? { min: 25, max: null } : undefined,
     otherSpecs: rest
   };
 };
@@ -117,6 +118,7 @@ const makeUltra = ({ id, model, variant, weight, category, depth, externalWidth,
         externalWidth_mm: externalWidth,
         tire_compatibility: promoted.tireCompatibility ?? ultraShared.rim.tire_compatibility,
         tubeless_ready: (promoted.tireCompatibility ?? ultraShared.rim.tire_compatibility).includes('tubeless'),
+        tire_width_mm: promoted.tireWidth,
         max_tire_pressure: {
           psi: 110,
           bar: 7.6,
@@ -204,6 +206,7 @@ const makePro = ({
         internalWidth_mm: internalWidth,
         tire_compatibility: promoted.tireCompatibility ?? proShared.rim.tire_compatibility,
         tubeless_ready: (promoted.tireCompatibility ?? proShared.rim.tire_compatibility).includes('tubeless'),
+        tire_width_mm: promoted.tireWidth,
         max_tire_pressure: {
           psi: 110,
           bar: 7.6,

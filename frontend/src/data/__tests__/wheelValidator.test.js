@@ -265,6 +265,31 @@ describe('validateWheelEntry', () => {
     expect(warnings[3]).toContain('hub.engagement');
   });
 
+  it('warns when promoted tire width fields remain in other_specs', () => {
+    const entry = makeEntry({
+      other_specs: {
+        min_tire_width_mm: 25,
+        max_tire_width_mm: 32,
+        tire_width_range_mm: '25-32',
+        recommended_tire_size: '25-622 - 32-622',
+        tire_width_c: '30C - 50C',
+      },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(5);
+    expect(warnings[0]).toContain('other_specs.min_tire_width_mm');
+    expect(warnings[4]).toContain('rim.tire_width_mm');
+  });
+
+  it('warns when tire width bounds are invalid', () => {
+    const entry = makeEntry({
+      rim: { tire_width_mm: { min: 40, max: 28 } },
+    });
+    const warnings = validateWheelEntry(entry);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain('min must be lower than or equal to max');
+  });
+
   it('warns when hub engagement has an unsupported type', () => {
     const entry = makeEntry({
       hub: {

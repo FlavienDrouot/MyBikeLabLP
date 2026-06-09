@@ -66,6 +66,8 @@ For maximum tire pressure specs, write source labels such as `max_tire_pressure_
 
 For tire compatibility specs, write source labels such as `tire_type`, `tire_compatibility`, and `compatible_tire_type` into `rim.tire_compatibility`. Store an array of canonical keys only: `clincher`, `tubeless`, and `tubular`. Set `rim.tubeless_ready` from that array: `true` when it contains `tubeless`, `false` when compatibility is known and lacks `tubeless`, and `null` when unknown. Do not duplicate those labels in `other_specs`.
 
+For tire width specs, write source labels such as `min_tire_width_mm`, `max_tire_width_mm`, `tire_width_range_mm`, `tire_optimized_for_mm`, `optimized_tire_size_mm`, `recommended_tire_width_mm`, `recommended_tire_size`, `recommended_tire_size_c`, `compatible_tire_width`, `compatible_tire_width_mm`, `suggested_tire_width_mm`, `tire_width_c`, and parseable `etrto` tire-width values into `rim.tire_width_mm`. Store `{ "min": number|null, "max": number|null }` in millimeters. Parse explicit ranges such as `24-38`, `30C - 50C`, and `25-622 - 32-622`; use one-sided bounds for wording such as `25c and above`; do not infer tire width from rim internal/external width alone. Do not duplicate those labels in `other_specs`.
+
 For hub engagement specs, write source labels such as `points_of_engagement`, `ratchet_teeth`, `ratchet`, and explicit `hub_internals` engagement text into `hub.engagement`. Store `{ "type": "star-ratchet"|"ratchet"|"pawl"|"other"|null, "points": number|null }`. Use `star-ratchet` for DT Swiss Ratchet, Ratchet EXP, or explicit star-ratchet systems; `ratchet` for generic ratchet systems; `pawl` for explicitly pawl-based systems; and `other` for explicit mechanisms outside that vocabulary. For ratchets, a tooth count such as `36T` equals 36 points of engagement. Do not infer engagement from hub brand/model alone and do not duplicate those labels in `other_specs`.
 
 For certification specs, write source labels such as `uci_approved`, `astm_category`, `e_bike_approved`, and explicit free-text `certification` statements into top-level `certification`. Store `{ "uci": boolean|null, "astm": number|null, "ebike": boolean|null }`. Parse only explicit UCI approval, ASTM category, and e-bike approval statements. Do not infer certification from category, hookless/tubeless state, or general marketing claims. Do not duplicate those labels in `other_specs`.
@@ -132,13 +134,12 @@ The `other_specs` object must act as a complete repository of any additional pro
 Examples include (but are not limited to):
 
 * rider weight limit
-* recommended tire width
 * spoke length / tension / replacement part numbers
 * rim construction technologies / hub technologies
 * aerodynamic claims / stiffness metrics
 * certifications
 * country of manufacture / included accessories
-* ETRTO dimensions
+* ETRTO dimensions that do not contain a parseable tire-width value
 * any manufacturer-specific technology names
 
 **Important:** Do not discard any technical information simply because it does not match a predefined field. Preserve it inside `other_specs` using meaningful key names and original values whenever possible.
@@ -147,7 +148,6 @@ Example:
 
 ```json
 "other_specs": {
-  "recommended_tire_width_mm": "28-45",
   "aero_technology": "Aero+"
 }
 ```

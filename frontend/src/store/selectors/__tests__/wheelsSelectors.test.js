@@ -526,6 +526,17 @@ describe('selectFilteredWheels', () => {
       expect(result.map((w) => w.id)).toEqual([301]);
     });
 
+    it('filters tire width by interval overlap', () => {
+      const catalog = [
+        { ...variantCatalog[0], rim: { ...variantCatalog[0].rim, tire_width_mm: { min: 25, max: 32 } } },
+        { ...variantCatalog[1], rim: { ...variantCatalog[1].rim, tire_width_mm: { min: 35, max: 50 } } },
+      ];
+      const result = selectFilteredWheels(makeState(catalog, {
+        tireWidth: makeRangeFilter(30, 30),
+      }));
+      expect(result.map((w) => w.id)).toEqual([301]);
+    });
+
     it('keeps front and rear divergent dimensions on one entry', () => {
       const result = selectFilteredWheels(makeState([variantCatalog[3]], {
         externalWidth: makeRangeFilter(35, 37),

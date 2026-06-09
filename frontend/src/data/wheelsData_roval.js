@@ -8,7 +8,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 48 }, externalWidth_mm: { front: 35, rear: 31.3 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 48 }, externalWidth_mm: { front: 35, rear: 31.3 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 24, max: 38 } },
   spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite', count: { front: 18, rear: 24 }, nipple:
 
 
@@ -29,8 +29,8 @@ export const rovalWheels = [
     bead_hook_width_rear_mm: 4.1,
 
 
-    tire_width_range_mm: '24-38',
-    tire_optimized_for_mm: 28,
+
+
     flatstop_bead_hooks: true
 
 
@@ -47,7 +47,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: { front: 63, rear: 58 }, externalWidth_mm: { front: 35, rear: 34.4 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: false, depth_mm: { front: 63, rear: 58 }, externalWidth_mm: { front: 35, rear: 34.4 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 24, max: 38 } },
   spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite', count: { front: 18, rear: 24 }, nipple:
 
 
@@ -65,11 +65,11 @@ export const rovalWheels = [
 
     'Arris MK4 Alloy 6mm', lacing: { front: "two-cross/radial (2:1)", rear: "one-cross/three-cross (2:1)" } }, hub: { model: 'Low Flange Road Hub', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: null, currency: 'EUR', url: 'https://www.specialized.com/us/en/roval-rapide-sprint-clx/p/1000218332' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-sprint-clx/p/1000218332', amount: null, currency: 'EUR' }, retailers: [] }, other_specs: {
     bead_hook_width_front_mm: 4.3,
-    bead_hook_width_rear_mm: 4.2,
+    bead_hook_width_rear_mm: 4.2
 
 
-    tire_width_range_mm: '24-38',
-    tire_optimized_for_mm: 28
+
+
 
 
 
@@ -85,7 +85,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 60 }, externalWidth_mm: { front: 35, rear: 30.7 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 60 }, externalWidth_mm: { front: 35, rear: 30.7 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 24, max: 38 } },
   spokes: { model: 'Aerolite T-head', brand: 'DT Swiss', material: 'steel', count: { front: 18, rear: 24 }, nipple:
 
 
@@ -104,7 +104,7 @@ export const rovalWheels = [
     'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/one-cross (2:1)", rear: "one-cross/two-cross (2:1)" } }, hub: { model: 'AFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-clx-ii/p/205440', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: {
 
 
-    tire_width_range_mm: '24-38'
+
 
   }, warranty: { text: "Limited Lifetime", years: null },
   certification: { uci: null, astm: null, ebike: false }
@@ -117,7 +117,7 @@ export const rovalWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'aero',
-  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 48 }, externalWidth_mm: { front: 35, rear: 31.3 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 48 }, externalWidth_mm: { front: 35, rear: 31.3 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 24, max: 38 } },
   spokes: { model: 'Competition Race Straight Pull', brand: 'DT Swiss', material: 'steel', count: { front: 18, rear: 24 }, lacing: { front: "two-cross/radial", rear: "one-cross/three-cross" } },
   hub: { model: '350 EXP', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -131,12 +131,12 @@ export const rovalWheels = [
 
 
 
-    spoke_gauge_mm: '2.0x1.6',
+    spoke_gauge_mm: '2.0x1.6'
 
 
 
 
-    tire_width_range_mm: '24-38'
+
   }
 },
 {
@@ -148,7 +148,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 60 }, externalWidth_mm: { front: 35, rear: 30 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: false, depth_mm: { front: 51, rear: 60 }, externalWidth_mm: { front: 35, rear: 30 }, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 24, max: 38 } },
   spokes: { model: 'Competition Race Straightpull', brand: 'DT Swiss', material: 'steel', count: { front: 18, rear: 24 }, nipple:
 
 
@@ -167,7 +167,7 @@ export const rovalWheels = [
     'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/two-cross (2:1)", rear: "two-cross (1:1)" } }, hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sealed Steel Cartridge', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: 1750, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-cl-ii/p/174214', amount: 1750, currency: 'USD' }, retailers: [] }, other_specs: {
 
 
-    tire_width_range_mm: '24-38'
+
 
   }, warranty: { text: "Limited Lifetime", years: null }
 },
@@ -180,7 +180,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: 38, externalWidth_mm: 26.6, tubeless_ready: true, internalWidth_mm: 21, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: false, depth_mm: 38, externalWidth_mm: 26.6, tubeless_ready: true, internalWidth_mm: 21, tire_compatibility: ["tubeless"], tire_width_mm: { min: 22, max: 47 } },
   spokes: { model: 'Competition Race J-Bend', brand: 'DT Swiss', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -203,8 +203,8 @@ export const rovalWheels = [
 
 
     'DT Swiss Pro Lock Alloy hexagonal', lacing: { front: "2-cross disc / radial non-disc", rear: "2-cross / 2-cross" } }, hub: { model: '370 Classic Center Lock (Ratchet LN 18T)', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'Sealed cartridge', engagement: { type: "star-ratchet", points: 18 } }, prices: [{ amount: 1100, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-rapide-c-38/p/205534' }], images: ['https://images.excelsports.com/public/large/119322-1.jpg', 'https://images.excelsports.com/public/large/119322-2.jpg', 'https://images.excelsports.com/public/large/119322-3.jpg'], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-rapide-c-38/p/205534', amount: 1100, currency: 'USD' }, retailers: [{ name: 'Excel Sports', amount: 1100, currency: 'USD', url: 'https://www.excelsports.com/roval-rapide-c-38-disc-wheelset' }] }, other_specs: {
-    tire_width_range_mm: '22-47',
-    tire_optimized_for_mm: 28
+
+
   }
 },
 {
@@ -216,7 +216,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 26.5, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 26.5, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 24, max: 38 } },
   spokes: { model: 'Composite Aero Spoke with Ti End Pieces', brand: 'Roval by Arris', material: 'carbon_composite', count: { front: 21, rear: 24 }, nipple:
 
 
@@ -233,11 +233,11 @@ export const rovalWheels = [
 
 
 
-    'Arris MK4 Alloy 6mm', lacing: { front: "radial (2:1)", rear: "one-cross (1:1)" } }, hub: { model: 'Low Flange Road Hub (DT Swiss Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: { bead_hook_width_mm: 2.75,
+    'Arris MK4 Alloy 6mm', lacing: { front: "radial (2:1)", rear: "one-cross (1:1)" } }, hub: { model: 'Low Flange Road Hub (DT Swiss Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-clx-iii/p/1000256320', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: { bead_hook_width_mm: 2.75
 
 
-    tire_width_range_mm: '24-38',
-    tire_optimized_for_mm: 28
+
+
 
 
   }, warranty: { text: "Limited Lifetime", years: null }, certification: { uci: null, astm: null, ebike: false }
@@ -251,7 +251,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 24, max: 38 } },
   spokes: { model: 'Aerolite T-head', brand: 'DT Swiss', material: 'steel', count: { front: 21, rear: 24 }, nipple:
 
 
@@ -270,7 +270,7 @@ export const rovalWheels = [
     'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/one-cross (2:1)", rear: "one-cross/two-cross (2:1)" } }, hub: { model: 'LFD (DT Swiss 180 Ratchet EXP 36T)', brand: 'Roval', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sinc Ceramic', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: 2650, currency: 'USD', url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-clx-ii/p/205389', amount: 2650, currency: 'USD' }, retailers: [] }, other_specs: {
 
 
-    tire_width_range_mm: '24-38'
+
 
   }, warranty: { text: "Limited Lifetime", years: null }
 },
@@ -283,7 +283,7 @@ export const rovalWheels = [
   brake_type: 'disc',
   wheelset_category: 'climbing',
   max_system_weight_kg: 125,
-  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"] },
+  rim: { material: 'carbon', hookless: false, depth_mm: 33, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 130, bar: 9, note: "tubeless: 110 psi; tubed: 130 psi" }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 24, max: 38 } },
   spokes: { model: 'Competition Race Straightpull', brand: 'DT Swiss', material: 'steel', count: { front: 21, rear: 24 }, nipple:
 
 
@@ -302,6 +302,6 @@ export const rovalWheels = [
     'DT Swiss Hex Prolock Al 2.0x14mm', lacing: { front: "radial/two-cross (2:1)", rear: "two-cross (1:1)" } }, hub: { model: '350 Straightpull Center Lock', brand: 'DT Swiss', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['Shimano HG'], disc_standard: 'Center Lock', bearing_type: 'DT Swiss Sealed Steel Cartridge', engagement: { type: "star-ratchet", points: 36 } }, prices: [{ amount: null, currency: 'EUR', url: 'https://www.specialized.com/us/en/roval-alpinist-cl-ii/p/205468' }], images: [], affiliateLinks: { manufacturer: { url: 'https://www.specialized.com/us/en/roval-alpinist-cl-ii/p/205468', amount: null, currency: 'EUR' }, retailers: [] }, other_specs: {
 
 
-    tire_width_range_mm: '24-38'
+
   }
 }];
