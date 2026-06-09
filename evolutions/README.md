@@ -12,7 +12,7 @@ A Project groups several evolutions sharing one goal and definition of done. Chi
 
 | ID | Slug | Child IDs | Status |
 |---|---|---|---|
-| PROJ-001 | other-specs-promotion | EVO-047 … EVO-058, fix-022 … fix-025 | Draft |
+| PROJ-001 | other-specs-promotion | EVO-047 … EVO-058, fix-022 … fix-026 | Draft |
 
 ## Evolutions
 
@@ -62,6 +62,7 @@ Small fixes — single condensed document, no subfolder. See `workflows/ai-dev-p
 | fix-023 | weight-tolerance-display | Done |
 | fix-024 | spoke-attachment-profile-normalization | Done |
 | fix-025 | tire-width-open-interval-filter | Done |
+| fix-026 | rim-construction-column-order | Done |
 
 ## Archive
 

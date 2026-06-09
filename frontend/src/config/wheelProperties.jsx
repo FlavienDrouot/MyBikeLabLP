@@ -362,20 +362,6 @@ export const WHEEL_PROPERTIES = [
   },
 
   {
-    id: 'rimConstruction',
-    label: 'properties.rimConstruction.label',
-    group: 'rims',
-    translatable: false,
-    accessor: (w) => w.rim?.construction,
-    filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
-    },
-  },
-
-  {
     id: 'depth',
     label: 'properties.depth.label',
     group: 'rims',
@@ -564,6 +550,20 @@ export const WHEEL_PROPERTIES = [
       headClassName: 'px-4 py-3 font-semibold text-right',
       cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
       renderCell: (w, t) => formatTireWidthRange(w.rim?.tire_width_mm, t),
+    },
+  },
+
+  {
+    id: 'rimConstruction',
+    label: 'properties.rimConstruction.label',
+    group: 'rims',
+    translatable: false,
+    accessor: (w) => w.rim?.construction,
+    filter: { type: 'multiSelect' },
+    column: {
+      defaultVisible: false,
+      headClassName: 'px-4 py-3 font-semibold',
+      cellClassName: 'px-4 py-3 text-ink-11',
     },
   },
 

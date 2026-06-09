@@ -3,7 +3,7 @@
 - **ID:** PROJ-001
 - **Date:** 2026-06-05
 - **Status:** Draft
-- **Child ID span:** EVO-047 … EVO-058, fix-022 … fix-025
+- **Child ID span:** EVO-047 … EVO-058, fix-022 … fix-026
 
 ---
 
@@ -204,3 +204,4 @@ Kept in sync as children are created. Each child is also registered in the Evolu
 | fix-023 | weight-tolerance-display | Fix | Done |
 | fix-024 | spoke-attachment-profile-normalization | Fix | Done |
 | fix-025 | tire-width-open-interval-filter | Fix | Done |
+| fix-026 | rim-construction-column-order | Fix | Done |
