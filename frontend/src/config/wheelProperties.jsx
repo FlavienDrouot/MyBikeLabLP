@@ -218,12 +218,25 @@ export const WHEEL_PROPERTIES = [
       cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
       renderCell: (w, t) => {
         const { front, rear, total, isSingle } = resolveSpec(w.weight_grams);
+        const tolerance = w.weight_tolerance_percent;
+        const toleranceLine = Number.isFinite(tolerance) ? (
+          <div className="text-xs text-ink-7 mt-0.5">+/- {tolerance}%</div>
+        ) : null;
         if (total === null) return t('common.notAvailable');
-        if (isSingle) return `${total} g`;
+        if (isSingle && !toleranceLine) return `${total} g`;
+        if (isSingle) {
+          return (
+            <div>
+              <span>{total} g</span>
+              {toleranceLine}
+            </div>
+          );
+        }
         return (
           <div>
             <span>{total} g</span>
             <div className="text-xs text-ink-7 mt-0.5">{front} / {rear} g</div>
+            {toleranceLine}
           </div>
         );
       },

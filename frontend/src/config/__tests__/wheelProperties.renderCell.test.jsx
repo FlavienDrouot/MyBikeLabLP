@@ -127,10 +127,26 @@ describe('weight — renderCell', () => {
     expect(result).toBe('1492 g');
   });
 
+  it('renders scalar input with weight tolerance as a secondary line', () => {
+    const html = render('weight', { weight_grams: 1492, weight_tolerance_percent: 5 });
+    expect(html).toContain('1492 g');
+    expect(html).toContain('+/- 5%');
+  });
+
   it('renders divergent pair: primary contains total and sub-line contains front / rear', () => {
     const html = render('weight', { weight_grams: { front: 720, rear: 850 } });
     expect(html).toContain('1570 g');
     expect(html).toContain('720 / 850 g');
+  });
+
+  it('renders divergent pair with weight tolerance after the front / rear line', () => {
+    const html = render('weight', {
+      weight_grams: { front: 720, rear: 850 },
+      weight_tolerance_percent: 3,
+    });
+    expect(html).toContain('1570 g');
+    expect(html).toContain('720 / 850 g');
+    expect(html).toContain('+/- 3%');
   });
 
   it('renders divergent pair: sub-line is a block div with correct classes', () => {
@@ -147,6 +163,10 @@ describe('weight — renderCell', () => {
     const result = render('weight', { weight_grams: { front: 760, rear: 760 } });
     // Equal pair collapses to isSingle: true — returns a plain string.
     expect(result).toBe('1520 g');
+  });
+
+  it('does not render non-finite weight tolerance values', () => {
+    expect(render('weight', { weight_grams: 1492, weight_tolerance_percent: null })).toBe('1492 g');
   });
 
   it('renders null as the not-available key', () => {
