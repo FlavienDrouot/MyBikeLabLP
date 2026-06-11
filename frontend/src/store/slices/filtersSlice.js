@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getFilterableProperties } from '../../config/wheelProperties';
 import { wheelsData } from '../../data/wheelsData';
 import { convert, DEFAULT_CURRENCY } from '../../lib/currency';
+import { collectRangeBoundValuesForItems } from '../rangeBounds';
 import { setDisplayCurrency } from './currencySlice';
 
 // State dynamically generated from the wheel properties registry.
@@ -24,9 +25,7 @@ const buildInitialFilters = () => {
       case 'range': {
         // Initial bounds are computed in the default display currency.
         const ctx = { displayCurrency: DEFAULT_CURRENCY };
-        const values = wheelsData
-          .map((w) => property.accessor(w, ctx))
-          .filter(Number.isFinite);
+        const values = collectRangeBoundValuesForItems(property, wheelsData, ctx);
         const step = property.filter.step;
         const dataMin = values.length ? Math.min(...values) : 0;
         const dataMax = values.length ? Math.max(...values) : 0;

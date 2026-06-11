@@ -3,7 +3,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const productRoot = path.resolve(__dirname, '..', '..');
@@ -1615,15 +1615,6 @@ const parseTireWidthRange = (value) => {
   const text = value.value.trim().toLowerCase();
   if (!text) return { min: null, max: null };
 
-  const rangeMatch = text.match(/(\d+(?:[.,]\d+)?)\s*(?:c|mm)?\s*(?:-|–|—|to|à|a)\s*(\d+(?:[.,]\d+)?)\s*(?:c|mm)?/);
-  if (rangeMatch) {
-    const first = Number(rangeMatch[1].replace(',', '.'));
-    const second = Number(rangeMatch[2].replace(',', '.'));
-    if (Number.isFinite(first) && Number.isFinite(second) && first > 0 && second > 0) {
-      return { min: Math.min(first, second), max: Math.max(first, second) };
-    }
-  }
-
   const etrtoRangeMatch = text.match(/\b(\d+(?:[.,]\d+)?)\s*-\s*622\s*-\s*(\d+(?:[.,]\d+)?)\s*-\s*622\b/);
   if (etrtoRangeMatch) {
     const first = Number(etrtoRangeMatch[1].replace(',', '.'));
@@ -1643,6 +1634,15 @@ const parseTireWidthRange = (value) => {
   if (etrtoRimMatch) {
     const width = Number(etrtoRimMatch[1].replace(',', '.'));
     if (Number.isFinite(width) && width > 0) return { min: width, max: width };
+  }
+
+  const rangeMatch = text.match(/(\d+(?:[.,]\d+)?)\s*(?:c|mm)?\s*(?:-|–|—|to|à|a)\s*(\d+(?:[.,]\d+)?)\s*(?:c|mm)?/);
+  if (rangeMatch) {
+    const first = Number(rangeMatch[1].replace(',', '.'));
+    const second = Number(rangeMatch[2].replace(',', '.'));
+    if (Number.isFinite(first) && Number.isFinite(second) && first > 0 && second > 0) {
+      return { min: Math.min(first, second), max: Math.max(first, second) };
+    }
   }
 
   const aboveMatch = text.match(/(\d+(?:[.,]\d+)?)\s*(?:c|mm)?\s*(?:and\s+above|\+|minimum|min\.?|above)/);
@@ -1800,7 +1800,11 @@ const main = async () => {
   console.log(`Changed files: ${changed}`);
 };
 
-main().catch((error) => {
-  console.error(error.message);
-  process.exitCode = 1;
-});
+export { promoteTireWidthMm };
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
+}

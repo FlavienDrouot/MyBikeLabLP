@@ -203,14 +203,21 @@ describe('makeSelectRangeBoundsFor', () => {
     });
   });
 
-  describe("'depth' — bounds use scalar max (accessor), not filterAccessor", () => {
-    it('computes bounds from max(front, rear) for divergent-pair entries', () => {
-      // wheel id=4 has depth { front: 50, rear: 60 } → accessor returns 60
-      // wheel id=5 has depth { front: 40, rear: 45 } → accessor returns 45
-      // scalar wheels: 30, 50, 40
-      // overall max = 60
+  describe("'depth' - bounds include filterable values", () => {
+    it('computes bounds from scalar and divergent-pair entries', () => {
       const result = makeSelectRangeBoundsFor('depth')(makeState(mixedCatalog));
       expect(result).toEqual({ min: 30, max: 60 });
+    });
+  });
+
+  describe("'tireWidth' - interval bounds", () => {
+    it('includes min and max values from tire-width interval objects', () => {
+      const catalog = [
+        { ...mockWheels[0], rim: { ...mockWheels[0].rim, tire_width_mm: { min: 19, max: 62 } } },
+        { ...mockWheels[1], rim: { ...mockWheels[1].rim, tire_width_mm: { min: 23, max: 23 } } },
+      ];
+      const result = makeSelectRangeBoundsFor('tireWidth')(makeState(catalog));
+      expect(result).toEqual({ min: 19, max: 62 });
     });
   });
 });

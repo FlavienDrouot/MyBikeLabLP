@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import filtersReducer, {
+  buildInitialState,
   reexpressMonetaryFilters,
   changeDisplayCurrency,
 } from '../filtersSlice';
@@ -11,6 +12,14 @@ const priceStep = getPropertyById('price').filter.step;
 const roundToStep = (v) => Math.round(v / priceStep) * priceStep;
 
 const stateWith = (filters) => ({ filters, sortBy: null });
+
+describe('buildInitialState', () => {
+  it('initializes tire-width bounds from interval minima and maxima', () => {
+    const state = buildInitialState();
+    expect(state.filters.tireWidth.value.min).toBe(19);
+    expect(state.filters.tireWidth.value.max).toBe(70);
+  });
+});
 
 describe('reexpressMonetaryFilters', () => {
   it('converts a monetary range filter min/max and rounds to the filter step', () => {

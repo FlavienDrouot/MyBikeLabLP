@@ -5,6 +5,7 @@ import {
   getDefaultSortId,
   getPropertyById,
 } from '../../config/wheelProperties';
+import { collectRangeBoundValuesForItems } from '../rangeBounds';
 
 // Filter type predicates. Adding a new filter type = add an entry here +
 // a case in `buildInitialFilters` on the slice side.
@@ -188,7 +189,7 @@ export const makeSelectRangeBoundsFor = (propertyId) =>
       const property = getPropertyById(propertyId);
       if (!property) return { min: 0, max: 0 };
       const ctx = { displayCurrency };
-      const values = items.map((item) => property.accessor(item, ctx)).filter(Number.isFinite);
+      const values = collectRangeBoundValuesForItems(property, items, ctx);
       if (!values.length) return { min: 0, max: 0 };
       const dataMin = Math.min(...values);
       const dataMax = Math.max(...values);
