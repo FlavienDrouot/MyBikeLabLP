@@ -116,6 +116,40 @@ describe('full catalog validation', () => {
 });
 
 // ---------------------------------------------------------------------------
+// Tire-width normalization regression
+// ---------------------------------------------------------------------------
+
+describe('tire width normalization for corrected entries', () => {
+  it('keeps ENVE and Mavic entries as open minimums', () => {
+    const expectations = [
+      [44, { min: 27, max: null }],
+      [45, { min: 28, max: null }],
+      [46, { min: 28, max: null }],
+      [47, { min: 28, max: null }],
+      [48, { min: 28, max: null }],
+      [2, { min: 23, max: null }],
+      [6, { min: 23, max: null }],
+    ];
+
+    for (const [id, expected] of expectations) {
+      const wheel = wheelsData.find((entry) => entry.id === id);
+      expect(wheel).toBeDefined();
+      expect(wheel.rim?.tire_width_mm).toEqual(expected);
+    }
+  });
+
+  it('drops Zipp optimal widths to null/null', () => {
+    const expectations = [37, 39, 41, 42, 43];
+
+    for (const id of expectations) {
+      const wheel = wheelsData.find((entry) => entry.id === id);
+      expect(wheel).toBeDefined();
+      expect(wheel.rim?.tire_width_mm).toEqual({ min: null, max: null });
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
 // Integration: brand filtering around Arcaris variants
 // ---------------------------------------------------------------------------
 

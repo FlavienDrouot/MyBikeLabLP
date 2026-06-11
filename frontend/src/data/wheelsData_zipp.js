@@ -233,7 +233,7 @@ export const zippWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'all-round',
-  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 73, bar: 5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 30, max: 30 } },
+  rim: { material: 'carbon', hookless: true, depth_mm: 40, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 73, bar: 5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: null, max: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -307,7 +307,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 114,
-  rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
+  rim: { material: 'carbon', hookless: true, depth_mm: 58, externalWidth_mm: 28, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: null, max: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -392,7 +392,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 115,
-  rim: { material: 'carbon', hookless: true, depth_mm: 80, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
+  rim: { material: 'carbon', hookless: true, depth_mm: 80, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: null, max: null } },
   spokes: { model: 'CX Sprint J-bend', brand: 'Sapim', material: 'steel' },
   hub: { model: 'ZR1', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG', 'Campagnolo N3W'], disc_standard: 'Center Lock', bearing_type:
 
@@ -428,7 +428,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 114,
-  rim: { material: 'carbon', hookless: true, depth_mm: 85, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
+  rim: { material: 'carbon', hookless: true, depth_mm: 85, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: null, max: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'Cognition V2', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 
@@ -468,7 +468,7 @@ export const zippWheels = [
   brake_type: 'disc',
   wheelset_category: 'aero',
   max_system_weight_kg: 115,
-  rim: { material: 'carbon', hookless: true, depth_mm: 85, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 30, max: 30 } },
+  rim: { material: 'carbon', hookless: true, depth_mm: 85, externalWidth_mm: 27, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 73, bar: 5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: null, max: null } },
   spokes: { model: null, brand: null, material: null },
   hub: { model: 'ZR1 SL', brand: 'Zipp', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: ['SRAM XDR', 'Shimano HG'], disc_standard: 'Center Lock', bearing_type:
 

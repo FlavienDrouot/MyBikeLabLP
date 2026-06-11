@@ -3,7 +3,7 @@
 - **ID:** PROJ-001
 - **Date:** 2026-06-05
 - **Status:** Done
-- **Child ID span:** EVO-047 … EVO-058, fix-022 … fix-028
+- **Child ID span:** EVO-047 … EVO-058, fix-022 … fix-029
 
 ---
 
@@ -207,3 +207,4 @@ Kept in sync as children are created. Each child is also registered in the Evolu
 | fix-026 | rim-construction-column-order | Fix | Done |
 | fix-027 | promoted-text-column-max-widths | Fix | Done |
 | fix-028 | tire-width-range-regressions | Fix | Done |
+| fix-029 | tire-width-minimum-normalization | Fix | Done |

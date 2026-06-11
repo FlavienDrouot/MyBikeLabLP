@@ -41,7 +41,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: false, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, tire_compatibility: ["tubeless"], tire_width_mm: { min: 23, max: 23 } },
+  rim: { material: 'carbon', hookless: false, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, tire_compatibility: ["tubeless"], tire_width_mm: { min: 23, max: null } },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, profile:
 
 
@@ -175,7 +175,7 @@ export const mavicWheels = [
   brake_type: 'disc',
   wheelset_category: 'all-round',
   max_system_weight_kg: 120,
-  rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, tire_compatibility: ["tubeless"], tire_width_mm: { min: 23, max: 23 } },
+  rim: { material: 'carbon', hookless: null, depth_mm: 45, externalWidth_mm: null, tubeless_ready: true, internalWidth_mm: 23, tire_compatibility: ["tubeless"], tire_width_mm: { min: 23, max: null } },
   spokes: { model: '', brand: 'Mavic', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 

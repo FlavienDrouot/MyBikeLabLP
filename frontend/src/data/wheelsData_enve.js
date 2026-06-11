@@ -7,7 +7,7 @@ export const enveWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'climbing',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 28, rear: 32 }, externalWidth_mm: 25, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 90, bar: 6.2, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 27, max: 27 } },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 28, rear: 32 }, externalWidth_mm: 25, tubeless_ready: true, internalWidth_mm: 21, max_tire_pressure: { psi: 90, bar: 6.2, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 27, max: null } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -48,7 +48,7 @@ export const enveWheels = [
   weight_grams: 1380,
   diameter_mm: 700,
   brake_type: 'disc',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 39, rear: 43 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 39, rear: 43 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: null } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -88,7 +88,7 @@ export const enveWheels = [
   weight_grams: 1432,
   diameter_mm: 700,
   brake_type: 'disc',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 50, rear: 56 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 50, rear: 56 }, externalWidth_mm: 32, tubeless_ready: true, internalWidth_mm: 25, max_tire_pressure: { psi: 80, bar: 5.5, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: null } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
@@ -128,7 +128,7 @@ export const enveWheels = [
   weight_grams: { front: 587, rear: 708 },
   diameter_mm: 700,
   brake_type: 'disc',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 49, rear: 55 }, externalWidth_mm: 30.8, tubeless_ready: true, internalWidth_mm: 23.5, max_tire_pressure: { psi: 100, bar: 6.8, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 49, rear: 55 }, externalWidth_mm: 30.8, tubeless_ready: true, internalWidth_mm: 23.5, max_tire_pressure: { psi: 100, bar: 6.8, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: null } },
   spokes: { model: 'Ultralite Aero R5 (TCX 2/1.5/2)', brand: 'Alpina', material: 'steel', count: { front: 24, rear: 24 }, nipple:
 
 
@@ -174,7 +174,7 @@ export const enveWheels = [
   diameter_mm: 700,
   brake_type: 'disc',
   wheelset_category: 'aero',
-  rim: { material: 'carbon', hookless: true, depth_mm: { front: 60, rear: 67 }, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 90, bar: 6.2, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: 28 } },
+  rim: { material: 'carbon', hookless: true, depth_mm: { front: 60, rear: 67 }, externalWidth_mm: 30, tubeless_ready: true, internalWidth_mm: 23, max_tire_pressure: { psi: 90, bar: 6.2, note: null }, tire_compatibility: ["tubeless"], tire_width_mm: { min: 28, max: null } },
   spokes: { model: '', brand: '', material: '', count: { front: 24, rear: 24 }, type:
 
 
