@@ -4,6 +4,8 @@
 
 React application for bike wheel comparison. Frontend-only MVP.
 
+This README is intended for human-facing product documentation. Agent instructions live in `AGENTS.md` and `CLAUDE.md`.
+
 ## Git Commands
 
 **Repo location:** `C:\Users\Flavien\Google Drive\VisualStudioCode\Claude\MyBikeLab\`
