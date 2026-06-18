@@ -4,16 +4,6 @@
 
 React application for bike wheel comparison. Frontend-only MVP.
 
-This README is intended for human-facing product documentation. Agent instructions live in `AGENTS.md` and `CLAUDE.md`.
-
-## Git Commands
-
-**Repo location:** `C:\Users\Flavien\Google Drive\VisualStudioCode\Claude\MyBikeLab\`
-
-Working directory is `Claude\` — run git from the product root with:
-```
-git -C "MyBikeLab" <commande>
-```
 
 ## Navigation
 
@@ -45,27 +35,3 @@ git -C "MyBikeLab" <commande>
 
 ### Data Flow
 User filter → `FilterPanel` dispatches `setFilterValue` → `filtersSlice` → `selectFilteredWheels` recomputes → `ComparisonTable` re-renders
-
-### Design System
-
-All UI work must follow the design system defined in `design-system/`. Before implementing any new component or page surface:
-
-1. Read `design-system/README.md` — visual foundations, editorial hard rules
-2. Read `design-system/IMPLEMENTATION-GUIDE.md` — token usage, component checklist, ui_kit mapping protocol
-3. Check `design-system/ui_kits/<surface>/` for a reference implementation of the target surface
-
-The full migration of the production codebase to the design system is planned as EVO-039 through EVO-043 (see `evolutions/README.md`). Each evolution's `init.md` describes its scope and acceptance criteria.
-
-### Important Conventions
-- **New wheel property** = one entry in `wheelProperties.jsx` only (no changes elsewhere)
-- Filter types: `range` | `multiSelect` | `triState` — new type requires matcher + init in slice
-- Column visibility = local state in `MiniComparator`; filter/sort = Redux global
-- Tailwind tokens: `paper-*`, `ink-*`, `brass-*`, `sage-*`; shared classes in `src/index.css`
-
-### Data Schema Conventions
-Any evolution that changes the wheel data schema (adds, renames, restructures, or extends a field in `wheelsData_*.js`) **must include in its scope**:
-
-1. **Data migration** — update all existing `wheelsData_*.js` files to conform to the new schema. No entry may be left in the old format.
-2. **Scraping process update** — update `workflows/datascraping/wheel-format.json`, `scripts/DatascrapingPrompt.md`, and `workflows/datascraping/README.md` to reflect the new schema so that future scraping sessions produce conformant data from the start.
-
-These two items are not optional follow-ups — they are part of the evolution's definition of done.
