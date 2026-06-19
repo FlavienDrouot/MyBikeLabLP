@@ -113,6 +113,9 @@ describe('ComparisonTable', () => {
 
     it('table scroll wrapper carries overflow-x-auto, lg:overflow-y-auto, lg:min-h-0, and lg:[scrollbar-gutter:stable]', () => {
       const html = renderWithStore([minimalWheel]);
+      expect(html).toContain('w-full');
+      expect(html).toContain('max-w-full');
+      expect(html).toContain('min-w-0');
       expect(html).toContain('overflow-x-auto');
       expect(html).toContain('lg:overflow-y-auto');
       expect(html).toContain('lg:min-h-0');

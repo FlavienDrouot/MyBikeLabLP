@@ -175,7 +175,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
           {t('table.emptyState')}
         </div>
       ) : (
-        <div className="comparison-table-scroll overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]" ref={scrollRef}>
+        <div className="comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]" ref={scrollRef}>
           <table
             className="text-sm bg-paper-0 border-separate border-spacing-0"
             style={widthsReady ? { tableLayout: 'fixed', width: totalWidth } : undefined}

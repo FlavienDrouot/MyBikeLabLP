@@ -19,7 +19,7 @@ import { renderCellFor, cellClassFor } from './columnCells';
 // header can't be clipped by its fixed column width.
 
 const MEASURING_STYLE = {
-  position: 'absolute',
+  position: 'fixed',
   top: 0,
   left: 0,
   visibility: 'hidden',

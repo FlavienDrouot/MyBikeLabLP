@@ -23,7 +23,7 @@ const MiniComparator = () => {
     setVisibility((v) => ({ ...v, [id]: !v[id] }));
 
   return (
-    <section id="tool" className="section bg-paper-2">
+    <section id="tool" className="section bg-paper-2 overflow-x-hidden">
       <div className="container-fluid">
         <div className="text-center max-w-2xl mx-auto">
           <p className="t-eyebrow">{t('comparator.sectionIndex')}</p>
@@ -35,7 +35,7 @@ const MiniComparator = () => {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-x-6 lg:grid-cols-[280px_1fr] w-fit mx-auto items-start">
+        <div className="mt-12 grid w-full max-w-full gap-x-6 lg:grid-cols-[280px_1fr] items-start">
           {/* Backdrop — only shown when the mobile drawer is open */}
           {filtersOpen && (
             <div

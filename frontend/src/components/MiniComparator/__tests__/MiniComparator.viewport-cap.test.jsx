@@ -208,6 +208,24 @@ describe('MiniComparator viewport-cap integration (EVO-025 TASK-004)', () => {
     expect(resolved).toBe(EXPECTED_MAX_HEIGHT);
   });
 
+  it('AC-002b — the MiniComparator grid wrapper spans the available width instead of shrink-wrapping', () => {
+    setDesktopMatchMedia();
+    mount([minimalWheel(1), minimalWheel(2)]);
+
+    const section = container.querySelector('#tool');
+    const gridWrapper = Array.from(container.querySelectorAll('div')).find((el) =>
+      el.className.includes('mt-12 grid') &&
+      el.className.includes('lg:grid-cols-[280px_1fr]')
+    );
+
+    expect(section).not.toBeNull();
+    expect(section.className).toContain('overflow-x-hidden');
+    expect(gridWrapper).not.toBeNull();
+    expect(gridWrapper.className).toContain('w-full');
+    expect(gridWrapper.className).toContain('max-w-full');
+    expect(gridWrapper.className).not.toContain('w-fit');
+  });
+
   // --- AC-003 -------------------------------------------------------------
   it('AC-003 — scrolling the FilterPanel does not move the page or the table', () => {
     setDesktopMatchMedia();

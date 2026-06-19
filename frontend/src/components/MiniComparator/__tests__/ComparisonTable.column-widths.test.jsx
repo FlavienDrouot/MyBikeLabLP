@@ -121,6 +121,15 @@ describe('ComparisonTable column widths (EVO-030)', () => {
     expect(measuring.querySelectorAll('tbody tr').length).toBe(fullDataset.length);
   });
 
+  it('keeps the measuring table out of document overflow calculations', () => {
+    mount([minimalWheel(1), minimalWheel(2)]);
+
+    const measuring = measuringTableOf(container);
+    expect(measuring).not.toBeNull();
+    expect(measuring.style.position).toBe('fixed');
+    expect(measuring.style.visibility).toBe('hidden');
+  });
+
   it('falls back to auto layout (no colgroup) when no width can be measured', () => {
     // No stub → JSDOM reports width 0 → not "ready".
     mount([minimalWheel(1), minimalWheel(2)]);
