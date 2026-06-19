@@ -66,6 +66,7 @@ Small fixes — single condensed document, no subfolder. See `workflows/ai-dev-p
 | fix-027 | promoted-text-column-max-widths | Done |
 | fix-028 | tire-width-range-regressions | Done |
 | fix-029 | tire-width-minimum-normalization | Done |
+| fix-030 | comparator-shrinkwrap-layout | Done |
 
 ## Archive
 

@@ -14,7 +14,7 @@ This file is self-sufficient for product-specific work. Shared workflows and sta
 - Use `../work-system/thinking/` for exploratory or preparatory reasoning that is not yet an approved product implementation.
 - Product repositories live next to `work-system/` at `../[Product]/`, not inside it.
 - Do not reorganize product or workspace structure without explicit user instruction.
-- Before structural changes, summarize the intended change and ask for confirmation.
+- Before any changes, summarize the intended change and ask for confirmation.
 
 ## Work Hierarchy Vocabulary
 

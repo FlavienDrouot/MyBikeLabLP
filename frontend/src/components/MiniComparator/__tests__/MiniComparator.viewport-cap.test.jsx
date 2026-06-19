@@ -208,7 +208,7 @@ describe('MiniComparator viewport-cap integration (EVO-025 TASK-004)', () => {
     expect(resolved).toBe(EXPECTED_MAX_HEIGHT);
   });
 
-  it('AC-002b — the MiniComparator grid wrapper spans the available width instead of shrink-wrapping', () => {
+  it('AC-002b - the MiniComparator grid wrapper shrink-wraps and stays viewport-capped', () => {
     setDesktopMatchMedia();
     mount([minimalWheel(1), minimalWheel(2)]);
 
@@ -221,9 +221,11 @@ describe('MiniComparator viewport-cap integration (EVO-025 TASK-004)', () => {
     expect(section).not.toBeNull();
     expect(section.className).toContain('overflow-x-hidden');
     expect(gridWrapper).not.toBeNull();
-    expect(gridWrapper.className).toContain('w-full');
-    expect(gridWrapper.className).toContain('max-w-full');
-    expect(gridWrapper.className).not.toContain('w-fit');
+    const gridClasses = gridWrapper.className.split(/\s+/);
+    expect(gridClasses).toContain('w-fit');
+    expect(gridClasses).toContain('mx-auto');
+    expect(gridClasses).toContain('max-w-full');
+    expect(gridClasses).not.toContain('w-full');
   });
 
   // --- AC-003 -------------------------------------------------------------
