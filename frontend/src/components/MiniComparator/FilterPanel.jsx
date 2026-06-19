@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { ChevronDown } from 'lucide-react';
@@ -76,8 +76,8 @@ const DualRangeRow = ({
 
   return (
     <div className="space-y-3">
-      <div className="flex items-baseline justify-between text-sm">
-        <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">
+      <div className="space-y-1">
+        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">
           {onToggleEnabled && (
             <FilterToggle
               enabled={enabled}
@@ -86,10 +86,10 @@ const DualRangeRow = ({
             />
           )}
           {label}
-        </span>
-        <span className="font-mono text-xs text-ink-8 tabular-nums">
+        </div>
+        <span className="block font-mono text-xs text-ink-8 tabular-nums">
           {valueLow}
-          {unit} — {valueHigh}
+          {unit} - {valueHigh}
           {unit}
         </span>
       </div>
@@ -106,7 +106,7 @@ const DualRangeRow = ({
             className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
           <span className="flex-1 text-center text-ink-5 text-xs select-none">
-            —
+            -
           </span>
           <input
             type="number"
@@ -287,7 +287,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                   className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-ink-12 text-paper-1 hover:bg-ink-10 transition-colors"
                 >
                   {valLabel}
-                  <span aria-hidden="true" className="text-paper-1/60">×</span>
+                  <span aria-hidden="true" className="text-paper-1/60">Ã—</span>
                 </button>
               );
             })}
@@ -447,7 +447,7 @@ const TriStateFilter = ({ property, filter }) => {
   );
 };
 
-// Type → component map. Extend this map to add a new filter type.
+// Type â†’ component map. Extend this map to add a new filter type.
 const FILTER_ADAPTERS = {
   range: RangeFilter,
   multiSelect: MultiSelectFilter,
@@ -464,7 +464,7 @@ const FilterField = ({ property }) => {
 };
 
 // ---------------------------------------------------------------------------
-// Main panel — iterates over groups and filterable properties.
+// Main panel - iterates over groups and filterable properties.
 // ---------------------------------------------------------------------------
 
 const FilterPanel = () => {
@@ -521,3 +521,7 @@ const FilterPanel = () => {
 };
 
 export default FilterPanel;
+
+
+
+

@@ -170,7 +170,7 @@ export const WHEEL_PROPERTIES = [
     group: 'general',
     translatable: false,
     monetary: true,
-    unit: ' â‚¬',
+    unit: ' €',
     // Computed, currency-aware accessor: lowest offer in the display currency.
     accessor: (w, ctx) => minPriceIn(w, ctx?.displayCurrency ?? 'EUR'),
     filter: { type: 'range', step: 50 },

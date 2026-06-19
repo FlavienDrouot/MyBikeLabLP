@@ -35,7 +35,7 @@ const MiniComparator = () => {
           </p>
         </div>
 
-        <div className="mt-12 grid w-full max-w-full gap-x-6 lg:grid-cols-[280px_1fr] items-start">
+        <div className="mt-12 grid w-full max-w-full gap-x-6 lg:grid-cols-[288px_1fr] items-start">
           {/* Backdrop — only shown when the mobile drawer is open */}
           {filtersOpen && (
             <div

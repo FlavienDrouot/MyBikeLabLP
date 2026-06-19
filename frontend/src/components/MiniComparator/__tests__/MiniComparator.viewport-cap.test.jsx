@@ -215,7 +215,7 @@ describe('MiniComparator viewport-cap integration (EVO-025 TASK-004)', () => {
     const section = container.querySelector('#tool');
     const gridWrapper = Array.from(container.querySelectorAll('div')).find((el) =>
       el.className.includes('mt-12 grid') &&
-      el.className.includes('lg:grid-cols-[280px_1fr]')
+      el.className.includes('lg:grid-cols-[288px_1fr]')
     );
 
     expect(section).not.toBeNull();
