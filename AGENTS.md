@@ -36,6 +36,7 @@ Before implementation, check whether the request maps to a workflow in `../work-
 | Task type | Read |
 | --- | --- |
 | Start or develop a feature, evolution, or improvement | `../work-system/workflows/ai-dev-process/README.md` |
+| Start or develop a feature with the experimental V2 process | `../work-system/workflows/ai-dev-process-experimental/ROUTING.md` |
 | Fix a small local issue | `../work-system/workflows/ai-dev-process/README.md` |
 | Review or audit code | `../work-system/workflows/code-review/CODE-REVIEW.md` |
 | Scrape or ingest wheel data | `../work-system/workflows/datascraping/README.md` |
