@@ -1,5 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { execPath } from 'node:process';
 import { describe, expect, it } from 'vitest';
 
 describe('other-specs-promote tire-width codemod', () => {
@@ -26,7 +27,7 @@ import('./scripts/codemods/other-specs-promote.mjs')
   });
 `;
 
-    const next = execFileSync(process.execPath, ['-e', code], {
+    const next = execFileSync(execPath, ['-e', code], {
       cwd: productRoot,
       encoding: 'utf8',
     });
