@@ -1,4 +1,4 @@
-# MyBikeLab Agent Instructions
+﻿# MyBikeLab Agent Instructions
 
 ## Scope
 
@@ -6,7 +6,6 @@ These instructions apply to agent work inside `MyBikeLab/`.
 
 `MyBikeLab/` is the product workspace for a frontend-only React application that compares bicycle wheels. Agents may read and modify product-internal files when the user request concerns MyBikeLab development, fixes, reviews, scraping, documentation, or implementation work.
 
-This file is self-sufficient for product-specific work. Shared workflows and standards live in `../work-system/`.
 
 ## Workspace Boundary
 
@@ -108,16 +107,5 @@ A change is meaningful when it affects purpose, scope, ownership, responsibiliti
 
 Small implementation edits that do not change behavior, contracts, structure, workflow, or responsibilities do not require documentation churn.
 
-## Agent Rules
-
-- Write in plain, clear language; ask clarifying questions before risky assumptions; say so when unsure.
-- When a structured user-question tool is available, prefer it for concise clarification before risky or irreversible decisions. Do not use it for questions that can be answered by reading the repository.
-- Confirm before acting on structural changes: summarize the intended change and ask for permission before execution.
-- If the path or structure of a file is already inferable from context, read it directly instead of searching first.
-- When the user gives durable behavioral feedback, integrate it into the appropriate `AGENTS.md` or `README.md` instead of relying on memory.
-- Before editing files, identify the files or folders expected to change and read the applicable instruction chain from this root file through the relevant instruction or navigation file.
-- Local rules specialize parent rules but may not weaken global workspace rules.
-- After a meaningful change, check whether the nearest README or instruction file and any parent navigation table must be updated.
-- Every durable structural folder or instruction file must remain reachable through the navigation chain.
 
 
