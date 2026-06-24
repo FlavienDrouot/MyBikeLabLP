@@ -1,0 +1,13 @@
+{
+  "eval_id": 2,
+  "eval_name": "xss-and-form-a11y",
+  "prompt": "Voilà mon ContactForm.jsx, j'ajoute un aperçu du message après envoi pour confirmer à l'utilisateur. Tu peux le reviewer ?",
+  "fixture": "Review/evals/fixtures/eval-2/ContactForm.jsx",
+  "assertions": [
+    {"id": "xss-critical", "text": "Le rapport identifie la faille XSS via dangerouslySetInnerHTML interpolant `name` et `message` non sanitizés, classée 🔴 Bloquant"},
+    {"id": "labels-missing", "text": "Le rapport signale l'absence de `<label>` associés aux inputs (placeholder seul ne suffit pas pour l'accessibilité)"},
+    {"id": "fetch-no-error-handling", "text": "Le rapport mentionne que le fetch n'a pas de gestion d'erreur (.catch absent, pas d'état d'erreur)"},
+    {"id": "no-loading-state", "text": "Le rapport relève l'absence d'état de chargement pendant la requête"},
+    {"id": "structured-format", "text": "Le rapport suit le format demandé : Résumé, Findings groupés par sévérité, Questions ouvertes"}
+  ]
+}

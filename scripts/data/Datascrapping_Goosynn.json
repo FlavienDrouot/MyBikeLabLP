@@ -1,0 +1,321 @@
+[
+  {
+    "id": 226,
+    "model": "Ti-Fi R30",
+    "brand": "GOOSYNN",
+    "variant": "base",
+    "weight_grams": 1110,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 100,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 30,
+      "externalWidth_mm": 34,
+      "internalWidth_mm": 25,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Ti-Fi",
+      "brand": "GOOSYNN",
+      "material": "titanium"
+    },
+    "hub": {
+      "model": "GOOSYNN Hub",
+      "brand": "GOOSYNN",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo N3W"],
+      "disc_standard": "Center Lock"
+    },
+    "other_specs": {
+      "source": "goosynn.com (official) + Panda Podium WooCommerce Store API",
+      "source_url": "https://goosynn.com/product/ti-fi-r30-wheelset/",
+      "price_usd": 1828,
+      "bearing_type": "CEMA/TPI Ceramic Bearing",
+      "spoke_count": 40,
+      "spoke_lacing": "2X Cross (front/rear)",
+      "nipples": "Aluminium Black (0.4g x 40)",
+      "neck_type": "Straight Pull",
+      "rim_material_detail": "Toray T700 & T800",
+      "bead_type": "Hooked",
+      "max_tire_pressure": "30C <= 70psi",
+      "tire_compatibility_c": "30C - 50C",
+      "recommended_rider_weight_kg": "<85",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 5,
+      "accessory": "Tubeless tape & 48mm titanium valve (pre-installed), pair of waterproof wheelset bags"
+    },
+    "prices": [
+      { "price_eur": null, "url": "https://goosynn.com/product/ti-fi-r30-wheelset/" }
+    ],
+    "images": [
+      "https://www.pandapodium.cc/wp-content/uploads/2025/02/R30.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/02/R30-2.png"
+    ],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://goosynn.com/product/ti-fi-r30-wheelset/", "price_eur": null },
+      "retailers": [
+        { "name": "Panda Podium", "price_eur": null, "url": "https://www.pandapodium.cc/product/goosynn-tifi-titanium-fiber-spoke-r30-wheelset/" }
+      ]
+    }
+  },
+  {
+    "id": 227,
+    "model": "Ti-Fi R30",
+    "brand": "GOOSYNN",
+    "variant": "pro",
+    "weight_grams": 1167,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 110,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 30,
+      "externalWidth_mm": 34,
+      "internalWidth_mm": 25,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Ti-Fi",
+      "brand": "GOOSYNN",
+      "material": "titanium"
+    },
+    "hub": {
+      "model": "GOOSYNN Race Pro Hub",
+      "brand": "GOOSYNN",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo N3W"],
+      "disc_standard": "Center Lock"
+    },
+    "other_specs": {
+      "source": "goosynn.com (official) + Panda Podium WooCommerce Store API",
+      "source_url": "https://goosynn.com/product/ti-fi-r30-pro-wheelset/",
+      "price_usd": 1969,
+      "bearing_type": "TPI Steel Bearing",
+      "spoke_count": 45,
+      "spoke_lacing": "2X Cross / 3X Cross (2:1 lacing)",
+      "nipples": "Aluminium Black (0.4g x 45)",
+      "neck_type": "Straight Pull",
+      "rim_material_detail": "Toray T700 & T800",
+      "bead_type": "Hooked",
+      "max_tire_pressure": "30C <= 70psi",
+      "tire_compatibility_c": "30C - 50C",
+      "recommended_rider_weight_kg": "<95",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 5,
+      "build_note": "PRO build: 2:1 lacing boosts strength",
+      "accessory": "Tubeless tape & titanium valve (pre-installed), pair of waterproof wheelset bags"
+    },
+    "prices": [
+      { "price_eur": null, "url": "https://goosynn.com/product/ti-fi-r30-pro-wheelset/" }
+    ],
+    "images": [
+      "https://www.pandapodium.cc/wp-content/uploads/2025/04/R30-PRO-1.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/07/R30-PRO-2.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/07/R30-PRO-3.png"
+    ],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://goosynn.com/product/ti-fi-r30-pro-wheelset/", "price_eur": null },
+      "retailers": [
+        { "name": "Panda Podium", "price_eur": null, "url": "https://www.pandapodium.cc/product/goosynn-tifi-titanium-fiber-spoke-r30pro-wheelset/" }
+      ]
+    }
+  },
+  {
+    "id": 228,
+    "model": "Ti-Fi R50",
+    "brand": "GOOSYNN",
+    "variant": "base",
+    "weight_grams": 1210,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 100,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 50,
+      "externalWidth_mm": 34,
+      "internalWidth_mm": 25,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Ti-Fi",
+      "brand": "GOOSYNN",
+      "material": "titanium"
+    },
+    "hub": {
+      "model": "GOOSYNN Hub",
+      "brand": "GOOSYNN",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo N3W"],
+      "disc_standard": "Center Lock"
+    },
+    "other_specs": {
+      "source": "goosynn.com (official) + Panda Podium WooCommerce Store API",
+      "source_url": "https://goosynn.com/product/ti-fi-r50-wheelset/",
+      "price_usd": 1828,
+      "bearing_type": "CEMA/TPI Ceramic Bearing",
+      "spoke_count": 40,
+      "spoke_lacing": "2X Cross (front/rear)",
+      "nipples": "Aluminium Black (0.4g x 40)",
+      "neck_type": "Straight Pull",
+      "rim_material_detail": "Toray T700 & T800",
+      "bead_type": "Hooked",
+      "max_tire_pressure": "30C <= 70psi",
+      "tire_compatibility_c": "30C - 50C",
+      "recommended_rider_weight_kg": "<85",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 5,
+      "accessory": "Tubeless tape & titanium valve (pre-installed), pair of waterproof wheelset bags"
+    },
+    "prices": [
+      { "price_eur": null, "url": "https://goosynn.com/product/ti-fi-r50-wheelset/" }
+    ],
+    "images": [
+      "https://www.pandapodium.cc/wp-content/uploads/2025/02/R50.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/02/R50-2.png"
+    ],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://goosynn.com/product/ti-fi-r50-wheelset/", "price_eur": null },
+      "retailers": [
+        { "name": "Panda Podium", "price_eur": null, "url": "https://www.pandapodium.cc/product/goosynn-tifi-titanium-fiber-spoke-r50-wheelset/" }
+      ]
+    }
+  },
+  {
+    "id": 229,
+    "model": "Ti-Fi R50",
+    "brand": "GOOSYNN",
+    "variant": "pro",
+    "weight_grams": 1267,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 110,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 50,
+      "externalWidth_mm": 34,
+      "internalWidth_mm": 25,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Ti-Fi",
+      "brand": "GOOSYNN",
+      "material": "titanium"
+    },
+    "hub": {
+      "model": "GOOSYNN Race Pro Hub",
+      "brand": "GOOSYNN",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo N3W"],
+      "disc_standard": "Center Lock"
+    },
+    "other_specs": {
+      "source": "goosynn.com (official) + Panda Podium WooCommerce Store API",
+      "source_url": "https://goosynn.com/product/ti-fi-r50-pro-wheelset/",
+      "price_usd": 1969,
+      "bearing_type": "TPI Steel Bearing",
+      "spoke_count": 45,
+      "spoke_lacing": "2X Cross / 3X Cross (2:1 lacing)",
+      "nipples": "Aluminium Black (0.4g x 45)",
+      "neck_type": "Straight Pull",
+      "rim_material_detail": "Toray T700 & T800",
+      "bead_type": "Hooked",
+      "max_tire_pressure": "30C <= 70psi",
+      "tire_compatibility_c": "30C - 50C",
+      "recommended_rider_weight_kg": "<95",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 5,
+      "build_note": "PRO build: 2:1 lacing boosts strength",
+      "accessory": "Tubeless tape & 70mm titanium valve (pre-installed), pair of waterproof wheelset bags"
+    },
+    "prices": [
+      { "price_eur": null, "url": "https://goosynn.com/product/ti-fi-r50-pro-wheelset/" }
+    ],
+    "images": [
+      "https://www.pandapodium.cc/wp-content/uploads/2025/04/R50-PRO-1.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/07/R50-PRO-2.png"
+    ],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://goosynn.com/product/ti-fi-r50-pro-wheelset/", "price_eur": null },
+      "retailers": [
+        { "name": "Panda Podium", "price_eur": null, "url": "https://www.pandapodium.cc/product/goosynn-tifi-titanium-fiber-spoke-r50pro-wheelset/" }
+      ]
+    }
+  },
+  {
+    "id": 230,
+    "model": "Ti-Fi G45 Pro",
+    "brand": "GOOSYNN",
+    "variant": null,
+    "weight_grams": 1317,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 110,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 40,
+      "internalWidth_mm": 32,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Ti-Fi",
+      "brand": "GOOSYNN",
+      "material": "titanium"
+    },
+    "hub": {
+      "model": "GOOSYNN Race Pro Hub",
+      "brand": "GOOSYNN",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo N3W"],
+      "disc_standard": "Center Lock"
+    },
+    "other_specs": {
+      "source": "goosynn.com (official) + Panda Podium WooCommerce Store API",
+      "source_url": "https://goosynn.com/product/ti-fi-g45-pro-wheelset/",
+      "price_usd": 1969,
+      "bearing_type": "TPI Steel Bearing",
+      "spoke_count": 45,
+      "spoke_lacing": "2X Cross / 3X Cross (2:1 lacing)",
+      "neck_type": "Straight Pull",
+      "rim_material_detail": "Toray T700 & T800",
+      "bead_type": "Hooked",
+      "tire_compatibility_c": "35C - 70C",
+      "recommended_rider_weight_kg": "<95",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 5,
+      "purpose": "Road / Gravel wide-profile (included as all-road per scope decision)",
+      "build_note": "PRO build: 2:1 lacing boosts strength",
+      "accessory": "Tubeless tape & titanium valve (pre-installed), pair of waterproof wheelset bags"
+    },
+    "prices": [
+      { "price_eur": null, "url": "https://goosynn.com/product/ti-fi-g45-pro-wheelset/" }
+    ],
+    "images": [
+      "https://www.pandapodium.cc/wp-content/uploads/2025/04/G45%E6%96%B0-1.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/04/G45%E6%96%B0-2.png",
+      "https://www.pandapodium.cc/wp-content/uploads/2025/04/G45%E6%96%B0-3.png"
+    ],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://goosynn.com/product/ti-fi-g45-pro-wheelset/", "price_eur": null },
+      "retailers": [
+        { "name": "Panda Podium", "price_eur": null, "url": "https://www.pandapodium.cc/product/goosynn-tifi-titanium-fiber-spoke-g45pro-wheelset/" }
+      ]
+    }
+  }
+]

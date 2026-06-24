@@ -34,24 +34,13 @@ lerna-debug.log*
 .env.*.local
 
 # Claude Code local settings
-.claude/settings.local.json
-.claude/scheduled_tasks.lock
+.claude/
 
 # Admin folder (private, not versioned)
 Administrative/
 
-# Archive folders
-**/archive/
-**/evolutions/
-
 # Design system (work in progress, transferred from Claude interface)
 design-system/
-
-# Scripts — credentials and generated output
-**/scripts/
-
-# Code reviews output (local, not versioned)
-reviews/
 
 # Local planning artifacts
 roadmap.html

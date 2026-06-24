@@ -1,0 +1,618 @@
+[
+  {
+    "brand": "Magene",
+    "model": "EXAR Carbon Fiber Wheelset Ultra Series",
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "internalWidth_mm": 23,
+      "tubeless_ready": true,
+      "depth_mm": {
+        "front": 40,
+        "rear": 45
+      },
+      "externalWidth_mm": 30
+    },
+    "spokes": {
+      "model": "HI-MOD carbon fiber",
+      "brand": "VONOA",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "EXAR 36T ratchet",
+      "brand": "Magene",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Campagnolo N3W",
+        "SRAM XDR"
+      ],
+      "disc_standard": null
+    },
+    "id": 255,
+    "variant": "db405",
+    "weight_grams": 1280,
+    "wheelset_category": "climbing",
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.magene.com/en/exar/191-exar-carbon-fiber-wheelset-ultra-series-2025.html"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.magene.com/en/exar/191-exar-carbon-fiber-wheelset-ultra-series-2025.html",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1199,
+      "bearing_type": "Ceramic",
+      "spoke_count_front": 21,
+      "spoke_count_rear": 21,
+      "front_wheel_spoke_lacing": "21H 2:1, brake side x2, non-brake side radial lacing",
+      "rear_wheel_spoke_lacing": "21H 2:1, drive side x2, brake side radial lacing",
+      "front_wheel_spoke_tension": "110kgf +/-10%",
+      "rear_wheel_spoke_tension": "Drive side 130kgf +/-10%, non-drive side 110kgf +/-10%",
+      "ratchet": "36T, compatible with DT system; replaceable with different tooth count",
+      "tire_compatibility": "Clincher/tubeless",
+      "compatible_tire_width": "25c and above; suggested 28c-32c",
+      "maximum_tire_pressure": "Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c",
+      "package_standard": "Carbon fiber front wheel x1, carbon fiber rear wheel x1, tubeless rim tape x2, rim plug x50, tubeless tire valve x2, manual x1",
+      "source_note": "Official Magene EXAR Ultra 2025 product page."
+    }
+  },
+  {
+    "brand": "Magene",
+    "model": "EXAR Carbon Fiber Wheelset Ultra Series",
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "internalWidth_mm": 23,
+      "tubeless_ready": true,
+      "depth_mm": {
+        "front": 50,
+        "rear": 58
+      },
+      "externalWidth_mm": 30
+    },
+    "spokes": {
+      "model": "HI-MOD carbon fiber",
+      "brand": "VONOA",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "EXAR 36T ratchet",
+      "brand": "Magene",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Campagnolo N3W",
+        "SRAM XDR"
+      ],
+      "disc_standard": null
+    },
+    "id": 256,
+    "variant": "db508",
+    "weight_grams": 1350,
+    "wheelset_category": "all-round",
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.magene.com/en/exar/191-exar-carbon-fiber-wheelset-ultra-series-2025.html"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.magene.com/en/exar/191-exar-carbon-fiber-wheelset-ultra-series-2025.html",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1199,
+      "bearing_type": "Ceramic",
+      "spoke_count_front": 21,
+      "spoke_count_rear": 21,
+      "front_wheel_spoke_lacing": "21H 2:1, brake side x2, non-brake side radial lacing",
+      "rear_wheel_spoke_lacing": "21H 2:1, drive side x2, brake side radial lacing",
+      "front_wheel_spoke_tension": "110kgf +/-10%",
+      "rear_wheel_spoke_tension": "Drive side 130kgf +/-10%, non-drive side 110kgf +/-10%",
+      "ratchet": "36T, compatible with DT system; replaceable with different tooth count",
+      "tire_compatibility": "Clincher/tubeless",
+      "compatible_tire_width": "25c and above; suggested 28c-32c",
+      "maximum_tire_pressure": "Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c",
+      "package_standard": "Carbon fiber front wheel x1, carbon fiber rear wheel x1, tubeless rim tape x2, rim plug x50, tubeless tire valve x2, manual x1",
+      "source_note": "Official Magene EXAR Ultra 2025 product page."
+    }
+  },
+  {
+    "brand": "Magene",
+    "model": "EXAR Carbon Fiber Wheelset Ultra Series",
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "internalWidth_mm": 23,
+      "tubeless_ready": true,
+      "depth_mm": {
+        "front": 60,
+        "rear": 67
+      },
+      "externalWidth_mm": {
+        "front": 32,
+        "rear": 30
+      }
+    },
+    "spokes": {
+      "model": "HI-MOD carbon fiber",
+      "brand": "VONOA",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "EXAR 36T ratchet",
+      "brand": "Magene",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Campagnolo N3W",
+        "SRAM XDR"
+      ],
+      "disc_standard": null
+    },
+    "id": 257,
+    "variant": "db607",
+    "weight_grams": 1460,
+    "wheelset_category": "aero",
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.magene.com/en/exar/191-exar-carbon-fiber-wheelset-ultra-series-2025.html"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.magene.com/en/exar/191-exar-carbon-fiber-wheelset-ultra-series-2025.html",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1199,
+      "bearing_type": "Ceramic",
+      "spoke_count_front": 21,
+      "spoke_count_rear": 21,
+      "front_wheel_spoke_lacing": "21H 2:1, brake side x2, non-brake side radial lacing",
+      "rear_wheel_spoke_lacing": "21H 2:1, drive side x2, brake side radial lacing",
+      "front_wheel_spoke_tension": "110kgf +/-10%",
+      "rear_wheel_spoke_tension": "Drive side 130kgf +/-10%, non-drive side 110kgf +/-10%",
+      "ratchet": "36T, compatible with DT system; replaceable with different tooth count",
+      "tire_compatibility": "Clincher/tubeless",
+      "compatible_tire_width": "25c and above; suggested 28c-32c",
+      "maximum_tire_pressure": "Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c",
+      "package_standard": "Carbon fiber front wheel x1, carbon fiber rear wheel x1, tubeless rim tape x2, rim plug x50, tubeless tire valve x2, manual x1",
+      "source_note": "Official Magene EXAR Ultra 2025 product page."
+    }
+  },
+  {
+    "brand": "Magene",
+    "model": "EXAR Carbon Fiber Wheelset UltraDark Series",
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "internalWidth_mm": 23,
+      "tubeless_ready": true,
+      "depth_mm": {
+        "front": 40,
+        "rear": 45
+      },
+      "externalWidth_mm": 30
+    },
+    "spokes": {
+      "model": "HI-MOD carbon fiber",
+      "brand": "VONOA",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "EXAR 36T ratchet",
+      "brand": "Magene",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Campagnolo N3W",
+        "SRAM XDR"
+      ],
+      "disc_standard": null
+    },
+    "id": 258,
+    "variant": "db405",
+    "weight_grams": 1305,
+    "wheelset_category": "climbing",
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.magene.com/en/exar/116-exar-carbon-fiber-wheelset-ultradark-series-2024.html"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.magene.com/en/exar/116-exar-carbon-fiber-wheelset-ultradark-series-2024.html",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 999,
+      "bearing_type": "Steel",
+      "spoke_count_front": 21,
+      "spoke_count_rear": 21,
+      "front_wheel_spoke_lacing": "21H 2:1, brake side x2, non-brake side radial lacing",
+      "rear_wheel_spoke_lacing": "21H 2:1, drive side x2, brake side radial lacing",
+      "front_wheel_spoke_tension": "110kgf +/-10%",
+      "rear_wheel_spoke_tension": "Drive side 130kgf +/-10%, non-drive side 110kgf +/-10%",
+      "ratchet": "36T, compatible with DT system; replaceable with different tooth count",
+      "tire_compatibility": "Clincher/tubeless",
+      "compatible_tire_width": "25c and above; suggested 28c-32c",
+      "maximum_tire_pressure": "Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c",
+      "package_standard": "Carbon fiber front wheel x1, carbon fiber rear wheel x1, tubeless rim tape x2, rim plug x50, tubeless tire valve x2, manual x1",
+      "source_note": "Official Magene EXAR UltraDark 2024 product page."
+    }
+  },
+  {
+    "brand": "Magene",
+    "model": "EXAR Carbon Fiber Wheelset UltraDark Series",
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "internalWidth_mm": 23,
+      "tubeless_ready": true,
+      "depth_mm": {
+        "front": 50,
+        "rear": 58
+      },
+      "externalWidth_mm": 30
+    },
+    "spokes": {
+      "model": "HI-MOD carbon fiber",
+      "brand": "VONOA",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "EXAR 36T ratchet",
+      "brand": "Magene",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Campagnolo N3W",
+        "SRAM XDR"
+      ],
+      "disc_standard": null
+    },
+    "id": 259,
+    "variant": "db508",
+    "weight_grams": 1390,
+    "wheelset_category": "all-round",
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.magene.com/en/exar/116-exar-carbon-fiber-wheelset-ultradark-series-2024.html"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.magene.com/en/exar/116-exar-carbon-fiber-wheelset-ultradark-series-2024.html",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 999,
+      "bearing_type": "Steel",
+      "spoke_count_front": 21,
+      "spoke_count_rear": 21,
+      "front_wheel_spoke_lacing": "21H 2:1, brake side x2, non-brake side radial lacing",
+      "rear_wheel_spoke_lacing": "21H 2:1, drive side x2, brake side radial lacing",
+      "front_wheel_spoke_tension": "110kgf +/-10%",
+      "rear_wheel_spoke_tension": "Drive side 130kgf +/-10%, non-drive side 110kgf +/-10%",
+      "ratchet": "36T, compatible with DT system; replaceable with different tooth count",
+      "tire_compatibility": "Clincher/tubeless",
+      "compatible_tire_width": "25c and above; suggested 28c-32c",
+      "maximum_tire_pressure": "Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c",
+      "package_standard": "Carbon fiber front wheel x1, carbon fiber rear wheel x1, tubeless rim tape x2, rim plug x50, tubeless tire valve x2, manual x1",
+      "source_note": "Official Magene EXAR UltraDark 2024 product page."
+    }
+  },
+  {
+    "brand": "Magene",
+    "model": "EXAR Carbon Fiber Wheelset Pro Series",
+    "diameter_mm": 700,
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "tubeless_ready": true,
+      "depth_mm": 45,
+      "externalWidth_mm": {
+        "front": 27,
+        "rear": 26
+      },
+      "internalWidth_mm": {
+        "front": 20,
+        "rear": 19.5
+      }
+    },
+    "spokes": {
+      "model": "Wing21",
+      "brand": "Pillar",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "EXAR 36T ratchet",
+      "brand": "Magene",
+      "freehub_options": [
+        "Shimano HG",
+        "Campagnolo N3W",
+        "SRAM XDR"
+      ],
+      "disc_standard": null,
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130"
+    },
+    "id": 260,
+    "variant": "rb45_pro",
+    "weight_grams": 1350,
+    "brake_type": "rim",
+    "wheelset_category": "all-round",
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.magene.com/en/exar/192-exar-carbon-fiber-wheelset-pro-series-2025.html"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.magene.com/en/exar/192-exar-carbon-fiber-wheelset-pro-series-2025.html",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 649,
+      "bearing_type": "",
+      "ratchet": "36T, compatible with DT system; replaceable with different tooth count",
+      "rear_wheel_spoke_tension": "Rim brake: drive side 120kgf +/-10%, non-drive side 100kgf +/-10%; disc brake: drive side 120kgf +/-10%, non-drive side 110kgf +/-10%",
+      "tire_compatibility": "Clincher/tubeless",
+      "compatible_tire_width": "25c and above; suggested 28c-32c",
+      "maximum_tire_pressure": "Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c",
+      "source_note": "Official Magene EXAR Pro 2025 product page.",
+      "brake_track": "Dewatering line design; carbon fiber composite brake blocks included",
+      "front_wheel_spoke_lacing": "Radial lacing, 16H",
+      "rear_wheel_spoke_lacing": "21H 2:1, drive side x2, non-drive side radial lacing",
+      "package_standard": "Carbon fiber front wheel x1, carbon fiber rear wheel x1, factory-installed tubeless rim tape x2, instruction manual x1, special carbon fiber brake block x4, quick release x2, tubeless valve x2"
+    }
+  },
+  {
+    "brand": "Magene",
+    "model": "EXAR Carbon Fiber Wheelset Pro Series",
+    "diameter_mm": 700,
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "tubeless_ready": true,
+      "depth_mm": 58,
+      "externalWidth_mm": {
+        "front": 27,
+        "rear": 26
+      },
+      "internalWidth_mm": {
+        "front": 20,
+        "rear": 19.5
+      }
+    },
+    "spokes": {
+      "model": "Wing21",
+      "brand": "Pillar",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "EXAR 36T ratchet",
+      "brand": "Magene",
+      "freehub_options": [
+        "Shimano HG",
+        "Campagnolo N3W",
+        "SRAM XDR"
+      ],
+      "disc_standard": null,
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130"
+    },
+    "id": 261,
+    "variant": "rb58_pro",
+    "weight_grams": 1425,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.magene.com/en/exar/192-exar-carbon-fiber-wheelset-pro-series-2025.html"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.magene.com/en/exar/192-exar-carbon-fiber-wheelset-pro-series-2025.html",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 649,
+      "bearing_type": "",
+      "ratchet": "36T, compatible with DT system; replaceable with different tooth count",
+      "rear_wheel_spoke_tension": "Rim brake: drive side 120kgf +/-10%, non-drive side 100kgf +/-10%; disc brake: drive side 120kgf +/-10%, non-drive side 110kgf +/-10%",
+      "tire_compatibility": "Clincher/tubeless",
+      "compatible_tire_width": "25c and above; suggested 28c-32c",
+      "maximum_tire_pressure": "Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c",
+      "source_note": "Official Magene EXAR Pro 2025 product page.",
+      "brake_track": "Dewatering line design; carbon fiber composite brake blocks included",
+      "front_wheel_spoke_lacing": "Radial lacing, 16H",
+      "rear_wheel_spoke_lacing": "21H 2:1, drive side x2, non-drive side radial lacing",
+      "package_standard": "Carbon fiber front wheel x1, carbon fiber rear wheel x1, factory-installed tubeless rim tape x2, instruction manual x1, special carbon fiber brake block x4, quick release x2, tubeless valve x2"
+    }
+  },
+  {
+    "brand": "Magene",
+    "model": "EXAR Carbon Fiber Wheelset Pro Series",
+    "diameter_mm": 700,
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "tubeless_ready": true,
+      "depth_mm": 45,
+      "externalWidth_mm": 27,
+      "internalWidth_mm": 20
+    },
+    "spokes": {
+      "model": "Wing21",
+      "brand": "Pillar",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "EXAR 36T ratchet",
+      "brand": "Magene",
+      "freehub_options": [
+        "Shimano HG",
+        "Campagnolo N3W",
+        "SRAM XDR"
+      ],
+      "disc_standard": "Center Lock",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142"
+    },
+    "id": 262,
+    "variant": "db45_pro",
+    "weight_grams": 1410,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.magene.com/en/exar/192-exar-carbon-fiber-wheelset-pro-series-2025.html"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.magene.com/en/exar/192-exar-carbon-fiber-wheelset-pro-series-2025.html",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 649,
+      "bearing_type": "",
+      "ratchet": "36T, compatible with DT system; replaceable with different tooth count",
+      "rear_wheel_spoke_tension": "Rim brake: drive side 120kgf +/-10%, non-drive side 100kgf +/-10%; disc brake: drive side 120kgf +/-10%, non-drive side 110kgf +/-10%",
+      "tire_compatibility": "Clincher/tubeless",
+      "compatible_tire_width": "25c and above; suggested 28c-32c",
+      "maximum_tire_pressure": "Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c",
+      "source_note": "Official Magene EXAR Pro 2025 product page.",
+      "alternate_frame_spacing": "100/135mm quick release available separately",
+      "front_wheel_spoke_lacing": "21H 2:1, brake side x2, non-brake side radial lacing",
+      "rear_wheel_spoke_lacing": "24H 2:1, drive side x2, brake side x2",
+      "package_standard": "Carbon fiber front wheel x1, carbon fiber rear wheel x1, factory-installed tubeless rim tape x2, instruction manual x1, tubeless valve x2"
+    }
+  },
+  {
+    "brand": "Magene",
+    "model": "EXAR Carbon Fiber Wheelset Pro Series",
+    "diameter_mm": 700,
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "tubeless_ready": true,
+      "depth_mm": 58,
+      "externalWidth_mm": 27,
+      "internalWidth_mm": 20
+    },
+    "spokes": {
+      "model": "Wing21",
+      "brand": "Pillar",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "EXAR 36T ratchet",
+      "brand": "Magene",
+      "freehub_options": [
+        "Shimano HG",
+        "Campagnolo N3W",
+        "SRAM XDR"
+      ],
+      "disc_standard": "Center Lock",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142"
+    },
+    "id": 263,
+    "variant": "db58_pro",
+    "weight_grams": 1500,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.magene.com/en/exar/192-exar-carbon-fiber-wheelset-pro-series-2025.html"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.magene.com/en/exar/192-exar-carbon-fiber-wheelset-pro-series-2025.html",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 649,
+      "bearing_type": "",
+      "ratchet": "36T, compatible with DT system; replaceable with different tooth count",
+      "rear_wheel_spoke_tension": "Rim brake: drive side 120kgf +/-10%, non-drive side 100kgf +/-10%; disc brake: drive side 120kgf +/-10%, non-drive side 110kgf +/-10%",
+      "tire_compatibility": "Clincher/tubeless",
+      "compatible_tire_width": "25c and above; suggested 28c-32c",
+      "maximum_tire_pressure": "Clincher: 110psi for 28c, 100psi for 30c, 90psi for 32c; tubeless: 100psi for 28c, 90psi for 30c, 80psi for 32c",
+      "source_note": "Official Magene EXAR Pro 2025 product page.",
+      "alternate_frame_spacing": "100/135mm quick release available separately",
+      "front_wheel_spoke_lacing": "21H 2:1, brake side x2, non-brake side radial lacing",
+      "rear_wheel_spoke_lacing": "24H 2:1, drive side x2, brake side x2",
+      "package_standard": "Carbon fiber front wheel x1, carbon fiber rear wheel x1, factory-installed tubeless rim tape x2, instruction manual x1, tubeless valve x2"
+    }
+  }
+]

@@ -1,0 +1,1048 @@
+[
+  {
+    "id": 292,
+    "brand": "9Velo",
+    "model": "Ultralight Road Disc Carbon Spoke EXTREME C Series",
+    "variant": "extreme_c42",
+    "weight_grams": 992,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 95,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 42,
+      "externalWidth_mm": 30,
+      "internalWidth_mm": 23.6,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Carbon spoke",
+      "brand": "9Velo",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "X21 ultra-lightweight carbon-spoke ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2026-ultralight-road-disc-carbon-spoke-extreme-c52-road-wheels-20h-20h-236-mm-inner-wide%2C-sub1000-grams"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2026-ultralight-road-disc-carbon-spoke-extreme-c52-road-wheels-20h-20h-236-mm-inner-wide%2C-sub1000-grams",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1799,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings",
+      "spoke_count_front": 20,
+      "spoke_count_rear": 20,
+      "spoke_lacing": "1:1 pattern",
+      "tire_compatibility": "Tubeless/clincher; 700x28c-700x47c",
+      "rim_bed": "Drilled"
+    }
+  },
+  {
+    "id": 293,
+    "brand": "9Velo",
+    "model": "Ultralight Road Disc Carbon Spoke EXTREME C Series",
+    "variant": "extreme_c52",
+    "weight_grams": 999,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 95,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 52,
+      "externalWidth_mm": 30,
+      "internalWidth_mm": 23.6,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Carbon spoke",
+      "brand": "9Velo",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "X21 ultra-lightweight carbon-spoke ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2026-ultralight-road-disc-carbon-spoke-extreme-c52-road-wheels-20h-20h-236-mm-inner-wide%2C-sub1000-grams"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2026-ultralight-road-disc-carbon-spoke-extreme-c52-road-wheels-20h-20h-236-mm-inner-wide%2C-sub1000-grams",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1799,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings",
+      "spoke_count_front": 20,
+      "spoke_count_rear": 20,
+      "spoke_lacing": "1:1 pattern",
+      "tire_compatibility": "Tubeless/clincher; 700x28c-700x47c",
+      "rim_bed": "Drilled"
+    }
+  },
+  {
+    "id": 294,
+    "brand": "9Velo",
+    "model": "Ultralight Road Disc Carbon Spoke EXTREME C Series",
+    "variant": "extreme_c62",
+    "weight_grams": 1162,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 95,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 62,
+      "externalWidth_mm": 30,
+      "internalWidth_mm": 23.6,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Carbon spoke",
+      "brand": "9Velo",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "X21 ultra-lightweight carbon-spoke ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2026-ultralight-road-disc-carbon-spoke-extreme-c52-road-wheels-20h-20h-236-mm-inner-wide%2C-sub1000-grams"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2026-ultralight-road-disc-carbon-spoke-extreme-c52-road-wheels-20h-20h-236-mm-inner-wide%2C-sub1000-grams",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1799,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings",
+      "spoke_count_front": 20,
+      "spoke_count_rear": 20,
+      "spoke_lacing": "1:1 pattern",
+      "tire_compatibility": "Tubeless/clincher; 700x28c-700x47c",
+      "rim_bed": "Drilled"
+    }
+  },
+  {
+    "id": 295,
+    "brand": "9Velo",
+    "model": "Road Disc Carbon Spoke CD Wide Series",
+    "variant": "cd50_wide",
+    "weight_grams": 1225,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 50,
+      "externalWidth_mm": 30,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Carbon spoke",
+      "brand": "9Velo",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "T17 lightweight carbon-spoke ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2025-road-disc-carbon-spoke-cd-wide-series-20h-20h"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2025-road-disc-carbon-spoke-cd-wide-series-20h-20h",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1289,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802",
+      "spoke_count_front": 20,
+      "spoke_count_rear": 20,
+      "spoke_lacing": "1:1 pattern",
+      "tire_compatibility": "Tubeless/clincher; 700x28c-700x47c",
+      "rim_bed": "Drilled",
+      "titanium_freehub_upgrade_weight_delta_grams": 18
+    }
+  },
+  {
+    "id": 296,
+    "brand": "9Velo",
+    "model": "Road Disc Carbon Spoke CD Wide Series",
+    "variant": "cd58_wide",
+    "weight_grams": 1323,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58,
+      "externalWidth_mm": 30,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Carbon spoke",
+      "brand": "9Velo",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "T17 lightweight carbon-spoke ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2025-road-disc-carbon-spoke-cd-wide-series-20h-20h"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2025-road-disc-carbon-spoke-cd-wide-series-20h-20h",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1289,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802",
+      "spoke_count_front": 20,
+      "spoke_count_rear": 20,
+      "spoke_lacing": "1:1 pattern",
+      "tire_compatibility": "Tubeless/clincher; 700x28c-700x47c",
+      "rim_bed": "Drilled",
+      "titanium_freehub_upgrade_weight_delta_grams": 18
+    }
+  },
+  {
+    "id": 297,
+    "brand": "9Velo",
+    "model": "Road Disc Carbon Spoke CD Wide Series",
+    "variant": "cd65_wide",
+    "weight_grams": 1428,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 65,
+      "externalWidth_mm": 30,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Carbon spoke",
+      "brand": "9Velo",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "T17 lightweight carbon-spoke ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2025-road-disc-carbon-spoke-cd-wide-series-20h-20h"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2025-road-disc-carbon-spoke-cd-wide-series-20h-20h",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1289,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802",
+      "spoke_count_front": 20,
+      "spoke_count_rear": 20,
+      "spoke_lacing": "1:1 pattern",
+      "tire_compatibility": "Tubeless/clincher; 700x28c-700x47c",
+      "rim_bed": "Drilled",
+      "titanium_freehub_upgrade_weight_delta_grams": 18
+    }
+  },
+  {
+    "id": 298,
+    "brand": "9Velo",
+    "model": "Road Disc Lightweight LV Wide Series",
+    "variant": "lv50_wide",
+    "weight_grams": 1315,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 50,
+      "externalWidth_mm": 30,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "T16 lightweight ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2025-road-disc-lightweight-lv-wide-series-24h-24h-24mm-inner-wide"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2025-road-disc-lightweight-lv-wide-series-24h-24h-24mm-inner-wide",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1039,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802",
+      "spoke_count_front": 24,
+      "spoke_count_rear": 24,
+      "spoke_lacing": "2X front, 2X rear",
+      "tire_compatibility": "Tubeless/clincher; 700x28c-700x47c",
+      "rim_bed": "No holes drilled",
+      "titanium_freehub_upgrade_weight_delta_grams": 18
+    }
+  },
+  {
+    "id": 299,
+    "brand": "9Velo",
+    "model": "Road Disc Lightweight LV Wide Series",
+    "variant": "lv58_wide",
+    "weight_grams": 1409,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58,
+      "externalWidth_mm": 30,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "T16 lightweight ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2025-road-disc-lightweight-lv-wide-series-24h-24h-24mm-inner-wide"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2025-road-disc-lightweight-lv-wide-series-24h-24h-24mm-inner-wide",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1039,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802",
+      "spoke_count_front": 24,
+      "spoke_count_rear": 24,
+      "spoke_lacing": "2X front, 2X rear",
+      "tire_compatibility": "Tubeless/clincher; 700x28c-700x47c",
+      "rim_bed": "No holes drilled",
+      "titanium_freehub_upgrade_weight_delta_grams": 18
+    }
+  },
+  {
+    "id": 300,
+    "brand": "9Velo",
+    "model": "Road Disc Carbon Spoke CD 2.0 Series",
+    "variant": "cd45_2_0",
+    "weight_grams": 1220,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 28.3,
+      "internalWidth_mm": 21,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Carbon spoke",
+      "brand": "9Velo",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "T17 lightweight carbon-spoke ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2024-road-disc-carbon-spoke-cd-20-series"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2024-road-disc-carbon-spoke-cd-20-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 989,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802",
+      "spoke_count_front": 20,
+      "spoke_count_rear": 20,
+      "spoke_lacing": "1:1 pattern",
+      "tire_compatibility": "Tubeless/clincher; 700x25c-700x47c",
+      "rim_bed": "Drilled",
+      "titanium_freehub_upgrade_weight_delta_grams": 18
+    }
+  },
+  {
+    "id": 301,
+    "brand": "9Velo",
+    "model": "Road Disc Carbon Spoke CD 2.0 Series",
+    "variant": "cd58_2_0",
+    "weight_grams": 1343,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58,
+      "externalWidth_mm": 28.7,
+      "internalWidth_mm": 21,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Carbon spoke",
+      "brand": "9Velo",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "T17 lightweight carbon-spoke ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2024-road-disc-carbon-spoke-cd-20-series"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2024-road-disc-carbon-spoke-cd-20-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 989,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6803, rear: 2x15267 + 2x6802",
+      "spoke_count_front": 20,
+      "spoke_count_rear": 20,
+      "spoke_lacing": "1:1 pattern",
+      "tire_compatibility": "Tubeless/clincher; 700x25c-700x47c",
+      "rim_bed": "Drilled",
+      "titanium_freehub_upgrade_weight_delta_grams": 18
+    }
+  },
+  {
+    "id": 302,
+    "brand": "9Velo",
+    "model": "Road Disc LV 2.0 Series",
+    "variant": "lv35_2_0",
+    "weight_grams": 1224,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 35,
+      "externalWidth_mm": 28,
+      "internalWidth_mm": 21,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "T16 lightweight ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2024-road-disc-lv-20-series"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2024-road-disc-lv-20-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 989,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802",
+      "spoke_count_front": 24,
+      "spoke_count_rear": 24,
+      "spoke_lacing": "2X front, 2X rear",
+      "tire_compatibility": "Tubeless/clincher; 700x25c-700x47c",
+      "rim_bed": "No holes drilled",
+      "titanium_freehub_upgrade_weight_delta_grams": 18
+    }
+  },
+  {
+    "id": 303,
+    "brand": "9Velo",
+    "model": "Road Disc LV 2.0 Series",
+    "variant": "lv45_2_0",
+    "weight_grams": 1309,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 28,
+      "internalWidth_mm": 21,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "T16 lightweight ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2024-road-disc-lv-20-series"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2024-road-disc-lv-20-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 989,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802",
+      "spoke_count_front": 24,
+      "spoke_count_rear": 24,
+      "spoke_lacing": "2X front, 2X rear",
+      "tire_compatibility": "Tubeless/clincher; 700x25c-700x47c",
+      "rim_bed": "No holes drilled",
+      "titanium_freehub_upgrade_weight_delta_grams": 18
+    }
+  },
+  {
+    "id": 304,
+    "brand": "9Velo",
+    "model": "Road Disc LV 2.0 Series",
+    "variant": "lv55_2_0",
+    "weight_grams": 1407,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 55,
+      "externalWidth_mm": 28,
+      "internalWidth_mm": 21,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "T16 lightweight ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2024-road-disc-lv-20-series"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2024-road-disc-lv-20-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 989,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6802, rear: 1x15267 + 3x6802",
+      "spoke_count_front": 24,
+      "spoke_count_rear": 24,
+      "spoke_lacing": "2X front, 2X rear",
+      "tire_compatibility": "Tubeless/clincher; 700x25c-700x47c",
+      "rim_bed": "No holes drilled",
+      "titanium_freehub_upgrade_weight_delta_grams": 18
+    }
+  },
+  {
+    "id": 305,
+    "brand": "9Velo",
+    "model": "Road Rim Brake Lightweight RL Series",
+    "variant": "rl40",
+    "weight_grams": 1346,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 40,
+      "externalWidth_mm": 26.3,
+      "internalWidth_mm": 19,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "V262 lightweight ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2024-road-rim-brake-lightweight-rl-series-20h-24h"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2024-road-rim-brake-lightweight-rl-series-20h-24h",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 964,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6803, rear: 1x15267 + 3x6802",
+      "spoke_count_front": 20,
+      "spoke_count_rear": 24,
+      "tire_compatibility": "Tubeless/clincher; 700x23c-700x45c",
+      "rim_bed": "No holes drilled",
+      "brake_track": "Specific heat-resistant rim-brake track; brake pads included"
+    }
+  },
+  {
+    "id": 306,
+    "brand": "9Velo",
+    "model": "Road Rim Brake Lightweight RL Series",
+    "variant": "rl55",
+    "weight_grams": 1469,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 55,
+      "externalWidth_mm": 27,
+      "internalWidth_mm": 19,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "V262 lightweight ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/9velo-2024-road-rim-brake-lightweight-rl-series-20h-24h"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/9velo-2024-road-rim-brake-lightweight-rl-series-20h-24h",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 964,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6803, rear: 1x15267 + 3x6802",
+      "spoke_count_front": 20,
+      "spoke_count_rear": 24,
+      "tire_compatibility": "Tubeless/clincher; 700x23c-700x45c",
+      "rim_bed": "No holes drilled",
+      "brake_track": "Specific heat-resistant rim-brake track; brake pads included"
+    }
+  },
+  {
+    "id": 307,
+    "brand": "9Velo",
+    "model": "Carbon Spoke Rim Brake CV Series",
+    "variant": "cv40",
+    "weight_grams": 1300,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 40,
+      "externalWidth_mm": 26,
+      "internalWidth_mm": 19,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Carbon spoke",
+      "brand": "9Velo",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "V350 straight-pull ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/carbon-spoke-rim-brake-cv-series"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/carbon-spoke-rim-brake-cv-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 899,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6802, rear: 3x6802 + 1x15267",
+      "spoke_count_front": 18,
+      "spoke_count_rear": 21,
+      "spoke_lacing": "Radial front, 2X rear",
+      "tire_compatibility": "Tubeless; 700x23c-700x45c",
+      "brake_track": "9Velo-specific brake pads included"
+    }
+  },
+  {
+    "id": 308,
+    "brand": "9Velo",
+    "model": "Carbon Spoke Rim Brake CV Series",
+    "variant": "cv55",
+    "weight_grams": 1425,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 55,
+      "externalWidth_mm": 26,
+      "internalWidth_mm": 19,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Carbon spoke",
+      "brand": "9Velo",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "V350 straight-pull ratchet",
+      "brand": "9Velo",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.9velo.com/products/carbon-spoke-rim-brake-cv-series"
+      }
+    ],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.9velo.com/products/carbon-spoke-rim-brake-cv-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 899,
+      "source_note": "Official 9Velo product page.",
+      "bearing_type": "Steel bearings, front: 2x6802, rear: 3x6802 + 1x15267",
+      "spoke_count_front": 18,
+      "spoke_count_rear": 21,
+      "spoke_lacing": "Radial front, 2X rear",
+      "tire_compatibility": "Tubeless; 700x23c-700x45c",
+      "brake_track": "9Velo-specific brake pads included"
+    }
+  }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

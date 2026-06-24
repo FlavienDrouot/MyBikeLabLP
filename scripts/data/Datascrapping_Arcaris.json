@@ -1,0 +1,152 @@
+[
+  {
+    "id": 206,
+    "model": "8848 Climbers Wheelset",
+    "brand": "Arcaris",
+    "variant": "base",
+    "weight_grams": 948.3,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 90,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 27,
+      "externalWidth_mm": 28.3,
+      "internalWidth_mm": 23,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "VONOA Carbon",
+      "brand": "VONOA",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "8848 H-WORKS",
+      "brand": "H-WORKS",
+      "axle_front_mm": null,
+      "axle_rear_mm": null,
+      "freehub_options": ["Shimano HG", "SRAM XDR"],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "Panda Podium WooCommerce Store API + product page",
+      "source_product_id": 38012,
+      "source_variation_id": 39387,
+      "price_usd": 1599,
+      "bearing_type": "Steel (TPI)",
+      "spoke_count_front": 16,
+      "spoke_count_rear": 18,
+      "recommended_rider_weight_kg": 75,
+      "min_tire_size_c": 25,
+      "max_tire_size_c": 38,
+      "max_tire_pressure_psi_28c": 110,
+      "rim_construction": "VAMspeed wind-tunnel-tested rim profile, Optiply high-modulus layup, hidden nipples, DSR-Lock patent-pending captive spokes, hooked (clincher & tubeless ready)",
+      "uci_approved": true,
+      "warranty": "2-year limited (manufacturing defects)",
+      "rear_lacing": "2:1",
+      "package_includes": "Spare spokes set, white stickers set, manual"
+    }
+  },
+  {
+    "id": 207,
+    "model": "8848 Climbers Wheelset",
+    "brand": "Arcaris",
+    "variant": "pro",
+    "weight_grams": 884.8,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 90,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 27,
+      "externalWidth_mm": 28.3,
+      "internalWidth_mm": 23,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "VONOA Carbon w/ Titanium Fittings",
+      "brand": "VONOA",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "8848 H-WORKS",
+      "brand": "H-WORKS",
+      "axle_front_mm": null,
+      "axle_rear_mm": null,
+      "freehub_options": ["Shimano HG", "SRAM XDR"],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "Panda Podium WooCommerce Store API + product page",
+      "source_product_id": 38012,
+      "source_variation_id": 39386,
+      "price_usd": 1899,
+      "bearing_type": "Hybrid Ceramic (TPI)",
+      "spoke_count_front": 16,
+      "spoke_count_rear": 18,
+      "recommended_rider_weight_kg": 75,
+      "min_tire_size_c": 25,
+      "max_tire_size_c": 38,
+      "max_tire_pressure_psi_28c": 110,
+      "rim_construction": "VAMspeed wind-tunnel-tested rim profile, Optiply high-modulus layup, hidden nipples, DSR-Lock patent-pending captive spokes, hooked (clincher & tubeless ready)",
+      "uci_approved": true,
+      "warranty": "2-year limited (manufacturing defects)",
+      "rear_lacing": "2:1",
+      "package_includes": "Spare spokes set, white stickers set, manual, rim truing tool"
+    }
+  },
+  {
+    "id": 208,
+    "model": "8848 Climbers Wheelset",
+    "brand": "Arcaris",
+    "variant": "max",
+    "weight_grams": 934.6,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 100,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 27,
+      "externalWidth_mm": 28.3,
+      "internalWidth_mm": 23,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Sapim CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "NONPLUS",
+      "brand": "NONPLUS",
+      "axle_front_mm": null,
+      "axle_rear_mm": null,
+      "freehub_options": ["Shimano HG", "SRAM XDR"],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "Panda Podium WooCommerce Store API + product page",
+      "source_product_id": 38012,
+      "source_variation_id": 39385,
+      "price_usd": 2499,
+      "bearing_type": "Steel (Enduro)",
+      "spoke_count_front": 24,
+      "spoke_count_rear": 24,
+      "recommended_rider_weight_kg": 90,
+      "min_tire_size_c": 25,
+      "max_tire_size_c": 38,
+      "max_tire_pressure_psi_28c": 110,
+      "rim_construction": "VAMspeed wind-tunnel-tested rim profile, Optiply high-modulus layup, hidden nipples, DSR-Lock patent-pending captive spokes, hooked (clincher & tubeless ready)",
+      "uci_approved": true,
+      "warranty": "2-year limited (manufacturing defects)",
+      "hub_origin": "NONPLUS hubs made in Germany, Sapim CX-Super spokes made in Europe",
+      "package_includes": "Spare spokes set, white stickers set, manual"
+    }
+  }
+]

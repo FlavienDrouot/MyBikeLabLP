@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "Le rapport identifie la mutation directe de l'état Redux et la classe en sévérité 🔴 Bloquant",
+      "passed": true,
+      "evidence": "Section 🔴 Bloquants → 'Mutation directe du store Redux dans le sélecteur' citant `WheelDetailPanel.jsx:9-15`. Explication détaillée du contrat Redux + middleware immutableCheck."
+    },
+    {
+      "text": "Le rapport signale la dépendance `wheelId` manquante dans useEffect avec scénario stale closure",
+      "passed": true,
+      "evidence": "Section 🔴 Bloquants → '`useEffect` avec deps vides ignore le changement de `wheelId`' avec scénario concret 'utilisateur ouvre roue A puis B → désynchronisation'."
+    },
+    {
+      "text": "Le rapport mentionne la clé manquante sur les `<li>` de history.map",
+      "passed": true,
+      "evidence": "Finding 🟠 '`history.map` sans `key` stable' citant `WheelDetailPanel.jsx:32-34` + suggestion `key={h.id}`."
+    },
+    {
+      "text": "Le rapport signale le `<div onClick={onClose}>` comme problème d'accessibilité",
+      "passed": true,
+      "evidence": "Finding 🟠 'Modale non accessible' couvre div cliquable + role + aria + Escape + focus trap. Mentionne aussi le bug d'event bubbling sur le contenu."
+    },
+    {
+      "text": "Le rapport ne propose PAS de migrer vers TypeScript comme correction",
+      "passed": true,
+      "evidence": "Aucune mention de TypeScript dans le rapport. PropTypes mentionné mais avec garde-fou 'si déjà utilisé ailleurs dans le repo'."
+    },
+    {
+      "text": "Le rapport suit le format demandé : Résumé, Findings groupés par sévérité (🔴/🟠/🟡/⚪), Questions ouvertes",
+      "passed": true,
+      "evidence": "Structure exacte : header avec Date/Périmètre/Verdict, ## Résumé, ## Findings avec sous-sections ### 🔴 Bloquants / ### 🟠 Importants / ### 🟡 Suggestions / ### ⚪ Nits, ## Questions ouvertes."
+    }
+  ]
+}

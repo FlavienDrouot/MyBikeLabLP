@@ -1,0 +1,3998 @@
+[
+  {
+    "id": 309,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "ceramicspeed_depth_45mm",
+    "weight_grams": 1150,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1759,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 310,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "ceramicspeed_depth_50mm",
+    "weight_grams": 1180,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 50,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1759,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 311,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "ceramicspeed_depth_585mm",
+    "weight_grams": 1280,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58.5,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1759,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 312,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "ceramicspeed_depth_4550",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 50
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1759,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 313,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "ceramicspeed_depth_50585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 50,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1759,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 314,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "ceramicspeed_depth_45585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1759,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 315,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "steel_bearing_depth_45mm",
+    "weight_grams": 1150,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1559,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 316,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "steel_bearing_depth_50mm",
+    "weight_grams": 1180,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 50,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1559,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 317,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "steel_bearing_depth_585mm",
+    "weight_grams": 1280,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58.5,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1559,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 318,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "steel_bearing_depth_4550",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 50
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1559,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 319,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "steel_bearing_depth_50585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 50,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1559,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 320,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO S Series",
+    "variant": "steel_bearing_depth_45585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOs5_e40214f2-47f6-461d-b6a6-3f7209c3eadb.jpg?v=1773998008"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1559,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 321,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "ceramicspeed_depth_45mm",
+    "weight_grams": 1250,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1659,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 322,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "ceramicspeed_depth_50mm",
+    "weight_grams": 1280,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 50,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1659,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 323,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "ceramicspeed_depth_585mm",
+    "weight_grams": 1380,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58.5,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1659,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 324,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "ceramicspeed_depth_4550",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 50
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1659,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 325,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "ceramicspeed_depth_50585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 50,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1659,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 326,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "ceramicspeed_depth_45585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1659,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "CeramicSpeed",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 327,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "steel_bearing_depth_45mm",
+    "weight_grams": 1250,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1459,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 328,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "steel_bearing_depth_50mm",
+    "weight_grams": 1280,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 50,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1459,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 329,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "steel_bearing_depth_585mm",
+    "weight_grams": 1380,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58.5,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1459,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 330,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "steel_bearing_depth_4550",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 50
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1459,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 331,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "steel_bearing_depth_50585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 50,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1459,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 332,
+    "brand": "FARSPORTS",
+    "model": "2026 EVO C Series",
+    "variant": "steel_bearing_depth_45585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/EVOc5_af1acb4c-81cf-494a-93ae-973179e33b94.jpg?v=1773998121"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-evo-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1459,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 333,
+    "brand": "FARSPORTS",
+    "model": "2026 S Series",
+    "variant": "standard_depth_45mm",
+    "weight_grams": 1190,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/10_ec5acbbd-2b7f-4a2a-9c73-9da9106c301f.jpg?v=1762943920"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1359,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 334,
+    "brand": "FARSPORTS",
+    "model": "2026 S Series",
+    "variant": "standard_depth_50mm",
+    "weight_grams": 1220,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 50,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/10_ec5acbbd-2b7f-4a2a-9c73-9da9106c301f.jpg?v=1762943920"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1359,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 335,
+    "brand": "FARSPORTS",
+    "model": "2026 S Series",
+    "variant": "standard_depth_585mm",
+    "weight_grams": 1320,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58.5,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/10_ec5acbbd-2b7f-4a2a-9c73-9da9106c301f.jpg?v=1762943920"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1359,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 336,
+    "brand": "FARSPORTS",
+    "model": "2026 S Series",
+    "variant": "standard_depth_4550",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 50
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/10_ec5acbbd-2b7f-4a2a-9c73-9da9106c301f.jpg?v=1762943920"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1359,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 337,
+    "brand": "FARSPORTS",
+    "model": "2026 S Series",
+    "variant": "standard_depth_50585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 50,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/10_ec5acbbd-2b7f-4a2a-9c73-9da9106c301f.jpg?v=1762943920"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1359,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 338,
+    "brand": "FARSPORTS",
+    "model": "2026 S Series",
+    "variant": "standard_depth_45585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "3.8 mm T-head carbon spoke",
+      "brand": "FARSPORTS",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "SH01F / SH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/10_ec5acbbd-2b7f-4a2a-9c73-9da9106c301f.jpg?v=1762943920"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-s-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1359,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "18/18H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 339,
+    "brand": "FARSPORTS",
+    "model": "2026 C Series",
+    "variant": "standard_depth_45mm",
+    "weight_grams": 1290,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/ecc52a86687f146277cfd2c9741b54ca_683ac6b8-e2c9-4698-a63e-2c74a72f54a5.jpg?v=1763523760"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1159,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 340,
+    "brand": "FARSPORTS",
+    "model": "2026 C Series",
+    "variant": "standard_depth_50mm",
+    "weight_grams": 1320,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 50,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/ecc52a86687f146277cfd2c9741b54ca_683ac6b8-e2c9-4698-a63e-2c74a72f54a5.jpg?v=1763523760"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1159,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 341,
+    "brand": "FARSPORTS",
+    "model": "2026 C Series",
+    "variant": "standard_depth_585mm",
+    "weight_grams": 1420,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58.5,
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/ecc52a86687f146277cfd2c9741b54ca_683ac6b8-e2c9-4698-a63e-2c74a72f54a5.jpg?v=1763523760"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1159,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 342,
+    "brand": "FARSPORTS",
+    "model": "2026 C Series",
+    "variant": "standard_depth_4550",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 50
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/ecc52a86687f146277cfd2c9741b54ca_683ac6b8-e2c9-4698-a63e-2c74a72f54a5.jpg?v=1763523760"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1159,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 343,
+    "brand": "FARSPORTS",
+    "model": "2026 C Series",
+    "variant": "standard_depth_50585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 50,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/ecc52a86687f146277cfd2c9741b54ca_683ac6b8-e2c9-4698-a63e-2c74a72f54a5.jpg?v=1763523760"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1159,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 344,
+    "brand": "FARSPORTS",
+    "model": "2026 C Series",
+    "variant": "standard_depth_45585",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 45,
+        "rear": 58.5
+      },
+      "externalWidth_mm": 31.5,
+      "internalWidth_mm": 24,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "Alpina Ultralite Aero / Sapim CX-Super",
+      "brand": "Alpina / Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "CH01F / CH01R ratchet",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "Shimano Micro Spline",
+        "SRAM XDR",
+        "Campagnolo ED",
+        "Campagnolo N3W"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/ecc52a86687f146277cfd2c9741b54ca_683ac6b8-e2c9-4698-a63e-2c74a72f54a5.jpg?v=1763523760"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/farsports-2026-new-c-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1159,
+      "source_note": "Official FARSPORTS Shopify product page.",
+      "bearing_type": "steel",
+      "spoke_count": "21/24H, 2:1 lacing",
+      "uci_approved": true,
+      "weight_tolerance": "+/- 5%"
+    }
+  },
+  {
+    "id": 345,
+    "brand": "FARSPORTS",
+    "model": "UFO Series",
+    "variant": "ufo7_disc",
+    "weight_grams": 1080,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 70,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "",
+      "brand": "",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/ufo-aero-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/8_cc2cb56f-4415-419c-9b5c-52654d7ea0de.jpg?v=1767505622"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/ufo-aero-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1699,
+      "source_note": "Official FARSPORTS Shopify product page; UFO full-disc rear combinations retained as triathlon wheelsets.",
+      "rear_disc_wheel": false
+    }
+  },
+  {
+    "id": 346,
+    "brand": "FARSPORTS",
+    "model": "UFO Series",
+    "variant": "ufo8_disc",
+    "weight_grams": 1740,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 80,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "",
+      "brand": "",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/ufo-aero-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/8_cc2cb56f-4415-419c-9b5c-52654d7ea0de.jpg?v=1767505622"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/ufo-aero-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1699,
+      "source_note": "Official FARSPORTS Shopify product page; UFO full-disc rear combinations retained as triathlon wheelsets.",
+      "rear_disc_wheel": false
+    }
+  },
+  {
+    "id": 347,
+    "brand": "FARSPORTS",
+    "model": "UFO Series",
+    "variant": "ufo7_rim",
+    "weight_grams": 1080,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 70,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "",
+      "brand": "",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "DT Swiss",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/ufo-aero-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/8_cc2cb56f-4415-419c-9b5c-52654d7ea0de.jpg?v=1767505622"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/ufo-aero-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1699,
+      "source_note": "Official FARSPORTS Shopify product page; UFO full-disc rear combinations retained as triathlon wheelsets.",
+      "rear_disc_wheel": false
+    }
+  },
+  {
+    "id": 348,
+    "brand": "FARSPORTS",
+    "model": "UFO Series",
+    "variant": "ufo8_rim",
+    "weight_grams": 1740,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 80,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "",
+      "brand": "",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "DT Swiss",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/ufo-aero-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/8_cc2cb56f-4415-419c-9b5c-52654d7ea0de.jpg?v=1767505622"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/ufo-aero-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1699,
+      "source_note": "Official FARSPORTS Shopify product page; UFO full-disc rear combinations retained as triathlon wheelsets.",
+      "rear_disc_wheel": false
+    }
+  },
+  {
+    "id": 349,
+    "brand": "FARSPORTS",
+    "model": "UFO Series",
+    "variant": "ufo7_full_disc_rear",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 70,
+        "rear": 0
+      },
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "",
+      "brand": "",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/ufo-aero-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/8_cc2cb56f-4415-419c-9b5c-52654d7ea0de.jpg?v=1767505622"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/ufo-aero-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 2599,
+      "source_note": "Official FARSPORTS Shopify product page; UFO full-disc rear combinations retained as triathlon wheelsets.",
+      "rear_disc_wheel": true
+    }
+  },
+  {
+    "id": 350,
+    "brand": "FARSPORTS",
+    "model": "UFO Series",
+    "variant": "ufo8_full_disc_rear",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": {
+        "front": 80,
+        "rear": 0
+      },
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "",
+      "brand": "",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/ufo-aero-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/files/8_cc2cb56f-4415-419c-9b5c-52654d7ea0de.jpg?v=1767505622"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/ufo-aero-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 2599,
+      "source_note": "Official FARSPORTS Shopify product page; UFO full-disc rear combinations retained as triathlon wheelsets.",
+      "rear_disc_wheel": true
+    }
+  },
+  {
+    "id": 351,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air2_super_dt180_rim",
+    "weight_grams": 1070,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 25,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT180 EXP",
+      "brand": "DT Swiss",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt180_rim"
+    }
+  },
+  {
+    "id": 352,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air3_super_dt180_rim",
+    "weight_grams": 1120,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 35,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT180 EXP",
+      "brand": "DT Swiss",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt180_rim"
+    }
+  },
+  {
+    "id": 353,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air4_dt180_rim",
+    "weight_grams": 1230,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT180 EXP",
+      "brand": "DT Swiss",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt180_rim"
+    }
+  },
+  {
+    "id": 354,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air6_dt180_rim",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT180 EXP",
+      "brand": "DT Swiss",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt180_rim"
+    }
+  },
+  {
+    "id": 355,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air2_super_dt180_disc",
+    "weight_grams": 1070,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 25,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT180 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt180_disc"
+    }
+  },
+  {
+    "id": 356,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air3_super_dt180_disc",
+    "weight_grams": 1120,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 35,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT180 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt180_disc"
+    }
+  },
+  {
+    "id": 357,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air4_dt180_disc",
+    "weight_grams": 1230,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT180 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt180_disc"
+    }
+  },
+  {
+    "id": 358,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air6_dt180_disc",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT180 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt180_disc"
+    }
+  },
+  {
+    "id": 359,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air2_super_extralite_rim",
+    "weight_grams": 1070,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 25,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "Extralite CyberRear SPD-2",
+      "brand": "Extralite",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "extralite_rim"
+    }
+  },
+  {
+    "id": 360,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air3_super_extralite_rim",
+    "weight_grams": 1120,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 35,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "Extralite CyberRear SPD-2",
+      "brand": "Extralite",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "extralite_rim"
+    }
+  },
+  {
+    "id": 361,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air4_extralite_rim",
+    "weight_grams": 1230,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "Extralite CyberRear SPD-2",
+      "brand": "Extralite",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "extralite_rim"
+    }
+  },
+  {
+    "id": 362,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air6_extralite_rim",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "Extralite CyberRear SPD-2",
+      "brand": "Extralite",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "extralite_rim"
+    }
+  },
+  {
+    "id": 363,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air2_super_extralite_disc",
+    "weight_grams": 1070,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 25,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "Extralite CyberRear SPD-3",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "extralite_disc"
+    }
+  },
+  {
+    "id": 364,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air3_super_extralite_disc",
+    "weight_grams": 1120,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 35,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "Extralite CyberRear SPD-3",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "extralite_disc"
+    }
+  },
+  {
+    "id": 365,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air4_extralite_disc",
+    "weight_grams": 1230,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "Extralite CyberRear SPD-3",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "extralite_disc"
+    }
+  },
+  {
+    "id": 366,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air6_extralite_disc",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "Extralite CyberRear SPD-3",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1688,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "extralite_disc"
+    }
+  },
+  {
+    "id": 367,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air2_super_dt240_rim",
+    "weight_grams": 1070,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 25,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "DT Swiss",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1288,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt240_rim"
+    }
+  },
+  {
+    "id": 368,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air3_super_dt240_rim",
+    "weight_grams": 1120,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 35,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "DT Swiss",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1288,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt240_rim"
+    }
+  },
+  {
+    "id": 369,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air4_dt240_rim",
+    "weight_grams": 1230,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "DT Swiss",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1088,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt240_rim"
+    }
+  },
+  {
+    "id": 370,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air6_dt240_rim",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "DT Swiss",
+      "axle_front_mm": "9x100",
+      "axle_rear_mm": "10x130",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": null
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1088,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt240_rim"
+    }
+  },
+  {
+    "id": 371,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air2_super_dt240_disc",
+    "weight_grams": 1070,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 25,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1488,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt240_disc"
+    }
+  },
+  {
+    "id": 372,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air3_super_dt240_disc",
+    "weight_grams": 1120,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 35,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1488,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt240_disc"
+    }
+  },
+  {
+    "id": 373,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air4_dt240_disc",
+    "weight_grams": 1230,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1288,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt240_disc"
+    }
+  },
+  {
+    "id": 374,
+    "brand": "FARSPORTS",
+    "model": "FAR Air Series",
+    "variant": "air6_dt240_disc",
+    "weight_grams": null,
+    "diameter_mm": 700,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": 120,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 58,
+      "externalWidth_mm": null,
+      "internalWidth_mm": null,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "CX-Super",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "DT240 EXP",
+      "brand": "FARSPORTS",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": [
+        "Shimano HG",
+        "SRAM XDR",
+        "Campagnolo ED"
+      ],
+      "disc_standard": "Center Lock"
+    },
+    "prices": [
+      {
+        "price_eur": null,
+        "url": "https://www.farsports.com/products/air-series"
+      }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0602/5537/1439/products/Air2-1_c1febe57-4760-4423-932e-f93ba5cf3911.png?v=1646431792"
+    ],
+    "affiliateLinks": {
+      "manufacturer": {
+        "url": "https://www.farsports.com/products/air-series",
+        "price_eur": null
+      },
+      "retailers": []
+    },
+    "other_specs": {
+      "price_usd": 1288,
+      "source_note": "Official FARSPORTS Shopify product page; model weights recouped with Panda Podium where the official page does not publish the table as text.",
+      "hub_build": "dt240_disc"
+    }
+  }
+]

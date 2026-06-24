@@ -1,0 +1,502 @@
+[
+  {
+    "id": 245,
+    "model": "Ultra 45/45 Disc Brake",
+    "brand": "Scom",
+    "weight_grams": 1350,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 26,
+      "internalWidth_mm": 19,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "ST-01",
+      "brand": "Scom",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "Disc Brake Hubs",
+      "brand": "Scom",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo ED"],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "SCOM official Ultra page + Panda Podium price/image cross-check",
+      "price_usd": 1599,
+      "bearing_type": "Enduro",
+      "tire_compatibility": "Clincher/Tubeless",
+      "rim_construction": "Zero-coating filament-wound carbon rim",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 3
+    },
+    "prices": [{ "price_eur": null, "url": "https://www.scomsports.com/scom-ultra/" }],
+    "images": ["https://www.pandapodium.cc/wp-content/uploads/2023/08/4545.jpg"],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://www.scomsports.com/scom-ultra/", "price_eur": null },
+      "retailers": [
+        {
+          "name": "Panda Podium",
+          "price_eur": null,
+          "url": "https://www.pandapodium.cc/product/scom-ultra-45-45-road-disc-brake-wheelset/"
+        }
+      ]
+    }
+  },
+  {
+    "id": 246,
+    "model": "Ultra 49/67 Disc Brake",
+    "brand": "Scom",
+    "weight_grams": 1510,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": { "front": 49, "rear": 67 },
+      "externalWidth_mm": 28,
+      "internalWidth_mm": 21,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "ST-01",
+      "brand": "Scom",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "Disc Brake Hubs",
+      "brand": "Scom",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo ED"],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "SCOM official Ultra page + Panda Podium price/image cross-check",
+      "price_usd": 1599,
+      "bearing_type": "Enduro",
+      "tire_compatibility": "Clincher/Tubeless",
+      "rim_construction": "Zero-coating filament-wound carbon rim",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 3
+    },
+    "prices": [{ "price_eur": null, "url": "https://www.scomsports.com/scom-ultra/" }],
+    "images": ["https://www.pandapodium.cc/wp-content/uploads/2023/08/4967.jpg"],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://www.scomsports.com/scom-ultra/", "price_eur": null },
+      "retailers": [
+        {
+          "name": "Panda Podium",
+          "price_eur": null,
+          "url": "https://www.pandapodium.cc/product/scom-ultra-49-67-road-disc-brake-wheelset/"
+        }
+      ]
+    }
+  },
+  {
+    "id": 247,
+    "model": "Ultra 67/67 Disc Brake",
+    "brand": "Scom",
+    "weight_grams": 1540,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 67,
+      "externalWidth_mm": 28,
+      "internalWidth_mm": 21,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "ST-01",
+      "brand": "Scom",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "Disc Brake Hubs",
+      "brand": "Scom",
+      "axle_front_mm": "12x100",
+      "axle_rear_mm": "12x142",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo ED"],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "SCOM official Ultra page + Panda Podium price/image cross-check",
+      "price_usd": 1599,
+      "bearing_type": "Enduro",
+      "tire_compatibility": "Clincher/Tubeless",
+      "rim_construction": "Zero-coating filament-wound carbon rim",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 3
+    },
+    "prices": [{ "price_eur": null, "url": "https://www.scomsports.com/scom-ultra/" }],
+    "images": ["https://www.pandapodium.cc/wp-content/uploads/2023/08/6767.jpg"],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://www.scomsports.com/scom-ultra/", "price_eur": null },
+      "retailers": [
+        {
+          "name": "Panda Podium",
+          "price_eur": null,
+          "url": "https://www.pandapodium.cc/product/scom-ultra-67-67-road-disc-brake-wheelset/"
+        }
+      ]
+    }
+  },
+  {
+    "id": 248,
+    "model": "Ultra 45/45 Rim Brake",
+    "brand": "Scom",
+    "weight_grams": 1280,
+    "diameter_mm": 622,
+    "brake_type": "rim",
+    "wheelset_category": "climbing",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 45,
+      "externalWidth_mm": 26,
+      "internalWidth_mm": 19,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "ST-01",
+      "brand": "Scom",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "Rim Brake Hubs",
+      "brand": "Scom",
+      "axle_front_mm": "9mm QR",
+      "axle_rear_mm": "9mm QR",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo ED"],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "SCOM official Ultra page",
+      "bearing_type": "Enduro",
+      "tire_compatibility": "Clincher/Tubeless",
+      "rim_construction": "Zero-coating filament-wound carbon rim",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 3
+    },
+    "prices": [{ "price_eur": null, "url": "https://www.scomsports.com/scom-ultra/" }],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://www.scomsports.com/scom-ultra/", "price_eur": null },
+      "retailers": []
+    }
+  },
+  {
+    "id": 249,
+    "model": "Ultra 49/67 Rim Brake",
+    "brand": "Scom",
+    "weight_grams": 1440,
+    "diameter_mm": 622,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": { "front": 49, "rear": 67 },
+      "externalWidth_mm": 28,
+      "internalWidth_mm": 21,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "ST-01",
+      "brand": "Scom",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "Rim Brake Hubs",
+      "brand": "Scom",
+      "axle_front_mm": "9mm QR",
+      "axle_rear_mm": "9mm QR",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo ED"],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "SCOM official Ultra page",
+      "bearing_type": "Enduro",
+      "tire_compatibility": "Clincher/Tubeless",
+      "rim_construction": "Zero-coating filament-wound carbon rim",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 3
+    },
+    "prices": [{ "price_eur": null, "url": "https://www.scomsports.com/scom-ultra/" }],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://www.scomsports.com/scom-ultra/", "price_eur": null },
+      "retailers": []
+    }
+  },
+  {
+    "id": 250,
+    "model": "Ultra 67/67 Rim Brake",
+    "brand": "Scom",
+    "weight_grams": 1480,
+    "diameter_mm": 622,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": false,
+      "depth_mm": 67,
+      "externalWidth_mm": 28,
+      "internalWidth_mm": 21,
+      "tubeless_ready": true
+    },
+    "spokes": {
+      "model": "ST-01",
+      "brand": "Scom",
+      "material": "carbon"
+    },
+    "hub": {
+      "model": "Rim Brake Hubs",
+      "brand": "Scom",
+      "axle_front_mm": "9mm QR",
+      "axle_rear_mm": "9mm QR",
+      "freehub_options": ["Shimano HG", "SRAM XDR", "Campagnolo ED"],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "SCOM official Ultra page",
+      "bearing_type": "Enduro",
+      "tire_compatibility": "Clincher/Tubeless",
+      "rim_construction": "Zero-coating filament-wound carbon rim",
+      "warranty_years": 5,
+      "weight_tolerance_percent": 3
+    },
+    "prices": [{ "price_eur": null, "url": "https://www.scomsports.com/scom-ultra/" }],
+    "images": [],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://www.scomsports.com/scom-ultra/", "price_eur": null },
+      "retailers": []
+    }
+  },
+  {
+    "id": 251,
+    "model": "Aerolite 45/45 Disc Brake",
+    "brand": "Scom",
+    "weight_grams": 1420,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "all-round",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": null,
+      "depth_mm": 45,
+      "externalWidth_mm": 26,
+      "internalWidth_mm": 19,
+      "tubeless_ready": null
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "",
+      "brand": "Scom",
+      "axle_front_mm": null,
+      "axle_rear_mm": null,
+      "freehub_options": [],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "SCOM Aerolite official page currently says Coming soon; specs from Panda Podium WooCommerce Store API",
+      "source_product_id": 5066,
+      "price_usd": 1299,
+      "bearing_type": "Enduro",
+      "retailer_description": "AEROLITE series with SAPIM CX-RAY spokes; 45/45 disc listed at 1420g; 5-year warranty"
+    },
+    "prices": [{ "price_eur": null, "url": "https://www.scomsports.com/scom-aerolite/" }],
+    "images": ["https://www.pandapodium.cc/wp-content/uploads/2023/08/4545DW.jpg"],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://www.scomsports.com/scom-aerolite/", "price_eur": null },
+      "retailers": [
+        {
+          "name": "Panda Podium",
+          "price_eur": null,
+          "url": "https://www.pandapodium.cc/product/scom-aerolite-45-45-road-disc-brake-wheelset/"
+        }
+      ]
+    }
+  },
+  {
+    "id": 252,
+    "model": "Aerolite 49/67 Disc Brake",
+    "brand": "Scom",
+    "weight_grams": 1590,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": null,
+      "depth_mm": { "front": 49, "rear": 67 },
+      "externalWidth_mm": 28,
+      "internalWidth_mm": 21,
+      "tubeless_ready": null
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "",
+      "brand": "Scom",
+      "axle_front_mm": null,
+      "axle_rear_mm": null,
+      "freehub_options": [],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "SCOM Aerolite official page currently says Coming soon; specs from Panda Podium WooCommerce Store API",
+      "source_product_id": 5069,
+      "price_usd": 1299,
+      "bearing_type": "Enduro",
+      "retailer_description": "AEROLITE series with SAPIM CX-RAY spokes; 49/67 disc listed at 1590g; 5-year warranty"
+    },
+    "prices": [{ "price_eur": null, "url": "https://www.scomsports.com/scom-aerolite/" }],
+    "images": [
+      "https://www.pandapodium.cc/wp-content/uploads/2023/08/4967DB.jpg",
+      "https://www.pandapodium.cc/wp-content/uploads/2023/08/4967DW.jpg"
+    ],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://www.scomsports.com/scom-aerolite/", "price_eur": null },
+      "retailers": [
+        {
+          "name": "Panda Podium",
+          "price_eur": null,
+          "url": "https://www.pandapodium.cc/product/scom-aerolite-49-67-road-disc-brake-wheelset/"
+        }
+      ]
+    }
+  },
+  {
+    "id": 253,
+    "model": "Aerolite 67/67 Disc Brake",
+    "brand": "Scom",
+    "weight_grams": 1620,
+    "diameter_mm": 622,
+    "brake_type": "disc",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": null,
+      "depth_mm": 67,
+      "externalWidth_mm": 28,
+      "internalWidth_mm": 21,
+      "tubeless_ready": null
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "",
+      "brand": "Scom",
+      "axle_front_mm": null,
+      "axle_rear_mm": null,
+      "freehub_options": [],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "SCOM Aerolite official page currently says Coming soon; specs from Panda Podium WooCommerce Store API",
+      "source_product_id": 5077,
+      "price_usd": 1299,
+      "bearing_type": "Enduro",
+      "retailer_description": "AEROLITE series with SAPIM CX-RAY spokes; 67/67 disc listed at 1620g; 5-year warranty"
+    },
+    "prices": [{ "price_eur": null, "url": "https://www.scomsports.com/scom-aerolite/" }],
+    "images": [
+      "https://www.pandapodium.cc/wp-content/uploads/2023/08/6767DB.jpg",
+      "https://www.pandapodium.cc/wp-content/uploads/2023/08/6767DW.jpg"
+    ],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://www.scomsports.com/scom-aerolite/", "price_eur": null },
+      "retailers": [
+        {
+          "name": "Panda Podium",
+          "price_eur": null,
+          "url": "https://www.pandapodium.cc/product/scom-aerolite-67-67-road-disc-brake-wheelset/"
+        }
+      ]
+    }
+  },
+  {
+    "id": 254,
+    "model": "Aerolite 49/67 Rim Brake",
+    "brand": "Scom",
+    "weight_grams": 1530,
+    "diameter_mm": 622,
+    "brake_type": "rim",
+    "wheelset_category": "aero",
+    "max_system_weight_kg": null,
+    "rim": {
+      "material": "carbon",
+      "hookless": null,
+      "depth_mm": { "front": 49, "rear": 67 },
+      "externalWidth_mm": 28,
+      "internalWidth_mm": 21,
+      "tubeless_ready": null
+    },
+    "spokes": {
+      "model": "CX-Ray",
+      "brand": "Sapim",
+      "material": "steel"
+    },
+    "hub": {
+      "model": "",
+      "brand": "Scom",
+      "axle_front_mm": null,
+      "axle_rear_mm": null,
+      "freehub_options": [],
+      "disc_standard": null
+    },
+    "other_specs": {
+      "source": "SCOM Aerolite official page currently says Coming soon; specs from Panda Podium WooCommerce Store API",
+      "source_product_id": 5073,
+      "price_usd": 1299,
+      "bearing_type": "Enduro",
+      "retailer_description": "AEROLITE series with SAPIM CX-RAY spokes; 49/67 rim brake listed at 1530g; high-temperature resin; 5-year warranty"
+    },
+    "prices": [{ "price_eur": null, "url": "https://www.scomsports.com/scom-aerolite/" }],
+    "images": [
+      "https://www.pandapodium.cc/wp-content/uploads/2023/08/4967RW.jpg",
+      "https://www.pandapodium.cc/wp-content/uploads/2023/08/4967RB.jpg"
+    ],
+    "affiliateLinks": {
+      "manufacturer": { "url": "https://www.scomsports.com/scom-aerolite/", "price_eur": null },
+      "retailers": [
+        {
+          "name": "Panda Podium",
+          "price_eur": null,
+          "url": "https://www.pandapodium.cc/product/scom-aerolite-49-67-road-rim-brake-wheelset/"
+        }
+      ]
+    }
+  }
+]
