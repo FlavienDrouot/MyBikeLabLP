@@ -18,18 +18,6 @@ A Project groups several evolutions sharing one goal and definition of done. Chi
 
 | ID | Slug | Phase | Status | Project |
 |---|---|---|---|---|
-| EVO-047 | foundation | Light EVO | Done | PROJ-001 |
-| EVO-048 | hub-bearing-material | Light EVO | Done | PROJ-001 |
-| EVO-049 | spokes-count | Light EVO | Done | PROJ-001 |
-| EVO-050 | spokes-detail | Light EVO | Done | PROJ-001 |
-| EVO-051 | rim-material-construction | Light EVO | Done | PROJ-001 |
-| EVO-052 | rim-max-tire-pressure | Light EVO | Done | PROJ-001 |
-| EVO-053 | warranty | Light EVO | Done | PROJ-001 |
-| EVO-054 | certification | Light EVO | Done | PROJ-001 |
-| EVO-055 | weight-tolerance | Light EVO | Done | PROJ-001 |
-| EVO-056 | tire-compatibility | Light EVO | Done | PROJ-001 |
-| EVO-057 | hub-engagement | Light EVO | Done | PROJ-001 |
-| EVO-058 | tire-width-mm | Light EVO | Done | PROJ-001 |
 
 ## Fixes
 
@@ -119,3 +107,17 @@ Completed and abandoned evolutions move to `evolutions/archive/`.
 | EVO-044 | product-variants-catalog-model |
 | EVO-045 | variant-field-per-row |
 | EVO-046 | currency-management |
+| EVO-047 | foundation |
+| EVO-048 | hub-bearing-material |
+| EVO-049 | spokes-count |
+| EVO-050 | spokes-detail |
+| EVO-051 | rim-material-construction |
+| EVO-052 | rim-max-tire-pressure |
+| EVO-053 | warranty |
+| EVO-054 | certification |
+| EVO-055 | weight-tolerance |
+| EVO-056 | tire-compatibility |
+| EVO-057 | hub-engagement |
+| EVO-058 | tire-width-mm |
+| EVO-059 | table-overflow-white-space |
+| EVO-060 | filter-range-nowrap |
