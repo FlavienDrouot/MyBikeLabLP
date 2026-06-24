@@ -39,8 +39,5 @@ lerna-debug.log*
 # Admin folder (private, not versioned)
 Administrative/
 
-# Design system (work in progress, transferred from Claude interface)
-design-system/
-
 # Local planning artifacts
 roadmap.html

@@ -1,4 +1,4 @@
-﻿# MyBikeLab Agent Instructions
+# MyBikeLab Agent Instructions
 
 ## Scope
 
@@ -53,7 +53,7 @@ Direct product-file access is appropriate only for explicit file-level requests 
 | `frontend/` | React application source, configuration, and build setup |
 | `scripts/` | Data ingestion scripts and prompts (gitignored) |
 | `evolutions/` | Product evolution specs, fixes, and archived work (gitignored) |
-| `design-system/` | Design tokens, UI kits, editorial rules, and implementation guidance (gitignored) |
+| `frontend/design-system/` | Design tokens, UI kits, editorial rules, and implementation guidance (gitignored) |
 | `.github/workflows/deploy.yml` | GitHub Pages deployment pipeline |
 
 ## Git And Shell
@@ -85,9 +85,9 @@ Use built-in web search for current facts and citation-heavy research. Use `agen
 
 Before implementing a new component or page surface, read:
 
-1. `design-system/README.md`
-2. `design-system/IMPLEMENTATION-GUIDE.md`
-3. The relevant reference under `design-system/ui_kits/<surface>/`, when one exists
+1. `frontend/design-system/README.md`
+2. `frontend/design-system/IMPLEMENTATION-GUIDE.md`
+3. The relevant reference under `frontend/design-system/ui_kits/<surface>/`, when one exists
 
 Follow the local design-system rules over ad hoc styling choices.
 
@@ -119,4 +119,5 @@ Small implementation edits that do not change behavior, contracts, structure, wo
 - Local rules specialize parent rules but may not weaken global workspace rules.
 - After a meaningful change, check whether the nearest README or instruction file and any parent navigation table must be updated.
 - Every durable structural folder or instruction file must remain reachable through the navigation chain.
+
 

@@ -1,0 +1,55 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--paper-1); }
+  body { padding: 22px 28px; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; align-items: center; }
+  .label { font-family: var(--font-mono); font-size: 9px; color: var(--ink-7); width: 110px; }
+
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-sans); font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.02em; }
+  .badge-square { border-radius: 2px; padding: 3px 8px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em; font-weight: 500; }
+
+  .b-neutral { background: var(--paper-2); color: var(--ink-10); border: 1px solid var(--ink-3); }
+  .b-ink { background: var(--ink-12); color: var(--paper-1); }
+  .b-brass { background: var(--brass-3); color: var(--brass-11); border: 1px solid var(--brass-6); }
+  .b-sage { background: var(--sage-2); color: var(--sage-10); border: 1px solid var(--sage-4); }
+  .b-up { background: transparent; color: var(--signal-up); border: 1px solid var(--signal-up); }
+  .b-down { background: transparent; color: var(--signal-down); border: 1px solid var(--signal-down); }
+  .b-warn { background: transparent; color: var(--signal-warn); border: 1px solid var(--signal-warn); }
+
+  .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+</style></head>
+<body>
+  <div class="row">
+    <div class="label">PILL · spec</div>
+    <span class="badge b-neutral">Hooked</span>
+    <span class="badge b-brass">Hookless</span>
+    <span class="badge b-sage">Carbon</span>
+    <span class="badge b-neutral">Aluminum</span>
+  </div>
+  <div class="row">
+    <div class="label">PILL · delta</div>
+    <span class="badge b-up">↓ 185 g lighter</span>
+    <span class="badge b-down">↑ €350 more</span>
+    <span class="badge b-warn">indicative</span>
+  </div>
+  <div class="row">
+    <div class="label">SQUARE · meta</div>
+    <span class="badge-square b-neutral">2025-Q2</span>
+    <span class="badge-square b-ink">IN STOCK</span>
+    <span class="badge-square b-brass">PARTNER</span>
+  </div>
+  <div class="row">
+    <div class="label">DOT · availability</div>
+    <span class="badge b-neutral"><span class="dot" style="background:var(--signal-up)"></span>In stock</span>
+    <span class="badge b-neutral"><span class="dot" style="background:var(--signal-warn)"></span>Pre-order</span>
+    <span class="badge b-neutral"><span class="dot" style="background:var(--ink-6)"></span>Sold out</span>
+  </div>
+  <div class="row">
+    <div class="label">ROADMAP</div>
+    <span class="badge-square b-ink">Live</span>
+    <span class="badge-square b-neutral">Next</span>
+    <span class="badge-square b-neutral" style="opacity:0.6;">Vision</span>
+  </div>
+</body></html>

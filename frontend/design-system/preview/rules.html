@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--paper-1); }
+  body { padding: 22px 28px; }
+  .item { padding: 12px 0; display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: center; }
+  .name { font-family: var(--font-mono); font-size: 10px; color: var(--ink-11); font-weight: 600; }
+  .desc { font-family: var(--font-sans); font-size: 9px; color: var(--ink-7); margin-top: 2px; }
+  .heading { font-family: var(--font-sans); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-8); margin: 0 0 8px 0; }
+</style></head>
+<body>
+  <div class="heading">Rules · hairline divider system</div>
+  <div class="item">
+    <div><div class="name">rule-strong</div><div class="desc">1px ink-10 · section keyline</div></div>
+    <hr class="rule-strong" style="width: 100%; margin: 0;">
+  </div>
+  <div class="item">
+    <div><div class="name">rule</div><div class="desc">1px ink-4 · default divider, table rows</div></div>
+    <hr class="rule" style="width: 100%; margin: 0;">
+  </div>
+  <div class="item">
+    <div><div class="name">rule-faint</div><div class="desc">1px ink-3 · subtle separation</div></div>
+    <hr class="rule-faint" style="width: 100%; margin: 0;">
+  </div>
+  <div class="item">
+    <div><div class="name">rule-double</div><div class="desc">Two-stroke editorial divider</div></div>
+    <hr class="rule-double" style="width: 100%; margin: 0;">
+  </div>
+</body></html>

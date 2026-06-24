@@ -1,19 +1,19 @@
-/* DO NOT EDIT — verbatim copy of design-system/colors_and_type.css :root block.
+/* DO NOT EDIT â€” verbatim copy of ../design-system/colors_and_type.css :root block.
    Update by replacing this file entirely from the source of truth.
-   @import for Google Fonts is intentionally omitted — fonts are self-hosted via fonts.css. */
+   @import for Google Fonts is intentionally omitted â€” fonts are self-hosted via fonts.css. */
 
 :root {
   /* ==========================================================================
-     COLOR — Foundations
+     COLOR â€” Foundations
      ========================================================================== */
 
-  /* Paper — warm off-white system. Default surfaces. */
+  /* Paper â€” warm off-white system. Default surfaces. */
   --paper-0:   #fbfaf6;   /* lightest; large surfaces, hero */
   --paper-1:   #f6f4ef;   /* default page background */
   --paper-2:   #efebe2;   /* recessed panels, table headers */
   --paper-3:   #e6e0d2;   /* dividers on paper, muted chips */
 
-  /* Ink — deep neutral scale (warm-cool black, slight green undertone). */
+  /* Ink â€” deep neutral scale (warm-cool black, slight green undertone). */
   --ink-12:    #0e0f0c;   /* near-black; primary type, brand mark */
   --ink-11:    #1a1a17;   /* primary text */
   --ink-10:    #2a2a26;   /* headings */
@@ -27,12 +27,12 @@
   --ink-2:     #e4e2d6;   /* soft fill */
   --ink-1:     #efede2;   /* lightest fill */
 
-  /* Brass — premium accent. Use sparingly: key metric, focus ring, primary CTA fill. */
+  /* Brass â€” premium accent. Use sparingly: key metric, focus ring, primary CTA fill. */
   --brass-12:  #2a2014;
   --brass-11:  #4a3a1f;
   --brass-10:  #6b5328;
   --brass-9:   #8c6e35;
-  --brass-8:   #a88846;   /* deep brass — text on paper */
+  --brass-8:   #a88846;   /* deep brass â€” text on paper */
   --brass-7:   #c9a86a;   /* core brass token */
   --brass-6:   #d6bb87;
   --brass-5:   #e2cea4;
@@ -41,7 +41,7 @@
   --brass-2:   #f8f1e4;
   --brass-1:   #fcf8ef;
 
-  /* Sage — secondary support. Quiet neutrals with a green cast. */
+  /* Sage â€” secondary support. Quiet neutrals with a green cast. */
   --sage-12:   #14181a;
   --sage-11:   #1f2522;
   --sage-10:   #2d3530;
@@ -55,14 +55,14 @@
   --sage-2:    #e2e5dc;
   --sage-1:    #eef0ea;
 
-  /* Semantic — used only for status. No bright marketing colors. */
-  --signal-up:   #2f6b3a;   /* gain / lighter / faster — desaturated green */
-  --signal-down: #a23a2a;   /* loss / heavier — burnt sienna, not pure red */
+  /* Semantic â€” used only for status. No bright marketing colors. */
+  --signal-up:   #2f6b3a;   /* gain / lighter / faster â€” desaturated green */
+  --signal-down: #a23a2a;   /* loss / heavier â€” burnt sienna, not pure red */
   --signal-warn: #a8782a;   /* caution */
   --signal-info: #2f4e6b;   /* informational; almost-navy */
 
   /* ==========================================================================
-     SEMANTIC TOKENS — Foreground / background / border
+     SEMANTIC TOKENS â€” Foreground / background / border
      ========================================================================== */
 
   --bg-page:        var(--paper-1);
@@ -91,7 +91,7 @@
   --accent-fg-on:   var(--ink-12);      /* text on brass surfaces */
 
   /* ==========================================================================
-     SPACING — 4px base, technical scale.
+     SPACING â€” 4px base, technical scale.
      ========================================================================== */
   --space-0:  0;
   --space-px: 1px;
@@ -110,7 +110,7 @@
   --space-32: 128px;
 
   /* ==========================================================================
-     RADII — minimal. Most surfaces are SQUARE. Only inputs/pills round.
+     RADII â€” minimal. Most surfaces are SQUARE. Only inputs/pills round.
      ========================================================================== */
   --radius-none: 0;
   --radius-xs:   2px;     /* inputs, buttons */
@@ -118,7 +118,7 @@
   --radius-pill: 999px;   /* status badges only */
 
   /* ==========================================================================
-     ELEVATION — almost flat. Hairline borders do the work. No drop shadows
+     ELEVATION â€” almost flat. Hairline borders do the work. No drop shadows
      on cards. Use only for floating menus and the focused detail overlay.
      ========================================================================== */
   --shadow-none:    none;
@@ -134,17 +134,17 @@
     0 0 0 4px var(--brass-8);
 
   /* ==========================================================================
-     TYPE — Foundations
+     TYPE â€” Foundations
      ========================================================================== */
 
-  /* Families — Inter is the universal workhorse (matches the existing app).   */
+  /* Families â€” Inter is the universal workhorse (matches the existing app).   */
   /*           Display & UI both run on Inter, separated by weight + tracking. */
   /*           Mono carries every numeral.                                     */
   --font-display: 'Inter', -apple-system, system-ui, sans-serif;
   --font-sans:    'Inter', -apple-system, system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, monospace;
 
-  /* Sizes — restrained, technical scale */
+  /* Sizes â€” restrained, technical scale */
   --text-2xs:  10px;   /* tiny labels, axis ticks */
   --text-xs:   11px;   /* micro caps */
   --text-sm:   13px;   /* table cell, dense UI */
@@ -171,7 +171,7 @@
   --tracking-wide:    0.04em;
   --tracking-widest:  0.18em;     /* all-caps micro labels */
 
-  /* Weights — Inter supports 300–900; mono 400–600 */
+  /* Weights â€” Inter supports 300â€“900; mono 400â€“600 */
   --weight-light:    300;
   --weight-regular:  400;
   --weight-medium:   500;
@@ -197,6 +197,7 @@
   --gutter: var(--space-6);
   --grid-unit: 8px;
 
-  /* EVO-025 runtime addition — not in design system source of truth */
-  --navbar-height: 5rem;  /* fallback only — overridden at runtime by Navbar.jsx */
+  /* EVO-025 runtime addition â€” not in design system source of truth */
+  --navbar-height: 5rem;  /* fallback only â€” overridden at runtime by Navbar.jsx */
 }
+

@@ -1,4 +1,4 @@
-# MyBikeLab — Frontend
+# MyBikeLab â€” Frontend
 
 React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for architecture overview and conventions.
 
@@ -14,16 +14,17 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 
 | Path | Role |
 | --- | --- |
-| `src/config/wheelProperties.jsx` | Central registry — source of truth for all wheel properties (filters, sorts, columns) |
+| `src/config/wheelProperties.jsx` | Central registry â€” source of truth for all wheel properties (filters, sorts, columns) |
 | `src/data/wheelsData.js` | Static wheel dataset (~15 items) |
 | `src/store/slices/filtersSlice.js` | Filter + sort global state (keyed by registry property IDs) |
 | `src/store/slices/wheelsSlice.js` | Wheel data state |
-| `src/store/selectors/wheelsSelectors.js` | `selectFilteredWheels` — memoized, applies active filters + sort |
+| `src/store/selectors/wheelsSelectors.js` | `selectFilteredWheels` â€” memoized, applies active filters + sort |
 | `src/store/index.js` | Redux store configuration |
-| `src/components/MiniComparator/` | Main feature: `MiniComparator` → `FilterPanel` + `ComparisonTable` + `ColumnSelector` |
+| `src/components/MiniComparator/` | Main feature: `MiniComparator` â†’ `FilterPanel` + `ComparisonTable` + `ColumnSelector` |
 | `src/components/` | Other UI components: Navbar, Hero, Footer, RoadmapSection, BenefitsGrid, ContactForm |
 | `src/pages/Landing.jsx` | Single-page orchestrator |
 | `src/index.css` | Tailwind base + shared utility classes |
+| `design-system/` | Design tokens, UI kits, editorial rules, and implementation guidance |
 
 ## Config Files
 
@@ -35,7 +36,8 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 
 ## Key Conventions
 
-- **New wheel property** → add one entry in `wheelProperties.jsx` only; no other file to update
-- **Filter types**: `range` \| `multiSelect` \| `triState` — new type requires a matcher + init in `filtersSlice`
+- **New wheel property** â†’ add one entry in `wheelProperties.jsx` only; no other file to update
+- **Filter types**: `range` \| `multiSelect` \| `triState` â€” new type requires a matcher + init in `filtersSlice`
 - **Column visibility** = local state in `MiniComparator`; filter/sort = Redux global state
-- **Tailwind tokens**: use `brand-*` and `ink-*`; add shared classes to `src/index.css`
+- **Tailwind tokens**: follow the design-system guidance in `design-system/README.md`; add shared classes to `src/index.css`
+

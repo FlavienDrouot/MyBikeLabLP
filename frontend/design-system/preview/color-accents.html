@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--paper-1); }
+  body { padding: 18px 24px; }
+  .row-label { font-family: var(--font-sans); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-8); margin: 0 0 14px 0; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .acc { display: flex; flex-direction: column; gap: 10px; }
+  .ramp { display: flex; height: 28px; border: 1px solid var(--ink-3); }
+  .ramp span { flex: 1; }
+  .demo { display: flex; align-items: center; gap: 8px; }
+  .cta { font-family: var(--font-sans); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 6px 10px; border-radius: 2px; color: #1a1a17; }
+  .pillb { font-family: var(--font-sans); font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 999px; }
+  .name { font-family: var(--font-sans); font-size: 12px; font-weight: 600; color: var(--ink-12); }
+  .note { font-family: var(--font-sans); font-size: 9px; color: var(--ink-7); margin-top: 1px; }
+</style></head>
+<body>
+  <div class="row-label">Accents · override the brass ramp · dark text on -7 fill</div>
+  <div class="grid">
+    <div class="acc">
+      <div><div class="name">Brass</div><div class="note">Warm gold · default</div></div>
+      <div class="ramp"><span style="background:#f3ead8"></span><span style="background:#e2cea4"></span><span style="background:#c9a86a"></span><span style="background:#a88846"></span><span style="background:#6b5328"></span></div>
+      <div class="demo"><span class="cta" style="background:#c9a86a">Open</span><span class="pillb" style="background:#f3ead8;color:#4a3a1f;border:1px solid #d6bb87">Hookless</span></div>
+    </div>
+    <div class="acc">
+      <div><div class="name">Cobalt</div><div class="note">Cool technical blue</div></div>
+      <div class="ramp"><span style="background:#e4eef7"></span><span style="background:#bcd2e8"></span><span style="background:#7aa6cf"></span><span style="background:#3f78ac"></span><span style="background:#214b71"></span></div>
+      <div class="demo"><span class="cta" style="background:#7aa6cf">Open</span><span class="pillb" style="background:#e4eef7;color:#173551;border:1px solid #9cbcdc">Hookless</span></div>
+    </div>
+    <div class="acc">
+      <div><div class="name">Oxblood</div><div class="note">Muted clay-red</div></div>
+      <div class="ramp"><span style="background:#f5e5dd"></span><span style="background:#e6c4b3"></span><span style="background:#cc9077"></span><span style="background:#ab6347"></span><span style="background:#6f3a28"></span></div>
+      <div class="demo"><span class="cta" style="background:#cc9077">Open</span><span class="pillb" style="background:#f5e5dd;color:#52291d;border:1px solid #daa993">Hookless</span></div>
+    </div>
+    <div class="acc">
+      <div><div class="name">Forest</div><div class="note">Desaturated green</div></div>
+      <div class="ramp"><span style="background:#e4ede4"></span><span style="background:#bcd0bc"></span><span style="background:#7aa37b"></span><span style="background:#52805a"></span><span style="background:#2f4f36"></span></div>
+      <div class="demo"><span class="cta" style="background:#7aa37b">Open</span><span class="pillb" style="background:#e4ede4;color:#233c29;border:1px solid #9cba9c">Hookless</span></div>
+    </div>
+  </div>
+</body></html>

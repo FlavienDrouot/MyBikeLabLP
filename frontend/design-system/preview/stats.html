@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--paper-1); }
+  body { padding: 18px 28px; display: flex; gap: 36px; align-items: center; flex-wrap: wrap; }
+  .col { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .label { font-family: var(--font-mono); font-size: 9px; color: var(--ink-7); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* Stat block — big mono number with caps label and serif annotation */
+  .stat { display: flex; flex-direction: column; gap: 4px; padding: 0; }
+  .stat .num { font-family: var(--font-mono); font-size: 56px; font-weight: 500; line-height: 0.95; letter-spacing: -0.03em; color: var(--ink-12); }
+  .stat .unit { font-family: var(--font-mono); font-size: 16px; color: var(--ink-8); }
+  .stat .label { font-family: var(--font-sans); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-7); margin-top: 4px; }
+  .stat .note { font-family: var(--font-sans); font-style: italic; font-size: 13px; color: var(--ink-7); }
+
+  /* Editorial number — serif display variant */
+  .stat-serif .num { font-family: var(--font-sans); font-weight: 300; font-size: 80px; letter-spacing: -0.06em; line-height: 0.9; }
+
+  /* KV row — compact key/value, label left, mono number right */
+  .kv-list { display: flex; flex-direction: column; min-width: 220px; border-top: 1px solid var(--ink-10); border-bottom: 1px solid var(--ink-10); }
+  .kv { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--ink-3); font-size: 12px; }
+  .kv:last-child { border-bottom: 0; }
+  .kv .k { font-family: var(--font-sans); color: var(--ink-8); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500; }
+  .kv .v { font-family: var(--font-mono); color: var(--ink-12); font-variant-numeric: tabular-nums; }
+</style></head>
+<body>
+  <div class="col">
+    <div class="label">STAT · mono</div>
+    <div class="stat">
+      <div><span class="num">15</span><span class="unit"> wheels</span></div>
+      <div class="label">DATASET · ROAD WHEELS</div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="label">STAT · serif display</div>
+    <div class="stat stat-serif">
+      <div class="num">13</div>
+      <div class="label">Filterable axes</div>
+      <div class="note">multi-select · range · tri-state</div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="label">KEY / VALUE LIST</div>
+    <div class="kv-list">
+      <div class="kv"><span class="k">Weight</span><span class="v">1,225 g</span></div>
+      <div class="kv"><span class="k">Depth</span><span class="v">33 mm</span></div>
+      <div class="kv"><span class="k">Ext. width</span><span class="v">25.5 mm</span></div>
+      <div class="kv"><span class="k">Price (min)</span><span class="v">€1,299</span></div>
+    </div>
+  </div>
+</body></html>

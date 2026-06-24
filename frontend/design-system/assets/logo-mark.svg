@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  
+  <rect x="0.5" y="0.5" width="39" height="39" stroke="currentColor" stroke-width="1"></rect>
+  
+  <line x1="20" y1="0" x2="20" y2="3" stroke="currentColor" stroke-width="1"></line>
+  <line x1="20" y1="37" x2="20" y2="40" stroke="currentColor" stroke-width="1"></line>
+  <line x1="0" y1="20" x2="3" y2="20" stroke="currentColor" stroke-width="1"></line>
+  <line x1="37" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="1"></line>
+  
+  <path d="M 9 28 L 9 12 L 20 22 L 31 12 L 31 28" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"></path>
+</svg>

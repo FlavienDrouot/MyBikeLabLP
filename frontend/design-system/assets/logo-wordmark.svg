@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 32" fill="none">
+  
+  <g transform="translate(0 0)">
+    <rect x="0.5" y="0.5" width="31" height="31" stroke="currentColor" stroke-width="1"></rect>
+    <line x1="16" y1="0" x2="16" y2="2.5" stroke="currentColor" stroke-width="1"></line>
+    <line x1="16" y1="29.5" x2="16" y2="32" stroke="currentColor" stroke-width="1"></line>
+    <line x1="0" y1="16" x2="2.5" y2="16" stroke="currentColor" stroke-width="1"></line>
+    <line x1="29.5" y1="16" x2="32" y2="16" stroke="currentColor" stroke-width="1"></line>
+    <path d="M 7 23 L 7 9 L 16 17.5 L 25 9 L 25 23" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" stroke-linejoin="miter" fill="none"></path>
+  </g>
+  
+  <text x="44" y="22" font-family="Geist, Söhne, sans-serif" font-size="18" font-weight="600" letter-spacing="-0.02em" fill="currentColor">
+    MyBikeLab
+  </text>
+</svg>

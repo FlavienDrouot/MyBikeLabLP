@@ -1,0 +1,101 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--paper-1); }
+  body { padding: 22px 28px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+  .label { font-family: var(--font-mono); font-size: 9px; color: var(--ink-7); margin-bottom: 4px; }
+
+  /* Primary — solid ink, white type, square corners */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ink-12); color: var(--paper-1);
+    font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 10px 18px; border: 1px solid var(--ink-12);
+    border-radius: 2px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    cursor: pointer;
+  }
+  .btn-primary .arr { font-family: var(--font-mono); font-size: 14px; }
+
+  /* Secondary — outlined */
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; color: var(--ink-11);
+    font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+    padding: 10px 18px; border: 1px solid var(--ink-10);
+    border-radius: 2px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    cursor: pointer;
+  }
+
+  /* Brass — sparing premium CTA */
+  .btn-brass {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--brass-7); color: var(--ink-12);
+    font-family: var(--font-sans); font-size: 13px; font-weight: 600;
+    padding: 10px 18px; border: 1px solid var(--brass-8);
+    border-radius: 2px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    cursor: pointer;
+  }
+
+  /* Ghost — minimal text link button */
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--ink-11);
+    font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+    padding: 10px 0; border: 0; border-bottom: 1px solid var(--ink-11);
+    text-transform: uppercase; letter-spacing: 0.12em;
+    cursor: pointer;
+  }
+
+  /* Icon button */
+  .btn-icon {
+    width: 32px; height: 32px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--paper-0); border: 1px solid var(--ink-4);
+    border-radius: 2px;
+    color: var(--ink-11);
+  }
+  .btn-icon svg { width: 14px; height: 14px; }
+</style></head>
+<body>
+  <div class="grid">
+    <div class="col">
+      <div class="label">PRIMARY · btn-primary</div>
+      <div><button class="btn-primary">Try the comparator <span class="arr">→</span></button></div>
+    </div>
+    <div class="col">
+      <div class="label">SECONDARY · btn-secondary</div>
+      <div><button class="btn-secondary">See the vision</button></div>
+    </div>
+    <div class="col">
+      <div class="label">BRASS · btn-brass (sparingly)</div>
+      <div><button class="btn-brass">Contact partnerships</button></div>
+    </div>
+    <div class="col">
+      <div class="label">GHOST · btn-ghost</div>
+      <div><button class="btn-ghost">Reset filters</button></div>
+    </div>
+    <div class="col">
+      <div class="label">ICON · btn-icon</div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn-icon" aria-label="filter"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="2" y1="4" x2="14" y2="4"/><line x1="4" y1="8" x2="12" y2="8"/><line x1="6" y1="12" x2="10" y2="12"/></svg></button>
+        <button class="btn-icon" aria-label="columns"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="2.5" width="12" height="11"/><line x1="6" y1="2.5" x2="6" y2="13.5"/><line x1="10" y1="2.5" x2="10" y2="13.5"/></svg></button>
+        <button class="btn-icon" aria-label="info"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="6"/><line x1="8" y1="7" x2="8" y2="11"/><circle cx="8" cy="5" r="0.6" fill="currentColor"/></svg></button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="label">STATES · primary</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn-primary" style="opacity:1;">default</button>
+        <button class="btn-primary" style="background:var(--ink-10); border-color:var(--ink-10);">hover</button>
+        <button class="btn-primary" style="opacity:0.4; cursor:not-allowed;">disabled</button>
+      </div>
+    </div>
+  </div>
+</body></html>

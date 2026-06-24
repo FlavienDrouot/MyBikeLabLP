@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--paper-1); }
+  body { padding: 20px 24px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .swatch { aspect-ratio: 1; border: 1px solid var(--ink-3); display: flex; flex-direction: column; justify-content: flex-end; padding: 8px; }
+  .swatch .name { font-family: var(--font-mono); font-size: 9px; font-weight: 500; color: var(--ink-11); letter-spacing: 0; }
+  .swatch .hex { font-family: var(--font-mono); font-size: 9px; color: var(--ink-7); letter-spacing: 0; }
+  .swatch.light .name, .swatch.light .hex { color: var(--paper-1); }
+  .swatch.light .hex { color: var(--paper-3); }
+  .row-label { font-family: var(--font-sans); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-8); margin: 0 0 8px 0; }
+  .row { margin-bottom: 18px; }
+</style></head>
+<body>
+  <div class="row">
+    <div class="row-label">Paper · warm off-white system</div>
+    <div class="grid">
+      <div class="swatch" style="background:var(--paper-0)"><div class="name">paper/0</div><div class="hex">#fbfaf6</div></div>
+      <div class="swatch" style="background:var(--paper-1)"><div class="name">paper/1</div><div class="hex">#f6f4ef</div></div>
+      <div class="swatch" style="background:var(--paper-2)"><div class="name">paper/2</div><div class="hex">#efebe2</div></div>
+      <div class="swatch" style="background:var(--paper-3)"><div class="name">paper/3</div><div class="hex">#e6e0d2</div></div>
+      <div class="swatch light" style="background:var(--ink-12)"><div class="name">ink/inverse</div><div class="hex">#0e0f0c</div></div>
+    </div>
+  </div>
+</body></html>

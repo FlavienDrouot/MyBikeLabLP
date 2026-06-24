@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--paper-1); }
+  body { padding: 22px 24px; }
+  .row { display: flex; align-items: center; gap: 22px; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .box { width: 64px; height: 64px; background: var(--paper-0); border: 1px solid var(--ink-10); }
+  .meta { text-align: center; }
+  .name { font-family: var(--font-mono); font-size: 10px; color: var(--ink-11); font-weight: 600; }
+  .px { font-family: var(--font-mono); font-size: 9px; color: var(--ink-7); margin-top: 1px; }
+  .heading { font-family: var(--font-sans); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-8); margin: 0 0 14px 0; }
+  .desc { font-family: var(--font-sans); font-size: 10px; color: var(--ink-7); max-width: 280px; }
+</style></head>
+<body>
+  <div class="heading">Radii · most surfaces are square</div>
+  <div class="row">
+    <div class="item">
+      <div class="box" style="border-radius: 0"></div>
+      <div class="meta"><div class="name">none</div><div class="px">0px</div></div>
+    </div>
+    <div class="item">
+      <div class="box" style="border-radius: 2px"></div>
+      <div class="meta"><div class="name">xs</div><div class="px">2px · inputs, buttons</div></div>
+    </div>
+    <div class="item">
+      <div class="box" style="border-radius: 4px"></div>
+      <div class="meta"><div class="name">sm</div><div class="px">4px · chips</div></div>
+    </div>
+    <div class="item">
+      <div class="box" style="border-radius: 999px; width: 96px; height: 28px;"></div>
+      <div class="meta"><div class="name">pill</div><div class="px">999 · status badges</div></div>
+    </div>
+    <div class="desc">Cards, panels and tables are <span class="t-mono" style="font-size:10px;">radius: 0</span>. Rounding signals interactivity (inputs) or pill-status only.</div>
+  </div>
+</body></html>

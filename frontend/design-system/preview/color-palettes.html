@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--paper-1); }
+  body { padding: 18px 24px; }
+  .row-label { font-family: var(--font-sans); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-8); margin: 0 0 12px 0; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .pal { border: 1px solid var(--ink-3); }
+  .pal .surf { height: 70px; display: flex; align-items: flex-end; padding: 8px; gap: 6px; }
+  .pal .chip { width: 16px; height: 24px; border: 1px solid rgba(0,0,0,0.1); }
+  .pal .meta { padding: 8px 10px; border-top: 1px solid var(--ink-3); }
+  .pal .name { font-family: var(--font-sans); font-size: 12px; font-weight: 600; color: var(--ink-12); }
+  .pal .note { font-family: var(--font-sans); font-size: 9px; color: var(--ink-7); line-height: 1.35; margin-top: 2px; }
+</style></head>
+<body>
+  <div class="row-label">Base palettes · default Paper + Brass · alts: Mist+Cobalt, Porcelain+Forest</div>
+  <div class="grid">
+    <div class="pal">
+      <div class="surf" style="background:#f6f4ef"><span class="chip" style="background:#1a1a17"></span><span class="chip" style="background:#c9a86a"></span></div>
+      <div class="meta"><div class="name">Paper</div><div class="note">Warm original identity</div></div>
+    </div>
+    <div class="pal">
+      <div class="surf" style="background:#eef1f4"><span class="chip" style="background:#16181a"></span><span class="chip" style="background:#c9a86a"></span></div>
+      <div class="meta"><div class="name">Mist</div><div class="note">Cool neutral grey</div></div>
+    </div>
+    <div class="pal">
+      <div class="surf" style="background:#f3f4f6"><span class="chip" style="background:#16181a"></span><span class="chip" style="background:#c9a86a"></span></div>
+      <div class="meta"><div class="name">Porcelain</div><div class="note">Crisp near-white</div></div>
+    </div>
+  </div>
+</body></html>

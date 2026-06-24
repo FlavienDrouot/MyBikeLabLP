@@ -1,0 +1,51 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--paper-1); }
+  body { padding: 20px 24px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .item { display: flex; gap: 12px; align-items: center; padding: 10px; border: 1px solid var(--ink-3); background: var(--paper-0); }
+  .dot { width: 28px; height: 28px; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.08); }
+  .meta .name { font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--ink-11); }
+  .meta .desc { font-family: var(--font-sans); font-size: 10px; color: var(--ink-7); margin-top: 2px; }
+  .meta .hex { font-family: var(--font-mono); font-size: 9px; color: var(--ink-8); margin-top: 1px; }
+  .row-label { font-family: var(--font-sans); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-8); margin: 0 0 8px 0; }
+</style></head>
+<body>
+  <div class="row-label">Semantic · status signals only</div>
+  <div class="grid">
+    <div class="item">
+      <div class="dot" style="background:var(--signal-up)"></div>
+      <div class="meta">
+        <div class="name">signal/up</div>
+        <div class="desc">Gain, lighter, faster</div>
+        <div class="hex">#2f6b3a</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="dot" style="background:var(--signal-down)"></div>
+      <div class="meta">
+        <div class="name">signal/down</div>
+        <div class="desc">Loss, heavier, slower</div>
+        <div class="hex">#a23a2a</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="dot" style="background:var(--signal-warn)"></div>
+      <div class="meta">
+        <div class="name">signal/warn</div>
+        <div class="desc">Caution, indicative</div>
+        <div class="hex">#a8782a</div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="dot" style="background:var(--signal-info)"></div>
+      <div class="meta">
+        <div class="name">signal/info</div>
+        <div class="desc">Informational, neutral</div>
+        <div class="hex">#2f4e6b</div>
+      </div>
+    </div>
+  </div>
+</body></html>
