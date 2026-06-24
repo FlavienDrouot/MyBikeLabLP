@@ -1,4 +1,4 @@
-# MyBikeLab Agent Instructions
+﻿# MyBikeLab Agent Instructions
 
 ## Scope
 
@@ -58,7 +58,7 @@ Direct product-file access is appropriate only for explicit file-level requests 
 
 ## Git And Shell
 
-- Product repo is `C:\Users\Flavien\Google Drive\VisualStudioCode\MyBikeLab\`.
+- Product repo is `C:\Users\Flavien\Documents\VisualStudioCode\MyBikeLab\`.
 - Use PowerShell, not Bash.
 
 ## Technical Context
@@ -119,3 +119,4 @@ Small implementation edits that do not change behavior, contracts, structure, wo
 - Local rules specialize parent rules but may not weaken global workspace rules.
 - After a meaningful change, check whether the nearest README or instruction file and any parent navigation table must be updated.
 - Every durable structural folder or instruction file must remain reachable through the navigation chain.
+
