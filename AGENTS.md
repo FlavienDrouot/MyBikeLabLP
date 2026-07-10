@@ -40,6 +40,7 @@ Before implementation, check whether the request maps to a workflow in `../work-
 | Review or audit code | `../work-system/workflows/code-review/CODE-REVIEW.md` |
 | Scrape or ingest wheel data | `../work-system/workflows/datascraping/README.md` |
 | Review or improve instruction files | `../work-system/workflows/instruction-review/INSTRUCTION-REVIEW.md` |
+| Centralize or audit user-level agent rules, skills, specialized agents, or harness adapters | `../work-system/shared-knowledge/AGENT-HARNESS-ARCHITECTURE.md` |
 | Modify workspace or product structure | `../work-system/workflows/workspace-governance/GOVERNANCE.md` |
 
 Direct product-file access is appropriate only for explicit file-level requests or tasks that clearly do not map to an existing workflow.
