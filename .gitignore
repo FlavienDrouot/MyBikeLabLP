@@ -33,8 +33,11 @@ lerna-debug.log*
 .env.local
 .env.*.local
 
-# Claude Code local settings
-.claude/
+# Local settings agents IA
+.claude/*
+.agents/*
+.codex/*
+.pi-subagents/*
 
 # Admin folder (private, not versioned)
 Administrative/
