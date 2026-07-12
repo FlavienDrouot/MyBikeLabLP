@@ -19,7 +19,7 @@ lerna-debug.log*
 
 # OS / Editor
 .DS_Store
-.vscode/*
+.vscode/
 !.vscode/extensions.json
 .idea/
 *.suo
@@ -34,13 +34,16 @@ lerna-debug.log*
 .env.*.local
 
 # Local settings agents IA
-.claude/*
-.agents/*
-.codex/*
-.pi-subagents/*
+.claude/
+.agents/
+.codex/
+.pi-subagents/
 
 # Admin folder (private, not versioned)
 Administrative/
 
 # Local planning artifacts
 roadmap.html
+
+# Graphify
+graphify-out/
