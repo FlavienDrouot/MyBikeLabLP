@@ -58,7 +58,7 @@ Direct product-file access is appropriate only for explicit file-level requests 
 
 ## Git And Shell
 
-- Product repo is `C:\Users\Flavien\Documents\VisualStudioCode\MyBikeLab\`.
+- Product repo is the repository root containing this `AGENTS.md`.
 - Use PowerShell, not Bash.
 
 ## Technical Context

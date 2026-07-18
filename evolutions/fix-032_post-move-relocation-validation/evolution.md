@@ -3,8 +3,8 @@
 - **ID:** fix-032
 - **Type:** Fix
 - **Date:** 2026-07-18
-- **Status:** Draft
-- **Current phase:** Needs
+- **Status:** Abandoned
+- **Current phase:** Abandoned
 - **Planning level:** Direct Plan
 - **Priority:** High
 
@@ -12,7 +12,7 @@
 
 ## Context
 
-After `fix-031`, the MyBikeLab repository and its parent folder will be moved and renamed to a location that is not yet known. Generated Graphify state contains an absolute scan root and cache paths that must be relocated through supported Graphify behavior. Git and the frontend must then be validated from the new root. Historical archive references may remain as deliberate dead links. The deleted `.pi-subagents/` and `.claude/` folders must not be recreated.
+This work item was created for a planned MyBikeLab repository and parent-folder relocation. That relocation was canceled for external reasons, so its post-move work is no longer required. If relocation is reconsidered, generated Graphify state, Git, and the frontend would still require validation from the new root. Historical archive references may remain as deliberate dead links. The deleted `.pi-subagents/` and `.claude/` folders must not be recreated.
 
 ---
 
@@ -141,7 +141,8 @@ From the relocated repository, safely rebind generated tooling state to the disc
 
 ## Free Notes For Next Phases
 
-- Execute only after the repository and parent folder have been moved and renamed.
+- Abandoned because the planned repository and parent-folder relocation was canceled for external reasons.
+- Execute only if the repository and parent folder are moved and renamed in the future.
 - The new absolute path is intentionally unknown and must be derived from the active working directory or Git root.
 - Graphify's absolute `.graphify_root` is an accepted generated-tool constraint. Its ceiling is one repository location; every later relocation must run the supported update or rebuild flow again.
 - Preserve archives as historical evidence; final validation distinguishes operational failures from deliberate dead links.

@@ -1,6 +1,6 @@
 **Role:** You are a meticulous web data extraction and normalization specialist for cycling products.
 
-**Task:** Browse all **road bike wheels/wheelsets** available on **[WEBSITE_URL]** and extract structured product data for every road wheel model you can find. Save the resulting JSON file in C:\Users\Flavien\Google Drive\VisualStudioCode\Claude\MyBikeLab\scripts\data\ with a name Datascrapping_[brand].json
+**Task:** Browse all **road bike wheels/wheelsets** available on **[WEBSITE_URL]** and extract structured product data for every road wheel model you can find. Save the resulting JSON file as `scripts/data/Datascrapping_[brand].json`.
 
 ### Extraction Rules
 
