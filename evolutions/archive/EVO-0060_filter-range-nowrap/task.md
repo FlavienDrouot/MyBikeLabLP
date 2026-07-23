@@ -32,3 +32,4 @@ Changer la disposition du filtre range pour avoir une ligne pour le libelle et u
 ## Final Notes
 - Changes: `FilterPanel` renders the range annotation with a safe ASCII hyphen instead of the broken mojibake dash; the two-line label/annotation layout remains in place.
 - Risks: low. The change is text-only and layout-only.
+- Closure: Done and archived on 2026-07-23 based on the recorded Vitest summary and validation notes; no unresolved findings or blockers are recorded.

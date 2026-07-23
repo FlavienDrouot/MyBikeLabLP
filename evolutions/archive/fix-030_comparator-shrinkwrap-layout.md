@@ -3,6 +3,7 @@
 - **ID:** fix-030
 - **Date:** 2026-06-19
 - **Status:** Done
+- **Closed:** 2026-07-23 — implementation and accepted regression coverage complete; archived.
 
 ---
 

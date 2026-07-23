@@ -3,6 +3,7 @@
 - **ID:** PROJ-001
 - **Date:** 2026-06-05
 - **Status:** Done
+- **Closed:** 2026-07-23 — all registered children completed and accepted; project closed and archived.
 - **Child ID span:** EVO-047 … EVO-058, fix-022 … fix-029
 
 ---

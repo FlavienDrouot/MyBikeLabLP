@@ -1,126 +1,158 @@
-# evolutions/
+# MyBikeLab evolutions
 
-Tracks feature evolutions for MyBikeLab, from prototype to implementation.
+## Description
 
-Each evolution lives in its own folder named `EVO-NNN_slug`. Related evolutions may be grouped under a **Project** (`PROJ-NNN`) — see the Projects table below and `workflows/ai-dev-process/PROJECT.md`.
+This folder stores MyBikeLab projects, evolutions, and fixes from validated need through implementation and archival.
 
-**Maintenance rule:** This file is the source of truth for all IDs (`PROJ-NNN`, `EVO-NNN`, `fix-NNN`). When a new project, evolution, or fix is created, add its row to the matching table immediately — before writing any other file. The next ID of each kind is the highest of that kind in this file (active + archive) incremented by 1. Evolutions and fixes that belong to a Project still appear in their master tables below, with the Project noted.
+## Navigation
+
+| Intent | Destination |
+| --- | --- |
+| Product documentation | [`../README.md`](../README.md) |
+| AI Development Process rules | [`../../work-system/workflows/ai-dev-process/README.md`](../../work-system/workflows/ai-dev-process/README.md) |
+| Archived evolutions and fixes | [`archive/README.md`](archive/README.md) |
+
+## Conventions
+
+- Every active work item is registered in this file.
+- Project folders follow `PROJ-NNN_slug/`.
+- Evolution folders follow `EVO-NNN_slug/`.
+- Fix folders or files follow `fix-NNN_slug/`.
+- Project children remain registered in the global evolution or fix table.
+- The canonical artifact depends on the work item's recorded generation: `evolution.md`, `iterative-evolution.md`, or `task.md`.
+- New IDs use the highest ID in the active and archive tables, then increment by one.
+- Completed or abandoned work moves to `archive/` without deleting historical artifacts.
+- Archiving synchronizes this file and `archive/README.md`.
+- Legacy names and formats remain unchanged unless a separate migration is approved.
 
 ## Projects
 
-A Project groups several evolutions sharing one goal and definition of done. Children live in `evolutions/PROJ-NNN_slug/`.
+| ID | Title | Status | Notes |
+| --- | --- | --- | --- |
 
-| ID | Slug | Child IDs | Status |
-|---|---|---|---|
-| PROJ-001 | other-specs-promotion | EVO-047 … EVO-058, fix-022 … fix-029 | Done |
+## Active Evolutions
 
-## Evolutions
-
-| ID | Slug | Phase | Status | Project |
-|---|---|---|---|---|
-| EVO-061 | mobile-table-pagination | Increment framing | Active | - |
+| ID | Title | Status | Type | Notes |
+| --- | --- | --- | --- | --- |
 
 ## Fixes
 
-Small fixes — single condensed document, no subfolder. See `workflows/ai-dev-process/FIX.md`.
+| ID | Title | Status | Type | Notes |
+| --- | --- | --- | --- | --- |
 
-| ID | Slug | Status |
-|---|---|---|
-| fix-001 | hub-spokes-column-max-width | Done |
-| fix-002 | rim-width-to-external-width | Done |
-| fix-003 | unify-axle-columns | Done |
-| fix-004 | multiselect-null-undefined-label | Done |
-| fix-005 | canonical-column-order | Done |
-| fix-006 | minprice-null-coercion | Done |
-| fix-007 | skip-measurement-max-w-columns | Done |
-| fix-008 | column-widths-on-language-change | Done |
-| fix-009 | sticky-thead-chrome | Done |
-| fix-010 | column-selector-popup-overflow | Done |
-| fix-011 | mobile-language-toggle-duplicate | Done |
-| fix-012 | vitest-summary-script | Done |
-| fix-013 | review-2026-06-03-followups | Done |
-| fix-014 | arcaris-brand-filter-duplicates | Done |
-| fix-015 | unique-wheel-ids-test | Done |
-| fix-016 | normalize-spoke-steel-material | Done |
-| fix-017 | single-open-filter-group | Done |
-| fix-018 | active-filter-chips-wrap | Done |
-| fix-019 | column-header-sort | Done |
-| fix-020 | filter-panel-double-separator | Done |
-| fix-021 | crwworks-image-mojibake | Done |
-| fix-022 | column-max-widths | Done |
-| fix-023 | weight-tolerance-display | Done |
-| fix-024 | spoke-attachment-profile-normalization | Done |
-| fix-025 | tire-width-open-interval-filter | Done |
-| fix-026 | rim-construction-column-order | Done |
-| fix-027 | promoted-text-column-max-widths | Done |
-| fix-028 | tire-width-range-regressions | Done |
-| fix-029 | tire-width-minimum-normalization | Done |
-| fix-030 | comparator-shrinkwrap-layout | Done |
-| fix-031 | pre-move-path-preparation | Done |
-| fix-032 | post-move-relocation-validation | Abandoned |
 
 ## Archive
 
-Completed and abandoned evolutions move to `evolutions/archive/`.
+Completed and abandoned work lives under [`archive/`](archive/README.md).
 
-| ID | Slug |
-|---|---|
-| EVO-001 | dynamic-filter-ranges-and-counts |
-| EVO-002 | design-token-refactoring |
-| EVO-003 | design-system-migration |
-| EVO-004 | prototype-affiliate-links |
-| EVO-005 | fix-legacy-ink-tokens-wheelproperties |
-| EVO-006 | hookbadge-design-system |
-| EVO-007 | wire-design-tokens-source-of-truth |
-| EVO-008 | voice-and-section-indices |
-| EVO-009 | typography-display-and-feature-settings |
-| EVO-010 | focus-rings-selection-and-shadows-cleanup |
-| EVO-011 | radii-and-surface-hierarchy-alignment |
-| EVO-012 | lucide-icon-system |
-| EVO-013 | sage-palette-decision-and-brand-cleanup |
-| EVO-014 | rule-utilities-and-motion-tokens |
-| EVO-015 | hero-schematic-grid-and-typographic-glyphs |
-| EVO-016 | fonts-loading-optimization |
-| EVO-017 | ui-polish-comparator-navbar |
-| EVO-018 | copy-typography-compliance |
-| EVO-019 | component-structure-compliance |
-| EVO-020 | style-tokens-compliance |
-| EVO-021 | ui-guidelines-clarification |
-| EVO-022 | landing-ui-polish |
-| EVO-023 | i18n-fr-en |
-| EVO-024 | wheeldetailpanel-visual-polish |
-| EVO-029 | content-voice-audit |
-| EVO-025 | comparator-viewport-bounded-height |
-| EVO-026 | comparator-controls-in-table-header |
-| EVO-027 | wheel-specs-data-collection |
-| EVO-028 | wheeldetailpanel-layout-breakpoint |
-| EVO-030 | comparator-filter-layout-stability |
-| EVO-031 | wheel-properties-i18n-flag |
-| EVO-032 | wheel-images-fix-and-data-consolidation |
-| EVO-033 | other-specs-registry-extension |
-| EVO-035 | missing-i18n-comparator-keys |
-| EVO-036 | freehub-column-label-and-overflow-popup |
-| EVO-037 | freehub-options-standardization |
-| EVO-038 | front-rear-divergent-specs |
-| EVO-039 | design-system-foundation-tokens |
-| EVO-040 | design-system-navbar-footer |
-| EVO-041 | design-system-landing-sections |
-| EVO-042 | design-system-minicomparator |
-| EVO-043 | design-system-wheeldetailpanel |
-| EVO-044 | product-variants-catalog-model |
-| EVO-045 | variant-field-per-row |
-| EVO-046 | currency-management |
-| EVO-047 | foundation |
-| EVO-048 | hub-bearing-material |
-| EVO-049 | spokes-count |
-| EVO-050 | spokes-detail |
-| EVO-051 | rim-material-construction |
-| EVO-052 | rim-max-tire-pressure |
-| EVO-053 | warranty |
-| EVO-054 | certification |
-| EVO-055 | weight-tolerance |
-| EVO-056 | tire-compatibility |
-| EVO-057 | hub-engagement |
-| EVO-058 | tire-width-mm |
-| EVO-059 | table-overflow-white-space |
-| EVO-060 | filter-range-nowrap |
+### Archived Projects
+
+| ID | Title | Status | Type | Notes |
+| --- | --- | --- | --- | --- |
+| PROJ-001 | Other specs promotion | Done | Project | Closed 2026-07-23 after all registered children completed and were accepted; complete project folder preserved under `archive/PROJ-001_other-specs-promotion/`. |
+
+### Archived Evolutions
+
+| ID | Title | Status | Type | Notes |
+| --- | --- | --- | --- | --- |
+| EVO-001 | Dynamic filter ranges and counts | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-002 | Design token refactoring | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-003 | Design system migration | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-004 | Prototype affiliate links | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-005 | Fix legacy ink tokens wheelproperties | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-006 | Hookbadge design system | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-007 | Wire design tokens source of truth | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-008 | Voice and section indices | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-009 | Typography display and feature settings | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-010 | Focus rings selection and shadows cleanup | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-011 | Radii and surface hierarchy alignment | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-012 | Lucide icon system | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-013 | Sage palette decision and brand cleanup | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-014 | Rule utilities and motion tokens | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-015 | Hero schematic grid and typographic glyphs | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-016 | Fonts loading optimization | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-017 | UI polish comparator navbar | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-018 | Copy typography compliance | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-019 | Component structure compliance | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-020 | Style tokens compliance | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-021 | UI guidelines clarification | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-022 | Landing UI polish | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-023 | i18n FR/EN | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-024 | Wheel detail panel visual polish | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-025 | Comparator viewport bounded height | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-026 | Comparator controls in table header | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-027 | Wheel specs data collection | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-028 | Wheel detail panel layout breakpoint | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-029 | Content voice audit | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-030 | Comparator filter layout stability | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-031 | Wheel properties i18n flag | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-032 | Wheel images fix and data consolidation | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-033 | Other specs registry extension | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-035 | Missing i18n comparator keys | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-036 | Freehub column label and overflow popup | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-037 | Freehub options standardization | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-038 | Front-rear divergent specs | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-039 | Design system foundation tokens | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-040 | Design system navbar footer | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-041 | Design system landing sections | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-042 | Design system minicomparator | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-043 | Design system wheeldetailpanel | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-044 | Product variants catalog model | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-045 | Variant field per row | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-046 | Currency management | Archived | Evolution | Legacy archive entry; final status was not recorded in the index. |
+| EVO-047 | Foundation | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-048 | Hub bearing material | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-049 | Spokes count | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-050 | Spokes detail | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-051 | Rim material construction | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-052 | Rim max tire pressure | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-053 | Warranty | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-054 | Certification | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-055 | Weight tolerance | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-056 | Tire compatibility | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-057 | Hub engagement | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-058 | Tire width mm | Archived | Evolution | Project child; legacy archive entry. |
+| EVO-059 | Table overflow white space | Done | Evolution | Closed 2026-07-23 after accepted validation and browser verification; archived complete task artifact. |
+| EVO-060 | Filter range nowrap | Done | Evolution | Closed 2026-07-23 after recorded Vitest validation; complete task artifact preserved. |
+| EVO-061 | Mobile table pagination | Done | Evolution | Closed 2026-07-23 after accepted implementation, resolved review findings, passing checks, and human acceptance. |
+
+### Archived Fixes
+
+| ID | Title | Status | Type | Notes |
+| --- | --- | --- | --- | --- |
+| fix-001 | Hub spokes column max width | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-002 | Rim width to external width | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-003 | Unify axle columns | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-004 | Multiselect null undefined label | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-005 | Canonical column order | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-006 | Minprice null coercion | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-007 | Skip measurement max-w columns | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-008 | Column widths on language change | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-009 | Sticky thead Chrome | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-010 | Column selector popup overflow | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-011 | Mobile language toggle duplicate | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-012 | Vitest summary script | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-013 | Review 2026-06-03 followups | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-014 | Arcaris brand filter duplicates | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-015 | Unique wheel IDs test | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-016 | Normalize spoke steel material | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-017 | Single open filter group | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-018 | Active filter chips wrap | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-019 | Column header sort | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-020 | Filter panel double separator | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-021 | CRWWorks image mojibake | Archived | Fix | Legacy archive entry; final status was not recorded in the index. |
+| fix-022 | Column max widths | Archived | Fix | Project child; legacy archive entry. |
+| fix-023 | Weight tolerance display | Archived | Fix | Project child; legacy archive entry. |
+| fix-024 | Spoke attachment profile normalization | Archived | Fix | Project child; legacy archive entry. |
+| fix-025 | Tire width open interval filter | Archived | Fix | Project child; legacy archive entry. |
+| fix-026 | Rim construction column order | Archived | Fix | Project child; legacy archive entry. |
+| fix-027 | Promoted text column max widths | Archived | Fix | Project child; legacy archive entry. |
+| fix-028 | Tire width range regressions | Archived | Fix | Project child; legacy archive entry. |
+| fix-029 | Tire width minimum normalization | Archived | Fix | Project child; legacy archive entry. |
+| fix-030 | Comparator shrink-wrap layout | Done | Fix | Closed 2026-07-23 after accepted regression coverage; complete artifact preserved. |
+| fix-031 | Pre-move path preparation | Done | Fix | Archived work item. |
+| fix-032 | Post-move relocation validation | Abandoned | Fix | Closed 2026-07-23; repository relocation was canceled and post-move validation was retired. |
+
+## Archival source of truth
+
+The active and archive tables in this file provide the product-level navigation. `archive/README.md` provides the detailed archive index. Historical folders and files remain authoritative for their original content.

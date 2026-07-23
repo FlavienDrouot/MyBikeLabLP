@@ -5,6 +5,7 @@
 - **Date:** 2026-07-18
 - **Status:** Abandoned
 - **Current phase:** Abandoned
+- **Closure:** Abandoned on 2026-07-23; the planned repository relocation was canceled, so post-move validation was retired without implementation.
 - **Planning level:** Direct Plan
 - **Priority:** High
 

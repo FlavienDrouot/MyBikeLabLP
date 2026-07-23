@@ -3,6 +3,9 @@
 ## Status
 Done
 
+## Closure
+Closed 2026-07-23 after passing `npm.cmd run test:summary` (25 files, 341 tests) and browser verification at 390x844 and 1280x720. Page-level `scrollX` remained 0 while the comparator table retained internal horizontal scrolling.
+
 ## Request
 
 Fix the extra blank space that appears after the page end on desktop and to the right of the page on mobile. The blank area matches the comparator table width when it is rendered without horizontal scroll.

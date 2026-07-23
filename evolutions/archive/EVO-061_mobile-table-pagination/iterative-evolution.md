@@ -3,8 +3,9 @@
 ## Metadata
 
 - **ID:** EVO-061
-- **Status:** Ready for closure
-- **Active increment:** None - closure is next
+- **Status:** Done
+- **Current phase:** Close
+- **Active increment:** None - closure completed
 - **Date:** 2026-07-23
 
 ## Intention
@@ -344,3 +345,7 @@ Complete. Automated checks passed, implementation-review corrections were resolv
 ## Final decision
 
 Closure recommended. The validated need and all global acceptance criteria are satisfied by increment 1. No further increment is selected.
+
+## Closure
+
+Closed on 2026-07-23 after implementation acceptance, resolved review findings, passing automated checks, and human acceptance. Archived as completed.
