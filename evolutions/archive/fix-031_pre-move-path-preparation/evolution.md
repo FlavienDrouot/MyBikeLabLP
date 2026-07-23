@@ -3,8 +3,8 @@
 - **ID:** fix-031
 - **Type:** Fix
 - **Date:** 2026-07-18
-- **Status:** Validated
-- **Current phase:** Validation
+- **Status:** Done
+- **Current phase:** Close
 - **Planning level:** Direct Plan
 - **Priority:** High
 
@@ -172,6 +172,19 @@ Validated 2026-07-18. All seven acceptance criteria satisfied. No deviations or 
 <!-- Filled by /corrections when needed. -->
 
 ---
+
+## Closure Notes
+
+Closed and archived 2026-07-18. All seven acceptance criteria were verified during validation (no open findings, no corrections required). Evidence:
+- `git config --local --get-all core.excludesfile`: no output, exit `1` (key absent).
+- `.git/info/exclude` present; SHA-256 unchanged (`6671fe83…b0ec1`).
+- `AGENTS.md` repository-location rule is repository-relative (`MyBikeLab/` / "repository root containing this `AGENTS.md`"), no absolute path.
+- `scripts/DatascrapingPrompt.md` destination is exactly `scripts/data/Datascrapping_[brand].json`.
+- Maintained-file scan (forward/back-slash absolute root forms, exclusions applied): zero matches.
+- `evolutions/archive/` retains 421 files; `graphify-out/` unmodified; `.pi-subagents/` and `.claude/` absent.
+- Frontend regression: lint exit `0`; `npm run test:summary` 341 passed / 0 failed.
+
+Index handling: fix-031 stays listed in the `Fixes` table (README source of truth) with status `Done`; it is physically moved to `evolutions/archive/` rather than the EVO-only Archive table, consistent with this product's fix lifecycle (finished fixes remain indexed in the Fixes table).
 
 ## Optional Reviews
 

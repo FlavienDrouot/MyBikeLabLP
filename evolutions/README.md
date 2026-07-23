@@ -55,7 +55,7 @@ Small fixes — single condensed document, no subfolder. See `workflows/ai-dev-p
 | fix-028 | tire-width-range-regressions | Done |
 | fix-029 | tire-width-minimum-normalization | Done |
 | fix-030 | comparator-shrinkwrap-layout | Done |
-| fix-031 | pre-move-path-preparation | Validated |
+| fix-031 | pre-move-path-preparation | Done |
 | fix-032 | post-move-relocation-validation | Abandoned |
 
 ## Archive
