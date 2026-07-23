@@ -60,6 +60,12 @@
   "columnSelector": {
     "button": "Colonnes"
   },
+  "pagination": {
+    "label": "Pagination",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "page": "Page {{current}} sur {{total}}"
+  },
   "table": {
     "heading": "Roues",
     "of": "sur",

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect, useCallback, useMemo } from 'react';
+import React, { useState, useRef, useLayoutEffect, useCallback, useMemo, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, SlidersHorizontal, X } from 'lucide-react';
@@ -11,11 +11,16 @@ import ColumnSelector from './ColumnSelector';
 import MeasuringTable from './MeasuringTable';
 import FreehubCell from './FreehubCell';
 import FilterChips from './FilterChips';
+import PaginationControls from './PaginationControls';
+import useIsDesktopComparator from '../../hooks/useIsDesktopComparator';
 import { renderCellFor, cellClassFor } from './columnCells';
 
 // Trailing chevron column: an icon (16px) inside px-4 padding (2×16px) — width
 // is deterministic, so it is pinned with a constant instead of being measured.
 const ACTIONS_COL_PX = 48;
+
+// Fixed page size for mobile pagination (EVO-061).
+const PAGE_SIZE = 10;
 
 const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpen }) => {
   const { t } = useTranslation();
@@ -31,12 +36,29 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   const [renderedExpandedId, setRenderedExpandedId] = useState(null);
   const [isPanelVisible, setIsPanelVisible] = useState(false);
   const [panelWidth, setPanelWidth] = useState(0);
+  const [page, setPage] = useState(0);
   // Column widths measured on the full dataset (see MeasuringTable). Keyed by
   // column id. Empty until the first measurement → table falls back to auto.
   const [colWidths, setColWidths] = useState({});
 
+  const isDesktop = useIsDesktopComparator();
   const scrollRef = useRef(null);
   const panelRef = useRef(null);
+
+  // Pagination derived values.
+  const totalPages = Math.ceil(wheels.length / PAGE_SIZE);
+  // Synchronously bound effective page prevents an empty intermediate render
+  // when filtering reduces the page count below the stored page.
+  const effectivePage = totalPages === 0 ? 0 : Math.min(page, totalPages - 1);
+  const pageWheels = useMemo(() => {
+    const start = effectivePage * PAGE_SIZE;
+    return wheels.slice(start, start + PAGE_SIZE);
+  }, [wheels, effectivePage]);
+
+  // Reset to first page when the filtered/sorted wheel list changes.
+  useEffect(() => {
+    setPage(0);
+  }, [wheels]);
 
   // Stable callback; bails out when widths are unchanged to avoid a render loop.
   const handleMeasure = useCallback((widths) => {
@@ -143,6 +165,12 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     openExpandedPanel(id);
   };
 
+  // Close detail panel when changing pages.
+  const handlePageChange = useCallback((newPage) => {
+    closeExpandedPanel();
+    setPage(newPage);
+  }, [closeExpandedPanel]);
+
   return (
     <div className="bg-paper-0 border border-ink-10 overflow-hidden w-full max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden snap-start">
       <div className="flex items-center justify-between px-5 py-4">
@@ -175,7 +203,16 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
           {t('table.emptyState')}
         </div>
       ) : (
-        <div className="comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]" ref={scrollRef}>
+        <>
+          {!isDesktop && totalPages > 1 && (
+            <PaginationControls
+              currentPage={effectivePage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          )}
+
+          <div className="comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]" ref={scrollRef}>
           <table
             className="text-sm bg-paper-0 border-separate border-spacing-0"
             style={widthsReady ? { tableLayout: 'fixed', width: totalWidth } : undefined}
@@ -230,7 +267,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
               </tr>
             </thead>
             <tbody>
-              {wheels.map((w) => (
+              {(isDesktop ? wheels : pageWheels).map((w) => (
                 <React.Fragment key={w.id}>
                   <tr
                     className="hover:bg-brass-1 cursor-pointer"
@@ -295,6 +332,15 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
             </tbody>
           </table>
         </div>
+
+          {!isDesktop && totalPages > 1 && (
+            <PaginationControls
+              currentPage={effectivePage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          )}
+        </>
       )}
 
       {/* Hidden twin measured on the full dataset to pin column widths so the

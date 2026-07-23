@@ -18,6 +18,7 @@ A Project groups several evolutions sharing one goal and definition of done. Chi
 
 | ID | Slug | Phase | Status | Project |
 |---|---|---|---|---|
+| EVO-061 | mobile-table-pagination | Increment framing | Active | - |
 
 ## Fixes
 

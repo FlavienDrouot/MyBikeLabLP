@@ -60,6 +60,12 @@
   "columnSelector": {
     "button": "Columns"
   },
+  "pagination": {
+    "label": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {{current}} of {{total}}"
+  },
   "table": {
     "heading": "Wheels",
     "of": "of",
