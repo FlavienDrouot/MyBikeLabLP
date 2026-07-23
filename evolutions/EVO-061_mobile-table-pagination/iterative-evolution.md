@@ -134,7 +134,7 @@ Limit rendered wheels to 10 per page below `lg`, with identical controls above a
 | Valid page | Derive a synchronously bounded page index before slicing | Prevents one empty render when filtering reduces the page count; state is subsequently reset to page 0. |
 | Controls visibility | Conditional render: `!isDesktop && totalPages > 1` | Controls absent from DOM at lg+; absent when 1 page of results. |
 | Panel closure | Close directly in the page-change handler | Implements the validated rule that every page change closes the detail panel. |
-| Page reset | `useEffect` on `wheels` array reference, combined with synchronous page bounding | `selectFilteredWheels` memoizes; the bound prevents an invalid intermediate render before the reset effect runs. |
+| Page reset | Associate the local page with the wheel-list reference and derive page 0 for a new list | Avoids synchronous state updates in an effect while preventing an invalid intermediate render. |
 
 #### Impacted files
 
@@ -169,10 +169,10 @@ Limit rendered wheels to 10 per page below `lg`, with identical controls above a
 
 **T3 - `ComparisonTable` modifications** (`src/components/MiniComparator/ComparisonTable.jsx`)
 1. Import `useIsDesktopComparator` and `PaginationControls`.
-2. Add `const [page, setPage] = useState(0)` and module-level `const PAGE_SIZE = 10`.
+2. Add local pagination state associated with the active wheel-list reference and module-level `const PAGE_SIZE = 10`.
 3. Derive `isDesktop` from `useIsDesktopComparator()`.
 4. Derive `totalPages`, then synchronously bound the effective page to the valid range before deriving `pageWheels`; an invalid stored page must never produce an empty intermediate render.
-5. `useEffect(() => setPage(0), [wheels])` resets stored state on filter/sort change after the bounded render.
+5. Associate the selected page with the current `wheels` reference; derive page 0 when filtering or sorting produces a new list, without an effect-driven state update.
 6. Use one page-change handler that closes the detail panel before setting the requested page. Both control groups receive this handler.
 7. Render `pageWheels` on mobile and all `wheels` on desktop in `<tbody>`.
 8. Render `PaginationControls` above and below the scroll wrapper, conditional on `!isDesktop && totalPages > 1`.
@@ -220,7 +220,7 @@ FR keys: `{ "label": "Pagination", "previous": "Précédent", "next": "Suivant",
 
 | Risk | Mitigation |
 |---|---|
-| Invalid stored page during filter reduction | Bound the effective page synchronously before slicing, then reset state; test reduction from several pages to one without an empty render. |
+| Invalid stored page during filter reduction | Derive page 0 for a changed wheel-list reference and bound the selected page before slicing; test reduction from several pages to one without an empty render. |
 | `selectFilteredWheels` new ref on unrelated renders | RTK `createSelector` memoizes; tests verify reset only on actual changes. |
 | `matchMedia` listener leak in hot-reload | Cleanup in hook effect; listener-capable test mock. |
 | MeasuringTable receives full dataset while visible table is sliced | MeasuringTable is `aria-hidden` and off-flow; no conflict. |
@@ -245,7 +245,7 @@ Implemented on 2026-07-23.
 
 - `useIsDesktopComparator`: targeted hook using `matchMedia('(min-width: 1024px)')`. SSR-safe, cleans up listener.
 - `PaginationControls`: `<nav>` with `aria-label`, Previous/Page X of Y/Next layout, Lucide chevrons via `Icon`, native `disabled` at boundaries, design-system tokens.
-- `ComparisonTable`: added `page` state + `PAGE_SIZE = 10`, derived `totalPages`/`effectivePage`/`pageWheels` with synchronous page bounding to prevent empty intermediate renders. `useEffect` on `wheels` reference resets stored page. Single `handlePageChange` callback closes the detail panel and sets the page. Controls rendered above and below the scroll wrapper, conditional on `!isDesktop && totalPages > 1`. Mobile renders `pageWheels`; desktop renders all `wheels`. `MeasuringTable` still receives `allWheels`.
+- `ComparisonTable`: added local pagination state + `PAGE_SIZE = 10`, derived `totalPages`/`effectivePage`/`pageWheels` with list-reference-aware page reset to prevent empty intermediate renders without synchronous state updates in an effect. Single `handlePageChange` callback closes the detail panel and records the page for the current wheel list. Controls rendered above and below the scroll wrapper, conditional on `!isDesktop && totalPages > 1`. Mobile renders `pageWheels`; desktop renders all `wheels`. `MeasuringTable` still receives `allWheels`.
 - Translations: `pagination.label`, `pagination.previous`, `pagination.next`, `pagination.page` in EN and FR.
 
 #### Checks and outcomes
@@ -292,7 +292,7 @@ Post-implementation review found:
 
 - **F1 (Low):** Indentation inconsistency in ComparisonTable.jsx — fragment and children indented at 6-8 spaces instead of the surrounding 2-space style. **Fixed:** re-indented fragment children to match.
 - **F2 (Low):** Missing test for page reset after filter/sort change. **Fixed:** added test that navigates to page 2 with 25 wheels, re-renders with 15 wheels, asserts page resets to 1.
-- **F3 (Low):** Missing test for page clamping when filter reduces below stored page. **Fixed:** added test that navigates to page 3 with 25 wheels, re-renders with 15 wheels, asserts page resets to 1 (synchronous clamp prevents empty render, then useEffect resets to 0).
+- **F3 (Low):** Missing test for page clamping when filter reduces below stored page. **Fixed:** added test that navigates to page 3 with 25 wheels, re-renders with 15 wheels, asserts page resets to 1 (synchronous bound and list-reference-aware derivation prevent an empty render).
 
 All three findings resolved. 366/366 tests pass.
 
@@ -312,6 +312,14 @@ Implementation accepted and ready for final integration or closure. The evolutio
 
 No rework resulted from human testing. The three low-severity implementation-review findings recorded in review round 2 were corrected before human acceptance.
 
+### Lint correction - 2026-07-23
+
+- Removed the synchronous `setPage(0)` effect rejected by `react-hooks/set-state-in-effect`.
+- Reset pagination by associating the selected page with the current filtered/sorted wheel-list reference. A new list derives page 0 immediately; the selected page remains bounded before slicing.
+- Memoized `closeExpandedPanel` to satisfy `react-hooks/exhaustive-deps` for the page-change callback.
+- Removed the unused `query` parameter from the mobile `matchMedia` test mock.
+- Verification: `npm run lint` passed; `npm run test:summary` passed with 27 files and 366 tests; focused pagination tests passed with 17 tests.
+
 ## Decision and learning log
 
 - **2026-07-23:** pagination limited to viewports below `lg`.
@@ -322,6 +330,7 @@ No rework resulted from human testing. The three low-severity implementation-rev
 - **2026-07-23:** no automatic scrolling to the top.
 - **2026-07-23:** a stabilization increment remains conditional on human test conclusions.
 - **2026-07-23:** plan review replaced asynchronous-only page correction with synchronous effective-page bounding.
+- **2026-07-23:** lint correction replaced the page-reset effect with list-reference-aware derivation and memoized the panel close callback.
 - **2026-07-23:** breakpoint detection was narrowed to the comparator's single validated query; generalization is deferred until a second use case exists.
 - **2026-07-23:** pagination controls will use Lucide chevrons and native disabled semantics.
 - **2026-07-23:** human testing accepted increment 1 without further corrections.

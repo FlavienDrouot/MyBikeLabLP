@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect, useCallback, useMemo, useEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect, useCallback, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, SlidersHorizontal, X } from 'lucide-react';
@@ -36,7 +36,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   const [renderedExpandedId, setRenderedExpandedId] = useState(null);
   const [isPanelVisible, setIsPanelVisible] = useState(false);
   const [panelWidth, setPanelWidth] = useState(0);
-  const [page, setPage] = useState(0);
+  const [pagination, setPagination] = useState({ wheels: null, page: 0 });
   // Column widths measured on the full dataset (see MeasuringTable). Keyed by
   // column id. Empty until the first measurement → table falls back to auto.
   const [colWidths, setColWidths] = useState({});
@@ -47,18 +47,17 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
 
   // Pagination derived values.
   const totalPages = Math.ceil(wheels.length / PAGE_SIZE);
-  // Synchronously bound effective page prevents an empty intermediate render
-  // when filtering reduces the page count below the stored page.
-  const effectivePage = totalPages === 0 ? 0 : Math.min(page, totalPages - 1);
+  // A changed wheel list starts from page 1 without an effect-driven render.
+  // The stored page is only applicable to the list it was selected for.
+  const effectivePage = totalPages === 0
+    ? 0
+    : pagination.wheels === wheels
+      ? Math.min(pagination.page, totalPages - 1)
+      : 0;
   const pageWheels = useMemo(() => {
     const start = effectivePage * PAGE_SIZE;
     return wheels.slice(start, start + PAGE_SIZE);
   }, [wheels, effectivePage]);
-
-  // Reset to first page when the filtered/sorted wheel list changes.
-  useEffect(() => {
-    setPage(0);
-  }, [wheels]);
 
   // Stable callback; bails out when widths are unchanged to avoid a render loop.
   const handleMeasure = useCallback((widths) => {
@@ -150,11 +149,11 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     setExpandedId(id);
   };
 
-  const closeExpandedPanel = () => {
+  const closeExpandedPanel = useCallback(() => {
     setExpandedId(null);
     setIsPanelVisible(false);
     setRenderedExpandedId(null);
-  };
+  }, []);
 
   const toggleExpanded = (id) => {
     if (expandedId === id) {
@@ -168,8 +167,8 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   // Close detail panel when changing pages.
   const handlePageChange = useCallback((newPage) => {
     closeExpandedPanel();
-    setPage(newPage);
-  }, [closeExpandedPanel]);
+    setPagination({ wheels, page: newPage });
+  }, [closeExpandedPanel, wheels]);
 
   return (
     <div className="bg-paper-0 border border-ink-10 overflow-hidden w-full max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden snap-start">

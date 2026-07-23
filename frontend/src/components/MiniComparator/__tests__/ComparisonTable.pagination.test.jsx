@@ -96,7 +96,7 @@ describe('ComparisonTable pagination (EVO-061)', () => {
 
   // Helper to mock matchMedia for mobile viewport
   const mockMobileViewport = () => {
-    globalThis.window.matchMedia = vi.fn().mockImplementation((query) => ({
+    globalThis.window.matchMedia = vi.fn().mockImplementation(() => ({
       matches: false,
       addEventListener: vi.fn(),
       removeEventListener: vi.fn(),
@@ -377,8 +377,8 @@ describe('ComparisonTable pagination (EVO-061)', () => {
       expect(paginationNavs(container)[0].textContent).toContain('Page 3 of 3');
 
       // Re-render with 15 wheels — page 3 no longer exists.
-      // The synchronous clamp (Math.min(page, totalPages-1)) prevents an empty
-      // render, then the useEffect resets page to 0. Final state: page 1 of 2.
+      // The list-reference-aware page derivation prevents an empty render and
+      // starts the new list on page 1.
       const wheels15 = makeWheels(15);
       const newStore = makeStore(wheels15);
       act(() => {
