@@ -12,7 +12,7 @@
     scroll-padding-top: var(--navbar-height);
     scrollbar-width: thin;
     scrollbar-color: var(--ink-4) transparent;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   body {
     background: var(--bg-page);
@@ -25,7 +25,7 @@
     font-feature-settings: 'ss01', 'ss02', 'cv11';
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   ::selection {
     background: var(--brass-5);

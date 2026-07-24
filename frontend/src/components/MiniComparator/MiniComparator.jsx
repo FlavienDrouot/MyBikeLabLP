@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { X } from 'lucide-react';
 import FilterPanel from './FilterPanel';
@@ -19,11 +19,43 @@ const MiniComparator = () => {
   const [visibility, setVisibility] = useState(defaultVisibility);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
+  // Chromium does not consistently apply proximity snapping on the root
+  // scroller. Realign only when the table is already close to its target so
+  // the page never jumps to the comparator from a distant position.
+  useEffect(() => {
+    const target = document.querySelector('#tool .snap-start');
+    if (!target) return undefined;
+
+    let settling = false;
+    let settleTimer;
+    const alignWhenNear = () => {
+      if (settling) return;
+      const navbarHeight = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')
+      ) || 0;
+      const delta = target.getBoundingClientRect().top - navbarHeight;
+      if (Math.abs(delta) > 96) return;
+
+      settling = true;
+      window.scrollBy({ top: delta, behavior: 'smooth' });
+      clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(() => {
+        settling = false;
+      }, 500);
+    };
+
+    window.addEventListener('scroll', alignWhenNear, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', alignWhenNear);
+      clearTimeout(settleTimer);
+    };
+  }, []);
+
   const handleToggle = (id) =>
     setVisibility((v) => ({ ...v, [id]: !v[id] }));
 
   return (
-    <section id="tool" className="section bg-paper-2 overflow-x-hidden">
+    <section id="tool" className="section bg-paper-2 overflow-x-clip">
       <div className="container-fluid">
         <div className="text-center max-w-2xl mx-auto">
           <p className="t-eyebrow">{t('comparator.sectionIndex')}</p>

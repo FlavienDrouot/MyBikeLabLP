@@ -219,7 +219,7 @@ describe('MiniComparator viewport-cap integration (EVO-025 TASK-004)', () => {
     );
 
     expect(section).not.toBeNull();
-    expect(section.className).toContain('overflow-x-hidden');
+    expect(section.className).toContain('overflow-x-clip');
     expect(gridWrapper).not.toBeNull();
     const gridClasses = gridWrapper.className.split(/\s+/);
     expect(gridClasses).toContain('w-fit');
