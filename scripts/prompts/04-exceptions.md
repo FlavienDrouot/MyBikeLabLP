@@ -34,23 +34,22 @@ Write `exceptions.json`:
     "exception_id": "ex-0001",
     "evidence_id": "scope-artech-6",
     "canonical_id": null,
-    "observation_ids": ["obs-0001"],
-    "fact_refs": ["scope-artech-6#fact-0007"],
+    "observation_refs": ["scope-artech-6#obs-0001"],
+    "fact_refs": ["scope-artech-6#stable-0007"],
     "field": "axis_classification.bearing",
     "type": "classification|browser_verification|conflict|invalid_reference|incomplete_evidence|stale|validation|scope|identity|blocked",
     "severity": "low|medium|high|blocking",
     "tier": "deterministic|browser_retry|model_review|human_gate",
-    "observed": {"raw_values": [], "source_urls": [], "retrieved_at": []},
     "attempted_resolution": "",
     "required_action": "",
     "status": "open|resolved|accepted_unresolved",
     "resolution_refs": [],
-    "source_urls": []
+    "evidence_refs": []
   }],
   "summary": {"open": 0, "blocking": 0, "accepted_unresolved": 0, "observation_count": 0, "canonical_variant_count": 0}
 }
 ```
 
-`fact_refs` must use `evidence_id#fact_id` and resolve to captured facts. `observation_ids` must resolve to preserved raw observations. A resolved exception points to the evidence and normalization/accounting change that resolved it. An `accepted_unresolved` exception remains in the final handoff and prevents claiming complete normalization when it affects classification, evidence completeness, browser verification, or validation. Do not use exceptions to introduce temporary batch files, split work into batches, or define a batching strategy.
+`fact_refs` must use `evidence_id#fact_id` and resolve to captured facts. `observation_refs` must use `evidence_id#observation_id` and resolve to preserved raw observations. Do not copy raw values, source URLs, timestamps, selected values, or fact lists into an exception; provenance is recovered through the referenced evidence observation and its `source_id`. `evidence_refs` and `resolution_refs` must point to declared facts, observations, profiles, normalization mappings, classification decisions, or accounting records. A resolved exception points to the evidence and normalization/accounting change that resolved it. An `accepted_unresolved` exception remains in the final handoff and prevents claiming complete normalization when it affects classification, evidence completeness, browser verification, or validation. Do not use exceptions to introduce temporary batch files, split work into batches, or define a batching strategy.
 
-Validate that every exception has a precise type, severity, tier, status, provenance, and required action; every unresolved or invalid item is routed; every affected observation and fact remains preserved; and `summary.observation_count` is distinct from `summary.canonical_variant_count`. Return valid JSON only.
+Validate that every exception has a precise type, severity, tier, status, provenance references, and required action; every unresolved or invalid item is routed; every affected observation and fact remains preserved; every observation reference resolves to the family evidence; no exception duplicates evidence data; and `summary.observation_count` is distinct from `summary.canonical_variant_count`. Return valid JSON only.

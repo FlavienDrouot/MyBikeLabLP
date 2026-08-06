@@ -1,13 +1,20 @@
 # MyBikeLab acquisition pipeline
 
 Start with [`PipelineCoordinatorPrompt.md`](PipelineCoordinatorPrompt.md). It is the
-agent-driven entrypoint: the coordinator launches and supervises the phase workers,
-passes artifacts, applies gates, and requests human approval before publication.
+agent-driven entrypoint: before any phase work, the coordinator must create the required
+child worker/thread. It then waits for and supervises phase workers, passes artifacts,
+applies gates, and requests human approval before publication.
 
-The coordinator, discovery, acquisition, normalization, and separate verifier use
-`gpt-5.6-luna` at medium reasoning. Complex exception review uses `gpt-5.6-luna` at
-very-high reasoning; final escalation uses `gpt-5.6-terra` at very-high reasoning. The Node
-publisher uses no model. Keep every intermediate artifact; do not replace an earlier
+Discovery, acquisition, normalization, and independent verification use separate Luna
+workers at medium reasoning. Complex exception review uses a Luna worker at very-high
+reasoning. Exceptional escalation uses Terra at very-high reasoning. The deterministic
+Node publisher uses no model. If worker/thread creation or a required model is unavailable,
+stop with a blocking orchestration exception; never do worker work in the coordinator.
+
+The coordinator only creates and waits for workers, validates explicit handoffs, advances
+gates, and invokes the publisher after approval. It does not browse, extract, normalize,
+verify, resolve exceptions, write worker artifacts, or create helper generation or
+orchestration scripts. Keep every intermediate artifact; do not replace an earlier
 artifact with a normalized result.
 
 Acquisition uses two steps. First, WebFetch performs a static preparatory pass that may
@@ -19,16 +26,21 @@ verification is unavailable or fails, block acquisition and route the case throu
 `prompts/04-exceptions.md`.
 
 Acquisition writes one logical evidence JSON file per product family. It contains
-`stable_facts`, `configuration_profiles`, and compact raw observations. Do not create
-temporary small-batch files or add a batching strategy. Acquisition records evidence
-only: it does not classify variants or options and does not assign IDs. Normalization
-owns that business logic.
+`stable_facts`, reusable axis-value `configuration_profiles`, and compact raw
+observations. Repeated observations reference those profiles instead of repeating full
+records. Do not create temporary small-batch files or add a batching strategy. Acquisition
+records evidence only: it does not classify variants or options and does not assign IDs.
+Normalization owns that business logic and uses reference-only fact accounting. Compact
+profiles plus reference-only accounting prevent the former 7400-line style outcome.
 
-1. [`scripts/prompts/00-shared-contract.md`](prompts/00-shared-contract.md) — rules shared by every phase.
+1. Create the discovery worker, then read [`scripts/prompts/00-shared-contract.md`](prompts/00-shared-contract.md) — rules shared by every phase.
 2. [`scripts/prompts/01-discovery.md`](prompts/01-discovery.md) — create `catalog-index.json`.
 3. [`scripts/prompts/02-acquisition.md`](prompts/02-acquisition.md) — create one family-level evidence JSON with stable facts, configuration profiles, and compact raw observations.
 4. [`scripts/prompts/03-normalization.md`](prompts/03-normalization.md) — create canonical product JSON and a fact-accounting report.
 5. [`scripts/prompts/04-exceptions.md`](prompts/04-exceptions.md) — route blocked, ambiguous, stale, or conflicting records.
+
+The coordinator creates each next worker only after validating the previous worker's
+explicit handoff and artifacts. No phase may run out of sequence.
 
 The final canonical product objects must conform exactly to [`workflows/datascraping/wheel-format.json`](C:/Users/Flavien/Documents/VisualStudioCode/work-system/workflows/datascraping/wheel-format.json). The current scope is road bicycle wheels and wheelsets, including triathlon products listed in a road category; exclude gravel-specific, MTB, track-only, spare-part, hub-only, rim-only, spoke-only, and accessory products. A buyable configuration is first recorded as a commerce observation; only a classified real catalog variant becomes a canonical object. Preserve the official brand and model names and use the canonical `variant` rules. Before normalization, the orchestrator scans the complete current catalog, reserves a contiguous allocation block beginning at `max(existing IDs) + 1`, and passes that block to normalization. Historical IDs and historical reserved ranges remain valid and are never reused for new records.
 

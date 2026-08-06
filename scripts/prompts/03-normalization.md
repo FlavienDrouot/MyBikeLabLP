@@ -7,14 +7,16 @@ Read `00-shared-contract.md`, `catalog-index.json`, the canonical schema in `wor
 Acquisition evidence is one product-family record with three distinct layers:
 
 - `stable_facts`: reusable facts established for the family, such as brand, model, dimensions, material, warranty, or technical specifications. Each fact has a unique `fact_id`, source provenance, raw value, and normalized candidate value.
-- `configuration_profiles`: reusable sets of stable-fact references and profile-specific fact references. A profile describes a selectable configuration without becoming a canonical product until normalization classifies its differences. Profile references must use fully qualified fact references in the form `evidence_id#fact_id`.
+- `configuration_profiles`: reusable axis-value configurations containing exact raw selections and profile-specific fact references. A profile describes a selectable configuration without becoming a canonical product until normalization classifies its differences. Profile references must use fully qualified fact references in the form `evidence_id#fact_id`.
 - `observations`: every browser-observed buyable combination, including selected options, SKU, stock, displayed amount, source currency, source URL, post-selection URL, retrieval timestamp, and the fact references supporting each value. These are observations, not business classifications.
+
+For each new family, require all three layers: declare reusable page/family facts in `stable_facts`; declare reusable exact axis-value selections and their selection-scoped facts in `configuration_profiles`; and make every observation reference the applicable profiles through `profile_ids`. An observation may add only observation-specific provenance and commerce state. Never turn a profile or acquisition hypothesis into a canonical product without the normalization decisions below.
 
 Older evidence may expose equivalent `facts` and `commerce_observations` arrays. Treat them as the same layers only when their provenance and IDs are unambiguous; otherwise route invalid or incomplete evidence to `04-exceptions.md`. Any acquisition `axis_classification` is an observation or hypothesis only. It is not authoritative and cannot be copied into the normalization decision.
 
 ## Classification and grouping
 
-1. Resolve stable facts and profile references before comparing profiles. Dereference every reference and retain the original raw observation and provenance.
+1. Resolve stable facts, axis-value profiles, and each observation's `profile_ids` before comparing profiles. Dereference every reference and retain the original raw observation and provenance in the family evidence; do not copy those values into accounting.
 2. Compare the extracted facts and the current canonical frontend schema. Decide every axis centrally:
    - `variant`: changes a comparison-distinct catalog product and receives one canonical object;
    - `option`: selectable compatibility or fit choice represented by an existing canonical field, such as `hub.freehub_options`;
@@ -32,7 +34,7 @@ For the Scope Artech 6 golden case, preserve 20 raw commerce observations (5 fre
 
 Use fully qualified references everywhere: `evidence_id#fact_id`. Maintain one capture ledger per evidence file. Every captured fact must occur exactly once in one terminal accounting bucket: `normalized`, `preserved_in_other_specs`, `unresolved`, `conflicts`, `discarded`, or `classified_non_variant`. A fact referenced by several canonical products is accounted for once by its owner evidence record and listed for each consumer only in `shared_fact_references`; those consumer references never count as additional capture occurrences. A fact must not be both a shared reference and a second terminal bucket entry.
 
-For every raw observation, record exactly one observation record with all supporting fact references. The classification record must cite the facts supporting each axis decision, including `variant`, `option`, `cosmetic`, `offer`, and `unknown`. Validate that every reference resolves, every captured fact is terminally accounted for once, every observation is preserved once, and every source URL and retrieval timestamp is attributable.
+For every raw observation, record exactly one compact observation record containing only its fully qualified observation reference and the canonical IDs it maps to. The classification record must cite the facts supporting each axis decision, including `variant`, `option`, `cosmetic`, `offer`, and `unknown`. Group identical axis/value decisions once and list all affected canonical IDs. Validate that every reference resolves, every captured fact is terminally accounted for once, every observation is preserved once, and every source URL and retrieval timestamp is attributable through the evidence observation and its `source_id`; never repeat source URLs, timestamps, selected values, or fact lists in accounting rows.
 
 ## Outputs
 
@@ -47,20 +49,30 @@ Write `fact-accounting.json`:
   "records": [{
     "evidence_id": "scope-artech-6",
     "capture": {
-      "fact_refs": ["scope-artech-6#fact-0001", "scope-artech-6#fact-0002"],
-      "terminal": {"normalized": ["scope-artech-6#fact-0001"], "preserved_in_other_specs": [], "unresolved": [], "conflicts": [], "discarded": [], "classified_non_variant": ["scope-artech-6#fact-0002"]}
+      "fact_refs": ["scope-artech-6#stable-0001", "scope-artech-6#profile-0001-fact-0001"],
+      "terminal": {"normalized": ["scope-artech-6#stable-0001"], "preserved_in_other_specs": [], "unresolved": [], "conflicts": [], "discarded": [], "classified_non_variant": ["scope-artech-6#profile-0001-fact-0001"]}
     },
-    "shared_fact_references": [{"fact_ref": "scope-artech-6#fact-0001", "canonical_ids": [101, 102], "reason": "stable family fact; accounted for once above"}],
+    "shared_fact_references": [{"fact_ref": "scope-artech-6#stable-0001", "canonical_ids": [101, 102]}],
     "observations": [{
-      "observation_id": "obs-0001",
-      "canonical_id": 101,
-      "raw_observation_ref": "scope-artech-6#obs-0001",
-      "source_url": "https://example.test/product?freehub=hg",
-      "url_after_selection": "https://example.test/product?freehub=hg",
-      "retrieved_at": "2026-01-01T00:00:00Z",
-      "fact_refs": ["scope-artech-6#fact-0001", "scope-artech-6#fact-0002"],
-      "axis_classification": [{"axis": "freehub", "classification": "option", "fact_refs": ["scope-artech-6#fact-0002"], "target": "hub.freehub_options", "reason": "compatibility choice in the current schema"}]
+      "observation_ref": "scope-artech-6#obs-0001",
+      "canonical_ids": [101]
     }],
+    "classification_decisions": [{
+      "decision_key": "freehub=Shimano HG",
+      "axis": "freehub",
+      "value": "Shimano HG",
+      "classification": "option",
+      "fact_refs": ["scope-artech-6#profile-0001-fact-0001"],
+      "target_path": "hub.freehub_options",
+      "canonical_ids": [101, 102]
+    }],
+    "normalized_mappings": [{
+      "fact_refs": ["scope-artech-6#stable-0001"],
+      "target_path": "brand",
+      "canonical_ids": [101, 102]
+    }],
+    "unresolved": [],
+    "conflicts": [],
     "coverage": {"commerce_observation_count": 20, "catalog_variant_count": 2, "matrix_axes_tested": ["freehub", "bearing", "decal_color"]}
   }],
   "global_unresolved": [],
@@ -68,4 +80,6 @@ Write `fact-accounting.json`:
 }
 ```
 
-If classification, references, evidence coverage, or allocation capacity cannot be validated, emit no partial canonical handoff and route the issue through `04-exceptions.md`. Return the two valid JSON artifacts and no prose.
+`observations[*]` is an accounting index, not a copy of evidence. It must contain exactly `observation_ref` and `canonical_ids`; the referenced family observation remains the sole source for URLs, timestamps, selected raw values, offer data, and supporting fact IDs. `classification_decisions[*]` is one record per unique axis/value decision. `normalized_mappings[*]` records the resulting schema mapping with `fact_refs`, `target_path`, and `canonical_ids`. Add compact `unresolved` or `conflicts` entries only when required, using fully qualified `fact_refs` and `observation_refs` rather than copied evidence.
+
+Validate that every `stable_facts` fact and every profile fact is captured exactly once in a terminal bucket, profiles are reusable and referenced by observation `profile_ids`, each raw observation has exactly one accounting index entry, shared facts occur only in `shared_fact_references` for additional consumers, each observation's canonical IDs are complete, and commerce observation count is separate from canonical variant count. If classification, references, evidence coverage, or allocation capacity cannot be validated, emit no partial canonical handoff and route the issue through `04-exceptions.md`. Return the two valid JSON artifacts and no prose.

@@ -12,7 +12,7 @@ Include road wheelsets and road wheels. Include triathlon products only when lis
 - Prefer first-party product pages, technical documents, and first-party commerce interfaces; use retailers only to fill or corroborate facts.
 - Never invent, interpolate, copy from a sibling configuration, or convert a marketing claim into a technical fact.
 - Preserve the source label, value, unit, and wording for every captured fact.
-- Every fact reference is an exact `fact_id` string declared in the same family evidence file. IDs are globally unique across `stable_facts` and every `configuration_profiles[*].facts`; use the prefixes `stable-`, `profile-`, and `obs-` to make scope unambiguous. Observation records do not redefine facts; their `fact_ids` reference declared stable or profile facts, while observation-specific fields are facts about that observation.
+- Every fact reference is an exact `fact_id` string declared in the same family evidence file. IDs are globally unique across `stable_facts`, reusable profile facts, and observation facts; use the prefixes `stable-`, `profile-`, and `obs-` to make scope unambiguous. Observation records may contain only observation-specific or combination-delta facts; never copy stable or profile facts into them.
 - A missing fact is unresolved, not false. Use `null` for unknown numeric or boolean values and `""` for unknown text in canonical output. In evidence and reports, use an unresolved record with a reason.
 - Source currency is the currency displayed by the source (`EUR` or `USD`); never convert it. An offer with no usable amount still records its source currency when the page establishes it.
 - Record source currency and retrieval date for every price and commerce observation. Treat a price as stale when its page is unavailable, archived, contradictory, or older than the run's accepted currency window; route it to exceptions rather than guessing.
@@ -40,13 +40,15 @@ Browser provenance rules:
 The contract produces one logical evidence file per product family, not one file per configuration. The family file contains:
 
 - `stable_facts`: page-level or product-family facts reusable across configurations;
-- `configuration_profiles`: reusable selection-scoped groups of raw axes and facts, with no business interpretation;
+- `configuration_profiles`: reusable groups for one raw axis/value identity or a genuinely reusable multi-axis profile and its selection-scoped facts, with no business interpretation;
 - compact `observations`: each browser-verified buyable configuration or explicitly blocked attempted configuration;
 - `sources`: complete provenance for static and browser reads;
 - `matrix_coverage`: tested raw axes and coverage status;
 - `unresolved`: missing, blocked, stale, and conflicting records.
 
-Stable facts are true at family/page scope and must not depend on a selected value. Profile facts are true only for the exact raw selection represented by that profile. An observation records what was seen for one attempted selection and may reference stable/profile fact IDs. Do not duplicate a stable fact in every profile or observation.
+Stable facts are true at family/page scope and must not depend on a selected value. A profile represents a reusable raw axis/value identity (or a genuinely reusable multi-axis profile) within a declared source scope; it must not represent one Cartesian configuration merely because that configuration was observed. An observation references plural `profile_ids` for the raw axis/value profiles that compose its selection and stores only observation-specific or exact-combination delta facts. Do not duplicate stable or profile facts in observations.
+
+Profile reuse is determined from source scope and raw axis/value identity, not from an LLM guess. Reuse a profile only when the source scope and raw identity match; if reuse is uncertain, keep the facts in separate profiles. A combination-specific fact may be inline in an observation only when it is directly observed for that exact combination, is not reusable for any single axis/value or broader source scope, and would otherwise require a one-off full combination profile. Such a fact must use an `obs-` ID and must not restate stable or profile facts.
 
 Acquisition may record raw axes, labels, values, control type, source references, and whether a fact is page-level or selection-scoped. Acquisition MUST NOT classify an axis as `variant`, `option`, `cosmetic`, or `offer`, and MUST NOT allocate canonical IDs. Those are later normalization/orchestration responsibilities. Do not add classification fields to acquisition output.
 
