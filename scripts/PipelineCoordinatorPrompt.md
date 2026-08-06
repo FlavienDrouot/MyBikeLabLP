@@ -34,53 +34,70 @@ orchestration scripts.
 ## Lifecycle and artifacts
 
 Create a unique run folder and a run manifest containing scope, model assignments,
-worker IDs, timestamps, artifact paths, counts, unresolved items, and decisions. Keep
-every artifact immutable; workers write new artifacts or revisions with a clear parent.
+worker IDs, timestamps, artifact paths, counts, unresolved items, and decisions. The
+manifest must make the exact runtime settings visible for every worker, including
+`model` and `reasoning_effort` (for example, `gpt-5.6-luna` and `medium`). Keep every
+artifact immutable; workers write new artifacts or revisions with a clear parent.
 Only the coordinator may advance a phase or close a gate.
 
 Create workers and complete these phases in order. Each phase starts only after the
 previous handoff is complete and validated:
 
-1. Discovery worker reads `00-shared-contract.md` and `01-discovery.md`, then writes
-   `catalog-index.json`.
-2. Acquisition reads the index and shared contract and writes one logical evidence JSON
-   file per product family. The evidence contains `stable_facts`,
-   reusable axis-value `configuration_profiles`, and compact raw observations. Repeated
-   observations reference those profiles. The coordinator checks family coverage before
-   continuing; do not create temporary small-batch evidence files or introduce a batching
-   strategy.
+1. Create exactly one Discovery worker (`gpt-5.6-luna`, `medium`). It reads
+   `00-shared-contract.md` and `01-discovery.md`, then writes `catalog-index.json` and
+   the included product-family list.
+2. After the Discovery handoff is validated, create exactly one Acquisition child worker
+   (`gpt-5.6-luna`, `medium`) for each included product family. No Acquisition worker
+   may own or process more than one family. Record the assignments in the run manifest
+   as `acquisition_worker_ids: {"<family_id>": "<worker_id>"}`. Each worker reads the
+   index and shared contract and writes one logical evidence JSON file for its assigned
+   family. Wait for every mapped family worker and validate every handoff before creating
+   the Normalization worker. Do not create temporary small-batch files or introduce a
+   batching strategy.
 3. Acquisition does not classify commerce axes or assign IDs. It records source facts,
-   every buyable configuration, and dynamic commerce state as evidence. Normalization
+   every in-scope or ambiguous buyable configuration, and dynamic commerce state as
+   evidence; deterministic single-wheel exclusions retain only their exclusion evidence.
+   Normalization
    owns classification into `variant`, `option`, `cosmetic`, `offer`, or `unknown`,
    resolves every `unknown`, scans the complete current frontend catalog, reserves a
    contiguous ID block beginning at `max(existing IDs) + 1`, and assigns IDs only to
    canonical products. Historical IDs and historical reserved ranges are valid and must
    never be reused.
-4. The normalizer groups observations into real catalog variants, then reads all evidence
+4. Create exactly one Normalization worker (`gpt-5.6-luna`, `medium`) after all family
+   Acquisition handoffs pass. The normalizer groups observations into real catalog variants,
+   then reads all evidence
    plus the allocation block and writes `canonical-products.json` and `fact-accounting.json`.
-5. The independent verifier reads the source artifacts and canonical outputs, then
+5. Create exactly one independent Verification worker (`gpt-5.6-luna`, `medium`) after
+   Normalization. It reads the source artifacts and canonical outputs, then
    writes a verification report. It must check IDs, axis classifications, variants,
    currencies, prices,
    matrix coverage, before/rear divergences, source traceability, and fact accounting.
 6. Route only material unresolved, conflicting, blocked, or ambiguous records to
-   `04-exceptions.md`: Luna very-high first, then Terra very-high only when justified. Write
-   `exceptions.json` and preserve accepted unresolved values.
+   `04-exceptions.md`. The first complex-exception review worker must explicitly use
+   `gpt-5.6-luna` with `reasoning_effort: very-high`. Create a `gpt-5.6-terra` worker at
+   `very-high` only as the exceptional escalation after that Luna review fails or cannot
+   resolve the material issue; record the failure or limitation and escalation reason in
+   the manifest and handoff. Write `exceptions.json` and preserve accepted unresolved
+   values.
 
-Each worker returns an explicit handoff note with status, input/output paths, record counts,
-source and retrieval coverage, unresolved count, and blocking issues. The coordinator
-waits for worker completion, validates JSON and contracts, and retries only the failed
-  family acquisition with a newly created worker when evidence permits. Never hide a failed worker by dropping
-its records.
+Each worker returns an explicit handoff note with status, exact `model`, exact
+`reasoning_effort`, assigned scope (including one Acquisition family), input/output paths,
+record counts, source and retrieval coverage, unresolved count, and blocking issues. The
+coordinator waits for worker completion and validates JSON and contracts. A failed family
+worker is a blocking exception; never hide a failed worker by dropping its records or by
+assigning its family to another family worker.
 
 ### Acquisition browser requirement
 
 Acquisition has two mandatory steps. First, use WebFetch for a static preparatory pass to
 prefill stable facts and locate relevant source material. Second, use the Codex
-integrated in-app browser to verify every buyable configuration and every dynamic
-commerce state, including selectors, SKU, stock, price, currency, and displayed offer.
-Static fetch is preparatory only and never replaces browser verification. Acquisition
-workers do not classify variants or options and do not assign IDs; they preserve the
-observations for normalization.
+integrated in-app browser to verify every in-scope or ambiguous buyable configuration and
+every dynamic commerce state, including selectors, SKU, stock, price, currency, and
+displayed offer. A configuration deterministically identified as an out-of-scope
+individual wheel during the preparatory pass needs only exclusion evidence. Static fetch
+is preparatory only and never replaces browser verification for an in-scope or ambiguous
+configuration. Acquisition workers do not classify variants or options and do not assign
+IDs; they preserve the observations for normalization.
 
 The coordinator only dispatches acquisition workers, verifies their handoffs and
 artifacts, and blocks or routes cases to the documented exception path in
@@ -107,6 +124,13 @@ No frontend publication is allowed before that human gate. After approval, ensur
 canonical array and verifier report are clean, then invoke the Node publisher without
 an LLM. If publication fails, preserve the artifacts, report the failure, and do not
 retry by changing product data.
+
+Missing optional SKU data does not block a run when all required identity, configuration,
+source, price/currency, and other required evidence is complete for an in-scope
+wheelset. Individual front-only or rear-only products are outside the current catalog
+scope. Record their deterministic exclusion with provenance and continue; do not create
+canonical products or blocking exceptions merely because such products appear on the
+source page. A genuinely ambiguous purchase unit remains an exception.
 
 Compact family profiles and reference-only fact accounting are mandatory. Count repeated
 axis values by reference to their reusable profile; do not expand each observation into a

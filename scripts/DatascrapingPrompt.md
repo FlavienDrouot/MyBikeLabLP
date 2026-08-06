@@ -5,11 +5,15 @@ agent-driven entrypoint: before any phase work, the coordinator must create the 
 child worker/thread. It then waits for and supervises phase workers, passes artifacts,
 applies gates, and requests human approval before publication.
 
-Discovery, acquisition, normalization, and independent verification use separate Luna
-workers at medium reasoning. Complex exception review uses a Luna worker at very-high
-reasoning. Exceptional escalation uses Terra at very-high reasoning. The deterministic
-Node publisher uses no model. If worker/thread creation or a required model is unavailable,
-stop with a blocking orchestration exception; never do worker work in the coordinator.
+Discovery, normalization, and independent verification use exactly one separate Luna
+worker each at `reasoning_effort: medium`. After discovery, acquisition uses exactly one
+Luna child worker at `reasoning_effort: medium` per included product family; each worker
+owns one family only. Complex exception review starts explicitly with Luna
+(`gpt-5.6-luna`, `reasoning_effort: very-high`). Exceptional escalation uses Terra
+(`gpt-5.6-terra`, `reasoning_effort: very-high`) only after Luna very-high fails or cannot
+resolve a material issue. The deterministic Node publisher uses no model. If worker/thread
+creation or a required model is unavailable, stop with a blocking orchestration exception;
+never do worker work in the coordinator.
 
 The coordinator only creates and waits for workers, validates explicit handoffs, advances
 gates, and invokes the publisher after approval. It does not browse, extract, normalize,
@@ -19,13 +23,18 @@ artifact with a normalized result.
 
 Acquisition uses two steps. First, WebFetch performs a static preparatory pass that may
 prefill stable facts and locate relevant source material. Second, the Codex integrated
-in-app browser must verify every buyable configuration and every dynamic commerce state,
-including selected options, SKU, stock, price, currency, and displayed offer. Static
-fetch is preparatory only and never replaces browser verification. If browser
-verification is unavailable or fails, block acquisition and route the case through
-`prompts/04-exceptions.md`.
+in-app browser must verify every in-scope or ambiguous buyable configuration and every
+dynamic commerce state, including selected options, SKU, stock, price, currency, and
+displayed offer. A configuration deterministically identified as an out-of-scope
+individual wheel during the preparatory pass needs only exclusion evidence. Static fetch
+is preparatory only and never replaces browser verification for an in-scope or ambiguous
+configuration. If browser verification is unavailable or fails, block acquisition and
+route the case through `prompts/04-exceptions.md`.
 
-Acquisition writes one logical evidence JSON file per product family. It contains
+Acquisition writes one logical evidence JSON file per product family. The coordinator
+records `acquisition_worker_ids` in the run manifest as a family-to-worker mapping and
+waits for every mapped worker before normalization. Every worker handoff and the run
+manifest must expose the exact `model` and `reasoning_effort` settings. It contains
 `stable_facts`, reusable axis-value `configuration_profiles`, and compact raw
 observations. Repeated observations reference those profiles instead of repeating full
 records. Do not create temporary small-batch files or add a batching strategy. Acquisition
@@ -40,8 +49,13 @@ profiles plus reference-only accounting prevent the former 7400-line style outco
 5. [`scripts/prompts/04-exceptions.md`](prompts/04-exceptions.md) — route blocked, ambiguous, stale, or conflicting records.
 
 The coordinator creates each next worker only after validating the previous worker's
-explicit handoff and artifacts. No phase may run out of sequence.
+explicit handoff and artifacts. No phase may run out of sequence. Missing optional SKU
+data does not block a run when required evidence is complete for an in-scope wheelset.
+Individual front-only or rear-only wheels are outside the current catalog scope. Record
+their deterministic exclusion with provenance and continue; do not create canonical
+products or blocking exceptions merely because they appear on the source page. An
+ambiguous purchase unit remains an exception.
 
-The final canonical product objects must conform exactly to [`workflows/datascraping/wheel-format.json`](C:/Users/Flavien/Documents/VisualStudioCode/work-system/workflows/datascraping/wheel-format.json). The current scope is road bicycle wheels and wheelsets, including triathlon products listed in a road category; exclude gravel-specific, MTB, track-only, spare-part, hub-only, rim-only, spoke-only, and accessory products. A buyable configuration is first recorded as a commerce observation; only a classified real catalog variant becomes a canonical object. Preserve the official brand and model names and use the canonical `variant` rules. Before normalization, the orchestrator scans the complete current catalog, reserves a contiguous allocation block beginning at `max(existing IDs) + 1`, and passes that block to normalization. Historical IDs and historical reserved ranges remain valid and are never reused for new records.
+The final canonical product objects must conform exactly to [`workflows/datascraping/wheel-format.json`](C:/Users/Flavien/Documents/VisualStudioCode/work-system/workflows/datascraping/wheel-format.json). The current scope is road wheelsets, meaning front + rear pairs sold together, including triathlon wheelsets listed in a road category; exclude individual front-only/rear-only wheels, gravel-specific, MTB, track-only, spare-part, hub-only, rim-only, spoke-only, and accessory products. A buyable configuration is first recorded as a commerce observation; only a classified real catalog variant becomes a canonical object. Preserve the official brand and model names and use the canonical `variant` rules. Before normalization, the orchestrator scans the complete current catalog, reserves a contiguous allocation block beginning at `max(existing IDs) + 1`, and passes that block to normalization. Historical IDs and historical reserved ranges remain valid and are never reused for new records.
 
-The pipeline must return explicit unresolved values and never fabricate facts. Preserve exhaustive technical capture in acquisition evidence and `other_specs` when no canonical field applies. Capture source currency as published (`EUR` or `USD`) without conversion. Use WebFetch for the static preparatory pass, then use the Codex integrated in-app browser to verify every buyable configuration and dynamic commerce state; record selected options, SKU, stock state, price, currency, and displayed offer. Acquisition does not classify commerce axes or assign IDs. Commerce observations remain evidence; normalization classifies them as `variant`, `option`, `cosmetic`, `offer`, or `unknown` and assigns IDs only to canonical products. Validate every JSON artifact before handoff.
+The pipeline must return explicit unresolved values and never fabricate facts. Preserve exhaustive technical capture in acquisition evidence and `other_specs` when no canonical field applies. Capture source currency as published (`EUR` or `USD`) without conversion. Use WebFetch for the static preparatory pass, then use the Codex integrated in-app browser to verify every in-scope or ambiguous buyable configuration and dynamic commerce state; record selected options, SKU, stock state, price, currency, and displayed offer. Acquisition does not classify commerce axes or assign IDs. Commerce observations remain evidence; normalization classifies them as `variant`, `option`, `cosmetic`, `offer`, or `unknown` and assigns IDs only to canonical products. Validate every JSON artifact before handoff.

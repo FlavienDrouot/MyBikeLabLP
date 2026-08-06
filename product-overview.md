@@ -87,7 +87,7 @@ Front/rear divergent specs (weight, rim depth, widths) are supported, and severa
 
 **Displayed columns (optional):** Diameter, Max system weight, Tire compatibility, External width, Internal width, Axle, Freehub options, Disc standard, Spokes, Spoke material. Additional specs (bearings, lacing, spoke count, tire pressure/width range, UCI / e-bike approval, warranty, etc.) are surfaced in the per-wheel detail panel.
 
-**Dataset:** ~220 road wheel entries (counting variants) across 18 brands, including Roval, Zipp, Enve, Mavic, Shimano, Caden, Arcaris, EXS, Overfast, Yoeleo, No6, Goosynn, Pertual, Scom, Magene, 9Velo, CRW Works, Farsports. Most entries have real product images and manufacturer-sourced specs and prices. Each product can carry several variants (e.g. freehub or axle options) rendered as distinct rows.
+**Dataset:** ~220 road wheelset entries (counting variants) across 18 brands, including Roval, Zipp, Enve, Mavic, Shimano, Caden, Arcaris, EXS, Overfast, Yoeleo, No6, Goosynn, Pertual, Scom, Magene, 9Velo, CRW Works, Farsports. The catalog unit is a front + rear pair sold together; individual front or rear wheels are out of scope for the current version. Most entries have real product images and manufacturer-sourced specs and prices. Each product can carry several variants (e.g. freehub or axle options) rendered as distinct rows.
 
 ---
 

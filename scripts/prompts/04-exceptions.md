@@ -13,6 +13,12 @@ Create an exception whenever any of these occurs:
 - incomplete evidence, missing material comparison facts, missing provenance, unsupported currency, incomplete observation coverage, or allocation-block exhaustion;
 - schema, type, canonical enum, identity, scope, grouping, or fact-accounting validation failure.
 
+An explicitly identified individual front-only or rear-only offer is a deterministic
+out-of-scope exclusion, not a blocking exception. Preserve its observation reference,
+source provenance, and exclusion reason in the discovery/acquisition artifacts. Create a
+scope exception only when the purchase unit remains ambiguous or the source contradicts
+the exclusion evidence.
+
 Acquisition classifications are never treated as decisions. A retry may collect evidence, but only normalization may classify an axis. If the new evidence still cannot support a decision, keep the classification `unknown`, do not group the observation, and do not allocate an ID.
 
 ## Routing tiers
@@ -53,3 +59,15 @@ Write `exceptions.json`:
 `fact_refs` must use `evidence_id#fact_id` and resolve to captured facts. `observation_refs` must use `evidence_id#observation_id` and resolve to preserved raw observations. Do not copy raw values, source URLs, timestamps, selected values, or fact lists into an exception; provenance is recovered through the referenced evidence observation and its `source_id`. `evidence_refs` and `resolution_refs` must point to declared facts, observations, profiles, normalization mappings, classification decisions, or accounting records. A resolved exception points to the evidence and normalization/accounting change that resolved it. An `accepted_unresolved` exception remains in the final handoff and prevents claiming complete normalization when it affects classification, evidence completeness, browser verification, or validation. Do not use exceptions to introduce temporary batch files, split work into batches, or define a batching strategy.
 
 Validate that every exception has a precise type, severity, tier, status, provenance references, and required action; every unresolved or invalid item is routed; every affected observation and fact remains preserved; every observation reference resolves to the family evidence; no exception duplicates evidence data; and `summary.observation_count` is distinct from `summary.canonical_variant_count`. Return valid JSON only.
+
+## Corrections
+
+Route a missing SKU as an unresolved exception with severity `low` or `medium` when selected raw values and buyability were browser-verified and a post-selection URL, variant ID, or another sufficient first-party identity was observed. It is `blocking` only when SKU is the sole reliable identity for an otherwise unidentifiable observation. A missing post-selection URL is blocking only when no sufficient first-party identity exists.
+
+Front-only and rear-only wheels are out of scope for the current wheelset catalog. Raw
+`None (Front Wheel Only)` and `None (Rear Wheel Only)` sentinels mean
+`axis_applicability: "not_applicable"` and support a non-blocking scope exclusion, not a
+missing fact or a missing profile. Exclude them from normalization and in-scope
+cardinality; create null-profile or cardinality exceptions only when an applicable axis
+of an in-scope pair lacks a reusable profile. Preserve the excluded observation and
+browser/static provenance.
