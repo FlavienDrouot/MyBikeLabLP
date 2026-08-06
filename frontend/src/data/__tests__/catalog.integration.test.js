@@ -29,13 +29,11 @@ describe('Caden variant catalog migration', () => {
     'variant_price_eur',
   ];
 
-  it('uses reserved 200+ ids for newly exploded Caden configurations', () => {
-    const explodedIds = cadenEntries
-      .map((wheel) => wheel.id)
-      .filter((id) => id >= 200);
+  it('keeps exploded Caden configurations globally identifiable', () => {
+    const explodedIds = variantCadenEntries.map((wheel) => wheel.id);
 
     expect(explodedIds.length).toBeGreaterThan(0);
-    expect(explodedIds.every((id) => id >= 200)).toBe(true);
+    expect(new Set(explodedIds).size).toBe(explodedIds.length);
   });
 
   it('distinguishes Caden sibling variants by a unique variant key under a shared brand + model', () => {

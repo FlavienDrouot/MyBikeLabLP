@@ -1,168 +1,35 @@
-**Role:** You are a meticulous web data extraction and normalization specialist for cycling products.
+# MyBikeLab acquisition pipeline
 
-**Task:** Browse all **road bike wheels/wheelsets** available on **[WEBSITE_URL]** and extract structured product data for every road wheel model you can find. Save the resulting JSON file as `scripts/data/Datascrapping_[brand].json`.
+Start with [`PipelineCoordinatorPrompt.md`](PipelineCoordinatorPrompt.md). It is the
+agent-driven entrypoint: the coordinator launches and supervises the phase workers,
+passes artifacts, applies gates, and requests human approval before publication.
 
-### Extraction Rules
+The coordinator, discovery, acquisition, normalization, and separate verifier use
+`gpt-5.6-luna` at medium reasoning. Complex exception review uses `gpt-5.6-luna` at
+very-high reasoning; final escalation uses `gpt-5.6-terra` at very-high reasoning. The Node
+publisher uses no model. Keep every intermediate artifact; do not replace an earlier
+artifact with a normalized result.
 
-1. Only include **road cycling wheelsets/wheels**.
-2. Exclude:
+Acquisition uses two steps. First, WebFetch performs a static preparatory pass that may
+prefill stable facts and locate relevant source material. Second, the Codex integrated
+in-app browser must verify every buyable configuration and every dynamic commerce state,
+including selected options, SKU, stock, price, currency, and displayed offer. Static
+fetch is preparatory only and never replaces browser verification. If browser
+verification is unavailable or fails, block acquisition and route the case through
+`prompts/04-exceptions.md`.
 
-   * Gravel-specific wheels
-   * MTB wheels
-   * Triathlon-only products unless listed in the road category
-   * Spare parts, hubs, rims sold separately, spokes, accessories
-3. Create **one JSON object per buyable wheel configuration**. A single-configuration model has one object; a documented comparable variant has its own object.
-4. Follow the schema exactly.
-5. If a value cannot be found:
+Acquisition writes one logical evidence JSON file per product family. It contains
+`stable_facts`, `configuration_profiles`, and compact raw observations. Do not create
+temporary small-batch files or add a batching strategy. Acquisition records evidence
+only: it does not classify variants or options and does not assign IDs. Normalization
+owns that business logic.
 
-   * Use `null` for unknown numeric values.
-   * Use an empty string `""` for unknown text values.
-   * Use `false` only when the manufacturer explicitly states the feature is absent.
-6. Convert all measurements to:
+1. [`scripts/prompts/00-shared-contract.md`](prompts/00-shared-contract.md) — rules shared by every phase.
+2. [`scripts/prompts/01-discovery.md`](prompts/01-discovery.md) — create `catalog-index.json`.
+3. [`scripts/prompts/02-acquisition.md`](prompts/02-acquisition.md) — create one family-level evidence JSON with stable facts, configuration profiles, and compact raw observations.
+4. [`scripts/prompts/03-normalization.md`](prompts/03-normalization.md) — create canonical product JSON and a fact-accounting report.
+5. [`scripts/prompts/04-exceptions.md`](prompts/04-exceptions.md) — route blocked, ambiguous, stale, or conflicting records.
 
-   * grams (`weight_grams`)
-   * millimeters (`diameter_mm`, `depth_mm`, `externalWidth_mm`)
-   * each price as an offer `{ amount, currency }`: capture the **source currency** in
-     which the price is published (`'EUR'` or `'USD'`) — do NOT convert to euros. Use
-     `amount: null` when no price is available for that offer (the `currency` tag still
-     records the offer's nominal currency).
-7. Preserve official manufacturer naming for brands and models.
-8. Collect all available retailer and manufacturer purchase links.
-9. Use the highest-resolution product images available.
-10. Deduplicate products that appear in multiple categories.
+The final canonical product objects must conform exactly to [`workflows/datascraping/wheel-format.json`](C:/Users/Flavien/Documents/VisualStudioCode/work-system/workflows/datascraping/wheel-format.json). The current scope is road bicycle wheels and wheelsets, including triathlon products listed in a road category; exclude gravel-specific, MTB, track-only, spare-part, hub-only, rim-only, spoke-only, and accessory products. A buyable configuration is first recorded as a commerce observation; only a classified real catalog variant becomes a canonical object. Preserve the official brand and model names and use the canonical `variant` rules. Before normalization, the orchestrator scans the complete current catalog, reserves a contiguous allocation block beginning at `max(existing IDs) + 1`, and passes that block to normalization. Historical IDs and historical reserved ranges remain valid and are never reused for new records.
 
-### Research Requirements
-
-For each wheel:
-
-* Visit the product page.
-* Extract technical specifications.
-* Open specification tabs/PDFs when available.
-* Search linked documentation if needed.
-* Capture all available dimensions and component details.
-
-### Output Format
-
-Return **only valid JSON**. Follow the canonical schema defined in:
-`workflows/datascraping/wheel-format.json`
-
-Each object in the array must match that schema exactly. Fields absent from the schema go into `other_specs`.
-
-### Canonical Schema Promotion Rule
-
-Some formerly free-form `other_specs` fields are progressively promoted into canonical fields. When `wheel-format.json` defines a dedicated field, write the value there directly and do not duplicate it in `other_specs`.
-
-If the source page uses synonym labels for a promoted field, normalize them into the canonical field. Keep only genuinely unstructured or not-yet-promoted information in `other_specs`.
-
-For hub bearing and material specs, write source labels such as `bearing_type`, `bearing_models`, and `hub_material` into `hub.bearing_type`, `hub.bearing_models`, and `hub.material`. Do not duplicate those labels in `other_specs`.
-
-For spoke count specs, write source labels such as `spoke_count`, `spoke_count_front`, `spoke_count_rear`, and `spoke_count_disc` into `spokes.count`. Use `{ "front": n, "rear": n }` for a single wheelset count, or map explicit front/rear values to the matching side. Do not duplicate those labels in `other_specs`.
-
-For spoke detail specs, write source labels such as `nipples`, `spoke_nipple`, `spoke_nipples`, `spoke_type`, `spoke_profile`, `spoke_lacing`, `spoke_lacing_front`, `spoke_lacing_rear`, `front_wheel_spoke_lacing`, `rear_wheel_spoke_lacing`, `lacing`, and `rear_lacing` into `spokes.nipple`, `spokes.type`, `spokes.profile`, and `spokes.lacing`. `spokes.type` is the spoke attachment/head type only, such as `straight-pull` or `j-bend`; put material words in `spokes.material` and shape/profile words such as `aero`, `round`, `flat`, or `elliptical` in `spokes.profile`. Use `{ "front": value, "rear": value }` for a single wheelset lacing value, or map explicit front/rear values to the matching side. Normalize simple lacing shorthand such as `2x` to `2-cross` when unambiguous. Do not duplicate those labels in `other_specs`.
-
-For rim material and construction specs, keep the high-level material category in `rim.material` (`carbon` or `aluminum`). Write source labels such as `rim_material_name`, `rim_material_detail`, `rim_construction`, `rim_technology`, and `rim_construction_technology` into `rim.construction` when they contain material names, layup, resin, welding, laminate, or construction technology details. Do not duplicate those labels in `other_specs`.
-
-For maximum tire pressure specs, write source labels such as `max_tire_pressure_psi`, `max_tire_pressure_bar`, `maximum_tire_pressure`, `max_tire_pressure_tubeless_psi`, `max_tire_pressure_tubed_psi`, `max_tire_pressure_psi_28c`, `max_tire_pressure_psi_clincher`, and `max_tire_pressure_psi_tubeless` into `rim.max_tire_pressure`. Store `{ "psi": number|null, "bar": number|null, "note": string|null }`. Convert the missing unit when only one unit is published (`psi = round(bar * 14.5038)`, `bar = round((psi / 14.5038) * 10) / 10`). Preserve conditional wording such as tubeless/tubed or tire-width-specific limits in `note`. Do not duplicate those labels in `other_specs`.
-
-For tire compatibility specs, write source labels such as `tire_type`, `tire_compatibility`, and `compatible_tire_type` into `rim.tire_compatibility`. Store an array of canonical keys only: `clincher`, `tubeless`, and `tubular`. Set `rim.tubeless_ready` from that array: `true` when it contains `tubeless`, `false` when compatibility is known and lacks `tubeless`, and `null` when unknown. Do not duplicate those labels in `other_specs`.
-
-For tire width specs, write source labels such as `min_tire_width_mm`, `max_tire_width_mm`, `tire_width_range_mm`, `tire_optimized_for_mm`, `optimized_tire_size_mm`, `recommended_tire_width_mm`, `recommended_tire_size`, `recommended_tire_size_c`, `compatible_tire_width`, `compatible_tire_width_mm`, `suggested_tire_width_mm`, `tire_width_c`, and parseable `etrto` tire-width values into `rim.tire_width_mm`. Store `{ "min": number|null, "max": number|null }` in millimeters. Parse explicit ranges such as `24-38`, `30C - 50C`, and `25-622 - 32-622`; use one-sided bounds for wording such as `25c and above`; do not infer tire width from rim internal/external width alone. Do not duplicate those labels in `other_specs`.
-
-For hub engagement specs, write source labels such as `points_of_engagement`, `ratchet_teeth`, `ratchet`, and explicit `hub_internals` engagement text into `hub.engagement`. Store `{ "type": "star-ratchet"|"ratchet"|"pawl"|"other"|null, "points": number|null }`. Use `star-ratchet` for DT Swiss Ratchet, Ratchet EXP, or explicit star-ratchet systems; `ratchet` for generic ratchet systems; `pawl` for explicitly pawl-based systems; and `other` for explicit mechanisms outside that vocabulary. For ratchets, a tooth count such as `36T` equals 36 points of engagement. Do not infer engagement from hub brand/model alone and do not duplicate those labels in `other_specs`.
-
-For certification specs, write source labels such as `uci_approved`, `astm_category`, `e_bike_approved`, and explicit free-text `certification` statements into top-level `certification`. Store `{ "uci": boolean|null, "astm": number|null, "ebike": boolean|null }`. Parse only explicit UCI approval, ASTM category, and e-bike approval statements. Do not infer certification from category, hookless/tubeless state, or general marketing claims. Do not duplicate those labels in `other_specs`.
-
-For weight tolerance specs, write source labels such as `weight_tolerance`, `weight_tolerance_percent`, `weight_tolerance_grams`, and `rim_weight_tolerance_percent` into the top-level `weight_tolerance_percent` field. Store a numeric percentage only (`5` means `+/- 5%`). Convert gram tolerances with the published wheelset weight when possible: `round((grams / total_weight_grams) * 1000) / 10`. Do not duplicate those labels in `other_specs`.
-
-### Data Quality Requirements
-
-* Never invent values.
-* Ensure every wheel has a unique sequential `id`.
-* Validate that the final JSON is syntactically correct before returning.
-* Continue until all road wheel products available on the website have been processed.
-
-
-### Divergent front/rear specs
-
-Four fields support a front/rear pair form for wheelsets where the front and rear wheels differ:
-
-| Field | Single value | Divergent pair |
-|---|---|---|
-| `weight_grams` | `1450` | `{ "front": 650, "rear": 800 }` |
-| `weight_tolerance_percent` | `5` | `1.5` |
-| `rim.depth_mm` | `50` | `{ "front": 40, "rear": 60 }` |
-| `rim.externalWidth_mm` | `28` | `{ "front": 27, "rear": 30 }` |
-| `rim.internalWidth_mm` | `21` | `{ "front": 19, "rear": 23 }` |
-
-Use the pair form only when the manufacturer explicitly states different front and rear values for that spec. Use the scalar form in all other cases.
-
-**Do not put front/rear weight or depth values into `other_specs`** — they belong in the canonical fields above.
-
----
-
-### Buyable variant configurations (EVO-044 / EVO-045)
-
-Every **buyable configuration** is its own catalog object. When a model is sold in several configurations, emit **one complete object per configuration** — never bury the variants in `other_specs`. Siblings share an identical `brand` + `model` and are distinguished by a unique `variant` key.
-
-**Actively hunt for variants.** Do not record only the default configuration. On every product page, explicitly check the option selectors a buyer can choose (spoke material, rim width, brake type, hub/build tier) and any separate SKU/product pages the model links to. Produce one object per documented purchasable configuration. Never fabricate a configuration the model does not actually offer.
-
-The three comparable (filterable + sortable) axes and their canonical keys:
-
-| Axis | Field | Canonical keys |
-|---|---|---|
-| Spoke material | `spokes.material` | `carbon`, `carbon_composite`, `steel`, `aluminum`, `titanium` |
-| Rim width | `rim.internalWidth_mm` / `rim.externalWidth_mm` | numeric (mm) |
-| Brake type | `brake_type` | `disc`, `rim`, `track` |
-
-Rules:
-
-1. **One object per configuration**, each with its own `id`, `weight_grams`, `prices` and field values.
-2. **Same `model`, unique `variant`.** Siblings carry an identical clean `model` (no parenthetical suffix) and a unique `variant` snake_case key naming what differs (e.g. `carbon_spokes`, `steel_spokes`, `external_37mm`, `disc_brake`, `cognition_v2_hub`). A single-configuration model carries **no** `variant`.
-3. **`variant` is a localized key.** Store the snake_case key only; its display label and translation live in the frontend `variant.*` i18n namespace. Never store free display text.
-4. **`variant` ≠ filter axis.** The three comparable axes remain the structured filterable/sortable fields and must still be populated. `variant` is a display differentiator that may name a non-axis difference (e.g. hub/build tier) when that is what makes two same-`model` products distinct buyable configurations.
-5. Use **canonical axis keys** exactly as above; one physical option = one key. Do not store Title Case for these axes — the frontend i18n layer handles display.
-6. **Never** put spoke material, rim width, rim construction, brake type, per-variant weight or any price in `other_specs` (no `carbon_spoke_option`, `weight_carbon_spoke_grams`, `external_width_options_mm`, `rim_material_detail`, `rim_construction`, and no `price_eur` / `price_usd` / `price_usd_front` / `price_usd_rear` / `price_usd_wheelset`). Every price is an offer `{ amount, currency }`.
-7. New configuration `id`s start at **200+**; never reuse reserved ranges 50–128 or 129–137.
-8. Siblings often have **distinct** prices (source each as `{ amount, currency }` in its native currency; `amount: null` if unavailable — never copy a sibling's price). Rim-width siblings that share one price inherit the base model's price.
-
----
-
-**Capture ALL remaining technical specifications that do not fit into the predefined schema.**
-
-The `other_specs` object must act as a complete repository of any additional product information found on the manufacturer or retailer pages.
-
-Examples include (but are not limited to):
-
-* rider weight limit
-* spoke length / tension / replacement part numbers
-* rim construction technologies / hub technologies
-* aerodynamic claims / stiffness metrics
-* certifications
-* country of manufacture / included accessories
-* ETRTO dimensions that do not contain a parseable tire-width value
-* any manufacturer-specific technology names
-
-**Important:** Do not discard any technical information simply because it does not match a predefined field. Preserve it inside `other_specs` using meaningful key names and original values whenever possible.
-
-Example:
-
-```json
-"other_specs": {
-  "aero_technology": "Aero+"
-}
-```
-
-Warranty information belongs in the top-level `warranty` object:
-
-```json
-"warranty": {
-  "text": "2 years",
-  "years": 2
-}
-```
-
-When a specification appears in a table, attempt to preserve the original meaning rather than forcing it into a predefined category.
-
-**Data Completeness Rule**
-
-When a technical specification table is present, extract every row from the table. Any row that cannot be mapped to a dedicated schema field must be added to `other_specs`. The goal is that no technical information available on the source page is lost during extraction.
+The pipeline must return explicit unresolved values and never fabricate facts. Preserve exhaustive technical capture in acquisition evidence and `other_specs` when no canonical field applies. Capture source currency as published (`EUR` or `USD`) without conversion. Use WebFetch for the static preparatory pass, then use the Codex integrated in-app browser to verify every buyable configuration and dynamic commerce state; record selected options, SKU, stock state, price, currency, and displayed offer. Acquisition does not classify commerce axes or assign IDs. Commerce observations remain evidence; normalization classifies them as `variant`, `option`, `cosmetic`, `offer`, or `unknown` and assigns IDs only to canonical products. Validate every JSON artifact before handoff.

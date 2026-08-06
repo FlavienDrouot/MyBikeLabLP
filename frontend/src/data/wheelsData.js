@@ -18,6 +18,17 @@ import { farsportsWheels } from './wheelsData_farsports';
 import { shimanoWheels } from './wheelsData_shimano';
 import { channel3Wheels } from './wheelsData_channel3';
 
+const jsonWheelModules = import.meta.glob('./wheelsData_*.json', {
+  eager: true,
+  import: 'default',
+});
+
+export function aggregateWheelData(jsonModules = jsonWheelModules) {
+  return Object.entries(jsonModules)
+    .sort(([left], [right]) => (left < right ? -1 : left > right ? 1 : 0))
+    .flatMap(([, module]) => (Array.isArray(module) ? module : []));
+}
+
 export const wheelsData = [
   ...mavicWheels,
   ...rovalWheels,
@@ -38,4 +49,5 @@ export const wheelsData = [
   ...farsportsWheels,
   ...shimanoWheels,
   ...channel3Wheels,
+  ...aggregateWheelData(),
 ];
