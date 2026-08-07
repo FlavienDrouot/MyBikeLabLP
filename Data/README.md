@@ -7,6 +7,7 @@ The user-invocable `$mybikelab-datascraping` skill is the sole coordinator entry
 - `prompts/01-discovery.md` to `prompts/04-exceptions.md`: phase instructions.
 - `wheel-format.json`: canonical product schema.
 - `../scripts/build-frontend-data.mjs`: deterministic frontend publisher.
+- `../scripts/validate-datascraping-artifact.mjs`: deterministic handoff validator.
 
 Invoke the skill with a scope URL. It runs in an isolated worktree, keeps artifacts under
 `runs/<run_id>/`, excludes individual wheels, and requires human approval before publication.

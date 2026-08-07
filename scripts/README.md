@@ -15,6 +15,7 @@ This folder is gitignored (credentials, generated output).
 |---|---|---|
 | `fetch-awin.js` | Awin Publisher API — retrieves affiliate product feed | `data/` |
 | `fetch-channel3.js` | Channel3 Product Data API — retrieves bike wheel specs | `data/` |
+| `validate-datascraping-artifact.mjs` | Validates acquisition, normalization, or handoff JSON | exit status and errors |
 
 ---
 

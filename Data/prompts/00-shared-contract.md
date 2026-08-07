@@ -65,6 +65,20 @@ Normalization must classify every commerce axis only after acquisition and befor
 
 Each phase must state its input artifact, output artifact, record count, source URLs, retrieval timestamps, and unresolved or exception count. Return JSON only when a phase prompt requests an artifact; return a short handoff note only when the prompt requests one.
 
+The user invocation and the coordinator's worker authorization already approve the
+assigned run. Do not ask for confirmation before creating assigned artifacts or starting
+the work. Ask for human input only at an explicit arbitration or publication gate.
+
+Before accepting a handoff, the coordinator runs the deterministic validator:
+
+- `node scripts/validate-datascraping-artifact.mjs --phase acquisition --file <evidence.json>`
+- `node scripts/validate-datascraping-artifact.mjs --phase normalization --file <canonical-products.json> --accounting <fact-accounting.json>`
+- `node scripts/validate-datascraping-artifact.mjs --phase handoff --file <evidence.json> --handoff <handoff.json> --manifest <manifest.json> --family <family_id>`
+
+The validator checks artifacts only. It does not create workers, choose phases, repair
+facts, or publish data. A non-zero result blocks the handoff and requests one revision
+from the same worker.
+
 ## Acquisition/normalization corrections
 
 Use `axis_applicability` during discovery and acquisition to identify the purchase unit. Record `applicable` or `not_applicable` on observations and profile axes; raw sentinels such as `None (Front Wheel Only)` and `None (Rear Wheel Only)` identify an out-of-scope individual wheel, not missing data or a missing profile. Preserve the observation and its exclusion reason, but do not create a canonical product or a profile/cardinality exception for it. Only a front + rear pair sold together enters normalization.
@@ -75,6 +89,18 @@ SKU is optional for an in-scope wheelset. If the browser verified selected raw v
 
 Traverse at most six configurations per operational checkpoint. Do not create temporary small-batch files or extra workers: keep one logical family artifact and use revisions or checkpoints within that artifact. Persist completed observations before continuing to the next checkpoint. A checkpoint is complete only when every attempted selector action has a settled-state assertion and every requested configuration in the checkpoint is settled, excluded, or unresolved.
 
+Each observation contains `selector_actions` and `settled_state_assertions`. Each action
+has one assertion with `assertion_id`, `action_id`, `requested_value`, `observed_value`, and either
+`visible_label` or `control_state`. A settled observation requires every assertion to
+have `status: "passed"`; an attempted configuration without complete assertions is
+`unresolved`, never `settled`.
+
 When a browser call times out, reinitialize the browser session, verify the last persisted observation, and resume at the first missing configuration. Never assume a timed-out call completed. Preserve existing observation IDs and do not create duplicate observation IDs; if completion cannot be verified, record the configuration as unresolved rather than duplicating or guessing it.
 
 Before handoff, validate the final family artifact by parsing its JSON, calculating the exact expected raw matrix cardinality after explicit scope exclusions, and checking that every requested configuration has exactly one settled, excluded, or unresolved disposition. Validate URL semantics: `url_after_selection` is empty when the base URL is retained, and a non-empty value must be the observed post-selection URL. Explicitly report missing price, currency, stock, SKU, and identity. Missing SKU remains non-blocking when sufficient first-party identity exists; the other missing commerce or identity fields remain unresolved at the appropriate severity. Keep WebFetch preparatory and integrated-browser verification mandatory for in-scope and ambiguous configurations.
+
+Every evidence artifact, handoff, and manifest family entry exposes the same counts:
+`observations`, `settled`, `excluded`, and `unresolved`. The handoff also exposes
+`revision.revision_id` and `revision.parent_revision_id`. Counts are recalculated from
+the evidence; worker-declared counts cannot override validator results. Preserve the
+latest valid revision and request recovery from the same worker when counts diverge.
