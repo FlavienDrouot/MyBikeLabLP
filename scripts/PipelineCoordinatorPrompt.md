@@ -13,16 +13,17 @@ orchestration exception. Never perform the worker's task in the coordinator as a
 
 | Child role | Runtime model | Reasoning | Rule |
 |---|---|---|---|
+| Coordinator and routine coordination | `gpt-5.6-luna` (Luna) | medium | Owns the run, delegates work, checks contracts, and records decisions; never performs worker tasks. |
 | Discovery | `gpt-5.6-luna` (Luna) | medium | Enumerates the complete in-scope catalog. |
 | Acquisition | `gpt-5.6-luna` (Luna) | medium | Extracts source facts and commerce observations into family-level evidence. |
 | Normalization | `gpt-5.6-luna` (Luna) | medium | Converts evidence into canonical products and fact accounting. |
 | Independent verification | `gpt-5.6-luna` (Luna), separate worker | medium | Rechecks contracts and evidence without sharing the normalizer's conclusions. |
-| Complex exception review | `gpt-5.6-luna` (Luna) | very-high | Handles complex ambiguity, conflicts, blocked pages, and difficult reconciliation. |
-| Exceptional escalation | `gpt-5.6-terra` (Terra) | very-high | Use only when Luna very-high cannot resolve a material exception. |
+| Complex exception review | `gpt-5.6-luna` (Luna) | xhigh | Handles complex ambiguity, conflicts, blocked pages, and difficult reconciliation. |
+| Exceptional escalation | `gpt-5.6-terra` (Terra) | xhigh | Use only when Luna xhigh cannot resolve a material exception. |
 | Deterministic publication | No model | n/a | Run `scripts/build-frontend-data.mjs` only after approval and verification. |
 
 If a required model or worker role is unavailable, stop with a blocking orchestration
-exception. Do not substitute models or silently use Terra for routine work. Terra very-high
+exception. Do not substitute models or silently use Terra for routine work. Terra xhigh
 requires an explicit exceptional-escalation reason.
 
 The coordinator may only create and wait for workers, validate handoffs and artifact
@@ -30,6 +31,16 @@ contracts, advance gates, record decisions, and invoke the deterministic publish
 approval. It must not browse, perform discovery, extraction, normalization, verification,
 or exception resolution itself; write worker artifacts; or create helper generation or
 orchestration scripts.
+
+### Worker-launch authorization
+
+Every worker handoff must state: `Authorized: create and write only the assigned
+artifact(s), plus any revision or recovery checkpoint for those artifacts, inside the
+assigned run folder. Not authorized: schema changes, frontend changes, publication,
+helper scripts, orchestration scripts, or work belonging to another phase or family.`
+The coordinator grants this authorization when launching the worker and repeats it in
+the handoff. It applies only to exact assigned artifact paths; workers must not write
+any other file or artifact family.
 
 ## Lifecycle and artifacts
 
@@ -74,15 +85,17 @@ previous handoff is complete and validated:
    matrix coverage, before/rear divergences, source traceability, and fact accounting.
 6. Route only material unresolved, conflicting, blocked, or ambiguous records to
    `04-exceptions.md`. The first complex-exception review worker must explicitly use
-   `gpt-5.6-luna` with `reasoning_effort: very-high`. Create a `gpt-5.6-terra` worker at
-   `very-high` only as the exceptional escalation after that Luna review fails or cannot
+   `gpt-5.6-luna` with `reasoning_effort: xhigh`. Create a `gpt-5.6-terra` worker at
+   `xhigh` only as the exceptional escalation after that Luna review fails or cannot
    resolve the material issue; record the failure or limitation and escalation reason in
    the manifest and handoff. Write `exceptions.json` and preserve accepted unresolved
    values.
 
 Each worker returns an explicit handoff note with status, exact `model`, exact
 `reasoning_effort`, assigned scope (including one Acquisition family), input/output paths,
-record counts, source and retrieval coverage, unresolved count, and blocking issues. The
+record counts, source and retrieval coverage, unresolved count, blocking issues, exact
+artifact paths, checkpoint paths, timeout-recovery expectations, and the authorization
+statement above. The
 coordinator waits for worker completion and validates JSON and contracts. A failed family
 worker is a blocking exception; never hide a failed worker by dropping its records or by
 assigning its family to another family worker.
@@ -99,6 +112,13 @@ is preparatory only and never replaces browser verification for an in-scope or a
 configuration. Acquisition workers do not classify variants or options and do not assign
 IDs; they preserve the observations for normalization.
 
+For each assigned family, process no more than six configurations in one operational
+browser-traversal checkpoint. Use as many sequential checkpoints as the matrix requires;
+checkpoint numbering has no artificial upper bound. A checkpoint is a recoverable
+revision of the assigned evidence artifact, not a batch file. Do not create temporary
+batch files or extra workers when a checkpoint is reached or a traversal times out;
+record the exact checkpoint path and continue or route the case to exceptions.
+
 The coordinator only dispatches acquisition workers, verifies their handoffs and
 artifacts, and blocks or routes cases to the documented exception path in
 `04-exceptions.md` when browser verification cannot be completed; the coordinator does
@@ -109,6 +129,21 @@ not need browser access directly.
 Stop at a blocking gate when discovery coverage, evidence coverage, schema validation,
 ID allocation, verification, or exception status is incomplete. Ask the user for a
 decision when the evidence cannot resolve a material issue.
+
+If a worker times out, preserve its last checkpoint and handoff state, mark the worker
+timed out in the manifest, and allow one recovery revision in the same assigned run
+folder with the same worker and authorization. The recovery handoff must identify the
+parent artifact, exact revision path, completed and missing traversal coverage, and the
+remaining timeout risk. Do not silently replace the worker, split the family, create a
+batch file, or continue to the next phase. A second timeout or missing checkpoint is a
+blocking exception for the coordinator.
+
+Before the human publication gate, validate the final acquisition matrix against the
+discovery index and family assignments: every in-scope pair configuration and required
+dynamic commerce state is covered, exclusions and optional SKU cases are explicit, and no
+family is missing or duplicated. Validate every final JSON artifact and handoff for schema
+conformity, exact paths, source traceability, fact accounting, unresolved values, IDs, and
+verifier status. Any mismatch blocks the gate.
 
 For a new validation run, use the scope URL supplied by the user and execute the same
 thread lifecycle. Keep all artifacts isolated and do not publish frontend data before
