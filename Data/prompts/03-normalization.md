@@ -16,6 +16,21 @@ Older evidence may expose equivalent `facts` and `commerce_observations` arrays.
 
 ## Classification and grouping
 
+Consume the acquired observations as the source matrix. Never regenerate combinations
+from `configuration_profiles`, infer missing observations, or emit a product for a
+theoretical combination. Load facts, profiles, and observations into one reference index
+before classification; every later decision must resolve through that index.
+
+Keep separate counters for observations received, observations preserved, excluded
+observations, unresolved observations, and canonical products. Reject any cardinality
+divergence between acquisition and normalization; do not publish partial output.
+
+Use a deterministic decision key based on raw axis, raw value, source scope, and source
+identity. Do not deduplicate decisions by processing order. A weight claim whose source
+label is `Wheel Weight` without explicit applicability remains `kind: "unknown"`; preserve
+it and route it to `unresolved` or `conflicts` rather than assigning front, rear, or
+wheelset semantics.
+
 1. Resolve stable facts, axis-value profiles, and each observation's `profile_ids` before comparing profiles. For every in-scope pair, resolve the front weight, rear weight, and wheelset total-weight facts independently, including their fully qualified source references. Dereference every reference and retain the original raw observation and provenance in the family evidence; do not copy those values into accounting.
 2. Compare the extracted facts and the current canonical frontend schema. Decide every axis centrally:
    - `variant`: changes a comparison-distinct catalog product and receives one canonical object;
@@ -97,7 +112,7 @@ Write `fact-accounting.json`:
 
 For weight validation, require every canonical weight mapping to preserve its source fact references. Accept only a directly sourced total scalar, a directly sourced front/rear pair, or an unresolved/null value when required source facts are absent or incomplete. For derived front/rear weights, the single existing `normalized_mappings` entry with both side references is the derivation record; do not add an accounting field. For images, verify URL normalization and deduplication, first-image primacy, variant-specific retention, and provenance coverage across stable, profile, and observation facts.
 
-Validate that every `stable_facts` fact and every profile fact is captured exactly once in a terminal bucket, profiles are reusable and referenced by observation `profile_ids`, each raw observation has exactly one accounting index entry, shared facts occur only in `shared_fact_references` for additional consumers, each observation's canonical IDs are complete, and commerce observation count is separate from canonical variant count. Accounting remains reference-only: do not repeat raw URLs, timestamps, selected values, or copied fact payloads. If classification, references, evidence coverage, allocation capacity, weight contradictions, or image contradictions cannot be validated, emit no partial canonical handoff and route the issue through `04-exceptions.md`. Before handoff, the coordinator must run the normalization validator against both output files. A missing classification, weight mapping, fact-accounting flag, or observation/variant count blocks the handoff and requires a revision; do not ask for confirmation to perform that revision. Return the two valid JSON artifacts and no prose.
+Validate that every `stable_facts` fact and every profile fact is captured exactly once in a terminal bucket, profiles are reusable and referenced by observation `profile_ids`, each raw observation has exactly one accounting index entry, shared facts occur only in `shared_fact_references` for additional consumers, each observation's canonical IDs are complete, and commerce observation count is separate from canonical variant count. Accounting remains reference-only: do not repeat raw URLs, timestamps, selected values, or copied fact payloads. If classification, references, evidence coverage, allocation capacity, weight contradictions, or image contradictions cannot be validated, emit no partial canonical handoff and route the issue through `04-exceptions.md`. A missing classification, weight mapping, fact-accounting flag, or observation/variant count is invalid output. Return the two valid JSON artifacts and no prose.
 
 ## Corrections
 

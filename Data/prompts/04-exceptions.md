@@ -7,7 +7,7 @@ Read `00-shared-contract.md`, the discovery index, all single-family evidence, n
 Create an exception whenever any of these occurs:
 
 - classification uncertainty between `variant`, `option`, `cosmetic`, `offer`, and `unknown`;
-- missing browser verification, including an unverified selector state, missing post-selection URL, inaccessible dynamic offer, or browser failure;
+- missing browser verification, including an unverified selector state, a missing post-selection URL without another sufficient first-party identity, an inaccessible dynamic offer, or a browser failure;
 - conflicting source facts, stale or unavailable source evidence, or contradictory profile/observation values;
 - an invalid, ambiguous, missing, or cross-file fact reference, duplicate fact ID, duplicate observation ID, or broken stable/profile dereference;
 - incomplete evidence, missing material comparison facts, missing provenance, unsupported currency, incomplete observation coverage, or allocation-block exhaustion;
@@ -24,10 +24,26 @@ Acquisition classifications are never treated as decisions. A retry may collect 
 ## Routing tiers
 
 - **Tier 1 — deterministic repair:** repair a schema, type, unit, or canonical-key issue only when an explicit source fact and `wheel-format.json` make the result deterministic. Preserve the raw value and provenance.
-- **Tier 2 — targeted browser retry:** retry the exact selector, dynamic state, pagination, modal, PDF, region/currency, or post-selection URL check. Record the attempted action, browser result, selected state, URL, timestamp, and new fact references. A failed or unavailable browser check remains blocking.
+- **Tier 2 — targeted browser retry:** retry the exact selector, dynamic state, pagination, modal, PDF, region/currency, or post-selection URL check. Record the attempted action, browser result, selected state, URL, timestamp, and new fact references. For an in-scope or ambiguous buyable observation, a failed or unavailable browser check remains blocking.
 - **Tier 3 — model review:** review identity, scope, grouping, classification, conflicts, stale evidence, ambiguous units, and incomplete profiles using cited evidence. The proposal must cite fully qualified fact references and preserve every affected observation. It does not authorize ID allocation by itself.
-- **Targeted effort:** route unresolved HED identity (`V45`/`V62`) and contradictory or semantically ambiguous weight claims to Luna `xhigh`; escalate to Terra `xhigh` only when Luna cannot resolve a material issue. Do not use `xhigh` to repair deterministic assertion, counter, or mapping omissions.
 - **Human gate:** require a decision for fabricated or contradictory facts, missing primary evidence for a material comparison field, unknown product scope, unresolved classification, invalid provenance, or any requested frontend schema change. The frontend schema remains unchanged in this workflow.
+
+## Retry and unavailable-target protocol
+
+Treat every browser timeout as unknown, never as success. Re-read the current visible
+state, re-ground the control, and retry the exact logical action at most once. If the
+state remains unverifiable, preserve the observation as `unresolved` and do not restart
+the complete acquisition.
+
+Close an overlay only through its current visible safe close control. Never reuse an old
+locator, hidden input, coordinate, or page state after a retry. Record
+`attempt_count`, `timeout_count`, `last_observed_state`, and `retry_reason` for every
+browser exception.
+
+For a 404, generic redirect, unavailable target, or non-product page, preserve the
+requested URL, observed URL, status or title, and reason. Route it as `blocked` or
+`unavailable_target`; an empty matrix is not successful acquisition. Retry the affected
+target or action only, not the complete phase, unless the browser session was lost.
 
 Contradictory facts always require explicit human arbitration before publication or
 correction. Preserve every competing `fact_ref` and affected `observation_ref`, including
@@ -85,6 +101,10 @@ Write `exceptions.json`:
     "tier": "deterministic|browser_retry|model_review|human_gate",
     "attempted_resolution": "",
     "required_action": "",
+    "attempt_count": 0,
+    "timeout_count": 0,
+    "last_observed_state": "",
+    "retry_reason": "",
     "status": "open|resolved|accepted_unresolved",
     "resolution_refs": [],
     "evidence_refs": []
