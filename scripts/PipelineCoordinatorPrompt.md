@@ -185,3 +185,68 @@ Read these files before dispatching workers:
 
 The final handoff must include the run manifest, all intermediate artifacts, verifier
 status, exception decisions, human approval, and the deterministic publication result.
+
+### Canonical artifact and handoff paths
+
+For run ID `<run_id>`, use these exact paths under `runs/<run_id>/`:
+
+- `manifest.json`
+- `handoffs/discovery.json`
+- `discovery/catalog-index.json`
+- `acquisition/<family_id>/evidence.json`
+- `acquisition/<family_id>/handoff.json`
+- `normalization/canonical-products.json`
+- `normalization/fact-accounting.json`
+- `handoffs/normalization.json`
+- `verification/report.json`
+- `handoffs/verification.json`
+- `exceptions/exceptions.json`
+- `exceptions/human-decisions.json`
+- `handoffs/exceptions.json`
+- `publication/release.json`
+- `publication/decision-log.json`
+- `publication/post-publication-review.json`
+- `publication/revisions/<revision_id>/review-feedback.json`
+- `publication/revisions/<revision_id>/correction-request.json`
+- `publication/revisions/<revision_id>/release.json`
+
+Every handoff names exact input, output, checkpoint, and recovery paths. Artifacts are
+immutable; revisions identify their parent artifact and preserve the prior release and
+decision log.
+
+### Required acquisition and normalization evidence
+
+Acquisition must record a separate front and rear weight fact for every in-scope pair,
+with source URL, retrieval timestamp, configuration identity, and the exact displayed
+value or an explicit unresolved value. It must capture every first-party photo URL the
+source exposes. When the source distinguishes front/rear or configuration-specific
+images, map those URLs accordingly; a generic family image is not silently treated as a
+side- or configuration-specific image. If the source exposes no more specific image,
+record that limitation explicitly without inventing a URL.
+
+Normalization must document the derivation of `{front, rear}` weight when both side facts
+exist, including both source fact references and the derivation rule. Partial data is
+never fabricated: preserve the available side, mark the other unresolved, and record the
+gap in `fact-accounting.json`. It must map each canonical image to its source
+configuration and account for every weight and image fact through fact-accounting
+references.
+
+Contradictory values require human arbitration before publication or correction. Luna and
+Terra reviews are advisory and may recommend a value or action, but neither model may
+close the conflict or authorize publication.
+
+### Publication and post-publication review
+
+After the human publication gate, invoke the no-model deterministic publisher and write
+`publication/release.json` and `publication/decision-log.json`. Then create
+`publication/post-publication-review.json` as a human review artifact. Collect human
+feedback, classify each item as accepted correction, rejected, duplicate, or needs
+arbitration, and record the decision and evidence references in the decision log.
+
+An accepted correction starts a new scoped revision under
+`publication/revisions/<revision_id>/`; identify the affected pair-only scope, parent
+release, correction request, and exact source artifacts. Re-run required deterministic
+validation, republish with no model, preserve the previous release and decision log, and
+append the new release and decisions. Contradictory corrections return to human
+arbitration before republishing. No post-publication review or correction may edit
+frontend files directly; only the deterministic publisher may produce frontend data.

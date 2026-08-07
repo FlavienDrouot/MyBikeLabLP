@@ -86,6 +86,49 @@ for. Validate every final JSON artifact and handoff for schema conformity, exact
 source traceability, fact accounting, unresolved values, IDs, and verifier status before
 publication can proceed.
 
+The sequence ends with a human publication gate, deterministic publication, and a
+post-publication human review. After publication, create
+`publication/post-publication-review.json`, collect feedback, classify each item as
+accepted correction, rejected, duplicate, or needs arbitration, and record decisions in
+`publication/decision-log.json`. An accepted correction creates a new scoped revision at
+`publication/revisions/<revision_id>/review-feedback.json`,
+`publication/revisions/<revision_id>/correction-request.json`, and
+`publication/revisions/<revision_id>/release.json`. The revision remains pair-only,
+identifies its parent release, reruns deterministic validation, and republishes with no
+model. Preserve the previous release and decision log. Contradictory corrections return
+to human arbitration. No direct frontend edits are allowed; only the deterministic
+publisher may produce frontend data.
+
 The final canonical product objects must conform exactly to [`workflows/datascraping/wheel-format.json`](C:/Users/Flavien/Documents/VisualStudioCode/work-system/workflows/datascraping/wheel-format.json). The current scope is road wheelsets, meaning front + rear pairs sold together, including triathlon wheelsets listed in a road category; exclude individual front-only/rear-only wheels, gravel-specific, MTB, track-only, spare-part, hub-only, rim-only, spoke-only, and accessory products. A buyable configuration is first recorded as a commerce observation; only a classified real catalog variant becomes a canonical object. Preserve the official brand and model names and use the canonical `variant` rules. Before normalization, the orchestrator scans the complete current catalog, reserves a contiguous allocation block beginning at `max(existing IDs) + 1`, and passes that block to normalization. Historical IDs and historical reserved ranges remain valid and are never reused for new records.
 
 The pipeline must return explicit unresolved values and never fabricate facts. Preserve exhaustive technical capture in acquisition evidence and `other_specs` when no canonical field applies. Capture source currency as published (`EUR` or `USD`) without conversion. Use WebFetch for the static preparatory pass, then use the Codex integrated in-app browser to verify every in-scope or ambiguous buyable configuration and dynamic commerce state; record selected options, SKU, stock state, price, currency, and displayed offer. Acquisition does not classify commerce axes or assign IDs. Commerce observations remain evidence; normalization classifies them as `variant`, `option`, `cosmetic`, `offer`, or `unknown` and assigns IDs only to canonical products. Validate every JSON artifact before handoff.
+
+Acquisition handoff requirements are per-wheel and configuration-aware. For every
+in-scope front-plus-rear pair, record separate front and rear weight facts with exact
+source references, retrieval timestamps, configuration identity, displayed value, or an
+explicit unresolved value. Capture every first-party photo URL the source exposes. When
+the source distinguishes front/rear or configuration-specific images, map them to the
+corresponding side or observation; do not silently treat a generic family image as
+side-specific or configuration-specific coverage. If the source exposes no more specific
+image, record that limitation and do not invent a URL.
+
+Normalization handoff must document the derivation of `{front, rear}` weight when both
+side facts exist, including references to both facts and the derivation rule. Do not
+fabricate a missing side from a partial value: preserve the available side, mark the
+other unresolved, and account for the gap. Map canonical images to their source
+configuration and include fact-accounting references for every weight and image fact.
+
+Contradictory values require human arbitration before publication or correction. Model
+reviews are advisory only; a Luna or Terra recommendation cannot close the conflict or
+authorize publication.
+
+For `<run_id>`, use these exact run-relative artifacts under `runs/<run_id>/`:
+`manifest.json`, `handoffs/discovery.json`, `discovery/catalog-index.json`,
+`acquisition/<family_id>/evidence.json`, `acquisition/<family_id>/handoff.json`,
+`normalization/canonical-products.json`, `normalization/fact-accounting.json`,
+`handoffs/normalization.json`, `verification/report.json`,
+`handoffs/verification.json`, `exceptions/exceptions.json`,
+`exceptions/human-decisions.json`, `handoffs/exceptions.json`, `publication/release.json`,
+`publication/decision-log.json`, and `publication/post-publication-review.json`.
+Checkpoints remain revisions of the assigned artifact. Every handoff states exact input,
+output, checkpoint, and recovery paths.

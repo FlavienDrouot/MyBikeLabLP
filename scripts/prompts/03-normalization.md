@@ -16,7 +16,7 @@ Older evidence may expose equivalent `facts` and `commerce_observations` arrays.
 
 ## Classification and grouping
 
-1. Resolve stable facts, axis-value profiles, and each observation's `profile_ids` before comparing profiles. Dereference every reference and retain the original raw observation and provenance in the family evidence; do not copy those values into accounting.
+1. Resolve stable facts, axis-value profiles, and each observation's `profile_ids` before comparing profiles. For every in-scope pair, resolve the front weight, rear weight, and wheelset total-weight facts independently, including their fully qualified source references. Dereference every reference and retain the original raw observation and provenance in the family evidence; do not copy those values into accounting.
 2. Compare the extracted facts and the current canonical frontend schema. Decide every axis centrally:
    - `variant`: changes a comparison-distinct catalog product and receives one canonical object;
    - `option`: selectable compatibility or fit choice represented by an existing canonical field, such as `hub.freehub_options`;
@@ -27,6 +27,19 @@ Older evidence may expose equivalent `facts` and `commerce_observations` arrays.
 4. Assign IDs only after classification and grouping. Use only the exact next IDs in the supplied contiguous allocation block for new canonical products. Never allocate IDs to observations, profiles, options, cosmetics, offers, or unknowns. Preserve historical IDs and reserved ranges.
 
 Keep siblings on one clean `brand` + `model`; use a unique localized snake_case `variant` only for comparison-distinct products. Do not alter the frontend schema. Promote source labels only to the schema field defined by `wheel-format.json`; do not duplicate consumed labels in `other_specs`. Preserve every other technical fact in `other_specs` with its original value and meaningful key. Prices remain offers in `prices` or the schema's affiliate fields; preserve each displayed amount, source currency (`EUR` or `USD`), URL, SKU, stock state, and retrieval timestamp. Never convert currency or copy a sibling value.
+
+For an in-scope pair, normalize weight without fabricating a side or total:
+
+- When directly sourced front and rear weights both exist and no wheelset total exists, set canonical `weight_grams` to the existing schema's `{front, rear}` value shape. Record the derivation as one existing `normalized_mappings` entry with `target_path: "weight_grams"`, both side source fact references, and the canonical IDs; those two references are the derivation record. Do not add a derived total or a new accounting field.
+- When only a directly sourced wheelset total exists, preserve it as the canonical scalar `weight_grams` and map its source fact.
+- When only one side exists, leave canonical `weight_grams` unresolved/null as required by the existing schema. Preserve the known side fact and provenance in the appropriate terminal accounting bucket; never infer the other side or a total.
+- If directly sourced total and both side values coexist, compare the published total with
+  `front + rear`. When they agree, prefer the more informative canonical `{front, rear}`
+  shape and account all supporting fact references in the same weight mapping. When they
+  disagree, preserve every candidate, do not silently select, calculate, or overwrite a
+  value, and route the conflict through `04-exceptions.md` for human arbitration.
+
+Normalize stable, profile, and observation image URLs into the existing canonical `images` field. Deduplicate equivalent URLs across all three evidence layers, use the first retained image as primary, preserve variant-specific images, and keep each contributing source fact reference in accounting. Do not copy URLs into accounting rows; `normalized_mappings` records only the target path, canonical IDs, and fully qualified fact references. Conflicting image evidence remains human-gated.
 
 For the Scope Artech 6 golden case, preserve 20 raw commerce observations (5 freehub bodies × 2 bearing choices × 2 decal colors) and emit exactly 2 canonical variants: standard bearings and the CeramicSpeed upgrade. Freehub bodies are options; decal colors are cosmetic. Report the observation count and canonical variant count separately.
 
@@ -82,7 +95,9 @@ Write `fact-accounting.json`:
 
 `observations[*]` is an accounting index, not a copy of evidence. It must contain exactly `observation_ref` and `canonical_ids`; the referenced family observation remains the sole source for URLs, timestamps, selected raw values, offer data, and supporting fact IDs. `classification_decisions[*]` is one record per unique axis/value decision. `normalized_mappings[*]` records the resulting schema mapping with `fact_refs`, `target_path`, and `canonical_ids`. Add compact `unresolved` or `conflicts` entries only when required, using fully qualified `fact_refs` and `observation_refs` rather than copied evidence.
 
-Validate that every `stable_facts` fact and every profile fact is captured exactly once in a terminal bucket, profiles are reusable and referenced by observation `profile_ids`, each raw observation has exactly one accounting index entry, shared facts occur only in `shared_fact_references` for additional consumers, each observation's canonical IDs are complete, and commerce observation count is separate from canonical variant count. If classification, references, evidence coverage, or allocation capacity cannot be validated, emit no partial canonical handoff and route the issue through `04-exceptions.md`. Return the two valid JSON artifacts and no prose.
+For weight validation, require every canonical weight mapping to preserve its source fact references. Accept only a directly sourced total scalar, a directly sourced front/rear pair, or an unresolved/null value when required source facts are absent or incomplete. For derived front/rear weights, the single existing `normalized_mappings` entry with both side references is the derivation record; do not add an accounting field. For images, verify URL normalization and deduplication, first-image primacy, variant-specific retention, and provenance coverage across stable, profile, and observation facts.
+
+Validate that every `stable_facts` fact and every profile fact is captured exactly once in a terminal bucket, profiles are reusable and referenced by observation `profile_ids`, each raw observation has exactly one accounting index entry, shared facts occur only in `shared_fact_references` for additional consumers, each observation's canonical IDs are complete, and commerce observation count is separate from canonical variant count. Accounting remains reference-only: do not repeat raw URLs, timestamps, selected values, or copied fact payloads. If classification, references, evidence coverage, allocation capacity, weight contradictions, or image contradictions cannot be validated, emit no partial canonical handoff and route the issue through `04-exceptions.md`. Return the two valid JSON artifacts and no prose.
 
 ## Corrections
 
