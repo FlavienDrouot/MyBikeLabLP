@@ -96,4 +96,4 @@ Rules for later PROJ-001 child evolutions:
 - Write the promoted value into the canonical sub-object (`rim`, `hub`, `spokes`, etc.).
 - Remove consumed source keys from `other_specs`.
 - Keep `--dry-run` as the default verification mode before writing.
-- Update `workflows/datascraping/wheel-format.json`, `scripts/DatascrapingPrompt.md`, and `workflows/datascraping/README.md` in the same EVO.
+- Update `Data/wheel-format.json` and the affected phase prompt or coordinator skill in the same EVO. Keep `Data/README.md` limited to navigation changes.

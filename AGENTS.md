@@ -35,7 +35,8 @@ The placeholder `[product]/` used across workflows refers to the active product 
 | ------------------------------ | --------------------------------------------------------------------------------- |
 | `product-overview.md`          | Human-facing product purpose, users, features, and roadmap                        |
 | `frontend/`                    | React application source, configuration, and build setup                          |
-| `scripts/`                     | Data ingestion scripts and prompts (gitignored)                                   |
+| `Data/`                        | Canonical datascraping contracts, prompts, schema, and workflow documentation      |
+| `scripts/`                     | Data ingestion and publication scripts                                               |
 | `evolutions/`                  | Product evolution specs, fixes, and archived work (gitignored)                    |
 | `frontend/design-system/`      | Design tokens, UI kits, editorial rules, and implementation guidance (gitignored) |
 | `.github/workflows/deploy.yml` | GitHub Pages deployment pipeline                                                  |
@@ -80,7 +81,7 @@ Follow the local design-system rules over ad hoc styling choices.
 Any evolution that adds, renames, restructures, or extends a field in `wheelsData_*.js` must include:
 
 1. Data migration: update all existing `wheelsData_*.js` files to the new schema.
-2. Scraping process update: update `../work-system/workflows/datascraping/wheel-format.json`, `scripts/DatascrapingPrompt.md`, and `../work-system/workflows/datascraping/README.md`.
+2. Scraping process update: update `Data/wheel-format.json` and the affected phase prompt or coordinator skill. Update `Data/README.md` only when navigation changes.
 
 These are part of the definition of done, not optional follow-ups.
 

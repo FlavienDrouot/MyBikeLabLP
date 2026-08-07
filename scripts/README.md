@@ -2,6 +2,9 @@
 
 Local data ingestion scripts — fetch affiliate and product data from external APIs and write results to `data/`.
 
+Datascraping contracts, phase prompts, schema, and workflow documentation live in
+`Data/`. Run the pipeline through the explicit user skill `$mybikelab-datascraping`.
+
 This folder is gitignored (credentials, generated output).
 
 ---

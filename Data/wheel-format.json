@@ -1,0 +1,86 @@
+{
+  "id": "number — unique identifier; the orchestrator allocates new exploded configuration IDs in a contiguous block beginning at max(existing IDs) + 1 and normalization assigns exact IDs from that block; historical IDs and reserved ranges remain valid and are never reused",
+  "model": "string — clean family name, IDENTICAL across sibling configurations of the same model; never embed the differentiator in parentheses",
+  "brand": "string",
+  "variant": "string | null — canonical snake_case key naming a comparison-distinct catalog variant sharing the same brand + model (e.g. 'standard_bearings' or 'ceramicspeed_upgrade'); compatibility options, cosmetic choices, and offer-only differences do not create variants; resolved to a localized label by the frontend variant.* i18n namespace; null/absent = model sold in a single comparison-distinct configuration",
+  "weight_grams": "number | { front: number, rear: number } | null",
+  "weight_tolerance_percent": "number | null - numeric percent tolerance for the published wheelset weight, e.g. 5 for +/- 5%; formerly other_specs.weight_tolerance / weight_tolerance_percent / weight_tolerance_grams / rim_weight_tolerance_percent",
+  "diameter_mm": "number — display convention (700, 650)",
+  "brake_type": "string — canonical axis key: 'disc' | 'rim' | 'track' (comparable axis — filterable + sortable)",
+  "wheelset_category": "string — 'climbing' | 'all-round' | 'aero' | 'endurance' | null",
+  "max_system_weight_kg": "number | null",
+  "warranty": {
+    "text": "string | null - original warranty wording, formerly other_specs.warranty",
+    "years": "number | null - explicit warranty duration in years, formerly other_specs.warranty_years; lifetime warranties keep years null"
+  },
+  "rim": {
+    "material": "string — e.g. 'carbon', 'aluminum'",
+    "hookless": "boolean | null",
+    "depth_mm": "number | { front: number, rear: number }",
+    "externalWidth_mm": "number | { front: number, rear: number } | null",
+    "internalWidth_mm": "number | { front: number, rear: number } | null",
+    "tire_compatibility": ["string - canonical tire type keys only: 'clincher' | 'tubeless' | 'tubular'; formerly other_specs.tire_type / tire_compatibility / compatible_tire_type"],
+    "tubeless_ready": "boolean | null - derived from rim.tire_compatibility: true when it contains 'tubeless', false when the set is known and lacks 'tubeless', null when unknown",
+    "tire_width_mm": {
+      "min": "number | null - minimum compatible or recommended tire width in mm; formerly other_specs.min_tire_width_mm and related tire-width labels",
+      "max": "number | null - maximum compatible or recommended tire width in mm; parse explicit ranges and ETRTO tire-width values only"
+    },
+    "construction": "string | null - free text rim material detail, layup, resin, welding, laminate, or construction technology; formerly other_specs.rim_material_name / rim_material_detail / rim_construction / rim_technology / rim_construction_technology",
+    "max_tire_pressure": {
+      "psi": "number | null - maximum tire pressure in psi, formerly other_specs.max_tire_pressure_psi and related source labels",
+      "bar": "number | null - maximum tire pressure in bar, converted when only psi is sourced",
+      "note": "string | null - source wording for conditional limits, such as tubeless/tubed or tire-width-specific pressure"
+    }
+  },
+  "spokes": {
+    "model": "string",
+    "brand": "string",
+    "material": "string — canonical axis key: 'carbon' | 'carbon_composite' | 'steel' | 'aluminum' | 'titanium' (comparable axis — filterable + sortable)",
+    "count": {
+      "front": "number | null - front wheel spoke count, formerly other_specs.spoke_count_front or other_specs.spoke_count",
+      "rear": "number | null - rear wheel spoke count, formerly other_specs.spoke_count_rear or other_specs.spoke_count"
+    },
+    "nipple": "string | null - free text spoke nipple spec, formerly other_specs.nipples / spoke_nipple / spoke_nipples",
+    "type": "string | null - spoke attachment/head type, e.g. 'straight-pull' or 'j-bend'; formerly other_specs.spoke_type. Do not include material or profile words here.",
+    "profile": "string | null - free text spoke shape/profile, e.g. 'aero', 'round', 'flat butted', or 'elliptical'; formerly other_specs.spoke_profile. Do not include attachment/head type words here.",
+    "lacing": {
+      "front": "string | null - front wheel lacing, formerly other_specs.spoke_lacing_front / front_wheel_spoke_lacing or global lacing labels",
+      "rear": "string | null - rear wheel lacing, formerly other_specs.spoke_lacing_rear / rear_wheel_spoke_lacing / rear_lacing or global lacing labels"
+    }
+  },
+  "hub": {
+    "model": "string",
+    "brand": "string",
+    "axle_front_mm": "string — e.g. '12x100' | null",
+    "axle_rear_mm": "string — e.g. '12x142' | null",
+    "freehub_options": ["string — canonical values only: 'Shimano HG' | 'Shimano Micro Spline' | 'SRAM XD' | 'SRAM XDR' | 'Campagnolo ED' | 'Campagnolo N3W' — see datascraping/README.md Step 3"],
+    "disc_standard": "string — e.g. 'Center Lock', '6-bolt' | null",
+    "bearing_type": "string | null - free text bearing type/system, formerly other_specs.bearing_type",
+    "bearing_models": ["string - bearing model/reference numbers, formerly other_specs.bearing_models; empty array when unknown"],
+    "material": "string | null - free text hub body/material detail, formerly other_specs.hub_material",
+    "engagement": {
+      "type": "string | null - canonical engagement type: 'star-ratchet' | 'ratchet' | 'pawl' | 'other'; formerly other_specs.hub_internals / ratchet",
+      "points": "number | null - points of engagement; for ratchets, tooth count such as 36T equals 36 points"
+    }
+  },
+  "certification": {
+    "uci": "boolean | null - UCI approval status, formerly other_specs.uci_approved or explicit certification text",
+    "astm": "number | null - ASTM F2043 category when sourced, formerly other_specs.astm_category",
+    "ebike": "boolean | null - e-bike approval status, formerly other_specs.e_bike_approved or explicit certification text"
+  },
+  "other_specs": "object - genuinely unstructured, non-comparable notes ONLY (shipping, discount...). MUST NOT contain promoted warranty fields (warranty, warranty_years), promoted weight tolerance fields (weight_tolerance, weight_tolerance_percent, weight_tolerance_grams, rim_weight_tolerance_percent), promoted hub fields (bearing_type, bearing_models, hub_material), promoted hub engagement fields (points_of_engagement, ratchet_teeth, ratchet, hub_internals), promoted spoke count fields (spoke_count, spoke_count_front, spoke_count_rear, spoke_count_disc), promoted spoke detail fields (nipples, spoke_nipple, spoke_nipples, spoke_type, spoke_profile, spoke_lacing, spoke_lacing_front, spoke_lacing_rear, front_wheel_spoke_lacing, rear_wheel_spoke_lacing, lacing, rear_lacing), promoted rim material/construction fields (rim_material_name, rim_material_detail, rim_construction, rim_technology, rim_construction_technology), promoted tire pressure fields (max_tire_pressure_psi, max_tire_pressure_bar, maximum_tire_pressure, max_tire_pressure_tubeless_psi, max_tire_pressure_tubed_psi, max_tire_pressure_psi_28c, max_tire_pressure_psi_clincher, max_tire_pressure_psi_tubeless), promoted tire compatibility fields (tire_type, tire_compatibility, compatible_tire_type), promoted tire width fields (min_tire_width_mm, max_tire_width_mm, tire_width_range_mm, tire_optimized_for_mm, optimized_tire_size_mm, recommended_tire_width_mm, recommended_tire_size, recommended_tire_size_c, compatible_tire_width, compatible_tire_width_mm, suggested_tire_width_mm, tire_width_c, etrto), promoted certification fields (uci_approved, astm_category, e_bike_approved, certification), or any comparable variant data: spoke material, rim width, brake type, per-variant weight or per-variant price. Never put a price here: no price_eur, no price_usd, no price_usd_front/_rear/_wheelset - every price lives on an offer as { amount, currency }. Each comparison-distinct catalog variant is a top-level object; compatibility, cosmetic, and offer-only options remain in evidence or canonical compatibility/offer fields.",
+  "prices": [
+    { "amount": "number | null — null = no usable price for this offer", "currency": "string — source currency of this offer: 'EUR' | 'USD'", "url": "string" }
+  ],
+  "images": ["string (URL) — first element is the primary image"],
+  "affiliateLinks": {
+    "manufacturer": {
+      "url": "string",
+      "amount": "number | null",
+      "currency": "string — 'EUR' | 'USD'"
+    },
+    "retailers": [
+      { "name": "string", "url": "string", "amount": "number | null", "currency": "string — 'EUR' | 'USD'" }
+    ]
+  }
+}

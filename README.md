@@ -10,6 +10,7 @@ React application for bike wheel comparison. Frontend-only MVP.
 | Folder / File | Role | Read |
 |---|---|---|
 | `product-overview.md` | Functional product documentation â€” purpose, users, features, roadmap | `product-overview.md` |
+| `Data/` | Canonical datascraping contracts, prompts, schema, and workflow documentation | `Data/README.md` |
 | `frontend/` | Application React (source, config, build) | `frontend/README.md` |
 | `scripts/` | Data ingestion scripts â€” affiliate and product feeds (gitignored) | `scripts/README.md` |
 | `evolutions/` | Evolution specs (planned and archived) | `evolutions/README.md` |

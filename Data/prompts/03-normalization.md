@@ -1,6 +1,6 @@
 # Phase 3 — normalization
 
-Read `00-shared-contract.md`, `catalog-index.json`, the canonical schema in `workflows/datascraping/wheel-format.json`, every single-family evidence JSON file, and the orchestrator allocation block. Normalization is the only phase that decides whether an observed axis is a `variant`, `option`, `cosmetic`, `offer`, or `unknown`.
+Read `00-shared-contract.md`, `catalog-index.json`, the canonical schema in `../wheel-format.json`, every single-family evidence JSON file, and the orchestrator allocation block. Normalization is the only phase that decides whether an observed axis is a `variant`, `option`, `cosmetic`, `offer`, or `unknown`.
 
 ## Evidence contract
 

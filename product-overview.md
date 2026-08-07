@@ -123,7 +123,7 @@ Scrape public specs and prices from brand websites and retailers to build catalo
 
 > **Status caveat:** Data comes from one-shot ("unitary") scraping sessions. There is no automated data pipeline and no price/spec refresh. Figures are a point-in-time snapshot and drift over time.
 
-> **Workflow:** See [`workflows/datascraping/README.md`](../workflows/datascraping/README.md) for the full pipeline (scraping prompt -> JSON -> frontend JS), curation rules, transformation rules, and per-brand progress tracker.
+> **Workflow:** Use the explicit `$mybikelab-datascraping` skill. Its coordinator instructions live in the skill; [`Data/README.md`](Data/README.md) indexes the shared contracts, phase prompts, schema, and publisher.
 
 > **Note - SEO:** Without organic traffic, affiliate clicks will not come on their own. Improving SEO (structured data, page titles, wheel-specific landing pages) is a prerequisite for monetization to generate meaningful results.
 
