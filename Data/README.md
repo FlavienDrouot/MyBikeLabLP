@@ -10,4 +10,4 @@ The user-invocable `$mybikelab-datascraping` skill is the sole coordinator entry
 - `../scripts/validate-datascraping-artifact.mjs`: deterministic handoff validator.
 
 Invoke the skill with a scope URL. It runs in an isolated worktree, keeps artifacts under
-`runs/<run_id>/`, excludes individual wheels, and requires human approval before publication.
+`Data/runs/<run_id>/`, excludes individual wheels, and requires human approval before publication.
