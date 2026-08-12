@@ -2,107 +2,49 @@
 
 ## Scope
 
-These instructions apply to agent work inside `MyBikeLab/`.
+These instructions apply to `MyBikeLab`.
 
-`MyBikeLab/` is the product workspace for a frontend-only React application that compares bicycle wheels. Agents may read and modify product-internal files when the user request concerns MyBikeLab development, fixes, reviews, scraping, documentation, or implementation work.
+- Canonical repository: `C:\Users\Flavien\Documents\VisualStudioCode\MyBikeLab`.
+- Active repository: the Git worktree containing this `AGENTS.md`, or the canonical repository when no worktree is used.
+- When working in a worktree, modify only that worktree. The canonical checkout and other worktrees are external to the current task.
+- Files outside the active repository may be read when needed.
+- Do not create, modify, move, rename, or delete files outside the active repository unless the user explicitly requests or approves the cross-repository change.
+- Skills, workflows, and repository instructions may identify cross-repository work, but do not authorize it.
 
-## Workspace Boundary
+## Product Overview
 
-- Keep product changes inside `MyBikeLab/` unless the active workflow explicitly requires coordinated changes in `../work-system/workflows/` or `../work-system/shared-knowledge/`.
-- Use `../work-system/thinking/` for exploratory or preparatory reasoning that is not yet an approved product implementation.
-- Do not reorganize product or workspace structure without explicit user instruction.
-- Before any changes, summarize the intended change and ask for confirmation.
+`MyBikeLab` is a web platform for comparing bicycle equipment. It helps cyclists make informed choices from normalized technical and commercial data.
 
-## Work Hierarchy Vocabulary
+Its first product scope focuses on road wheelsets.
 
-Development work inside a product is organized in nested levels. Detailed mechanics, ID counters, and creation rules belong in `../work-system/workflows/ai-dev-process/README.md`.
+## Repository Map
 
+| Path | Role |
+| --- | --- |
+| `product-overview.md` | Product purpose, users, features, and roadmap |
+| `frontend/` | React application source and configuration |
+| `frontend/design-system/` | Design tokens, UI guidance, and reference surfaces |
+| `scripts/` | Product data ingestion, migration, and maintenance tooling |
+| `evolutions/` | Product work artifacts |
 
-| Level         | ID         | Definition                                                                                                                        | Home                                        |
-| ------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| **Product**   | -          | A deliverable body of work that owns an `evolutions/` folder.                                                                     | workspace root as `../[Product]/`           |
-| **Project**   | `PROJ-NNN` | A coherent set of evolutions sharing one goal and definition of done. Optional grouping; most work goes straight to an Evolution. | `[product]/evolutions/PROJ-NNN_slug/`       |
-| **Evolution** | `EVO-NNN`  | One feature change, either Light EVO or Standard EVO.                                                                             | `[product]/evolutions/` or inside a Project |
-| **Fix**       | `fix-NNN`  | A small local correction, usually one to three files and no architecture decision.                                                | `[product]/evolutions/` or inside a Project |
+## Product Rules
 
-
-The placeholder `[product]/` used across workflows refers to the active product repository.
-
-## Product Structure
-
-
-| Path                           | Purpose                                                                           |
-| ------------------------------ | --------------------------------------------------------------------------------- |
-| `product-overview.md`          | Human-facing product purpose, users, features, and roadmap                        |
-| `frontend/`                    | React application source, configuration, and build setup                          |
-| `scripts/`                     | Data ingestion scripts and prompts (gitignored)                                   |
-| `evolutions/`                  | Product evolution specs, fixes, and archived work (gitignored)                    |
-| `frontend/design-system/`      | Design tokens, UI kits, editorial rules, and implementation guidance (gitignored) |
-| `.github/workflows/deploy.yml` | GitHub Pages deployment pipeline                                                  |
-
-
-## Git And Shell
-
-- Product repo is the repository root containing this `AGENTS.md`.
-
-## Technical Context
-
-- Stack: React 19, Vite with base path `/MyBikeLabLP/`, Redux Toolkit, Tailwind CSS 3.
-- Frontend-only MVP; no backend.
-- Entry flow: `frontend/index.html` -&gt; `src/main.jsx` -&gt; `App.jsx` -&gt; `pages/Landing.jsx`.
-- Main feature: `src/components/MiniComparator/`.
-- Static wheel data currently lives under `src/data/`.
-
-## Browser Automation
-
-Use built-in web search for current facts and citation-heavy research. Use `agent-browser.cmd` for interactive browsing, UI verification, screenshots, auth, dynamic pages, or workflows; first run `agent-browser.cmd skills get core`.
-
-## Core Product Rules
-
-- New wheel properties must be added through `src/config/wheelProperties.jsx`.
-- Filter state and sort state are keyed by registry property IDs.
-- Supported filter types are `range`, `multiSelect`, and `triState`; a new filter type requires matcher and slice initialization updates.
-- Column visibility is local to `MiniComparator`; filter and sort state are global Redux state.
-- Tailwind tokens include `paper-*`, `ink-*`, `brass-*`, and `sage-*`; shared classes live in `src/index.css`.
-
-## UI Work
-
-Before implementing a new component or page surface, read:
-
-1. `frontend/design-system/README.md`
-2. `frontend/design-system/IMPLEMENTATION-GUIDE.md`
-3. The relevant reference under `frontend/design-system/ui_kits/<surface>/`, when one exists
-
-Follow the local design-system rules over ad hoc styling choices.
-
-## Wheel Data Schema Changes
-
-Any evolution that adds, renames, restructures, or extends a field in `wheelsData_*.js` must include:
-
-1. Data migration: update all existing `wheelsData_*.js` files to the new schema.
-2. Scraping process update: update `../work-system/workflows/datascraping/wheel-format.json`, `scripts/DatascrapingPrompt.md`, and `../work-system/workflows/datascraping/README.md`.
-
-These are part of the definition of done, not optional follow-ups.
-
-## Documentation Pass
-
-After meaningful changes, check whether product instructions, workflow files, or human documentation need updates.
-
-A change is meaningful when it affects purpose, scope, ownership, responsibilities, structure, workflow contracts, required inputs or outputs, constraints, generated artifacts, or durable user preferences.
-
-Small implementation edits that do not change behavior, contracts, structure, workflow, or responsibilities do not require documentation churn.
+- Add wheel properties through `frontend/src/config/wheelProperties.jsx`.
+- Key filter and sort state by registry property IDs.
+- Supported filter types are `range`, `multiSelect`, and `triState`. Adding a filter type requires corresponding matcher and slice initialization support.
+- Keep column visibility local to `MiniComparator`; filter and sort state belong in Redux.
+- Before UI work, read `frontend/design-system/README.md`, `frontend/design-system/IMPLEMENTATION-GUIDE.md`, and the relevant reference under `frontend/design-system/ui_kits/` when one exists.
+- Use the design system and shared classes in `frontend/src/index.css` instead of ad hoc styling.
+- Wheel data schema changes must update all existing `wheelsData_*.js` files and affected product-owned validation, ingestion, migration, and documentation artifacts.
 
 ## graphify
 
-This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+This repository has a knowledge graph at `graphify-out/` with god nodes, community structure, and cross-file relationships.
 
 When the user types `/graphify`, use the installed graphify skill or instructions before doing anything else.
 
-Rules:
-
-- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
-- Dirty graphify-out/ files are expected after hooks or incremental updates; dirty graph files are not a reason to skip graphify. Only skip graphify if the task is about stale or incorrect graph output, or the user explicitly says not to use it.
-- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
-- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
-- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
-
+- For codebase questions, first run `graphify query "<question>"` when `graphify-out/graph.json` exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts.
+- Dirty `graphify-out/` files are expected after hooks or incremental updates. Skip graphify only when the task concerns stale or incorrect graph output, or the user explicitly asks not to use it.
+- Use `graphify-out/wiki/index.md` for broad navigation when it exists.
+- Read `graphify-out/GRAPH_REPORT.md` only for broad architecture reviews or when query, path, or explain do not provide enough context.
+- After modifying code, run `graphify update .` to keep the graph current.
