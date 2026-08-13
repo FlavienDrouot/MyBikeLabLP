@@ -40,4 +40,5 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 - **Filter types**: `range` \| `multiSelect` \| `triState` â€” new type requires a matcher + init in `filtersSlice`
 - **Column visibility** = local state in `MiniComparator`; filter/sort = Redux global state
 - **Tailwind tokens**: follow the design-system guidance in `design-system/README.md`; add shared classes to `src/index.css`
+- **Browser translation policy**: English remains browser-translatable; non-English locales synchronize the document `lang` and protect the application with the document translation markers in `src/lib/documentLanguage.js`
 
