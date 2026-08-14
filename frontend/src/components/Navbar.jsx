@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Icon from './ui/Icon';
 import LogoMark from './ui/LogoMark';
 import { SUPPORTED_CURRENCIES } from '../lib/currency';
+import { isBrowserTranslatedDocument } from '../lib/documentLanguage';
 import { changeDisplayCurrency } from '../store/slices/filtersSlice';
 
 const LANGUAGES = ['en', 'fr'];
@@ -49,6 +50,15 @@ const LanguageToggle = () => {
   const { i18n } = useTranslation();
   const current = i18n.language?.split('-')[0] ?? 'en';
 
+  const changeLanguage = (lang) => {
+    if (lang === current) return;
+
+    const languageChange = i18n.changeLanguage(lang);
+    if (isBrowserTranslatedDocument()) {
+      languageChange.then(() => window.location.reload());
+    }
+  };
+
   return (
     <div className="flex items-center gap-0.5" role="group" aria-label="Language">
       {LANGUAGES.map((lang) => {
@@ -57,7 +67,7 @@ const LanguageToggle = () => {
           <button
             key={lang}
             type="button"
-            onClick={() => i18n.changeLanguage(lang)}
+            onClick={() => changeLanguage(lang)}
             aria-pressed={isActive}
             className={`px-2 py-1 rounded-xs text-xs font-semibold uppercase tracking-wide transition-colors ${
               isActive
