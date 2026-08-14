@@ -287,7 +287,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                   className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-ink-12 text-paper-1 hover:bg-ink-10 transition-colors"
                 >
                   {valLabel}
-                  <span aria-hidden="true" className="text-paper-1/60">Ã—</span>
+                  <span aria-hidden="true" className="text-paper-1/60">{'\u00D7'}</span>
                 </button>
               );
             })}
@@ -447,7 +447,7 @@ const TriStateFilter = ({ property, filter }) => {
   );
 };
 
-// Type â†’ component map. Extend this map to add a new filter type.
+// Type → component map. Extend this map to add a new filter type.
 const FILTER_ADAPTERS = {
   range: RangeFilter,
   multiSelect: MultiSelectFilter,

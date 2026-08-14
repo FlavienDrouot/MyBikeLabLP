@@ -6,7 +6,7 @@
 //   - ColumnSelector   : controls column visibility
 //
 // To add a new wheel property (filter + sort + column), simply add an entry
-// to WHEEL_PROPERTIES â€” no other files should need modification.
+// to WHEEL_PROPERTIES — no other files should need modification.
 
 import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 import { HookBadge } from '../components/MiniComparator/badges';
@@ -43,7 +43,7 @@ import { convert, formatPrice, isSupportedCurrency } from '../lib/currency';
 
 // Selects the cheapest usable offer after converting every offer to the display
 // currency. Returns `{ valueInDisplay, sourceCurrency }` or null when no offer
-// has a finite amount in a supported currency. `sourceCurrency` drives the `â‰ˆ`
+// has a finite amount in a supported currency. `sourceCurrency` drives the `≈`
 // hint (shown when it differs from the display currency).
 export const selectMinOffer = (wheel, displayCurrency = 'EUR') => {
   let best = null;
@@ -75,7 +75,7 @@ const DIAMETER_LABEL_MAP = {
 
 export const formatDiameter = (rawMm) => {
   const label = DIAMETER_LABEL_MAP[rawMm] ?? String(rawMm);
-  return `Ã˜ ${label}`;
+  return `\u00D8 ${label}`;
 };
 
 const tireWidthRangeValues = (tireWidth) => {
@@ -106,7 +106,7 @@ export const COLUMN_GROUPS = [
 
 /** @type {WheelProperty[]} */
 export const WHEEL_PROPERTIES = [
-  // â”€â”€ general â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── general ───────────────────────────────────────────────────────────────
   {
     id: 'image',
     label: 'properties.image.label',
@@ -133,7 +133,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.brand,
     filter: { type: 'multiSelect' },
-    // Filterable but no dedicated column â€” brand is already visible in Model column.
+    // Filterable but no dedicated column — brand is already visible in Model column.
     column: { hidden: true },
   },
 
@@ -347,7 +347,7 @@ export const WHEEL_PROPERTIES = [
       cellClassName: 'px-4 py-3 text-ink-11',
     },
   },
-  // â”€â”€ rims â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── rims ───────────────────────────────────────────────────────────────────
   {
     id: 'rimMaterial',
     label: 'properties.rimMaterial.label',
@@ -568,7 +568,7 @@ export const WHEEL_PROPERTIES = [
     },
   },
 
-  // â”€â”€ hub and spokes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── hub and spokes ─────────────────────────────────────────────────────────
   {
     id: 'warrantyYears',
     label: 'properties.warrantyYears.label',
@@ -640,8 +640,8 @@ export const WHEEL_PROPERTIES = [
     group: 'hub',
     translatable: false,
     accessor: (w) => {
-      const f = w.hub?.axle_front_mm ?? 'â€”';
-      const r = w.hub?.axle_rear_mm ?? 'â€”';
+      const f = w.hub?.axle_front_mm ?? '\u2014';
+      const r = w.hub?.axle_rear_mm ?? '\u2014';
       return `${f} / ${r}`;
     },
     column: {
@@ -665,7 +665,7 @@ export const WHEEL_PROPERTIES = [
       cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px]',
       // renderCell removed: ComparisonTable now uses FreehubCell for this column (EVO-036 TASK-005).
       // MeasuringTable still uses renderCellFor, which falls back to the default
-      // accessor-based render â€” sufficient for width measurement only.
+      // accessor-based render — sufficient for width measurement only.
     },
   },
 
