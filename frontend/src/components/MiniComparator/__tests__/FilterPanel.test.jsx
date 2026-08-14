@@ -8,6 +8,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { store } from '../../../store';
 import FilterPanel from '../FilterPanel';
+import { resetFilters, setFilterValue } from '../../../store/slices/filtersSlice';
 
 // EVO-025 / TASK-002: the FilterPanel root <aside> must carry a viewport-bounded
 // max-height cap and internal vertical scroll on `lg`, and must no longer rely
@@ -93,5 +94,19 @@ describe('FilterPanel (EVO-025 TASK-002 — viewport-bounded height)', () => {
       root.unmount();
     });
     container.remove();
+  });
+
+  it('renders the multiplication sign for selected multi-select values', () => {
+    const multiplicationSign = String.fromCodePoint(0x00d7);
+    const mojibakeMarker = String.fromCodePoint(0x00c3, 0x2014);
+
+    store.dispatch(setFilterValue({ id: 'brand', value: ['Roval'] }));
+    try {
+      const html = renderHtml();
+      expect(html).toContain(multiplicationSign);
+      expect(html).not.toContain(mojibakeMarker);
+    } finally {
+      store.dispatch(resetFilters());
+    }
   });
 });
