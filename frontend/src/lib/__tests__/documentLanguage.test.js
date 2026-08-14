@@ -3,6 +3,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import {
   getDocumentLanguagePolicy,
+  isBrowserTranslatedDocument,
   syncDocumentLanguage,
 } from '../documentLanguage';
 
@@ -53,5 +54,18 @@ describe('syncDocumentLanguage', () => {
     syncDocumentLanguage('en');
     expect(document.documentElement.getAttribute('translate')).toBe('yes');
     expect(document.documentElement.classList.contains('notranslate')).toBe(false);
+  });
+});
+
+describe('isBrowserTranslatedDocument', () => {
+  it('detects browser translation markers on the document root or body', () => {
+    expect(isBrowserTranslatedDocument()).toBe(false);
+
+    document.documentElement.classList.add('translated-ltr');
+    expect(isBrowserTranslatedDocument()).toBe(true);
+
+    document.documentElement.className = '';
+    document.body.classList.add('translated-rtl');
+    expect(isBrowserTranslatedDocument()).toBe(true);
   });
 });

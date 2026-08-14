@@ -24,3 +24,12 @@ export const syncDocumentLanguage = (language, documentObject = globalThis.docum
   root.setAttribute('translate', allowBrowserTranslation ? 'yes' : 'no');
   root.classList.toggle(NON_DEFAULT_LANGUAGE_CLASS, !allowBrowserTranslation);
 };
+
+export const isBrowserTranslatedDocument = (documentObject = globalThis.document) => {
+  const translatedClasses = new Set(['translated-ltr', 'translated-rtl']);
+  const elements = [documentObject?.documentElement, documentObject?.body];
+
+  return elements.some((element) =>
+    element && [...element.classList].some((className) => translatedClasses.has(className)),
+  );
+};
