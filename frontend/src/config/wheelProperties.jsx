@@ -212,8 +212,11 @@ export const WHEEL_PROPERTIES = [
       renderCell: (w, t) => {
         const { front, rear, total, isSingle } = resolveSpec(w.weight_grams);
         const tolerance = w.weight_tolerance_percent;
-        const toleranceLine = Number.isFinite(tolerance) ? (
-          <div className="text-xs text-ink-7 mt-0.5">+/- {tolerance}%</div>
+        const toleranceGrams = Number.isFinite(total) && Number.isFinite(tolerance)
+          ? Math.round((total * tolerance) / 100)
+          : null;
+        const toleranceLine = toleranceGrams !== null ? (
+          <div className="text-xs text-ink-7 mt-0.5">+/- {toleranceGrams} g</div>
         ) : null;
         if (total === null) return t('common.notAvailable');
         if (isSingle && !toleranceLine) return `${total} g`;
