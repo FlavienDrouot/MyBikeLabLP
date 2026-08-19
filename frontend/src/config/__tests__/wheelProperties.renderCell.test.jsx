@@ -130,7 +130,7 @@ describe('weight — renderCell', () => {
   it('renders scalar input with weight tolerance as a secondary line', () => {
     const html = render('weight', { weight_grams: 1492, weight_tolerance_percent: 5 });
     expect(html).toContain('1492 g');
-    expect(html).toContain('+/- 5%');
+    expect(html).toContain('+/- 75 g');
   });
 
   it('renders divergent pair: primary contains total and sub-line contains front / rear', () => {
@@ -146,7 +146,7 @@ describe('weight — renderCell', () => {
     });
     expect(html).toContain('1570 g');
     expect(html).toContain('720 / 850 g');
-    expect(html).toContain('+/- 3%');
+    expect(html).toContain('+/- 47 g');
   });
 
   it('renders divergent pair: sub-line is a block div with correct classes', () => {
