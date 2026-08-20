@@ -124,7 +124,7 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
           </div>
         </div>
 
-        <div className="min-w-0">
+        <div data-testid="wheel-detail-ledger" className="min-w-0">
           {wheel.variant && (
             <div className="mb-5 border-l border-brass-7 pl-3">
               <p className="m-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-7">

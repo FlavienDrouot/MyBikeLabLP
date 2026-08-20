@@ -59,6 +59,18 @@ const goToComparator = async (page) => {
   ).toBeVisible();
 };
 
+const readDetailLayout = (panel) => panel.evaluate((root) => {
+  const plate = root.querySelector('[data-testid="wheel-detail-plate-image"]').getBoundingClientRect();
+  const ledger = root.querySelector('[data-testid="wheel-detail-ledger"]').getBoundingClientRect();
+
+  return {
+    plateBottom: plate.bottom,
+    plateLeft: plate.left,
+    ledgerLeft: ledger.left,
+    ledgerTop: ledger.top,
+  };
+});
+
 test.describe('Chromium P0 comparator journeys', () => {
   test('loads the page landmarks and comparator without browser errors', async ({ page }) => {
     await goToComparator(page);
@@ -117,6 +129,33 @@ test.describe('Chromium P0 comparator journeys', () => {
     await expect(page.getByRole('button', { name: 'Close menu' })).toBeVisible();
     await page.getByRole('button', { name: 'Close menu' }).click();
     await expect(page.getByRole('region', { name: /details$/ })).toHaveCount(0);
+  });
+
+  test('composes the wheel detail panel in columns and then stacks it below its breakpoint', async ({ page }) => {
+    await page.setViewportSize({ width: 1600, height: 900 });
+    await goToComparator(page);
+
+    const table = page.getByRole('table', { name: 'Wheel comparison' });
+    await table.getByRole('row').nth(1).click();
+
+    const panel = page.getByRole('region', { name: /details$/ });
+    const plate = panel.getByTestId('wheel-detail-plate-image');
+    const ledger = panel.getByTestId('wheel-detail-ledger');
+    await expect(plate).toBeVisible();
+    await expect(ledger).toBeVisible();
+
+    await expect.poll(async () => {
+      const layout = await readDetailLayout(panel);
+      return layout.ledgerLeft > layout.plateLeft && layout.ledgerTop < layout.plateBottom;
+    }).toBe(true);
+
+    await page.setViewportSize({ width: 1200, height: 900 });
+
+    await expect.poll(async () => {
+      const layout = await readDetailLayout(panel);
+      return Math.abs(layout.ledgerLeft - layout.plateLeft) <= 2
+        && layout.ledgerTop >= layout.plateBottom;
+    }).toBe(true);
   });
 
   test('switches currency and updates visible prices', async ({ page }) => {

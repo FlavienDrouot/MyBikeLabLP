@@ -125,7 +125,7 @@ different boundaries: declaration, transformation and assembled catalog.
 | `components/MiniComparator/FilterPanel.test.jsx` - open-group and selected-value groups | 2 | Keep in Vitest, add Playwright coverage | `aria-expanded` and selected filter text are semantic component behavior. Add one real filter interaction to cover the full journey. |
 | `components/MiniComparator/MiniComparator.viewport-cap.test.jsx` | 8 | Replace with Playwright and delete the JSDOM suite | The CSS stylesheet, `matchMedia`, scroll heights and overflow are all simulated. A browser test must cover desktop/mobile cap, sticky header and scroll isolation. |
 | `components/MiniComparator/PaginationControls.test.jsx` | 8 | Simplify in #25 | Keep navigation label, page text, icon accessibility and disabled-state contracts. Typography remains a design-system/manual concern. |
-| `components/MiniComparator/WheelDetailPanel.test.jsx` - structure and responsive groups | 2 | Defer to Playwright | Retain the existing desktop/narrow-width checks until a dedicated browser scenario replaces them; #25 intentionally does not remove this responsive coverage. |
+| `components/MiniComparator/WheelDetailPanel.test.jsx` - structure and responsive groups | 2 | Migrate in #26 | The Chromium detail journey measures the real image plate and ledger geometry at desktop width and below the panel breakpoint. The simulated class assertions are removed. |
 | `components/MiniComparator/WheelDetailPanel.test.jsx` - ledger, links, media, locale and variant groups | 10 | Simplify in #25; add one browser detail scenario | Keep conditional data branches, offer sorting, image/schematic fallback, link security attributes, translations and variant visibility. Remove CTA, color, border and visual-marker class assertions while preserving semantic link checks. |
 | `components/MiniComparator/WheelImageCarousel.test.jsx` | 5 | Keep in Vitest; optional Playwright P1 | State transitions and image selection are deterministic. A browser test is useful for the real controls and reduced-motion perception, but is lower priority than the comparator flow. Remove exact inline style assertions in favor of active image and control state. |
 | `components/__tests__/Footer.test.jsx` | 2 | Keep, simplify one assertion | Keep brand and copyright content. Do not require an inline SVG implementation; the page smoke test covers the rendered footer. |
@@ -210,6 +210,13 @@ The first Chromium scenarios cover:
 - sticky headers, independent desktop scroll regions and stable column
   position after filtering;
 - mobile filter drawer, pagination and responsive height behavior.
+
+Issue #26 completes the responsive migration for `WheelDetailPanel`. The
+Chromium detail journey opens a wheel from the real catalog, measures the image
+plate and offer ledger with browser geometry, and verifies the two-column and
+stacked compositions around the component's 1040 px panel breakpoint. The two
+JSDOM layout assertions were removed; ledger data, links, fallbacks, text and
+variant contracts remain in Vitest.
 
 ## Follow-up impact
 

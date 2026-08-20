@@ -71,30 +71,7 @@ describe('WheelDetailPanel', () => {
     });
   };
 
-  const panelRoot = () => container.firstElementChild;
   const ledgerRows = () => Array.from(container.querySelectorAll('[data-testid="wheel-detail-ledger-row"]'));
-
-  it('uses the wheel-detail-panel-redesign final panel structure', () => {
-    renderPanel(withLinks({ manufacturer, retailers }), 1200);
-
-    const body = panelRoot().firstElementChild;
-    expect(body.className).toContain('max-w-[1100px]');
-    expect(body.className).toContain('grid-cols-[380px_minmax(0,1fr)]');
-
-    expect(container.textContent).toContain('FIG. 01');
-    expect(container.textContent).toContain('WHEEL');
-    expect(container.textContent).toContain('SCALE 1:1');
-    expect(container.querySelector('[data-testid="wheel-detail-plate-image"]').className).toContain('h-[340px]');
-    expect(container.querySelector('[data-testid="wheel-schematic"]')).not.toBeNull();
-  });
-
-  it('switches to stacked layout before the two-column ledger gets cramped', () => {
-    renderPanel(withLinks({ manufacturer, retailers }), 1039);
-
-    const body = panelRoot().firstElementChild;
-    expect(body.className).toContain('grid-cols-1');
-    expect(body.className).not.toContain('grid-cols-[380px_minmax(0,1fr)]');
-  });
 
   it('renders split manufacturer and retailer ledger rows sorted by price', () => {
     renderPanel(withLinks({ manufacturer, retailers }));
