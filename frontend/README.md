@@ -8,6 +8,8 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 | --- | --- |
 | `npm run dev` | Dev server with HMR |
 | `npm run build` | Production build |
+| `npm test` | Vitest summary |
+| `npm run test:full` | Full Vitest output |
 | `npm run preview` | Preview production build locally |
 
 ## Structure
@@ -42,3 +44,7 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 - **Tailwind tokens**: follow the design-system guidance in `design-system/README.md`; add shared classes to `src/index.css`
 - **Browser translation policy**: English remains browser-translatable; non-English locales synchronize the document `lang` and protect the application with the document translation markers in `src/lib/documentLanguage.js`
 
+## Testing
+
+The current Vitest audit and the persistent testing policy are documented in
+[TESTING.md](./TESTING.md). Playwright scenarios will be added in issue #24.
