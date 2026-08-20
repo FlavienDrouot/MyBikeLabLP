@@ -81,7 +81,7 @@ const MiniComparator = () => {
               `fixed` removes it from grid flow on mobile so it overlays cleanly. */}
           <div
             id="filters-drawer"
-            role="dialog"
+            role={filtersOpen ? 'dialog' : undefined}
             aria-modal={filtersOpen ? 'true' : undefined}
             aria-label={t('comparator.filtersDrawerLabel')}
             className={`fixed inset-y-0 left-0 z-50 flex w-80 max-w-[85vw] flex-col overflow-y-auto bg-paper-2 border-r border-ink-4 transition-transform duration-200 ease-out ${

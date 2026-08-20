@@ -10,6 +10,14 @@ export default defineConfig({
     environment: 'node',
     globals: true,
     setupFiles: ['./src/test-setup.js'],
+    exclude: [
+      'e2e/**',
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/.idea/**',
+      '**/.git/**',
+      '**/.cache/**',
+    ],
     alias: [
       {
         find: /^.+\.(svg|png|jpg|jpeg|gif)$/,

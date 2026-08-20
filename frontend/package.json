@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "test": "npm run test:summary",
     "test:full": "vitest run",
-    "test:summary": "node tools/vitest-summary.mjs"
+    "test:summary": "node tools/vitest-summary.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:install": "playwright install chromium"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
@@ -25,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.62.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",

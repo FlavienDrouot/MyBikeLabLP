@@ -108,7 +108,11 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
   const hasNoLinks = entries.length === 0;
 
   return (
-    <div className="bg-paper-2 border-y border-ink-4 px-7 py-[26px]">
+    <div
+      className="bg-paper-2 border-y border-ink-4 px-7 py-[26px]"
+      role="region"
+      aria-label={t('wheelDetail.panelLabel', { brand: wheel.brand, model: wheel.model })}
+    >
       <div className={`mx-auto grid max-w-[1100px] items-start gap-12 ${isStacked ? 'grid-cols-1' : 'grid-cols-[380px_minmax(0,1fr)]'}`}>
         <div className="mb-5 self-start border border-ink-4 bg-paper-0">
           <div className="flex items-center justify-between border-b border-ink-3 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-7">

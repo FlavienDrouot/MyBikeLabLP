@@ -10,8 +10,8 @@ issue #24.
 - 377 tests passing with `npm test`.
 - Vitest 3.2.4, with `node` as the default environment and file-level JSDOM
   overrides where a React DOM mount is required.
-- Playwright is not installed yet.
-- CI runs lint and build, but not Vitest or browser tests.
+- At audit time, Playwright was not installed yet.
+- At audit time, CI ran lint and build, but not Vitest or browser tests.
 - Several component tests provide their own `matchMedia`, `ResizeObserver`,
   `offsetHeight`, `getBoundingClientRect`, CSS and scroll metric shims. These
   shims are useful for deterministic component logic, but they do not validate
@@ -181,12 +181,42 @@ The full catalog edge cases remain in Vitest. Playwright should use the real
 catalog for the journeys above and avoid manufacturing a second, divergent
 catalog fixture.
 
+## Playwright V1 implementation
+
+Issue #24 adds the initial Chromium suite and keeps the real static catalog as
+its fixture. Each test clears `localStorage`, selects English, starts from the
+default EUR state and replaces catalog image requests with an inert local
+response. The suite therefore does not depend on external images or product
+sites.
+
+Run it from `frontend/` with:
+
+```bash
+npm run test:e2e:install
+npm run test:e2e
+```
+
+The Vite server is started automatically with the public `/MyBikeLabLP/` base
+URL. Playwright retains traces and screenshots on failures. CI uploads those
+diagnostics when the browser job fails.
+
+The first Chromium scenarios cover:
+
+- page smoke, landmarks and console/page errors;
+- filter selection and reset;
+- ascending and descending table sort;
+- opening and closing wheel details;
+- currency conversion in visible prices;
+- sticky headers, independent desktop scroll regions and stable column
+  position after filtering;
+- mobile filter drawer, pagination and responsive height behavior.
+
 ## Follow-up impact
 
-- Issue #24 should install Playwright, add the P0 scenarios and replace the
-  simulated viewport-cap and column-width suites.
-- The CI workflow should run lint, build, Vitest and the Chromium Playwright
-  project before deployment.
+- The simulated viewport-cap and column-width suites are replaced by the
+  Chromium scenarios above.
+- The CI workflow runs lint, build, Vitest and the Chromium Playwright project
+  before deployment.
 - The first cleanup issue after #24 should remove the obsolete class/layout
   assertions identified in this matrix.
 - No production code change is required by this audit.

@@ -10,6 +10,8 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 | `npm run build` | Production build |
 | `npm test` | Vitest summary |
 | `npm run test:full` | Full Vitest output |
+| `npm run test:e2e` | Chromium Playwright suite, with Vite started automatically |
+| `npm run test:e2e:install` | Install the Chromium browser used by Playwright |
 | `npm run preview` | Preview production build locally |
 
 ## Structure
@@ -47,4 +49,20 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 ## Testing
 
 The current Vitest audit and the persistent testing policy are documented in
-[TESTING.md](./TESTING.md). Playwright scenarios will be added in issue #24.
+[TESTING.md](./TESTING.md).
+
+## Browser tests
+
+Install the browser once on a new machine, then run the suite from this
+directory:
+
+```bash
+npm install
+npm run test:e2e:install
+npm run test:e2e
+```
+
+The Playwright configuration starts Vite with the public `/MyBikeLabLP/` base
+path. The Chromium suite uses the real static catalog, resets locale, currency
+and storage for every test, and replaces external catalog images with an inert
+response so browser checks do not depend on third-party sites.

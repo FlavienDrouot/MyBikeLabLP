@@ -211,9 +211,15 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
             />
           )}
 
-          <div className="comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]" ref={scrollRef}>
+          <div
+            className="comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]"
+            ref={scrollRef}
+            role="region"
+            aria-label={t('table.scrollRegion')}
+          >
           <table
             className="text-sm bg-paper-0 border-separate border-spacing-0"
+            aria-label={t('table.label')}
             style={widthsReady ? { tableLayout: 'fixed', width: totalWidth } : undefined}
           >
             {widthsReady && (
@@ -270,8 +276,17 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                 <React.Fragment key={w.id}>
                   <tr
                     className="hover:bg-brass-1 cursor-pointer"
+                    tabIndex="0"
+                    aria-expanded={expandedId === w.id}
+                    aria-label={t('table.openDetails', { model: w.model })}
                     style={{ transition: 'background-color var(--duration-quick) var(--ease-standard)' }}
                     onClick={() => toggleExpanded(w.id)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        toggleExpanded(w.id);
+                      }
+                    }}
                   >
                     {cols.map((p) => {
                       if (p.id === 'freehubOptions') {
@@ -315,6 +330,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                           <button
                             type="button"
                             aria-label={t('nav.closeMenu')}
+                            aria-description={t('wheelDetail.close')}
                             onClick={closeExpandedPanel}
                             className="absolute right-3 top-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-xs border border-ink-4 bg-paper-0 text-ink-11 hover:border-ink-10 hover:bg-paper-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8"
                             style={{ transition: 'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard)' }}
