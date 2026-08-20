@@ -211,6 +211,24 @@ The first Chromium scenarios cover:
   position after filtering;
 - mobile filter drawer, pagination and responsive height behavior.
 
+Issue #27 adds the P1 Chromium journeys from the audit:
+
+- language switching between English and French, including the document
+  language, visible translated labels and the absence of raw translation keys;
+- the real image carousel on a multi-image wheel and the schematic fallback on
+  a wheel without images, including accessible image controls;
+- opening the column selector, enabling the optional Diameter column and
+  checking the resulting header and cells before closing the selector;
+- a focused keyboard path through the Tool navigation link, mobile filters,
+  the Weight sort control and pagination, with Enter/Space activation and
+  visible focus checks.
+
+These scenarios use the real catalog. Each Playwright test starts with a fresh
+browser context, clears storage, selects English and therefore receives the
+default EUR currency and filter state from the application. Viewports are
+defined by the test or the Chromium device preset. The image route remains
+mocked locally for all journeys.
+
 Issue #26 completes the responsive migration for `WheelDetailPanel`. The
 Chromium detail journey opens a wheel from the real catalog, measures the image
 plate and offer ledger with browser geometry, and verifies the two-column and

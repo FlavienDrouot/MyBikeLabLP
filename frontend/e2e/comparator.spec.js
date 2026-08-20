@@ -6,6 +6,8 @@ const IMAGE_RESPONSE = `
   </svg>
 `;
 
+const RAW_TRANSLATION_KEY = /\b(?:brand|common|nav|hero|comparator|filterChips|filterPanel|columnSelector|pagination|table|wheelDetail|badges|roadmap|benefits|partnership|contact|footer|properties|sorts|filters|rimMaterial|spokeMaterial|hookless|tubelessReady|tireCompatibility|hubEngagementType|uciApproved|ebikeApproved|wheelsetCategory|variant)\.[a-zA-Z][\w.-]*/;
+
 const errorsByPage = new WeakMap();
 
 test.beforeEach(async ({ page }) => {
@@ -57,6 +59,28 @@ const goToComparator = async (page) => {
   await expect(
     page.getByRole('table', { name: 'Wheel comparison' }),
   ).toBeVisible();
+};
+
+const openWheelDetails = async (page, model) => {
+  const table = page.getByRole('table', { name: 'Wheel comparison' });
+  const row = table.getByRole('row', { name: `Open details for ${model}` });
+  await expect(row).toBeVisible();
+  await row.click();
+  const panel = page.getByRole('region', { name: /details$/ });
+  await expect(panel).toBeVisible();
+  return panel;
+};
+
+const focusWithVisibleRing = async (locator) => {
+  await locator.focus();
+  await expect(locator).toBeFocused();
+  await expect.poll(() => locator.evaluate((element) => {
+    const style = getComputedStyle(element);
+    return (
+      (style.outlineStyle !== 'none' && Number.parseFloat(style.outlineWidth) > 0)
+      || style.boxShadow !== 'none'
+    );
+  })).toBe(true);
 };
 
 const readDetailLayout = (panel) => panel.evaluate((root) => {
@@ -234,5 +258,122 @@ test.describe('Mobile comparator journeys', () => {
     await expect.poll(() => page.getByRole('complementary', { name: 'Filters' }).evaluate((element) => (
       getComputedStyle(element).maxHeight
     ))).toBe('none');
+  });
+
+  test('follows the key controls with the keyboard and keeps focus visible', async ({ page }) => {
+    await page.goto('');
+    await expect(page.getByRole('link', { name: 'Tool' })).toBeVisible();
+
+    const toolLink = page.getByRole('link', { name: 'Tool' });
+    await focusWithVisibleRing(toolLink);
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveURL(/#tool$/);
+    await expect(page.getByRole('table', { name: 'Wheel comparison' })).toBeVisible();
+
+    const filtersButton = page.getByRole('button', { name: 'Filters', exact: true });
+    await focusWithVisibleRing(filtersButton);
+    await page.keyboard.press('Enter');
+    const drawer = page.getByRole('dialog', { name: 'Filters' });
+    await expect(drawer).toHaveAttribute('aria-modal', 'true');
+
+    const general = drawer.getByRole('button', { name: 'General specs' });
+    await focusWithVisibleRing(general);
+    await general.press('Enter');
+    await expect(general).toHaveAttribute('aria-expanded', 'false');
+    await general.press('Enter');
+    await expect(general).toHaveAttribute('aria-expanded', 'true');
+
+    const mavic = drawer.getByRole('checkbox', { name: /^Mavic/ });
+    await focusWithVisibleRing(mavic);
+    await page.keyboard.press(' ');
+    await expect(mavic).toBeChecked();
+
+    const reset = drawer.getByRole('button', { name: 'Reset' });
+    await focusWithVisibleRing(reset);
+    await page.keyboard.press('Enter');
+    await expect(mavic).not.toBeChecked();
+
+    const closeFilters = drawer.getByRole('button', { name: 'Close filters' });
+    await focusWithVisibleRing(closeFilters);
+    await page.keyboard.press('Enter');
+    await expect(drawer).toHaveCount(0);
+
+    const table = page.getByRole('table', { name: 'Wheel comparison' });
+    const weightHeader = table.getByRole('columnheader', { name: /Weight/ });
+    const sortButton = weightHeader.getByRole('button', { name: 'Sort by Weight' });
+    await focusWithVisibleRing(sortButton);
+    await page.keyboard.press('Enter');
+    await expect(weightHeader).toHaveAttribute('aria-sort', 'ascending');
+
+    const pagination = page.getByRole('navigation', { name: 'Pagination' }).first();
+    const next = pagination.getByRole('button', { name: 'Next' });
+    await focusWithVisibleRing(next);
+    await page.keyboard.press(' ');
+    await expect(pagination).toContainText(/Page 2 of/);
+  });
+});
+
+test.describe('Chromium P1 comparator journeys', () => {
+  test('switches between English and French without raw translation keys', async ({ page }) => {
+    await goToComparator(page);
+
+    const language = page.getByRole('group', { name: 'Language' });
+    const french = language.getByRole('button', { name: 'FR' });
+    await french.click();
+
+    await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
+    await expect(page.getByRole('heading', { name: 'Roues route : filtrer et comparer' })).toBeVisible();
+    await expect(page.getByRole('complementary', { name: 'Filtres' })).toBeVisible();
+    await expect(page.locator('body')).not.toContainText(RAW_TRANSLATION_KEY);
+    await expect(french).toHaveAttribute('aria-pressed', 'true');
+
+    const english = language.getByRole('button', { name: 'EN' });
+    await english.click();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+    await expect(page.getByRole('heading', { name: 'Road wheels: filter and compare' })).toBeVisible();
+  });
+
+  test('covers multi-image controls and the schematic fallback', async ({ page }) => {
+    await goToComparator(page);
+
+    const multiImagePanel = await openWheelDetails(page, '202 NSW');
+    await expect(multiImagePanel.getByTestId('wheel-schematic')).toHaveCount(0);
+    await expect(multiImagePanel.getByRole('button', { name: 'Previous image' })).toBeDisabled();
+    const nextImage = multiImagePanel.getByRole('button', { name: 'Next image' });
+    await expect(nextImage).toBeEnabled();
+    await expect(multiImagePanel.getByLabel('Image 1 of 4')).toBeVisible();
+    await nextImage.click();
+    await expect(multiImagePanel.getByLabel('Image 2 of 4')).toBeVisible();
+
+    await page.getByRole('button', { name: 'Close menu' }).click();
+    const fallbackPanel = await openWheelDetails(page, 'COSMIC ULTIMATE 45 DISC 23mm');
+    await expect(fallbackPanel.getByTestId('wheel-schematic')).toBeVisible();
+    await expect(fallbackPanel.getByRole('button', { name: 'Previous image' })).toHaveCount(0);
+    await expect(fallbackPanel.getByRole('button', { name: 'Next image' })).toHaveCount(0);
+    await expect(fallbackPanel.locator('img')).toHaveCount(0);
+  });
+
+  test('opens the column selector and changes the visible table column', async ({ page }) => {
+    await goToComparator(page);
+
+    const table = page.getByRole('table', { name: 'Wheel comparison' });
+    const columnsButton = page.getByRole('button', { name: 'Columns' });
+    await columnsButton.click();
+    const menu = page.getByRole('menu');
+    const diameter = menu.getByRole('checkbox', { name: 'Diameter' });
+    await expect(diameter).not.toBeChecked();
+    await diameter.check();
+
+    const diameterHeader = table.getByRole('columnheader', { name: 'Diameter' });
+    await expect(diameterHeader).toBeVisible();
+    const diameterColumnIndex = await diameterHeader.evaluate((header) =>
+      Array.from(header.parentElement.children).indexOf(header),
+    );
+    await expect(table.getByRole('row').nth(1).getByRole('cell').nth(diameterColumnIndex))
+      .toHaveText('Ø 700C');
+
+    await columnsButton.click();
+    await expect(menu).toHaveCount(0);
+    await expect(columnsButton).toHaveAttribute('aria-expanded', 'false');
   });
 });
