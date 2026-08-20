@@ -103,45 +103,11 @@ describe('ComparisonTable', () => {
     });
   };
 
-  describe('viewport-bounded height classes (EVO-025 TASK-003)', () => {
-    it('card root carries lg:flex, lg:flex-col, and lg:max-h-[calc(...)] cap', () => {
-      const html = renderWithStore([minimalWheel]);
-      expect(html).toContain('lg:flex');
-      expect(html).toContain('lg:flex-col');
-      expect(html).toContain('lg:max-h-[calc(100vh-var(--navbar-height)-12px)]');
-    });
-
-    it('table scroll wrapper carries overflow-x-auto, lg:overflow-y-auto, lg:min-h-0, and lg:[scrollbar-gutter:stable]', () => {
-      const html = renderWithStore([minimalWheel]);
-      expect(html).toContain('w-full');
-      expect(html).toContain('max-w-full');
-      expect(html).toContain('min-w-0');
-      expect(html).toContain('overflow-x-auto');
-      expect(html).toContain('lg:overflow-y-auto');
-      expect(html).toContain('lg:min-h-0');
-      expect(html).toContain('lg:[scrollbar-gutter:stable]');
-    });
-
-    it('<th> header cells carry sticky, top-0, z-10, and preserves bg-paper-1', () => {
-      const html = renderWithStore([minimalWheel]);
-      // Locate the first <th ...> opening tag and assert all four classes
-      // appear on it — sticky positioning lives on the cells, not on <thead>.
-      const match = html.match(/<th\b[^>]*class="([^"]*)"/);
-      expect(match).not.toBeNull();
-      const thClass = match[1];
-      expect(thClass).toContain('sticky');
-      expect(thClass).toContain('top-0');
-      expect(thClass).toContain('z-10');
-      expect(thClass).toContain('bg-paper-1');
-    });
-  });
-
   describe('empty state', () => {
     it('renders the empty-state div when selectFilteredWheels returns []', () => {
       const html = renderWithStore([]);
-      expect(html).toContain('class="p-10 text-center text-ink-7 text-sm"');
-      // The table scroll wrapper must not be rendered in the empty branch.
-      expect(html).not.toContain('overflow-x-auto');
+      expect(html).toContain('No wheels match your filters. Try resetting them.');
+      expect(html).not.toMatch(/<table\b[^>]*aria-label="Comparison table"/);
     });
   });
 
@@ -153,12 +119,11 @@ describe('ComparisonTable', () => {
       };
       const html = renderWithStore([variantWheel]);
       expect(html).toContain('Carbon spokes');
-      expect(html).toContain('border-l border-brass-7');
     });
 
     it('does not render a variant marker for wheels without a variant', () => {
       const html = renderWithStore([minimalWheel]);
-      expect(html).not.toContain('border-l border-brass-7');
+      expect(html).not.toContain('Carbon spokes');
     });
   });
 

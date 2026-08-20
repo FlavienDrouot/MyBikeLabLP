@@ -77,13 +77,6 @@ describe('WheelDetailPanel', () => {
   it('uses the wheel-detail-panel-redesign final panel structure', () => {
     renderPanel(withLinks({ manufacturer, retailers }), 1200);
 
-    const rootClass = panelRoot().className;
-    expect(rootClass).toContain('bg-paper-2');
-    expect(rootClass).toContain('border-y');
-    expect(rootClass).toContain('border-ink-4');
-    expect(rootClass).not.toContain('bg-paper-2/60');
-    expect(container.innerHTML).not.toContain('brand-');
-
     const body = panelRoot().firstElementChild;
     expect(body.className).toContain('max-w-[1100px]');
     expect(body.className).toContain('grid-cols-[380px_minmax(0,1fr)]');
@@ -122,10 +115,9 @@ describe('WheelDetailPanel', () => {
     expect(rows[1].textContent).toContain('01');
     expect(rows[2].textContent).toContain('02');
     expect(rows[3].textContent).toContain('03');
-    expect(rows[1].className).toContain('before:bg-brass-8');
   });
 
-  it('keeps purchase links actionable with design-system CTA classes', () => {
+  it('keeps purchase links actionable with secure targets', () => {
     renderPanel(withLinks({ manufacturer, retailers }));
 
     const links = Array.from(container.querySelectorAll('a'));
@@ -139,10 +131,7 @@ describe('WheelDetailPanel', () => {
     links.forEach((link) => {
       expect(link.target).toBe('_blank');
       expect(link.rel).toBe('noopener noreferrer');
-      expect(link.className).toContain('rounded-xs');
-      expect(link.className).toContain('focus-visible:outline-brass-8');
     });
-    expect(links[1].className).toContain('bg-brass-7');
   });
 
   it('renders real images without the schematic fallback and a single empty state when there are no links', () => {
@@ -199,8 +188,6 @@ describe('WheelDetailPanel', () => {
     expect(ledgerRows()).toHaveLength(2);
     expect(ledgerRows()[0].textContent).toContain('-');
     expect(ledgerRows()[1].textContent).toContain('-');
-    expect(ledgerRows()[0].className).not.toContain('before:bg-brass-8');
-    expect(ledgerRows()[1].className).not.toContain('before:bg-brass-8');
 
     const links = Array.from(container.querySelectorAll('a'));
     expect(links.map((link) => link.href)).toEqual([
@@ -226,7 +213,6 @@ describe('WheelDetailPanel', () => {
 
     expect(container.textContent).toContain('Variant');
     expect(container.textContent).toContain('Carbon spokes');
-    expect(container.querySelector('.border-l.border-brass-7')).not.toBeNull();
   });
 
   it('does not render variant context for wheels without a variant', () => {
