@@ -70,7 +70,10 @@
     "heading": "Wheels",
     "of": "of",
     "emptyState": "No wheels match your filters. Try resetting them.",
-    "sortBy": "Sort by {{label}}"
+    "sortBy": "Sort by {{label}}",
+    "label": "Wheel comparison",
+    "scrollRegion": "Comparison table scroll area",
+    "openDetails": "Open details for {{model}}"
   },
   "wheelDetail": {
     "manufacturer": "Manufacturer",
@@ -78,7 +81,9 @@
     "buyLink": "Buy →",
     "noLinks": "No links available for this wheel.",
     "priceAnnotation": "indicative price, sourced 2026-Q2",
-    "variant": "Variant"
+    "variant": "Variant",
+    "close": "Close details",
+    "panelLabel": "{{brand}} {{model}} details"
   },
   "badges": {
     "hookless": "Hookless",

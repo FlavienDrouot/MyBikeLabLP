@@ -35,7 +35,6 @@ lerna-debug.log*
 
 # Local settings agents IA
 .claude/
-.agents/
 .codex/
 .pi-subagents/
 

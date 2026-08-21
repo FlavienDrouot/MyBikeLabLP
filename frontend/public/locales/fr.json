@@ -70,7 +70,10 @@
     "heading": "Roues",
     "of": "sur",
     "emptyState": "Aucune roue ne correspond à vos filtres. Essayez de les réinitialiser.",
-    "sortBy": "Trier par {{label}}"
+    "sortBy": "Trier par {{label}}",
+    "label": "Comparaison des roues",
+    "scrollRegion": "Zone de défilement du tableau comparatif",
+    "openDetails": "Ouvrir les détails de {{model}}"
   },
   "wheelDetail": {
     "manufacturer": "Fabricant",
@@ -78,7 +81,9 @@
     "buyLink": "Acheter →",
     "noLinks": "Aucun lien disponible pour cette roue.",
     "priceAnnotation": "prix indicatif, sourcé en 2026-Q2",
-    "variant": "Variante"
+    "variant": "Variante",
+    "close": "Fermer les détails",
+    "panelLabel": "Détails de {{brand}} {{model}}"
   },
   "badges": {
     "hookless": "Hookless",

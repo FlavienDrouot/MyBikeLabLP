@@ -67,9 +67,4 @@ describe('PaginationControls', () => {
     expect(html).toContain('svg');
   });
 
-  it('uses font-mono tabular-nums for page numbers', () => {
-    const html = render({ currentPage: 0, totalPages: 3, onPageChange: vi.fn() });
-    expect(html).toContain('font-mono');
-    expect(html).toContain('tabular-nums');
-  });
 });

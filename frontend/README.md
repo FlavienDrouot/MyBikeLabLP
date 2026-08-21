@@ -8,6 +8,10 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 | --- | --- |
 | `npm run dev` | Dev server with HMR |
 | `npm run build` | Production build |
+| `npm test` | Vitest summary |
+| `npm run test:full` | Full Vitest output |
+| `npm run test:e2e` | Chromium Playwright suite, with Vite started automatically |
+| `npm run test:e2e:install` | Install the Chromium browser used by Playwright |
 | `npm run preview` | Preview production build locally |
 
 ## Structure
@@ -41,4 +45,3 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 - **Column visibility** = local state in `MiniComparator`; filter/sort = Redux global state
 - **Tailwind tokens**: follow the design-system guidance in `design-system/README.md`; add shared classes to `src/index.css`
 - **Browser translation policy**: English remains browser-translatable; non-English locales synchronize the document `lang` and protect the application with the document translation markers in `src/lib/documentLanguage.js`
-
