@@ -35,12 +35,8 @@ lerna-debug.log*
 
 # Local settings agents IA
 .claude/
-.agents/*
 .codex/
 .pi-subagents/
-
-# Committed project agent skills
-!.agents/skills/
 
 # Admin folder (private, not versioned)
 Administrative/
