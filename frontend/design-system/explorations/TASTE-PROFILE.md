@@ -61,3 +61,59 @@ each arbitration round; date each addition.
 Reference pass on existing real sites before producing new mockups
 (owner proposal, adopted): browse curated live references, react per site,
 distill attributes, then brief wave 2.
+
+## Reference pass (2026-08-22, 14 live sites, issue #38)
+
+### Per-site verdicts
+| Axis | Site | Verdict |
+|---|---|---|
+| Cycling comparators | GeometryGeeks | Reject - too flat, no separation/structure |
+| Cycling comparators | Geometrics | Reject - beginner HTML look, flat links page |
+| Cycling comparators | Bike Insights | Mixed-negative - better but uniform background, no component relief |
+| Cycling comparators | bike-stats | Mixed-negative - better still but lacks relief/separation |
+| Data identity | DXOMark | Positive - "pas mal, globalement propre"; monotony flagged |
+| Data identity | RTINGS | Mixed - correct except mass red-on-white, overloaded menu |
+| Data identity | GSMArena | Reject - too compact |
+| Premium cycling | Pas Normal Studios | Positive - "très premium et épuré, rien à redire"; lot winner |
+| Premium cycling | MAAP / Isadore / Rapha | Indistinguishable from PNS; same photo dependence |
+| Structure | Framework | Positive - "très bien"; specs section too airy, scroll-heavy |
+| Structure | Apple AirPods Pro | Positive - "excellent"; same scroll/airiness remark |
+| Structure | Linear changelog | Mixed - simple, effective, but too text-based, wastes screen width |
+
+### New signals
+- **Flat utility is rejected as firmly as decoration.** Pure-minimal
+  comparison tools read as amateur ("atelier HTML pour débutants"). Surfaces
+  need perceptible structure: separated zones, component relief.
+- **White-on-white monotony** flagged twice (DXOMark, Bike Insights):
+  light background alone does not create hierarchy.
+- **Scroll-cost awareness.** Premium marketing pages judged excellent on mood
+  but their spec presentations fail the overview test: too airy, information
+  buried below the fold. Overview beats theatrical pacing.
+- **Screen width should be used.** Narrow single-column flows feel wasted
+  ("un peu trop linéaire").
+- **Photo dependence identified by the owner himself:** the premium-cycling
+  mood rests on large photography and must be transposed to a data product
+  through typography, spacing, and surface treatment instead.
+- Accent-color evidence so far: mass red-on-white rejected; cream+bronze
+  family rejected; swiss-data's single punctual red was never criticized.
+  Dosage matters more than hue.
+
+### Taste equation v2
+1. Mood: premium restraint, zero costume (PNS register transposed to data).
+2. Surfaces: clearly separated zones with moderate relief; no white-on-white,
+   no flat utility sheets.
+3. Density: moderate with overview first; key info reachable without long
+   scrolls; breathing room preserved around dense blocks.
+4. Layout: uses wide screens; avoids both single-column linearity and
+   cramming.
+5. Accents: punctual only; outside cream+bronze/orange and mass-red families.
+6. Visuals: informative at first glance or absent.
+
+### Wave-2 direction candidates distilled
+1. **Light premium structured console**: cool neutral base, elevated panels
+   with hairline/subtle-shadow separation, overview-first spec tables,
+   restrained display scale, one cool accent.
+2. **Moderate dark variant** of the same equation (dark mode done moderate).
+Wave 2 should test these two against each other on the landing, carrying over
+validated structural ideas: roadmap timeline, stat ledgers, non-encroaching
+large brand moments.

@@ -18,3 +18,12 @@ Issue: #35 · Commit: `4db3bb5`
 Outcome: no direction survives whole; sober/airy axis preferred; role-play,
 overload, non-informative labels, near-black, cream+bronze palettes all
 rejected. Next step shifted to real-site reference calibration before wave 2.
+
+## Reference calibration round (2026-08-22, 14 live sites, issue #38)
+
+Owner reviewed 14 real sites across four axes. Key outcome: flat utility
+rejected like decoration; target is premium restraint WITH surface relief,
+moderate density with overview-first information access, full-width layouts,
+punctual accents outside the cream+bronze and mass-red families. Full analysis
+in TASTE-PROFILE.md ("Reference pass"). Wave-2 directions distilled: light
+premium structured console vs moderate dark variant.
