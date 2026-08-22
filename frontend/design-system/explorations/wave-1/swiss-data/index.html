@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyBikeLab - Road wheels, measured. Not marketed.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4F2EC;
+    --ink: #141310;
+    --ink-70: rgba(20, 19, 16, .72);
+    --ink-50: rgba(20, 19, 16, .52);
+    --ink-35: rgba(20, 19, 16, .34);
+    --hairline: rgba(20, 19, 16, .16);
+    --hairline-strong: rgba(20, 19, 16, .32);
+    --red: #E63312;
+    --gutter: clamp(20px, 4vw, 56px);
+    --measure: 58ch;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    font-weight: 420;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--red); color: var(--paper); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+
+  /* ---------- shared type roles ---------- */
+
+  .micro {
+    font-size: 11px;
+    font-weight: 640;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .micro-dim { color: var(--ink-50); }
+
+  .num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+
+  .lead {
+    font-size: clamp(17px, 1.5vw, 20px);
+    line-height: 1.55;
+    color: var(--ink-70);
+    max-width: var(--measure);
+  }
+
+  .note {
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink-50);
+    letter-spacing: .01em;
+  }
+
+  .idx {
+    display: inline-block;
+    color: var(--red);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- top bar ---------- */
+
+  .topbar { border-bottom: 2px solid var(--ink); }
+
+  .topbar-inner {
+    display: flex;
+    align-items: baseline;
+    gap: 40px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+
+  .wordmark {
+    font-size: 21px;
+    font-weight: 850;
+    letter-spacing: -.02em;
+    white-space: nowrap;
+  }
+  .wordmark em { font-style: normal; color: var(--red); }
+
+  .topbar-nav {
+    display: flex;
+    gap: 28px;
+    margin-left: auto;
+  }
+
+  .nav-link {
+    font-size: 15px;
+    font-weight: 520;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: color 120ms ease, border-color 120ms ease;
+  }
+  .nav-link:hover { color: var(--red); border-bottom-color: var(--red); }
+
+  .topbar-meta {
+    display: flex;
+    gap: 18px;
+    color: var(--ink-50);
+    white-space: nowrap;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero { position: relative; overflow: hidden; }
+
+  /* the one faint modular grid overlay */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(to right,
+        rgba(20, 19, 16, .05) 0 1px,
+        transparent 1px calc(100% / 12));
+    pointer-events: none;
+  }
+  .hero > .container { position: relative; }
+
+  .hero-inner { padding-top: clamp(36px, 5vh, 64px); }
+
+  .eyebrow-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .eyebrow-rule { flex: 1; height: 1px; background: var(--hairline-strong); }
+
+  .hero-main {
+    margin-top: clamp(28px, 4vh, 52px);
+    grid-template-rows: 1fr;
+  }
+
+  .hero-title-col { grid-column: 1 / 9; }
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: clamp(56px, 9vw, 138px);
+    line-height: .96;
+    letter-spacing: -.038em;
+    text-align: left;
+  }
+  .ht-heavy { font-weight: 860; }
+  .ht-light { font-weight: 230; }
+
+  .hero-sub {
+    grid-column: 1 / 7;
+    margin-top: clamp(28px, 4vh, 48px);
+  }
+
+  .cta-row {
+    grid-column: 1 / 9;
+    margin-top: clamp(28px, 4.5vh, 56px);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px 56px;
+  }
+
+  .cta {
+    font-size: 17px;
+    font-weight: 680;
+    letter-spacing: .005em;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    padding-bottom: 4px;
+  }
+  .cta .arr { transition: transform 140ms ease; }
+  .cta-primary { border-bottom: 3px solid var(--ink); }
+  .cta-secondary { border-bottom: 1px solid var(--hairline-strong); color: var(--ink-70); font-weight: 500; }
+  .cta:hover { color: var(--red); border-bottom-color: var(--red); }
+  .cta:hover .arr { transform: translateX(6px); }
+
+  /* stats ledger */
+  .ledger {
+    grid-column: 10 / 13;
+    align-self: start;
+    border-top: 2px solid var(--ink);
+    margin-top: 6px;
+  }
+  .ledger-head {
+    padding: 14px 0 10px;
+    border-bottom: 1px solid var(--hairline);
+    color: var(--ink-50);
+  }
+  .ledger-item {
+    padding: 18px 0 22px;
+    border-bottom: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .stat-figure {
+    font-size: clamp(44px, 4.6vw, 68px);
+    font-weight: 760;
+    line-height: .95;
+    letter-spacing: -.025em;
+  }
+  .stat-figure.is-accent { color: var(--red); }
+
+  /* hero foot strip */
+  .hero-foot {
+    margin-top: clamp(40px, 7vh, 88px);
+    border-top: 1px solid var(--hairline);
+    padding: 14px 0 18px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- sections ---------- */
+
+  section { border-top: 2px solid var(--ink); }
+  .section-pad { padding-top: clamp(40px, 6vh, 64px); padding-bottom: clamp(64px, 9vh, 112px); }
+
+  .section-head { row-gap: 12px; }
+
+  .section-label { grid-column: 1 / 13; color: var(--ink-50); }
+  .section-label .idx { margin-right: 12px; }
+
+  .section-title {
+    grid-column: 1 / 9;
+    font-size: clamp(32px, 3.6vw, 50px);
+    font-weight: 800;
+    letter-spacing: -.025em;
+    line-height: 1.04;
+  }
+
+  .section-side {
+    grid-column: 9 / 13;
+    justify-self: end;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+  }
+
+  .count-figure {
+    font-size: clamp(26px, 2.4vw, 34px);
+    font-weight: 740;
+    letter-spacing: -.02em;
+    line-height: 1;
+  }
+
+  .section-sub {
+    grid-column: 1 / 8;
+    margin-top: 14px;
+  }
+
+  /* ---------- comparator table ---------- */
+
+  .table-zone { margin-top: clamp(40px, 6vh, 64px); }
+
+  .table-scroll { overflow-x: auto; }
+
+  table.cmp {
+    width: 100%;
+    min-width: 1020px;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  .cmp th {
+    font-size: 10.5px;
+    font-weight: 660;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-50);
+    padding: 0 18px 13px 0;
+    border-bottom: 2px solid var(--ink);
+    vertical-align: bottom;
+    white-space: nowrap;
+  }
+
+  .cmp td {
+    padding: 21px 18px 21px 0;
+    border-bottom: 1px solid var(--hairline);
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+
+  .cmp th.r, .cmp td.r { text-align: right; padding-right: 0; }
+  .cmp th:not(.r), .cmp td:not(.r) { padding-right: 18px; }
+  .cmp th:not(:first-child), .cmp td:not(:first-child) { padding-left: 18px; }
+  .cmp th:first-child, .cmp td:first-child { padding-left: 0; width: 52px; }
+
+  .cell-idx { width: 52px; color: var(--ink-35); font-weight: 600; font-size: 14px; }
+  .cell-brand { color: var(--ink-50); font-weight: 520; font-size: 15px; }
+  .cell-model { font-weight: 720; font-size: 16.5px; letter-spacing: -.005em; max-width: 300px; overflow: hidden; text-overflow: ellipsis; }
+  .cell-price { font-weight: 620; font-size: 17px; }
+  .cell-weight { font-weight: 780; font-size: clamp(21px, 1.9vw, 27px); letter-spacing: -.02em; line-height: 1; }
+  .cell-tag { font-size: 14.5px; font-weight: 450; color: var(--ink-70); }
+
+  .cmp tbody tr { transition: background-color 120ms ease; }
+  .cmp tbody tr:hover { background: rgba(20, 19, 16, .045); }
+  .cmp tbody tr:hover .cell-idx { color: var(--red); }
+  .cmp tr.ref .cell-idx { color: var(--red); font-weight: 750; }
+
+  .table-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-top: 18px;
+  }
+  .table-links { margin-top: clamp(28px, 4vh, 44px); }
+
+  /* ---------- roadmap timeline ---------- */
+
+  .tl { position: relative; margin-top: clamp(48px, 7vh, 76px); }
+
+  .tl-track {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--ink);
+  }
+  .tl-track::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(to right,
+        var(--paper) 0 1px,
+        transparent 1px calc(100% / 12));
+  }
+  .tl-track::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: -5px;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 11px solid var(--ink);
+  }
+
+  .tl-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 24px;
+    padding-top: 44px;
+  }
+
+  .tl-phase { position: relative; padding-right: 12px; }
+
+  .tl-node {
+    position: absolute;
+    top: -44px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: var(--paper);
+    border: 2.5px solid var(--ink);
+  }
+  .tl-node.live { background: var(--red); border-color: var(--red); }
+
+  .tl-tags { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+
+  .status-live { color: var(--red); }
+  .status-dim { color: var(--ink-50); }
+
+  .tl-phase h3 {
+    margin-top: 18px;
+    font-size: clamp(21px, 1.8vw, 25px);
+    font-weight: 790;
+    letter-spacing: -.015em;
+    line-height: 1.12;
+  }
+
+  .tl-phase p.desc {
+    margin-top: 10px;
+    font-size: 15.5px;
+    color: var(--ink-70);
+    max-width: 36ch;
+  }
+
+  .tl-points {
+    margin-top: 18px;
+    font-size: 12.5px;
+    font-weight: 560;
+    letter-spacing: .04em;
+    color: var(--ink-50);
+  }
+
+  /* ---------- benefits footnotes ---------- */
+
+  .footnotes { list-style: none; margin-top: clamp(40px, 6vh, 60px); }
+
+  .footnotes li {
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    column-gap: 24px;
+    padding: 30px 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .footnotes li:last-child { border-bottom: 1px solid var(--hairline); }
+
+  .fn-no {
+    font-size: 30px;
+    font-weight: 320;
+    line-height: 1;
+    color: var(--ink-50);
+  }
+
+  .fn-text { font-size: 17.5px; max-width: 66ch; color: var(--ink-70); }
+  .fn-text strong { color: var(--ink); font-weight: 790; }
+
+  /* ---------- partnership spread ---------- */
+
+  .spread {
+    margin-top: clamp(44px, 6vh, 64px);
+    row-gap: 48px;
+  }
+
+  .clauses { grid-column: 1 / 6; }
+
+  .clause { border-top: 1px solid var(--hairline-strong); padding: 22px 0 30px; }
+  .clause:first-child { border-top: 2px solid var(--ink); }
+
+  .clause-head { display: flex; align-items: baseline; gap: 14px; }
+  .clause-sigil { color: var(--red); font-weight: 650; font-size: 15px; }
+  .clause h3 { font-size: clamp(19px, 1.7vw, 23px); font-weight: 790; letter-spacing: -.012em; }
+  .clause p { margin-top: 10px; font-size: 15.5px; color: var(--ink-70); max-width: 40ch; }
+
+  .form-col {
+    grid-column: 7 / 13;
+    border-left: 1px solid var(--hairline-strong);
+    padding-left: clamp(28px, 3vw, 52px);
+  }
+
+  .field { margin-bottom: 26px; }
+  .field label { display: block; color: var(--ink-50); margin-bottom: 4px; }
+
+  input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1.5px solid var(--hairline-strong);
+    border-radius: 0;
+    font: inherit;
+    font-size: 17px;
+    color: var(--ink);
+    padding: 9px 0 11px;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+  }
+  textarea { resize: none; min-height: 96px; }
+
+  ::placeholder { color: var(--ink-35); }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-bottom-color: var(--red);
+    box-shadow: 0 1px 0 0 var(--red);
+  }
+
+  .submit-btn {
+    appearance: none;
+    border: 0;
+    border-radius: 0;
+    background: var(--ink);
+    color: var(--paper);
+    font: inherit;
+    font-size: 16px;
+    font-weight: 660;
+    letter-spacing: .01em;
+    padding: 17px 30px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    transition: background-color 140ms ease;
+  }
+  .submit-btn:hover { background: var(--red); }
+
+  .form-note { margin-top: 18px; }
+
+  /* ---------- footer ---------- */
+
+  footer { border-top: 2px solid var(--ink); }
+
+  .footer-mark {
+    font-size: clamp(64px, 12.5vw, 196px);
+    font-weight: 880;
+    letter-spacing: -.045em;
+    line-height: .82;
+    margin-top: clamp(36px, 6vh, 64px);
+    margin-bottom: clamp(22px, 3.5vh, 40px);
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .footer-rows { padding-top: clamp(28px, 4vh, 44px); padding-bottom: 40px; }
+
+  .footer-nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--hairline);
+    padding-top: 18px;
+  }
+  .footer-nav { display: flex; gap: 26px; flex-wrap: wrap; }
+  .footer-nav .nav-link { font-size: 15px; }
+  .footer-meta { display: flex; gap: 18px; }
+
+  .footer-copy-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 46px;
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 1080px) {
+    .hero-title-col, .hero-sub, .cta-row { grid-column: 1 / 13; }
+    .ledger {
+      grid-column: 1 / 13;
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 2px solid var(--ink);
+    }
+    .ledger-head { display: none; }
+    .ledger-item { border-bottom: 0; border-left: 1px solid var(--hairline); padding: 18px 0 6px 20px; }
+    .ledger-item:first-child { border-left: 0; padding-left: 0; }
+    .clauses { grid-column: 1 / 13; }
+    .form-col { grid-column: 1 / 13; border-left: 0; padding-left: 0; border-top: 2px solid var(--ink); padding-top: 36px; }
+    .tl-grid { grid-template-columns: 1fr; row-gap: 44px; padding-top: 0; }
+    .tl-track { display: none; }
+    .tl-phase { border-left: 2px solid var(--ink); padding-left: 24px; }
+    .tl-node { position: static; margin-bottom: 16px; }
+    .section-title { grid-column: 1 / 13; }
+    .section-side { grid-column: 1 / 13; justify-self: start; text-align: left; align-items: flex-start; }
+  }
+
+  @media (max-width: 720px) {
+    .topbar-nav { display: none; }
+    .footnotes li { grid-template-columns: 1fr; row-gap: 10px; padding: 24px 0; }
+    .fn-text strong { display: block; margin-bottom: 4px; }
+    .cta-row { gap: 18px 32px; }
+    .footer-mark { white-space: normal; word-break: break-word; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="wordmark" href="#top">MyBikeLab<em>.</em></a>
+    <nav class="topbar-nav" aria-label="Main navigation">
+      <a class="nav-link" href="#tool">Tool</a>
+      <a class="nav-link" href="#roadmap">Roadmap</a>
+      <a class="nav-link" href="#partnerships">Partnerships</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+    <div class="topbar-meta micro micro-dim num">
+      <span>EN / FR</span>
+      <span>EUR / USD</span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container hero-inner">
+
+      <div class="eyebrow-row">
+        <span class="micro">Compare road wheels</span>
+        <span class="eyebrow-rule"></span>
+        <span class="micro micro-dim num">Catalog snapshot 2026-Q2</span>
+      </div>
+
+      <div class="grid hero-main">
+        <div class="hero-title-col">
+          <h1 class="hero-title">
+            <span class="ht-heavy">Wheels,</span>
+            <span class="ht-light">measured.</span>
+            <span class="ht-heavy">Not marketed.</span>
+          </h1>
+        </div>
+
+        <aside class="ledger num" aria-label="Key figures">
+          <div class="ledger-head micro">Key figures</div>
+          <div class="ledger-item">
+            <span class="micro micro-dim">Wheels</span>
+            <span class="stat-figure is-accent">224</span>
+          </div>
+          <div class="ledger-item">
+            <span class="micro micro-dim">Filter axes</span>
+            <span class="stat-figure">36</span>
+          </div>
+          <div class="ledger-item">
+            <span class="micro micro-dim">Phases planned</span>
+            <span class="stat-figure">3</span>
+          </div>
+        </aside>
+
+        <p class="lead hero-sub">Compare by weight, rim depth, hookless compatibility, hub brand, price and many more. Structured in a single table.</p>
+
+        <div class="cta-row">
+          <a class="cta cta-primary" href="#tool">Open comparator <span class="arr">&rarr;</span></a>
+          <a class="cta cta-secondary" href="#roadmap">See the roadmap <span class="arr">&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="hero-foot micro micro-dim">
+        <span>Structured specs &middot; Neutral comparison &middot; One table</span>
+        <span>18 brands &middot; EN / FR &middot; EUR / USD</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= COMPARATOR ================= -->
+  <section id="tool">
+    <div class="container section-pad">
+
+      <header class="grid section-head">
+        <p class="section-label micro"><span class="idx">&#8470; 01</span>Comparator</p>
+        <h2 class="section-title">Road wheels: filter and compare</h2>
+        <div class="section-side">
+          <span class="micro micro-dim">Showing</span>
+          <span class="count-figure num">5 <span style="color:var(--ink-35)">/</span> 224</span>
+        </div>
+        <p class="lead section-sub">Filter and sort by brand, weight, rim depth, price, and many more.</p>
+      </header>
+
+      <div class="table-zone">
+        <div class="table-scroll">
+          <table class="cmp num">
+            <thead>
+              <tr>
+                <th>&#8470;</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th class="r">Price*</th>
+                <th class="r">Weight</th>
+                <th>Brake</th>
+                <th>Category</th>
+                <th>Rim</th>
+                <th>Bead</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="ref">
+                <td class="cell-idx">01</td>
+                <td class="cell-brand">Zipp</td>
+                <td class="cell-model">202 NSW</td>
+                <td class="cell-price r">&euro;1,700</td>
+                <td class="cell-weight r">1,090 g</td>
+                <td class="cell-tag">Disc</td>
+                <td class="cell-tag">Climbing</td>
+                <td class="cell-tag">Carbon</td>
+                <td class="cell-tag">Hookless</td>
+              </tr>
+              <tr>
+                <td class="cell-idx">02</td>
+                <td class="cell-brand">ENVE</td>
+                <td class="cell-model">SES 2.3</td>
+                <td class="cell-price r">$2,850</td>
+                <td class="cell-weight r">1,222 g</td>
+                <td class="cell-tag">Disc</td>
+                <td class="cell-tag">Climbing</td>
+                <td class="cell-tag">Carbon</td>
+                <td class="cell-tag">Hookless</td>
+              </tr>
+              <tr>
+                <td class="cell-idx">03</td>
+                <td class="cell-brand">Roval</td>
+                <td class="cell-model">Rapide CLX III</td>
+                <td class="cell-price r">&euro;3,499</td>
+                <td class="cell-weight r">1,305 g</td>
+                <td class="cell-tag">Disc</td>
+                <td class="cell-tag">Aero</td>
+                <td class="cell-tag">Carbon</td>
+                <td class="cell-tag">Hooked</td>
+              </tr>
+              <tr>
+                <td class="cell-idx">04</td>
+                <td class="cell-brand">Zipp</td>
+                <td class="cell-model">303 S</td>
+                <td class="cell-price r">&euro;581</td>
+                <td class="cell-weight r">1,530 g</td>
+                <td class="cell-tag">Disc</td>
+                <td class="cell-tag">Endurance</td>
+                <td class="cell-tag">Carbon</td>
+                <td class="cell-tag">Hookless</td>
+              </tr>
+              <tr>
+                <td class="cell-idx">05</td>
+                <td class="cell-brand">Mavic</td>
+                <td class="cell-model">KSYRIUM SL DISC</td>
+                <td class="cell-price r">&euro;699</td>
+                <td class="cell-weight r">1,575 g</td>
+                <td class="cell-tag">Disc</td>
+                <td class="cell-tag">All-round</td>
+                <td class="cell-tag">Aluminum</td>
+                <td class="cell-tag">Hooked</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-foot">
+          <span class="note">*Indicative price, sourced 2026-Q2. Shown in source currency. Weights are pair totals.</span>
+          <span class="micro micro-dim">Official sources &middot; Affiliate links coming soon</span>
+        </div>
+
+        <div class="table-links">
+          <a class="cta cta-primary" href="#tool">Open the full comparator <span class="arr">&rarr;</span></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ROADMAP ================= -->
+  <section id="roadmap">
+    <div class="container section-pad">
+
+      <header class="grid section-head">
+        <p class="section-label micro"><span class="idx">&#8470; 02</span>Roadmap</p>
+        <h2 class="section-title">Three phases</h2>
+        <p class="lead section-sub">Comparison first. Impact simulation next. Full bike configurator on the horizon.</p>
+      </header>
+
+      <div class="tl">
+        <div class="tl-track" aria-hidden="true"></div>
+        <ol class="tl-grid">
+
+          <li class="tl-phase">
+            <span class="tl-node live" aria-hidden="true"></span>
+            <div class="tl-tags">
+              <span class="micro">Phase 1</span>
+              <span class="micro status-live">In progress</span>
+            </div>
+            <h3>Components comparison</h3>
+            <p class="desc">Wheels first, then drivetrains, brakes, tires. Structured specs, side-by-side decisions.</p>
+            <p class="tl-points num">Wheels MVP live &middot; Drivetrains coming &middot; Brakes &amp; tires next</p>
+          </li>
+
+          <li class="tl-phase">
+            <span class="tl-node" aria-hidden="true"></span>
+            <div class="tl-tags">
+              <span class="micro">Phase 2</span>
+              <span class="micro status-dim">Next</span>
+            </div>
+            <h3>Impact simulator</h3>
+            <p class="desc">See how each part changes your ride: weight, aerodynamics, total cost, predicted performance.</p>
+            <p class="tl-points num">Weight delta &middot; Aero gains &middot; Cost-per-watt</p>
+          </li>
+
+          <li class="tl-phase">
+            <span class="tl-node" aria-hidden="true"></span>
+            <div class="tl-tags">
+              <span class="micro">Phase 3</span>
+              <span class="micro status-dim">Vision</span>
+            </div>
+            <h3>Full bike configurator</h3>
+            <p class="desc">Build a complete bike from the frame up, simulate the full setup, then go buy it.</p>
+            <p class="tl-points num">Frame to finish &middot; Performance preview &middot; Affiliate-ready</p>
+          </li>
+
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= BENEFITS ================= -->
+  <section id="benefits">
+    <div class="container section-pad">
+
+      <header class="grid section-head">
+        <p class="section-label micro"><span class="idx">&#8470; 03</span>Benefits</p>
+        <h2 class="section-title">Built for serious cyclists</h2>
+      </header>
+
+      <ol class="footnotes">
+        <li>
+          <span class="fn-no num">01</span>
+          <p class="fn-text"><strong>Better decisions.</strong> Stop comparing PDFs and forum threads. Filter on the specs that actually matter for your ride.</p>
+        </li>
+        <li>
+          <span class="fn-no num">02</span>
+          <p class="fn-text"><strong>Data-driven.</strong> Every spec is sourced and structured. No marketing fluff, just numbers you can cross-check.</p>
+        </li>
+        <li>
+          <span class="fn-no num">03</span>
+          <p class="fn-text"><strong>Community-focused.</strong> Built with riders, manufacturers and resellers. Open data, transparent affiliations.</p>
+        </li>
+      </ol>
+
+    </div>
+  </section>
+
+  <!-- ================= PARTNERSHIP ================= -->
+  <section id="partnerships">
+    <div class="container section-pad">
+
+      <header class="grid section-head">
+        <p class="section-label micro"><span class="idx">&#8470; 04</span>Partnership</p>
+        <h2 class="section-title">Work with us</h2>
+        <p class="lead section-sub">MyBikeLab connects cyclists with structured component data. If you supply or sell road bike components, your product data belongs here.</p>
+      </header>
+
+      <div class="grid spread">
+
+        <div class="clauses">
+          <div class="clause">
+            <div class="clause-head">
+              <span class="clause-sigil">&#167;&nbsp;1</span>
+              <h3>Manufacturers</h3>
+            </div>
+            <p>Showcase your specs in a structured, comparison-ready format.</p>
+          </div>
+          <div class="clause">
+            <div class="clause-head">
+              <span class="clause-sigil">&#167;&nbsp;2</span>
+              <h3>Resellers</h3>
+            </div>
+            <p>Reach cyclists who are actively comparing before they buy.</p>
+          </div>
+        </div>
+
+        <div class="form-col" id="contact">
+          <form novalidate>
+            <div class="field">
+              <label class="micro" for="f-name">Name *</label>
+              <input id="f-name" name="name" type="text" placeholder="Name" autocomplete="name">
+            </div>
+            <div class="field">
+              <label class="micro" for="f-email">Email *</label>
+              <input id="f-email" name="email" type="email" placeholder="Email" autocomplete="email">
+            </div>
+            <div class="field">
+              <label class="micro" for="f-company">Company</label>
+              <input id="f-company" name="company" type="text" placeholder="Company (optional)" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label class="micro" for="f-message">Message *</label>
+              <textarea id="f-message" name="message" rows="4" placeholder="Message"></textarea>
+            </div>
+            <button class="submit-btn" type="submit">Send message <span aria-hidden="true">&rarr;</span></button>
+            <p class="note form-note">*Required fields. This mockup form does not send messages yet.</p>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container footer-rows">
+
+    <p class="footer-mark" aria-hidden="true">MyBikeLab</p>
+
+    <div class="footer-nav-row">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a class="nav-link" href="#tool">Tool</a>
+        <a class="nav-link" href="#roadmap">Roadmap</a>
+        <a class="nav-link" href="#partnerships">Partnerships</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+      <div class="footer-meta micro micro-dim num">
+        <span>EN / FR</span>
+        <span>EUR / USD</span>
+      </div>
+    </div>
+
+    <div class="footer-copy-row">
+      <span class="note">&copy; <span id="f-year">2026</span> MyBikeLab. All rights reserved.</span>
+      <span class="micro micro-dim">Structured component data for road cycling</span>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  document.getElementById("f-year").textContent = new Date().getFullYear();
+  document.querySelector("form").addEventListener("submit", function (e) { e.preventDefault(); });
+</script>
+
+</body>
+</html>
