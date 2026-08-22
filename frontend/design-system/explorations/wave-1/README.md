@@ -38,8 +38,10 @@ Fill after browser review:
 
 | Candidate | Reaction | Liked | Disliked | Notes |
 |---|---|---|---|---|
-| brutalist-editorial | | | | |
-| night-instrument | | | | |
-| print-magazine | | | | |
-| workshop-manual | | | | |
-| swiss-data | | | | |
+| brutalist-editorial | Eliminate | Key figures ledger presentation | Overloaded; systematic left alignment odd on wide screens; ticker band; "№ XX" labels add nothing; selected-row contrast too strong | |
+| night-instrument | Eliminate | Closer than brutalist | Too dark even for dark mode; far too many ornaments (pseudo-technical micro-labels meaningless) | |
+| print-magazine | Eliminate | More sober than previous candidates | Newspaper role-play aspect; still overloaded | |
+| workshop-manual | Eliminate | Benefits and roadmap presentations (without filler labels); exploded-view idea showing component detail | Role-play devices bring attention-grabbing ornament text (doc numbers, margin notes, note 0X); paper+orange too close to cream+bronze, an LLM-classic scheme; illustration looked aesthetic-only until analyzed | |
+| swiss-data | Mixed (best of wave) | Sober, airy; roadmap timeline presentation; giant footer wordmark (does not encroach on useful content) | Hero title too big; not different enough from current design | |
+
+Full taste synthesis lives in [`../TASTE-PROFILE.md`](../TASTE-PROFILE.md).
