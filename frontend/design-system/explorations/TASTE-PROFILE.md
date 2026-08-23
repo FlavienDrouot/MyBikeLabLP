@@ -62,6 +62,30 @@ Reference pass on existing real sites before producing new mockups
 (owner proposal, adopted): browse curated live references, react per site,
 distill attributes, then brief wave 2.
 
+## Wave 2 arbitration (2026-08-22, issues #39)
+
+### Outcome
+- **Light premium console = retained primary direction.** "Globalement c'est
+  très bon."
+- **Dark mode kept as secondary theme** (some users prefer it), with a new
+  named reference: the recent VS Code dark update ("Dark Modern") - deep
+  neutral near-uniform surfaces, calm, low chroma, hairline separation. The
+  wave-2 dark-moderate structure is accepted; the target darkness/mood is the
+  VS Code register.
+- **Current logo liked and reusable**: `design-system/assets/logo-mark.svg`
+  (stroke-based M in a registration frame) adapts to any palette.
+- **No dot after the MyBikeLab wordmark** (both candidates added one).
+- **Navbar opacity slightly reduced** requested.
+- **Gray background monotony must be broken** on the light theme - first
+  weakness flagged on the winning direction.
+
+### Implications for next waves
+1. Extend the retained direction to comparator + wheel detail surfaces.
+2. Provide light + VS Code-inspired dark theming of the same system.
+3. Wordmark without trailing dot; reuse the existing logo mark.
+4. Introduce legitimate variation into light backgrounds (surface bands,
+   keylines, informative schematic moments) without costume.
+
 ## Reference pass (2026-08-22, 14 live sites, issue #38)
 
 ### Per-site verdicts

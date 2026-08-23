@@ -27,5 +27,10 @@ Open each folder's `index.html` in a browser at desktop width.
 
 | Candidate | Reaction | Liked | Disliked | Notes |
 |---|---|---|---|---|
-| light-premium-console | | | | |
-| dark-moderate | | | | |
+| light-premium-console | Keep (primary) | Overall equation | Gray background monotony; dot after MyBikeLab | Winner. Fixes requested: reduce navbar opacity slightly, break gray monotony |
+| dark-moderate | Keep (secondary theme) | Structure | Dot after MyBikeLab | Dark mode wanted for some users; target mood = recent VS Code dark update (deep neutral, calm, low chroma) |
+
+Arbitration outcome (2026-08-22): direction retained for extension. The
+current site logo mark (`design-system/assets/logo-mark.svg`) is liked and
+will be reused/adapted. Next wave applies fixes and extends to comparator +
+detail surfaces with light/dark theming.
