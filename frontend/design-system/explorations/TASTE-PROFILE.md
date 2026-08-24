@@ -158,3 +158,46 @@ distill attributes, then brief wave 2.
 Wave 2 should test these two against each other on the landing, carrying over
 validated structural ideas: roadmap timeline, stat ledgers, non-encroaching
 large brand moments.
+
+## Wave 4 arbitration (2026-08-24, PR #42 continuation)
+
+### Scope correction
+- **Visual refinement only.** New comparator/product features are out of scope
+  for this exploration. The work should improve atmosphere, hierarchy, depth
+  and distinctiveness without changing what the product does.
+- **Wheel detail considered resolved.** Further visual exploration focuses on
+  the landing and its embedded comparator.
+- **Landing and comparator are one surface.** Future reference prototypes
+  should present the comparator inside the landing rather than as separate
+  theme-specific HTML pages.
+
+### Decoration rule clarified
+- The earlier "zero decoration" reaction was specifically about decorative
+  text, fake labels and pseudo-technical information that looked meaningful but
+  was not.
+- **Purely visual decoration is acceptable** when it is immediately understood
+  as decoration. Low-opacity wheel/rim geometry, line textures, gradients and
+  material effects are valid if they do not compete with useful content.
+- Decoration should remain restrained and cycling-specific rather than becoming
+  editorial role-play or fake instrumentation.
+
+### Consolidated theme direction
+- **Light is primary and preferred.** Keep the Wave 3 structure, add the cooler
+  materiality and subtle wheel/rim decoration explored in the approved visual
+  board.
+- **Cream is an optional alternate register.** Reuse the same DOM/components
+  with warm mineral neutrals and a controlled brass accent. The previous blanket
+  rejection of cream+bronze is therefore narrowed: it is rejected as a default
+  LLM/editorial costume, but acceptable as an optional, restrained translation
+  of the validated system.
+- **Dark remains optional.** Keep a moderate charcoal value range and translate
+  the same component and decoration system rather than inventing a separate
+  dark identity.
+
+### Comparator decisions
+1. Keep the left filter rail + right results layout.
+2. Restore visible filter enable/disable switches from the current product.
+3. Brand must remain compact even with many entries: dedicated search plus a
+   fixed-height internally scrollable checkbox list.
+4. Keep active-filter chips and the dense eight-column overview.
+5. Do not add new decision-support features during this visual pass.
