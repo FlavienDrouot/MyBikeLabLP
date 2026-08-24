@@ -6,11 +6,18 @@ start a separate product or implementation track.
 The goal is to make the retained refined-console direction more distinctive
 without changing the information architecture or adding product features.
 
-## Review target
+## Public review
 
-Open `index.html` directly, or use the GitHub Pages deployment configured by the
-PR. The prototype is one continuous landing page and includes the comparator in
-place, matching the current product flow.
+GitHub Pages publishes the prototype alongside the current site, at a separate
+path so the existing landing at the root URL is not replaced:
+
+**https://flaviendrouot.github.io/MyBikeLabLP/visual-direction/**
+
+The same path is deployed from the PR #42 branch while the direction is being
+refined, then remains available after merge from `main`.
+
+You can also open `index.html` directly. The prototype is one continuous landing
+page and includes the comparator in place, matching the current product flow.
 
 Use the theme control in the header to review the same DOM and component system
 in three visual registers:
