@@ -86,6 +86,23 @@ distill attributes, then brief wave 2.
 4. Introduce legitimate variation into light backgrounds (surface bands,
    keylines, informative schematic moments) without costume.
 
+## Wave 3 arbitration (2026-08-22, issue #40)
+
+### Outcome
+- **Direction validated overall** ("relativement satisfait du résultat") on
+  all three surfaces, both themes.
+- **Band alternation rejected.** When the wave-2 "gray monotony" concern was
+  answered with full-width alternating bands, the owner preferred the plain
+  uniform background. Lesson: his monotony worry is about *dead flatness of
+  panels*, not about page-level banding; panel relief alone is the right
+  dose. Do not introduce structural background bands.
+- **Theme-adaptive surfaces.** A permanently dark partnership band is wrong
+  in light mode; large surfaces must follow the active theme.
+- **Footer needs anchoring**: nav links felt "lost"; the wave-2 dark-moderate
+  footer treatment is the reference.
+- **Informative annotated schematic validated** as an idea; refinement is
+  deferred to dedicated future work.
+
 ## Reference pass (2026-08-22, 14 live sites, issue #38)
 
 ### Per-site verdicts
