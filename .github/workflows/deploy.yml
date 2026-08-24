@@ -2,7 +2,9 @@ name: Deploy site to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - codex/project-34-visual-direction-exploration
   workflow_dispatch:
 
 permissions:
@@ -42,6 +44,10 @@ jobs:
             frontend/test-results
             frontend/playwright-report
           if-no-files-found: ignore
+      - name: Add Wave 4 visual prototype
+        run: |
+          mkdir -p dist/visual-direction
+          cp -R design-system/explorations/wave-4/consolidated-direction/. dist/visual-direction/
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
