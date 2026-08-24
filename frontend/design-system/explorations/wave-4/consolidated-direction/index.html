@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyBikeLab - Wave 4 consolidated visual direction</title>
+<meta name="description" content="Wave 4 visual prototype for MyBikeLab: one landing, embedded wheel comparator, Light, Cream and Dark themes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_system.css">
+<script>
+  try {
+    const saved = localStorage.getItem('mbl-wave4-theme');
+    if (['light','cream','dark'].includes(saved)) document.documentElement.dataset.theme = saved;
+  } catch (e) {}
+</script>
+</head>
+<body id="top">
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="MyBikeLab home">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="39" height="39" stroke="currentColor" stroke-width="1"></rect>
+        <line x1="20" y1="0" x2="20" y2="3" stroke="currentColor"></line>
+        <line x1="20" y1="37" x2="20" y2="40" stroke="currentColor"></line>
+        <line x1="0" y1="20" x2="3" y2="20" stroke="currentColor"></line>
+        <line x1="37" y1="20" x2="40" y2="20" stroke="currentColor"></line>
+        <path d="M9 28V12L20 22 31 12V28" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"></path>
+      </svg>
+      <span class="wordmark">MyBikeLab</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#tool">Tool</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#partnerships">Partnerships</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-meta">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" class="on">EN</button>
+        <button type="button">FR</button>
+      </div>
+      <span class="currency">EUR <i>▾</i></span>
+      <div class="theme-picker" role="group" aria-label="Prototype theme">
+        <button type="button" data-set-theme="light" aria-label="Light theme"><span class="theme-dot light"></span><span class="label">Light</span></button>
+        <button type="button" data-set-theme="cream" aria-label="Cream theme"><span class="theme-dot cream"></span><span class="label">Cream</span></button>
+        <button type="button" data-set-theme="dark" aria-label="Dark theme"><span class="theme-dot dark"></span><span class="label">Dark</span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Compare road wheels</p>
+        <h1>Wheels, <span class="measured">measured.</span><br>Not marketed.</h1>
+        <p class="hero-sub">Compare by weight, rim depth, hookless compatibility, hub brand, price and many more. Structured in a single table.</p>
+        <div class="cta-row">
+          <a class="btn-primary" href="#tool">Open comparator <span aria-hidden="true">→</span></a>
+          <a class="link-secondary" href="#roadmap">See the roadmap <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="hero-proof"><b>224 road wheels</b> across 18 brands, including Roval, Zipp, ENVE, Mavic and Shimano.</p>
+      </div>
+
+      <aside class="ledger" aria-label="Catalog figures">
+        <div class="ledger-row key">
+          <div>
+            <div class="ledger-label">Wheels</div>
+            <div class="ledger-caption">road wheelsets indexed in the catalog</div>
+          </div>
+          <div class="ledger-figure">224</div>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <div class="ledger-label">Filter axes</div>
+            <div class="ledger-caption">specifications you can combine and filter on</div>
+          </div>
+          <div class="ledger-figure">36</div>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <div class="ledger-label">Phases planned</div>
+            <div class="ledger-caption">from comparison to full bike configurator</div>
+          </div>
+          <div class="ledger-figure">3</div>
+        </div>
+        <div class="ledger-foot">Bilingual interface, English and French · multi-currency price display</div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-spaced" id="tool">
+    <div class="container">
+      <div class="comparator-intro">
+        <p class="eyebrow">Comparator</p>
+        <h2 class="panel-title">Road wheels: filter and compare</h2>
+        <p class="panel-sub">Filter and sort by brand, weight, rim depth, price, and many more.</p>
+      </div>
+
+      <div class="comparator-shell">
+        <aside class="filters-rail" aria-label="Filter wheel catalog">
+          <div class="filters-panel">
+            <div class="filters-top">
+              <h3>Filters</h3>
+              <button type="button" class="filter-reset" id="reset-rail">Reset</button>
+            </div>
+
+            <section class="filter-group" data-filter-group="brand">
+              <div class="filter-group-head">
+                <button class="group-collapse" type="button" aria-expanded="true" aria-label="Collapse Brand filter">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <span class="group-title">Brand</span>
+                <button class="filter-switch" type="button" aria-pressed="true" aria-label="Enable Brand filter"></button>
+              </div>
+              <div class="filter-group-body">
+                <div class="search-field"><input id="brand-search" type="search" placeholder="Search brand..." aria-label="Search brand"></div>
+                <div class="brand-list" id="brand-list">
+                  <label class="fopt" data-brand="9velo"><input type="checkbox"><span class="fopt-name">9Velo</span><span class="fopt-count">17</span></label>
+                  <label class="fopt" data-brand="arcaris"><input type="checkbox"><span class="fopt-name">Arcaris</span><span class="fopt-count">3</span></label>
+                  <label class="fopt" data-brand="crw works"><input type="checkbox"><span class="fopt-name">CRW Works</span><span class="fopt-count">11</span></label>
+                  <label class="fopt" data-brand="caden"><input type="checkbox"><span class="fopt-name">Caden</span><span class="fopt-count">15</span></label>
+                  <label class="fopt" data-brand="enve"><input type="checkbox"><span class="fopt-name">ENVE</span><span class="fopt-count">6</span></label>
+                  <label class="fopt" data-brand="exs"><input type="checkbox"><span class="fopt-name">EXS</span><span class="fopt-count">4</span></label>
+                  <label class="fopt" data-brand="fulcrum"><input type="checkbox"><span class="fopt-name">Fulcrum</span><span class="fopt-count">12</span></label>
+                  <label class="fopt" data-brand="hunt"><input type="checkbox"><span class="fopt-name">Hunt</span><span class="fopt-count">9</span></label>
+                  <label class="fopt" data-brand="lightweight"><input type="checkbox"><span class="fopt-name">Lightweight</span><span class="fopt-count">5</span></label>
+                  <label class="fopt" data-brand="mavic"><input type="checkbox"><span class="fopt-name">Mavic</span><span class="fopt-count">24</span></label>
+                  <label class="fopt" data-brand="reynolds"><input type="checkbox"><span class="fopt-name">Reynolds</span><span class="fopt-count">9</span></label>
+                  <label class="fopt" data-brand="roval"><input type="checkbox"><span class="fopt-name">Roval</span><span class="fopt-count">18</span></label>
+                  <label class="fopt" data-brand="shimano"><input type="checkbox"><span class="fopt-name">Shimano</span><span class="fopt-count">8</span></label>
+                  <label class="fopt" data-brand="vision"><input type="checkbox"><span class="fopt-name">Vision</span><span class="fopt-count">8</span></label>
+                  <label class="fopt" data-brand="zipp"><input type="checkbox"><span class="fopt-name">Zipp</span><span class="fopt-count">20</span></label>
+                </div>
+              </div>
+            </section>
+
+            <section class="filter-group" data-filter-group="price">
+              <div class="filter-group-head">
+                <button class="group-collapse" type="button" aria-expanded="true" aria-label="Collapse Price filter">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <span class="group-title">Price</span>
+                <button class="filter-switch" type="button" aria-pressed="true" aria-label="Enable Price filter"></button>
+              </div>
+              <div class="filter-group-body">
+                <div class="range-row">
+                  <input class="range-input" value="250" aria-label="Minimum price">
+                  <span class="range-sep">-</span>
+                  <input class="range-input" value="4,400" aria-label="Maximum price">
+                  <span class="range-unit">€</span>
+                </div>
+                <div class="rangebar" aria-hidden="true"><span class="track"></span><span class="fill" style="left:6%;width:82%"></span><span class="thumb" style="left:6%"></span><span class="thumb" style="left:88%"></span></div>
+              </div>
+            </section>
+
+            <section class="filter-group" data-filter-group="weight">
+              <div class="filter-group-head">
+                <button class="group-collapse" type="button" aria-expanded="true" aria-label="Collapse Weight filter">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <span class="group-title">Weight</span>
+                <button class="filter-switch" type="button" aria-pressed="true" aria-label="Enable Weight filter"></button>
+              </div>
+              <div class="filter-group-body">
+                <div class="range-row">
+                  <input class="range-input" value="880" aria-label="Minimum weight">
+                  <span class="range-sep">-</span>
+                  <input class="range-input" value="1,980" aria-label="Maximum weight">
+                  <span class="range-unit">g</span>
+                </div>
+                <div class="rangebar" aria-hidden="true"><span class="track"></span><span class="fill" style="left:8%;width:76%"></span><span class="thumb" style="left:8%"></span><span class="thumb" style="left:84%"></span></div>
+              </div>
+            </section>
+
+            <section class="filter-group" data-filter-group="brake">
+              <div class="filter-group-head">
+                <button class="group-collapse" type="button" aria-expanded="true" aria-label="Collapse Brake type filter">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <span class="group-title">Brake type</span>
+                <button class="filter-switch" type="button" aria-pressed="true" aria-label="Enable Brake type filter"></button>
+              </div>
+              <div class="filter-group-body choice-row">
+                <button class="choice on" type="button">Disc</button>
+                <button class="choice" type="button">Rim</button>
+                <button class="choice" type="button">Track</button>
+              </div>
+            </section>
+
+            <section class="filter-group" data-filter-group="category">
+              <div class="filter-group-head">
+                <button class="group-collapse" type="button" aria-expanded="true" aria-label="Collapse Category filter">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <span class="group-title">Category</span>
+                <button class="filter-switch" type="button" aria-pressed="true" aria-label="Enable Category filter"></button>
+              </div>
+              <div class="filter-group-body choice-row">
+                <button class="choice" type="button">Climbing</button>
+                <button class="choice" type="button">All-round</button>
+                <button class="choice" type="button">Aero</button>
+                <button class="choice" type="button">Endurance</button>
+              </div>
+            </section>
+
+            <section class="filter-group is-collapsed" data-filter-group="hookless">
+              <div class="filter-group-head">
+                <button class="group-collapse" type="button" aria-expanded="false" aria-label="Expand Hookless filter">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <span class="group-title">Hookless</span>
+                <button class="filter-switch" type="button" aria-pressed="true" aria-label="Enable Hookless filter"></button>
+              </div>
+              <div class="filter-group-body choice-row">
+                <button class="choice on" type="button">All</button>
+                <button class="choice" type="button">Hookless</button>
+                <button class="choice" type="button">Hooked</button>
+              </div>
+            </section>
+          </div>
+        </aside>
+
+        <section class="results" aria-label="Wheel results">
+          <div class="panel">
+            <div class="results-head">
+              <div>
+                <p class="result-count"><span class="mono">224</span> wheels</p>
+                <div class="head-chips">
+                  <span class="chip-state">Brake type <b>Disc</b></span>
+                  <span class="chip-state">Weight <b>up to 1,600 g</b></span>
+                </div>
+              </div>
+              <div class="head-tools">
+                <button type="button" class="pill">Sort: Weight (light → heavy) <span aria-hidden="true">▾</span></button>
+                <button type="button" class="pill">Columns</button>
+              </div>
+            </div>
+
+            <div class="filter-strip" role="group" aria-label="Active filters">
+              <span class="flabel">Filters</span>
+              <span class="fchip">Brand <b>All</b></span>
+              <span class="fchip active">Brake type <b>Disc</b> <span class="x">×</span></span>
+              <span class="fchip">Category <b>All</b></span>
+              <span class="fchip active">Weight <b>up to 1,600 g</b> <span class="x">×</span></span>
+              <button type="button" class="filter-reset">Reset</button>
+            </div>
+
+            <div class="table-wrap">
+              <div class="table-scroll">
+                <table class="wheels">
+                  <caption style="position:absolute;left:-9999px">Wheel comparison</caption>
+                  <thead>
+                    <tr><th>Brand</th><th>Model</th><th class="r">Price</th><th class="r">Weight</th><th>Brake</th><th>Category</th><th>Rim</th><th>Hookless</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="brand-cell">Zipp</td><td class="model-cell">202 NSW</td><td class="r num-cell price-cell">€1,700</td><td class="r num-cell">1,090 g</td><td>Disc</td><td>Climbing</td><td>Carbon</td><td><span class="hook-text">Hookless</span></td></tr>
+                    <tr><td class="brand-cell">Caden</td><td class="model-cell">deCADENce 45mm Tubeless</td><td class="r num-cell price-cell">€1,696</td><td class="r num-cell">1,120 g</td><td>Disc</td><td>All-round</td><td>Carbon</td><td><span class="hook-text muted">Hooked</span></td></tr>
+                    <tr><td class="brand-cell">Roval</td><td class="model-cell">Alpinist CLX III</td><td class="r num-cell price-cell">$2,650<sup>*</sup></td><td class="r num-cell">1,131 g</td><td>Disc</td><td>Climbing</td><td>Carbon</td><td><span class="hook-text muted">Hooked</span></td></tr>
+                    <tr><td class="brand-cell">ENVE</td><td class="model-cell">SES 2.3</td><td class="r num-cell price-cell">$2,850<sup>*</sup></td><td class="r num-cell">1,222 g</td><td>Disc</td><td>Climbing</td><td>Carbon</td><td><span class="hook-text">Hookless</span></td></tr>
+                    <tr><td class="brand-cell">Roval</td><td class="model-cell">Alpinist CLX II</td><td class="r num-cell price-cell">$2,650<sup>*</sup></td><td class="r num-cell">1,264 g</td><td>Disc</td><td>Climbing</td><td>Carbon</td><td><span class="hook-text muted">Hooked</span></td></tr>
+                    <tr><td class="brand-cell">Roval</td><td class="model-cell">Rapide CLX III</td><td class="r num-cell price-cell">€3,499</td><td class="r num-cell">1,305 g</td><td>Disc</td><td>Aero</td><td>Carbon</td><td><span class="hook-text muted">Hooked</span></td></tr>
+                    <tr><td class="brand-cell">Mavic</td><td class="model-cell">Cosmic SLR 32 Disc 21mm</td><td class="r num-cell price-cell">€1,999</td><td class="r num-cell">1,390 g</td><td>Disc</td><td>Climbing</td><td>Carbon</td><td><span class="hook-text">Hookless</span></td></tr>
+                    <tr><td class="brand-cell">EXS</td><td class="model-cell">Granfondo 43</td><td class="r num-cell price-cell">$1,000<sup>*</sup></td><td class="r num-cell">1,390 g</td><td>Disc</td><td>All-round</td><td>Carbon</td><td><span class="hook-text muted">Hooked</span></td></tr>
+                    <tr><td class="brand-cell">Zipp</td><td class="model-cell">303 Firecrest Tubeless</td><td class="r num-cell price-cell">€970</td><td class="r num-cell">1,408 g</td><td>Disc</td><td>All-round</td><td>Carbon</td><td><span class="hook-text">Hookless</span></td></tr>
+                    <tr><td class="brand-cell">Mavic</td><td class="model-cell">Ksyrium SL Disc</td><td class="r num-cell price-cell">€699</td><td class="r num-cell">1,575 g</td><td>Disc</td><td>All-round</td><td>Aluminum</td><td><span class="hook-text muted">Hooked</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="table-notes"><span>Official sources · Affiliate links coming soon</span><em>* Shown in source currency. Indicative price, sourced 2026-Q2.</em></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-spaced">
+    <div class="container">
+      <div class="benefits-head"><p class="eyebrow">Benefits</p><h2 class="panel-title">Built for serious cyclists</h2></div>
+      <div class="benefit-split">
+        <div>
+          <article class="benefit-row"><h3>Better decisions</h3><p>Stop comparing PDFs and forum threads. Filter on the specs that actually matter for your ride.</p></article>
+          <article class="benefit-row"><h3>Data-driven</h3><p>Every spec is sourced and structured. No marketing fluff, just numbers you can cross-check.</p></article>
+          <article class="benefit-row"><h3>Community-focused</h3><p>Built with riders, manufacturers and resellers. Open data, transparent affiliations.</p></article>
+        </div>
+        <figure class="schematic-card">
+          <svg class="schematic" viewBox="0 0 560 430" role="img" aria-label="Wheel anatomy: what MyBikeLab measures">
+            <g class="wheel" stroke-width="1.4"><circle cx="190" cy="200" r="150"></circle><circle cx="190" cy="200" r="118" stroke-width="1"></circle><circle cx="190" cy="200" r="22" stroke-width="1.2"></circle><circle cx="190" cy="200" r="6"></circle></g>
+            <g class="spoke">
+              <line x1="190" y1="178" x2="190" y2="82"></line><line x1="190" y1="222" x2="190" y2="318"></line><line x1="168" y1="200" x2="72" y2="200"></line><line x1="212" y1="200" x2="308" y2="200"></line>
+              <line x1="174.4" y1="184.4" x2="105.9" y2="115.9"></line><line x1="205.6" y1="215.6" x2="274.1" y2="284.1"></line><line x1="174.4" y1="215.6" x2="105.9" y2="284.1"></line><line x1="205.6" y1="184.4" x2="274.1" y2="115.9"></line>
+            </g>
+            <path class="lead" d="M322 96L366 74H540"></path><circle class="lead-dot" cx="322" cy="96" r="2.5"></circle><text class="lbl" x="372" y="66">tire diameter</text><text class="val" x="372" y="82">Ø 700 c</text>
+            <path class="lead" d="M212 178L372 148H540"></path><circle class="lead-dot" cx="212" cy="178" r="2.5"></circle><text class="lbl" x="378" y="140">spokes, front / rear</text><text class="val" x="378" y="156">20 / 20</text>
+            <path class="lead" d="M212 214L372 222H540"></path><circle class="lead-dot" cx="212" cy="214" r="2.5"></circle><text class="lbl" x="378" y="214">hub · engagement</text><text class="val" x="378" y="230">ZR1 SL · 66 points</text>
+            <path class="lead" d="M190 350V396H540"></path><circle class="lead-dot" cx="190" cy="350" r="2.5"></circle><text class="lbl" x="196" y="366">weight, the pair</text><text class="val" x="378" y="404">1,090 g</text>
+            <g class="wheel" stroke-width="1.2"><path d="M420 268V316Q420 330 434 330H506Q520 330 520 316V268"></path><path d="M432 268V312Q432 318 438 318H502Q508 318 508 312V268" stroke-width="1"></path></g>
+            <text class="lbl" x="420" y="258">rim section</text><text class="val" x="536" y="272" text-anchor="end">35 mm</text><text class="lbl" x="414" y="352">internal 23 mm</text><text class="lbl" x="490" y="352">external 27.5 mm</text><text class="lbl" x="420" y="372" font-style="italic">hookless bead</text>
+          </svg>
+          <figcaption>What we measure. Zipp 202 NSW shown; every wheel in the catalog carries the same structured anatomy.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="roadmap">
+    <div class="container">
+      <div class="panel">
+        <div style="padding:26px 32px 18px"><p class="eyebrow">Roadmap</p><h2 class="panel-title">Three phases</h2><p class="panel-sub">Comparison first. Impact simulation next. Full bike configurator on the horizon.</p></div>
+        <div class="roadmap-body">
+          <div class="timeline">
+            <div class="timeline-track"><span class="timeline-progress"></span></div>
+            <div class="phases">
+              <article class="phase current"><div class="phase-meta"><span class="phase-tag">PHASE 1</span><span class="status progress">In progress</span></div><h3>Components comparison</h3><p class="desc">Wheels first, then drivetrains, brakes, tires. Structured specs, side-by-side decisions.</p><ul class="points"><li class="done">Wheels MVP live</li><li>Drivetrains coming</li><li>Brakes &amp; tires next</li></ul></article>
+              <article class="phase next"><div class="phase-meta"><span class="phase-tag">PHASE 2</span><span class="status next">Next</span></div><h3>Impact simulator</h3><p class="desc">See how each part changes your ride: weight, aerodynamics, total cost, predicted performance.</p><ul class="points"><li>Weight delta</li><li>Aero gains</li><li>Cost-per-watt</li></ul></article>
+              <article class="phase"><div class="phase-meta"><span class="phase-tag">PHASE 3</span><span class="status">Vision</span></div><h3>Full bike configurator</h3><p class="desc">Build a complete bike from the frame up, simulate the full setup, then go buy it.</p><ul class="points"><li>Frame to finish</li><li>Performance preview</li><li>Affiliate-ready</li></ul></article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-spaced" id="partnerships">
+    <div class="container partner-grid">
+      <div class="partner-copy">
+        <p class="eyebrow">Partnership</p><h2>Work with us</h2>
+        <p class="partner-intro">MyBikeLab connects cyclists with structured component data. If you supply or sell road bike components, your product data belongs here.</p>
+        <div class="audience"><h3>Manufacturers</h3><p>Showcase your specs in a structured, comparison-ready format.</p></div>
+        <div class="audience"><h3>Resellers</h3><p>Reach cyclists who are actively comparing before they buy.</p></div>
+      </div>
+      <form class="form-card" id="contact" novalidate>
+        <p class="eyebrow">Contact</p>
+        <div class="form-grid">
+          <div class="field"><label for="name">Name</label><input id="name" placeholder="Name"></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="Email"></div>
+          <div class="field full"><label for="company">Company</label><input id="company" placeholder="Company (optional)"></div>
+          <div class="field full"><label for="message">Message</label><textarea id="message" placeholder="Message"></textarea></div>
+        </div>
+        <div class="form-actions"><button class="btn-primary" type="submit">Send message</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <nav class="footer-nav" aria-label="Footer"><a href="#tool">Tool</a><a href="#roadmap">Roadmap</a><a href="#partnerships">Partnerships</a><a href="#contact">Contact</a></nav>
+      <span class="copyright">© 2026 MyBikeLab. All rights reserved.</span>
+    </div>
+    <div class="footer-mark" aria-hidden="true">MyBikeLab</div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  const header = document.querySelector('.site-header');
+  const themeButtons = [...document.querySelectorAll('[data-set-theme]')];
+
+  function applyTheme(theme) {
+    root.dataset.theme = theme;
+    themeButtons.forEach(button => button.classList.toggle('on', button.dataset.setTheme === theme));
+    try { localStorage.setItem('mbl-wave4-theme', theme); } catch (e) {}
+  }
+  applyTheme(root.dataset.theme || 'light');
+  themeButtons.forEach(button => button.addEventListener('click', () => applyTheme(button.dataset.setTheme)));
+
+  function updateHeader() { header.classList.toggle('is-scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', updateHeader, { passive:true });
+  updateHeader();
+
+  document.querySelectorAll('.filter-group').forEach(group => {
+    const collapse = group.querySelector('.group-collapse');
+    const title = group.querySelector('.group-title');
+    const filterSwitch = group.querySelector('.filter-switch');
+
+    function toggleCollapse() {
+      const collapsed = group.classList.toggle('is-collapsed');
+      collapse.setAttribute('aria-expanded', String(!collapsed));
+      collapse.setAttribute('aria-label', `${collapsed ? 'Expand' : 'Collapse'} ${title.textContent} filter`);
+    }
+    collapse.addEventListener('click', toggleCollapse);
+    title.addEventListener('click', toggleCollapse);
+
+    filterSwitch.addEventListener('click', () => {
+      const enabled = filterSwitch.getAttribute('aria-pressed') !== 'true';
+      filterSwitch.setAttribute('aria-pressed', String(enabled));
+      group.classList.toggle('is-disabled', !enabled);
+    });
+  });
+
+  document.querySelectorAll('.choice-row').forEach(row => {
+    row.querySelectorAll('.choice').forEach(choice => choice.addEventListener('click', () => {
+      row.querySelectorAll('.choice').forEach(item => item.classList.remove('on'));
+      choice.classList.add('on');
+    }));
+  });
+
+  const brandSearch = document.getElementById('brand-search');
+  const brandItems = [...document.querySelectorAll('#brand-list [data-brand]')];
+  brandSearch.addEventListener('input', () => {
+    const query = brandSearch.value.trim().toLowerCase();
+    brandItems.forEach(item => item.hidden = query && !item.dataset.brand.includes(query));
+  });
+
+  document.getElementById('reset-rail').addEventListener('click', () => {
+    document.querySelectorAll('.filter-switch').forEach(sw => sw.setAttribute('aria-pressed','true'));
+    document.querySelectorAll('.filter-group').forEach(group => group.classList.remove('is-disabled'));
+    document.querySelectorAll('.fopt input').forEach(input => input.checked = false);
+    brandSearch.value = '';
+    brandItems.forEach(item => item.hidden = false);
+  });
+
+  document.querySelectorAll('form').forEach(form => form.addEventListener('submit', event => event.preventDefault()));
+})();
+</script>
+</body>
+</html>
