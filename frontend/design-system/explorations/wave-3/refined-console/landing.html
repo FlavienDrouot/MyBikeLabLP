@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyBikeLab - Road wheels, measured. Not marketed.</title>
+<meta name="description" content="MyBikeLab compares road bike wheels with structured, sourced data: 224 wheels, 36 filter axes, side-by-side decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_system.css">
+<style>
+  /* ---------- landing-specific ---------- */
+  .hero{padding:64px 0 56px}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(36px,4vw,72px);align-items:center}
+  .hero h1{
+    margin:0 0 20px;
+    font-size:clamp(34px,3.4vw,46px);
+    line-height:1.1;
+    font-weight:700;
+    letter-spacing:-.022em;
+  }
+  .hero h1 .measured{font-family:var(--mono);font-weight:400;color:var(--acc);letter-spacing:-.01em}
+  .hero-sub{margin:0 0 28px;max-width:54ch;font-size:16px;color:var(--ink-2)}
+  .cta-row{display:flex;align-items:center;gap:22px;margin-bottom:26px}
+  .hero-proof{font-size:13px;color:var(--mut)}
+  .hero-proof b{font-weight:600;color:var(--ink-2)}
+
+  .benefits-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:26px 4px 18px}
+
+  /* annotated schematic */
+  .schematic text{font-family:var(--sans)}
+  .schematic .lbl{font-size:11px;fill:var(--mut)}
+  .schematic .val{font-family:var(--mono);font-size:11px;fill:var(--acc)}
+  .schematic .lead{stroke:var(--line);stroke-width:1;fill:none}
+  .schematic .lead-dot{fill:var(--acc)}
+  .schematic .wheel{stroke:currentColor;fill:none}
+  .schematic .spoke{stroke:currentColor;stroke-width:.8;opacity:.55}
+
+  @media (max-width:720px){
+    .hero{padding:44px 0 40px}
+  }
+</style>
+</head>
+<body id="top">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="MyBikeLab home">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="39" height="39" stroke="currentColor" stroke-width="1"></rect>
+        <line x1="20" y1="0" x2="20" y2="3" stroke="currentColor" stroke-width="1"></line>
+        <line x1="20" y1="37" x2="20" y2="40" stroke="currentColor" stroke-width="1"></line>
+        <line x1="0" y1="20" x2="3" y2="20" stroke="currentColor" stroke-width="1"></line>
+        <line x1="37" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="1"></line>
+        <path d="M 9 28 L 9 12 L 20 22 L 31 12 L 31 28" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"></path>
+      </svg>
+      <span class="wordmark">MyBikeLab</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#tool">Tool</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#partnerships">Partnerships</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-meta">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" class="on">EN</button>
+        <button type="button">FR</button>
+      </div>
+      <span class="currency">EUR <i>▾</i></span>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="display:none">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO (gray band) ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Compare road wheels</p>
+        <h1>Wheels, <span class="measured">measured.</span><br>Not marketed.</h1>
+        <p class="hero-sub">Compare by weight, rim depth, hookless compatibility, hub brand, price and many more. Structured in a single table.</p>
+        <div class="cta-row">
+          <a class="btn-primary" href="#tool">Open comparator <span aria-hidden="true">→</span></a>
+          <a class="link-secondary" href="#roadmap">See the roadmap <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="hero-proof"><b>224 road wheels</b> across 18 brands, including Roval, Zipp, ENVE, Mavic and Shimano.</p>
+      </div>
+
+      <aside class="ledger" aria-label="Catalog figures">
+        <div class="ledger-row key">
+          <div>
+            <div class="ledger-label">Wheels</div>
+            <div class="ledger-caption">road wheelsets indexed in the catalog</div>
+          </div>
+          <div class="ledger-figure">224</div>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <div class="ledger-label">Filter axes</div>
+            <div class="ledger-caption">specifications you can combine and filter on</div>
+          </div>
+          <div class="ledger-figure">36</div>
+        </div>
+        <div class="ledger-row">
+          <div>
+            <div class="ledger-label">Phases planned</div>
+            <div class="ledger-caption">from comparison to full bike configurator</div>
+          </div>
+          <div class="ledger-figure">3</div>
+        </div>
+        <div class="ledger-foot">
+          <span>Bilingual interface, English and French · multi-currency price display</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ COMPARATOR ============ -->
+  <section class="section" id="tool" style="margin-top:56px">
+    <div class="container">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Comparator</p>
+              <h2 class="panel-title">Road wheels: filter and compare</h2>
+              <p class="panel-sub">Filter and sort by brand, weight, rim depth, price, and many more.</p>
+            </div>
+            <div class="head-chips">
+              <span class="chip-state">Sort <b>Weight (light → heavy)</b></span>
+              <span class="chip-state">Showing <b>5 of 224</b></span>
+            </div>
+          </div>
+
+          <div class="filter-strip" role="group" aria-label="Active filters">
+            <span class="flabel">Filters</span>
+            <span class="fchip">Brand <b>All</b></span>
+            <span class="fchip active">Brake type <b>Disc</b> <span class="x" aria-hidden="true">×</span></span>
+            <span class="fchip">Category <b>All</b></span>
+            <span class="fchip active">Weight <b>up to 1,600 g</b> <span class="x" aria-hidden="true">×</span></span>
+            <button type="button" class="filter-reset">Reset</button>
+          </div>
+
+          <div class="table-wrap">
+            <div class="table-scroll">
+              <table class="wheels">
+                <caption style="position:absolute;left:-9999px">Wheel comparison</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Model</th>
+                    <th scope="col" class="r">Price</th>
+                    <th scope="col" class="r">Weight</th>
+                    <th scope="col">Brake</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Rim material</th>
+                    <th scope="col">Hookless</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="brand-cell">Zipp</td>
+                    <td class="model-cell">202 NSW</td>
+                    <td class="r num-cell price-cell">€1,700</td>
+                    <td class="r num-cell">1,090 g</td>
+                    <td>Disc</td>
+                    <td>Climbing</td>
+                    <td>Carbon</td>
+                    <td><span class="tag hookless">Hookless</span></td>
+                  </tr>
+                  <tr>
+                    <td class="brand-cell">ENVE</td>
+                    <td class="model-cell">SES 2.3</td>
+                    <td class="r num-cell price-cell">$2,850<sup>*</sup></td>
+                    <td class="r num-cell">1,222 g</td>
+                    <td>Disc</td>
+                    <td>Climbing</td>
+                    <td>Carbon</td>
+                    <td><span class="tag hookless">Hookless</span></td>
+                  </tr>
+                  <tr>
+                    <td class="brand-cell">Roval</td>
+                    <td class="model-cell">Rapide CLX III</td>
+                    <td class="r num-cell price-cell">€3,499</td>
+                    <td class="r num-cell">1,305 g</td>
+                    <td>Disc</td>
+                    <td>Aero</td>
+                    <td>Carbon</td>
+                    <td><span class="tag">Hooked</span></td>
+                  </tr>
+                  <tr>
+                    <td class="brand-cell">Mavic</td>
+                    <td class="model-cell">Cosmic SLR 45 Disc</td>
+                    <td class="r num-cell price-cell">€1,999</td>
+                    <td class="r num-cell">1,480 g</td>
+                    <td>Disc</td>
+                    <td>All-round</td>
+                    <td>Carbon</td>
+                    <td><span class="tag hookless">Hookless</span></td>
+                  </tr>
+                  <tr>
+                    <td class="brand-cell">Mavic</td>
+                    <td class="model-cell">Ksyrium SL Disc</td>
+                    <td class="r num-cell price-cell">€699</td>
+                    <td class="r num-cell">1,575 g</td>
+                    <td>Disc</td>
+                    <td>All-round</td>
+                    <td>Aluminum</td>
+                    <td><span class="tag">Hooked</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="table-notes">
+            <span>Official sources · Affiliate links coming soon</span>
+            <em>* Shown in source currency. Indicative price, sourced 2026-Q2.</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- ============ BENEFITS (keyline rows + informative schematic) ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="benefits-head">
+        <div>
+          <p class="eyebrow">Benefits</p>
+          <h2 class="panel-title" style="font-size:24px">Built for serious cyclists</h2>
+        </div>
+      </div>
+      <div class="benefit-split">
+        <div class="benefit-rows">
+          <article class="benefit-row">
+            <h3>Better decisions</h3>
+            <p>Stop comparing PDFs and forum threads. Filter on the specs that actually matter for your ride.</p>
+          </article>
+          <article class="benefit-row">
+            <h3>Data-driven</h3>
+            <p>Every spec is sourced and structured. No marketing fluff, just numbers you can cross-check.</p>
+          </article>
+          <article class="benefit-row">
+            <h3>Community-focused</h3>
+            <p>Built with riders, manufacturers and resellers. Open data, transparent affiliations.</p>
+          </article>
+        </div>
+
+        <figure class="schematic-card">
+          <svg class="schematic" viewBox="0 0 560 430" role="img" aria-label="Wheel anatomy: what MyBikeLab measures">
+            <!-- front view wheel -->
+            <g class="wheel" stroke-width="1.4">
+              <circle cx="190" cy="200" r="150"></circle>
+              <circle cx="190" cy="200" r="118" stroke-width="1"></circle>
+              <circle cx="190" cy="200" r="22" stroke-width="1.2"></circle>
+              <circle cx="190" cy="200" r="6" stroke-width="1"></circle>
+            </g>
+            <g class="spoke" stroke="currentColor">
+              <line x1="190" y1="178" x2="190" y2="82"></line>
+              <line x1="190" y1="222" x2="190" y2="318"></line>
+              <line x1="168" y1="200" x2="72" y2="200"></line>
+              <line x1="212" y1="200" x2="308" y2="200"></line>
+              <line x1="174.4" y1="184.4" x2="105.9" y2="115.9"></line>
+              <line x1="205.6" y1="215.6" x2="274.1" y2="284.1"></line>
+              <line x1="174.4" y1="215.6" x2="105.9" y2="284.1"></line>
+              <line x1="205.6" y1="184.4" x2="274.1" y2="115.9"></line>
+              <line x1="181" y1="179.3" x2="130.5" y2="94.5"></line>
+              <line x1="199" y1="220.7" x2="249.5" y2="305.5"></line>
+              <line x1="179.3" y1="219" x2="94.5" y2="269.5"></line>
+              <line x1="220.7" y1="181" x2="305.5" y2="130.5"></line>
+            </g>
+            <!-- leaders -->
+            <path class="lead" d="M322 96 L 366 74 L 540 74"></path>
+            <circle class="lead-dot" cx="322" cy="96" r="2.5"></circle>
+            <text class="lbl" x="372" y="66">tire diameter</text>
+            <text class="val" x="372" y="82">Ø 700 c</text>
+
+            <path class="lead" d="M212 178 L 372 148 L 540 148"></path>
+            <circle class="lead-dot" cx="212" cy="178" r="2.5"></circle>
+            <text class="lbl" x="378" y="140">spokes, front / rear</text>
+            <text class="val" x="378" y="156">20 / 20</text>
+
+            <path class="lead" d="M212 214 L 372 222 L 540 222"></path>
+            <circle class="lead-dot" cx="212" cy="214" r="2.5"></circle>
+            <text class="lbl" x="378" y="214">hub · engagement</text>
+            <text class="val" x="378" y="230">ZR1 SL · 66 points</text>
+
+            <path class="lead" d="M190 350 L 190 396 L 540 396"></path>
+            <circle class="lead-dot" cx="190" cy="350" r="2.5"></circle>
+            <text class="lbl" x="196" y="366">weight, the pair</text>
+            <text class="val" x="378" y="404">1,090 g</text>
+
+            <!-- rim section inset -->
+            <g class="wheel" stroke-width="1.2">
+              <path d="M420 268 L 420 316 Q 420 330 434 330 L 506 330 Q 520 330 520 316 L 520 268"></path>
+              <path d="M432 268 L 432 312 Q 432 318 438 318 L 502 318 Q 508 318 508 312 L 508 268" stroke-width="1"></path>
+              <line x1="414" y1="268" x2="526" y2="268" stroke-width="1" opacity=".4"></line>
+            </g>
+            <text class="lbl" x="420" y="258">rim section</text>
+            <text class="val" x="536" y="272" text-anchor="end">35 mm</text>
+            <line class="lead" x1="426" y1="268" x2="426" y2="330" stroke-width="1"></line>
+            <text class="lbl" x="414" y="352">internal 23 mm</text>
+            <text class="lbl" x="490" y="352">external 27.5 mm</text>
+            <text class="lbl" x="420" y="372" font-style="italic">hookless bead</text>
+          </svg>
+          <figcaption>What we measure. Zipp 202 NSW shown; every wheel in the catalog carries the same structured anatomy.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROADMAP ============ -->
+  <section class="section" id="roadmap">
+    <div class="container">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Roadmap</p>
+              <h2 class="panel-title">Three phases</h2>
+              <p class="panel-sub">Comparison first. Impact simulation next. Full bike configurator on the horizon.</p>
+            </div>
+          </div>
+
+          <div class="roadmap-body">
+            <div class="timeline">
+              <div class="track" aria-hidden="true"><span class="track-progress"></span></div>
+              <div class="phases">
+                <article class="phase current">
+                  <div class="phase-meta">
+                    <span class="phase-tag">PHASE 1</span>
+                    <span class="status progress">In progress</span>
+                  </div>
+                  <h3>Components comparison</h3>
+                  <p class="desc">Wheels first, then drivetrains, brakes, tires. Structured specs, side-by-side decisions.</p>
+                  <ul class="points">
+                    <li class="done">Wheels MVP live</li>
+                    <li>Drivetrains coming</li>
+                    <li>Brakes &amp; tires next</li>
+                  </ul>
+                </article>
+
+                <article class="phase next">
+                  <div class="phase-meta">
+                    <span class="phase-tag">PHASE 2</span>
+                    <span class="status next">Next</span>
+                  </div>
+                  <h3>Impact simulator</h3>
+                  <p class="desc">See how each part changes your ride: weight, aerodynamics, total cost, predicted performance.</p>
+                  <ul class="points">
+                    <li>Weight delta</li>
+                    <li>Aero gains</li>
+                    <li>Cost-per-watt</li>
+                  </ul>
+                </article>
+
+                <article class="phase">
+                  <div class="phase-meta">
+                    <span class="phase-tag">PHASE 3</span>
+                    <span class="status vision">Vision</span>
+                  </div>
+                  <h3>Full bike configurator</h3>
+                  <p class="desc">Build a complete bike from the frame up, simulate the full setup, then go buy it.</p>
+                  <ul class="points">
+                    <li>Frame to finish</li>
+                    <li>Performance preview</li>
+                    <li>Affiliate-ready</li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- ============ PARTNERSHIP ============ -->
+  <section class="section" id="partnerships" style="margin-top:56px">
+    <div class="container partner-grid">
+      <div class="partner-copy">
+        <p class="eyebrow">Partnership</p>
+        <h2>Work with us</h2>
+        <p class="partner-intro">MyBikeLab connects cyclists with structured component data. If you supply or sell road bike components, your product data belongs here.</p>
+        <div class="audience">
+          <h3>Manufacturers</h3>
+          <p>Showcase your specs in a structured, comparison-ready format.</p>
+        </div>
+        <div class="audience">
+          <h3>Resellers</h3>
+          <p>Reach cyclists who are actively comparing before they buy.</p>
+        </div>
+      </div>
+
+      <form class="form-card" id="contact" novalidate>
+        <p class="eyebrow">Contact</p>
+        <div class="form-grid">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" placeholder="Name" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" placeholder="Email" autocomplete="email">
+          </div>
+          <div class="field full">
+            <label for="f-company">Company</label>
+            <input id="f-company" name="company" type="text" placeholder="Company (optional)" autocomplete="organization">
+          </div>
+          <div class="field full">
+            <label for="f-message">Message</label>
+            <textarea id="f-message" name="message" placeholder="Message"></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Send message</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-row">
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#tool">Tool</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#partnerships">Partnerships</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <span class="copyright">© 2026 MyBikeLab. All rights reserved.</span>
+    </div>
+    <div class="footer-mark" aria-hidden="true">MyBikeLab</div>
+  </div>
+</footer>
+
+<script>
+  const root = document.documentElement;
+  const header = document.querySelector('.site-header');
+  const toggle = document.getElementById('theme-toggle');
+  const iconMoon = toggle.querySelector('.icon-moon');
+  const iconSun = toggle.querySelector('.icon-sun');
+
+  let saved = null;
+  try { saved = localStorage.getItem('mbl-theme'); } catch (e) {}
+  if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+
+  const applyIcon = () => {
+    const dark = root.dataset.theme === 'dark';
+    iconMoon.style.display = dark ? 'none' : '';
+    iconSun.style.display = dark ? '' : 'none';
+  };
+  applyIcon();
+
+  toggle.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('mbl-theme', next); } catch (e) {}
+    applyIcon();
+  });
+
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.querySelectorAll('form').forEach((form) => {
+    form.addEventListener('submit', (event) => event.preventDefault());
+  });
+</script>
+
+</body>
+</html>
