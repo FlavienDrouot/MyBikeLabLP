@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" fill="none">
+  <defs>
+    <line id="rear-spoke" x1="140" y1="238" x2="140" y2="140"/>
+    <line id="front-spoke" x1="500" y1="238" x2="500" y2="140"/>
+    <mask id="rear-wheel-clearance" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="360">
+      <rect width="720" height="360" fill="#fff"/>
+      <path d="M140 238L250 145M140 238L286 260" stroke="#000" stroke-width="18"/>
+    </mask>
+    <mask id="front-wheel-clearance" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="360">
+      <rect width="720" height="360" fill="#fff"/>
+      <path d="M450 114L286 260" stroke="#000" stroke-width="17"/>
+      <path d="M450 116L500 238" stroke="#000" stroke-width="19"/>
+    </mask>
+  </defs>
+  <g stroke="#fff" stroke-linecap="square" stroke-linejoin="miter">
+    <g mask="url(#rear-wheel-clearance)">
+      <g stroke-width="2.3">
+        <circle cx="140" cy="238" r="108"/>
+        <circle cx="140" cy="238" r="100" opacity=".72"/>
+      </g>
+      <g stroke-width="1.1" opacity=".34">
+        <use href="#rear-spoke"/>
+        <use href="#rear-spoke" transform="rotate(36 140 238)"/>
+        <use href="#rear-spoke" transform="rotate(72 140 238)"/>
+        <use href="#rear-spoke" transform="rotate(108 140 238)"/>
+        <use href="#rear-spoke" transform="rotate(144 140 238)"/>
+        <use href="#rear-spoke" transform="rotate(180 140 238)"/>
+        <use href="#rear-spoke" transform="rotate(216 140 238)"/>
+        <use href="#rear-spoke" transform="rotate(252 140 238)"/>
+        <use href="#rear-spoke" transform="rotate(288 140 238)"/>
+        <use href="#rear-spoke" transform="rotate(324 140 238)"/>
+      </g>
+    </g>
+    <g mask="url(#front-wheel-clearance)">
+      <g stroke-width="2.3">
+        <circle cx="500" cy="238" r="108"/>
+        <circle cx="500" cy="238" r="100" opacity=".72"/>
+      </g>
+      <g stroke-width="1.1" opacity=".34">
+        <use href="#front-spoke"/>
+        <use href="#front-spoke" transform="rotate(36 500 238)"/>
+        <use href="#front-spoke" transform="rotate(72 500 238)"/>
+        <use href="#front-spoke" transform="rotate(108 500 238)"/>
+        <use href="#front-spoke" transform="rotate(144 500 238)"/>
+        <use href="#front-spoke" transform="rotate(180 500 238)"/>
+        <use href="#front-spoke" transform="rotate(216 500 238)"/>
+        <use href="#front-spoke" transform="rotate(252 500 238)"/>
+        <use href="#front-spoke" transform="rotate(288 500 238)"/>
+        <use href="#front-spoke" transform="rotate(324 500 238)"/>
+      </g>
+    </g>
+    <g stroke-width="2" opacity=".78">
+      <circle cx="140" cy="238" r="15"/>
+      <circle cx="500" cy="238" r="15"/>
+      <circle cx="140" cy="238" r="4"/>
+      <circle cx="500" cy="238" r="4"/>
+    </g>
+
+    <g stroke-width="2.5">
+      <path d="M234 102L430 75L434 84L238 113Z"/>
+      <path d="M229 108L280 263L292 258L240 105Z"/>
+      <path d="M445 109L281 255M455 119L291 265"/>
+      <path d="M286 252L143 229L136 244L286 267Z"/>
+      <path d="M136 231L245 141L255 150L144 245Z"/>
+      <path d="M424 72L436 71L456 112L445 119Z"/>
+      <path d="M445 119L497 245L503 232L456 112Z"/>
+    </g>
+
+    <g stroke-width="2.2">
+      <path d="M229 109L211 61L220 59L239 106Z"/>
+      <path d="M180 50C201 45 232 46 260 52L256 60C229 57 205 58 185 64C181 61 179 56 180 50Z"/>
+      <path d="M430 78L452 65H474"/>
+      <path d="M474 65H491C504 65 511 73 511 84C511 96 503 104 491 104H474"/>
+    </g>
+
+    <g stroke-width="2" opacity=".84">
+      <circle cx="286" cy="260" r="21"/>
+      <circle cx="286" cy="260" r="13"/>
+      <path d="M286 260L328 273H347"/>
+      <path d="M286 260L270 233H256"/>
+      <circle cx="140" cy="238" r="11"/>
+      <path d="M140 227L284 239"/>
+      <path d="M139 249L284 281"/>
+    </g>
+
+    <g stroke-width="1.6" opacity=".58">
+      <circle cx="500" cy="238" r="19"/>
+      <path d="M134 247C124 254 122 265 128 272L139 279"/>
+      <circle cx="128" cy="272" r="4"/>
+      <circle cx="139" cy="279" r="4"/>
+    </g>
+  </g>
+</svg>
