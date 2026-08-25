@@ -1,149 +1,99 @@
 @import url("_system-base.css");
 
-/* Wave 5 refinement v7 — generated raster cycling assets with a strict left/right rhythm.
-   Hero remains untouched. Decorative sequence: cassette (left), rotor (right), bike (left), hub (right).
-   The generated assets are intentionally pale, so they are rendered above the section background and below content. */
+/* Wave 5 refinement v8 — generated raster assets rendered directly as section backgrounds.
+   This deliberately avoids pseudo-elements and inherited SVG masks from previous iterations.
+   Decorative sequence: cassette (left), rotor (right), bike (left), hub (right). */
+
+/* Kill every legacy pseudo-element decoration from _system-base.css. */
 main > .decor-section::before,
 main > .decor-section::after {
-  content: none;
-  display: none;
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  transform: none !important;
 }
 
+/* 1 + 2 — Comparator: cassette top-left, rotor bottom-right. */
+main > #tool {
+  background-image:
+    url("assets/cassette-object.webp"),
+    url("assets/rotor-object.webp");
+  background-repeat: no-repeat, no-repeat;
+  background-position:
+    left -72px top 2%,
+    right -82px bottom -4%;
+  background-size:
+    300px 300px,
+    315px 315px;
+}
+
+/* 3 — Benefits: road bike on the left. */
+main > .decor-section.flow:nth-of-type(3) {
+  background-image: url("assets/bike-object.webp");
+  background-repeat: no-repeat;
+  background-position: left -175px top 16%;
+  background-size: 590px auto;
+}
+
+/* 4 — Roadmap: hub on the right. */
+main > #roadmap {
+  background-image: url("assets/hub-object.webp");
+  background-repeat: no-repeat;
+  background-position: right -105px top 10%;
+  background-size: 390px auto;
+}
+
+/* Partnership + footer deliberately carry no object decoration. */
+main > #partnerships {
+  background-image: none !important;
+}
+
+/* Keep content above the section backgrounds. */
 main > .decor-section > .container {
   position: relative;
   z-index: 1;
 }
 
-main > #tool::before,
-main > #tool::after,
-main > .decor-section.flow:nth-of-type(3)::before,
-main > #roadmap::before {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  filter: saturate(.82) contrast(1.08);
-}
-
-/* 1 — Comparator, top-left: generated cassette asset. */
-main > #tool::before {
-  width: 300px;
-  height: 300px;
-  left: -72px;
-  top: 2%;
-  background-image: url("assets/cassette-object.webp");
-  opacity: .42;
-}
-
-/* 2 — Comparator, bottom-right: generated rotor asset. */
-main > #tool::after {
-  width: 315px;
-  height: 315px;
-  right: -82px;
-  bottom: -4%;
-  background-image: url("assets/rotor-object.webp");
-  opacity: .34;
-}
-
-/* 3 — Benefits, left: generated road-bike asset. */
-main > .decor-section.flow:nth-of-type(3)::before {
-  width: min(46vw, 590px);
-  height: 360px;
-  left: -175px;
-  top: 16%;
-  background-image: url("assets/bike-object.webp");
-  opacity: .32;
-}
-
-/* 4 — Roadmap, right: generated hub asset. */
-main > #roadmap::before {
-  width: 390px;
-  height: 210px;
-  right: -105px;
-  top: 10%;
-  background-image: url("assets/hub-object.webp");
-  opacity: .36;
-}
-
-[data-theme="cream"] main > #tool::before { opacity: .36; }
-[data-theme="cream"] main > #tool::after { opacity: .30; }
-[data-theme="cream"] main > .decor-section.flow:nth-of-type(3)::before { opacity: .28; }
-[data-theme="cream"] main > #roadmap::before { opacity: .32; }
-
-[data-theme="dark"] main > #tool::before { opacity: .28; filter: brightness(.88) saturate(.78) contrast(1.08); }
-[data-theme="dark"] main > #tool::after { opacity: .24; filter: brightness(.88) saturate(.78) contrast(1.08); }
-[data-theme="dark"] main > .decor-section.flow:nth-of-type(3)::before { opacity: .22; filter: brightness(.86) saturate(.74) contrast(1.08); }
-[data-theme="dark"] main > #roadmap::before { opacity: .26; filter: brightness(.88) saturate(.78) contrast(1.08); }
-
-main > #partnerships::before,
-main > #partnerships::after {
-  content: none;
-  display: none;
-}
-
 @media (max-width: 1080px) {
-  main > #tool::before {
-    width: 235px;
-    height: 235px;
-    left: -54px;
+  main > #tool {
+    background-position:
+      left -54px top 2%,
+      right -58px bottom -2%;
+    background-size:
+      235px 235px,
+      245px 245px;
   }
 
-  main > #tool::after {
-    width: 245px;
-    height: 245px;
-    right: -58px;
-    bottom: -2%;
+  main > .decor-section.flow:nth-of-type(3) {
+    background-position: left -125px top 18%;
+    background-size: 445px auto;
   }
 
-  main > .decor-section.flow:nth-of-type(3)::before {
-    width: min(50vw, 445px);
-    height: 280px;
-    left: -125px;
-    top: 18%;
-  }
-
-  main > #roadmap::before {
-    width: 300px;
-    height: 165px;
-    right: -68px;
+  main > #roadmap {
+    background-position: right -68px top 10%;
+    background-size: 300px auto;
   }
 }
 
 @media (max-width: 780px) {
-  main > #tool::before { opacity: .28; }
-  main > #tool::after { opacity: .24; }
-  main > .decor-section.flow:nth-of-type(3)::before { opacity: .22; }
-  main > #roadmap::before { opacity: .24; }
-
-  main > #tool::before {
-    width: 175px;
-    height: 175px;
-    left: -42px;
-    top: 1%;
+  main > #tool {
+    background-position:
+      left -42px top 1%,
+      right -42px bottom -1%;
+    background-size:
+      175px 175px,
+      185px 185px;
   }
 
-  main > #tool::after {
-    width: 185px;
-    height: 185px;
-    right: -42px;
-    bottom: -1%;
+  main > .decor-section.flow:nth-of-type(3) {
+    background-position: left -92px top 20%;
+    background-size: 300px auto;
   }
 
-  main > .decor-section.flow:nth-of-type(3)::before {
-    width: 300px;
-    height: 195px;
-    left: -92px;
-    top: 20%;
-  }
-
-  main > #roadmap::before {
-    width: 220px;
-    height: 118px;
-    right: -48px;
-    top: 13%;
+  main > #roadmap {
+    background-position: right -48px top 13%;
+    background-size: 220px auto;
   }
 }
