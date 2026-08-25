@@ -35,14 +35,9 @@ lerna-debug.log*
 
 # Local settings agents IA
 .claude/
-.codex/
-.pi-subagents/
 
 # Admin folder (private, not versioned)
 Administrative/
-
-# Local planning artifacts
-roadmap.html
 
 # Graphify
 graphify-out/
