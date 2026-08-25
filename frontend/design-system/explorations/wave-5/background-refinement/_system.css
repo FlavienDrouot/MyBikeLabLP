@@ -1,11 +1,17 @@
 @import url("_system-base.css");
 
-/* Wave 5 refinement v6 — generated raster cycling assets with a strict left/right rhythm.
-   Hero remains untouched. Decorative sequence: cassette (left), rotor (right), bike (left), hub (right). */
+/* Wave 5 refinement v7 — generated raster cycling assets with a strict left/right rhythm.
+   Hero remains untouched. Decorative sequence: cassette (left), rotor (right), bike (left), hub (right).
+   The generated assets are intentionally pale, so they are rendered above the section background and below content. */
 main > .decor-section::before,
 main > .decor-section::after {
   content: none;
   display: none;
+}
+
+main > .decor-section > .container {
+  position: relative;
+  z-index: 1;
 }
 
 main > #tool::before,
@@ -15,62 +21,63 @@ main > #roadmap::before {
   content: "";
   display: block;
   position: absolute;
-  z-index: -2;
+  z-index: 0;
   pointer-events: none;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  filter: saturate(.82) contrast(1.08);
 }
 
 /* 1 — Comparator, top-left: generated cassette asset. */
 main > #tool::before {
-  width: 280px;
-  height: 280px;
-  left: -84px;
+  width: 300px;
+  height: 300px;
+  left: -72px;
   top: 2%;
   background-image: url("assets/cassette-object.webp");
-  opacity: 0.24;
+  opacity: .42;
 }
 
 /* 2 — Comparator, bottom-right: generated rotor asset. */
 main > #tool::after {
-  width: 300px;
-  height: 300px;
-  right: -92px;
-  bottom: -5%;
+  width: 315px;
+  height: 315px;
+  right: -82px;
+  bottom: -4%;
   background-image: url("assets/rotor-object.webp");
-  opacity: 0.19;
+  opacity: .34;
 }
 
 /* 3 — Benefits, left: generated road-bike asset. */
 main > .decor-section.flow:nth-of-type(3)::before {
-  width: min(45vw, 560px);
-  height: 340px;
-  left: -188px;
-  top: 18%;
+  width: min(46vw, 590px);
+  height: 360px;
+  left: -175px;
+  top: 16%;
   background-image: url("assets/bike-object.webp");
-  opacity: 0.14;
+  opacity: .32;
 }
 
 /* 4 — Roadmap, right: generated hub asset. */
 main > #roadmap::before {
-  width: 360px;
-  height: 190px;
-  right: -118px;
-  top: 12%;
+  width: 390px;
+  height: 210px;
+  right: -105px;
+  top: 10%;
   background-image: url("assets/hub-object.webp");
-  opacity: 0.18;
+  opacity: .36;
 }
 
-[data-theme="cream"] main > #tool::before { opacity: 0.20; }
-[data-theme="cream"] main > #tool::after { opacity: 0.17; }
-[data-theme="cream"] main > .decor-section.flow:nth-of-type(3)::before { opacity: 0.12; }
-[data-theme="cream"] main > #roadmap::before { opacity: 0.16; }
+[data-theme="cream"] main > #tool::before { opacity: .36; }
+[data-theme="cream"] main > #tool::after { opacity: .30; }
+[data-theme="cream"] main > .decor-section.flow:nth-of-type(3)::before { opacity: .28; }
+[data-theme="cream"] main > #roadmap::before { opacity: .32; }
 
-[data-theme="dark"] main > #tool::before { opacity: 0.15; filter: brightness(0.96) saturate(0.86); }
-[data-theme="dark"] main > #tool::after { opacity: 0.13; filter: brightness(0.96) saturate(0.86); }
-[data-theme="dark"] main > .decor-section.flow:nth-of-type(3)::before { opacity: 0.105; filter: brightness(0.96) saturate(0.82); }
-[data-theme="dark"] main > #roadmap::before { opacity: 0.14; filter: brightness(0.96) saturate(0.86); }
+[data-theme="dark"] main > #tool::before { opacity: .28; filter: brightness(.88) saturate(.78) contrast(1.08); }
+[data-theme="dark"] main > #tool::after { opacity: .24; filter: brightness(.88) saturate(.78) contrast(1.08); }
+[data-theme="dark"] main > .decor-section.flow:nth-of-type(3)::before { opacity: .22; filter: brightness(.86) saturate(.74) contrast(1.08); }
+[data-theme="dark"] main > #roadmap::before { opacity: .26; filter: brightness(.88) saturate(.78) contrast(1.08); }
 
 main > #partnerships::before,
 main > #partnerships::after {
@@ -80,65 +87,63 @@ main > #partnerships::after {
 
 @media (max-width: 1080px) {
   main > #tool::before {
-    width: 220px;
-    height: 220px;
-    left: -58px;
+    width: 235px;
+    height: 235px;
+    left: -54px;
   }
 
   main > #tool::after {
-    width: 230px;
-    height: 230px;
-    right: -62px;
+    width: 245px;
+    height: 245px;
+    right: -58px;
     bottom: -2%;
   }
 
   main > .decor-section.flow:nth-of-type(3)::before {
-    width: min(48vw, 420px);
-    height: 260px;
-    left: -132px;
-    top: 20%;
+    width: min(50vw, 445px);
+    height: 280px;
+    left: -125px;
+    top: 18%;
   }
 
   main > #roadmap::before {
-    width: 280px;
-    height: 150px;
-    right: -72px;
+    width: 300px;
+    height: 165px;
+    right: -68px;
   }
 }
 
 @media (max-width: 780px) {
-  main > #tool::before,
-  main > #tool::after,
-  main > .decor-section.flow:nth-of-type(3)::before,
-  main > #roadmap::before {
-    opacity: 0.10;
-  }
+  main > #tool::before { opacity: .28; }
+  main > #tool::after { opacity: .24; }
+  main > .decor-section.flow:nth-of-type(3)::before { opacity: .22; }
+  main > #roadmap::before { opacity: .24; }
 
   main > #tool::before {
-    width: 170px;
-    height: 170px;
-    left: -46px;
+    width: 175px;
+    height: 175px;
+    left: -42px;
     top: 1%;
   }
 
   main > #tool::after {
-    width: 180px;
-    height: 180px;
-    right: -46px;
+    width: 185px;
+    height: 185px;
+    right: -42px;
     bottom: -1%;
   }
 
   main > .decor-section.flow:nth-of-type(3)::before {
-    width: 290px;
-    height: 190px;
-    left: -98px;
-    top: 22%;
+    width: 300px;
+    height: 195px;
+    left: -92px;
+    top: 20%;
   }
 
   main > #roadmap::before {
-    width: 210px;
-    height: 112px;
-    right: -52px;
-    top: 14%;
+    width: 220px;
+    height: 118px;
+    right: -48px;
+    top: 13%;
   }
 }
