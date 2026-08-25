@@ -1,7 +1,7 @@
 @import url("_system-base.css");
 
-/* Wave 5 refinement v2 — one recognisable cycling object per section.
-   Hero remains untouched. Comparator is the only exception: two objects because of its scale. */
+/* Wave 5 refinement v3 — recognisable cycling objects with a strict left/right rhythm.
+   Hero remains untouched. Decorative sequence: left, right, left, right. */
 main>.decor-section::before,
 main>.decor-section::after{
   content:none;
@@ -26,7 +26,7 @@ main>#roadmap::before{
   mask-size:contain;
 }
 
-/* Comparator — cassette top-left, thru-axle bottom-right. */
+/* 1 — Comparator top-left: cassette. */
 main>#tool::before{
   width:300px;
   height:300px;
@@ -37,30 +37,32 @@ main>#tool::before{
   transform:rotate(-11deg);
   opacity:.15;
 }
+
+/* 2 — Comparator bottom-right: disc brake rotor. */
 main>#tool::after{
-  width:430px;
-  height:150px;
-  right:-105px;
-  bottom:2%;
-  -webkit-mask-image:url("assets/axle-mask.svg");
-  mask-image:url("assets/axle-mask.svg");
-  transform:rotate(-6deg);
-  opacity:.13;
+  width:300px;
+  height:300px;
+  right:-95px;
+  bottom:-4%;
+  -webkit-mask-image:url("assets/rotor-mask.svg");
+  mask-image:url("assets/rotor-mask.svg");
+  transform:rotate(9deg);
+  opacity:.14;
 }
 
-/* Benefits — one road bike only. */
+/* 3 — Benefits left: one clean road-bike silhouette. */
 main>.decor-section.flow:nth-of-type(3)::before{
-  width:min(49vw,620px);
-  height:330px;
-  left:-175px;
-  top:17%;
+  width:min(46vw,560px);
+  height:280px;
+  left:-185px;
+  top:18%;
   -webkit-mask-image:url("assets/bike-mask.svg");
   mask-image:url("assets/bike-mask.svg");
   transform:rotate(-1deg);
-  opacity:.12;
+  opacity:.105;
 }
 
-/* Roadmap — one hub only. */
+/* 4 — Roadmap right: one hub. */
 main>#roadmap::before{
   width:310px;
   height:190px;
@@ -81,14 +83,14 @@ main>#partnerships::after{
 
 @media(max-width:1080px){
   main>#tool::before{width:245px;height:245px;left:-120px;opacity:.12}
-  main>#tool::after{width:340px;right:-135px;opacity:.11}
-  main>.decor-section.flow:nth-of-type(3)::before{width:470px;height:280px;left:-220px;top:20%;opacity:.10}
+  main>#tool::after{width:245px;height:245px;right:-115px;bottom:-3%;opacity:.11}
+  main>.decor-section.flow:nth-of-type(3)::before{width:440px;height:230px;left:-205px;top:20%;opacity:.09}
   main>#roadmap::before{width:245px;height:155px;right:-115px;opacity:.11}
 }
 
 @media(max-width:720px){
   main>#tool::before{width:195px;height:195px;left:-125px;top:3%;opacity:.10}
-  main>#tool::after{width:270px;height:110px;right:-165px;bottom:1%;opacity:.09}
-  main>.decor-section.flow:nth-of-type(3)::before{width:350px;height:215px;left:-225px;top:18%;opacity:.08}
+  main>#tool::after{width:195px;height:195px;right:-125px;bottom:-2%;opacity:.09}
+  main>.decor-section.flow:nth-of-type(3)::before{width:330px;height:180px;left:-190px;top:19%;opacity:.075}
   main>#roadmap::before{width:190px;height:125px;right:-125px;top:8%;opacity:.09}
 }
