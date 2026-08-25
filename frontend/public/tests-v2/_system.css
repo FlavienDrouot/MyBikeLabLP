@@ -1,8 +1,9 @@
 @import url("_system-base.css");
 
-/* Wave 5 refinement v8 — generated raster assets rendered directly as section backgrounds.
+/* Wave 5 refinement v9 — generated raster assets rendered directly as section backgrounds.
    This deliberately avoids pseudo-elements and inherited SVG masks from previous iterations.
-   Decorative sequence: cassette (left), rotor (right), bike (left), hub (right). */
+   Decorative sequence: cassette (left), rotor (right), bike (left), hub (right).
+   The bike uses PNG rather than WebP because the previous WebP asset did not render reliably. */
 
 /* Kill every legacy pseudo-element decoration from _system-base.css. */
 main > .decor-section::before,
@@ -31,7 +32,7 @@ main > #tool {
 
 /* 3 — Benefits: road bike on the left. */
 main > .decor-section.flow:nth-of-type(3) {
-  background-image: url("assets/bike-object.webp");
+  background-image: url("assets/bike-object.png");
   background-repeat: no-repeat;
   background-position: left -175px top 16%;
   background-size: 590px auto;
