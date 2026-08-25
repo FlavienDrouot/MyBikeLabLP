@@ -65,7 +65,12 @@ main > .decor-section.flow:nth-of-type(3)::before {
   opacity: .2;
 }
 
-/* 4 — Roadmap: rear hub on the right. */
+/* 4 — Roadmap: let the rear hub cross the lower section boundary only. */
+main > #roadmap {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
 main > #roadmap::after {
   content: "";
   display: block;
