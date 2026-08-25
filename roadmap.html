@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyBikeLab - Roadmap produit</title>
+  <style>
+    :root {
+      --bg: #f6f2ea;
+      --surface: #fffaf1;
+      --ink: #1f2523;
+      --muted: #65706b;
+      --line: #d7cdbd;
+      --accent: #8f5f2f;
+      --accent-soft: #ead7c1;
+      --ok: #3d7658;
+      --shadow: 0 12px 28px rgba(31, 37, 35, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    header {
+      padding: 40px 24px 28px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      max-width: 820px;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .subtitle {
+      max-width: 780px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .progress-wrap {
+      flex: 1 1 280px;
+      min-width: 220px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .progress {
+      height: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #eee4d5;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: var(--ok);
+      transition: width 180ms ease;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 14px;
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+    }
+
+    button:hover {
+      border-color: var(--accent);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .metric,
+    .phase,
+    .sequence {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .metric {
+      padding: 16px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .phase {
+      margin-top: 18px;
+    }
+
+    .phase-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .phase-label {
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .phase-goal {
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .phase-progress {
+      min-width: 120px;
+      text-align: right;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .tasks {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .task {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--surface);
+    }
+
+    .task input {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      accent-color: var(--ok);
+    }
+
+    .task.done .task-title {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    .task-title {
+      font-weight: 700;
+    }
+
+    .task-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 9px 0;
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 3px 8px;
+      background: var(--accent-soft);
+      color: #5d3d20;
+      font-size: 0.78rem;
+      font-weight: 650;
+    }
+
+    .task-detail {
+      margin-top: 4px;
+      color: var(--muted);
+    }
+
+    .sequence {
+      margin-top: 28px;
+      padding: 20px;
+    }
+
+    ol {
+      margin: 14px 0 0;
+      padding-left: 24px;
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding: 28px 18px 22px;
+      }
+
+      main {
+        padding-inline: 14px;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .phase-header {
+        grid-template-columns: 1fr;
+      }
+
+      .phase-progress {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>Roadmap produit MyBikeLab</h1>
+      <p class="subtitle">Plan de travail detaille pour passer du comparateur actuel a un produit mesurable, monetisable et maintenable par des donnees propres.</p>
+      <div class="toolbar">
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span id="progressText">0 / 0 taches validees</span>
+            <span id="progressPct">0%</span>
+          </div>
+          <div class="progress" aria-label="Progression globale">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+        <button type="button" id="resetProgress">Reinitialiser</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="summary-grid" aria-label="Synthese">
+      <div class="metric"><strong>6</strong><span>phases produit</span></div>
+      <div class="metric"><strong>22</strong><span>chantiers validables</span></div>
+      <div class="metric"><strong>5</strong><span>priorites immediates</span></div>
+      <div class="metric"><strong>1</strong><span>objectif: traction mesurable</span></div>
+    </section>
+
+    <section class="phase" data-phase>
+      <div class="phase-header"><div><div class="phase-label">Phase 0</div><h2>Stabiliser le socle existant</h2><p class="phase-goal">Rendre le comparateur fiable, propre et credible avant d'amener du trafic ou de contacter des partenaires.</p></div><div class="phase-progress" data-phase-progress>0 / 0</div></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-task="p0-data-promotion"><span><span class="task-title">Promouvoir les donnees importantes depuis other_specs</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Donnees</span></span><span class="task-detail">Normaliser les champs utiles: roulements, largeur pneu, pression max, rayonnage, garantie, homologations et autres specs comparables.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p0-missing-values"><span><span class="task-title">Completer les valeurs manquantes critiques</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Credibilite</span></span><span class="task-detail">Prioriser les trous visibles: images, prix, poids, largeurs, profondeur, hubs, freehub, tubeless et hookless.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p0-targeted-scraping"><span><span class="task-title">Ajouter les marques manquantes prioritaires</span><span class="task-meta"><span class="tag">Priorite moyenne</span><span class="tag">Catalogue</span></span><span class="task-detail">Scraper et integrer Fulcrum, DT Swiss, Scope et Syncros dans le format de donnees existant.</span></span></label>
+      </div>
+    </section>
+
+    <section class="phase" data-phase>
+      <div class="phase-header"><div><div class="phase-label">Phase 1</div><h2>Ameliorer l'experience produit</h2><p class="phase-goal">Passer d'un tableau comparatif utile a une vraie experience d'aide a la decision.</p></div><div class="phase-progress" data-phase-progress>0 / 0</div></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-task="p1-product-sheet"><span><span class="task-title">Enrichir la fiche produit detaillee</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">UX</span></span><span class="task-detail">Afficher les specs completes, les differences avant/arriere, les sources, les prix et les liens utiles.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p1-variants-table"><span><span class="task-title">Ajouter un tableau des variantes</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Fiche produit</span></span><span class="task-detail">Clarifier axes, freehub, profondeur, version disque/patin et prix par variante.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p1-review-links"><span><span class="task-title">Ajouter les liens vers reviews externes</span><span class="task-meta"><span class="tag">Priorite moyenne</span><span class="tag">Decision</span></span><span class="task-detail">Structurer les reviews par source, langue, URL et type de contenu.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p1-country-prices"><span><span class="task-title">Preparer la gestion des prix par pays</span><span class="task-meta"><span class="tag">Priorite moyenne</span><span class="tag">Prix</span></span><span class="task-detail">Associer prix, devise, pays ou region, source et date de derniere observation.</span></span></label>
+      </div>
+    </section>
+
+    <section class="phase" data-phase>
+      <div class="phase-header"><div><div class="phase-label">Phase 2</div><h2>Acquisition et mesure</h2><p class="phase-goal">Rendre le produit visible et mesurable avant de chercher une monetisation serieuse.</p></div><div class="phase-progress" data-phase-progress>0 / 0</div></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-task="p2-domain"><span><span class="task-title">Acheter et configurer le domaine</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Credibilite</span></span><span class="task-detail">Configurer HTTPS, redirections, canonical URLs et une presence de contact professionnelle.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p2-analytics"><span><span class="task-title">Installer le tracking de frequentation</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Mesure</span></span><span class="task-detail">Suivre pages vues, recherches, filtres utilises, pages produit consultees et clics sortants.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p2-seo"><span><span class="task-title">Lancer le SEO technique et contenu</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Trafic</span></span><span class="task-detail">Creer titres, meta descriptions, sitemap, URLs propres, pages roue et pages marque indexables.</span></span></label>
+      </div>
+    </section>
+
+    <section class="phase" data-phase>
+      <div class="phase-header"><div><div class="phase-label">Phase 3</div><h2>Monetisation affiliate self-service</h2><p class="phase-goal">Commencer a monetiser sans dependre de negociations directes.</p></div><div class="phase-progress" data-phase-progress>0 / 0</div></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-task="p3-programs"><span><span class="task-title">Evaluer les programmes affiliate self-service</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Business</span></span><span class="task-detail">Tester Awin, TradeTracker, Amazon Associates et programmes retailers accessibles sans negociation directe.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p3-link-structure"><span><span class="task-title">Structurer les liens affilies</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Data model</span></span><span class="task-detail">Distinguer fabricant, revendeur, marketplace, pays, devise, tracking et statut du lien.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p3-business-dashboard"><span><span class="task-title">Construire un suivi business simple</span><span class="task-meta"><span class="tag">Priorite moyenne</span><span class="tag">Reporting</span></span><span class="task-detail">Mesurer CTR, clics par marque, clics par modele, clics par source et performance par pays/langue.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p3-company-setup"><span><span class="task-title">Clarifier la creation de l'entreprise</span><span class="task-meta"><span class="tag">Priorite moyenne</span><span class="tag">Legal</span></span><span class="task-detail">Verifier le statut necessaire pour encaisser l'affiliation, contractualiser avec les partenaires et emettre les documents administratifs requis.</span></span></label>
+      </div>
+    </section>
+
+    <section class="phase" data-phase>
+      <div class="phase-header"><div><div class="phase-label">Phase 4</div><h2>Relations fabricants et revendeurs</h2><p class="phase-goal">Obtenir des donnees propres, des liens affilies meilleurs et des feeds maintenables.</p></div><div class="phase-progress" data-phase-progress>0 / 0</div></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-task="p4-contact-list"><span><span class="task-title">Construire la liste de contacts priorisee</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Partenariats</span></span><span class="task-detail">Cibler les marques deja presentes, les retailers specialises et les sources difficiles a maintenir par scraping.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p4-outreach-kit"><span><span class="task-title">Preparer le kit d'approche partenaire</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">B2B</span></span><span class="task-detail">Creer templates email, screenshots, stats trafic, exemples de fiches produit et proposition de valeur.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p4-clean-feed-format"><span><span class="task-title">Definir le format de clean feed attendu</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Scalabilite</span></span><span class="task-detail">Specifier les champs minimum, formats acceptes, source, date de mise a jour et regles de validation.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p4-direct-affiliate"><span><span class="task-title">Obtenir des liens affilies directs ou revendeur</span><span class="task-meta"><span class="tag">Priorite haute</span><span class="tag">Monetisation</span></span><span class="task-detail">Associer les liens trackes aux bons produits, pays, revendeurs et sources de performance.</span></span></label>
+      </div>
+    </section>
+
+    <section class="phase" data-phase>
+      <div class="phase-header"><div><div class="phase-label">Phase 5</div><h2>Backend et pipeline de donnees</h2><p class="phase-goal">Sortir progressivement du frontend statique si les prix, feeds et volumes l'exigent.</p></div><div class="phase-progress" data-phase-progress>0 / 0</div></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-task="p5-backend"><span><span class="task-title">Construire un backend leger si necessaire</span><span class="task-meta"><span class="tag">Long terme</span><span class="tag">Architecture</span></span><span class="task-detail">Centraliser roues, variantes, prix, sources, liens et imports dans une API ou un stockage dedie.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p5-refresh-pipeline"><span><span class="task-title">Mettre en place un pipeline de refresh</span><span class="task-meta"><span class="tag">Long terme</span><span class="tag">Feeds</span></span><span class="task-detail">Importer les clean feeds, valider les donnees, detecter les changements et publier de facon controlee.</span></span></label>
+      </div>
+    </section>
+
+    <section class="phase" data-phase>
+      <div class="phase-header"><div><div class="phase-label">Phase 6</div><h2>Simulation et configurateur</h2><p class="phase-goal">Revenir a la vision long terme: quantifier le gain reel d'un upgrade puis composer un velo complet.</p></div><div class="phase-progress" data-phase-progress>0 / 0</div></div>
+      <div class="tasks">
+        <label class="task"><input type="checkbox" data-task="p6-impact-simulator"><span><span class="task-title">Construire le premier impact simulator</span><span class="task-meta"><span class="tag">Vision produit</span><span class="tag">Simulation</span></span><span class="task-detail">Comparer poids, prix, cout par gramme economise et premiere estimation aero simple.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p6-configurator"><span><span class="task-title">Etendre vers le full bike configurator</span><span class="task-meta"><span class="tag">Vision long terme</span><span class="tag">Configurateur</span></span><span class="task-detail">Ajouter pneus, transmissions, freins et autres composants pour comparer poids, prix, compatibilite et performance.</span></span></label>
+      </div>
+    </section>
+
+    <section class="sequence">
+      <h2>Ordre recommande</h2>
+      <ol>
+        <li>Nettoyer les donnees existantes et promouvoir les champs utiles depuis other_specs.</li>
+        <li>Completer les valeurs manquantes critiques.</li>
+        <li>Ameliorer les fiches produit avec variantes, reviews et liens.</li>
+        <li>Acheter le domaine, installer analytics et suivre les clics sortants.</li>
+        <li>Lancer le SEO technique avec pages roue et marque indexables.</li>
+        <li>Ajouter les marques manquantes prioritaires.</li>
+        <li>Activer les liens affilies self-service.</li>
+        <li>Clarifier la creation de l'entreprise si elle devient necessaire pour les contrats et paiements.</li>
+        <li>Contacter fabricants et revendeurs avec stats, screenshots et exemples concrets.</li>
+        <li>Obtenir clean feeds et liens affilies directs.</li>
+        <li>Construire backend et pipeline si la maintenance statique devient insuffisante.</li>
+        <li>Developper le simulateur d'impact puis le configurateur complet.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script>
+    const storageKey = "mybikelab-roadmap-progress";
+    const checkboxes = Array.from(document.querySelectorAll("[data-task]"));
+    const progressText = document.getElementById("progressText");
+    const progressPct = document.getElementById("progressPct");
+    const progressBar = document.getElementById("progressBar");
+    const resetButton = document.getElementById("resetProgress");
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(storageKey)) || {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveState() {
+      const state = {};
+      checkboxes.forEach((box) => {
+        state[box.dataset.task] = box.checked;
+      });
+      localStorage.setItem(storageKey, JSON.stringify(state));
+    }
+
+    function renderProgress() {
+      const done = checkboxes.filter((box) => box.checked).length;
+      const total = checkboxes.length;
+      const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+
+      progressText.textContent = `${done} / ${total} taches validees`;
+      progressPct.textContent = `${pct}%`;
+      progressBar.style.width = `${pct}%`;
+
+      document.querySelectorAll("[data-phase]").forEach((phase) => {
+        const phaseBoxes = Array.from(phase.querySelectorAll("[data-task]"));
+        const phaseDone = phaseBoxes.filter((box) => box.checked).length;
+        phase.querySelector("[data-phase-progress]").textContent = `${phaseDone} / ${phaseBoxes.length}`;
+      });
+
+      checkboxes.forEach((box) => {
+        box.closest(".task").classList.toggle("done", box.checked);
+      });
+    }
+
+    const savedState = loadState();
+    checkboxes.forEach((box) => {
+      box.checked = Boolean(savedState[box.dataset.task]);
+      box.addEventListener("change", () => {
+        saveState();
+        renderProgress();
+      });
+    });
+
+    resetButton.addEventListener("click", () => {
+      checkboxes.forEach((box) => {
+        box.checked = false;
+      });
+      saveState();
+      renderProgress();
+    });
+
+    renderProgress();
+  </script>
+</body>
+</html>
