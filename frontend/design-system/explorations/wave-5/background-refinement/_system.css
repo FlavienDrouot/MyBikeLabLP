@@ -1,13 +1,11 @@
 @import url("_system-base.css");
 
-/* Wave 5 refinement v9 — generated raster assets rendered directly as section backgrounds.
-   This deliberately avoids pseudo-elements and inherited SVG masks from previous iterations.
-   Decorative sequence: cassette (left), rotor (right), bike (left), hub (right).
-   The bike uses PNG rather than WebP because the previous WebP asset did not render reliably. */
+/* Wave 5 object refinement — all four objects use clean SVG outline masks.
+   Decorative sequence: cassette (left), rotor (right), bike (left), hub (right). */
 
-/* Kill every legacy pseudo-element decoration from _system-base.css. */
-main > .decor-section::before,
-main > .decor-section::after {
+/* Kill legacy pseudo-element decorations, except the active outline assets. */
+main > .decor-section:not(#tool):not(:nth-of-type(3)):not(#roadmap)::before,
+main > .decor-section:not(#tool):not(#roadmap)::after {
   content: none !important;
   display: none !important;
   background: none !important;
@@ -17,33 +15,72 @@ main > .decor-section::after {
 }
 
 /* 1 + 2 — Comparator: cassette top-left, rotor bottom-right. */
-main > #tool {
-  background-image:
-    url("assets/cassette-object.webp"),
-    url("assets/rotor-object.webp");
-  background-repeat: no-repeat, no-repeat;
-  background-position:
-    left -72px top 2%,
-    right -82px bottom -4%;
-  background-size:
-    300px 300px,
-    315px 315px;
+main > #tool::before {
+  content: "";
+  display: block;
+  width: 300px;
+  height: 300px;
+  left: -72px;
+  right: auto;
+  top: 2%;
+  z-index: 0;
+  background: var(--decor);
+  -webkit-mask: url("assets/cassette-outline.svg") center / contain no-repeat;
+  mask: url("assets/cassette-outline.svg") center / contain no-repeat;
+  transform: rotate(-7deg);
+  opacity: .34;
+}
+
+main > #tool::after {
+  content: "";
+  display: block;
+  width: 315px;
+  height: 315px;
+  left: auto;
+  right: -82px;
+  top: auto;
+  bottom: -4%;
+  z-index: 0;
+  background: var(--decor);
+  -webkit-mask: url("assets/rotor-outline.svg") center / contain no-repeat;
+  mask: url("assets/rotor-outline.svg") center / contain no-repeat;
+  transform: rotate(7deg);
+  opacity: .32;
 }
 
 /* 3 — Benefits: road bike on the left. */
-main > .decor-section.flow:nth-of-type(3) {
-  background-image: url("assets/bike-object.png");
-  background-repeat: no-repeat;
-  background-position: left -175px top 16%;
-  background-size: 590px auto;
+main > .decor-section.flow:nth-of-type(3)::before {
+  content: "";
+  display: block;
+  width: 590px;
+  height: 295px;
+  left: -110px;
+  right: auto;
+  top: 16%;
+  z-index: 0;
+  background: var(--decor);
+  -webkit-mask: url("assets/bike-outline.svg") center / contain no-repeat;
+  mask: url("assets/bike-outline.svg") center / contain no-repeat;
+  transform: rotate(-2deg);
+  opacity: .2;
 }
 
-/* 4 — Roadmap: hub on the right. */
-main > #roadmap {
-  background-image: url("assets/hub-object.webp");
-  background-repeat: no-repeat;
-  background-position: right -105px top 10%;
-  background-size: 390px auto;
+/* 4 — Roadmap: rear hub on the right. */
+main > #roadmap::after {
+  content: "";
+  display: block;
+  width: 430px;
+  height: 215px;
+  left: auto;
+  right: -92px;
+  top: 10%;
+  bottom: auto;
+  z-index: 0;
+  background: var(--decor);
+  -webkit-mask: url("assets/hub-outline.svg") center / contain no-repeat;
+  mask: url("assets/hub-outline.svg") center / contain no-repeat;
+  transform: rotate(5deg);
+  opacity: .28;
 }
 
 /* Partnership + footer deliberately carry no object decoration. */
@@ -58,43 +95,59 @@ main > .decor-section > .container {
 }
 
 @media (max-width: 1080px) {
-  main > #tool {
-    background-position:
-      left -54px top 2%,
-      right -58px bottom -2%;
-    background-size:
-      235px 235px,
-      245px 245px;
+  main > #tool::before {
+    width: 235px;
+    height: 235px;
+    left: -54px;
   }
 
-  main > .decor-section.flow:nth-of-type(3) {
-    background-position: left -125px top 18%;
-    background-size: 445px auto;
+  main > #tool::after {
+    width: 245px;
+    height: 245px;
+    right: -58px;
+    bottom: -2%;
   }
 
-  main > #roadmap {
-    background-position: right -68px top 10%;
-    background-size: 300px auto;
+  main > .decor-section.flow:nth-of-type(3)::before {
+    width: 445px;
+    height: 223px;
+    left: -75px;
+    top: 18%;
+  }
+
+  main > #roadmap::after {
+    width: 335px;
+    height: 168px;
+    right: -64px;
   }
 }
 
 @media (max-width: 780px) {
-  main > #tool {
-    background-position:
-      left -42px top 1%,
-      right -42px bottom -1%;
-    background-size:
-      175px 175px,
-      185px 185px;
+  main > #tool::before {
+    width: 175px;
+    height: 175px;
+    left: -42px;
+    top: 1%;
   }
 
-  main > .decor-section.flow:nth-of-type(3) {
-    background-position: left -92px top 20%;
-    background-size: 300px auto;
+  main > #tool::after {
+    width: 185px;
+    height: 185px;
+    right: -42px;
+    bottom: -1%;
   }
 
-  main > #roadmap {
-    background-position: right -48px top 13%;
-    background-size: 220px auto;
+  main > .decor-section.flow:nth-of-type(3)::before {
+    width: 300px;
+    height: 150px;
+    left: -40px;
+    top: 20%;
+  }
+
+  main > #roadmap::after {
+    width: 245px;
+    height: 123px;
+    right: -52px;
+    top: 13%;
   }
 }
