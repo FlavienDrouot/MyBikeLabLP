@@ -11,12 +11,14 @@
     scroll-snap-type: y proximity;
     scroll-padding-top: var(--navbar-height);
     scrollbar-width: thin;
-    scrollbar-color: var(--ink-4) transparent;
+    scrollbar-color: var(--border-default) transparent;
     overflow-x: clip;
   }
+
   body {
-    background: var(--bg-page);
-    color: var(--fg-primary);
+    margin: 0;
+    background: var(--surface-page);
+    color: var(--content-primary);
     font-family: var(--font-sans);
     font-size: var(--text-base);
     font-weight: var(--weight-regular);
@@ -27,368 +29,311 @@
     text-rendering: optimizeLegibility;
     overflow-x: clip;
   }
-  ::selection {
-    background: var(--brass-5);
-    color: var(--ink-12);
+
+  a {
+    color: inherit;
   }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--accent-wash);
+    color: var(--content-primary);
+  }
+
   :focus-visible {
-    outline: 2px solid var(--brass-8);
+    outline: 2px solid var(--border-focus);
     outline-offset: 2px;
   }
+
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
+
   ::-webkit-scrollbar-track {
     background: transparent;
   }
+
   ::-webkit-scrollbar-thumb {
-    background-color: var(--ink-4);
-    border-radius: 3px;
+    background-color: var(--border-default);
+    border-radius: var(--radius-control);
   }
+
   ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--ink-5);
+    background-color: var(--control-switch);
   }
+
   .comparison-table-scroll {
-    background: var(--paper-2);
+    background: var(--surface-well);
     scrollbar-width: thin;
-    scrollbar-color: var(--ink-4) var(--paper-2);
+    scrollbar-color: var(--border-default) var(--surface-well);
   }
+
   .comparison-table-scroll::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
+
   .comparison-table-scroll::-webkit-scrollbar-track {
-    background: var(--paper-2);
+    background: var(--surface-well);
   }
+
   .comparison-table-scroll tbody td {
-    border-bottom: 1px solid var(--rule-faint);
+    border-bottom: 1px solid var(--border-subtle);
   }
+
   .filter-panel-scroll {
     scrollbar-width: thin;
-    scrollbar-color: var(--ink-4) transparent;
+    scrollbar-color: var(--border-default) transparent;
   }
+
   .filter-panel-scroll::-webkit-scrollbar {
     width: 6px;
   }
+
   .filter-panel-scroll::-webkit-scrollbar-track {
     background: transparent;
   }
 }
 
 @layer components {
-  .container-page {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
+  .container-page,
   .container-fluid {
-    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
   }
+
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-xs border border-brass-8 bg-brass-7 px-5 py-2.5 text-sm font-semibold text-ink-12 hover:bg-brass-6;
-    transition: color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    border: 1px solid var(--content-primary);
+    border-radius: var(--radius-button);
+    background: var(--content-primary);
+    color: var(--surface-page);
+    padding: 13px 19px;
+    font-size: 13.5px;
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+    transition: color var(--duration-quick) var(--ease-standard),
+      background-color var(--duration-quick) var(--ease-standard),
+      border-color var(--duration-quick) var(--ease-standard),
+      box-shadow var(--duration-quick) var(--ease-standard);
   }
+
+  .btn-primary:hover {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: var(--shadow-raised);
+  }
+
   .btn-ghost {
-    @apply inline-flex items-center justify-center rounded-xs px-5 py-2.5 text-sm font-semibold text-ink-11 hover:text-brass-8;
-    transition: color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: var(--radius-control);
+    background: transparent;
+    color: var(--content-secondary);
+    padding: 6px 0;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+    transition: color var(--duration-quick) var(--ease-standard),
+      background-color var(--duration-quick) var(--ease-standard);
   }
+
+  .btn-ghost:hover {
+    color: var(--accent);
+  }
+
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-xs border border-ink-4 px-5 py-2.5 text-sm font-semibold text-ink-11 hover:border-brass-8 hover:text-brass-8;
-    transition: color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-button);
+    background: var(--surface-panel);
+    color: var(--content-primary);
+    padding: 13px 19px;
+    font-size: 13.5px;
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+    transition: color var(--duration-quick) var(--ease-standard),
+      background-color var(--duration-quick) var(--ease-standard),
+      border-color var(--duration-quick) var(--ease-standard);
   }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-wash);
+  }
+
   .section {
-    @apply py-16 sm:py-20 lg:py-24;
+    padding-block: var(--space-16);
   }
+
   .hero-title {
-    font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -0.045em;
-    @apply text-4xl sm:text-5xl lg:text-6xl;
+    font-weight: var(--weight-black);
+    line-height: 1.08;
+    letter-spacing: -0.029em;
   }
+
   .hero-title em {
-    font-style: italic;
-    font-weight: 300;
-    letter-spacing: -0.05em;
-    color: var(--brass-8);
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-weight: var(--weight-regular);
+    letter-spacing: -0.015em;
+    color: var(--accent);
   }
+
   .section-title {
-    font-weight: 500;
-    font-size: var(--text-3xl);
-    line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-tighter);
-    @apply text-ink-10;
-  }
-  .section-subtitle {
-    @apply mt-3 text-lg text-ink-8 max-w-2xl;
-  }
-  .card {
-    @apply rounded-none border border-ink-4 bg-paper-0;
-  }
-  .hero-grid-bg {
-    background-image:
-      linear-gradient(to right, var(--ink-2) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--ink-2) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-
-  /* SEMANTIC TYPE TOKENS */
-  /* Display variants run on Inter at the heaviest weights, very tight tracking, */
-  /* set against a generous line-height-tight. The signature is precision and    */
-  /* density — not a contrasting serif voice.                                    */
-  .t-display-1 {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: var(--text-6xl);
-    line-height: 0.9;
-    letter-spacing: -0.045em;
-  }
-
-  .t-display-2 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--text-5xl);
-    line-height: 0.94;
-    letter-spacing: -0.035em;
-  }
-
-  /* Editorial-leaning display: lighter weight, slightly opener tracking. */
-  .t-display-light {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: var(--text-5xl);
-    line-height: 0.96;
-    letter-spacing: -0.04em;
-  }
-
-  .t-h1 {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: var(--text-3xl);
-    line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-tighter);
-  }
-
-  .t-h2 {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: var(--text-2xl);
-    line-height: var(--leading-snug);
-    letter-spacing: var(--tracking-tight);
-  }
-
-  .t-h3 {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: var(--text-xl);
-    line-height: var(--leading-snug);
-    letter-spacing: var(--tracking-tight);
-  }
-
-  .t-h4 {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: var(--text-lg);
-    line-height: var(--leading-snug);
-  }
-
-  .t-lead {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: var(--text-md);
-    line-height: var(--leading-relaxed);
-    color: var(--fg-secondary);
-  }
-
-  .t-body {
-    font-family: var(--font-sans);
-    font-size: var(--text-base);
-    line-height: var(--leading-relaxed);
-  }
-
-  .t-body-sm {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    line-height: var(--leading-normal);
-  }
-
-  .t-mono {
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    letter-spacing: 0;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .t-mono-lg {
-    font-family: var(--font-mono);
-    font-size: var(--text-lg);
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .t-numeric {
-    font-family: var(--font-mono);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: -0.01em;
-  }
-
-  /* All-caps micro label — the signature MyBikeLab UI device.
-     Used for section eyebrows, table column headers, axis labels. */
-  .t-label {
-    font-family: var(--font-sans);
-    font-size: var(--text-2xs);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-widest);
-    color: var(--fg-muted);
-  }
-
-  .t-label-strong {
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-widest);
-    color: var(--fg-primary);
-  }
-
-  /* Marginalia / annotation style — italic Inter for footnotes, captions,
-     "indicative only" disclaimers next to numeric data. Quiet, scientific. */
-  .t-annotation {
-    font-family: var(--font-sans);
-    font-style: italic;
-    font-weight: 400;
-    font-size: var(--text-sm);
-    color: var(--fg-muted);
-    line-height: var(--leading-normal);
-  }
-
-  /* Eyebrow — short verb-noun caps label that sits above a section heading.
-     Replaces numbered section indices: name the section, don't number it. */
-  .t-eyebrow {
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-widest);
-    color: var(--fg-muted);
-  }
-
-  /* COMPONENT TOKENS — keep small, layered on the foundations above. */
-
-  /* Hairline rule — the most-used divider in the system. */
-  .rule {
-    border: 0;
-    border-top: 1px solid var(--rule-default);
     margin: 0;
-  }
-  .rule-strong {
-    border-top: 1px solid var(--rule-strong);
-  }
-  .rule-faint {
-    border-top: 1px solid var(--rule-faint);
-  }
-  .rule-double {
-    border: 0;
-    border-top: 1px solid var(--rule-strong);
-    border-bottom: 1px solid var(--rule-default);
-    height: 4px;
+    font-weight: var(--weight-semibold);
+    font-size: 26px;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.018em;
+    color: var(--content-primary);
   }
 
-  /* PALETTE VARIATIONS */
-  /* Paper — canonical warm identity (matches :root defaults). */
-  .pal-paper {
-    --paper-0: #fbfaf6; --paper-1: #f6f4ef; --paper-2: #efebe2; --paper-3: #e6e0d2;
-    --bg-page: #f6f4ef; --bg-elevated: #fbfaf6; --bg-recessed: #efebe2; --fg-inverse: #f6f4ef;
+  .section-subtitle {
+    margin-top: 6px;
+    max-width: 42rem;
+    color: var(--content-secondary);
+    font-size: 13.5px;
   }
 
-  /* Mist — cool neutral grey. Quiet, instrument-clean. */
-  .pal-mist {
-    --paper-0: #fdfdfe; --paper-1: #eef1f4; --paper-2: #e2e7ec; --paper-3: #d3dae1;
-    --bg-page: #eef1f4; --bg-elevated: #fdfdfe; --bg-recessed: #e2e7ec; --fg-inverse: #eef1f4;
+  .card {
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-panel);
+    background: var(--surface-panel);
+    box-shadow: var(--shadow-surface);
   }
 
-  /* Porcelain — crisp cool near-white. Maximum air, Apple-adjacent. */
-  .pal-porcelain {
-    --paper-0: #ffffff; --paper-1: #f3f4f6; --paper-2: #e8eaed; --paper-3: #d9dce1;
-    --bg-page: #f3f4f6; --bg-elevated: #ffffff; --bg-recessed: #e8eaed; --fg-inverse: #f3f4f6;
+  .wave5-panel {
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-panel);
+    background: color-mix(in srgb, var(--surface-panel) 96%, transparent);
+    box-shadow: var(--shadow-surface);
   }
 
-  /* ACCENT VARIATIONS */
-  /* Each accent ramp keeps brass's luminance structure (1 lightest → 12 darkest,
-     -7 a light-medium fill that carries dark ink text), so every existing brass
-     usage — CTA fill, hero italic, badges, focus ring, hover wash — just works. */
-
-  /* Brass — warm gold, the default identity. */
-  .acc-brass {
-    --brass-12:#2a2014; --brass-11:#4a3a1f; --brass-10:#6b5328; --brass-9:#8c6e35;
-    --brass-8:#a88846; --brass-7:#c9a86a; --brass-6:#d6bb87; --brass-5:#e2cea4;
-    --brass-4:#ecdec2; --brass-3:#f3ead8; --brass-2:#f8f1e4; --brass-1:#fcf8ef;
-    --accent:#c9a86a; --fg-accent:#a88846; --fg-link-hover:#a88846; --border-focus:#a88846;
+  .wave5-input {
+    width: 100%;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-input);
+    background: var(--surface-well);
+    outline: none;
+    transition: border-color var(--duration-quick) var(--ease-standard),
+      box-shadow var(--duration-quick) var(--ease-standard);
   }
 
-  /* Cobalt — cool technical blue, muted (never neon). Pairs well with Mist. */
-  .acc-cobalt {
-    --brass-12:#0f1d2c; --brass-11:#173551; --brass-10:#214b71; --brass-9:#2f6090;
-    --brass-8:#3f78ac; --brass-7:#7aa6cf; --brass-6:#9cbcdc; --brass-5:#bcd2e8;
-    --brass-4:#d4e2f0; --brass-3:#e4eef7; --brass-2:#eef4fa; --brass-1:#f4f8fc;
-    --accent:#7aa6cf; --fg-accent:#3f78ac; --fg-link-hover:#3f78ac; --border-focus:#3f78ac;
+  .wave5-input:focus {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-focus);
   }
 
-  /* Oxblood — muted clay-red. Warm but earthy, good on Porcelain. */
-  .acc-oxblood {
-    --brass-12:#371b13; --brass-11:#52291d; --brass-10:#6f3a28; --brass-9:#8e4d36;
-    --brass-8:#ab6347; --brass-7:#cc9077; --brass-6:#daa993; --brass-5:#e6c4b3;
-    --brass-4:#efd7cb; --brass-3:#f5e5dd; --brass-2:#faf0ea; --brass-1:#fdf6f2;
-    --accent:#cc9077; --fg-accent:#ab6347; --fg-link-hover:#ab6347; --border-focus:#ab6347;
+  .wave5-pill {
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-pill);
+    background: var(--surface-panel-soft);
   }
 
-  /* Forest — desaturated racing green. Cycling-heritage, calm. */
-  .acc-forest {
-    --brass-12:#152619; --brass-11:#233c29; --brass-10:#2f4f36; --brass-9:#3f6646;
-    --brass-8:#52805a; --brass-7:#7aa37b; --brass-6:#9cba9c; --brass-5:#bcd0bc;
-    --brass-4:#d3e0d3; --brass-3:#e4ede4; --brass-2:#eef4ee; --brass-1:#f4f8f4;
-    --accent:#7aa37b; --fg-accent:#52805a; --fg-link-hover:#52805a; --border-focus:#52805a;
+  /* Exact Wave 5 outline assets are exposed as a reusable decoration
+     primitive. Callers provide size, position, opacity, and rotation. */
+  .wave5-object {
+    display: block;
+    background: var(--decoration);
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    pointer-events: none;
   }
 
-  /* Audience tile — used in ink-inverse (partnership) section */
+  .wave5-object--bike {
+    -webkit-mask-image: url('./assets/wave5/bike-outline.svg');
+    mask-image: url('./assets/wave5/bike-outline.svg');
+  }
+
+  .wave5-object--cassette {
+    -webkit-mask-image: url('./assets/wave5/cassette-outline.svg');
+    mask-image: url('./assets/wave5/cassette-outline.svg');
+  }
+
+  .wave5-object--hub {
+    -webkit-mask-image: url('./assets/wave5/hub-outline.svg');
+    mask-image: url('./assets/wave5/hub-outline.svg');
+  }
+
+  .wave5-object--rotor {
+    -webkit-mask-image: url('./assets/wave5/rotor-outline.svg');
+    mask-image: url('./assets/wave5/rotor-outline.svg');
+  }
+
+  .wave5-object--wheel {
+    -webkit-mask-image: url('./assets/wave5/wheel-mask.svg');
+    mask-image: url('./assets/wave5/wheel-mask.svg');
+  }
+
+  /* Wave 5 removed the former drafting grid. Section-specific decoration is
+     introduced by the landing migration issues when its structure is ready. */
+  .hero-grid-bg {
+    background-image: none;
+  }
+
   .audience-tile {
-    border-top: 1px solid var(--ink-10);
-    padding: 24px 0;
     display: grid;
     grid-template-columns: 180px 1fr;
-    gap: 24px;
+    gap: var(--space-6);
+    padding: var(--space-6) 0;
+    border-top: 1px solid var(--border-strong);
   }
 
   .audience-tile:last-child {
-    border-bottom: 1px solid var(--ink-10);
+    border-bottom: 1px solid var(--border-strong);
   }
 
   .audience-tile-title {
-    font-weight: 600;
+    color: var(--surface-panel);
     font-size: var(--text-base);
-    color: var(--paper-0);
+    font-weight: var(--weight-semibold);
   }
 
   .audience-tile-desc {
+    color: var(--border-default);
     font-size: var(--text-sm);
-    color: var(--ink-4);
     line-height: 1.5;
   }
 
-  /* ROADMAP SECTION — keyline card layout */
-  /* TODO: mobile — stack roadmap phases vertically at sm breakpoint */
   .roadmap-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
-    border-top: 1px solid var(--ink-10);
+    border-top: 1px solid var(--border-strong);
   }
 
   .roadmap-phase {
-    padding: 32px 28px;
-    border-right: 1px solid var(--ink-3);
     display: flex;
     flex-direction: column;
+    padding: var(--space-8) 28px;
+    border-right: 1px solid var(--border-subtle);
   }
 
   .roadmap-phase:last-child {
@@ -396,11 +341,22 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+@media (max-width: 640px) {
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-phase {
+    border-right: 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .roadmap-phase:last-child {
+    border-bottom: 0;
+  }
+
+  .audience-tile {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
   }
 }

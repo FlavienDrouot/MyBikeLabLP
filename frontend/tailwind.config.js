@@ -5,6 +5,17 @@ export default {
     './index.html',
     './src/**/*.{js,jsx,ts,tsx}',
   ],
+  safelist: [
+    'wave5-panel',
+    'wave5-input',
+    'wave5-pill',
+    'wave5-object',
+    'wave5-object--bike',
+    'wave5-object--cassette',
+    'wave5-object--hub',
+    'wave5-object--rotor',
+    'wave5-object--wheel',
+  ],
   theme: {
     extend: {
       colors: {
@@ -158,13 +169,16 @@ export default {
         'ds-32': 'var(--space-32)',
       },
       borderRadius: {
-        xs:   '2px',
+        xs:   'var(--radius-xs)',
         none: 'var(--radius-none)',
         sm:   'var(--radius-sm)',
+        panel: 'var(--radius-panel)',
         pill: 'var(--radius-pill)',
       },
       boxShadow: {
-        menu:      '0 1px 0 0 var(--ink-10), 0 8px 24px -12px rgba(14, 15, 12, 0.18)',
+        menu:      'var(--shadow-menu)',
+        surface:   'var(--shadow-surface)',
+        raised:    'var(--shadow-raised)',
         none:      'var(--shadow-none)',
         hairline:  'var(--shadow-hairline)',
         keyline:   'var(--shadow-keyline)',

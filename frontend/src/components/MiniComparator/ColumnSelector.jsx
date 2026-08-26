@@ -17,8 +17,14 @@ const ColumnSelector = ({ visibility, onToggle }) => {
   const computePosition = () => {
     if (!buttonRef.current) return;
     const rect = buttonRef.current.getBoundingClientRect();
+    const menuRect = popupRef.current?.getBoundingClientRect();
+    const gap = 8;
+    const belowTop = rect.bottom + gap;
+    const top = menuRect && belowTop + menuRect.height > window.innerHeight
+      ? Math.max(gap, rect.top - menuRect.height - gap)
+      : belowTop;
     setPopupStyle({
-      top: rect.bottom + 8,
+      top,
       right: window.innerWidth - rect.right,
     });
   };

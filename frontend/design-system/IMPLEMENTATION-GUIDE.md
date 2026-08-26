@@ -29,11 +29,11 @@ Do not start writing production code without reading these three sources.
 | Primary text | `var(--fg-primary)` |
 | Secondary / meta text | `var(--fg-secondary)` |
 | Muted labels | `var(--fg-muted)` |
-| Accent text (brass) | `var(--fg-accent)` |
+| Accent text | `var(--fg-accent)` |
 | Default border | `var(--border-default)` — `1px solid` |
 | Strong border / keyline | `var(--border-strong)` |
 | Focus ring | `var(--border-focus)` — via `--shadow-focus` |
-| Accent fill | `var(--accent)` — primary CTA, badges only |
+| Accent fill | `var(--accent)` — active controls and key values |
 
 Never use raw hex. Never use `#ffffff` or `#000000`. Never use the legacy `brand-*` scale.
 
@@ -61,9 +61,10 @@ Use `var(--space-N)` tokens. The grid unit is `8px`; tokens cascade in `4px` inc
 
 | Context | Token |
 |---|---|
-| Cards, panels, tables | `var(--radius-none)` — square |
-| Inputs, buttons | `var(--radius-xs)` — `2px` |
-| Secondary chips | `var(--radius-sm)` — `4px` |
+| Tables | `var(--radius-none)` — square |
+| Panels and cards | `var(--radius-panel)` — `14px` |
+| Inputs | `var(--radius-input)` — `7px` |
+| Buttons and controls | `var(--radius-button)` — `9px` |
 | Status badges (pill) | `var(--radius-pill)` — `999px` |
 
 Pill radius is reserved for semantic status badges only (stock availability, live/offline). Not for decorative chips.
@@ -88,22 +89,22 @@ Run through this list for every new component before marking it done.
 ### Colors
 - [ ] No raw hex values — all colors via CSS custom properties
 - [ ] No `#ffffff`, no `#000000`, no `brand-*`, no blue Tailwind scale
-- [ ] Accent (brass) used only for: primary CTA fill, focus ring, key numeric highlight, active badge
+- [ ] Accent used only for: active controls, focus ring, key numeric highlight and primary CTA fill
 
 ### Typography
-- [ ] All numeric values use `.t-numeric` or `.t-mono` (JetBrains Mono, `tabular-nums`)
+- [ ] All numeric values use `.t-numeric` or `.t-mono` (Fragment Mono, `tabular-nums`)
 - [ ] Column headers and axis labels use `.t-label` (all-caps, `0.18em` tracking)
 - [ ] Section eyebrows use `.t-eyebrow` — verb-noun, not numbered (`Compare road wheels`, not `01 / Compare`)
 
 ### Layout
-- [ ] Cards are square (`radius: 0`), hairline border (`1px solid var(--border-default)`), no drop shadow
-- [ ] Floating menus use `var(--shadow-menu)` only — no card shadows
-- [ ] Navbar transparency uses `backdrop-filter: blur(8px)` + `rgba(246,244,239,0.88)` — nowhere else
-- [ ] Max page width `1280px`; gutters `var(--space-6)` (24px)
+- [ ] Cards and panels use `var(--radius-panel)`, a hairline border and `var(--shadow-surface)`
+- [ ] Floating menus use `var(--shadow-menu)`; raised controls use `var(--shadow-raised)`
+- [ ] Navbar transparency uses `var(--header)` and backdrop blur
+- [ ] Max page width `1360px`; gutters use `var(--gutter)`
 
 ### States
-- [ ] Hover: border darkens from `border-default` → `border-strong`; rows tint to `brass-1`
-- [ ] Focus: `var(--shadow-focus)` ring (2px brass-8, 2px offset) — visible on paper background
+- [ ] Hover: border darkens from `border-default` to `border-strong`; rows tint to `accent-wash`
+- [ ] Focus: `var(--shadow-focus)` ring and `border-focus` outline
 - [ ] Disabled: `opacity: 0.4`, `cursor: not-allowed` — never `display: none`
 
 ### Editorial rules
@@ -117,7 +118,7 @@ Run through this list for every new component before marking it done.
 
 ### Assets & icons
 - [ ] Icons use Lucide (`stroke-width: 1.4`, `stroke-linecap: square`, `stroke-linejoin: miter`), colored via `currentColor`
-- [ ] Wheel/component illustrations use `design-system/assets/wheel-schematic.svg` at `currentColor`
+- [ ] Wave 5 decorations use the exact assets in `frontend/src/assets/wave5/` at low contrast
 - [ ] No photography, no stock images
 
 ---

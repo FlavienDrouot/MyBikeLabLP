@@ -103,7 +103,7 @@ const DualRangeRow = ({
             step={effectiveStep}
             disabled={!enabled}
             onChange={(e) => handleLow(e.target.value)}
-            className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
+            className="wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
           <span className="flex-1 text-center text-ink-5 text-xs select-none">
             -
@@ -116,7 +116,7 @@ const DualRangeRow = ({
             step={effectiveStep}
             disabled={!enabled}
             onChange={(e) => handleHigh(e.target.value)}
-            className="w-24 rounded-xs border border-ink-4 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
+            className="wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
         </div>
         <div className="relative h-5 flex items-center">
@@ -298,7 +298,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           placeholder={t('filterPanel.searchPlaceholder')}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-xs border border-ink-4 px-3 py-1.5 text-sm mb-2"
+          className="wave5-input mb-2 px-3 py-1.5 text-sm"
         />
         <ul className="max-h-40 overflow-y-auto rounded-none border border-ink-4 filter-panel-scroll">
           {visible.map((opt) => {
@@ -522,6 +522,5 @@ const FilterPanel = () => {
 };
 
 export default FilterPanel;
-
 
 

@@ -63,7 +63,7 @@ const ContactForm = () => {
             maxLength={80}
             value={form.name}
             onChange={onChange}
-            className="mt-1 w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm focus:border-brass-8 focus:outline-none"
+            className="wave5-input mt-1 px-3 py-2 text-sm"
           />
           {errors.name && (
             <p className="mt-1 t-body-sm text-signal-down">{errors.name}</p>
@@ -78,7 +78,7 @@ const ContactForm = () => {
             maxLength={320}
             value={form.email}
             onChange={onChange}
-            className="mt-1 w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm focus:border-brass-8 focus:outline-none"
+            className="wave5-input mt-1 px-3 py-2 text-sm"
           />
           {errors.email && (
             <p className="mt-1 t-body-sm text-signal-down">{errors.email}</p>
@@ -93,7 +93,7 @@ const ContactForm = () => {
           maxLength={120}
           value={form.company}
           onChange={onChange}
-          className="mt-1 w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm focus:border-brass-8 focus:outline-none"
+          className="wave5-input mt-1 px-3 py-2 text-sm"
         />
       </div>
       <div>
@@ -105,7 +105,7 @@ const ContactForm = () => {
           rows={4}
           value={form.message}
           onChange={onChange}
-          className="mt-1 w-full rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm focus:border-brass-8 focus:outline-none"
+          className="wave5-input mt-1 px-3 py-2 text-sm"
         />
         {errors.message && (
           <p className="mt-1 t-body-sm text-signal-down">{errors.message}</p>

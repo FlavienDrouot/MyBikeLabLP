@@ -4,10 +4,11 @@
 > comparison platform for road cycling components, starting with road wheels.
 
 This system replaces the generic Tailwind blue look of the current MVP with
-a deliberate **lab-instrument × editorial × engineering-blueprint** aesthetic:
-warm paper, deep ink, brass accent, sage neutral. **Inter** (kept from the
-current codebase) for everything textual; **JetBrains Mono** for every
-numeral. Square cards, hairline dividers, tabular figures.
+the validated Wave 5 **lab-instrument × editorial × engineering** direction:
+cool technical light surfaces, deep ink, a restrained blue accent.
+**Schibsted Grotesk** carries the interface; **Fragment Mono** carries every
+measured value. Rounded panels, controlled shadows, hairline dividers and
+tabular figures.
 
 ## Sources
 
@@ -29,7 +30,7 @@ numeral. Square cards, hairline dividers, tabular figures.
 | `IMPLEMENTATION-GUIDE.md` | **Read this before implementing any new UI component.** Token usage rules, component checklist, ui_kit mapping protocol |
 | `SKILL.md` | Cross-compatible skill manifest |
 | `assets/` | Logos, wheel schematic, favicon, raw imported SVGs |
-| `fonts/` | Empty — fonts loaded from Google Fonts CDN (see Type Substitutions below) |
+| `frontend/src/assets/fonts/` | Bundled Schibsted Grotesk and Fragment Mono files used by production |
 | `preview/` | Atomic design-system specimen cards (rendered in Design System tab) |
 | `ui_kits/landing/` | Marketing landing page recreation with 3 direction tweaks |
 | `ui_kits/comparator/` | Wheel comparator surface (filter panel + spec table) |
@@ -154,55 +155,35 @@ AI-template territory. Apply them to every product surface.
 - **No neon or outer glows.** Use inner borders or tinted shadows.
 - **No gradient text** on large headers.
 - **No custom mouse cursors.**
-- **No pure black `#000000`.** Use `--ink-12` (`#0e0f0c`) as the near-black.
+- **No pure black `#000000`.** Use the Wave 5 primary ink token.
 
 ## Visual Foundations
 
 ### Color
 
-- **Base palette and accent are independent, switchable axes.** **Notebook
-  layout + Paper base + Brass accent** is the committed canonical default.
-  - Surfaces (`pal-*`): **Paper** `#f6f4ef` warm original (default), **Mist**
-    `#eef1f4` cool grey, **Porcelain** `#f3f4f6` crisp near-white.
-  - Accents (`acc-*`): **Brass** `#c9a86a` (default), **Cobalt** `#7aa6cf`,
-    **Oxblood** `#cc9077`, **Forest** `#7aa37b`.
-  - **Candidate pairings worth revisiting** (both verified legible, kept on
-    hand as alternates): **Mist + Cobalt** (cool, technical) and
-    **Porcelain + Forest** (crisp, heritage green).
-  A `pal-*` class redeclares the paper ramp + paper-derived bg tokens; an
-  `acc-*` class redeclares the full brass ramp + accent semantic tokens.
-  Accent ramps keep brass's luminance structure, so every existing brass
-  usage (CTA fill, hero italic, focus ring, badges, row hover) works
-  unchanged. The landing page exposes both as Tweaks and mirrors the choice
-  to `localStorage` (`mbl-palette`, `mbl-accent`) so the comparator and
-  detail pages inherit them.
-- **Ink** is the workhorse. `ink-11` for body text, `ink-12` for headings
-  and the brand mark. Never pure `#000000`.
-- **Brass** (`brass-7` `#c9a86a`) is the *only* accent. Used **sparingly** —
-  the primary CTA, focus rings, key numeric highlights, the live-phase
-  badge. Brass on paper feels like precision instruments, brass fittings on
-  a frame, vintage measurement tools.
-- **Sage** (`sage-7` `#6b7361`) is a quiet secondary neutral with a green
-  cast. Used for muted dividers, subtle status, and the partnership section.
-- **Semantic** colors (`signal-up` desaturated green, `signal-down` burnt
-  sienna) appear *only* for status — never for marketing.
-- **No gradients.** No "primary-to-secondary" sweep. The system is flat-
-  surfaced with hairline keylines.
+- **Wave 5 Light is the current canonical surface.** The semantic token layer
+  maps the reference values directly: page `#f4f7fa`, panel `#ffffff`, soft
+  panel `#f8fafc`, recessed well `#edf2f7`, table header `#e7edf4`, primary
+  ink `#101722`, secondary ink `#4d5b6d`, muted ink `#718096`, default line
+  `#d8e1eb`, subtle line `#e8edf3`, accent `#2f64a9`, accent wash `#edf4fb`.
+- Use `--surface-*`, `--content-*`, `--border-*`, `--accent*` and
+  `--shadow-*` in new production code. The old `paper-*`, `ink-*` and
+  `brass-*` names remain aliases while sections are migrated sequentially.
+- Status colors remain separate from the visual accent and must not be used as
+  decoration. No gradients, textures or noise overlays.
 
 ### Typography
 
-- **Inter** (kept from the existing codebase) is the universal workhorse.
-  Display, UI, body, buttons, labels — all Inter, separated by **weight and
-  tracking**, not by family. Big display sets at `font-weight: 800` with
-  `letter-spacing: -0.045em` for that tight, considered, almost-Apple feel.
-  Body sits at 400. UI labels at 500–600.
-- **JetBrains Mono** is the system's signature — every numeric value in the
-  product runs in mono with `font-variant-numeric: tabular-nums`. Weight,
-  price, depth, percentages, indices. **All numbers tabulate.**
+- **Schibsted Grotesk** is the universal workhorse. Display, UI, body, buttons
+  and labels are separated by weight and tracking. Body sits at 400. UI labels
+  sit at 500–600.
+- **Fragment Mono** is the system's signature. Every numeric value in the
+  product runs in mono with `font-variant-numeric: tabular-nums`: weight,
+  price, depth, percentages and indices.
 - **All-caps micro labels** with `0.18em` letter-spacing are the consistent
   device for column headers, eyebrows, and section indices (`01 / 03 ·
   COMPARATOR`).
-- **Marginalia** — small italic Inter — for footnotes, captions, and
+- **Marginalia** uses small italic Schibsted Grotesk for footnotes, captions and
   disclaimer text. A lab-notebook detail without needing a second family.
 
 ### Imagery
@@ -217,21 +198,22 @@ AI-template territory. Apply them to every product surface.
 
 ### Backgrounds & patterns
 
-- **Plain paper** by default.
-- **Schematic grid** (16-px or 32-px ruled grid in `ink-2`) is the *one*
-  decorative background, used on the hero only. Evokes drafting paper /
-  engineering blueprint.
-- **No textures, no images, no noise overlays.**
+- **Continuous cool light surface** by default. Wave 5 removed the former
+  hero grid.
+- **Exact cycling object outlines** from `explorations/wave-5/background-refinement/assets/`
+  are the shared decorative vocabulary. They stay low contrast and sit behind
+  content. No textures, no noise overlays, no stock photography.
 
 ### Layout
 
-- **Square cards, hairline borders.** `border: 1px solid ink-4`. No drop
-  shadows on cards. Radius is `0` for cards/panels/tables; `2px` for
-  inputs/buttons; `999px` for pill badges only.
+- **Rounded panels, hairline borders.** Panels use `border: 1px solid
+  var(--border-default)`, `var(--radius-panel)` and `var(--shadow-surface)`.
+  Inputs use `var(--radius-input)`, buttons use `var(--radius-button)` and
+  status controls use `var(--radius-pill)`.
 - **Keylines do the work.** A `1px solid ink-10` underline beneath headings
   reads as a section break. Table headers get the same treatment.
-- **Max page width** `1280px`. Comfortable, not narrow. Generous gutters
-  (`24px` default).
+- **Max page width** `1360px`. Comfortable, not narrow. Gutters use
+  `clamp(20px, 3.5vw, 52px)`.
 - **The grid is 8px**, but spacing tokens cascade in 4px increments.
 
 ### Motion
@@ -246,36 +228,35 @@ AI-template territory. Apply them to every product surface.
 
 ### States
 
-- **Hover.** Borders darken from `ink-4` → `ink-10`; row backgrounds tint
-  to `brass-1` (a barely-perceptible warm wash). Text doesn't shift.
+- **Hover.** Borders darken from `--border-default` to `--border-strong`;
+  row backgrounds tint to `--accent-wash`. Text does not shift.
 - **Press.** No scale shrink. Background steps one tone darker.
-- **Focus.** 2px `brass-8` outline at 2px offset — visible on the warm
-  paper without competing with content.
+- **Focus.** 2px `--border-focus` outline at 2px offset, with
+  `--shadow-focus` available for form controls.
 - **Disabled.** `opacity: 0.4`, `cursor: not-allowed`. Never `display:
   none`.
-- **Selection.** Brass-5 background, ink-12 text.
+- **Selection.** `--accent-wash` background, primary ink text.
 
 ### Borders, shadows, transparency
 
-- **Borders.** Always 1px hairline. `ink-4` default, `ink-10` strong.
-  Borders communicate hierarchy more than fills do.
-- **Shadows.** Almost never. Permitted only for floating menus
-  (`shadow-menu` — a 1px ink keyline + 24px soft drop, used on `<select>`
-  popovers and the column-selector menu). Never on cards.
-- **Transparency / blur.** Only on the sticky navbar
-  (`background: rgba(246,244,239,0.88); backdrop-filter: blur(8px)`).
-  Nowhere else.
+- **Borders.** Always 1px hairline. `--border-default` is the default and
+  `--border-strong` is the keyline.
+- **Shadows.** Panels use the restrained Wave 5 `--shadow-surface`; raised
+  controls and menus use `--shadow-raised` or `--shadow-menu`.
+- **Transparency / blur.** The sticky navbar uses `--header` with backdrop
+  blur. Surface translucency is limited to Wave 5 panels.
 
 ### Cards
 
-A MyBikeLab card is **square, paper-0 fill, hairline ink-4 border, no
-shadow, generous padding (`24px`)**. There are three flavors:
+A MyBikeLab card is a **panel fill, hairline border, controlled shadow and
+generous padding (`24px`)**. There are three flavors:
 
-1. **Hairline card** — the default panel. Used for filter wells, partnership
-   tiles, content blocks.
-2. **Keyline card** — no border, just a `1px solid ink-10` top rule and
-   editorial serif headline. Used for roadmap phases and editorial blocks.
-3. **Ink-inverse card** — `ink-12` background, paper-1 text. Used for the
+1. **Surface card** — the default panel. Used for filter wells, partnership
+   tiles and content blocks.
+2. **Keyline card** — no border, just a `1px solid var(--border-strong)` top
+   rule and a strong grotesk headline. Used for roadmap phases and editorial
+   blocks.
+3. **Ink-inverse card** — primary ink background, page text. Used for the
    partnership / contact section to break visual rhythm without using color.
 
 ---
@@ -287,12 +268,8 @@ shadow, generous padding (`24px`)**. There are three flavors:
 and miter joins are deliberate — they read as drafting / technical, not
 friendly-rounded.
 
-**Source.** The codebase does **not** ship its own icon library — components
-inline single-purpose SVGs as needed (hamburger, chevron, check). We
-**substitute Lucide** (`https://unpkg.com/lucide@latest`) as the canonical
-icon set, matching the technical stroke style. **⚠️ This is a substitution
-flagged for the user** — if the team has an opinion (e.g. they'd rather use
-Phosphor or Tabler), swap once and the system inherits.
+**Source.** Production uses the installed `lucide-react` package as the
+canonical icon set, matching the technical stroke style.
 
 **Usage rules.**
 
@@ -317,20 +294,14 @@ Phosphor or Tabler), swap once and the system inherits.
 
 | Role | Font | Source | Notes |
 |---|---|---|---|
-| Display & UI | **Inter** | Google Fonts CDN | Kept from the existing codebase — unified family across display, body, labels. |
-| Numerals | **JetBrains Mono** | Google Fonts CDN | All numeric values, code-like UI, technical readouts. |
+| Display & UI | **Schibsted Grotesk** | Bundled woff2 | Wave 5 interface, display, body and labels. |
+| Numerals | **Fragment Mono** | Bundled woff2 | All numeric values, code-like UI and technical readouts. |
 
 **Notes for the user:**
 
-- The codebase already uses **Inter** — we've kept it. Display headlines
-  use the same family at heaviest weights (`800`) with very tight tracking,
-  which gives the precision feel without introducing a second family.
-- **JetBrains Mono is new** — added because every numeric value in the
-  product (weights, prices, dimensions) reads as tabular data. If you'd
-  rather use Inter's tabular figures across the board, set `--font-mono`
-  to Inter in `colors_and_type.css` and add `font-feature-settings: 'tnum'`.
-- Both load from Google Fonts via `@import`. Self-hosted woff2 can be
-  bundled into `fonts/` if performance or CSP requires — flag and we'll do it.
+- **Schibsted Grotesk** and **Fragment Mono** are bundled in
+  `frontend/src/assets/fonts/`, keeping the production font policy
+  self-contained and compatible with the existing CSP.
 
 ---
 

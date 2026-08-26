@@ -3,7 +3,11 @@ import { useSelector } from 'react-redux';
 import WheelImageCarousel from './WheelImageCarousel';
 import { convert, formatPrice, isSupportedCurrency } from '../../lib/currency';
 
-const STACKED_PANEL_BREAKPOINT_PX = 1040;
+// The Wave 5 page container is capped at 1360px, which leaves a narrower
+// result panel on wide viewports than the former fluid layout. Keep the
+// minimum two-column panel width explicit so 1600px remains side by side while
+// the existing 1200px stacking behavior is preserved.
+const STACKED_PANEL_BREAKPOINT_PX = 900;
 const hasKnownPrice = (entry) => Number.isFinite(entry.amount) && isSupportedCurrency(entry.currency);
 // Ledger prices follow the active display currency (TASK-004); converted rows
 // carry an `≈` hint when their source currency differs from the display one.

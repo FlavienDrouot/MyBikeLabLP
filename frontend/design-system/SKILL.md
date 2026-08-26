@@ -16,19 +16,24 @@ MyBikeLab is a structured-data comparison platform for road cyclists — starts 
 
 **Three principles** that distinguish MyBikeLab from generic-SaaS:
 
-1. **Paper, not white.** The default surface is `Paper` (warm `#f6f4ef`); `Mist` cool grey and `Porcelain` near-white also ship. Switch via body class `pal-*`. Never `#ffffff` raw, never pure `#000000`.
-2. **Numbers in mono.** Every numeric value uses JetBrains Mono with `font-variant-numeric: tabular-nums`. Weight, price, depth, percentages, all tabular.
-3. **Hairlines, not shadows.** Cards are square (`radius: 0`), bordered with `1px solid ink-4`, never drop-shadowed.
+1. **Wave 5 Light.** The default surface is the cool technical page `#f4f7fa`, with white panels, recessed wells and a restrained blue accent. Cream and Dark will translate the same semantic tokens later. Never pure `#000000`.
+2. **Numbers in mono.** Every numeric value uses Fragment Mono with `font-variant-numeric: tabular-nums`. Weight, price, depth, percentages, all tabular.
+3. **Controlled depth.** Panels use a 14px radius, hairline border and the restrained Wave 5 surface shadow. Floating elements may use the raised shadow.
 
-**Committed direction:** Notebook (editorial, premium-minimal, brass accents, generous air).
+**Committed direction:** Wave 5 Light (technical, restrained blue accent, generous air).
 
-**Accent is a swappable axis** (`acc-*`): Brass (default), Cobalt, Oxblood, Forest. Each overrides the `--brass-*` ramp, so brass usages reskin automatically. Canonical default is **Paper + Brass**; documented alternate pairings are **Mist + Cobalt** and **Porcelain + Forest**.
+**Accent remains a semantic axis** through `--accent`, `--accent-muted` and
+`--accent-wash`; future themes must translate these tokens without adding
+Light-specific DOM.
 
 **Hard rules (see README “Editorial & UI Rules”):** no em-dash/en-dash in prose (hyphen only); no section-index labels (`01 / 03`, `Phase 01`); no version labels on marketing; no decorative status dots; no glows, gradient text, or pure black.
 
-**Type stack:** Inter (kept from the codebase) for display + UI + body, separated by weight & tracking. JetBrains Mono carries every numeric value.
-**Accent:** Brass `#c9a86a` by default; swappable via `acc-*` (Cobalt, Oxblood, Forest). Used sparingly for the primary CTA, focus, and key data.
-**Avoid:** emoji, exclamation marks, gradients, blue-purple SaaS palettes, rounded-corner-with-colored-left-border cards.
+**Type stack:** Schibsted Grotesk for display, UI and body, separated by weight
+and tracking. Fragment Mono carries every numeric value.
+**Accent:** Wave 5 blue `#2f64a9`, used sparingly for focus, active controls
+and key data.
+**Avoid:** emoji, exclamation marks, gradients, blue-purple SaaS palettes,
+and decorative noise.
 
 ## Files
 
