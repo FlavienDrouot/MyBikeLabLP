@@ -39,13 +39,13 @@ const ContactForm = () => {
   if (sent) {
     return (
       <div className="card p-6 text-center">
-        <div className="mx-auto grid h-10 w-10 place-items-center rounded-none bg-brass-3 text-brass-9">
+        <div className="mx-auto grid h-10 w-10 place-items-center rounded-none bg-accent-wash text-accent">
           <Icon as={Check} size={20} aria-hidden="true" />
         </div>
-        <h3 className="mt-4 text-lg font-semibold text-ink-11">
+        <h3 className="mt-4 text-lg font-semibold text-content-primary">
           {t('contact.success.title', { name: form.name || t('contact.successFallbackName') })}
         </h3>
-        <p className="mt-1 text-ink-8">
+        <p className="mt-1 text-content-secondary">
           {t('contact.success.body', { email: form.email })}
         </p>
       </div>
@@ -56,7 +56,7 @@ const ContactForm = () => {
     <form onSubmit={onSubmit} className="card p-6 space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="name" className="text-sm font-medium text-ink-11">{t('contact.namePlaceholder')}</label>
+          <label htmlFor="name" className="text-sm font-medium text-content-primary">{t('contact.namePlaceholder')}</label>
           <input
             id="name"
             name="name"
@@ -70,7 +70,7 @@ const ContactForm = () => {
           )}
         </div>
         <div>
-          <label htmlFor="email" className="text-sm font-medium text-ink-11">{t('contact.emailPlaceholder')}</label>
+          <label htmlFor="email" className="text-sm font-medium text-content-primary">{t('contact.emailPlaceholder')}</label>
           <input
             id="email"
             name="email"
@@ -86,7 +86,7 @@ const ContactForm = () => {
         </div>
       </div>
       <div>
-        <label htmlFor="company" className="text-sm font-medium text-ink-11">{t('contact.companyPlaceholder')}</label>
+        <label htmlFor="company" className="text-sm font-medium text-content-primary">{t('contact.companyPlaceholder')}</label>
         <input
           id="company"
           name="company"
@@ -97,7 +97,7 @@ const ContactForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="message" className="text-sm font-medium text-ink-11">{t('contact.messagePlaceholder')}</label>
+        <label htmlFor="message" className="text-sm font-medium text-content-primary">{t('contact.messagePlaceholder')}</label>
         <textarea
           id="message"
           name="message"

@@ -151,7 +151,7 @@ describe('weight — renderCell', () => {
 
   it('renders divergent pair: sub-line is a block div with correct classes', () => {
     const html = render('weight', { weight_grams: { front: 720, rear: 850 } });
-    expect(html).toContain('<div class="text-xs text-ink-7 mt-0.5">');
+    expect(html).toContain('<div class="text-xs text-content-muted mt-0.5">');
   });
 
   it('renders divergent pair: unit g appears exactly twice (primary + sub-line)', () => {

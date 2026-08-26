@@ -30,7 +30,7 @@ const CurrencyToggle = () => {
             aria-label={t(`nav.currencyOption.${code}`)}
             className={`px-2 py-1 rounded-xs text-xs font-semibold tracking-wide transition-colors ${
               isActive
-                ? 'bg-ink-11 text-paper-0'
+                ? 'bg-bg-inverse text-surface-panel'
                 : 'text-fg-muted hover:text-fg-primary'
             }`}
             style={{
@@ -71,7 +71,7 @@ const LanguageToggle = () => {
             aria-pressed={isActive}
             className={`px-2 py-1 rounded-xs text-xs font-semibold uppercase tracking-wide transition-colors ${
               isActive
-                ? 'bg-ink-11 text-paper-0'
+                ? 'bg-bg-inverse text-surface-panel'
                 : 'text-fg-muted hover:text-fg-primary'
             }`}
             style={{
@@ -129,7 +129,7 @@ const Navbar = () => {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-40 w-full border-b border-border-default bg-paper-1/88 backdrop-blur"
+      className="sticky top-0 z-40 w-full border-b border-border-default bg-header backdrop-blur"
     >
       <div className="container-page flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2">

@@ -36,7 +36,7 @@ const WheelSchematic = () => {
         zIndex: 2,
         width: '100%',
         height: '100%',
-        color: 'var(--ink-11)',
+        color: 'var(--content-primary)',
         pointerEvents: 'none',
       }}
     >
@@ -48,11 +48,11 @@ const WheelSchematic = () => {
       <g stroke="currentColor" strokeWidth="0.6">{spokes}</g>
       <g fontFamily="var(--font-mono)" fontSize="9" fill="currentColor">
         <line x1="150" y1="6" x2="150" y2="12" stroke="currentColor" strokeWidth="0.8" />
-        <text x="158" y="12" letterSpacing="0.04em" fill="var(--ink-7)">700C</text>
+        <text x="158" y="12" letterSpacing="0.04em" fill="var(--content-muted)">700C</text>
         <line x1="288" y1="150" x2="294" y2="150" stroke="currentColor" strokeWidth="0.8" />
-        <text x="254" y="167" letterSpacing="0.04em" fill="var(--ink-7)">rim</text>
+        <text x="254" y="167" letterSpacing="0.04em" fill="var(--content-muted)">rim</text>
         <line x1="150" y1="294" x2="150" y2="288" stroke="currentColor" strokeWidth="0.8" />
-        <text x="132" y="285" letterSpacing="0.04em" fill="var(--ink-7)">hub</text>
+        <text x="132" y="285" letterSpacing="0.04em" fill="var(--content-muted)">hub</text>
       </g>
     </svg>
   );
@@ -77,7 +77,7 @@ const WheelImageCarousel = ({ wheel }) => {
           flex: '1 1 auto',
           minHeight: 0,
           position: 'relative',
-          color: 'var(--ink-11)',
+          color: 'var(--content-primary)',
         }}
       >
         <div
@@ -87,7 +87,7 @@ const WheelImageCarousel = ({ wheel }) => {
             inset: 0,
             overflow: 'hidden',
             borderRadius: '50%',
-            background: 'var(--paper-0)',
+            background: 'var(--surface-panel)',
           }}
         >
           {slides.length > 0 && (
@@ -139,7 +139,7 @@ const WheelImageCarousel = ({ wheel }) => {
               onClick={handlePrev}
               aria-label="Previous image"
               disabled={activeIndex === 0}
-              className="rounded-xs bg-paper-2 text-ink-11 flex items-center justify-center hover:bg-paper-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8"
+              className="rounded-xs bg-surface-well text-content-primary flex items-center justify-center hover:bg-surface-table-header focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               style={{
                 position: 'absolute',
                 left: 'var(--space-3)',
@@ -148,7 +148,7 @@ const WheelImageCarousel = ({ wheel }) => {
                 zIndex: 10,
                 width: '32px',
                 height: '32px',
-                border: '1px solid var(--ink-4)',
+                border: '1px solid var(--border-default)',
                 cursor: activeIndex === 0 ? 'not-allowed' : 'pointer',
                 opacity: activeIndex === 0 ? 0.4 : 1,
                 transition: 'opacity var(--duration-base) var(--ease-standard)',
@@ -160,7 +160,7 @@ const WheelImageCarousel = ({ wheel }) => {
               onClick={handleNext}
               aria-label="Next image"
               disabled={activeIndex === slides.length - 1}
-              className="rounded-xs bg-paper-2 text-ink-11 flex items-center justify-center hover:bg-paper-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8"
+              className="rounded-xs bg-surface-well text-content-primary flex items-center justify-center hover:bg-surface-table-header focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               style={{
                 position: 'absolute',
                 right: 'var(--space-3)',
@@ -169,7 +169,7 @@ const WheelImageCarousel = ({ wheel }) => {
                 zIndex: 10,
                 width: '32px',
                 height: '32px',
-                border: '1px solid var(--ink-4)',
+                border: '1px solid var(--border-default)',
                 cursor: activeIndex === slides.length - 1 ? 'not-allowed' : 'pointer',
                 opacity: activeIndex === slides.length - 1 ? 0.4 : 1,
                 transition: 'opacity var(--duration-base) var(--ease-standard)',
@@ -182,10 +182,10 @@ const WheelImageCarousel = ({ wheel }) => {
       </div>
       {hasMultipleSlides && (
         <div
-          className="mt-3 flex items-center justify-center gap-2 text-ink-8"
+          className="mt-3 flex items-center justify-center gap-2 text-content-secondary"
           aria-label={`Image ${activeIndex + 1} of ${slides.length}`}
         >
-          <span className="t-numeric text-[10px] text-ink-7">
+          <span className="t-numeric text-[10px] text-content-muted">
             {activeIndex + 1} / {slides.length}
           </span>
           <span className="flex items-center gap-1.5">
@@ -196,7 +196,7 @@ const WheelImageCarousel = ({ wheel }) => {
                 onClick={() => handleSelect(index)}
                 aria-label={`Show image ${index + 1}`}
                 className={`h-1.5 rounded-xs transition-[width,background-color,opacity] duration-quick ease-standard ${
-                  index === activeIndex ? 'w-4 bg-ink-9 opacity-100' : 'w-1.5 bg-ink-6 opacity-40'
+                  index === activeIndex ? 'w-4 bg-content-secondary opacity-100' : 'w-1.5 bg-content-faint opacity-40'
                 }`}
               />
             ))}

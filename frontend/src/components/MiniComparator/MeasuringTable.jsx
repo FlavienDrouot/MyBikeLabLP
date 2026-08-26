@@ -69,7 +69,7 @@ const MeasuringTable = ({ items, cols, onMeasure }) => {
           {cols.map((p) => (
             <th
               key={p.id}
-              className="px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-7"
+              className="px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-content-muted"
             >
               {t(p.label)}
               {/* Always reserve the sort-arrow width (visible table renders it on

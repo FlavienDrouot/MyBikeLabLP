@@ -17,14 +17,8 @@ const ColumnSelector = ({ visibility, onToggle }) => {
   const computePosition = () => {
     if (!buttonRef.current) return;
     const rect = buttonRef.current.getBoundingClientRect();
-    const menuRect = popupRef.current?.getBoundingClientRect();
-    const gap = 8;
-    const belowTop = rect.bottom + gap;
-    const top = menuRect && belowTop + menuRect.height > window.innerHeight
-      ? Math.max(gap, rect.top - menuRect.height - gap)
-      : belowTop;
     setPopupStyle({
-      top,
+      top: rect.bottom + 8,
       right: window.innerWidth - rect.right,
     });
   };
@@ -59,7 +53,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
         ref={buttonRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-2 rounded-xs border border-ink-4 bg-paper-0 px-3 py-2 text-sm font-medium text-ink-11 hover:border-brass-8 hover:text-brass-8"
+        className="inline-flex items-center gap-2 rounded-xs border border-border-default bg-surface-panel px-3 py-2 text-sm font-medium text-content-primary hover:border-accent hover:text-accent"
         style={{ transition: 'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard)' }}
         aria-haspopup="true"
         aria-expanded={open}
@@ -72,7 +66,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
         <div
           ref={popupRef}
           role="menu"
-          className="fixed z-50 max-h-[80vh] overflow-y-auto rounded-none border border-ink-10 bg-paper-0 shadow-menu p-3 flex flex-col gap-3 sm:flex-row sm:gap-4"
+          className="fixed z-50 max-h-[80vh] overflow-y-auto rounded-none border border-border-strong bg-surface-panel shadow-menu p-3 flex flex-col gap-3 sm:flex-row sm:gap-4"
           style={popupStyle}
         >
           {COLUMN_GROUPS.map((group) => {
@@ -84,18 +78,18 @@ const ColumnSelector = ({ visibility, onToggle }) => {
             if (items.length === 0) return null;
             return (
               <div key={group.id} className="min-w-[9rem]">
-                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-7 mb-1.5">
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-content-muted mb-1.5">
                   {t(group.label)}
                 </div>
                 <ul className="space-y-1">
                   {items.map((p) => (
                     <li key={p.id}>
-                      <label className="flex items-center gap-2 px-1 py-1 rounded-none hover:bg-ink-2/60 cursor-pointer text-sm text-ink-11">
+                      <label className="flex items-center gap-2 px-1 py-1 rounded-none hover:bg-bg-recessed/60 cursor-pointer text-sm text-content-primary">
                         <input
                           type="checkbox"
                           checked={!!visibility[p.id]}
                           onChange={() => onToggle(p.id)}
-                          className="h-4 w-4 rounded border-ink-4 accent-brass-7"
+                          className="h-4 w-4 rounded border-border-default accent-accent"
                         />
                         {t(p.label)}
                       </label>

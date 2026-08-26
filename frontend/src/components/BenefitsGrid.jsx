@@ -13,7 +13,7 @@ const BenefitsGrid = () => {
   const items = t('benefits.items', { returnObjects: true });
 
   return (
-    <section className="section bg-paper-2">
+    <section className="section bg-surface-well">
       <div className="container-page">
         <div className="text-center max-w-2xl mx-auto">
           <p className="t-eyebrow">{t('benefits.sectionIndex')}</p>
@@ -22,11 +22,11 @@ const BenefitsGrid = () => {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {items.map((b, idx) => (
             <div key={b.title} className="card p-6">
-              <div className="grid h-10 w-10 place-items-center rounded-none bg-brass-3 text-brass-9">
+              <div className="grid h-10 w-10 place-items-center rounded-none bg-accent-wash text-accent">
                 {ICONS[idx]}
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-ink-11">{b.title}</h3>
-              <p className="mt-2 text-ink-8">{b.description}</p>
+              <h3 className="mt-4 text-lg font-semibold text-content-primary">{b.title}</h3>
+              <p className="mt-2 text-content-secondary">{b.description}</p>
             </div>
           ))}
         </div>

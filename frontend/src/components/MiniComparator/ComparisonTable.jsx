@@ -171,11 +171,11 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   }, [closeExpandedPanel, wheels]);
 
   return (
-    <div className="bg-paper-0 border border-ink-10 overflow-hidden w-full max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden snap-start">
+    <div className="bg-surface-panel border border-border-strong overflow-hidden w-full max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden snap-start">
       <div className="flex items-center justify-between px-5 py-4">
-        <h3 className="text-base font-semibold text-ink-11">
+        <h3 className="text-base font-semibold text-content-primary">
           {t('table.heading')}{' '}
-          <span className="text-ink-7 font-normal">
+          <span className="text-content-muted font-normal">
             — {wheels.length} {t('table.of')} {total}
           </span>
         </h3>
@@ -185,7 +185,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
             onClick={onOpenFilters}
             aria-expanded={filtersOpen}
             aria-controls="filters-drawer"
-            className="lg:hidden inline-flex items-center gap-2 rounded-xs border border-ink-4 bg-paper-0 px-4 py-2 text-sm font-semibold text-ink-11 hover:border-brass-8 hover:text-brass-8"
+            className="lg:hidden inline-flex items-center gap-2 rounded-xs border border-border-default bg-surface-panel px-4 py-2 text-sm font-semibold text-content-primary hover:border-accent hover:text-accent"
             style={{ transition: 'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard)' }}
           >
             <Icon as={SlidersHorizontal} size={16} aria-hidden="true" />
@@ -198,7 +198,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
       <FilterChips />
 
       {wheels.length === 0 ? (
-        <div className="p-10 text-center text-ink-7 text-sm">
+        <div className="p-10 text-center text-content-muted text-sm">
           {t('table.emptyState')}
         </div>
       ) : (
@@ -218,7 +218,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
             aria-label={t('table.scrollRegion')}
           >
           <table
-            className="text-sm bg-paper-0 border-separate border-spacing-0"
+            className="text-sm bg-surface-panel border-separate border-spacing-0"
             aria-label={t('table.label')}
             style={widthsReady ? { tableLayout: 'fixed', width: totalWidth } : undefined}
           >
@@ -230,7 +230,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                 <col style={{ width: ACTIONS_COL_PX }} />
               </colgroup>
             )}
-            <thead className="bg-paper-1 text-ink-7">
+            <thead className="bg-surface-page text-content-muted">
               <tr className="text-left">
                 {cols.map((p) => {
                   const sortable = isSortable(p);
@@ -241,8 +241,8 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                     <th
                       key={p.id}
                       aria-sort={sortable ? ariaSort : undefined}
-                      className={`px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] sticky top-0 z-10 bg-paper-1 border-b border-ink-10 ${
-                        dir ? 'text-ink-12' : 'text-ink-7'
+                      className={`px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] sticky top-0 z-10 bg-surface-page border-b border-border-strong ${
+                        dir ? 'text-content-primary' : 'text-content-muted'
                       }`}
                     >
                       {sortable ? (
@@ -250,13 +250,13 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                           type="button"
                           onClick={() => cycleSort(p)}
                           aria-label={t('table.sortBy', { label: t(p.label) })}
-                          className="group inline-flex items-center gap-1 font-semibold uppercase tracking-[0.16em] hover:text-ink-12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8"
+                          className="group inline-flex items-center gap-1 font-semibold uppercase tracking-[0.16em] hover:text-content-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                         >
                           {t(p.label)}
                           <span
                             aria-hidden="true"
                             className={
-                              dir ? 'text-brass-8' : 'text-ink-5 group-hover:text-ink-8'
+                              dir ? 'text-accent' : 'text-content-faint group-hover:text-content-secondary'
                             }
                           >
                             {dir === 'asc' ? '↑' : '↓'}
@@ -268,14 +268,14 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                     </th>
                   );
                 })}
-                <th className="px-4 py-3 w-10 sticky top-0 z-10 bg-paper-1 border-b border-ink-10" />
+                <th className="px-4 py-3 w-10 sticky top-0 z-10 bg-surface-page border-b border-border-strong" />
               </tr>
             </thead>
             <tbody>
               {(isDesktop ? wheels : pageWheels).map((w) => (
                 <React.Fragment key={w.id}>
                   <tr
-                    className="hover:bg-brass-1 cursor-pointer"
+                    className="hover:bg-accent-wash cursor-pointer"
                     tabIndex="0"
                     aria-expanded={expandedId === w.id}
                     aria-label={t('table.openDetails', { model: w.model })}
@@ -302,7 +302,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                         </td>
                       );
                     })}
-                    <td className="px-4 py-3 text-ink-6">
+                    <td className="px-4 py-3 text-content-faint">
                       <Icon
                         as={ChevronDown}
                         size={16}
@@ -332,7 +332,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                             aria-label={t('nav.closeMenu')}
                             aria-description={t('wheelDetail.close')}
                             onClick={closeExpandedPanel}
-                            className="absolute right-3 top-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-xs border border-ink-4 bg-paper-0 text-ink-11 hover:border-ink-10 hover:bg-paper-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8"
+                            className="absolute right-3 top-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-xs border border-border-default bg-surface-panel text-content-primary hover:border-border-strong hover:bg-surface-page focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                             style={{ transition: 'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard)' }}
                           >
                             <Icon as={X} size={16} aria-hidden="true" />

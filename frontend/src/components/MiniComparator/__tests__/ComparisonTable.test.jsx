@@ -213,8 +213,8 @@ describe('ComparisonTable', () => {
       const closeButton = closeButtonOf(container);
       expect(closeButton).not.toBeUndefined();
       expect(closeButton.className).toContain('rounded-xs');
-      expect(closeButton.className).toContain('text-ink-11');
-      expect(closeButton.className).toContain('focus-visible:outline-brass-8');
+      expect(closeButton.className).toContain('text-content-primary');
+      expect(closeButton.className).toContain('focus-visible:outline-accent');
       expect(closeButton.className).not.toContain('rounded-full');
 
       act(() => {

@@ -127,18 +127,20 @@
     color: var(--surface-page);
     padding: 13px 19px;
     font-size: 13.5px;
-    font-weight: var(--weight-semibold);
+    font-weight: 650;
     text-decoration: none;
-    transition: color var(--duration-quick) var(--ease-standard),
+    transition: transform var(--duration-quick) var(--ease-standard),
+      color var(--duration-quick) var(--ease-standard),
       background-color var(--duration-quick) var(--ease-standard),
       border-color var(--duration-quick) var(--ease-standard),
       box-shadow var(--duration-quick) var(--ease-standard);
   }
 
   .btn-primary:hover {
+    transform: translateY(-1px);
     border-color: var(--accent);
     background: var(--accent);
-    box-shadow: var(--shadow-raised);
+    box-shadow: 0 10px 22px color-mix(in srgb, var(--accent) 24%, transparent);
   }
 
   .btn-ghost {

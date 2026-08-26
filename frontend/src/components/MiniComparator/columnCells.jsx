@@ -29,6 +29,6 @@ export const renderCellFor = (property, t, ctx) => {
 };
 
 export const cellClassFor = (property) => {
-  const base = property.column?.cellClassName ?? `px-4 py-3 text-ink-11`;
+  const base = property.column?.cellClassName ?? `px-4 py-3 text-content-primary`;
   return property.unit !== undefined ? `${base} font-mono tabular-nums` : base;
 };

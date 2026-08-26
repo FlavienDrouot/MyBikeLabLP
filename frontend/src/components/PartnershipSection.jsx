@@ -6,14 +6,14 @@ const PartnershipSection = () => {
   const audiences = t('partnership.audiences', { returnObjects: true });
 
   return (
-    <section id="partnerships" className="section bg-ink-12 text-paper-1">
+    <section id="partnerships" className="section bg-bg-inverse text-content-on-inverse">
       <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
         <div>
-          <p className="t-eyebrow text-brass-7">{t('partnership.sectionIndex')}</p>
+          <p className="t-eyebrow text-accent">{t('partnership.sectionIndex')}</p>
           <h2 className="mt-2 t-h1">
             {t('partnership.title')}
           </h2>
-          <p className="mt-3 text-lg text-paper-2 max-w-xl">
+          <p className="mt-3 text-lg text-content-on-inverse max-w-xl">
             {t('partnership.intro')}
           </p>
 
@@ -28,7 +28,7 @@ const PartnershipSection = () => {
         </div>
 
         <div id="contact">
-          <div className="lg:hidden border-t border-ink-10 mb-8" />
+          <div className="lg:hidden border-t border-border-strong mb-8" />
           <ContactForm />
         </div>
       </div>

@@ -167,8 +167,9 @@ AI-template territory. Apply them to every product surface.
   ink `#101722`, secondary ink `#4d5b6d`, muted ink `#718096`, default line
   `#d8e1eb`, subtle line `#e8edf3`, accent `#2f64a9`, accent wash `#edf4fb`.
 - Use `--surface-*`, `--content-*`, `--border-*`, `--accent*` and
-  `--shadow-*` in new production code. The old `paper-*`, `ink-*` and
-  `brass-*` names remain aliases while sections are migrated sequentially.
+  `--shadow-*` in production code. Production Tailwind exposes only these
+  semantic namespaces; the old variable ramps remain available only to
+  standalone historical design-system previews.
 - Status colors remain separate from the visual accent and must not be used as
   decoration. No gradients, textures or noise overlays.
 

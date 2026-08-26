@@ -55,6 +55,8 @@
   --content-primary: var(--ink);
   --content-secondary: var(--ink-secondary);
   --content-muted: var(--muted);
+  --content-faint: var(--control-switch);
+  --content-on-inverse: var(--well);
   --border-default: var(--line);
   --border-subtle: var(--line-2);
   --border-strong: var(--ink);
@@ -70,15 +72,15 @@
   --fg-primary: var(--content-primary);
   --fg-secondary: var(--content-secondary);
   --fg-muted: var(--content-muted);
-  --fg-faint: var(--content-muted);
+  --fg-faint: var(--content-faint);
   --fg-inverse: var(--surface-page);
   --rule-strong: var(--content-primary);
   --rule-default: var(--border-default);
   --rule-faint: var(--border-subtle);
   --accent-fg-on: var(--surface-page);
 
-  /* Compatibility ramps. Existing product selectors resolve to the
-     semantic Wave 5 values until their markup is migrated section by section. */
+  /* Legacy ramps are kept for standalone historical previews only. Production
+     components use the semantic namespaces below and no longer depend on them. */
   --paper-0: var(--surface-panel);
   --paper-1: var(--surface-page);
   --paper-2: var(--surface-well);

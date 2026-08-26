@@ -34,10 +34,10 @@ const FilterToggle = ({ enabled, onChange, ariaLabel }) => (
     aria-label={ariaLabel}
     onClick={() => onChange(!enabled)}
     className={`flex h-5 w-9 cursor-pointer items-center rounded-full p-0.5 transition-colors ${
-      enabled ? 'bg-ink-12 justify-end' : 'bg-ink-4 justify-start'
+      enabled ? 'bg-bg-inverse justify-end' : 'bg-control-switch justify-start'
     }`}
   >
-    <span className="h-4 w-4 rounded-full bg-paper-0 transition-transform" />
+    <span className="h-4 w-4 rounded-full bg-surface-panel transition-transform" />
   </button>
 );
 
@@ -77,7 +77,7 @@ const DualRangeRow = ({
   return (
     <div className="space-y-3">
       <div className="space-y-1">
-        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">
+        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">
           {onToggleEnabled && (
             <FilterToggle
               enabled={enabled}
@@ -87,7 +87,7 @@ const DualRangeRow = ({
           )}
           {label}
         </div>
-        <span className="block font-mono text-xs text-ink-8 tabular-nums">
+        <span className="block font-mono text-xs text-content-secondary tabular-nums">
           {valueLow}
           {unit} - {valueHigh}
           {unit}
@@ -105,7 +105,7 @@ const DualRangeRow = ({
             onChange={(e) => handleLow(e.target.value)}
             className="wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
-          <span className="flex-1 text-center text-ink-5 text-xs select-none">
+          <span className="flex-1 text-center text-content-faint text-xs select-none">
             -
           </span>
           <input
@@ -160,19 +160,19 @@ const DualRangeRow = ({
 // so only one category can be expanded at a time.
 const Section = ({ title, open, onToggle, children, first = false }) => {
   return (
-    <div className={first ? '' : 'border-t border-ink-3 pt-3'}>
+    <div className={first ? '' : 'border-t border-border-subtle pt-3'}>
       <button
         type="button"
         onClick={onToggle}
         className="flex w-full items-center justify-between text-left"
         aria-expanded={open}
       >
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">{title}</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{title}</span>
         <Icon
           as={ChevronDown}
           size={16}
           aria-hidden="true"
-          className={`text-ink-6 transition-transform ${open ? 'rotate-180' : ''}`}
+          className={`text-content-faint transition-transform ${open ? 'rotate-180' : ''}`}
         />
       </button>
       {open && <div className="mt-4 space-y-5">{children}</div>}
@@ -187,8 +187,8 @@ const Pill = ({ active, muted, onClick, children }) => (
     onClick={onClick}
     className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors
       ${active
-        ? 'bg-ink-12 text-paper-1 border-ink-12'
-        : 'bg-paper-1 text-ink-9 border-ink-4 hover:border-ink-10 hover:text-ink-12'
+        ? 'bg-bg-inverse text-content-on-inverse border-border-strong'
+        : 'bg-surface-page text-content-secondary border-border-default hover:border-border-strong hover:text-content-primary'
       }
       ${muted ? 'opacity-40' : ''}`}
   >
@@ -272,7 +272,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">{resolvedLabel}</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
       <div className={filter.enabled ? '' : 'opacity-40 pointer-events-none'}>
         {filter.value.length > 0 && (
@@ -284,10 +284,10 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                   key={String(v)}
                   type="button"
                   onClick={() => toggle(v)}
-                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-ink-12 text-paper-1 hover:bg-ink-10 transition-colors"
+                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-bg-inverse text-content-on-inverse hover:bg-bg-inverse transition-colors"
                 >
                   {valLabel}
-                  <span aria-hidden="true" className="text-paper-1/60">{'\u00D7'}</span>
+                  <span aria-hidden="true" className="text-content-on-inverse/60">{'\u00D7'}</span>
                 </button>
               );
             })}
@@ -300,7 +300,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           onChange={(e) => setSearch(e.target.value)}
           className="wave5-input mb-2 px-3 py-1.5 text-sm"
         />
-        <ul className="max-h-40 overflow-y-auto rounded-none border border-ink-4 filter-panel-scroll">
+        <ul className="max-h-40 overflow-y-auto rounded-none border border-border-default filter-panel-scroll">
           {visible.map((opt) => {
             const count = counts[String(opt)] ?? 0;
             const isActive = filter.value.includes(opt);
@@ -313,12 +313,12 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
               : String(opt);
             return (
               <li key={String(opt)}>
-                <label className={`flex items-center gap-2 px-3 py-1.5 hover:bg-ink-2/60 cursor-pointer text-sm ${isMuted ? 'text-ink-4' : 'text-ink-11'}`}>
+                <label className={`flex items-center gap-2 px-3 py-1.5 hover:bg-bg-recessed/60 cursor-pointer text-sm ${isMuted ? 'text-content-faint' : 'text-content-primary'}`}>
                   <input
                     type="checkbox"
                     checked={isActive}
                     onChange={() => toggle(opt)}
-                    className="h-4 w-4 rounded border-ink-4 accent-brass-7"
+                    className="h-4 w-4 rounded border-border-default accent-accent"
                   />
                   {optLabel} ({count})
                 </label>
@@ -326,7 +326,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
             );
           })}
           {visible.length === 0 && (
-            <li className="px-3 py-2 text-sm text-ink-7 italic">{t('filterPanel.noResults')}</li>
+            <li className="px-3 py-2 text-sm text-content-muted italic">{t('filterPanel.noResults')}</li>
           )}
         </ul>
       </div>
@@ -364,7 +364,7 @@ const MultiSelectFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">{resolvedLabel}</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
       <div
         className={`flex flex-wrap gap-1.5 ${
@@ -422,7 +422,7 @@ const TriStateFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-9">{resolvedLabel}</span>
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
       <div className={`flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-40 pointer-events-none'}`}>
         <Pill active={filter.value === null} onClick={() => set(null)}>
@@ -484,15 +484,15 @@ const FilterPanel = () => {
   return (
     <aside
       aria-label={t('filterPanel.heading')}
-      className="card bg-paper-0 border border-ink-4 p-5 lg:p-6 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto filter-panel-scroll"
+      className="card bg-surface-panel border border-border-default p-5 lg:p-6 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto filter-panel-scroll"
     >
       {/* Header with reset shortcut */}
-      <div className="flex items-center justify-between pb-3 border-b border-ink-10">
-        <h3 className="text-sm font-semibold text-ink-12 tracking-[-0.01em]">{t('filterPanel.heading')}</h3>
+      <div className="flex items-center justify-between pb-3 border-b border-border-strong">
+        <h3 className="text-sm font-semibold text-content-primary tracking-[-0.01em]">{t('filterPanel.heading')}</h3>
         <button
           type="button"
           onClick={() => dispatch(resetFilters())}
-          className="text-xs font-medium text-brass-8 hover:text-brass-9"
+          className="text-xs font-medium text-accent hover:text-accent"
         >
           {t('filterPanel.reset')}
         </button>
