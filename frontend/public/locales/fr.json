@@ -174,8 +174,10 @@
     ]
   },
   "contact": {
+    "eyebrow": "Contact",
     "namePlaceholder": "Nom",
     "emailPlaceholder": "Email",
+    "companyLabel": "Entreprise",
     "companyPlaceholder": "Entreprise (facultatif)",
     "messagePlaceholder": "Message",
     "submit": "Envoyer le message",

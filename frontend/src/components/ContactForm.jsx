@@ -38,14 +38,14 @@ const ContactForm = () => {
 
   if (sent) {
     return (
-      <div className="card p-6 text-center">
-        <div className="mx-auto grid h-10 w-10 place-items-center rounded-none bg-accent-wash text-accent">
+      <div id="contact" className="wave5-panel form-card contact-success">
+        <div className="contact-success-icon">
           <Icon as={Check} size={20} aria-hidden="true" />
         </div>
-        <h3 className="mt-4 text-lg font-semibold text-content-primary">
+        <h3>
           {t('contact.success.title', { name: form.name || t('contact.successFallbackName') })}
         </h3>
-        <p className="mt-1 text-content-secondary">
+        <p>
           {t('contact.success.body', { email: form.email })}
         </p>
       </div>
@@ -53,24 +53,29 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={onSubmit} className="card p-6 space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label htmlFor="name" className="text-sm font-medium text-content-primary">{t('contact.namePlaceholder')}</label>
+    <form id="contact" onSubmit={onSubmit} className="wave5-panel form-card contact-form">
+      <p className="t-eyebrow">{t('contact.eyebrow')}</p>
+      <div className="form-grid">
+        <div className="field">
+          <label htmlFor="name">{t('contact.namePlaceholder')}</label>
           <input
             id="name"
             name="name"
+            type="text"
             maxLength={80}
             value={form.name}
             onChange={onChange}
-            className="wave5-input mt-1 px-3 py-2 text-sm"
+            placeholder={t('contact.namePlaceholder')}
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? 'contact-name-error' : undefined}
+            className="wave5-input"
           />
           {errors.name && (
-            <p className="mt-1 t-body-sm text-signal-down">{errors.name}</p>
+            <p id="contact-name-error" className="field-error" role="alert">{errors.name}</p>
           )}
         </div>
-        <div>
-          <label htmlFor="email" className="text-sm font-medium text-content-primary">{t('contact.emailPlaceholder')}</label>
+        <div className="field">
+          <label htmlFor="email">{t('contact.emailPlaceholder')}</label>
           <input
             id="email"
             name="email"
@@ -78,40 +83,49 @@ const ContactForm = () => {
             maxLength={320}
             value={form.email}
             onChange={onChange}
-            className="wave5-input mt-1 px-3 py-2 text-sm"
+            placeholder={t('contact.emailPlaceholder')}
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? 'contact-email-error' : undefined}
+            className="wave5-input"
           />
           {errors.email && (
-            <p className="mt-1 t-body-sm text-signal-down">{errors.email}</p>
+            <p id="contact-email-error" className="field-error" role="alert">{errors.email}</p>
+          )}
+        </div>
+        <div className="field full">
+          <label htmlFor="company">{t('contact.companyLabel')}</label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            maxLength={120}
+            value={form.company}
+            onChange={onChange}
+            placeholder={t('contact.companyPlaceholder')}
+            className="wave5-input"
+          />
+        </div>
+        <div className="field full">
+          <label htmlFor="message">{t('contact.messagePlaceholder')}</label>
+          <textarea
+            id="message"
+            name="message"
+            maxLength={1200}
+            value={form.message}
+            onChange={onChange}
+            placeholder={t('contact.messagePlaceholder')}
+            aria-invalid={Boolean(errors.message)}
+            aria-describedby={errors.message ? 'contact-message-error' : undefined}
+            className="wave5-input"
+          />
+          {errors.message && (
+            <p id="contact-message-error" className="field-error" role="alert">{errors.message}</p>
           )}
         </div>
       </div>
-      <div>
-        <label htmlFor="company" className="text-sm font-medium text-content-primary">{t('contact.companyPlaceholder')}</label>
-        <input
-          id="company"
-          name="company"
-          maxLength={120}
-          value={form.company}
-          onChange={onChange}
-          className="wave5-input mt-1 px-3 py-2 text-sm"
-        />
+      <div className="form-actions">
+        <button type="submit" className="btn-primary">{t('contact.submit')}</button>
       </div>
-      <div>
-        <label htmlFor="message" className="text-sm font-medium text-content-primary">{t('contact.messagePlaceholder')}</label>
-        <textarea
-          id="message"
-          name="message"
-          maxLength={1200}
-          rows={4}
-          value={form.message}
-          onChange={onChange}
-          className="wave5-input mt-1 px-3 py-2 text-sm"
-        />
-        {errors.message && (
-          <p className="mt-1 t-body-sm text-signal-down">{errors.message}</p>
-        )}
-      </div>
-      <button type="submit" className="btn-primary w-full sm:w-auto">{t('contact.submit')}</button>
     </form>
   );
 };

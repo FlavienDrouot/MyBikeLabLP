@@ -6,31 +6,28 @@ const PartnershipSection = () => {
   const audiences = t('partnership.audiences', { returnObjects: true });
 
   return (
-    <section id="partnerships" className="section bg-bg-inverse text-content-on-inverse">
-      <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
-        <div>
-          <p className="t-eyebrow text-accent">{t('partnership.sectionIndex')}</p>
-          <h2 className="mt-2 t-h1">
-            {t('partnership.title')}
-          </h2>
-          <p className="mt-3 text-lg text-content-on-inverse max-w-xl">
-            {t('partnership.intro')}
-          </p>
+    <section
+      id="partnerships"
+      className="section-spaced partnership-section"
+      aria-labelledby="partnership-title"
+    >
+      <div className="container-page partner-grid">
+        <div className="partner-copy">
+          <p className="t-eyebrow">{t('partnership.sectionIndex')}</p>
+          <h2 id="partnership-title">{t('partnership.title')}</h2>
+          <p className="partner-intro">{t('partnership.intro')}</p>
 
-          <div className="mt-8">
+          <div className="audience-list">
             {audiences.map((a) => (
-              <div key={a.title} className="audience-tile">
-                <div className="audience-tile-title">{a.title}</div>
-                <div className="audience-tile-desc">{a.description}</div>
-              </div>
+              <article key={a.title} className="audience">
+                <h3>{a.title}</h3>
+                <p>{a.description}</p>
+              </article>
             ))}
           </div>
         </div>
 
-        <div id="contact">
-          <div className="lg:hidden border-t border-border-strong mb-8" />
-          <ContactForm />
-        </div>
+        <ContactForm />
       </div>
     </section>
   );
