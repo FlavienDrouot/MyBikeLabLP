@@ -31,6 +31,18 @@
     "subtitle": "Comparez par poids, profil de jante, compatibilité hookless, marque de moyeu, prix et bien plus. Tout dans un seul tableau.",
     "ctaPrimary": "Ouvrir le comparateur →",
     "ctaSecondary": "Voir la roadmap →",
+    "proof": {
+      "wheelsLabel": "roues route",
+      "brandsPrefix": "parmi",
+      "brandsLabel": "marques, dont Roval, Zipp, ENVE, Mavic et Shimano."
+    },
+    "ledger": {
+      "ariaLabel": "Chiffres du catalogue",
+      "wheelsCaption": "paires de roues route indexées dans le catalogue",
+      "filterAxesCaption": "caractéristiques combinables et filtrables",
+      "phasesCaption": "de la comparaison au configurateur vélo complet",
+      "foot": "Interface bilingue, anglais et français · affichage des prix dans plusieurs devises"
+    },
     "stats": {
       "wheels": "Roues",
       "filterAxes": "Axes de filtres",

@@ -31,6 +31,18 @@
     "subtitle": "Compare by weight, rim depth, hookless compatibility, hub brand, price and many more. Structured in a single table.",
     "ctaPrimary": "Open comparator →",
     "ctaSecondary": "See the roadmap →",
+    "proof": {
+      "wheelsLabel": "road wheels",
+      "brandsPrefix": "across",
+      "brandsLabel": "brands, including Roval, Zipp, ENVE, Mavic and Shimano."
+    },
+    "ledger": {
+      "ariaLabel": "Catalog figures",
+      "wheelsCaption": "road wheelsets indexed in the catalog",
+      "filterAxesCaption": "specifications you can combine and filter on",
+      "phasesCaption": "from comparison to full bike configurator",
+      "foot": "Bilingual interface, English and French · multi-currency price display"
+    },
     "stats": {
       "wheels": "Wheels",
       "filterAxes": "Filter axes",
