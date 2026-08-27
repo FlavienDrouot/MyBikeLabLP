@@ -39,17 +39,17 @@ test.beforeEach(async ({ page }) => {
 
 const openGeneralFilters = async (page) => {
   const filters = page.getByRole('complementary', { name: 'Filters' });
-  const brand = filters.getByRole('button', { name: 'Brand', exact: true });
+  const general = filters.getByRole('button', { name: 'General specs' });
 
-  if (await brand.getAttribute('aria-expanded') !== 'true') {
-    await brand.click();
+  if (await general.getAttribute('aria-expanded') !== 'true') {
+    await general.click();
   }
 
   return filters;
 };
 
 const selectMavic = async (filters) => {
-  const mavic = filters.locator('[data-filter-id="brand"]').getByRole('checkbox', { name: /^Mavic/ });
+  const mavic = filters.getByRole('checkbox', { name: /^Mavic/ });
   await expect(mavic).toBeVisible();
   await mavic.check();
 };
@@ -210,15 +210,21 @@ test.describe('Chromium P0 comparator journeys', () => {
     await expect.poll(() => table.getByRole('columnheader').first().evaluate((header) => (
       getComputedStyle(header).position
     ))).toBe('sticky');
+    await expect.poll(() => tableScroll.evaluate((element) => getComputedStyle(element).overflowX)).toBe('auto');
     await expect.poll(() => filters.evaluate((element) => getComputedStyle(element).overflowY)).toBe('auto');
     await expect.poll(() => tableScroll.evaluate((element) => getComputedStyle(element).overflowY)).toBe('auto');
     expect(await filters.evaluate((element) => element.scrollHeight > element.clientHeight)).toBe(true);
     expect(await tableScroll.evaluate((element) => element.scrollHeight > element.clientHeight)).toBe(true);
+    expect(await tableScroll.evaluate((element) => element.scrollWidth > element.clientWidth)).toBe(true);
 
     await tableScroll.evaluate((element) => {
       element.scrollTop = 120;
     });
     await expect.poll(() => tableScroll.evaluate((element) => element.scrollTop)).toBeGreaterThan(0);
+    await tableScroll.evaluate((element) => {
+      element.scrollLeft = 120;
+    });
+    await expect.poll(() => tableScroll.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0);
     expect(await filters.evaluate((element) => element.scrollTop)).toBe(0);
 
     const firstHeader = table.getByRole('columnheader').first();
@@ -279,14 +285,14 @@ test.describe('Mobile comparator journeys', () => {
     const drawer = page.getByRole('dialog', { name: 'Filters' });
     await expect(drawer).toHaveAttribute('aria-modal', 'true');
 
-    const brand = drawer.getByRole('button', { name: 'Brand', exact: true });
-    await focusWithVisibleRing(brand);
-    await brand.press('Enter');
-    await expect(brand).toHaveAttribute('aria-expanded', 'false');
-    await brand.press('Enter');
-    await expect(brand).toHaveAttribute('aria-expanded', 'true');
+    const general = drawer.getByRole('button', { name: 'General specs' });
+    await focusWithVisibleRing(general);
+    await general.press('Enter');
+    await expect(general).toHaveAttribute('aria-expanded', 'false');
+    await general.press('Enter');
+    await expect(general).toHaveAttribute('aria-expanded', 'true');
 
-    const mavic = drawer.locator('[data-filter-id="brand"]').getByRole('checkbox', { name: /^Mavic/ });
+    const mavic = drawer.getByRole('checkbox', { name: /^Mavic/ });
     await focusWithVisibleRing(mavic);
     await page.keyboard.press(' ');
     await expect(mavic).toBeChecked();

@@ -212,7 +212,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
           )}
 
           <div
-            className="table-wrap comparator-table-scroll comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:overflow-y-auto lg:min-h-0"
+            className="table-wrap comparator-table-scroll comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:flex-1 lg:overflow-y-auto lg:min-h-0"
             ref={scrollRef}
             role="region"
             aria-label={t('table.scrollRegion')}
@@ -220,7 +220,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
           <table
             className="comparator-table text-sm bg-surface-panel"
             aria-label={t('table.label')}
-            style={widthsReady ? { tableLayout: 'fixed', width: totalWidth } : undefined}
+            style={widthsReady ? { tableLayout: 'fixed', width: '100%', minWidth: totalWidth } : undefined}
           >
             {widthsReady && (
               <colgroup>

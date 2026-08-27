@@ -13,6 +13,7 @@ import {
   makeSelectContextualCountsFor,
 } from '../../store/selectors/wheelsSelectors';
 import {
+  COLUMN_GROUPS,
   getFilterableProperties,
 } from '../../config/wheelProperties';
 import { roundToStep, clampLow, clampHigh } from './rangeMath';
@@ -23,8 +24,8 @@ import Icon from '../ui/Icon';
 // Reusable UI primitives (unchanged from original prototype).
 // ---------------------------------------------------------------------------
 
-// Wave 5 puts the enable switch in the filter group's header. When off, the
-// group body fades out its controls and the selector ignores this filter.
+// Toggle switch positioned to the left of a filter label. When off, the
+// filter controls fade out and the selector ignores this filter.
 const FilterToggle = ({ enabled, onChange, ariaLabel }) => (
   <button
     type="button"
@@ -70,6 +71,8 @@ const RangeInput = ({ value, locale, onChange, disabled, className, ...props }) 
 };
 
 const DualRangeRow = ({
+  label,
+  unit,
   min,
   max,
   step: stepProp,
@@ -78,6 +81,8 @@ const DualRangeRow = ({
   onChangeLow,
   onChangeHigh,
   enabled = true,
+  onToggleEnabled,
+  ariaLabel,
   locale = 'en-US',
 }) => {
   const computedStep = (max - min) / 50 > 1 ? 1 : 0.1;
@@ -102,6 +107,23 @@ const DualRangeRow = ({
 
   return (
     <div className="range comparator-range-field">
+      <div className="range-head comparator-range-head">
+        <div className="comparator-filter-field-heading flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">
+          {onToggleEnabled && (
+            <FilterToggle
+              enabled={enabled}
+              onChange={onToggleEnabled}
+              ariaLabel={ariaLabel}
+            />
+          )}
+          {label}
+        </div>
+        <span className="range-value comparator-range-summary block font-mono text-xs text-content-secondary tabular-nums">
+          {valueLow}
+          {unit} - {valueHigh}
+          {unit}
+        </span>
+      </div>
       <div className={`comparator-range-controls ${enabled ? '' : 'opacity-40'}`}>
         <div className="comparator-range-row flex items-center">
           <RangeInput
@@ -165,46 +187,25 @@ const DualRangeRow = ({
   );
 };
 
-// Accordion section for one filter axis. The open state is local to the axis,
-// matching Wave 5's independently collapsible filter groups.
-const Section = ({
-  title,
-  open,
-  onToggle,
-  children,
-  first = false,
-  filterId,
-  enabled,
-  onToggleEnabled,
-  ariaLabel,
-}) => {
+// Accordion section for one filter category. Open state is owned by FilterPanel
+// so only one category can be expanded at a time.
+const Section = ({ title, open, onToggle, children, first = false }) => {
   return (
-    <div
-      className={`filter-group comparator-filter-group ${first ? 'comparator-filter-group-first' : ''} ${enabled ? '' : 'comparator-filter-group-disabled'}`}
-      data-filter-id={filterId}
-    >
-      <div className="filter-group-head comparator-filter-group-head">
-        <button
-          type="button"
-          onClick={onToggle}
-          className="group-collapse comparator-filter-group-icon text-content-faint transition-transform"
-          aria-expanded={open}
-          aria-label={title}
-        >
-          <Icon
-            as={ChevronDown}
-            size={16}
-            aria-hidden="true"
-            className={`${open ? '' : '-rotate-90'}`}
-          />
-        </button>
-        <span className="group-title comparator-filter-group-title">{title}</span>
-        <FilterToggle
-          enabled={enabled}
-          onChange={onToggleEnabled}
-          ariaLabel={ariaLabel}
+    <div className={`filter-group comparator-filter-group ${first ? 'comparator-filter-group-first' : ''}`}>
+      <button
+        type="button"
+        onClick={onToggle}
+        className="filter-group-head comparator-filter-group-head"
+        aria-expanded={open}
+      >
+        <Icon
+          as={ChevronDown}
+          size={16}
+          aria-hidden="true"
+          className={`group-collapse comparator-filter-group-icon text-content-faint transition-transform ${open ? '' : '-rotate-90'}`}
         />
-      </div>
+        <span className="group-title comparator-filter-group-title">{title}</span>
+      </button>
       {open && <div className="filter-group-body comparator-filter-group-body">{children}</div>}
     </div>
   );
@@ -234,13 +235,16 @@ const Pill = ({ active, muted, onClick, children }) => (
 
 const RangeFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { step } = property.filter;
   const selectBounds = useMemo(() => makeSelectRangeBoundsFor(property.id), [property.id]);
   const bounds = useSelector(selectBounds);
   const value = filter.value; // { min, max }
+  const resolvedLabel = t(property.label);
   return (
     <DualRangeRow
+      label={resolvedLabel}
+      unit={property.unit ?? ''}
       min={bounds.min}
       max={bounds.max}
       step={step}
@@ -257,6 +261,10 @@ const RangeFilter = ({ property, filter }) => {
         )
       }
       enabled={filter.enabled}
+      onToggleEnabled={(v) =>
+        dispatch(setFilterEnabled({ id: property.id, enabled: v }))
+      }
+      ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
       locale={i18n.language.startsWith('fr') ? 'fr-FR' : 'en-US'}
     />
   );
@@ -284,8 +292,20 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
       )
     : options;
 
+  const resolvedLabel = t(property.label);
+
   return (
     <div className="comparator-filter-field">
+      <div className="comparator-filter-field-heading flex items-center gap-2">
+        <FilterToggle
+          enabled={filter.enabled}
+          onChange={(v) =>
+            dispatch(setFilterEnabled({ id: property.id, enabled: v }))
+          }
+          ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
+        />
+        <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
+      </div>
       <div className={filter.enabled ? '' : 'opacity-40 pointer-events-none'}>
         {filter.value.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-2">
@@ -367,8 +387,20 @@ const MultiSelectFilter = ({ property, filter }) => {
     dispatch(setFilterValue({ id: property.id, value: next }));
   };
 
+  const resolvedLabel = t(property.label);
+
   return (
     <div className="comparator-filter-field">
+      <div className="comparator-filter-field-heading flex items-center gap-2">
+        <FilterToggle
+          enabled={filter.enabled}
+          onChange={(v) =>
+            dispatch(setFilterEnabled({ id: property.id, enabled: v }))
+          }
+          ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
+        />
+        <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
+      </div>
       <div
         className={`seg comparator-filter-pills flex flex-wrap gap-1.5 ${
           filter.enabled ? '' : 'opacity-40 pointer-events-none'
@@ -413,8 +445,20 @@ const TriStateFilter = ({ property, filter }) => {
   const trueCount = counts['true'] ?? 0;
   const falseCount = counts['false'] ?? 0;
 
+  const resolvedLabel = t(property.label);
+
   return (
     <div className="comparator-filter-field">
+      <div className="comparator-filter-field-heading flex items-center gap-2">
+        <FilterToggle
+          enabled={filter.enabled}
+          onChange={(v) =>
+            dispatch(setFilterEnabled({ id: property.id, enabled: v }))
+          }
+          ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
+        />
+        <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
+      </div>
       <div className={`seg comparator-filter-pills flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-40 pointer-events-none'}`}>
         <Pill active={filter.value === null} onClick={() => set(null)}>
           {labelAll}
@@ -454,36 +498,6 @@ const FilterField = ({ property }) => {
   return <Adapter property={property} filter={filter} />;
 };
 
-// Wave 5 presents each filter axis as an independent collapsible group. This
-// keeps the production registry and Redux adapters intact while matching the
-// reference hierarchy and allowing long filter lists to remain scrollable.
-const FilterGroup = ({ property, first = false }) => {
-  const dispatch = useDispatch();
-  const { t } = useTranslation();
-  const filter = useSelector((s) => s.filters.filters[property.id]);
-  const [open, setOpen] = useState(true);
-  const resolvedLabel = t(property.label);
-
-  if (!filter) return null;
-
-  return (
-    <Section
-      title={resolvedLabel}
-      open={open}
-      onToggle={() => setOpen((current) => !current)}
-      first={first}
-      filterId={property.id}
-      enabled={filter.enabled}
-      onToggleEnabled={(enabled) =>
-        dispatch(setFilterEnabled({ id: property.id, enabled }))
-      }
-      ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
-    >
-      <FilterField property={property} />
-    </Section>
-  );
-};
-
 // ---------------------------------------------------------------------------
 // Main panel - iterates over groups and filterable properties.
 // ---------------------------------------------------------------------------
@@ -492,6 +506,15 @@ const FilterPanel = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const filterables = useMemo(() => getFilterableProperties(), []);
+  const nonEmptyGroups = useMemo(
+    () =>
+      COLUMN_GROUPS.map((group) => ({
+        ...group,
+        properties: filterables.filter((p) => p.group === group.id),
+      })).filter((group) => group.properties.length > 0),
+    [filterables]
+  );
+  const [openGroupId, setOpenGroupId] = useState(nonEmptyGroups[0]?.id ?? null);
 
   return (
     <aside
@@ -512,10 +535,25 @@ const FilterPanel = () => {
 
       {/* Sorting moved to clickable column headers (fix-019). */}
 
-      {/* Each registry filter becomes one independent Wave 5 group. */}
-      {filterables.map((property, index) => (
-        <FilterGroup key={property.id} property={property} first={index === 0} />
-      ))}
+      {/* Filters grouped by category. First non-empty group is open by default. */}
+      {nonEmptyGroups.map((group, index) => {
+        const open = openGroupId === group.id;
+        return (
+          <Section
+            key={group.id}
+            title={t(group.label)}
+            open={open}
+            first={index === 0}
+            onToggle={() => setOpenGroupId(open ? null : group.id)}
+          >
+            {group.properties.map((p) => (
+              <div className="comparator-filter-field-wrapper" key={p.id}>
+                <FilterField property={p} />
+              </div>
+            ))}
+          </Section>
+        );
+      })}
     </aside>
   );
 };

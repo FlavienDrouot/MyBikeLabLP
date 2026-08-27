@@ -2147,8 +2147,8 @@
   }
 
   .fchip.comparator-filter-chip.active {
-    border-color: color-mix(in srgb, var(--accent) 32%, var(--border-default));
-    background: var(--accent-wash);
+    border-color: var(--border-default);
+    background: var(--surface-panel);
   }
 
   .fchip.comparator-filter-chip.active b {
@@ -2181,6 +2181,8 @@
   }
 
   div.comparator-table-scroll {
+    overflow-x: auto;
+    overflow-y: auto;
     width: calc(100% - 48px);
     max-width: calc(100% - 48px);
     box-sizing: border-box;
@@ -2188,17 +2190,28 @@
     border: 1px solid var(--border-default);
     border-radius: 9px;
     background: var(--surface-well);
-    scrollbar-gutter: auto;
-    scrollbar-width: none;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-default) var(--surface-well);
   }
 
   div.comparator-table-scroll::-webkit-scrollbar {
-    width: 0;
-    height: 6px;
+    width: 8px;
+    height: 8px;
   }
 
-  div.comparator-table-scroll::-webkit-scrollbar:horizontal {
-    height: 6px;
+  div.comparator-table-scroll::-webkit-scrollbar-track {
+    background: var(--surface-well);
+  }
+
+  div.comparator-table-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-default);
+    border: 2px solid var(--surface-well);
+    border-radius: var(--radius-control);
+  }
+
+  div.comparator-table-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--control-switch);
   }
 
   table.comparator-table {
@@ -2352,6 +2365,12 @@
     bottom: -2%;
     width: 245px;
     height: 245px;
+  }
+}
+
+@media (min-width: 1081px) {
+  section.comparator-section > .container-fluid {
+    max-width: none;
   }
 }
 
