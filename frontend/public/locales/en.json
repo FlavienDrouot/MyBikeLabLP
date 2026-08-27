@@ -58,7 +58,8 @@
     "footerNote": "Official sources · Affiliate links coming soon"
   },
   "filterChips": {
-    "active": "Active"
+    "active": "Active",
+    "none": "No active filters"
   },
   "filterPanel": {
     "heading": "Filters",

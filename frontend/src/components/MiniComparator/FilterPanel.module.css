@@ -13,11 +13,11 @@
 
 .thumb::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background: var(--surface-panel);
-  border: 1px solid var(--content-primary);
+  border: 2px solid var(--accent);
   pointer-events: all;
   cursor: grab;
 }
@@ -28,11 +28,11 @@
 }
 
 .thumb::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background: var(--surface-panel);
-  border: 1px solid var(--content-primary);
+  border: 2px solid var(--accent);
   pointer-events: all;
   cursor: grab;
 }
@@ -44,8 +44,9 @@
 
 .track {
   position: absolute;
-  width: 100%;
-  height: 2px;
+  left: 4px;
+  width: calc(100% - 8px);
+  height: 3px;
   background: var(--border-default);
   z-index: 1;
   top: 50%;
@@ -55,7 +56,7 @@
 
 .range {
   position: absolute;
-  height: 2px;
+  height: 3px;
   background: var(--accent);
   z-index: 2;
   top: 50%;

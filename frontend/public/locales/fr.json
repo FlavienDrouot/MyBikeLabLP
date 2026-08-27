@@ -58,7 +58,8 @@
     "footerNote": "Sources officielles · Liens affiliés bientôt disponibles"
   },
   "filterChips": {
-    "active": "Actifs"
+    "active": "Actifs",
+    "none": "Aucun filtre actif"
   },
   "filterPanel": {
     "heading": "Filtres",

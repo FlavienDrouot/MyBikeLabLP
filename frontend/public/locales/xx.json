@@ -40,6 +40,13 @@
       "caption": "XX"
     }
   },
+  "filterChips": {
+    "active": "XX",
+    "none": "XX"
+  },
+  "wheelDetail": {
+    "priceAnnotation": "XX"
+  },
   "partnership": {
     "audiences": [
       { "title": "XX", "description": "XX" },

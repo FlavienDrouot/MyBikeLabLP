@@ -75,8 +75,8 @@ const DualRangeRow = ({
   const lowZ = valueLow >= max - minDiff ? 5 : 3;
 
   return (
-    <div className="comparator-range-field">
-      <div className="space-y-1">
+    <div className="range comparator-range-field">
+      <div className="range-head comparator-range-head">
         <div className="comparator-filter-field-heading flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">
           {onToggleEnabled && (
             <FilterToggle
@@ -87,7 +87,7 @@ const DualRangeRow = ({
           )}
           {label}
         </div>
-        <span className="comparator-range-summary block font-mono text-xs text-content-secondary tabular-nums">
+        <span className="range-value comparator-range-summary block font-mono text-xs text-content-secondary tabular-nums">
           {valueLow}
           {unit} - {valueHigh}
           {unit}
@@ -119,7 +119,7 @@ const DualRangeRow = ({
             className="comparator-range-input wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
         </div>
-        <div className="relative h-5 flex items-center">
+        <div className="rangebar comparator-rangebar relative h-5 flex items-center">
           <div className={styles.track} />
           <div
             className={styles.range}
@@ -160,22 +160,22 @@ const DualRangeRow = ({
 // so only one category can be expanded at a time.
 const Section = ({ title, open, onToggle, children, first = false }) => {
   return (
-    <div className={`comparator-filter-group ${first ? 'comparator-filter-group-first' : ''}`}>
+    <div className={`filter-group comparator-filter-group ${first ? 'comparator-filter-group-first' : ''}`}>
       <button
         type="button"
         onClick={onToggle}
-        className="comparator-filter-group-head"
+        className="filter-group-head comparator-filter-group-head"
         aria-expanded={open}
       >
-        <span className="comparator-filter-group-title">{title}</span>
         <Icon
           as={ChevronDown}
           size={16}
           aria-hidden="true"
-          className={`comparator-filter-group-icon text-content-faint transition-transform ${open ? 'rotate-180' : ''}`}
+          className={`group-collapse comparator-filter-group-icon text-content-faint transition-transform ${open ? '' : '-rotate-90'}`}
         />
+        <span className="group-title comparator-filter-group-title">{title}</span>
       </button>
-      {open && <div className="comparator-filter-group-body">{children}</div>}
+      {open && <div className="filter-group-body comparator-filter-group-body">{children}</div>}
     </div>
   );
 };
@@ -185,7 +185,7 @@ const Pill = ({ active, muted, onClick, children }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`comparator-filter-pill border transition-colors
+    className={`comparator-filter-pill
       ${active
         ? 'comparator-filter-pill-active bg-accent-wash text-accent border-accent-muted'
         : 'comparator-filter-pill-inactive bg-surface-panel text-content-secondary border-border-default hover:border-border-strong hover:text-content-primary'
@@ -284,7 +284,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                   key={String(v)}
                   type="button"
                   onClick={() => toggle(v)}
-                  className="comparator-selected-filter inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-bg-inverse text-content-on-inverse hover:bg-bg-inverse transition-colors"
+                  className="comparator-selected-filter"
                 >
                   {valLabel}
                   <span aria-hidden="true" className="text-content-on-inverse/60">{'\u00D7'}</span>
@@ -293,14 +293,16 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
             })}
           </div>
         )}
-        <input
-          type="text"
-          placeholder={t('filterPanel.searchPlaceholder')}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="comparator-search-input wave5-input mb-2 px-3 py-1.5 text-sm"
-        />
-        <ul className="comparator-option-list max-h-40 overflow-y-auto rounded-none border border-border-default filter-panel-scroll">
+        <div className="search-field comparator-search-field">
+          <input
+            type="text"
+            placeholder={t('filterPanel.searchPlaceholder')}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="comparator-search-input wave5-input mb-2 px-3 py-1.5 text-sm"
+          />
+        </div>
+        <ul className="brand-list comparator-option-list max-h-40 overflow-y-auto filter-panel-scroll">
           {visible.map((opt) => {
             const count = counts[String(opt)] ?? 0;
             const isActive = filter.value.includes(opt);
@@ -313,20 +315,21 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
               : String(opt);
             return (
               <li key={String(opt)}>
-                <label className={`comparator-filter-option flex items-center gap-2 px-3 py-1.5 hover:bg-bg-recessed/60 cursor-pointer text-sm ${isMuted ? 'text-content-faint' : 'text-content-primary'}`}>
+                <label className={`fopt comparator-filter-option flex items-center gap-2 px-3 py-1.5 hover:bg-bg-recessed/60 cursor-pointer text-sm ${isMuted ? 'text-content-faint' : 'text-content-primary'}`}>
                   <input
                     type="checkbox"
                     checked={isActive}
                     onChange={() => toggle(opt)}
                     className="h-4 w-4 rounded border-border-default accent-accent"
                   />
-                  {optLabel} ({count})
+                  <span>{optLabel}</span>
+                  <span className="fopt-count">{count}</span>
                 </label>
               </li>
             );
           })}
           {visible.length === 0 && (
-            <li className="px-3 py-2 text-sm text-content-muted italic">{t('filterPanel.noResults')}</li>
+            <li className="comparator-filter-empty px-3 py-2 text-sm text-content-muted italic">{t('filterPanel.noResults')}</li>
           )}
         </ul>
       </div>
@@ -367,7 +370,7 @@ const MultiSelectFilter = ({ property, filter }) => {
         <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
       <div
-        className={`flex flex-wrap gap-1.5 ${
+        className={`seg comparator-filter-pills flex flex-wrap gap-1.5 ${
           filter.enabled ? '' : 'opacity-40 pointer-events-none'
         }`}
       >
@@ -424,7 +427,7 @@ const TriStateFilter = ({ property, filter }) => {
         />
         <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
-      <div className={`flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-40 pointer-events-none'}`}>
+      <div className={`seg comparator-filter-pills flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-40 pointer-events-none'}`}>
         <Pill active={filter.value === null} onClick={() => set(null)}>
           {labelAll}
         </Pill>
@@ -484,10 +487,10 @@ const FilterPanel = () => {
   return (
     <aside
       aria-label={t('filterPanel.heading')}
-      className="comparator-filters-panel card bg-surface-panel border border-border-default h-fit lg:overflow-y-auto filter-panel-scroll"
+      className="filters-panel comparator-filters-panel card bg-surface-panel border border-border-default h-fit lg:overflow-y-auto filter-panel-scroll"
     >
       {/* Header with reset shortcut */}
-      <div className="comparator-filters-top flex items-center justify-between pb-3 border-b border-border-strong">
+      <div className="filters-top comparator-filters-top flex items-center justify-between pb-3 border-b border-border-strong">
         <h3 className="comparator-filters-title text-sm font-semibold text-content-primary tracking-[-0.01em]">{t('filterPanel.heading')}</h3>
         <button
           type="button"

@@ -171,16 +171,16 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   }, [closeExpandedPanel, wheels]);
 
   return (
-    <section className="comparator-results-panel bg-surface-panel border border-border-strong overflow-hidden w-full max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden snap-start">
-      <div className="comparator-results-head flex items-center justify-between px-5 py-4">
-        <h3 className="comparator-result-count text-base font-semibold text-content-primary">
+    <section className="results-panel comparator-results-panel bg-surface-panel border border-border-strong overflow-hidden w-full max-w-full lg:flex lg:flex-col lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-hidden snap-start">
+      <div className="results-head comparator-results-head flex items-center justify-between px-5 py-4">
+        <h3 className="result-count comparator-result-count text-base font-semibold text-content-primary">
           {t('table.heading')}{' '}
           <span className="comparator-result-total text-content-muted font-normal">
             — <span className="comparator-result-number t-numeric">{wheels.length}</span>{' '}
             {t('table.of')} {total}
           </span>
         </h3>
-        <div className="comparator-head-tools flex items-center gap-2">
+        <div className="head-tools comparator-head-tools flex items-center gap-2">
           <button
             type="button"
             onClick={onOpenFilters}
@@ -212,7 +212,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
           )}
 
           <div
-            className="comparator-table-scroll comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]"
+            className="table-wrap comparator-table-scroll comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]"
             ref={scrollRef}
             role="region"
             aria-label={t('table.scrollRegion')}
@@ -360,6 +360,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
 
       <div className="comparator-table-notes">
         <span>{t('comparator.footerNote')}</span>
+        <em>{t('wheelDetail.priceAnnotation')}</em>
       </div>
 
       {/* Hidden twin measured on the full dataset to pin column widths so the

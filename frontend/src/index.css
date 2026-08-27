@@ -1636,6 +1636,10 @@
     font-size: 11.5px;
   }
 
+  .comparator-table-notes em {
+    font-style: italic;
+  }
+
   .comparator-column-menu {
     min-width: 220px;
     max-width: calc(100vw - 24px);
@@ -1728,5 +1732,589 @@
 
   .comparator-detail-panel {
     padding: 16px;
+  }
+}
+
+/* Wave 5 fidelity pass -----------------------------------------------------
+   The comparator keeps its production data and interaction model, while its
+   non-functional surfaces now follow the reference composition directly. */
+@layer components {
+  section.comparator-section {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    overflow: clip;
+  }
+
+  section.comparator-section::before,
+  section.comparator-section::after {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    display: block;
+    background: var(--decoration);
+    pointer-events: none;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  section.comparator-section::before {
+    top: 2%;
+    left: -72px;
+    width: 300px;
+    height: 300px;
+    transform: rotate(-7deg);
+    opacity: 0.34;
+    -webkit-mask-image: url('./assets/wave5/cassette-outline.svg');
+    mask-image: url('./assets/wave5/cassette-outline.svg');
+  }
+
+  section.comparator-section::after {
+    right: -82px;
+    bottom: -4%;
+    width: 315px;
+    height: 315px;
+    transform: rotate(7deg);
+    opacity: 0.32;
+    -webkit-mask-image: url('./assets/wave5/rotor-outline.svg');
+    mask-image: url('./assets/wave5/rotor-outline.svg');
+  }
+
+  section.comparator-section > .container-fluid {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 1023px) {
+    section.comparator-section.comparator-filters-open {
+      z-index: 60;
+    }
+  }
+
+  .section-head.comparator-section-head {
+    margin-bottom: 18px;
+  }
+
+  .filters-rail.comparator-filters-rail {
+    position: sticky;
+    top: 76px;
+    min-width: 0;
+  }
+
+  .filters-panel.comparator-filters-panel {
+    max-height: calc(100vh - 96px);
+    padding: 14px;
+    overflow-y: auto;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-panel);
+    background: color-mix(in srgb, var(--surface-panel) 96%, transparent);
+    box-shadow: var(--shadow-surface);
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-default) transparent;
+  }
+
+  .filters-top.comparator-filters-top {
+    padding: 2px 2px 10px;
+    border-bottom-color: var(--border-subtle);
+  }
+
+  .filters-panel .comparator-filters-title {
+    margin: 0;
+    font-size: 15px;
+    letter-spacing: normal;
+  }
+
+  .filters-panel .comparator-filter-reset {
+    padding: 4px;
+    color: var(--content-muted);
+    font-size: 11.5px;
+    font-weight: var(--weight-regular);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .filter-group.comparator-filter-group {
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .filter-group.comparator-filter-group-first {
+    border-top: 0;
+  }
+
+  .filter-group-head.comparator-filter-group-head {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) auto;
+    align-items: center;
+    width: 100%;
+    gap: 4px;
+    padding: 10px 2px;
+    text-align: left;
+  }
+
+  .filter-group-head.comparator-filter-group-head .group-collapse {
+    width: 22px;
+    height: 22px;
+    padding: 5px;
+    border-radius: var(--radius-control);
+    color: var(--content-muted);
+  }
+
+  .filter-group-head.comparator-filter-group-head .group-collapse:hover {
+    background: var(--surface-well);
+  }
+
+  .filter-group-head.comparator-filter-group-head .group-title {
+    min-width: 0;
+    color: var(--content-primary);
+    font-size: 12.5px;
+    font-weight: var(--weight-semibold);
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  .filter-group-body.comparator-filter-group-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 2px 12px;
+  }
+
+  .comparator-filter-field-wrapper {
+    padding: 12px 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .comparator-filter-field-wrapper:first-child {
+    border-top: 0;
+  }
+
+  .comparator-filter-field,
+  .comparator-range-field {
+    gap: 8px;
+  }
+
+  .comparator-filter-field-heading {
+    color: var(--content-secondary);
+  }
+
+  .comparator-filter-toggle {
+    width: 34px;
+    height: 20px;
+    flex: 0 0 auto;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+  }
+
+  .comparator-filter-toggle-knob {
+    width: 14px;
+    height: 14px;
+    box-shadow: 0 1px 2px rgb(16 23 34 / 25%);
+  }
+
+  .range-head.comparator-range-head {
+    align-items: center;
+  }
+
+  .comparator-range-summary {
+    color: var(--content-muted);
+    font-size: 11px;
+  }
+
+  .comparator-range-row .comparator-range-input {
+    width: 100%;
+    min-width: 0;
+    padding: 7px 8px;
+    border-radius: var(--radius-input);
+    background: var(--surface-well);
+    font-size: 12px;
+  }
+
+  .comparator-range-separator {
+    flex: 0 0 auto;
+    color: var(--content-muted);
+  }
+
+  .rangebar.comparator-rangebar {
+    min-height: 18px;
+    margin-top: 1px;
+  }
+
+  .comparator-search-input {
+    padding: 9px 10px;
+    border-radius: var(--radius-input);
+    background: var(--surface-well);
+  }
+
+  .brand-list.comparator-option-list {
+    height: 170px;
+    max-height: 170px;
+    margin-top: 8px;
+    padding-right: 3px;
+    border: 0;
+  }
+
+  .fopt.comparator-filter-option {
+    min-height: 28px;
+    padding: 4px 3px;
+    border-radius: var(--radius-control);
+    font-size: 12.5px;
+  }
+
+  .fopt.comparator-filter-option input {
+    width: 14px;
+    height: 14px;
+    accent-color: var(--accent);
+  }
+
+  .fopt.comparator-filter-option .fopt-count {
+    margin-left: auto;
+    color: var(--content-muted);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+  }
+
+  .seg.comparator-filter-pills {
+    gap: 6px;
+  }
+
+  button.comparator-filter-pill {
+    min-height: 28px;
+    padding: 5px 9px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-pill);
+    background: var(--surface-panel);
+    color: var(--content-secondary);
+    font-size: 11.5px;
+    line-height: 1.2;
+  }
+
+  button.comparator-filter-pill-active {
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--border-default));
+    background: var(--accent-wash);
+    color: var(--accent);
+  }
+
+  button.comparator-filter-pill-inactive {
+    background: var(--surface-panel);
+    color: var(--content-secondary);
+  }
+
+  .comparator-selected-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 9px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-pill);
+    background: var(--surface-panel);
+    color: var(--content-secondary);
+    font-size: 11.5px;
+  }
+
+  .comparator-results-panel.results-panel {
+    overflow: hidden;
+    border-color: var(--border-default);
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-surface);
+  }
+
+  .results-head.comparator-results-head {
+    align-items: end;
+    gap: 18px;
+    padding: 20px 24px 16px;
+  }
+
+  h3.result-count.comparator-result-count {
+    margin: 0;
+    font-size: 16px;
+    font-weight: var(--weight-bold);
+  }
+
+  .comparator-result-total {
+    color: var(--content-muted);
+    font-weight: var(--weight-regular);
+  }
+
+  .comparator-result-number {
+    color: var(--accent);
+    font-size: 19px;
+  }
+
+  button.comparator-control-pill,
+  button.comparator-mobile-filter-button {
+    padding: 7px 11px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-pill);
+    background: var(--surface-panel);
+    color: var(--content-secondary);
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  button.comparator-control-pill {
+    font-family: var(--font-mono);
+    font-weight: var(--weight-regular);
+  }
+
+  button.comparator-mobile-filter-button {
+    font-weight: var(--weight-semibold);
+  }
+
+  .filter-strip.comparator-filter-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    width: auto;
+    min-width: 0;
+    margin: 0 24px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 9px;
+    background: var(--surface-well);
+  }
+
+  .flabel.comparator-filter-strip-label {
+    flex: 0 0 auto;
+    color: var(--content-muted);
+    margin-right: 4px;
+    font-size: 10px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .fchip.comparator-filter-chip {
+    display: inline-flex;
+    min-width: 0;
+    max-width: 100%;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 9px;
+    border-color: color-mix(in srgb, var(--accent) 32%, var(--border-default));
+    border-radius: 7px;
+    background: var(--accent-wash);
+    color: var(--accent);
+    font-family: var(--font-sans);
+    font-size: 11.5px;
+    font-weight: var(--weight-regular);
+  }
+
+  .comparator-filter-chip-remove {
+    padding: 0 2px;
+    border: 0;
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .comparator-filter-strip-empty {
+    color: var(--content-muted);
+    font-size: 11.5px;
+  }
+
+  .comparator-filter-strip-reset {
+    margin-left: auto;
+    color: var(--content-muted);
+    font-size: 11.5px;
+    font-weight: var(--weight-regular);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  div.comparator-table-scroll {
+    margin: 14px 24px 0;
+    border: 1px solid var(--border-default);
+    border-radius: 9px;
+    background: var(--surface-well);
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-default) var(--surface-well);
+  }
+
+  table.comparator-table {
+    width: 100%;
+    min-width: 810px;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+
+  table.comparator-table th {
+    padding: 11px 10px;
+    border-bottom: 1px solid var(--border-default);
+    background: var(--surface-table-header);
+    color: var(--content-muted);
+    font-size: 10px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.09em;
+    line-height: 1.3;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  table.comparator-table th.comparator-table-heading {
+    top: 0;
+  }
+
+  table.comparator-table .comparator-sort-button {
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  table.comparator-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--surface-panel);
+    color: var(--content-secondary);
+    font-size: 12.5px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  table.comparator-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  table.comparator-table tbody tr:hover td {
+    background: var(--surface-panel-soft);
+  }
+
+  table.comparator-table .comparator-table-cell .text-content-primary,
+  table.comparator-table .comparator-table-cell.font-medium {
+    color: var(--content-primary);
+  }
+
+  .comparator-empty-state {
+    padding: 64px 24px;
+    color: var(--content-muted);
+  }
+
+  .comparator-table-notes {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 13px 24px 20px;
+    color: var(--content-muted);
+    font-size: 11.5px;
+  }
+
+  .comparator-column-menu {
+    min-width: 220px;
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 9px;
+    background: var(--surface-panel);
+    box-shadow: var(--shadow-menu);
+  }
+
+  .comparator-column-group-label {
+    padding: 4px 0;
+    color: var(--content-muted);
+    font-size: 10px;
+  }
+
+  .comparator-column-option {
+    min-height: 28px;
+    padding: 5px 0;
+    border-radius: var(--radius-control);
+    color: var(--content-primary);
+    font-size: 12.5px;
+  }
+
+  .comparator-detail-panel {
+    padding: 24px;
+    background: var(--surface-well);
+  }
+
+  .comparator-detail-plate {
+    border-color: var(--border-default);
+    border-radius: var(--radius-panel);
+    background: var(--surface-panel);
+    box-shadow: var(--shadow-surface);
+  }
+
+  .comparator-detail-plate-header,
+  .comparator-detail-section-head {
+    border-color: var(--border-subtle);
+  }
+
+  .comparator-detail-section-head {
+    flex-wrap: wrap;
+    gap: 6px 12px;
+  }
+
+  .comparator-detail-ledger-row {
+    border-bottom-color: var(--border-subtle);
+  }
+
+  .comparator-pagination {
+    gap: 8px;
+    padding: 13px 24px;
+  }
+
+  .comparator-pagination-button {
+    border-radius: var(--radius-button);
+    background: var(--surface-panel);
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .filters-rail.comparator-filters-rail {
+    position: static;
+  }
+
+  .filters-panel.comparator-filters-panel {
+    max-height: none;
+  }
+
+  section.comparator-section::before {
+    width: 235px;
+    height: 235px;
+    left: -54px;
+  }
+
+  section.comparator-section::after {
+    right: -58px;
+    bottom: -2%;
+    width: 245px;
+    height: 245px;
+  }
+}
+
+@media (max-width: 720px) {
+  .filter-strip.comparator-filter-strip,
+  div.comparator-table-scroll {
+    margin-inline: 14px;
+  }
+
+  .comparator-table-notes {
+    flex-direction: column;
+    padding-inline: 14px;
+  }
+
+  section.comparator-section::before {
+    top: 1%;
+    left: -42px;
+    width: 175px;
+    height: 175px;
+  }
+
+  section.comparator-section::after {
+    right: -42px;
+    bottom: -1%;
+    width: 185px;
+    height: 185px;
   }
 }

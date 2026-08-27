@@ -116,7 +116,7 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
       role="region"
       aria-label={t('wheelDetail.panelLabel', { brand: wheel.brand, model: wheel.model })}
     >
-      <div className={`mx-auto grid max-w-[1100px] items-start gap-12 ${isStacked ? 'grid-cols-1' : 'grid-cols-[380px_minmax(0,1fr)]'}`}>
+      <div className={`comparator-detail-layout mx-auto grid max-w-[1100px] items-start gap-12 ${isStacked ? 'grid-cols-1' : 'grid-cols-[380px_minmax(0,1fr)]'}`}>
         <div className="comparator-detail-plate mb-5 self-start border border-border-default bg-surface-panel">
           <div className="comparator-detail-plate-header flex items-center justify-between border-b border-border-subtle px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-content-muted">
             <span>{`FIG. 01 \u00b7 WHEEL`}</span>

@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { createSelector } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import {
@@ -6,16 +7,17 @@ import {
   resetFilters,
 } from '../../store/slices/filtersSlice';
 import { getFilterableProperties } from '../../config/wheelProperties';
+import { makeSelectRangeBoundsFor } from '../../store/selectors/wheelsSelectors';
 
 // Single accent-tinted, removable chip.
 const ActiveChip = ({ label, onRemove }) => (
-  <span className="comparator-filter-chip inline-flex min-w-0 max-w-full items-center gap-1.5 bg-accent-wash border border-accent-muted text-accent px-2.5 py-1 rounded-xs text-xs font-medium">
+  <span className="fchip comparator-filter-chip active">
     <span className="min-w-0 break-words">{label}</span>
     <button
       type="button"
       aria-label={`Remove filter: ${label}`}
       onClick={onRemove}
-      className="comparator-filter-chip-remove shrink-0 text-accent font-mono text-xs leading-none cursor-pointer bg-transparent border-0 p-0"
+      className="comparator-filter-chip-remove"
     >
       ×
     </button>
@@ -27,6 +29,24 @@ const FilterChips = () => {
   const { t } = useTranslation();
   const filters = useSelector((s) => s.filters.filters);
   const filterables = useMemo(() => getFilterableProperties(), []);
+  const rangeSelectors = useMemo(
+    () => Object.fromEntries(
+      filterables
+        .filter((property) => property.filter?.type === 'range')
+        .map((property) => [property.id, makeSelectRangeBoundsFor(property.id)])
+    ),
+    [filterables]
+  );
+  const selectRangeBounds = useMemo(
+    () => createSelector(
+      Object.values(rangeSelectors),
+      (...bounds) => Object.fromEntries(
+        Object.keys(rangeSelectors).map((id, index) => [id, bounds[index]])
+      )
+    ),
+    [rangeSelectors]
+  );
+  const rangeBounds = useSelector(selectRangeBounds);
 
   const chips = [];
 
@@ -66,27 +86,37 @@ const FilterChips = () => {
       });
     }
 
-    // Range filter chips are excluded from this component — range filters are
-    // managed exclusively via FilterPanel. If range chips are needed in a future
-    // evolution, add them here with dispatch(setFilterValue({ id, value: bounds })).
+    if (type === 'range') {
+      const bounds = rangeBounds[property.id];
+      const isActive = bounds && (
+        filter.value.min !== bounds.min || filter.value.max !== bounds.max
+      );
+      if (isActive && bounds.max !== 0) {
+        chips.push({
+          key: `${property.id}-range`,
+          label: `${t(property.label)}: ${filter.value.min}${property.unit ?? ''} – ${filter.value.max}${property.unit ?? ''}`,
+          onRemove: () => dispatch(setFilterValue({ id: property.id, value: bounds })),
+        });
+      }
+    }
   }
 
-  if (chips.length === 0) return null;
-
   return (
-    <div className="comparator-filter-strip flex w-0 min-w-full gap-2 items-start px-5 py-3 border-b border-border-subtle">
+    <div className="filter-strip comparator-filter-strip">
       <div className="flex grow min-w-0 flex-wrap gap-2 items-center">
-        <span className="comparator-filter-strip-label shrink-0 text-[10px] font-bold uppercase tracking-[0.18em] text-content-muted mr-1">
-          {t('filterChips.active')}
+        <span className="flabel comparator-filter-strip-label">
+          {t('filterPanel.heading')}
         </span>
-        {chips.map((c) => (
-          <ActiveChip key={c.key} label={c.label} onRemove={c.onRemove} />
-        ))}
+        {chips.length > 0
+          ? chips.map((c) => (
+              <ActiveChip key={c.key} label={c.label} onRemove={c.onRemove} />
+            ))
+          : <span className="comparator-filter-strip-empty">{t('filterChips.none')}</span>}
       </div>
       <button
         type="button"
         onClick={() => dispatch(resetFilters())}
-        className="comparator-filter-strip-reset shrink-0 text-xs font-semibold uppercase tracking-[0.1em] text-content-secondary hover:text-content-primary bg-transparent border-0 cursor-pointer p-0"
+        className="comparator-filter-strip-reset"
       >
         {t('filterPanel.reset')}
       </button>
