@@ -165,6 +165,24 @@ describe('Navbar currency selector (EVO-046)', () => {
     container.querySelector('[role="group"][aria-label="nav.currency"]')
     ?? container.querySelector('[role="group"][aria-label="Currency"]');
 
+  it('keeps all navigation destinations available from the mobile menu', () => {
+    mount(makeStore());
+
+    const toggle = container.querySelector('button[aria-controls="mobile-menu"]');
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+
+    act(() => {
+      toggle.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    const mobileMenu = container.querySelector('#mobile-menu');
+    expect(mobileMenu).not.toBeNull();
+    expect(
+      Array.from(mobileMenu.querySelectorAll('a')).map((link) => link.getAttribute('href'))
+    ).toEqual(['#tool', '#roadmap', '#partnerships', '#contact']);
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+  });
+
   it('renders both currency buttons with EUR active by default', () => {
     mount(makeStore());
     const group = currencyGroup();
