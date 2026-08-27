@@ -108,7 +108,8 @@ const DualRangeRow = ({
   return (
     <div className="range comparator-range-field">
       <div className="range-head comparator-range-head">
-        <div className="comparator-filter-field-heading flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">
+        <div className="comparator-filter-field-heading flex items-center justify-between gap-2">
+          <span className="comparator-filter-label">{label}</span>
           {onToggleEnabled && (
             <FilterToggle
               enabled={enabled}
@@ -116,7 +117,6 @@ const DualRangeRow = ({
               ariaLabel={ariaLabel}
             />
           )}
-          {label}
         </div>
         <span className="range-value comparator-range-summary block font-mono text-xs text-content-secondary tabular-nums">
           {valueLow}
@@ -296,7 +296,8 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
 
   return (
     <div className="comparator-filter-field">
-      <div className="comparator-filter-field-heading flex items-center gap-2">
+      <div className="comparator-filter-field-heading flex items-center justify-between gap-2">
+        <span className="comparator-filter-label">{resolvedLabel}</span>
         <FilterToggle
           enabled={filter.enabled}
           onChange={(v) =>
@@ -304,7 +305,6 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
       <div className={filter.enabled ? '' : 'opacity-40 pointer-events-none'}>
         {filter.value.length > 0 && (
@@ -391,7 +391,8 @@ const MultiSelectFilter = ({ property, filter }) => {
 
   return (
     <div className="comparator-filter-field">
-      <div className="comparator-filter-field-heading flex items-center gap-2">
+      <div className="comparator-filter-field-heading flex items-center justify-between gap-2">
+        <span className="comparator-filter-label">{resolvedLabel}</span>
         <FilterToggle
           enabled={filter.enabled}
           onChange={(v) =>
@@ -399,7 +400,6 @@ const MultiSelectFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
       <div
         className={`seg comparator-filter-pills flex flex-wrap gap-1.5 ${
@@ -449,7 +449,8 @@ const TriStateFilter = ({ property, filter }) => {
 
   return (
     <div className="comparator-filter-field">
-      <div className="comparator-filter-field-heading flex items-center gap-2">
+      <div className="comparator-filter-field-heading flex items-center justify-between gap-2">
+        <span className="comparator-filter-label">{resolvedLabel}</span>
         <FilterToggle
           enabled={filter.enabled}
           onChange={(v) =>
@@ -457,7 +458,6 @@ const TriStateFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
       <div className={`seg comparator-filter-pills flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-40 pointer-events-none'}`}>
         <Pill active={filter.value === null} onClick={() => set(null)}>

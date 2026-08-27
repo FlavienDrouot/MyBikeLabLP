@@ -5,6 +5,7 @@ import FilterPanel from './FilterPanel';
 import ComparisonTable from './ComparisonTable';
 import Icon from '../ui/Icon';
 import { getColumnProperties } from '../../config/wheelProperties';
+import useIsDesktopComparator from '../../hooks/useIsDesktopComparator';
 
 // All optional columns (= non `required`) are visible by default.
 // Computed from the registry on mount.
@@ -18,6 +19,38 @@ const MiniComparator = () => {
   const defaultVisibility = useMemo(() => buildDefaultVisibility(), []);
   const [visibility, setVisibility] = useState(defaultVisibility);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const isDesktop = useIsDesktopComparator();
+  const drawerOpen = filtersOpen && !isDesktop;
+
+  // When the viewport crosses the desktop breakpoint, the sidebar takes over
+  // and the mobile drawer state is discarded.
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+    const handleBreakpointChange = (event) => {
+      if (event.matches) setFiltersOpen(false);
+    };
+
+    mediaQuery.addEventListener('change', handleBreakpointChange);
+    return () => mediaQuery.removeEventListener('change', handleBreakpointChange);
+  }, []);
+
+  // A drawer opened on a narrow viewport must not leave the page itself
+  // horizontally or vertically scrollable underneath the modal.
+  useEffect(() => {
+    if (!drawerOpen) return undefined;
+
+    const previousOverflowX = document.body.style.overflowX;
+    const previousOverflowY = document.body.style.overflowY;
+    document.body.style.overflowX = 'hidden';
+    document.body.style.overflowY = 'hidden';
+
+    return () => {
+      document.body.style.overflowX = previousOverflowX;
+      document.body.style.overflowY = previousOverflowY;
+    };
+  }, [drawerOpen]);
 
   // Chromium does not consistently apply proximity snapping on the root
   // scroller. Realign only when the table is already close to its target so
@@ -55,7 +88,7 @@ const MiniComparator = () => {
     setVisibility((v) => ({ ...v, [id]: !v[id] }));
 
   return (
-    <section id="tool" className={`section-spaced decor-section orbits comparator-section bg-surface-page overflow-x-clip ${filtersOpen ? 'comparator-filters-open' : ''}`}>
+    <section id="tool" className={`section-spaced decor-section orbits comparator-section bg-surface-page overflow-x-clip ${drawerOpen ? 'comparator-filters-open' : ''}`}>
       <div className="container-fluid">
         <div className="section-head comparator-section-head">
           <div>
@@ -67,7 +100,7 @@ const MiniComparator = () => {
 
         <div className="comparator-shell">
           {/* Backdrop — only shown when the mobile drawer is open */}
-          {filtersOpen && (
+          {drawerOpen && (
             <div
               className="comparator-backdrop fixed inset-0 z-40 lg:hidden"
               onClick={() => setFiltersOpen(false)}
@@ -80,11 +113,12 @@ const MiniComparator = () => {
           <div className="filters-rail comparator-filters-rail">
             <div
               id="filters-drawer"
-              role={filtersOpen ? 'dialog' : undefined}
-              aria-modal={filtersOpen ? 'true' : undefined}
+              role={drawerOpen ? 'dialog' : undefined}
+              aria-modal={drawerOpen ? 'true' : undefined}
               aria-label={t('comparator.filtersDrawerLabel')}
-              className={`comparator-filter-drawer fixed inset-y-0 left-0 z-50 flex w-80 max-w-[85vw] flex-col overflow-y-auto bg-surface-well border-r border-border-default transition-transform duration-200 ease-out ${
-                filtersOpen ? 'translate-x-0' : '-translate-x-full'
+              inert={!drawerOpen && !isDesktop}
+              className={`comparator-filter-drawer fixed inset-y-0 left-0 z-50 flex flex-col overflow-y-auto bg-surface-well border-r border-border-default transition-transform duration-200 ease-out ${
+                drawerOpen ? 'translate-x-0' : '-translate-x-full'
               } lg:relative lg:inset-auto lg:z-auto lg:flex lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:border-r-0`}
             >
               {/* Mobile drawer header with close button */}

@@ -220,7 +220,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
           <table
             className="comparator-table text-sm bg-surface-panel"
             aria-label={t('table.label')}
-            style={widthsReady ? { tableLayout: 'fixed', width: '100%', minWidth: totalWidth } : undefined}
+            style={widthsReady ? { tableLayout: 'fixed', width: totalWidth } : undefined}
           >
             {widthsReady && (
               <colgroup>

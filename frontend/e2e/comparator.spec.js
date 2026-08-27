@@ -269,6 +269,24 @@ test.describe('Mobile comparator journeys', () => {
     ))).toBe('none');
   });
 
+  test('keeps the filter drawer and sidebar in sync when the viewport changes', async ({ page }) => {
+    await goToComparator(page);
+
+    const filtersButton = page.getByRole('button', { name: 'Filters', exact: true });
+    await filtersButton.click();
+    await expect(page.getByRole('dialog', { name: 'Filters' })).toBeVisible();
+    await expect.poll(() => page.evaluate(() => getComputedStyle(document.body).overflowX)).toBe('hidden');
+
+    await page.setViewportSize({ width: 1100, height: 844 });
+    await expect(page.getByRole('dialog', { name: 'Filters' })).toHaveCount(0);
+    await expect(page.getByRole('complementary', { name: 'Filters' })).toBeVisible();
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(page.getByRole('dialog', { name: 'Filters' })).toHaveCount(0);
+    await filtersButton.click();
+    await expect(page.getByRole('dialog', { name: 'Filters' })).toBeVisible();
+  });
+
   test('follows the key controls with the keyboard and keeps focus visible', async ({ page }) => {
     await page.goto('');
     await expect(page.getByRole('link', { name: 'Tool' })).toBeVisible();
