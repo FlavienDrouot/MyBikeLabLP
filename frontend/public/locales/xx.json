@@ -29,7 +29,16 @@
       { "title": "XX", "description": "XX" },
       { "title": "XX", "description": "XX" },
       { "title": "XX", "description": "XX" }
-    ]
+    ],
+    "schematic": {
+      "tireDiameter": "XX",
+      "hubSpokes": "XX",
+      "pairWeight": "XX",
+      "tireDiameterValue": "XX",
+      "hubSpokesValue": "XX",
+      "pairWeightValue": "XX",
+      "caption": "XX"
+    }
   },
   "partnership": {
     "audiences": [

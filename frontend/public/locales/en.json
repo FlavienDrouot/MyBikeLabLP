@@ -147,7 +147,16 @@
         "title": "Community-focused",
         "description": "Built with riders, manufacturers and resellers. Open data, transparent affiliations."
       }
-    ]
+    ],
+    "schematic": {
+      "tireDiameter": "tire diameter",
+      "hubSpokes": "hub / spokes",
+      "pairWeight": "weight, the pair",
+      "tireDiameterValue": "Ø 700 c",
+      "hubSpokesValue": "ZR1 SL · 20 / 20",
+      "pairWeightValue": "1,090 g",
+      "caption": "What we measure. Structured wheel anatomy presented without decorative pseudo-data."
+    }
   },
   "partnership": {
     "sectionIndex": "PARTNERSHIP",
