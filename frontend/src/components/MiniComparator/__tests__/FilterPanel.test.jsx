@@ -16,7 +16,7 @@ describe('FilterPanel', () => {
       createElement(Provider, { store }, createElement(FilterPanel, null))
     );
 
-  it('keeps only one filter group open at a time', async () => {
+  it('allows Wave 5 filter groups to open and close independently', async () => {
     const container = document.createElement('div');
     document.body.appendChild(container);
     const root = createRoot(container);
@@ -30,34 +30,22 @@ describe('FilterPanel', () => {
     const groupButtons = () =>
       Array.from(container.querySelectorAll('button[aria-expanded]'));
 
-    expect(groupButtons().map((button) => button.getAttribute('aria-expanded'))).toEqual([
-      'true',
-      'false',
-      'false',
-      'false',
-    ]);
+    expect(groupButtons()[0].getAttribute('aria-expanded')).toBe('true');
+    expect(groupButtons()[1].getAttribute('aria-expanded')).toBe('true');
 
     await act(async () => {
       groupButtons()[1].dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
 
-    expect(groupButtons().map((button) => button.getAttribute('aria-expanded'))).toEqual([
-      'false',
-      'true',
-      'false',
-      'false',
-    ]);
+    expect(groupButtons()[0].getAttribute('aria-expanded')).toBe('true');
+    expect(groupButtons()[1].getAttribute('aria-expanded')).toBe('false');
 
     await act(async () => {
-      groupButtons()[1].dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      groupButtons()[0].dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
 
-    expect(groupButtons().map((button) => button.getAttribute('aria-expanded'))).toEqual([
-      'false',
-      'false',
-      'false',
-      'false',
-    ]);
+    expect(groupButtons()[0].getAttribute('aria-expanded')).toBe('false');
+    expect(groupButtons()[1].getAttribute('aria-expanded')).toBe('false');
 
     await act(async () => {
       root.unmount();

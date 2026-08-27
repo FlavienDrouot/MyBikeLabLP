@@ -9,13 +9,16 @@ import {
 import { getFilterableProperties } from '../../config/wheelProperties';
 import { makeSelectRangeBoundsFor } from '../../store/selectors/wheelsSelectors';
 
-// Single accent-tinted, removable chip.
-const ActiveChip = ({ label, onRemove }) => (
+// Wave 5 filter pill: a quiet default surface with the selected value
+// emphasized, plus a removable affordance for active filters.
+const ActiveChip = ({ label, value, onRemove }) => (
   <span className="fchip comparator-filter-chip active">
-    <span className="min-w-0 break-words">{label}</span>
+    <span className="min-w-0 break-words">
+      {label} <b>{value}</b>
+    </span>
     <button
       type="button"
-      aria-label={`Remove filter: ${label}`}
+      aria-label={`Remove filter: ${label}: ${value}`}
       onClick={onRemove}
       className="comparator-filter-chip-remove"
     >
@@ -67,7 +70,8 @@ const FilterChips = () => {
           : String(v);
         chips.push({
           key: `${property.id}-${String(v)}`,
-          label: `${t(property.label)}: ${valueLabel}`,
+          label: t(property.label),
+          value: valueLabel,
           onRemove: () => {
             const next = filter.value.filter((x) => x !== v);
             dispatch(setFilterValue({ id: property.id, value: next }));
@@ -81,7 +85,8 @@ const FilterChips = () => {
       const valueLabel = filter.value ? t(keyTrue) : t(keyFalse);
       chips.push({
         key: `${property.id}-tristate`,
-        label: `${t(property.label)}: ${valueLabel}`,
+        label: t(property.label),
+        value: valueLabel,
         onRemove: () => dispatch(setFilterValue({ id: property.id, value: null })),
       });
     }
@@ -94,7 +99,8 @@ const FilterChips = () => {
       if (isActive && bounds.max !== 0) {
         chips.push({
           key: `${property.id}-range`,
-          label: `${t(property.label)}: ${filter.value.min}${property.unit ?? ''} – ${filter.value.max}${property.unit ?? ''}`,
+          label: t(property.label),
+          value: `${filter.value.min}${property.unit ?? ''} – ${filter.value.max}${property.unit ?? ''}`,
           onRemove: () => dispatch(setFilterValue({ id: property.id, value: bounds })),
         });
       }
@@ -109,7 +115,7 @@ const FilterChips = () => {
         </span>
         {chips.length > 0
           ? chips.map((c) => (
-              <ActiveChip key={c.key} label={c.label} onRemove={c.onRemove} />
+              <ActiveChip key={c.key} label={c.label} value={c.value} onRemove={c.onRemove} />
             ))
           : <span className="comparator-filter-strip-empty">{t('filterChips.none')}</span>}
       </div>

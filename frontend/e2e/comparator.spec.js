@@ -39,17 +39,17 @@ test.beforeEach(async ({ page }) => {
 
 const openGeneralFilters = async (page) => {
   const filters = page.getByRole('complementary', { name: 'Filters' });
-  const general = filters.getByRole('button', { name: 'General specs' });
+  const brand = filters.getByRole('button', { name: 'Brand', exact: true });
 
-  if (await general.getAttribute('aria-expanded') !== 'true') {
-    await general.click();
+  if (await brand.getAttribute('aria-expanded') !== 'true') {
+    await brand.click();
   }
 
   return filters;
 };
 
 const selectMavic = async (filters) => {
-  const mavic = filters.getByRole('checkbox', { name: /^Mavic/ });
+  const mavic = filters.locator('[data-filter-id="brand"]').getByRole('checkbox', { name: /^Mavic/ });
   await expect(mavic).toBeVisible();
   await mavic.check();
 };
@@ -279,14 +279,14 @@ test.describe('Mobile comparator journeys', () => {
     const drawer = page.getByRole('dialog', { name: 'Filters' });
     await expect(drawer).toHaveAttribute('aria-modal', 'true');
 
-    const general = drawer.getByRole('button', { name: 'General specs' });
-    await focusWithVisibleRing(general);
-    await general.press('Enter');
-    await expect(general).toHaveAttribute('aria-expanded', 'false');
-    await general.press('Enter');
-    await expect(general).toHaveAttribute('aria-expanded', 'true');
+    const brand = drawer.getByRole('button', { name: 'Brand', exact: true });
+    await focusWithVisibleRing(brand);
+    await brand.press('Enter');
+    await expect(brand).toHaveAttribute('aria-expanded', 'false');
+    await brand.press('Enter');
+    await expect(brand).toHaveAttribute('aria-expanded', 'true');
 
-    const mavic = drawer.getByRole('checkbox', { name: /^Mavic/ });
+    const mavic = drawer.locator('[data-filter-id="brand"]').getByRole('checkbox', { name: /^Mavic/ });
     await focusWithVisibleRing(mavic);
     await page.keyboard.press(' ');
     await expect(mavic).toBeChecked();

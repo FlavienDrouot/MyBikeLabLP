@@ -2,7 +2,8 @@
 
 .thumb {
   position: absolute;
-  width: 100%;
+  left: 8%;
+  width: 84%;
   height: 0;
   pointer-events: none;
   -webkit-appearance: none;
@@ -44,8 +45,8 @@
 
 .track {
   position: absolute;
-  left: 4px;
-  width: calc(100% - 8px);
+  left: 8%;
+  width: 84%;
   height: 3px;
   background: var(--border-default);
   z-index: 1;
