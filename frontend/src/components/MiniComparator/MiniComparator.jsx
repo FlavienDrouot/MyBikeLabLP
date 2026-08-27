@@ -55,23 +55,21 @@ const MiniComparator = () => {
     setVisibility((v) => ({ ...v, [id]: !v[id] }));
 
   return (
-    <section id="tool" className="section bg-surface-well overflow-x-clip">
+    <section id="tool" className="section-spaced comparator-section bg-surface-page overflow-x-clip">
       <div className="container-fluid">
-        <div className="text-center max-w-2xl mx-auto">
-          <p className="t-eyebrow">{t('comparator.sectionIndex')}</p>
-          <h2 className="section-title mt-2">
-            {t('comparator.title')}
-          </h2>
-          <p className="section-subtitle mx-auto">
-            {t('comparator.subtitle')}
-          </p>
+        <div className="section-head comparator-section-head">
+          <div>
+            <p className="t-eyebrow">{t('comparator.sectionIndex')}</p>
+            <h2 className="section-title">{t('comparator.title')}</h2>
+            <p className="section-subtitle">{t('comparator.subtitle')}</p>
+          </div>
         </div>
 
-        <div className="mt-12 grid w-fit max-w-full mx-auto gap-x-6 lg:grid-cols-[288px_1fr] items-start">
+        <div className="comparator-shell">
           {/* Backdrop — only shown when the mobile drawer is open */}
           {filtersOpen && (
             <div
-              className="fixed inset-0 z-40 bg-black/40 lg:hidden"
+              className="comparator-backdrop fixed inset-0 z-40 lg:hidden"
               onClick={() => setFiltersOpen(false)}
               aria-hidden="true"
             />
@@ -84,23 +82,23 @@ const MiniComparator = () => {
             role={filtersOpen ? 'dialog' : undefined}
             aria-modal={filtersOpen ? 'true' : undefined}
             aria-label={t('comparator.filtersDrawerLabel')}
-            className={`fixed inset-y-0 left-0 z-50 flex w-80 max-w-[85vw] flex-col overflow-y-auto bg-surface-well border-r border-border-default transition-transform duration-200 ease-out ${
+            className={`comparator-filter-drawer fixed inset-y-0 left-0 z-50 flex w-80 max-w-[85vw] flex-col overflow-y-auto bg-surface-well border-r border-border-default transition-transform duration-200 ease-out ${
               filtersOpen ? 'translate-x-0' : '-translate-x-full'
             } lg:relative lg:inset-auto lg:z-auto lg:flex lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:border-r-0`}
           >
             {/* Mobile drawer header with close button */}
-            <div className="flex items-center justify-between border-b border-border-subtle px-4 py-3 lg:hidden">
+            <div className="comparator-drawer-header flex items-center justify-between border-b border-border-subtle px-4 py-3 lg:hidden">
               <span className="text-sm font-semibold text-content-primary">{t('comparator.filtersDrawerLabel')}</span>
               <button
                 type="button"
                 onClick={() => setFiltersOpen(false)}
                 aria-label={t('filterPanel.closeFilters')}
-                className="rounded-xs p-1.5 text-content-secondary hover:bg-bg-recessed hover:text-content-primary"
+                className="comparator-icon-button rounded-xs p-1.5 text-content-secondary hover:bg-bg-recessed hover:text-content-primary"
               >
                 <Icon as={X} size={20} aria-hidden="true" />
               </button>
             </div>
-            <div className="px-4 py-4 lg:p-0">
+            <div className="comparator-filter-drawer-body px-4 py-4 lg:p-0">
               <FilterPanel />
             </div>
           </div>
@@ -116,9 +114,6 @@ const MiniComparator = () => {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-xs text-content-muted">
-          {t('comparator.footerNote')}
-        </p>
       </div>
     </section>
   );

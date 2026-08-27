@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Columns2 } from 'lucide-react';
 import {
@@ -17,13 +17,26 @@ const ColumnSelector = ({ visibility, onToggle }) => {
   const computePosition = () => {
     if (!buttonRef.current) return;
     const rect = buttonRef.current.getBoundingClientRect();
+    const menu = popupRef.current;
+    const menuRect = menu?.getBoundingClientRect();
+    const menuHeight = menuRect?.height ?? 0;
+    const menuWidth = menuRect?.width ?? 0;
+    const edge = 12;
+    const preferredRight = window.innerWidth - rect.right;
+    const maxRight = window.innerWidth - menuWidth - edge;
+    const right = Math.max(edge, Math.min(preferredRight, maxRight));
+    const below = rect.bottom + 8;
+    const top = menuHeight > 0 && below + menuHeight > window.innerHeight - edge
+      ? Math.max(edge, rect.top - menuHeight - 8)
+      : below;
+
     setPopupStyle({
-      top: rect.bottom + 8,
-      right: window.innerWidth - rect.right,
+      top,
+      right,
     });
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!open) return undefined;
     computePosition();
 
@@ -48,12 +61,12 @@ const ColumnSelector = ({ visibility, onToggle }) => {
   }, [open]);
 
   return (
-    <div className="inline-block">
+    <div className="comparator-column-selector inline-block">
       <button
         ref={buttonRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-2 rounded-xs border border-border-default bg-surface-panel px-3 py-2 text-sm font-medium text-content-primary hover:border-accent hover:text-accent"
+        className="comparator-control-pill inline-flex items-center gap-2 rounded-xs border border-border-default bg-surface-panel px-3 py-2 text-sm font-medium text-content-primary hover:border-accent hover:text-accent"
         style={{ transition: 'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard)' }}
         aria-haspopup="true"
         aria-expanded={open}
@@ -66,7 +79,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
         <div
           ref={popupRef}
           role="menu"
-          className="fixed z-50 max-h-[80vh] overflow-y-auto rounded-none border border-border-strong bg-surface-panel shadow-menu p-3 flex flex-col gap-3 sm:flex-row sm:gap-4"
+          className="comparator-column-menu fixed z-50 max-h-[80vh] overflow-y-auto flex flex-col gap-3 sm:flex-row sm:gap-4"
           style={popupStyle}
         >
           {COLUMN_GROUPS.map((group) => {
@@ -78,13 +91,13 @@ const ColumnSelector = ({ visibility, onToggle }) => {
             if (items.length === 0) return null;
             return (
               <div key={group.id} className="min-w-[9rem]">
-                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-content-muted mb-1.5">
+                <div className="comparator-column-group-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-muted mb-1.5">
                   {t(group.label)}
                 </div>
                 <ul className="space-y-1">
                   {items.map((p) => (
                     <li key={p.id}>
-                      <label className="flex items-center gap-2 px-1 py-1 rounded-none hover:bg-bg-recessed/60 cursor-pointer text-sm text-content-primary">
+                      <label className="comparator-column-option flex items-center gap-2 px-1 py-1 rounded-none hover:bg-bg-recessed/60 cursor-pointer text-sm text-content-primary">
                         <input
                           type="checkbox"
                           checked={!!visibility[p.id]}

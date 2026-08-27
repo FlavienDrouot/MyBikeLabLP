@@ -9,13 +9,13 @@ import { getFilterableProperties } from '../../config/wheelProperties';
 
 // Single accent-tinted, removable chip.
 const ActiveChip = ({ label, onRemove }) => (
-  <span className="inline-flex min-w-0 max-w-full items-center gap-1.5 bg-accent-wash border border-accent-muted text-accent px-2.5 py-1 rounded-xs text-xs font-medium">
+  <span className="comparator-filter-chip inline-flex min-w-0 max-w-full items-center gap-1.5 bg-accent-wash border border-accent-muted text-accent px-2.5 py-1 rounded-xs text-xs font-medium">
     <span className="min-w-0 break-words">{label}</span>
     <button
       type="button"
       aria-label={`Remove filter: ${label}`}
       onClick={onRemove}
-      className="shrink-0 text-accent font-mono text-xs leading-none cursor-pointer bg-transparent border-0 p-0"
+      className="comparator-filter-chip-remove shrink-0 text-accent font-mono text-xs leading-none cursor-pointer bg-transparent border-0 p-0"
     >
       ×
     </button>
@@ -74,9 +74,9 @@ const FilterChips = () => {
   if (chips.length === 0) return null;
 
   return (
-    <div className="flex w-0 min-w-full gap-2 items-start px-5 py-3 border-b border-border-subtle">
+    <div className="comparator-filter-strip flex w-0 min-w-full gap-2 items-start px-5 py-3 border-b border-border-subtle">
       <div className="flex grow min-w-0 flex-wrap gap-2 items-center">
-        <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.18em] text-content-muted mr-1">
+        <span className="comparator-filter-strip-label shrink-0 text-[10px] font-bold uppercase tracking-[0.18em] text-content-muted mr-1">
           {t('filterChips.active')}
         </span>
         {chips.map((c) => (
@@ -86,7 +86,7 @@ const FilterChips = () => {
       <button
         type="button"
         onClick={() => dispatch(resetFilters())}
-        className="shrink-0 text-xs font-semibold uppercase tracking-[0.1em] text-content-secondary hover:text-content-primary bg-transparent border-0 cursor-pointer p-0"
+        className="comparator-filter-strip-reset shrink-0 text-xs font-semibold uppercase tracking-[0.1em] text-content-secondary hover:text-content-primary bg-transparent border-0 cursor-pointer p-0"
       >
         {t('filterPanel.reset')}
       </button>

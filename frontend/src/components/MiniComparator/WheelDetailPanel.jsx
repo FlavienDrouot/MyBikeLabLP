@@ -3,7 +3,10 @@ import { useSelector } from 'react-redux';
 import WheelImageCarousel from './WheelImageCarousel';
 import { convert, formatPrice, isSupportedCurrency } from '../../lib/currency';
 
-const STACKED_PANEL_BREAKPOINT_PX = 1040;
+// The result surface is narrower than the full page because the Wave 5 shell
+// reserves a 282px filter rail. Keep the ledger beside the plate when the
+// remaining surface is usable, then stack it before the mobile layout starts.
+const STACKED_PANEL_BREAKPOINT_PX = 900;
 const hasKnownPrice = (entry) => Number.isFinite(entry.amount) && isSupportedCurrency(entry.currency);
 // Ledger prices follow the active display currency (TASK-004); converted rows
 // carry an `≈` hint when their source currency differs from the display one.
@@ -49,7 +52,7 @@ const EntryMeta = ({ entry }) => {
   if (parts.length === 0) return null;
 
   return (
-    <div className="mt-1 text-[10px] uppercase tracking-[0.1em] text-content-faint">
+    <div className="comparator-detail-entry-meta mt-1 text-[10px] uppercase tracking-[0.1em] text-content-faint">
       {parts.join(' \u00b7 ')}
     </div>
   );
@@ -58,7 +61,7 @@ const EntryMeta = ({ entry }) => {
 const LedgerRow = ({ entry, rank, ctaLabel, bestLabel, displayCurrency }) => (
   <div
     data-testid="wheel-detail-ledger-row"
-    className={`relative grid grid-cols-[30px_minmax(0,1fr)_auto_150px] items-center gap-[18px] border-b border-border-subtle py-3 last:border-b-0 ${
+    className={`comparator-detail-ledger-row relative grid grid-cols-[30px_minmax(0,1fr)_auto_150px] items-center gap-[18px] border-b border-border-subtle py-3 last:border-b-0 ${
       entry.isBestPrice ? 'pl-4 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[3px] before:bg-accent' : ''
     }`}
   >
@@ -109,24 +112,24 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
 
   return (
     <div
-      className="bg-surface-well border-y border-border-default px-7 py-[26px]"
+      className="comparator-detail-panel bg-surface-well border-y border-border-default"
       role="region"
       aria-label={t('wheelDetail.panelLabel', { brand: wheel.brand, model: wheel.model })}
     >
       <div className={`mx-auto grid max-w-[1100px] items-start gap-12 ${isStacked ? 'grid-cols-1' : 'grid-cols-[380px_minmax(0,1fr)]'}`}>
-        <div className="mb-5 self-start border border-border-default bg-surface-panel">
-          <div className="flex items-center justify-between border-b border-border-subtle px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-content-muted">
+        <div className="comparator-detail-plate mb-5 self-start border border-border-default bg-surface-panel">
+          <div className="comparator-detail-plate-header flex items-center justify-between border-b border-border-subtle px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-content-muted">
             <span>{`FIG. 01 \u00b7 WHEEL`}</span>
             <span>SCALE 1:1</span>
           </div>
-          <div data-testid="wheel-detail-plate-image" className="h-[340px] p-6 text-content-secondary">
+          <div data-testid="wheel-detail-plate-image" className="comparator-detail-image h-[340px] p-6 text-content-secondary">
             <WheelImageCarousel wheel={wheel} />
           </div>
         </div>
 
-        <div data-testid="wheel-detail-ledger" className="min-w-0">
+        <div data-testid="wheel-detail-ledger" className="comparator-detail-ledger min-w-0">
           {wheel.variant && (
-            <div className="mb-5 border-l border-accent pl-3">
+            <div className="comparator-detail-variant mb-5 border-l border-accent pl-3">
               <p className="m-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-content-muted">
                 {t('wheelDetail.variant')}
               </p>
@@ -142,7 +145,7 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
             <>
               {official && (
                 <div>
-                  <div className="mb-0.5 flex items-baseline justify-between border-b border-border-strong pb-2.5">
+                  <div className="comparator-detail-section-head mb-0.5 flex items-baseline justify-between border-b border-border-strong pb-2.5">
                     <h4 className="m-0 text-base font-semibold text-content-primary">
                       {t('wheelDetail.manufacturer')}
                     </h4>
@@ -159,8 +162,8 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
               )}
 
               {retailers.length > 0 && (
-                <div className={official ? 'mt-5' : ''}>
-                  <div className="mb-0.5 flex items-baseline justify-between border-b border-border-strong pb-2.5">
+                <div className={`comparator-detail-retailers ${official ? 'mt-5' : ''}`}>
+                  <div className="comparator-detail-section-head mb-0.5 flex items-baseline justify-between border-b border-border-strong pb-2.5">
                     <h4 className="m-0 text-base font-semibold text-content-primary">
                       {t('wheelDetail.whereToBuy')}
                     </h4>

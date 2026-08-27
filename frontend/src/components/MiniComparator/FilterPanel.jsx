@@ -33,11 +33,11 @@ const FilterToggle = ({ enabled, onChange, ariaLabel }) => (
     aria-checked={enabled}
     aria-label={ariaLabel}
     onClick={() => onChange(!enabled)}
-    className={`flex h-5 w-9 cursor-pointer items-center rounded-full p-0.5 transition-colors ${
-      enabled ? 'bg-bg-inverse justify-end' : 'bg-control-switch justify-start'
+    className={`comparator-filter-toggle flex h-5 w-9 cursor-pointer items-center rounded-full p-0.5 transition-colors ${
+      enabled ? 'bg-accent justify-end' : 'bg-control-switch justify-start'
     }`}
   >
-    <span className="h-4 w-4 rounded-full bg-surface-panel transition-transform" />
+    <span className="comparator-filter-toggle-knob h-4 w-4 rounded-full bg-surface-panel transition-transform" />
   </button>
 );
 
@@ -75,9 +75,9 @@ const DualRangeRow = ({
   const lowZ = valueLow >= max - minDiff ? 5 : 3;
 
   return (
-    <div className="space-y-3">
+    <div className="comparator-range-field">
       <div className="space-y-1">
-        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">
+        <div className="comparator-filter-field-heading flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">
           {onToggleEnabled && (
             <FilterToggle
               enabled={enabled}
@@ -87,14 +87,14 @@ const DualRangeRow = ({
           )}
           {label}
         </div>
-        <span className="block font-mono text-xs text-content-secondary tabular-nums">
+        <span className="comparator-range-summary block font-mono text-xs text-content-secondary tabular-nums">
           {valueLow}
           {unit} - {valueHigh}
           {unit}
         </span>
       </div>
-      <div className={`space-y-3 ${enabled ? '' : 'opacity-40'}`}>
-        <div className="flex items-center">
+      <div className={`comparator-range-controls ${enabled ? '' : 'opacity-40'}`}>
+        <div className="comparator-range-row flex items-center">
           <input
             type="number"
             value={valueLow}
@@ -103,9 +103,9 @@ const DualRangeRow = ({
             step={effectiveStep}
             disabled={!enabled}
             onChange={(e) => handleLow(e.target.value)}
-            className="wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
+            className="comparator-range-input wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
-          <span className="flex-1 text-center text-content-faint text-xs select-none">
+          <span className="comparator-range-separator flex-1 text-center text-content-faint text-xs select-none">
             -
           </span>
           <input
@@ -116,7 +116,7 @@ const DualRangeRow = ({
             step={effectiveStep}
             disabled={!enabled}
             onChange={(e) => handleHigh(e.target.value)}
-            className="wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
+            className="comparator-range-input wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
           />
         </div>
         <div className="relative h-5 flex items-center">
@@ -160,22 +160,22 @@ const DualRangeRow = ({
 // so only one category can be expanded at a time.
 const Section = ({ title, open, onToggle, children, first = false }) => {
   return (
-    <div className={first ? '' : 'border-t border-border-subtle pt-3'}>
+    <div className={`comparator-filter-group ${first ? 'comparator-filter-group-first' : ''}`}>
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between text-left"
+        className="comparator-filter-group-head"
         aria-expanded={open}
       >
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{title}</span>
+        <span className="comparator-filter-group-title">{title}</span>
         <Icon
           as={ChevronDown}
           size={16}
           aria-hidden="true"
-          className={`text-content-faint transition-transform ${open ? 'rotate-180' : ''}`}
+          className={`comparator-filter-group-icon text-content-faint transition-transform ${open ? 'rotate-180' : ''}`}
         />
       </button>
-      {open && <div className="mt-4 space-y-5">{children}</div>}
+      {open && <div className="comparator-filter-group-body">{children}</div>}
     </div>
   );
 };
@@ -185,10 +185,10 @@ const Pill = ({ active, muted, onClick, children }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors
+    className={`comparator-filter-pill border transition-colors
       ${active
-        ? 'bg-bg-inverse text-content-on-inverse border-border-strong'
-        : 'bg-surface-page text-content-secondary border-border-default hover:border-border-strong hover:text-content-primary'
+        ? 'comparator-filter-pill-active bg-accent-wash text-accent border-accent-muted'
+        : 'comparator-filter-pill-inactive bg-surface-panel text-content-secondary border-border-default hover:border-border-strong hover:text-content-primary'
       }
       ${muted ? 'opacity-40' : ''}`}
   >
@@ -263,8 +263,8 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
   const resolvedLabel = t(property.label);
 
   return (
-    <div className="space-y-2">
-      <div className="flex items-center gap-2">
+    <div className="comparator-filter-field">
+      <div className="comparator-filter-field-heading flex items-center gap-2">
         <FilterToggle
           enabled={filter.enabled}
           onChange={(v) =>
@@ -272,7 +272,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
+        <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
       <div className={filter.enabled ? '' : 'opacity-40 pointer-events-none'}>
         {filter.value.length > 0 && (
@@ -284,7 +284,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                   key={String(v)}
                   type="button"
                   onClick={() => toggle(v)}
-                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-bg-inverse text-content-on-inverse hover:bg-bg-inverse transition-colors"
+                  className="comparator-selected-filter inline-flex items-center gap-1 px-2 py-0.5 rounded-xs text-xs font-medium bg-bg-inverse text-content-on-inverse hover:bg-bg-inverse transition-colors"
                 >
                   {valLabel}
                   <span aria-hidden="true" className="text-content-on-inverse/60">{'\u00D7'}</span>
@@ -298,9 +298,9 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
           placeholder={t('filterPanel.searchPlaceholder')}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="wave5-input mb-2 px-3 py-1.5 text-sm"
+          className="comparator-search-input wave5-input mb-2 px-3 py-1.5 text-sm"
         />
-        <ul className="max-h-40 overflow-y-auto rounded-none border border-border-default filter-panel-scroll">
+        <ul className="comparator-option-list max-h-40 overflow-y-auto rounded-none border border-border-default filter-panel-scroll">
           {visible.map((opt) => {
             const count = counts[String(opt)] ?? 0;
             const isActive = filter.value.includes(opt);
@@ -313,7 +313,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
               : String(opt);
             return (
               <li key={String(opt)}>
-                <label className={`flex items-center gap-2 px-3 py-1.5 hover:bg-bg-recessed/60 cursor-pointer text-sm ${isMuted ? 'text-content-faint' : 'text-content-primary'}`}>
+                <label className={`comparator-filter-option flex items-center gap-2 px-3 py-1.5 hover:bg-bg-recessed/60 cursor-pointer text-sm ${isMuted ? 'text-content-faint' : 'text-content-primary'}`}>
                   <input
                     type="checkbox"
                     checked={isActive}
@@ -355,8 +355,8 @@ const MultiSelectFilter = ({ property, filter }) => {
   const resolvedLabel = t(property.label);
 
   return (
-    <div className="space-y-2">
-      <div className="flex items-center gap-2">
+    <div className="comparator-filter-field">
+      <div className="comparator-filter-field-heading flex items-center gap-2">
         <FilterToggle
           enabled={filter.enabled}
           onChange={(v) =>
@@ -364,7 +364,7 @@ const MultiSelectFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
+        <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
       <div
         className={`flex flex-wrap gap-1.5 ${
@@ -413,8 +413,8 @@ const TriStateFilter = ({ property, filter }) => {
   const resolvedLabel = t(property.label);
 
   return (
-    <div className="space-y-2">
-      <div className="flex items-center gap-2">
+    <div className="comparator-filter-field">
+      <div className="comparator-filter-field-heading flex items-center gap-2">
         <FilterToggle
           enabled={filter.enabled}
           onChange={(v) =>
@@ -422,7 +422,7 @@ const TriStateFilter = ({ property, filter }) => {
           }
           ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
         />
-        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
+        <span className="comparator-filter-label text-[10px] font-bold uppercase tracking-[0.18em] text-content-secondary">{resolvedLabel}</span>
       </div>
       <div className={`flex flex-wrap gap-1.5 ${filter.enabled ? '' : 'opacity-40 pointer-events-none'}`}>
         <Pill active={filter.value === null} onClick={() => set(null)}>
@@ -484,15 +484,15 @@ const FilterPanel = () => {
   return (
     <aside
       aria-label={t('filterPanel.heading')}
-      className="card bg-surface-panel border border-border-default p-5 lg:p-6 space-y-6 h-fit lg:max-h-[calc(100vh-var(--navbar-height)-12px)] lg:overflow-y-auto filter-panel-scroll"
+      className="comparator-filters-panel card bg-surface-panel border border-border-default h-fit lg:overflow-y-auto filter-panel-scroll"
     >
       {/* Header with reset shortcut */}
-      <div className="flex items-center justify-between pb-3 border-b border-border-strong">
-        <h3 className="text-sm font-semibold text-content-primary tracking-[-0.01em]">{t('filterPanel.heading')}</h3>
+      <div className="comparator-filters-top flex items-center justify-between pb-3 border-b border-border-strong">
+        <h3 className="comparator-filters-title text-sm font-semibold text-content-primary tracking-[-0.01em]">{t('filterPanel.heading')}</h3>
         <button
           type="button"
           onClick={() => dispatch(resetFilters())}
-          className="text-xs font-medium text-accent hover:text-accent"
+          className="comparator-filter-reset text-xs font-medium text-accent hover:text-accent"
         >
           {t('filterPanel.reset')}
         </button>
@@ -512,7 +512,9 @@ const FilterPanel = () => {
             onToggle={() => setOpenGroupId(open ? null : group.id)}
           >
             {group.properties.map((p) => (
-              <FilterField key={p.id} property={p} />
+              <div className="comparator-filter-field-wrapper" key={p.id}>
+                <FilterField property={p} />
+              </div>
             ))}
           </Section>
         );
@@ -522,5 +524,3 @@ const FilterPanel = () => {
 };
 
 export default FilterPanel;
-
-
