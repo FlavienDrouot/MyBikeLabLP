@@ -212,7 +212,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
           )}
 
           <div
-            className="table-wrap comparator-table-scroll comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:overflow-y-auto lg:min-h-0 lg:[scrollbar-gutter:stable]"
+            className="table-wrap comparator-table-scroll comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:overflow-y-auto lg:min-h-0"
             ref={scrollRef}
             role="region"
             aria-label={t('table.scrollRegion')}

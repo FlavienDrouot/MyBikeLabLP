@@ -1801,20 +1801,35 @@
 
   .filters-rail.comparator-filters-rail {
     position: sticky;
-    top: 76px;
+    top: var(--navbar-height);
     min-width: 0;
   }
 
   .filters-panel.comparator-filters-panel {
-    max-height: calc(100vh - 96px);
+    max-height: calc(100vh - var(--navbar-height) - 12px);
     padding: 14px;
     overflow-y: auto;
+    overflow-x: hidden;
     border: 1px solid var(--border-default);
     border-radius: var(--radius-panel);
     background: color-mix(in srgb, var(--surface-panel) 96%, transparent);
     box-shadow: var(--shadow-surface);
+    font-family: var(--font-sans);
     scrollbar-width: thin;
     scrollbar-color: var(--border-default) transparent;
+  }
+
+  .filters-panel.comparator-filters-panel button,
+  .filters-panel.comparator-filters-panel input,
+  .filters-panel.comparator-filters-panel select {
+    font-family: var(--font-sans);
+  }
+
+  .filters-panel.comparator-filters-panel .comparator-range-summary,
+  .filters-panel.comparator-filters-panel .comparator-range-input,
+  .filters-panel.comparator-filters-panel .fopt-count {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
   }
 
   .filters-top.comparator-filters-top {
@@ -1873,6 +1888,8 @@
     font-size: 12.5px;
     font-weight: var(--weight-semibold);
     line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
     white-space: nowrap;
   }
 
@@ -1898,6 +1915,7 @@
   }
 
   .comparator-filter-field-heading {
+    justify-content: flex-start;
     color: var(--content-secondary);
   }
 
@@ -1905,6 +1923,8 @@
     width: 34px;
     height: 20px;
     flex: 0 0 auto;
+    margin-left: 0;
+    margin-right: 0;
     padding: 0;
     border: 0;
     border-radius: var(--radius-pill);
@@ -2131,12 +2151,24 @@
   }
 
   div.comparator-table-scroll {
+    width: calc(100% - 48px);
+    max-width: calc(100% - 48px);
+    box-sizing: border-box;
     margin: 14px 24px 0;
     border: 1px solid var(--border-default);
     border-radius: 9px;
     background: var(--surface-well);
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-default) var(--surface-well);
+    scrollbar-gutter: auto;
+    scrollbar-width: none;
+  }
+
+  div.comparator-table-scroll::-webkit-scrollbar {
+    width: 0;
+    height: 6px;
+  }
+
+  div.comparator-table-scroll::-webkit-scrollbar:horizontal {
+    height: 6px;
   }
 
   table.comparator-table {
@@ -2297,6 +2329,11 @@
   .filter-strip.comparator-filter-strip,
   div.comparator-table-scroll {
     margin-inline: 14px;
+  }
+
+  div.comparator-table-scroll {
+    width: calc(100% - 28px);
+    max-width: calc(100% - 28px);
   }
 
   .comparator-table-notes {

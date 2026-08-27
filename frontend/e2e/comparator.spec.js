@@ -117,6 +117,9 @@ test.describe('Chromium P0 comparator journeys', () => {
     await selectMavic(filters);
 
     await expect(summary).not.toHaveText(initialSummary);
+    await expect(
+      page.getByRole('button', { name: 'Remove filter: Brand: Mavic' }),
+    ).toBeVisible();
     await expect.poll(() => page.getByRole('row').count()).toBeLessThan(initialRowCount);
 
     await filters.getByRole('button', { name: 'Reset' }).click();
