@@ -1251,6 +1251,8 @@
 
   .comparator-section-head {
     margin-bottom: 18px;
+    max-width: calc(var(--container-page) - var(--gutter) - var(--gutter));
+    margin-inline: auto;
   }
 
   .comparator-section-head .t-eyebrow {
@@ -1753,7 +1755,6 @@
 @layer components {
   section.comparator-section {
     position: relative;
-    z-index: 1;
     isolation: isolate;
     overflow: clip;
   }

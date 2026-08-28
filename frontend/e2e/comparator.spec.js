@@ -253,6 +253,18 @@ test.describe('Chromium P0 comparator journeys', () => {
     expect(layout.resultWidth).toBeLessThan(1600);
     expect(layout.tableScrollWidth).toBeLessThanOrEqual(layout.tableClientWidth);
   });
+
+  test('aligns the comparator heading with the other section headings', async ({ page }) => {
+    await page.setViewportSize({ width: 1600, height: 900 });
+    await goToComparator(page);
+
+    const leftEdges = await page.evaluate(() => [
+      document.querySelector('.comparator-section-head h2').getBoundingClientRect().left,
+      document.querySelector('.benefits-section .section-head h2').getBoundingClientRect().left,
+    ].map(Math.round));
+
+    expect(leftEdges[0]).toBe(leftEdges[1]);
+  });
 });
 
 test.describe('Mobile comparator journeys', () => {
