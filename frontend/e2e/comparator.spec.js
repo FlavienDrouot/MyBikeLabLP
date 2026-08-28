@@ -232,6 +232,27 @@ test.describe('Chromium P0 comparator journeys', () => {
     await selectMavic(await openGeneralFilters(page));
     await expect.poll(() => firstHeader.evaluate((header) => Math.round(header.getBoundingClientRect().left))).toBe(leftBefore);
   });
+
+  test('keeps the comparator compact when visible columns fit on a wide screen', async ({ page }) => {
+    await page.setViewportSize({ width: 2200, height: 900 });
+    await goToComparator(page);
+
+    const layout = await page.locator('.comparator-shell').evaluate((shell) => {
+      const resultPanel = shell.querySelector('.comparator-results-panel').getBoundingClientRect();
+      const tableScroll = shell.querySelector('.comparator-table-scroll');
+
+      return {
+        shellWidth: shell.getBoundingClientRect().width,
+        resultWidth: resultPanel.width,
+        tableScrollWidth: tableScroll.scrollWidth,
+        tableClientWidth: tableScroll.clientWidth,
+      };
+    });
+
+    expect(layout.shellWidth).toBeLessThan(1900);
+    expect(layout.resultWidth).toBeLessThan(1600);
+    expect(layout.tableScrollWidth).toBeLessThanOrEqual(layout.tableClientWidth);
+  });
 });
 
 test.describe('Mobile comparator journeys', () => {
