@@ -1,12 +1,12 @@
 /* ============================================================================
-   MyBikeLab - Wave 5 Light foundations
+   MyBikeLab - Wave 5 theme foundations
    ----------------------------------------------------------------------------
-   Wave 5 uses a cool technical light surface, Schibsted Grotesk for the
-   interface, and Fragment Mono for measured values. The semantic tokens are
-   the contract for future Cream and Dark translations.
+   Wave 5 uses three exact semantic palettes, Schibsted Grotesk for the
+   interface, and Fragment Mono for measured values.
    ============================================================================ */
 
-:root {
+:root,
+[data-theme='light'] {
   /* ========================================================================
      WAVE 5 SEMANTIC FOUNDATIONS
      ======================================================================== */
@@ -30,6 +30,9 @@
   --decoration-soft: #cbd9e7;
   --control-switch:  #aab4c1;
   --header:       rgba(244, 247, 250, 0.86);
+  --theme-dot-light: #dbe8f5;
+  --theme-dot-cream: #c8a76e;
+  --theme-dot-dark: #1f2935;
 
   /* Names used by the Wave 5 reference stylesheet. */
   --acc: var(--accent);
@@ -45,6 +48,7 @@
   --shadow-raised:
     0 2px 4px rgba(16, 23, 34, 0.05),
     0 24px 58px rgba(38, 58, 80, 0.11);
+  --shadow: var(--shadow-surface);
 
   /* Semantic aliases used by production Tailwind utilities. */
   --surface-page: var(--page);
@@ -214,6 +218,67 @@
   --gutter: clamp(20px, 3.5vw, 52px);
   --grid-unit: 8px;
   --navbar-height: 5rem;
+}
+
+/* The three palettes below are the exact Wave 5 reference translations.
+   Production components consume only the semantic aliases above, so theme
+   changes do not require a second DOM or layout. */
+[data-theme='cream'] {
+  --page:         #f8f3eb;
+  --panel:        #fffdf9;
+  --panel-soft:   #fbf7f1;
+  --well:         #f1e9dd;
+  --table-header: #ebe1d2;
+
+  --ink:          #181a1d;
+  --ink-secondary: #5d574f;
+  --muted:        #81776a;
+  --line:         #dfd3c2;
+  --line-2:       #eee5d9;
+
+  --accent:       #b18743;
+  --accent-muted: #c8a76e;
+  --accent-wash:  #f6ecdc;
+  --decoration:   #d0b07a;
+  --decoration-soft: #e4d1b2;
+  --control-switch:  #b6ada1;
+  --header:       rgba(248, 243, 235, 0.88);
+
+  --shadow-surface:
+    0 1px 2px rgba(50, 40, 26, 0.04),
+    0 16px 42px rgba(91, 66, 35, 0.08);
+  --shadow-raised:
+    0 2px 4px rgba(50, 40, 26, 0.05),
+    0 24px 58px rgba(91, 66, 35, 0.10);
+}
+
+[data-theme='dark'] {
+  --page:         #191d22;
+  --panel:        #23282e;
+  --panel-soft:   #20252a;
+  --well:         #181c21;
+  --table-header: #2a3037;
+
+  --ink:          #eef2f6;
+  --ink-secondary: #b7c0cb;
+  --muted:        #87929f;
+  --line:         #353c44;
+  --line-2:       #2c3238;
+
+  --accent:       #7da9d6;
+  --accent-muted: #5e84aa;
+  --accent-wash:  rgba(125, 169, 214, 0.13);
+  --decoration:   #6788aa;
+  --decoration-soft: #354a60;
+  --control-switch:  #5b646e;
+  --header:       rgba(25, 29, 34, 0.86);
+
+  --shadow-surface:
+    0 1px 2px rgba(0, 0, 0, 0.28),
+    0 16px 42px rgba(0, 0, 0, 0.18);
+  --shadow-raised:
+    0 2px 4px rgba(0, 0, 0, 0.34),
+    0 24px 58px rgba(0, 0, 0, 0.24);
 }
 
 /* Shared semantic type primitives. */

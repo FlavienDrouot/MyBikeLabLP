@@ -6,11 +6,17 @@ import Icon from './ui/Icon';
 import LogoMark from './ui/LogoMark';
 import { SUPPORTED_CURRENCIES } from '../lib/currency';
 import { isBrowserTranslatedDocument } from '../lib/documentLanguage';
+import { applyTheme, getCurrentTheme, THEMES } from '../lib/theme';
 import { changeDisplayCurrency } from '../store/slices/filtersSlice';
 
 const LANGUAGES = ['en', 'fr'];
 
 const CURRENCY_SYMBOLS = { EUR: '€', USD: '$' };
+
+const THEME_OPTIONS = THEMES.map((id) => ({
+  id,
+  translationKey: `nav.themeOption.${id}`,
+}));
 
 const NAV_LINKS = [
   { href: '#tool', translationKey: 'nav.tool' },
@@ -79,6 +85,41 @@ const LanguageToggle = () => {
             }`}
           >
             {lang.toUpperCase()}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
+
+const ThemeToggle = () => {
+  const { t } = useTranslation();
+  const [theme, setTheme] = useState(() => getCurrentTheme());
+
+  useLayoutEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
+  const changeTheme = (nextTheme) => {
+    setTheme(applyTheme(nextTheme));
+  };
+
+  return (
+    <div className="theme-picker" role="group" aria-label={t('nav.theme')}>
+      {THEME_OPTIONS.map(({ id, translationKey }) => {
+        const isActive = theme === id;
+        return (
+          <button
+            key={id}
+            type="button"
+            data-theme-choice={id}
+            onClick={() => changeTheme(id)}
+            aria-pressed={isActive}
+            aria-label={t(translationKey)}
+            className={`theme-option${isActive ? ' theme-option-active' : ''}`}
+          >
+            <span className={`theme-dot ${id}`} aria-hidden="true" />
+            <span>{t(translationKey)}</span>
           </button>
         );
       })}
@@ -159,6 +200,7 @@ const Navbar = () => {
         <div className="header-meta">
           <LanguageToggle />
           <CurrencyToggle />
+          <ThemeToggle />
           <button
             type="button"
             onClick={() => setIsOpen((v) => !v)}

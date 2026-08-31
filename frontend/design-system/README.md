@@ -161,11 +161,10 @@ AI-template territory. Apply them to every product surface.
 
 ### Color
 
-- **Wave 5 Light is the current canonical surface.** The semantic token layer
-  maps the reference values directly: page `#f4f7fa`, panel `#ffffff`, soft
-  panel `#f8fafc`, recessed well `#edf2f7`, table header `#e7edf4`, primary
-  ink `#101722`, secondary ink `#4d5b6d`, muted ink `#718096`, default line
-  `#d8e1eb`, subtle line `#e8edf3`, accent `#2f64a9`, accent wash `#edf4fb`.
+- **Wave 5 Light is the canonical default; Cream and Dark are supported exact
+  translations.** The semantic token layer maps all three reference palettes
+  directly. Production selects them with `data-theme="light|cream|dark"` and
+  persists the choice under `mbl-wave5-theme`.
 - Use `--surface-*`, `--content-*`, `--border-*`, `--accent*` and
   `--shadow-*` in production code. Production Tailwind exposes only these
   semantic namespaces; the old variable ramps remain available only to

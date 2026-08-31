@@ -17,6 +17,12 @@
       "EUR": "Show prices in euros",
       "USD": "Show prices in dollars"
     },
+    "theme": "Theme",
+    "themeOption": {
+      "light": "Light",
+      "cream": "Cream",
+      "dark": "Dark"
+    },
     "lang": {
       "en": "EN",
       "fr": "FR",

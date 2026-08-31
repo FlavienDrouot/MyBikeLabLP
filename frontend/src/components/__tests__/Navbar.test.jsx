@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import filtersReducer from '../../store/slices/filtersSlice';
 import currencyReducer from '../../store/slices/currencySlice';
+import { THEME_STORAGE_KEY } from '../../lib/theme';
 import Navbar from '../Navbar';
 
 // Real filters + currency reducers so the changeDisplayCurrency thunk works;
@@ -211,5 +212,62 @@ describe('Navbar currency selector (EVO-046)', () => {
     const buttons = Array.from(group.querySelectorAll('button'));
     expect(buttons[0].getAttribute('aria-label')).toBeTruthy();
     expect(buttons[1].getAttribute('aria-label')).toBeTruthy();
+  });
+});
+
+describe('Navbar theme selector (Wave 5)', () => {
+  let container;
+  let root;
+
+  beforeEach(() => {
+    localStorage.clear();
+    document.documentElement.removeAttribute('data-theme');
+    container = document.createElement('div');
+    document.body.appendChild(container);
+    root = createRoot(container);
+  });
+
+  afterEach(() => {
+    act(() => root.unmount());
+    container.remove();
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.clear();
+  });
+
+  const mount = () => {
+    act(() => {
+      root.render(withStore(makeStore(), createElement(Navbar, null)));
+    });
+  };
+
+  const themeGroup = () => container.querySelector('[role="group"][aria-label="Theme"]');
+
+  it('renders the three Wave 5 themes with Light active by default', () => {
+    mount();
+
+    const buttons = Array.from(themeGroup().querySelectorAll('button'));
+    expect(buttons.map((button) => button.dataset.themeChoice)).toEqual(['light', 'cream', 'dark']);
+    expect(buttons.map((button) => button.getAttribute('aria-pressed'))).toEqual(['true', 'false', 'false']);
+  });
+
+  it('applies and persists the selected theme', () => {
+    mount();
+
+    const dark = themeGroup().querySelector('[data-theme-choice="dark"]');
+    act(() => {
+      dark.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
+
+    expect(document.documentElement.dataset.theme).toBe('dark');
+    expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('dark');
+    expect(dark.getAttribute('aria-pressed')).toBe('true');
+  });
+
+  it('restores a valid persisted theme when the navbar mounts', () => {
+    localStorage.setItem(THEME_STORAGE_KEY, 'cream');
+    mount();
+
+    expect(document.documentElement.dataset.theme).toBe('cream');
+    expect(themeGroup().querySelector('[data-theme-choice="cream"]').getAttribute('aria-pressed')).toBe('true');
   });
 });

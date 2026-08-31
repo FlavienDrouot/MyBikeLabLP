@@ -17,6 +17,12 @@
       "EUR": "Afficher les prix en euros",
       "USD": "Afficher les prix en dollars"
     },
+    "theme": "Thème",
+    "themeOption": {
+      "light": "Clair",
+      "cream": "Crème",
+      "dark": "Sombre"
+    },
     "lang": {
       "en": "EN",
       "fr": "FR",
