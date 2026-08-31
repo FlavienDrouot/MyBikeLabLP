@@ -87,7 +87,7 @@ const WheelImageCarousel = ({ wheel }) => {
             inset: 0,
             overflow: 'hidden',
             borderRadius: 'var(--radius-panel)',
-            background: 'var(--surface-panel)',
+            background: 'transparent',
           }}
         >
           {slides.length > 0 && (
