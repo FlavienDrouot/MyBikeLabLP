@@ -30,6 +30,13 @@
     overflow-x: clip;
   }
 
+  html.theme-switching *,
+  html.theme-switching *::before,
+  html.theme-switching *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
   a {
     color: inherit;
   }

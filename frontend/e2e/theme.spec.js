@@ -23,10 +23,20 @@ test('switches between the three Wave 5 themes and restores the choice', async (
 
   for (const [theme, backgroundColor] of Object.entries(THEME_COLORS)) {
     const option = themeGroup.getByRole('button', { name: theme[0].toUpperCase() + theme.slice(1) });
-    await option.click();
+    const switchState = await page.evaluate((nextTheme) => {
+      document.querySelector(`[data-theme-choice="${nextTheme}"]`).click();
+      const heroButton = document.querySelector('.hero .btn-primary');
+      return {
+        className: document.documentElement.className,
+        transition: getComputedStyle(heroButton).transition,
+      };
+    }, theme);
     await expect(html).toHaveAttribute('data-theme', theme);
     await expect(option).toHaveAttribute('aria-pressed', 'true');
     await expect(page.locator('body')).toHaveCSS('background-color', backgroundColor);
+    expect(switchState.className).toContain('theme-switching');
+    expect(switchState.transition).toBe('none');
+    await expect.poll(() => html.evaluate((element) => element.classList.contains('theme-switching'))).toBe(false);
   }
 
   await expect(page.locator('body')).toHaveCSS('background-color', THEME_COLORS.dark);

@@ -6,6 +6,7 @@ import {
   DEFAULT_THEME,
   getCurrentTheme,
   getStoredTheme,
+  THEME_SWITCHING_CLASS,
   THEME_STORAGE_KEY,
 } from '../theme';
 
@@ -13,6 +14,7 @@ describe('theme utilities', () => {
   beforeEach(() => {
     localStorage.clear();
     document.documentElement.removeAttribute('data-theme');
+    document.documentElement.classList.remove(THEME_SWITCHING_CLASS);
   });
 
   it('defaults to Light when storage is empty or invalid', () => {
@@ -32,6 +34,7 @@ describe('theme utilities', () => {
   it('applies a valid theme to the document and local storage', () => {
     expect(applyTheme('dark')).toBe('dark');
     expect(document.documentElement.dataset.theme).toBe('dark');
+    expect(document.documentElement.classList.contains(THEME_SWITCHING_CLASS)).toBe(true);
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('dark');
   });
 
