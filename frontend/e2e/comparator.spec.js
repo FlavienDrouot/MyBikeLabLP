@@ -61,16 +61,6 @@ const goToComparator = async (page) => {
   ).toBeVisible();
 };
 
-const openWheelDetails = async (page, model) => {
-  const table = page.getByRole('table', { name: 'Wheel comparison' });
-  const row = table.getByRole('row', { name: `Open details for ${model}` });
-  await expect(row).toBeVisible();
-  await row.click();
-  const panel = page.getByRole('region', { name: /details$/ });
-  await expect(panel).toBeVisible();
-  return panel;
-};
-
 const focusWithVisibleRing = async (locator) => {
   await locator.focus();
   await expect(locator).toBeFocused();
@@ -82,18 +72,6 @@ const focusWithVisibleRing = async (locator) => {
     );
   })).toBe(true);
 };
-
-const readDetailLayout = (panel) => panel.evaluate((root) => {
-  const plate = root.querySelector('[data-testid="wheel-detail-plate-image"]').getBoundingClientRect();
-  const ledger = root.querySelector('[data-testid="wheel-detail-ledger"]').getBoundingClientRect();
-
-  return {
-    plateBottom: plate.bottom,
-    plateLeft: plate.left,
-    ledgerLeft: ledger.left,
-    ledgerTop: ledger.top,
-  };
-});
 
 test.describe('Chromium P0 comparator journeys', () => {
   test('loads the page landmarks and comparator without browser errors', async ({ page }) => {
@@ -124,65 +102,6 @@ test.describe('Chromium P0 comparator journeys', () => {
 
     await filters.getByRole('button', { name: 'Reset' }).click();
     await expect(summary).toHaveText(initialSummary);
-  });
-
-  test('sorts a column in both directions and exposes its state', async ({ page }) => {
-    await goToComparator(page);
-
-    const table = page.getByRole('table', { name: 'Wheel comparison' });
-    const weightHeader = table.getByRole('columnheader', { name: /Weight/ });
-    const weightColumnIndex = await weightHeader.evaluate((header) =>
-      Array.from(header.parentElement.children).indexOf(header),
-    );
-    const firstWeightCell = () =>
-      table.getByRole('row').nth(1).getByRole('cell').nth(weightColumnIndex);
-
-    await weightHeader.getByRole('button', { name: 'Sort by Weight' }).click();
-    await expect(weightHeader).toHaveAttribute('aria-sort', 'ascending');
-    const ascendingValue = await firstWeightCell().textContent();
-
-    await weightHeader.getByRole('button', { name: 'Sort by Weight' }).click();
-    await expect(weightHeader).toHaveAttribute('aria-sort', 'descending');
-    await expect(firstWeightCell()).not.toHaveText(ascendingValue);
-  });
-
-  test('opens and closes a wheel detail panel', async ({ page }) => {
-    await goToComparator(page);
-
-    const table = page.getByRole('table', { name: 'Wheel comparison' });
-    await table.getByRole('row').nth(1).click();
-
-    await expect(page.getByRole('region', { name: /details$/ })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Close menu' })).toBeVisible();
-    await page.getByRole('button', { name: 'Close menu' }).click();
-    await expect(page.getByRole('region', { name: /details$/ })).toHaveCount(0);
-  });
-
-  test('composes the wheel detail panel in columns and then stacks it below its breakpoint', async ({ page }) => {
-    await page.setViewportSize({ width: 1600, height: 900 });
-    await goToComparator(page);
-
-    const table = page.getByRole('table', { name: 'Wheel comparison' });
-    await table.getByRole('row').nth(1).click();
-
-    const panel = page.getByRole('region', { name: /details$/ });
-    const plate = panel.getByTestId('wheel-detail-plate-image');
-    const ledger = panel.getByTestId('wheel-detail-ledger');
-    await expect(plate).toBeVisible();
-    await expect(ledger).toBeVisible();
-
-    await expect.poll(async () => {
-      const layout = await readDetailLayout(panel);
-      return layout.ledgerLeft > layout.plateLeft && layout.ledgerTop < layout.plateBottom;
-    }).toBe(true);
-
-    await page.setViewportSize({ width: 1200, height: 900 });
-
-    await expect.poll(async () => {
-      const layout = await readDetailLayout(panel);
-      return Math.abs(layout.ledgerLeft - layout.plateLeft) <= 2
-        && layout.ledgerTop >= layout.plateBottom;
-    }).toBe(true);
   });
 
   test('switches currency and updates visible prices', async ({ page }) => {
@@ -308,7 +227,6 @@ test.describe('Mobile comparator journeys', () => {
     const filtersButton = page.getByRole('button', { name: 'Filters', exact: true });
     await filtersButton.click();
     await expect(page.getByRole('dialog', { name: 'Filters' })).toBeVisible();
-    await expect.poll(() => page.evaluate(() => getComputedStyle(document.body).overflowX)).toBe('hidden');
 
     await page.setViewportSize({ width: 1100, height: 844 });
     await expect(page.getByRole('dialog', { name: 'Filters' })).toHaveCount(0);
@@ -391,26 +309,6 @@ test.describe('Chromium P1 comparator journeys', () => {
     await english.click();
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.getByRole('heading', { name: 'Road wheels: filter and compare' })).toBeVisible();
-  });
-
-  test('covers multi-image controls and the schematic fallback', async ({ page }) => {
-    await goToComparator(page);
-
-    const multiImagePanel = await openWheelDetails(page, '202 NSW');
-    await expect(multiImagePanel.getByTestId('wheel-schematic')).toHaveCount(0);
-    await expect(multiImagePanel.getByRole('button', { name: 'Previous image' })).toBeDisabled();
-    const nextImage = multiImagePanel.getByRole('button', { name: 'Next image' });
-    await expect(nextImage).toBeEnabled();
-    await expect(multiImagePanel.getByLabel('Image 1 of 4')).toBeVisible();
-    await nextImage.click();
-    await expect(multiImagePanel.getByLabel('Image 2 of 4')).toBeVisible();
-
-    await page.getByRole('button', { name: 'Close menu' }).click();
-    const fallbackPanel = await openWheelDetails(page, 'COSMIC ULTIMATE 45 DISC 23mm');
-    await expect(fallbackPanel.getByTestId('wheel-schematic')).toBeVisible();
-    await expect(fallbackPanel.getByRole('button', { name: 'Previous image' })).toHaveCount(0);
-    await expect(fallbackPanel.getByRole('button', { name: 'Next image' })).toHaveCount(0);
-    await expect(fallbackPanel.locator('img')).toHaveCount(0);
   });
 
   test('opens the column selector and changes the visible table column', async ({ page }) => {

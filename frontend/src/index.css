@@ -2084,6 +2084,13 @@
     box-shadow: var(--shadow-surface);
   }
 
+  /* Keep the comparator snap surface on the non-negative side of the navbar
+     edge when Chromium rounds the root scroll position to whole pixels. */
+  .comparator-results-column {
+    position: relative;
+    top: 0.5px;
+  }
+
   .results-head.comparator-results-head {
     align-items: end;
     gap: 18px;

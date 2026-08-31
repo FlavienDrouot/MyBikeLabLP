@@ -36,22 +36,6 @@ const MiniComparator = () => {
     return () => mediaQuery.removeEventListener('change', handleBreakpointChange);
   }, []);
 
-  // A drawer opened on a narrow viewport must not leave the page itself
-  // horizontally or vertically scrollable underneath the modal.
-  useEffect(() => {
-    if (!drawerOpen) return undefined;
-
-    const previousOverflowX = document.body.style.overflowX;
-    const previousOverflowY = document.body.style.overflowY;
-    document.body.style.overflowX = 'hidden';
-    document.body.style.overflowY = 'hidden';
-
-    return () => {
-      document.body.style.overflowX = previousOverflowX;
-      document.body.style.overflowY = previousOverflowY;
-    };
-  }, [drawerOpen]);
-
   // Chromium does not consistently apply proximity snapping on the root
   // scroller. Realign only when the table is already close to its target so
   // the page never jumps to the comparator from a distant position.
@@ -61,6 +45,19 @@ const MiniComparator = () => {
 
     let settling = false;
     let settleTimer;
+    let initialAlignmentFrame;
+    const alignToTarget = () => {
+      const navbarHeight = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')
+      ) || 0;
+      const delta = target.getBoundingClientRect().top - navbarHeight;
+      window.scrollBy({ top: delta, behavior: 'auto' });
+    };
+
+    if (window.location.hash === '#tool') {
+      initialAlignmentFrame = window.requestAnimationFrame(alignToTarget);
+    }
+
     const alignWhenNear = () => {
       if (settling) return;
       const navbarHeight = parseFloat(
@@ -70,7 +67,7 @@ const MiniComparator = () => {
       if (Math.abs(delta) > 96) return;
 
       settling = true;
-      window.scrollBy({ top: delta, behavior: 'smooth' });
+      window.scrollBy({ top: delta, behavior: 'auto' });
       clearTimeout(settleTimer);
       settleTimer = window.setTimeout(() => {
         settling = false;
@@ -79,6 +76,7 @@ const MiniComparator = () => {
 
     window.addEventListener('scroll', alignWhenNear, { passive: true });
     return () => {
+      if (initialAlignmentFrame) window.cancelAnimationFrame(initialAlignmentFrame);
       window.removeEventListener('scroll', alignWhenNear);
       clearTimeout(settleTimer);
     };
@@ -140,7 +138,7 @@ const MiniComparator = () => {
           </div>
 
           {/* ComparisonTable: col 2 */}
-          <div className="min-w-0">
+          <div className="comparator-results-column min-w-0">
             <ComparisonTable
               visibility={visibility}
               columnOnToggle={handleToggle}

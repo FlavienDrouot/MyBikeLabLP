@@ -321,7 +321,10 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                           }`}
                           style={{
                             position: 'sticky',
-                            left: 0,
+                            // Keep the detail surface aligned with its
+                            // pre-scroll position instead of the table-cell
+                            // padding edge when the table scrolls sideways.
+                            left: 10,
                             transitionProperty: 'opacity, transform',
                             transitionDuration: 'var(--duration-base)',
                             transitionTimingFunction: 'var(--ease-standard)',

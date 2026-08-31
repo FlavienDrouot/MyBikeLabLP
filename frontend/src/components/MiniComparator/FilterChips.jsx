@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { createSelector } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import {
@@ -7,7 +6,6 @@ import {
   resetFilters,
 } from '../../store/slices/filtersSlice';
 import { getFilterableProperties } from '../../config/wheelProperties';
-import { makeSelectRangeBoundsFor } from '../../store/selectors/wheelsSelectors';
 
 // Wave 5 filter pill: a quiet default surface with the selected value
 // emphasized, plus a removable affordance for active filters.
@@ -32,24 +30,6 @@ const FilterChips = () => {
   const { t } = useTranslation();
   const filters = useSelector((s) => s.filters.filters);
   const filterables = useMemo(() => getFilterableProperties(), []);
-  const rangeSelectors = useMemo(
-    () => Object.fromEntries(
-      filterables
-        .filter((property) => property.filter?.type === 'range')
-        .map((property) => [property.id, makeSelectRangeBoundsFor(property.id)])
-    ),
-    [filterables]
-  );
-  const selectRangeBounds = useMemo(
-    () => createSelector(
-      Object.values(rangeSelectors),
-      (...bounds) => Object.fromEntries(
-        Object.keys(rangeSelectors).map((id, index) => [id, bounds[index]])
-      )
-    ),
-    [rangeSelectors]
-  );
-  const rangeBounds = useSelector(selectRangeBounds);
 
   const chips = [];
 
@@ -91,20 +71,6 @@ const FilterChips = () => {
       });
     }
 
-    if (type === 'range') {
-      const bounds = rangeBounds[property.id];
-      const isActive = bounds && (
-        filter.value.min !== bounds.min || filter.value.max !== bounds.max
-      );
-      if (isActive && bounds.max !== 0) {
-        chips.push({
-          key: `${property.id}-range`,
-          label: t(property.label),
-          value: `${filter.value.min}${property.unit ?? ''} – ${filter.value.max}${property.unit ?? ''}`,
-          onRemove: () => dispatch(setFilterValue({ id: property.id, value: bounds })),
-        });
-      }
-    }
   }
 
   return (

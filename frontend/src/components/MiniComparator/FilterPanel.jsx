@@ -41,34 +41,16 @@ const FilterToggle = ({ enabled, onChange, ariaLabel }) => (
   </button>
 );
 
-const RangeInput = ({ value, locale, onChange, disabled, className, ...props }) => {
-  const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState('');
-  const displayValue = editing
-    ? draft
-    : Number(value).toLocaleString(locale, { maximumFractionDigits: 2 });
-
-  return (
-    <input
-      {...props}
-      type="text"
-      inputMode="decimal"
-      value={displayValue}
-      disabled={disabled}
-      onFocus={() => {
-        setEditing(true);
-        setDraft(String(value));
-      }}
-      onChange={(event) => {
-        const next = event.target.value;
-        setDraft(next);
-        onChange(next.replace(/[^\d.-]/g, ''));
-      }}
-      onBlur={() => setEditing(false)}
-      className={className}
-    />
-  );
-};
+const RangeInput = ({ value, onChange, disabled, className, ...props }) => (
+  <input
+    {...props}
+    type="number"
+    value={value}
+    disabled={disabled}
+    onChange={(event) => onChange(event.target.value)}
+    className={className}
+  />
+);
 
 const DualRangeRow = ({
   label,
@@ -83,7 +65,6 @@ const DualRangeRow = ({
   enabled = true,
   onToggleEnabled,
   ariaLabel,
-  locale = 'en-US',
 }) => {
   const computedStep = (max - min) / 50 > 1 ? 1 : 0.1;
   const effectiveStep = stepProp ?? computedStep;
@@ -131,7 +112,6 @@ const DualRangeRow = ({
             min={min}
             max={max}
             step={effectiveStep}
-            locale={locale}
             disabled={!enabled}
             onChange={handleLow}
             className="comparator-range-input wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
@@ -144,7 +124,6 @@ const DualRangeRow = ({
             min={min}
             max={max}
             step={effectiveStep}
-            locale={locale}
             disabled={!enabled}
             onChange={handleHigh}
             className="comparator-range-input wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
@@ -235,7 +214,7 @@ const Pill = ({ active, muted, onClick, children }) => (
 
 const RangeFilter = ({ property, filter }) => {
   const dispatch = useDispatch();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { step } = property.filter;
   const selectBounds = useMemo(() => makeSelectRangeBoundsFor(property.id), [property.id]);
   const bounds = useSelector(selectBounds);
@@ -265,7 +244,6 @@ const RangeFilter = ({ property, filter }) => {
         dispatch(setFilterEnabled({ id: property.id, enabled: v }))
       }
       ariaLabel={t('filterPanel.enableFilter', { label: resolvedLabel.toLowerCase() })}
-      locale={i18n.language.startsWith('fr') ? 'fr-FR' : 'en-US'}
     />
   );
 };
@@ -350,6 +328,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
                 <label className={`fopt comparator-filter-option flex items-center gap-2 px-3 py-1.5 hover:bg-bg-recessed/60 cursor-pointer text-sm ${isMuted ? 'text-content-faint' : 'text-content-primary'}`}>
                   <input
                     type="checkbox"
+                    aria-label={`${optLabel} (${count})`}
                     checked={isActive}
                     onChange={() => toggle(opt)}
                     className="h-4 w-4 rounded border-border-default accent-accent"

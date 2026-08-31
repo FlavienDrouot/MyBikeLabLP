@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { Columns2 } from 'lucide-react';
 import {
@@ -18,20 +19,14 @@ const ColumnSelector = ({ visibility, onToggle }) => {
     if (!buttonRef.current) return;
     const rect = buttonRef.current.getBoundingClientRect();
     const menu = popupRef.current;
-    const menuRect = menu?.getBoundingClientRect();
-    const menuHeight = menuRect?.height ?? 0;
-    const menuWidth = menuRect?.width ?? 0;
+    const menuWidth = menu?.getBoundingClientRect().width ?? 0;
     const edge = 12;
     const preferredRight = window.innerWidth - rect.right;
     const maxRight = window.innerWidth - menuWidth - edge;
     const right = Math.max(edge, Math.min(preferredRight, maxRight));
     const below = rect.bottom + 8;
-    const top = menuHeight > 0 && below + menuHeight > window.innerHeight - edge
-      ? Math.max(edge, rect.top - menuHeight - 8)
-      : below;
-
     setPopupStyle({
-      top,
+      top: below,
       right,
     });
   };
@@ -75,7 +70,7 @@ const ColumnSelector = ({ visibility, onToggle }) => {
         {t('columnSelector.button')}
       </button>
 
-      {open && (
+      {open && createPortal(
         <div
           ref={popupRef}
           role="menu"
@@ -112,7 +107,8 @@ const ColumnSelector = ({ visibility, onToggle }) => {
               </div>
             );
           })}
-        </div>
+        </div>,
+        document.body,
       )}
     </div>
   );
