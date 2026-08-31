@@ -19,6 +19,7 @@ test('switches between the three Wave 5 themes and restores the choice', async (
   const html = page.locator('html');
   await expect(themeGroup).toBeVisible();
   await expect(html).toHaveAttribute('data-theme', 'light');
+  await expect(page.locator('body')).toHaveCSS('transition-duration', '0s');
 
   for (const [theme, backgroundColor] of Object.entries(THEME_COLORS)) {
     const option = themeGroup.getByRole('button', { name: theme[0].toUpperCase() + theme.slice(1) });

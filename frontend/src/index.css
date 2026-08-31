@@ -28,8 +28,6 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: clip;
-    transition: background-color var(--duration-base) var(--ease-standard),
-      color var(--duration-base) var(--ease-standard);
   }
 
   a {
