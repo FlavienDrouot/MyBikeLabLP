@@ -498,7 +498,7 @@
     width: 590px;
     height: 295px;
     transform: rotate(-2deg);
-    opacity: 0.2;
+    opacity: 0.26;
     -webkit-mask-image: url('./assets/wave5/bike-outline.svg');
     mask-image: url('./assets/wave5/bike-outline.svg');
   }
@@ -1222,7 +1222,7 @@
     left: -75px;
     width: 445px;
     height: 223px;
-    opacity: 0.1;
+    opacity: 0.16;
   }
 
   .hero-wheel {
@@ -1262,7 +1262,7 @@
     left: -40px;
     width: 300px;
     height: 150px;
-    opacity: 0.07;
+    opacity: 0.11;
   }
 
   .hero {
@@ -1826,7 +1826,10 @@
   section.comparator-section {
     position: relative;
     isolation: isolate;
-    overflow: clip;
+    /* Let the lower rotor bridge into the following section while keeping
+       horizontal decorative bleed clipped to the comparator bounds. */
+    overflow-x: clip;
+    overflow-y: visible;
   }
 
   section.comparator-section::before,
