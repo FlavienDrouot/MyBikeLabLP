@@ -1750,7 +1750,7 @@
 
   .comparator-detail-panel {
     padding: 24px;
-    background: var(--surface-well);
+    background: transparent;
   }
 
   .comparator-detail-section-head {
@@ -2431,7 +2431,7 @@
 
   .comparator-detail-panel {
     padding: 24px;
-    background: var(--surface-well);
+    background: transparent;
   }
 
   .comparator-detail-plate {
