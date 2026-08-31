@@ -1753,16 +1753,6 @@
     background: var(--surface-well);
   }
 
-  .comparator-detail-plate {
-    border-color: var(--border-default);
-    background: var(--surface-panel);
-  }
-
-  .comparator-detail-plate-header {
-    border-bottom-color: var(--border-subtle);
-    color: var(--content-muted);
-  }
-
   .comparator-detail-section-head {
     border-bottom-color: var(--border-strong);
   }
@@ -2092,6 +2082,32 @@
     border: 0;
   }
 
+  .brand-list.comparator-large-option-list {
+    padding: var(--space-1) var(--space-1) var(--space-1) 0;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-input);
+    background: var(--surface-well);
+    scrollbar-color: var(--border-default) var(--surface-well);
+    overscroll-behavior: contain;
+  }
+
+  .comparator-large-option-list::-webkit-scrollbar {
+    width: var(--space-2);
+  }
+
+  .comparator-large-option-list::-webkit-scrollbar-track {
+    background: var(--surface-well);
+  }
+
+  .comparator-large-option-list::-webkit-scrollbar-thumb {
+    background: var(--border-default);
+    border-radius: var(--radius-control);
+  }
+
+  .comparator-large-option-list::-webkit-scrollbar-thumb:hover {
+    background: var(--control-switch);
+  }
+
   .fopt.comparator-filter-option {
     min-height: 28px;
     padding: 4px 3px;
@@ -2296,6 +2312,8 @@
     border-radius: 9px;
     background: var(--surface-well);
     scrollbar-gutter: stable;
+    /* Chromium can be sized explicitly. Firefox only exposes `thin`/`auto`,
+       so `thin` is the closest native match to the 8px Chromium track. */
     scrollbar-width: thin;
     scrollbar-color: var(--border-default) var(--surface-well);
   }
@@ -2311,7 +2329,6 @@
 
   div.comparator-table-scroll::-webkit-scrollbar-thumb {
     background: var(--border-default);
-    border: 2px solid var(--surface-well);
     border-radius: var(--radius-control);
   }
 
@@ -2418,13 +2435,9 @@
   }
 
   .comparator-detail-plate {
-    border-color: var(--border-default);
-    border-radius: var(--radius-panel);
-    background: var(--surface-panel);
-    box-shadow: var(--shadow-surface);
+    background: transparent;
   }
 
-  .comparator-detail-plate-header,
   .comparator-detail-section-head {
     border-color: var(--border-subtle);
   }

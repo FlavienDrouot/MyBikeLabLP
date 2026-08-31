@@ -312,7 +312,7 @@ const LargeMultiSelectFilter = ({ property, filter }) => {
             className="comparator-search-input wave5-input mb-2 px-3 py-1.5 text-sm"
           />
         </div>
-        <ul className="brand-list comparator-option-list max-h-40 overflow-y-auto filter-panel-scroll">
+        <ul className="brand-list comparator-option-list comparator-large-option-list max-h-40 overflow-y-auto filter-panel-scroll">
           {visible.map((opt) => {
             const count = counts[String(opt)] ?? 0;
             const isActive = filter.value.includes(opt);
