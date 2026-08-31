@@ -76,7 +76,7 @@ describe('WheelImageCarousel', () => {
 
     expect(clip.style.overflow).toBe('hidden');
     expect(clip.style.borderRadius).toBe('var(--radius-panel)');
-    expect(clip.style.background).toBe('transparent');
+    expect(clip.style.background).toBe('var(--surface-panel)');
     expect(prev.disabled).toBe(true);
     expect(prev.style.opacity).toBe('0.4');
     expect(prev.style.cursor).toBe('not-allowed');

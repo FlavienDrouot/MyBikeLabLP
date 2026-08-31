@@ -1688,6 +1688,15 @@
     white-space: nowrap;
   }
 
+  table.comparator-table td.comparator-detail-cell {
+    padding: 0;
+    background: var(--surface-well);
+  }
+
+  table.comparator-table tbody tr:hover td.comparator-detail-cell {
+    background: var(--surface-well);
+  }
+
   table.comparator-table tbody tr:last-child td {
     border-bottom: 0;
   }
