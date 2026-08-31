@@ -37,6 +37,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   const [isPanelVisible, setIsPanelVisible] = useState(false);
   const [panelWidth, setPanelWidth] = useState(0);
   const [pagination, setPagination] = useState({ wheels: null, page: 0 });
+  const [readyCols, setReadyCols] = useState(null);
   // Column widths measured on the full dataset (see MeasuringTable). Keyed by
   // column id. Empty until the first measurement → table falls back to auto.
   const [colWidths, setColWidths] = useState({});
@@ -58,17 +59,6 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     const start = effectivePage * PAGE_SIZE;
     return wheels.slice(start, start + PAGE_SIZE);
   }, [wheels, effectivePage]);
-
-  // Stable callback; bails out when widths are unchanged to avoid a render loop.
-  const handleMeasure = useCallback((widths) => {
-    setColWidths((prev) => {
-      const keys = Object.keys(widths);
-      const same =
-        keys.length === Object.keys(prev).length &&
-        keys.every((k) => prev[k] === widths[k]);
-      return same ? prev : widths;
-    });
-  }, []);
 
   // Called when the panel div mounts or unmounts — sets width immediately on mount.
   const setPanelRef = useCallback((el) => {
@@ -110,11 +100,33 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
 
   const getColWidth = (p) => colWidths[p.id] ?? p.column?.colWidth ?? 0;
 
-  // Fixed layout only once every visible column has a real (> 0) width.
+  // Stable callback; bails out when widths are unchanged to avoid a render loop.
+  const handleMeasure = useCallback((widths) => {
+    // Keep the last complete measurement while the hidden twin is between
+    // layouts. A partial/zero measurement must never invalidate the visible
+    // table's current fixed geometry.
+    if (Object.keys(widths).some((key) => widths[key] <= 0)) return;
+
+    setColWidths((prev) => {
+      const keys = Object.keys(widths);
+      const same =
+        keys.length === Object.keys(prev).length &&
+        keys.every((k) => prev[k] === widths[k]);
+      return same ? prev : widths;
+    });
+    setReadyCols((previousCols) => (previousCols === cols ? previousCols : cols));
+  }, [cols]);
+
+  // A newly selected measured column is not available until MeasuringTable's
+  // layout effect runs. Keep the last ready column set rendered during that
+  // handoff so the visible table never falls back to auto layout for a frame.
+  const renderedCols = readyCols ?? cols;
+
+  // Fixed layout only once every rendered column has a real (> 0) width.
   // A 0 (e.g. jsdom, which does no layout) falls back to auto rather than collapsing.
-  const widthsReady = cols.length > 0 && cols.every((p) => getColWidth(p) > 0);
+  const widthsReady = renderedCols.length > 0 && renderedCols.every((p) => getColWidth(p) > 0);
   const totalWidth = widthsReady
-    ? cols.reduce((sum, p) => sum + getColWidth(p), 0) + ACTIONS_COL_PX
+    ? renderedCols.reduce((sum, p) => sum + getColWidth(p), 0) + ACTIONS_COL_PX
     : undefined;
 
   // Sort ids declared in the registry for a column: the asc/desc SortSpec pair.
@@ -224,7 +236,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
           >
             {widthsReady && (
               <colgroup>
-                {cols.map((p) => (
+                {renderedCols.map((p) => (
                   <col key={p.id} style={{ width: getColWidth(p) }} />
                 ))}
                 <col style={{ width: ACTIONS_COL_PX }} />
@@ -232,7 +244,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
             )}
             <thead className="comparator-table-head bg-surface-page text-content-muted">
               <tr className="text-left">
-                {cols.map((p) => {
+                {renderedCols.map((p) => {
                   const sortable = isSortable(p);
                   const dir = sortable ? sortDirOf(p) : null;
                   const ariaSort =
@@ -288,7 +300,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                       }
                     }}
                   >
-                    {cols.map((p) => {
+                    {renderedCols.map((p) => {
                       if (p.id === 'freehubOptions') {
                         return (
                           <td key={p.id} className={`comparator-table-cell ${cellClassFor(p)} whitespace-nowrap overflow-hidden text-ellipsis`}>
@@ -313,7 +325,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
                   </tr>
                   {renderedExpandedId === w.id && (
                     <tr>
-                      <td colSpan={cols.length + 1} className="comparator-detail-cell p-0">
+                      <td colSpan={renderedCols.length + 1} className="comparator-detail-cell p-0">
                         <div
                           ref={setPanelRef}
                           className={`relative transition-[opacity,transform] duration-base-ds ease-standard motion-reduce:transform-none ${
