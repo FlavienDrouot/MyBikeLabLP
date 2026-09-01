@@ -34,12 +34,14 @@
       { "title": "XX", "description": "XX" }
     ],
     "schematic": {
-      "tireDiameter": "XX",
-      "hubSpokes": "XX",
-      "pairWeight": "XX",
-      "tireDiameterValue": "XX",
-      "hubSpokesValue": "XX",
-      "pairWeightValue": "XX",
+      "externalWidth": "XX",
+      "internalWidth": "XX",
+      "rimDepth": "XX",
+      "wheelDiameter": "XX",
+      "externalWidthValue": "XX",
+      "internalWidthValue": "XX",
+      "rimDepthValue": "XX",
+      "wheelDiameterValue": "XX",
       "caption": "XX"
     }
   },

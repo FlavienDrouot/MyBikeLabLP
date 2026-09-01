@@ -159,13 +159,15 @@
       }
     ],
     "schematic": {
-      "tireDiameter": "tire diameter",
-      "hubSpokes": "hub / spokes",
-      "pairWeight": "weight, the pair",
-      "tireDiameterValue": "Ø 700 c",
-      "hubSpokesValue": "ZR1 SL · 20 / 20",
-      "pairWeightValue": "1,090 g",
-      "caption": "What we measure. Structured wheel anatomy presented without decorative pseudo-data."
+      "externalWidth": "external rim width",
+      "internalWidth": "internal rim width",
+      "rimDepth": "rim depth",
+      "wheelDiameter": "wheel diameter",
+      "externalWidthValue": "27.5 mm",
+      "internalWidthValue": "23 mm",
+      "rimDepthValue": "35 mm",
+      "wheelDiameterValue": "Ø 700 c",
+      "caption": "Representative profile. Dimensions sourced from structured product data."
     }
   },
   "partnership": {

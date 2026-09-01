@@ -22,13 +22,15 @@ vi.mock('react-i18next', () => ({
           description: 'Open data, transparent affiliations.',
         },
       ],
-      'benefits.schematic.tireDiameter': 'tire diameter',
-      'benefits.schematic.hubSpokes': 'hub / spokes',
-      'benefits.schematic.pairWeight': 'weight, the pair',
-      'benefits.schematic.tireDiameterValue': 'Ø 700 c',
-      'benefits.schematic.hubSpokesValue': 'ZR1 SL · 20 / 20',
-      'benefits.schematic.pairWeightValue': '1,090 g',
-      'benefits.schematic.caption': 'What we measure. Structured wheel anatomy presented without decorative pseudo-data.',
+      'benefits.schematic.externalWidth': 'external rim width',
+      'benefits.schematic.internalWidth': 'internal rim width',
+      'benefits.schematic.rimDepth': 'rim depth',
+      'benefits.schematic.wheelDiameter': 'wheel diameter',
+      'benefits.schematic.externalWidthValue': '27.5 mm',
+      'benefits.schematic.internalWidthValue': '23 mm',
+      'benefits.schematic.rimDepthValue': '35 mm',
+      'benefits.schematic.wheelDiameterValue': 'Ø 700 c',
+      'benefits.schematic.caption': 'Representative profile. Dimensions sourced from structured product data.',
     }[key]),
   }),
 }));
@@ -42,7 +44,9 @@ describe('BenefitsGrid', () => {
     expect(html).toContain('Better decisions');
     expect(html).toContain('Data-driven');
     expect(html).toContain('Community-focused');
-    expect(html).toContain('viewBox="0 0 520 310"');
-    expect(html).toContain('What we measure. Structured wheel anatomy');
+    expect(html).toContain('viewBox="0 0 780 390"');
+    expect(html).toContain('external rim width');
+    expect(html).toContain('35 mm');
+    expect(html).toContain('Representative profile');
   });
 });

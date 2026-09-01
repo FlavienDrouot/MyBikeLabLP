@@ -159,13 +159,15 @@
       }
     ],
     "schematic": {
-      "tireDiameter": "diamètre de pneu",
-      "hubSpokes": "moyeu / rayons",
-      "pairWeight": "poids de la paire",
-      "tireDiameterValue": "Ø 700 c",
-      "hubSpokesValue": "ZR1 SL · 20 / 20",
-      "pairWeightValue": "1 090 g",
-      "caption": "Ce que nous mesurons. Une anatomie de roue structurée, sans pseudo-données décoratives."
+      "externalWidth": "largeur externe de jante",
+      "internalWidth": "largeur interne de jante",
+      "rimDepth": "profondeur de jante",
+      "wheelDiameter": "diamètre de roue",
+      "externalWidthValue": "27,5 mm",
+      "internalWidthValue": "23 mm",
+      "rimDepthValue": "35 mm",
+      "wheelDiameterValue": "Ø 700 c",
+      "caption": "Profil représentatif. Dimensions sourcées à partir de données produit structurées."
     }
   },
   "partnership": {

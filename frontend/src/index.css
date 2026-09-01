@@ -573,7 +573,8 @@
   }
 
   .schematic-card {
-    margin: 1em var(--space-10);
+    align-self: start;
+    margin: 0;
     padding: 22px;
     border: 1px solid var(--border-default);
     border-radius: var(--radius-panel);
@@ -582,12 +583,28 @@
   }
 
   .schematic-card svg {
-    display: inline;
+    display: block;
     width: 100%;
     height: auto;
     color: var(--content-secondary);
-    vertical-align: baseline;
+    vertical-align: initial;
   }
+
+  .rim-profile path {
+    fill: none;
+    stroke: var(--content-primary);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .dimension-extension { stroke: var(--border-strong); stroke-width: 0.8; }
+  .dimension-measure, .dimension-route, .dimension-arrow { stroke: var(--accent); stroke-width: 1.05; }
+  .dimension-point { fill: var(--accent); }
+  .anatomy-ledger > g > path { stroke: var(--border-default); }
+  .schematic-label { fill: currentColor; font-family: "Schibsted Grotesk", sans-serif; font-size: 10.5px; letter-spacing: 0.08em; }
+  .schematic-value { fill: var(--accent); font-family: "Fragment Mono", monospace; font-size: 12px; }
 
   .schematic-card figcaption {
     margin-top: 8px;
