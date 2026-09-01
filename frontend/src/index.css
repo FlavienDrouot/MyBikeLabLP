@@ -555,7 +555,7 @@
   }
 
   .benefit-row:first-child {
-    padding-top: 4px;
+    padding-top: var(--space-3);
     border-top: 0;
   }
 
@@ -574,8 +574,10 @@
 
   .schematic-card {
     align-self: start;
+    justify-self: stretch;
     margin: 0;
-    padding: 22px;
+    min-width: 0;
+    padding: 0 var(--space-4) var(--space-4);
     border: 1px solid var(--border-default);
     border-radius: var(--radius-panel);
     background: color-mix(in srgb, var(--surface-panel) 96%, transparent);
@@ -603,8 +605,8 @@
   .dimension-measure, .dimension-route, .dimension-arrow { stroke: var(--accent); stroke-width: 1.05; }
   .dimension-point { fill: var(--accent); }
   .anatomy-ledger > g > path { stroke: var(--border-default); }
-  .schematic-label { fill: currentColor; font-family: "Schibsted Grotesk", sans-serif; font-size: 10.5px; letter-spacing: 0.08em; }
-  .schematic-value { fill: var(--accent); font-family: "Fragment Mono", monospace; font-size: 12px; }
+  .schematic-label { fill: currentColor; font-family: "Schibsted Grotesk", sans-serif; font-size: 16px; letter-spacing: 0.08em; }
+  .schematic-value { fill: var(--accent); font-family: "Fragment Mono", monospace; font-size: 18px; }
 
   .schematic-card figcaption {
     margin-top: 8px;
@@ -1207,6 +1209,10 @@
     grid-template-columns: 1fr;
   }
 
+  .benefit-row:first-child {
+    padding-top: 4px;
+  }
+
   .partner-grid {
     grid-template-columns: 1fr;
   }
@@ -1278,6 +1284,13 @@
   .section-spaced {
     padding-block: 40px;
   }
+
+  .schematic-card {
+    padding: 10px 12px 14px;
+  }
+
+  .schematic-label { font-size: 24px; }
+  .schematic-value { font-size: 26px; }
 
   .benefits-section::before {
     top: 20%;
