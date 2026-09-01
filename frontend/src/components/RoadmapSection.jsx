@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const ROADMAP_PROGRESS = '33.333%';
+const ROADMAP_PROGRESS = '11.111%';
+const MOBILE_ORIGINAL_MARKER_OFFSET = 8;
 const FALLBACK_PHASE_STATES = ['current', 'next', 'vision'];
 
 const getPhaseState = (phase, index) => phase.state || FALLBACK_PHASE_STATES[index] || 'vision';
@@ -32,13 +33,16 @@ const RoadmapSection = () => {
       }
 
       const timelineTop = timeline.getBoundingClientRect().top;
-      const markerPositions = phaseElements.map((phase) => phase.getBoundingClientRect().bottom - timelineTop);
+      const phaseRects = phaseElements.map((phase) => phase.getBoundingClientRect());
+      const markerPositions = phaseRects.map((phaseRect) => phaseRect.bottom - timelineTop);
       const lastMarkerPosition = markerPositions[markerPositions.length - 1];
+      // Preserve the center of the former mobile pseudo-marker (2px top + 6px radius).
+      const originalMarkerPosition = phaseRects[0].top - timelineTop + MOBILE_ORIGINAL_MARKER_OFFSET;
 
       markerElements.forEach((marker, index) => {
         marker.style.setProperty('--timeline-marker-mobile-position', `${markerPositions[index]}px`);
       });
-      timeline.style.setProperty('--timeline-track-start', `${markerPositions[0]}px`);
+      timeline.style.setProperty('--timeline-track-start', `${originalMarkerPosition}px`);
       timeline.style.setProperty(
         '--timeline-track-end',
         `${Math.max(0, timeline.getBoundingClientRect().height - lastMarkerPosition)}px`,

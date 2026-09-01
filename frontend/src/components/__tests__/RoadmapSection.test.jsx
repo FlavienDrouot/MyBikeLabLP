@@ -46,6 +46,7 @@ describe('RoadmapSection', () => {
     expect(html).toContain('class="wave5-panel roadmap-panel"');
     expect(html).toContain('class="timeline-track"');
     expect(html).toContain('class="timeline-progress"');
+    expect(html).toContain('--roadmap-progress:11.111%');
     expect(html).toContain('class="timeline-marker current"');
     expect(html).toContain('class="timeline-marker next"');
     expect(html).toContain('class="timeline-marker vision"');

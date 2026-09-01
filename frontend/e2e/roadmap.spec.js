@@ -40,33 +40,35 @@ test('anchors desktop roadmap markers to the ends of equal segments', async ({ p
   ));
 
   expect(Math.abs(geometry.track.left - geometry.timeline.left)).toBeLessThanOrEqual(1);
-  expect(Math.abs(geometry.progress.right - markerCenters[0])).toBeLessThanOrEqual(1);
+  expect(geometry.progress.right).toBeLessThan(markerCenters[0]);
+  expect(geometry.progress.width / geometry.track.width).toBeCloseTo(1 / 9, 2);
   markerCenters.forEach((center, index) => {
     expect(Math.abs(center - expectedCenters[index])).toBeLessThanOrEqual(1);
   });
 });
 
-test('starts the mobile roadmap spine at the first marker and follows phase ends', async ({ page }) => {
+test('starts the mobile roadmap spine at the original phase-one marker and follows phase ends', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('#roadmap');
 
   const timeline = page.locator('.timeline');
   await expect.poll(async () => {
     const geometry = await readRoadmapGeometry(timeline);
-    const firstMarker = geometry.markers[0];
-    return Math.abs(geometry.track.top - (firstMarker.top + firstMarker.height / 2)) <= 1;
+    const originalMarkerPosition = geometry.phases[0].top + 8;
+    return Math.abs(geometry.track.top - originalMarkerPosition) <= 1;
   }).toBe(true);
 
   const geometry = await readRoadmapGeometry(timeline);
   const firstMarker = geometry.markers[0];
   const lastMarker = geometry.markers.at(-1);
   const markerCenters = geometry.markers.map((marker) => marker.top + marker.height / 2);
+  const originalMarkerPosition = geometry.phases[0].top + 8;
 
-  expect(Math.abs(geometry.track.top - (firstMarker.top + firstMarker.height / 2))).toBeLessThanOrEqual(1);
+  expect(Math.abs(geometry.track.top - originalMarkerPosition)).toBeLessThanOrEqual(1);
   expect(Math.abs(geometry.track.bottom - (lastMarker.top + lastMarker.height / 2))).toBeLessThanOrEqual(1);
   expect(Math.abs(firstMarker.top + firstMarker.height / 2 - geometry.phases[0].bottom)).toBeLessThanOrEqual(1);
   expect(Math.abs(geometry.progress.top - geometry.track.top)).toBeLessThanOrEqual(1);
-  expect(geometry.progress.height / geometry.track.height).toBeCloseTo(1 / 3, 2);
+  expect(geometry.progress.height / geometry.track.height).toBeCloseTo(1 / 9, 2);
   expect(markerCenters[0]).toBeLessThan(markerCenters[1]);
   expect(markerCenters[1]).toBeLessThan(markerCenters[2]);
 });
