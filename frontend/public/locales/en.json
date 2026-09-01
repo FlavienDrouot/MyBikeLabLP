@@ -117,6 +117,7 @@
     "phases": [
       {
         "tag": "Phase 1",
+        "state": "current",
         "status": "In progress",
         "title": "Components comparison",
         "description": "Wheels first, then drivetrains, brakes, tires. Structured specs, side-by-side decisions.",
@@ -124,6 +125,7 @@
       },
       {
         "tag": "Phase 2",
+        "state": "next",
         "status": "Next",
         "title": "Impact simulator",
         "description": "See how each part changes your ride: weight, aerodynamics, total cost, predicted performance.",
@@ -131,6 +133,7 @@
       },
       {
         "tag": "Phase 3",
+        "state": "vision",
         "status": "Vision",
         "title": "Full bike configurator",
         "description": "Build a complete bike from the frame up, simulate the full setup, then go buy it.",

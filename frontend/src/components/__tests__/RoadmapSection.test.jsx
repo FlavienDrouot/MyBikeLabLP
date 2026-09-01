@@ -12,6 +12,7 @@ vi.mock('react-i18next', () => ({
       'roadmap.phases': [
         {
           tag: 'Phase 1',
+          state: 'current',
           status: 'In progress',
           title: 'Components comparison',
           description: 'Wheels first, then drivetrains, brakes, tires.',
@@ -19,6 +20,7 @@ vi.mock('react-i18next', () => ({
         },
         {
           tag: 'Phase 2',
+          state: 'next',
           status: 'Next',
           title: 'Impact simulator',
           description: 'See how each part changes your ride.',
@@ -26,6 +28,7 @@ vi.mock('react-i18next', () => ({
         },
         {
           tag: 'Phase 3',
+          state: 'vision',
           status: 'Vision',
           title: 'Full bike configurator',
           description: 'Build a complete bike from the frame up.',
@@ -42,6 +45,13 @@ describe('RoadmapSection', () => {
 
     expect(html).toContain('class="wave5-panel roadmap-panel"');
     expect(html).toContain('class="timeline-track"');
+    expect(html).toContain('class="timeline-progress"');
+    expect(html).toContain('class="timeline-marker current"');
+    expect(html).toContain('class="timeline-marker next"');
+    expect(html).toContain('class="timeline-marker vision"');
+    expect(html).toContain('class="phase current"');
+    expect(html).toContain('class="phase next"');
+    expect(html).toContain('class="phase vision"');
     expect(html.match(/<article/g)).toHaveLength(3);
     expect(html).toContain('Phase 1');
     expect(html).toContain('In progress');

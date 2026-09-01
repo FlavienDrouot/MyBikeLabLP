@@ -1081,12 +1081,39 @@
     background: var(--border-default);
   }
 
-  .timeline-track::before {
+  .timeline-progress {
     display: block;
-    width: 32%;
-    height: 2px;
+    width: var(--roadmap-progress);
+    height: 100%;
     background: var(--accent);
-    content: '';
+  }
+
+  .timeline-markers {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    top: 6px;
+    left: var(--timeline-marker-position);
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--content-muted);
+    border-radius: 50%;
+    background: var(--surface-panel);
+    transform: translate(-50%, -50%);
+  }
+
+  .timeline-marker.current {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--surface-page), 0 0 0 4px var(--accent-wash);
+  }
+
+  .timeline-marker.next {
+    border-color: var(--accent);
   }
 
   .phases {
@@ -1099,28 +1126,6 @@
 
   .phase {
     position: relative;
-  }
-
-  .phase::before {
-    position: absolute;
-    top: -34px;
-    left: 0;
-    width: 12px;
-    height: 12px;
-    border: 2px solid var(--content-muted);
-    border-radius: 50%;
-    background: var(--surface-panel);
-    content: '';
-  }
-
-  .phase.current::before {
-    border-color: var(--accent);
-    background: var(--accent);
-    box-shadow: 0 0 0 4px var(--surface-page);
-  }
-
-  .phase.next::before {
-    border-color: var(--accent);
   }
 
   .phase-meta {
@@ -1195,26 +1200,26 @@
   }
 
   .timeline-track {
-    top: 0;
+    top: var(--timeline-track-start, 0px);
     right: auto;
-    bottom: 0;
+    bottom: var(--timeline-track-end, 0px);
     left: 5px;
     width: 2px;
     height: auto;
   }
 
-  .timeline-track::before {
-    width: 2px;
-    height: 110px;
+  .timeline-progress {
+    width: 100%;
+    height: var(--roadmap-progress);
+  }
+
+  .timeline-marker {
+    top: var(--timeline-marker-mobile-position, 0px);
+    left: 5px;
   }
 
   .phase {
     padding-left: 32px;
-  }
-
-  .phase::before {
-    top: 2px;
-    left: 0;
   }
 
   .benefits-section::before {
