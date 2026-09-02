@@ -75,3 +75,9 @@ Completed and abandoned MyBikeLab evolutions and fixes are stored here after rem
 ## Legacy archive contents
 
 The archive also contains old specifications, review evaluations, grouped project artifacts, and historical standalone documents. They remain preserved as historical material and are not treated as active work items unless registered again in `../README.md`.
+
+## Visual archives
+
+| Archive | Content |
+| --- | --- |
+| [`wave-5-visual-history/`](wave-5-visual-history/README.md) | Before/after desktop and mobile captures for the Wave 5 migration and final polish. |
