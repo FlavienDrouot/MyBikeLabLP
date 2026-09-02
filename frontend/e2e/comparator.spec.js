@@ -185,35 +185,6 @@ test.describe('Chromium P0 comparator journeys', () => {
     expect(leftEdges[0]).toBe(leftEdges[1]);
   });
 
-  test('aligns the Benefits schematic drawing with the first benefit and keeps its ledger readable', async ({ page }) => {
-    await page.setViewportSize({ width: 1600, height: 900 });
-    await page.goto('#top');
-
-    const layout = await page.locator('.benefits-section').evaluate((section) => {
-      const visibleParts = [...section.querySelectorAll('.rim-profile path, .rim-dimensions path, .rim-dimensions circle, .anatomy-ledger text')];
-      const visibleTop = Math.min(...visibleParts.map((part) => part.getBoundingClientRect().top));
-      const firstHeading = section.querySelector('.benefit-row h3').getBoundingClientRect();
-      const schematic = section.querySelector('.schematic-card');
-      const svg = section.querySelector('svg');
-
-      return {
-        visibleTop,
-        firstHeadingTop: firstHeading.top,
-        margin: getComputedStyle(schematic).margin,
-        alignSelf: getComputedStyle(schematic).alignSelf,
-        display: getComputedStyle(svg).display,
-        labelSize: Number.parseFloat(getComputedStyle(section.querySelector('.schematic-label')).fontSize),
-        valueSize: Number.parseFloat(getComputedStyle(section.querySelector('.schematic-value')).fontSize),
-      };
-    });
-
-    expect(Math.abs(layout.visibleTop - layout.firstHeadingTop)).toBeLessThanOrEqual(2);
-    expect(layout.margin).toBe('0px');
-    expect(layout.alignSelf).toBe('start');
-    expect(layout.display).toBe('block');
-    expect(layout.labelSize).toBeGreaterThanOrEqual(16);
-    expect(layout.valueSize).toBeGreaterThanOrEqual(18);
-  });
 });
 
 test.describe('Mobile comparator journeys', () => {

@@ -60,6 +60,9 @@ const MiniComparator = () => {
 
     const alignWhenNear = () => {
       if (settling) return;
+      // Do not interrupt smooth navigation to another landing section when
+      // the comparator happens to cross the viewport on the way there.
+      if (window.location.hash !== '#tool') return;
       const navbarHeight = parseFloat(
         getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')
       ) || 0;

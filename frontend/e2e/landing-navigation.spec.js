@@ -8,7 +8,12 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('keeps primary navigation targets reachable after the landing reorder', async ({ page }) => {
-  await page.goto('#top');
+  await page.goto('#top', { waitUntil: 'networkidle' });
+  await expect(page.getByRole('main')).toBeVisible();
+  await expect(page.getByRole('table', { name: 'Wheel comparison' })).toBeVisible();
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+  });
 
   const primaryNav = page.getByRole('navigation', { name: 'Primary' });
   const targets = [
