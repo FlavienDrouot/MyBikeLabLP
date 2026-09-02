@@ -29,7 +29,8 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 | `src/pages/Landing.jsx` | Single-page orchestrator |
 | `src/index.css` | Tailwind base + shared utility classes |
 | `src/design-tokens.css` | Production design tokens and shared visual primitives |
-| `../evolutions/archive/design-system/` | Consolidated visual guidance and retained unintegrated product-detail reference |
+| `TASTE-PROFILE.md` | Consolidated visual guidance for future UI work |
+| `prototypes/` | Retained unintegrated UI prototypes |
 
 ## Config Files
 
@@ -44,5 +45,5 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 - **New wheel property** â†’ add one entry in `wheelProperties.jsx` only; no other file to update
 - **Filter types**: `range` \| `multiSelect` \| `triState` â€” new type requires a matcher + init in `filtersSlice`
 - **Column visibility** = local state in `MiniComparator`; filter/sort = Redux global state
-- **Design tokens**: use `src/design-tokens.css`; add shared classes to `src/index.css`. Consult `../evolutions/archive/design-system/TASTE-PROFILE.md` for visual direction.
+- **Design tokens**: use `src/design-tokens.css`; add shared classes to `src/index.css`. Consult `TASTE-PROFILE.md` for visual direction.
 - **Browser translation policy**: English remains browser-translatable; non-English locales synchronize the document `lang` and protect the application with the document translation markers in `src/lib/documentLanguage.js`

@@ -24,7 +24,8 @@ Its first product scope focuses on road wheelsets.
 | `product-overview.md` | Product purpose, users, features, and roadmap |
 | `frontend/` | React application source and configuration |
 | `frontend/src/design-tokens.css` | Production design tokens and shared visual primitives |
-| `evolutions/archive/design-system/` | Consolidated visual guidance and retained unintegrated product-detail reference |
+| `frontend/TASTE-PROFILE.md` | Consolidated visual guidance for future UI work |
+| `frontend/prototypes/` | Retained unintegrated UI prototypes |
 | `scripts/` | Product data ingestion, migration, and maintenance tooling |
 | `evolutions/` | Product work artifacts |
 
@@ -34,7 +35,7 @@ Its first product scope focuses on road wheelsets.
 - Key filter and sort state by registry property IDs.
 - Supported filter types are `range`, `multiSelect`, and `triState`. Adding a filter type requires corresponding matcher and slice initialization support.
 - Keep column visibility local to `MiniComparator`; filter and sort state belong in Redux.
-- Before UI work, read `frontend/src/design-tokens.css` and the consolidated visual guidance in `evolutions/archive/design-system/TASTE-PROFILE.md` when relevant. The unintegrated product-detail reference is under `evolutions/archive/design-system/wave-3-product-detail/`.
+- Before UI work, read `frontend/src/design-tokens.css` and `frontend/TASTE-PROFILE.md` when relevant. The unintegrated product-detail reference is under `frontend/prototypes/wave-3-product-detail/`.
 - Use `frontend/src/design-tokens.css` and shared classes in `frontend/src/index.css` instead of ad hoc styling.
 - Wheel data schema changes must update all existing `wheelsData_*.js` files and affected product-owned validation, ingestion, migration, and documentation artifacts.
 

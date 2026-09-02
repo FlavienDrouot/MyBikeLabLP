@@ -81,9 +81,3 @@ The archive also contains old specifications, review evaluations, grouped projec
 | Archive | Content |
 | --- | --- |
 | [`wave-5-visual-history/`](wave-5-visual-history/README.md) | Before/after desktop and mobile captures for the Wave 5 migration and final polish. |
-
-## Retained design references
-
-| Archive | Content |
-| --- | --- |
-| [`design-system/`](design-system/) | Consolidated visual taste profile and the unintegrated Wave 3 product-detail page model. |

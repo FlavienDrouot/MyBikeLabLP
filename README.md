@@ -14,7 +14,8 @@ React application for bike wheel comparison. Frontend-only MVP.
 | `scripts/` | Data ingestion scripts â€” affiliate and product feeds (gitignored) | `scripts/README.md` |
 | `evolutions/` | Evolution specs (planned and archived) | `evolutions/README.md` |
 | `frontend/src/design-tokens.css` | Production design tokens and shared visual primitives | `frontend/src/design-tokens.css` |
-| `evolutions/archive/design-system/` | Consolidated visual guidance and retained unintegrated product-detail reference | `evolutions/archive/design-system/TASTE-PROFILE.md` |
+| `frontend/TASTE-PROFILE.md` | Consolidated visual guidance for future UI work | `frontend/TASTE-PROFILE.md` |
+| `frontend/prototypes/` | Retained unintegrated UI prototypes | `frontend/prototypes/wave-3-product-detail/` |
 | `.github/workflows/deploy.yml` | Pipeline CI/CD â€” dÃ©ploiement GitHub Pages | â€” |
 
 ## Architecture Summary
