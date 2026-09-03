@@ -29,7 +29,7 @@
   --decoration:   #91b1d4;
   --decoration-soft: #cbd9e7;
   --control-switch:  #aab4c1;
-  --header:       rgba(244, 247, 250, 0.86);
+  --header:       rgba(244, 247, 250, 0.70);
   --theme-dot-light: #dbe8f5;
   --theme-dot-cream: #c8a76e;
   --theme-dot-dark: #1f2935;
@@ -242,7 +242,7 @@
   --decoration:   #d0b07a;
   --decoration-soft: #e4d1b2;
   --control-switch:  #b6ada1;
-  --header:       rgba(248, 243, 235, 0.88);
+  --header:       rgba(248, 243, 235, 0.70);
 
   --shadow-surface:
     0 1px 2px rgba(50, 40, 26, 0.04),
@@ -271,7 +271,7 @@
   --decoration:   #6788aa;
   --decoration-soft: #354a60;
   --control-switch:  #5b646e;
-  --header:       rgba(25, 29, 34, 0.86);
+  --header:       rgba(25, 29, 34, 0.70);
 
   --shadow-surface:
     0 1px 2px rgba(0, 0, 0, 0.28),
