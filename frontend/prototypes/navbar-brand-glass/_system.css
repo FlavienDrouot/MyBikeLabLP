@@ -63,6 +63,13 @@ button {
   line-height: var(--leading-relaxed);
 }
 
+.prototype-selection {
+  margin: 14px 0 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
 .prototype-toolbar {
   display: flex;
   align-items: center;
