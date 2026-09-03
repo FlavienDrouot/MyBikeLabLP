@@ -2,7 +2,8 @@
 
 .thumb {
   position: absolute;
-  width: 100%;
+  left: 8%;
+  width: 84%;
   height: 0;
   pointer-events: none;
   -webkit-appearance: none;
@@ -13,40 +14,41 @@
 
 .thumb::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
-  background: var(--paper-0);
-  border: 1px solid var(--ink-11);
+  background: var(--surface-panel);
+  border: 2px solid var(--accent);
   pointer-events: all;
   cursor: grab;
 }
 
 .thumb:focus-visible::-webkit-slider-thumb {
-  outline: 2px solid var(--brass-8);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 .thumb::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
-  background: var(--paper-0);
-  border: 1px solid var(--ink-11);
+  background: var(--surface-panel);
+  border: 2px solid var(--accent);
   pointer-events: all;
   cursor: grab;
 }
 
 .thumb:focus-visible::-moz-range-thumb {
-  outline: 2px solid var(--brass-8);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 .track {
   position: absolute;
-  width: 100%;
-  height: 2px;
-  background: var(--ink-3);
+  left: 8%;
+  width: 84%;
+  height: 3px;
+  background: var(--border-default);
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
@@ -55,8 +57,8 @@
 
 .range {
   position: absolute;
-  height: 2px;
-  background: var(--ink-11);
+  height: 3px;
+  background: var(--accent);
   z-index: 2;
   top: 50%;
   transform: translateY(-50%);

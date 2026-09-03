@@ -50,4 +50,24 @@ describe('XX locale - i18n completeness', () => {
     const unexpected = nodes.filter((node) => !isNodeAllowed(node));
     expect(unexpected, 'hardcoded strings found').toEqual([]);
   });
+
+  it('keeps the validated section order and existing navigation anchors', () => {
+    const html = renderToStaticMarkup(
+      createElement(Provider, { store: emptyWheelsStore }, createElement(Landing, null))
+    );
+    const sectionPositions = [
+      html.indexOf('id="top"'),
+      html.indexOf('id="tool"'),
+      html.indexOf('class="section-spaced decor-section flow benefits-section"'),
+      html.indexOf('id="roadmap"'),
+      html.indexOf('id="partnerships"'),
+    ];
+
+    expect(sectionPositions.every((position) => position >= 0)).toBe(true);
+    expect(sectionPositions).toEqual([...sectionPositions].sort((a, b) => a - b));
+    expect(html).toContain('href="#tool"');
+    expect(html).toContain('href="#roadmap"');
+    expect(html).toContain('href="#partnerships"');
+    expect(html).toContain('href="#contact"');
+  });
 });

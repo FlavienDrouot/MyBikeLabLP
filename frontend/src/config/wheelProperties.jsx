@@ -149,13 +149,13 @@ export const WHEEL_PROPERTIES = [
     column: {
       required: true,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 font-medium text-ink-11 min-w-[220px] max-w-[260px]',
+      cellClassName: 'px-4 py-3 font-medium text-content-primary min-w-[220px] max-w-[260px]',
       renderCell: (w, t) => (
         <div className="min-w-0">
-          <span className="block text-ink-7 font-normal text-xs">{w.brand}</span>
+          <span className="block text-content-muted font-normal text-xs">{w.brand}</span>
           <span className="block whitespace-normal leading-snug">{w.model}</span>
           {w.variant && (
-            <span className="mt-1 block whitespace-normal border-l border-brass-7 pl-2 text-[11px] font-normal leading-snug text-ink-7">
+            <span className="mt-1 block whitespace-normal border-l border-accent pl-2 text-[11px] font-normal leading-snug text-content-muted">
               {t ? t(`variant.${w.variant}`) : w.variant}
             </span>
           )}
@@ -180,7 +180,7 @@ export const WHEEL_PROPERTIES = [
     ],
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-right font-semibold text-ink-11 tabular-nums',
+      cellClassName: 'px-4 py-3 text-right font-semibold text-content-primary tabular-nums',
       renderCell: (w, t, ctx) => {
         const displayCurrency = ctx?.displayCurrency ?? 'EUR';
         const offer = selectMinOffer(w, displayCurrency);
@@ -208,7 +208,7 @@ export const WHEEL_PROPERTIES = [
     ],
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
       renderCell: (w, t) => {
         const { front, rear, total, isSingle } = resolveSpec(w.weight_grams);
         const tolerance = w.weight_tolerance_percent;
@@ -216,7 +216,7 @@ export const WHEEL_PROPERTIES = [
           ? Math.round((total * tolerance) / 100)
           : null;
         const toleranceLine = toleranceGrams !== null ? (
-          <div className="text-xs text-ink-7 mt-0.5">+/- {toleranceGrams} g</div>
+          <div className="text-xs text-content-muted mt-0.5">+/- {toleranceGrams} g</div>
         ) : null;
         if (total === null) return t('common.notAvailable');
         if (isSingle && !toleranceLine) return `${total} g`;
@@ -231,7 +231,7 @@ export const WHEEL_PROPERTIES = [
         return (
           <div>
             <span>{total} g</span>
-            <div className="text-xs text-ink-7 mt-0.5">{front} / {rear} g</div>
+            <div className="text-xs text-content-muted mt-0.5">{front} / {rear} g</div>
             {toleranceLine}
           </div>
         );
@@ -248,7 +248,7 @@ export const WHEEL_PROPERTIES = [
     filter: { type: 'multiSelect' },
     column: {
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
     },
   },
 
@@ -261,7 +261,7 @@ export const WHEEL_PROPERTIES = [
     filter: { type: 'multiSelect' },
     column: {
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
     },
   },
 
@@ -275,7 +275,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
       renderCell: (w) => formatDiameter(w.diameter_mm),
     },
   },
@@ -291,7 +291,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
     },
   },
 
@@ -312,7 +312,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
     },
   },
 
@@ -326,7 +326,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
     },
   },
 
@@ -347,7 +347,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
     },
   },
   // ── rims ───────────────────────────────────────────────────────────────────
@@ -360,7 +360,7 @@ export const WHEEL_PROPERTIES = [
     filter: { type: 'multiSelect' },
     column: {
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
     },
   },
 
@@ -387,7 +387,7 @@ export const WHEEL_PROPERTIES = [
     ],
     column: {
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
       renderCell: (w, t) => {
         const { front, rear, isSingle } = resolveSpec(w.rim.depth_mm);
         if (front === null) return t('common.notAvailable');
@@ -407,7 +407,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
       renderCell: (w, t) => {
         const types = w.rim?.tire_compatibility;
         if (!Array.isArray(types) || types.length === 0) return t('common.notAvailable');
@@ -454,7 +454,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
       renderCell: (w, t) => {
         const { front, rear, isSingle } = resolveSpec(w.rim.externalWidth_mm);
         if (front === null) return t('common.notAvailable');
@@ -488,7 +488,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
       renderCell: (w, t) => {
         const { front, rear, isSingle } = resolveSpec(w.rim?.internalWidth_mm);
         if (front === null) return t('common.notAvailable');
@@ -514,7 +514,7 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums max-w-[160px] overflow-hidden',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums max-w-[160px] overflow-hidden',
       renderCell: (w, t) => {
         const pressure = w.rim?.max_tire_pressure;
         if (!pressure?.psi && !pressure?.bar) return t('common.notAvailable');
@@ -528,7 +528,7 @@ export const WHEEL_PROPERTIES = [
         return (
           <div>
             <span>{value}</span>
-            <div className="text-xs text-ink-7 mt-0.5">{pressure.note}</div>
+            <div className="text-xs text-content-muted mt-0.5">{pressure.note}</div>
           </div>
         );
       },
@@ -551,7 +551,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
       renderCell: (w, t) => formatTireWidthRange(w.rim?.tire_width_mm, t),
     },
   },
@@ -567,7 +567,7 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
+      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
     },
   },
 
@@ -587,7 +587,7 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
+      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
       renderCell: (w, t) => {
         const warranty = w.warranty;
         if (!warranty?.text && !warranty?.years) return t('common.notAvailable');
@@ -606,10 +606,10 @@ export const WHEEL_PROPERTIES = [
     column: {
       headClassName: 'px-4 py-3 font-semibold',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 font-medium text-ink-11 max-w-[160px] overflow-hidden',
+      cellClassName: 'px-4 py-3 font-medium text-content-primary max-w-[160px] overflow-hidden',
       renderCell: (w) => (
         <div>
-          <span className="text-ink-7 font-normal text-xs">{w.hub.brand}</span>
+          <span className="text-content-muted font-normal text-xs">{w.hub.brand}</span>
           <br />
           <span className="block truncate" title={w.hub.model}>{w.hub.model}</span>
         </div>
@@ -650,7 +650,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
     },
   },
 
@@ -665,7 +665,7 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px]',
+      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px]',
       // renderCell removed: ComparisonTable now uses FreehubCell for this column (EVO-036 TASK-005).
       // MeasuringTable still uses renderCellFor, which falls back to the default
       // accessor-based render — sufficient for width measurement only.
@@ -682,7 +682,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
     },
   },
 
@@ -697,7 +697,7 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
+      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
     },
   },
 
@@ -711,7 +711,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
     },
   },
 
@@ -726,7 +726,7 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
+      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
     },
   },
 
@@ -745,7 +745,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
     },
   },
 
@@ -759,10 +759,10 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 font-medium text-ink-11 max-w-[160px] overflow-hidden',
+      cellClassName: 'px-4 py-3 font-medium text-content-primary max-w-[160px] overflow-hidden',
       renderCell: (w) => (
         <div>
-          <span className="text-ink-7 font-normal text-xs">{w.spokes.brand}</span>
+          <span className="text-content-muted font-normal text-xs">{w.spokes.brand}</span>
           <br />
           <span className="block truncate" title={w.spokes.model}>{w.spokes.model}</span>
         </div>
@@ -800,7 +800,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
     },
   },
 
@@ -827,7 +827,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-ink-11 text-right tabular-nums',
+      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
       renderCell: (w, t) => {
         const { front, rear, isSingle } = resolveSpec(w.spokes?.count);
         if (front === null) return t('common.notAvailable');
@@ -848,7 +848,7 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
+      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
     },
   },
 
@@ -862,7 +862,7 @@ export const WHEEL_PROPERTIES = [
     column: {
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-ink-11',
+      cellClassName: 'px-4 py-3 text-content-primary',
     },
   },
 
@@ -877,7 +877,7 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
+      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
     },
   },
 
@@ -896,7 +896,7 @@ export const WHEEL_PROPERTIES = [
       defaultVisible: false,
       headClassName: 'px-4 py-3 font-semibold',
       colWidth: 160,
-      cellClassName: 'px-4 py-3 text-ink-11 max-w-[160px] overflow-hidden',
+      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
     },
   },
 ];

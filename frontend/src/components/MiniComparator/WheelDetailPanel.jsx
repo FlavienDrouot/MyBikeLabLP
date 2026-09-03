@@ -3,7 +3,10 @@ import { useSelector } from 'react-redux';
 import WheelImageCarousel from './WheelImageCarousel';
 import { convert, formatPrice, isSupportedCurrency } from '../../lib/currency';
 
-const STACKED_PANEL_BREAKPOINT_PX = 1040;
+// The result surface is narrower than the full page because the Wave 5 shell
+// reserves a 282px filter rail. Keep the ledger beside the plate when the
+// remaining surface is usable, then stack it before the mobile layout starts.
+const STACKED_PANEL_BREAKPOINT_PX = 900;
 const hasKnownPrice = (entry) => Number.isFinite(entry.amount) && isSupportedCurrency(entry.currency);
 // Ledger prices follow the active display currency (TASK-004); converted rows
 // carry an `≈` hint when their source currency differs from the display one.
@@ -49,7 +52,7 @@ const EntryMeta = ({ entry }) => {
   if (parts.length === 0) return null;
 
   return (
-    <div className="mt-1 text-[10px] uppercase tracking-[0.1em] text-ink-6">
+    <div className="comparator-detail-entry-meta mt-1 text-[10px] uppercase tracking-[0.1em] text-content-faint">
       {parts.join(' \u00b7 ')}
     </div>
   );
@@ -58,27 +61,27 @@ const EntryMeta = ({ entry }) => {
 const LedgerRow = ({ entry, rank, ctaLabel, bestLabel, displayCurrency }) => (
   <div
     data-testid="wheel-detail-ledger-row"
-    className={`relative grid grid-cols-[30px_minmax(0,1fr)_auto_150px] items-center gap-[18px] border-b border-ink-3 py-3 last:border-b-0 ${
-      entry.isBestPrice ? 'pl-4 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[3px] before:bg-brass-8' : ''
+    className={`comparator-detail-ledger-row relative grid grid-cols-[30px_minmax(0,1fr)_auto_150px] items-center gap-[18px] border-b border-border-subtle py-3 last:border-b-0 ${
+      entry.isBestPrice ? 'pl-4 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[3px] before:bg-accent' : ''
     }`}
   >
-    <span className={`t-numeric text-[13px] ${rank == null ? 'text-ink-5' : 'text-ink-6'}`}>
+    <span className={`t-numeric text-[13px] ${rank == null ? 'text-content-faint' : 'text-content-faint'}`}>
       {rank == null ? '-' : String(rank).padStart(2, '0')}
     </span>
     <div className="min-w-0">
       <div className="flex min-w-0 items-center gap-2">
-        <b className="min-w-0 truncate text-base font-semibold text-ink-11">{entry.name}</b>
+        <b className="min-w-0 truncate text-base font-semibold text-content-primary">{entry.name}</b>
       </div>
       <EntryMeta entry={entry} />
     </div>
     <div className="text-right">
-      <span className={`t-numeric text-[19px] font-medium tracking-normal ${entry.isBestPrice ? 'text-signal-up' : 'text-ink-11'}`}>
+      <span className={`t-numeric text-[19px] font-medium tracking-normal ${entry.isBestPrice ? 'text-signal-up' : 'text-content-primary'}`}>
         {entry.priceInDisplay != null
           ? formatPrice(entry.priceInDisplay, displayCurrency, { approx: entry.approx })
           : '-'}
       </span>
       {entry.delta != null && (
-        <span className={`t-numeric mt-0.5 block text-[11px] ${entry.isBestPrice ? 'text-signal-up' : 'text-ink-6'}`}>
+        <span className={`t-numeric mt-0.5 block text-[11px] ${entry.isBestPrice ? 'text-signal-up' : 'text-content-faint'}`}>
           {entry.delta === 0 ? bestLabel : `+${formatPrice(entry.delta, displayCurrency)}`}
         </span>
       )}
@@ -87,10 +90,10 @@ const LedgerRow = ({ entry, rank, ctaLabel, bestLabel, displayCurrency }) => (
       href={entry.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xs border px-3.5 py-2 text-sm font-semibold leading-none no-underline transition-colors duration-quick ease-standard focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8 ${
+      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xs border px-3.5 py-2 text-sm font-semibold leading-none no-underline transition-colors duration-quick ease-standard focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
         entry.isBestPrice
-          ? 'border-brass-7 bg-brass-7 text-ink-12 hover:border-brass-8 hover:bg-brass-8'
-          : 'border-ink-4 bg-transparent text-ink-11 hover:border-brass-8 hover:text-brass-8'
+          ? 'border-accent bg-accent text-accent-fg-on hover:border-accent hover:bg-accent'
+          : 'border-border-default bg-transparent text-content-primary hover:border-accent hover:text-accent'
       }`}
     >
       {ctaLabel}
@@ -109,44 +112,40 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
 
   return (
     <div
-      className="bg-paper-2 border-y border-ink-4 px-7 py-[26px]"
+      className="comparator-detail-panel bg-surface-well border-y border-border-default"
       role="region"
       aria-label={t('wheelDetail.panelLabel', { brand: wheel.brand, model: wheel.model })}
     >
-      <div className={`mx-auto grid max-w-[1100px] items-start gap-12 ${isStacked ? 'grid-cols-1' : 'grid-cols-[380px_minmax(0,1fr)]'}`}>
-        <div className="mb-5 self-start border border-ink-4 bg-paper-0">
-          <div className="flex items-center justify-between border-b border-ink-3 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-7">
-            <span>{`FIG. 01 \u00b7 WHEEL`}</span>
-            <span>SCALE 1:1</span>
-          </div>
-          <div data-testid="wheel-detail-plate-image" className="h-[340px] p-6 text-ink-9">
+      <div className={`comparator-detail-layout mx-auto grid max-w-[1100px] items-start gap-12 ${isStacked ? 'grid-cols-1' : 'grid-cols-[380px_minmax(0,1fr)]'}`}>
+        <div className="comparator-detail-plate mb-5 self-start">
+          <div data-testid="wheel-detail-plate-image" className="comparator-detail-image h-[340px] p-6 text-content-secondary">
             <WheelImageCarousel wheel={wheel} />
           </div>
         </div>
 
-        <div data-testid="wheel-detail-ledger" className="min-w-0">
+        <div data-testid="wheel-detail-ledger" className="comparator-detail-ledger min-w-0">
           {wheel.variant && (
-            <div className="mb-5 border-l border-brass-7 pl-3">
-              <p className="m-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-7">
+            <div className="comparator-detail-variant mb-5 border-l border-accent pl-3">
+              <p className="m-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-content-muted">
                 {t('wheelDetail.variant')}
               </p>
-              <p className="m-0 mt-1 text-sm font-semibold text-ink-11">{t(`variant.${wheel.variant}`)}</p>
+              <p className="m-0 mt-1 text-sm font-semibold text-content-primary">{t(`variant.${wheel.variant}`)}</p>
             </div>
           )}
 
           {hasNoLinks ? (
-            <div className="border-t border-ink-10 py-4">
-              <p className="text-sm italic text-ink-6">{t('wheelDetail.noLinks')}</p>
+            <div className="border-t border-border-strong py-4">
+              <p className="text-sm italic text-content-faint">{t('wheelDetail.noLinks')}</p>
             </div>
           ) : (
             <>
               {official && (
                 <div>
-                  <div className="mb-0.5 flex items-baseline justify-between border-b border-ink-10 pb-2.5">
-                    <h4 className="m-0 text-base font-semibold text-ink-11">
+                  <div className="comparator-detail-section-head mb-0.5 flex items-baseline justify-between border-b border-border-strong pb-2.5">
+                    <h4 className="m-0 text-base font-semibold text-content-primary">
                       {t('wheelDetail.manufacturer')}
                     </h4>
-                    <span className="t-eyebrow text-ink-7">{t('wheelDetail.priceAnnotation')}</span>
+                    <span className="t-eyebrow text-content-muted">{t('wheelDetail.priceAnnotation')}</span>
                   </div>
                   <LedgerRow
                     entry={official}
@@ -159,12 +158,12 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
               )}
 
               {retailers.length > 0 && (
-                <div className={official ? 'mt-5' : ''}>
-                  <div className="mb-0.5 flex items-baseline justify-between border-b border-ink-10 pb-2.5">
-                    <h4 className="m-0 text-base font-semibold text-ink-11">
+                <div className={`comparator-detail-retailers ${official ? 'mt-5' : ''}`}>
+                  <div className="comparator-detail-section-head mb-0.5 flex items-baseline justify-between border-b border-border-strong pb-2.5">
+                    <h4 className="m-0 text-base font-semibold text-content-primary">
                       {t('wheelDetail.whereToBuy')}
                     </h4>
-                    <span className="t-eyebrow text-ink-7">{retailers.length}</span>
+                    <span className="t-eyebrow text-content-muted">{retailers.length}</span>
                   </div>
                   {retailers.map((entry, index) => (
                     <LedgerRow

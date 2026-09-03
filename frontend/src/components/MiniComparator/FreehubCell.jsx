@@ -71,7 +71,7 @@ const FreehubCell = ({ wheel, t }) => {
   const spanClassName = [
     'block whitespace-nowrap overflow-hidden text-ellipsis',
     isTruncated
-      ? 'underline decoration-dotted underline-offset-2 text-brass-8'
+      ? 'underline decoration-dotted underline-offset-2 text-accent'
       : '',
   ]
     .filter(Boolean)
@@ -80,7 +80,7 @@ const FreehubCell = ({ wheel, t }) => {
   const containerClassName = [
     'relative',
     isTruncated
-      ? 'cursor-pointer [@media(hover:hover)_and_(pointer:fine)]:hover:text-brass-8'
+      ? 'cursor-pointer [@media(hover:hover)_and_(pointer:fine)]:hover:text-accent'
       : '',
   ]
     .filter(Boolean)

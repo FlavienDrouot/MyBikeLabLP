@@ -182,6 +182,13 @@ describe('WheelDetailPanel', () => {
     expect(container.textContent).not.toContain('wheelDetail.');
   });
 
+  it('does not render the retired prototype plate labels', () => {
+    renderPanel(withLinks({ manufacturer }));
+
+    expect(container.textContent).not.toContain('FIG. 01');
+    expect(container.textContent).not.toContain('SCALE 1:1');
+  });
+
   it('renders variant context for variant wheels', () => {
     renderPanel({
       ...withLinks({ manufacturer }),

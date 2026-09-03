@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyBikeLab - Zipp 202 NSW: specifications and price</title>
+<meta name="description" content="Structured specification sheet for the Zipp 202 NSW road wheelset: weight, rim geometry, spokes, hub, variants and sourcing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_system.css">
+<style>
+  /* ---------- detail-specific ---------- */
+  .crumbs{
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:12px;color:var(--mut);
+    padding-top:20px;
+  }
+  .crumbs a{color:var(--ink-2);transition:color .15s}
+  .crumbs a:hover{color:var(--acc);text-decoration:underline;text-underline-offset:3px}
+  .crumbs .sep{opacity:.5}
+  .crumbs [aria-current]{color:var(--ink)}
+
+  .title-zone{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 56px;align-items:start;
+    padding-block:16px 26px;
+  }
+  .title-zone h1{
+    margin:0;font-size:26px;line-height:1.15;font-weight:700;letter-spacing:-.02em;
+  }
+  .title-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+  .price-box{text-align:right;display:flex;flex-direction:column;align-items:flex-end}
+  .price-figure{font-family:var(--mono);font-size:34px;line-height:1;color:var(--ink)}
+  .price-caption{font-size:12.5px;color:var(--mut);margin-top:6px}
+  .price-box .annotation{margin:2px 0 14px}
+  .price-box .btn-primary{margin-top:0}
+
+  /* key figures strip: ledger panel laid out horizontally */
+  .strip-section{padding-bottom:28px}
+  .ledger.strip{display:grid;grid-template-columns:repeat(4,1fr);padding:0}
+  .ledger-cell{padding:22px 28px 20px;border-left:1px solid var(--line-2)}
+  .ledger-cell:first-child{border-left:0}
+  .ledger-cell .ledger-label{font-size:12.5px}
+  .ledger-cell .ledger-figure{font-size:30px;margin-top:10px}
+  .ledger-cell.key .ledger-figure{color:var(--acc)}
+
+  /* spec sheet groups */
+  .spec-section{padding-bottom:56px}
+  .spec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+  .spec-group .panel-head{padding:22px 26px 14px}
+  .spec-group .eyebrow{margin-bottom:6px}
+  .spec-group .panel-title{font-size:17px}
+  .spec-list{margin:0;padding:2px 26px 18px}
+  .spec-row{
+    display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+    padding:9px 0;border-top:1px solid var(--line-2);
+  }
+  .spec-row:first-child{border-top:0}
+  .spec-row dt{font-size:13px;color:var(--ink-2)}
+  .spec-row dd{
+    margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.5;
+    color:var(--ink);text-align:right;max-width:64%;
+  }
+
+  /* where to buy */
+  .buy-panel{margin-top:22px}
+  .buy-panel .panel-head{padding:22px 26px 14px}
+  .buy-panel .eyebrow{margin-bottom:6px}
+  .buy-panel .panel-title{font-size:17px}
+  .buy-link{
+    font-family:var(--sans);font-weight:600;font-size:14px;color:var(--acc);
+    display:inline-flex;gap:8px;align-items:center;
+  }
+  .buy-link:hover{color:var(--acc-strong);text-decoration:underline;text-underline-offset:3px}
+  .buy-link .num{font-size:13px}
+  .buy-empty{color:var(--mut)}
+
+  @media (max-width:1080px){
+    .ledger.strip{grid-template-columns:repeat(2,1fr)}
+    .ledger-cell{border-left:0;border-top:1px solid var(--line-2)}
+    .ledger-cell:nth-child(even){border-left:1px solid var(--line-2)}
+    .ledger-cell:nth-child(-n+2){border-top:0}
+  }
+  @media (max-width:720px){
+    .crumbs{padding-top:16px}
+    .title-zone{grid-template-columns:1fr;padding-block:12px 20px}
+    .price-box{text-align:left;align-items:flex-start}
+    .spec-grid{grid-template-columns:1fr}
+    .spec-list,.buy-rows{padding-inline:20px}
+    .spec-group .panel-head,.buy-panel .panel-head{padding-inline:20px}
+  }
+</style>
+</head>
+<body id="top">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="MyBikeLab home">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="39" height="39" stroke="currentColor" stroke-width="1"></rect>
+        <line x1="20" y1="0" x2="20" y2="3" stroke="currentColor" stroke-width="1"></line>
+        <line x1="20" y1="37" x2="20" y2="40" stroke="currentColor" stroke-width="1"></line>
+        <line x1="0" y1="20" x2="3" y2="20" stroke="currentColor" stroke-width="1"></line>
+        <line x1="37" y1="20" x2="40" y2="20" stroke="currentColor" stroke-width="1"></line>
+        <path d="M 9 28 L 9 12 L 20 22 L 31 12 L 31 28" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"></path>
+      </svg>
+      <span class="wordmark">MyBikeLab</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#tool">Tool</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#partnerships">Partnerships</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-meta">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" class="on">EN</button>
+        <button type="button">FR</button>
+      </div>
+      <span class="currency">EUR <i>▾</i></span>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" style="display:none">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ breadcrumb ============ -->
+  <nav class="container crumbs" aria-label="Breadcrumb">
+    <a href="../../index.html#tool">Comparator</a>
+    <span class="sep" aria-hidden="true">→</span>
+    <a href="#">Zipp</a>
+    <span class="sep" aria-hidden="true">→</span>
+    <span aria-current="page">202 NSW</span>
+  </nav>
+
+  <!-- ============ title zone ============ -->
+  <section class="container title-zone">
+    <div>
+      <p class="eyebrow">Zipp</p>
+      <h1>202 NSW</h1>
+      <div class="title-tags">
+        <span class="tag hookless">Hookless</span>
+        <span class="tag">Disc</span>
+        <span class="tag">Climbing</span>
+      </div>
+    </div>
+    <div class="price-box">
+      <div class="price-figure">€1,700</div>
+      <div class="price-caption">minimum known price</div>
+      <p class="annotation">* indicative price, sourced 2026-Q2</p>
+      <a class="btn-primary" href="#">Buy from Zipp <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- ============ key figures strip ============ -->
+  <section class="container strip-section" aria-label="Key figures">
+    <div class="ledger strip">
+      <div class="ledger-cell key">
+        <div class="ledger-label">Weight</div>
+        <div class="ledger-figure num">1,090 g</div>
+        <div class="ledger-caption">lightest configuration</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-label">Rim depth</div>
+        <div class="ledger-figure num">35 mm</div>
+        <div class="ledger-caption">front and rear</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-label">Internal width</div>
+        <div class="ledger-figure num">23 mm</div>
+      </div>
+      <div class="ledger-cell">
+        <div class="ledger-label">Spoke count</div>
+        <div class="ledger-figure num">20 / 20</div>
+        <div class="ledger-caption">front / rear</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ spec sheet ============ -->
+  <section class="container spec-section" aria-label="Full specifications">
+    <div class="spec-grid">
+
+      <section class="panel spec-group">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Rim</p>
+            <h2 class="panel-title">Carbon rim, 35 mm deep</h2>
+          </div>
+        </div>
+        <dl class="spec-list">
+          <div class="spec-row"><dt>Material</dt><dd>Carbon</dd></div>
+          <div class="spec-row"><dt>Depth</dt><dd>35 mm</dd></div>
+          <div class="spec-row"><dt>External width</dt><dd>27.5 mm</dd></div>
+          <div class="spec-row"><dt>Internal width</dt><dd>23 mm</dd></div>
+          <div class="spec-row"><dt>Hookless</dt><dd>true</dd></div>
+          <div class="spec-row"><dt>Tubeless ready</dt><dd>true</dd></div>
+          <div class="spec-row"><dt>Construction</dt><dd>Biomimetic Laminate, mixed-modulus carbon</dd></div>
+          <div class="spec-row"><dt>Max tire pressure</dt><dd>73 psi / 5 bar</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel spec-group">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Spokes</p>
+            <h2 class="panel-title">Alpina Hyperlite steel</h2>
+          </div>
+        </div>
+        <dl class="spec-list">
+          <div class="spec-row"><dt>Brand</dt><dd>Alpina</dd></div>
+          <div class="spec-row"><dt>Model</dt><dd>Hyperlite</dd></div>
+          <div class="spec-row"><dt>Material</dt><dd>Steel</dd></div>
+          <div class="spec-row"><dt>Count</dt><dd>20 / 20</dd></div>
+          <div class="spec-row"><dt>Lacing</dt><dd>2-cross / 2-cross</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel spec-group">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Hub</p>
+            <h2 class="panel-title">Zipp ZR1 SL</h2>
+          </div>
+        </div>
+        <dl class="spec-list">
+          <div class="spec-row"><dt>Brand</dt><dd>Zipp</dd></div>
+          <div class="spec-row"><dt>Model</dt><dd>ZR1 SL</dd></div>
+          <div class="spec-row"><dt>Axle</dt><dd>12x100 / 12x142</dd></div>
+          <div class="spec-row"><dt>Freehub options</dt><dd>SRAM XDR, Shimano HG</dd></div>
+          <div class="spec-row"><dt>Disc standard</dt><dd>Center Lock</dd></div>
+          <div class="spec-row"><dt>Bearings</dt><dd>Custom Hybrid Ceramic (61803, 61903)</dd></div>
+          <div class="spec-row"><dt>Engagement</dt><dd>66 points</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel spec-group">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Variants and availability</p>
+            <h2 class="panel-title">Configurations shipped</h2>
+          </div>
+        </div>
+        <dl class="spec-list">
+          <div class="spec-row"><dt>Axle standard</dt><dd>12x100 / 12x142</dd></div>
+          <div class="spec-row"><dt>Freehub bodies</dt><dd>XDR body standard, Campagnolo body sold separately</dd></div>
+          <div class="spec-row"><dt>Weight note</dt><dd>lightest configuration: 12mm through axles and XDR body, no tape or valve</dd></div>
+        </dl>
+      </section>
+
+    </div>
+
+    <!-- ============ where to buy ============ -->
+    <section class="panel buy-panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow">Availability</p>
+          <h2 class="panel-title">Where to buy</h2>
+        </div>
+      </div>
+      <dl class="spec-list">
+        <div class="spec-row">
+          <dt>Manufacturer</dt>
+          <dd><a class="buy-link" href="#">Zipp.com <span class="num">- €1,700</span> <span aria-hidden="true">→</span></a></dd>
+        </div>
+        <div class="spec-row">
+          <dt>Retailers</dt>
+          <dd class="buy-empty">No retailer links indexed yet</dd>
+        </div>
+      </dl>
+    </section>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-row">
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#tool">Tool</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#partnerships">Partnerships</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <span class="copyright">© 2026 MyBikeLab. All rights reserved.</span>
+    </div>
+    <div class="footer-mark" aria-hidden="true">MyBikeLab</div>
+  </div>
+</footer>
+
+<script>
+  const root = document.documentElement;
+  const header = document.querySelector('.site-header');
+  const toggle = document.getElementById('theme-toggle');
+  const iconMoon = toggle.querySelector('.icon-moon');
+  const iconSun = toggle.querySelector('.icon-sun');
+
+  let saved = null;
+  try { saved = localStorage.getItem('mbl-theme'); } catch (e) {}
+  if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+
+  const applyIcon = () => {
+    const dark = root.dataset.theme === 'dark';
+    iconMoon.style.display = dark ? 'none' : '';
+    iconSun.style.display = dark ? '' : 'none';
+  };
+  applyIcon();
+
+  toggle.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('mbl-theme', next); } catch (e) {}
+    applyIcon();
+  });
+
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.querySelectorAll('form').forEach((form) => {
+    form.addEventListener('submit', (event) => event.preventDefault());
+  });
+</script>
+
+</body>
+</html>

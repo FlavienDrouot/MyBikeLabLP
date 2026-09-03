@@ -12,7 +12,8 @@ import { renderCellFor, cellClassFor } from './columnCells';
 //
 // It mirrors the real table's sizing constraints: `w-min` (min-content), headers
 // allowed to wrap, body cells `whitespace-nowrap`. The header uses the SAME
-// typographic classes as the visible table (ComparisonTable) and always reserves
+// typographic classes and wrapping behavior as the visible table (ComparisonTable)
+// and always reserves
 // the sort-arrow width on every column. The visible table only shows the `↓`
 // arrow on the currently sorted column; reserving it everywhere here guarantees
 // the measured width is never smaller than any rendered state, so the sorted
@@ -69,7 +70,7 @@ const MeasuringTable = ({ items, cols, onMeasure }) => {
           {cols.map((p) => (
             <th
               key={p.id}
-              className="px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-7"
+              className="px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-content-muted"
             >
               {t(p.label)}
               {/* Always reserve the sort-arrow width (visible table renders it on

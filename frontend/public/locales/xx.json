@@ -3,6 +3,7 @@
     "phases": [
       {
         "tag": "XX",
+        "state": "current",
         "status": "XX",
         "title": "XX",
         "description": "XX",
@@ -10,6 +11,7 @@
       },
       {
         "tag": "XX",
+        "state": "next",
         "status": "XX",
         "title": "XX",
         "description": "XX",
@@ -17,6 +19,7 @@
       },
       {
         "tag": "XX",
+        "state": "vision",
         "status": "XX",
         "title": "XX",
         "description": "XX",
@@ -29,7 +32,25 @@
       { "title": "XX", "description": "XX" },
       { "title": "XX", "description": "XX" },
       { "title": "XX", "description": "XX" }
-    ]
+    ],
+    "schematic": {
+      "externalWidth": "XX",
+      "internalWidth": "XX",
+      "rimDepth": "XX",
+      "wheelDiameter": "XX",
+      "externalWidthValue": "XX",
+      "internalWidthValue": "XX",
+      "rimDepthValue": "XX",
+      "wheelDiameterValue": "XX",
+      "caption": "XX"
+    }
+  },
+  "filterChips": {
+    "active": "XX",
+    "none": "XX"
+  },
+  "wheelDetail": {
+    "priceAnnotation": "XX"
   },
   "partnership": {
     "audiences": [

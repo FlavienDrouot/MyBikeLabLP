@@ -15,20 +15,20 @@ const PaginationControls = ({ currentPage, totalPages, onPageChange }) => {
   return (
     <nav
       aria-label={t('pagination.label')}
-      className="flex items-center justify-center gap-3 py-3"
+      className="comparator-pagination flex items-center justify-center gap-3 py-3"
     >
       <button
         type="button"
         disabled={isFirstPage}
         onClick={() => onPageChange(currentPage - 1)}
-        className="inline-flex items-center gap-1 rounded-xs border border-ink-4 bg-paper-0 px-3 py-1.5 text-sm text-ink-11 hover:border-brass-8 hover:text-brass-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-ink-4 disabled:hover:text-ink-11"
+        className="comparator-pagination-button inline-flex items-center gap-1 rounded-xs border border-border-default bg-surface-panel px-3 py-1.5 text-sm text-content-primary hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-border-default disabled:hover:text-content-primary"
         style={{ transition: 'color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard)' }}
       >
         <Icon as={ChevronLeft} size={16} aria-hidden="true" />
         {t('pagination.previous')}
       </button>
 
-      <span className="text-sm text-ink-11 font-mono tabular-nums">
+      <span className="text-sm text-content-primary font-mono tabular-nums">
         {t('pagination.page', { current: currentPage + 1, total: totalPages })}
       </span>
 
@@ -36,7 +36,7 @@ const PaginationControls = ({ currentPage, totalPages, onPageChange }) => {
         type="button"
         disabled={isLastPage}
         onClick={() => onPageChange(currentPage + 1)}
-        className="inline-flex items-center gap-1 rounded-xs border border-ink-4 bg-paper-0 px-3 py-1.5 text-sm text-ink-11 hover:border-brass-8 hover:text-brass-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-8 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-ink-4 disabled:hover:text-ink-11"
+        className="comparator-pagination-button inline-flex items-center gap-1 rounded-xs border border-border-default bg-surface-panel px-3 py-1.5 text-sm text-content-primary hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-border-default disabled:hover:text-content-primary"
         style={{ transition: 'color var(--duration-quick) var(--ease-standard), border-color var(--duration-quick) var(--ease-standard)' }}
       >
         {t('pagination.next')}

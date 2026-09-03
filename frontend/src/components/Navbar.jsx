@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,11 +6,24 @@ import Icon from './ui/Icon';
 import LogoMark from './ui/LogoMark';
 import { SUPPORTED_CURRENCIES } from '../lib/currency';
 import { isBrowserTranslatedDocument } from '../lib/documentLanguage';
+import { applyTheme, getCurrentTheme, THEMES } from '../lib/theme';
 import { changeDisplayCurrency } from '../store/slices/filtersSlice';
 
 const LANGUAGES = ['en', 'fr'];
 
 const CURRENCY_SYMBOLS = { EUR: '€', USD: '$' };
+
+const THEME_OPTIONS = THEMES.map((id) => ({
+  id,
+  translationKey: `nav.themeOption.${id}`,
+}));
+
+const NAV_LINKS = [
+  { href: '#tool', translationKey: 'nav.tool' },
+  { href: '#roadmap', translationKey: 'nav.roadmap' },
+  { href: '#partnerships', translationKey: 'nav.partnerships' },
+  { href: '#contact', translationKey: 'nav.contact' },
+];
 
 const CurrencyToggle = () => {
   const { t } = useTranslation();
@@ -18,7 +31,7 @@ const CurrencyToggle = () => {
   const displayCurrency = useSelector((s) => s.currency.displayCurrency);
 
   return (
-    <div className="flex items-center gap-0.5" role="group" aria-label={t('nav.currency')}>
+    <div className="currency-toggle" role="group" aria-label={t('nav.currency')}>
       {SUPPORTED_CURRENCIES.map((code) => {
         const isActive = displayCurrency === code;
         return (
@@ -28,15 +41,11 @@ const CurrencyToggle = () => {
             onClick={() => dispatch(changeDisplayCurrency(code))}
             aria-pressed={isActive}
             aria-label={t(`nav.currencyOption.${code}`)}
-            className={`px-2 py-1 rounded-xs text-xs font-semibold tracking-wide transition-colors ${
+            className={`currency-option ${
               isActive
-                ? 'bg-ink-11 text-paper-0'
-                : 'text-fg-muted hover:text-fg-primary'
+                ? 'currency-option-active'
+                : ''
             }`}
-            style={{
-              transition:
-                'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard)',
-            }}
           >
             {CURRENCY_SYMBOLS[code] ?? code}
           </button>
@@ -60,7 +69,7 @@ const LanguageToggle = () => {
   };
 
   return (
-    <div className="flex items-center gap-0.5" role="group" aria-label="Language">
+    <div className="language-toggle" role="group" aria-label="Language">
       {LANGUAGES.map((lang) => {
         const isActive = current === lang;
         return (
@@ -69,17 +78,48 @@ const LanguageToggle = () => {
             type="button"
             onClick={() => changeLanguage(lang)}
             aria-pressed={isActive}
-            className={`px-2 py-1 rounded-xs text-xs font-semibold uppercase tracking-wide transition-colors ${
+            className={`language-option ${
               isActive
-                ? 'bg-ink-11 text-paper-0'
-                : 'text-fg-muted hover:text-fg-primary'
+                ? 'language-option-active'
+                : ''
             }`}
-            style={{
-              transition:
-                'color var(--duration-quick) var(--ease-standard), background-color var(--duration-quick) var(--ease-standard)',
-            }}
           >
             {lang.toUpperCase()}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
+
+const ThemeToggle = () => {
+  const { t } = useTranslation();
+  const [theme, setTheme] = useState(() => getCurrentTheme());
+
+  useLayoutEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
+  const changeTheme = (nextTheme) => {
+    setTheme(applyTheme(nextTheme));
+  };
+
+  return (
+    <div className="theme-picker" role="group" aria-label={t('nav.theme')}>
+      {THEME_OPTIONS.map(({ id, translationKey }) => {
+        const isActive = theme === id;
+        return (
+          <button
+            key={id}
+            type="button"
+            data-theme-choice={id}
+            onClick={() => changeTheme(id)}
+            aria-pressed={isActive}
+            aria-label={t(translationKey)}
+            className={`theme-option${isActive ? ' theme-option-active' : ''}`}
+          >
+            <span className={`theme-dot ${id}`} aria-hidden="true" />
+            <span>{t(translationKey)}</span>
           </button>
         );
       })}
@@ -90,9 +130,23 @@ const LanguageToggle = () => {
 const Navbar = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
 
   const close = () => setIsOpen(false);
+
+  useEffect(() => {
+    const updateScrolledState = () => {
+      setIsScrolled(window.scrollY > 8);
+    };
+
+    updateScrolledState();
+    window.addEventListener('scroll', updateScrolledState, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', updateScrolledState);
+    };
+  }, []);
 
   // Sync the global `--navbar-height` CSS variable with the live measured
   // height of the rendered <header>. Consumers (scroll-padding-top, the cap
@@ -129,45 +183,48 @@ const Navbar = () => {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-40 w-full border-b border-border-default bg-paper-1/88 backdrop-blur"
+      className={`site-header${isScrolled ? ' scrolled' : ''}`}
     >
-      <div className="container-page flex h-16 items-center justify-between">
-        <a href="#top" className="flex items-center gap-2">
-          <LogoMark size={26} />
-          <span className="text-sm font-semibold text-fg-primary">{t('brand.name')}</span>
+      <div className="container-page header-inner">
+        <a href="#top" className="brand">
+          <LogoMark size={27} />
+          <span className="wordmark">{t('brand.name')}</span>
         </a>
-        <nav className="hidden md:flex items-center gap-1">
-          <a href="#tool" className="btn-ghost">{t('nav.tool')}</a>
-          <a href="#roadmap" className="btn-ghost">{t('nav.roadmap')}</a>
-          <a href="#partnerships" className="btn-ghost">{t('nav.partnerships')}</a>
+        <nav className="site-nav" aria-label="Primary">
+          {NAV_LINKS.map(({ href, translationKey }) => (
+            <a key={href} href={href} className="site-nav-link">
+              {t(translationKey)}
+            </a>
+          ))}
         </nav>
-        <div className="flex items-center gap-2">
-          <CurrencyToggle />
+        <div className="header-meta">
           <LanguageToggle />
-          <a href="#contact" className="btn-primary">{t('nav.contact')}</a>
+          <CurrencyToggle />
+          <ThemeToggle />
           <button
             type="button"
             onClick={() => setIsOpen((v) => !v)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
-            className="md:hidden inline-flex items-center justify-center rounded-xs p-2 text-fg-primary hover:text-fg-accent focus-visible:ring-2 focus-visible:ring-border-focus"
-            style={{ transition: 'color var(--duration-quick) var(--ease-standard)' }}
+            className="mobile-menu-toggle"
           >
             {isOpen ? (
-              <Icon as={X} size={24} aria-hidden="true" />
+              <Icon as={X} size={20} aria-hidden="true" />
             ) : (
-              <Icon as={Menu} size={24} aria-hidden="true" />
+              <Icon as={Menu} size={20} aria-hidden="true" />
             )}
           </button>
         </div>
       </div>
       {isOpen && (
-        <div id="mobile-menu" className="md:hidden border-t border-border-default bg-bg-elevated">
-          <nav className="container-page flex flex-col py-2">
-            <a href="#tool" onClick={close} className="btn-ghost justify-start">{t('nav.tool')}</a>
-            <a href="#roadmap" onClick={close} className="btn-ghost justify-start">{t('nav.roadmap')}</a>
-            <a href="#partnerships" onClick={close} className="btn-ghost justify-start">{t('nav.partnerships')}</a>
+        <div id="mobile-menu" className="mobile-menu">
+          <nav className="container-page mobile-menu-nav" aria-label="Primary mobile">
+            {NAV_LINKS.map(({ href, translationKey }) => (
+              <a key={href} href={href} onClick={close} className="mobile-menu-link">
+                {t(translationKey)}
+              </a>
+            ))}
           </nav>
         </div>
       )}

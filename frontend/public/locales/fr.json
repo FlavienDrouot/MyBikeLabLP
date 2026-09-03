@@ -17,6 +17,12 @@
       "EUR": "Afficher les prix en euros",
       "USD": "Afficher les prix en dollars"
     },
+    "theme": "Thème",
+    "themeOption": {
+      "light": "Clair",
+      "cream": "Crème",
+      "dark": "Sombre"
+    },
     "lang": {
       "en": "EN",
       "fr": "FR",
@@ -31,6 +37,18 @@
     "subtitle": "Comparez par poids, profil de jante, compatibilité hookless, marque de moyeu, prix et bien plus. Tout dans un seul tableau.",
     "ctaPrimary": "Ouvrir le comparateur →",
     "ctaSecondary": "Voir la roadmap →",
+    "proof": {
+      "wheelsLabel": "roues route",
+      "brandsPrefix": "parmi",
+      "brandsLabel": "marques, dont Roval, Zipp, ENVE, Mavic et Shimano."
+    },
+    "ledger": {
+      "ariaLabel": "Chiffres du catalogue",
+      "wheelsCaption": "paires de roues route indexées dans le catalogue",
+      "filterAxesCaption": "caractéristiques combinables et filtrables",
+      "phasesCaption": "de la comparaison au configurateur vélo complet",
+      "foot": "Interface bilingue, anglais et français · affichage des prix dans plusieurs devises"
+    },
     "stats": {
       "wheels": "Roues",
       "filterAxes": "Axes de filtres",
@@ -46,7 +64,8 @@
     "footerNote": "Sources officielles · Liens affiliés bientôt disponibles"
   },
   "filterChips": {
-    "active": "Actifs"
+    "active": "Actifs",
+    "none": "Aucun filtre actif"
   },
   "filterPanel": {
     "heading": "Filtres",
@@ -98,6 +117,7 @@
     "phases": [
       {
         "tag": "Phase 1",
+        "state": "current",
         "status": "En cours",
         "title": "Comparaison de composants",
         "description": "Les roues d'abord, puis les transmissions, freins et pneus. Des specs structurées, des décisions côte à côte.",
@@ -105,6 +125,7 @@
       },
       {
         "tag": "Phase 2",
+        "state": "next",
         "status": "Suivant",
         "title": "Simulateur d'impact",
         "description": "Visualisez comment chaque pièce change votre machine : poids, aérodynamique, coût total, performance estimée.",
@@ -112,6 +133,7 @@
       },
       {
         "tag": "Phase 3",
+        "state": "vision",
         "status": "Vision",
         "title": "Configurateur vélo complet",
         "description": "Construisez un vélo complet depuis le cadre, simulez la configuration complète, puis achetez.",
@@ -135,7 +157,18 @@
         "title": "Orienté communauté",
         "description": "Construit avec des cyclistes, des fabricants et des revendeurs. Données ouvertes, affiliations transparentes."
       }
-    ]
+    ],
+    "schematic": {
+      "externalWidth": "largeur externe de jante",
+      "internalWidth": "largeur interne de jante",
+      "rimDepth": "profondeur de jante",
+      "wheelDiameter": "diamètre de roue",
+      "externalWidthValue": "27,5 mm",
+      "internalWidthValue": "23 mm",
+      "rimDepthValue": "35 mm",
+      "wheelDiameterValue": "Ø 700 c",
+      "caption": "Profil représentatif. Dimensions sourcées à partir de données produit structurées."
+    }
   },
   "partnership": {
     "sectionIndex": "PARTENARIAT",
@@ -153,8 +186,10 @@
     ]
   },
   "contact": {
+    "eyebrow": "Contact",
     "namePlaceholder": "Nom",
     "emailPlaceholder": "Email",
+    "companyLabel": "Entreprise",
     "companyPlaceholder": "Entreprise (facultatif)",
     "messagePlaceholder": "Message",
     "submit": "Envoyer le message",

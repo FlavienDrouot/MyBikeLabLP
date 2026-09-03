@@ -5,6 +5,7 @@ import FilterPanel from './FilterPanel';
 import ComparisonTable from './ComparisonTable';
 import Icon from '../ui/Icon';
 import { getColumnProperties } from '../../config/wheelProperties';
+import useIsDesktopComparator from '../../hooks/useIsDesktopComparator';
 
 // All optional columns (= non `required`) are visible by default.
 // Computed from the registry on mount.
@@ -18,6 +19,22 @@ const MiniComparator = () => {
   const defaultVisibility = useMemo(() => buildDefaultVisibility(), []);
   const [visibility, setVisibility] = useState(defaultVisibility);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const isDesktop = useIsDesktopComparator();
+  const drawerOpen = filtersOpen && !isDesktop;
+
+  // When the viewport crosses the desktop breakpoint, the sidebar takes over
+  // and the mobile drawer state is discarded.
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+    const handleBreakpointChange = (event) => {
+      if (event.matches) setFiltersOpen(false);
+    };
+
+    mediaQuery.addEventListener('change', handleBreakpointChange);
+    return () => mediaQuery.removeEventListener('change', handleBreakpointChange);
+  }, []);
 
   // Chromium does not consistently apply proximity snapping on the root
   // scroller. Realign only when the table is already close to its target so
@@ -28,8 +45,24 @@ const MiniComparator = () => {
 
     let settling = false;
     let settleTimer;
+    let initialAlignmentFrame;
+    const alignToTarget = () => {
+      const navbarHeight = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')
+      ) || 0;
+      const delta = target.getBoundingClientRect().top - navbarHeight;
+      window.scrollBy({ top: delta, behavior: 'auto' });
+    };
+
+    if (window.location.hash === '#tool') {
+      initialAlignmentFrame = window.requestAnimationFrame(alignToTarget);
+    }
+
     const alignWhenNear = () => {
       if (settling) return;
+      // Do not interrupt smooth navigation to another landing section when
+      // the comparator happens to cross the viewport on the way there.
+      if (window.location.hash !== '#tool') return;
       const navbarHeight = parseFloat(
         getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')
       ) || 0;
@@ -37,7 +70,7 @@ const MiniComparator = () => {
       if (Math.abs(delta) > 96) return;
 
       settling = true;
-      window.scrollBy({ top: delta, behavior: 'smooth' });
+      window.scrollBy({ top: delta, behavior: 'auto' });
       clearTimeout(settleTimer);
       settleTimer = window.setTimeout(() => {
         settling = false;
@@ -46,6 +79,7 @@ const MiniComparator = () => {
 
     window.addEventListener('scroll', alignWhenNear, { passive: true });
     return () => {
+      if (initialAlignmentFrame) window.cancelAnimationFrame(initialAlignmentFrame);
       window.removeEventListener('scroll', alignWhenNear);
       clearTimeout(settleTimer);
     };
@@ -55,23 +89,21 @@ const MiniComparator = () => {
     setVisibility((v) => ({ ...v, [id]: !v[id] }));
 
   return (
-    <section id="tool" className="section bg-paper-2 overflow-x-clip">
+    <section id="tool" className={`section-spaced decor-section orbits comparator-section bg-surface-page overflow-x-clip ${drawerOpen ? 'comparator-filters-open' : ''}`}>
       <div className="container-fluid">
-        <div className="text-center max-w-2xl mx-auto">
-          <p className="t-eyebrow">{t('comparator.sectionIndex')}</p>
-          <h2 className="section-title mt-2">
-            {t('comparator.title')}
-          </h2>
-          <p className="section-subtitle mx-auto">
-            {t('comparator.subtitle')}
-          </p>
+        <div className="section-head comparator-section-head">
+          <div>
+            <p className="t-eyebrow">{t('comparator.sectionIndex')}</p>
+            <h2 className="section-title">{t('comparator.title')}</h2>
+            <p className="section-subtitle">{t('comparator.subtitle')}</p>
+          </div>
         </div>
 
-        <div className="mt-12 grid w-fit max-w-full mx-auto gap-x-6 lg:grid-cols-[288px_1fr] items-start">
+        <div className="comparator-shell">
           {/* Backdrop — only shown when the mobile drawer is open */}
-          {filtersOpen && (
+          {drawerOpen && (
             <div
-              className="fixed inset-0 z-40 bg-black/40 lg:hidden"
+              className="comparator-backdrop fixed inset-0 z-40 lg:hidden"
               onClick={() => setFiltersOpen(false)}
               aria-hidden="true"
             />
@@ -79,34 +111,37 @@ const MiniComparator = () => {
 
           {/* Filter container: off-canvas drawer below lg, sidebar at lg+.
               `fixed` removes it from grid flow on mobile so it overlays cleanly. */}
-          <div
-            id="filters-drawer"
-            role={filtersOpen ? 'dialog' : undefined}
-            aria-modal={filtersOpen ? 'true' : undefined}
-            aria-label={t('comparator.filtersDrawerLabel')}
-            className={`fixed inset-y-0 left-0 z-50 flex w-80 max-w-[85vw] flex-col overflow-y-auto bg-paper-2 border-r border-ink-4 transition-transform duration-200 ease-out ${
-              filtersOpen ? 'translate-x-0' : '-translate-x-full'
-            } lg:relative lg:inset-auto lg:z-auto lg:flex lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:border-r-0`}
-          >
-            {/* Mobile drawer header with close button */}
-            <div className="flex items-center justify-between border-b border-ink-3 px-4 py-3 lg:hidden">
-              <span className="text-sm font-semibold text-ink-11">{t('comparator.filtersDrawerLabel')}</span>
-              <button
-                type="button"
-                onClick={() => setFiltersOpen(false)}
-                aria-label={t('filterPanel.closeFilters')}
-                className="rounded-xs p-1.5 text-ink-8 hover:bg-ink-2 hover:text-ink-11"
-              >
-                <Icon as={X} size={20} aria-hidden="true" />
-              </button>
-            </div>
-            <div className="px-4 py-4 lg:p-0">
-              <FilterPanel />
+          <div className="filters-rail comparator-filters-rail">
+            <div
+              id="filters-drawer"
+              role={drawerOpen ? 'dialog' : undefined}
+              aria-modal={drawerOpen ? 'true' : undefined}
+              aria-label={t('comparator.filtersDrawerLabel')}
+              inert={!drawerOpen && !isDesktop}
+              className={`comparator-filter-drawer fixed inset-y-0 left-0 z-50 flex flex-col overflow-y-auto bg-surface-well border-r border-border-default transition-transform duration-200 ease-out ${
+                drawerOpen ? 'translate-x-0' : '-translate-x-full'
+              } lg:relative lg:inset-auto lg:z-auto lg:flex lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:border-r-0`}
+            >
+              {/* Mobile drawer header with close button */}
+              <div className="comparator-drawer-header flex items-center justify-between border-b border-border-subtle px-4 py-3 lg:hidden">
+                <span className="text-sm font-semibold text-content-primary">{t('comparator.filtersDrawerLabel')}</span>
+                <button
+                  type="button"
+                  onClick={() => setFiltersOpen(false)}
+                  aria-label={t('filterPanel.closeFilters')}
+                  className="comparator-icon-button rounded-xs p-1.5 text-content-secondary hover:bg-bg-recessed hover:text-content-primary"
+                >
+                  <Icon as={X} size={20} aria-hidden="true" />
+                </button>
+              </div>
+              <div className="comparator-filter-drawer-body px-4 py-4 lg:p-0">
+                <FilterPanel />
+              </div>
             </div>
           </div>
 
           {/* ComparisonTable: col 2 */}
-          <div className="min-w-0">
+          <div className="comparator-results-column min-w-0">
             <ComparisonTable
               visibility={visibility}
               columnOnToggle={handleToggle}
@@ -116,9 +151,6 @@ const MiniComparator = () => {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-xs text-ink-7">
-          {t('comparator.footerNote')}
-        </p>
       </div>
     </section>
   );

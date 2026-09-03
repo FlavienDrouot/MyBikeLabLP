@@ -14,14 +14,14 @@ const FreehubPopup = forwardRef(({ options, t, style }, ref) => {
       role="dialog"
       aria-label={title}
       style={style}
-      className="w-max min-w-[140px] max-w-[240px] bg-paper-0 border border-ink-4 rounded-xs shadow-md p-3 transition-opacity duration-150"
+      className="w-max min-w-[140px] max-w-[240px] bg-surface-panel border border-border-default rounded-xs shadow-md p-3 transition-opacity duration-150"
     >
-      <p className="text-xs text-ink-7 uppercase tracking-widest mb-2">
+      <p className="text-xs text-content-muted uppercase tracking-widest mb-2">
         {title}
       </p>
-      <ul className="max-h-[200px] overflow-y-auto divide-y divide-ink-2">
+      <ul className="max-h-[200px] overflow-y-auto divide-y divide-border-subtle">
         {options.map((opt) => (
-          <li key={opt} className="text-sm text-ink-11 px-1 py-1">
+          <li key={opt} className="text-sm text-content-primary px-1 py-1">
             {opt}
           </li>
         ))}

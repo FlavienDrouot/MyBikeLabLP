@@ -13,8 +13,8 @@ const Landing = () => {
       <main className="flex-1">
         <Hero />
         <MiniComparator />
-        <RoadmapSection />
         <BenefitsGrid />
+        <RoadmapSection />
         <PartnershipSection />
       </main>
       <Footer />

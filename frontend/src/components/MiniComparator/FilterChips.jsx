@@ -7,15 +7,18 @@ import {
 } from '../../store/slices/filtersSlice';
 import { getFilterableProperties } from '../../config/wheelProperties';
 
-// Single chip — brass-tinted, removable.
-const ActiveChip = ({ label, onRemove }) => (
-  <span className="inline-flex min-w-0 max-w-full items-center gap-1.5 bg-brass-3 border border-brass-6 text-brass-11 px-2.5 py-1 rounded-xs text-xs font-medium">
-    <span className="min-w-0 break-words">{label}</span>
+// Wave 5 filter pill: a quiet default surface with the selected value
+// emphasized, plus a removable affordance for active filters.
+const ActiveChip = ({ label, value, onRemove }) => (
+  <span className="fchip comparator-filter-chip active">
+    <span className="min-w-0 break-words">
+      {label} <b>{value}</b>
+    </span>
     <button
       type="button"
-      aria-label={`Remove filter: ${label}`}
+      aria-label={`Remove filter: ${label}: ${value}`}
       onClick={onRemove}
-      className="shrink-0 text-brass-10 font-mono text-xs leading-none cursor-pointer bg-transparent border-0 p-0"
+      className="comparator-filter-chip-remove"
     >
       ×
     </button>
@@ -47,7 +50,8 @@ const FilterChips = () => {
           : String(v);
         chips.push({
           key: `${property.id}-${String(v)}`,
-          label: `${t(property.label)}: ${valueLabel}`,
+          label: t(property.label),
+          value: valueLabel,
           onRemove: () => {
             const next = filter.value.filter((x) => x !== v);
             dispatch(setFilterValue({ id: property.id, value: next }));
@@ -61,32 +65,30 @@ const FilterChips = () => {
       const valueLabel = filter.value ? t(keyTrue) : t(keyFalse);
       chips.push({
         key: `${property.id}-tristate`,
-        label: `${t(property.label)}: ${valueLabel}`,
+        label: t(property.label),
+        value: valueLabel,
         onRemove: () => dispatch(setFilterValue({ id: property.id, value: null })),
       });
     }
 
-    // Range filter chips are excluded from this component — range filters are
-    // managed exclusively via FilterPanel. If range chips are needed in a future
-    // evolution, add them here with dispatch(setFilterValue({ id, value: bounds })).
   }
 
-  if (chips.length === 0) return null;
-
   return (
-    <div className="flex w-0 min-w-full gap-2 items-start px-5 py-3 border-b border-ink-3">
+    <div className="filter-strip comparator-filter-strip">
       <div className="flex grow min-w-0 flex-wrap gap-2 items-center">
-        <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.18em] text-ink-7 mr-1">
-          {t('filterChips.active')}
+        <span className="flabel comparator-filter-strip-label">
+          {t('filterPanel.heading')}
         </span>
-        {chips.map((c) => (
-          <ActiveChip key={c.key} label={c.label} onRemove={c.onRemove} />
-        ))}
+        {chips.length > 0
+          ? chips.map((c) => (
+              <ActiveChip key={c.key} label={c.label} value={c.value} onRemove={c.onRemove} />
+            ))
+          : <span className="comparator-filter-strip-empty">{t('filterChips.none')}</span>}
       </div>
       <button
         type="button"
         onClick={() => dispatch(resetFilters())}
-        className="shrink-0 text-xs font-semibold uppercase tracking-[0.1em] text-ink-8 hover:text-ink-12 bg-transparent border-0 cursor-pointer p-0"
+        className="comparator-filter-strip-reset"
       >
         {t('filterPanel.reset')}
       </button>

@@ -17,6 +17,12 @@
       "EUR": "Show prices in euros",
       "USD": "Show prices in dollars"
     },
+    "theme": "Theme",
+    "themeOption": {
+      "light": "Light",
+      "cream": "Cream",
+      "dark": "Dark"
+    },
     "lang": {
       "en": "EN",
       "fr": "FR",
@@ -31,6 +37,18 @@
     "subtitle": "Compare by weight, rim depth, hookless compatibility, hub brand, price and many more. Structured in a single table.",
     "ctaPrimary": "Open comparator →",
     "ctaSecondary": "See the roadmap →",
+    "proof": {
+      "wheelsLabel": "road wheels",
+      "brandsPrefix": "across",
+      "brandsLabel": "brands, including Roval, Zipp, ENVE, Mavic and Shimano."
+    },
+    "ledger": {
+      "ariaLabel": "Catalog figures",
+      "wheelsCaption": "road wheelsets indexed in the catalog",
+      "filterAxesCaption": "specifications you can combine and filter on",
+      "phasesCaption": "from comparison to full bike configurator",
+      "foot": "Bilingual interface, English and French · multi-currency price display"
+    },
     "stats": {
       "wheels": "Wheels",
       "filterAxes": "Filter axes",
@@ -46,7 +64,8 @@
     "footerNote": "Official sources · Affiliate links coming soon"
   },
   "filterChips": {
-    "active": "Active"
+    "active": "Active",
+    "none": "No active filters"
   },
   "filterPanel": {
     "heading": "Filters",
@@ -98,6 +117,7 @@
     "phases": [
       {
         "tag": "Phase 1",
+        "state": "current",
         "status": "In progress",
         "title": "Components comparison",
         "description": "Wheels first, then drivetrains, brakes, tires. Structured specs, side-by-side decisions.",
@@ -105,6 +125,7 @@
       },
       {
         "tag": "Phase 2",
+        "state": "next",
         "status": "Next",
         "title": "Impact simulator",
         "description": "See how each part changes your ride: weight, aerodynamics, total cost, predicted performance.",
@@ -112,6 +133,7 @@
       },
       {
         "tag": "Phase 3",
+        "state": "vision",
         "status": "Vision",
         "title": "Full bike configurator",
         "description": "Build a complete bike from the frame up, simulate the full setup, then go buy it.",
@@ -135,7 +157,18 @@
         "title": "Community-focused",
         "description": "Built with riders, manufacturers and resellers. Open data, transparent affiliations."
       }
-    ]
+    ],
+    "schematic": {
+      "externalWidth": "external rim width",
+      "internalWidth": "internal rim width",
+      "rimDepth": "rim depth",
+      "wheelDiameter": "wheel diameter",
+      "externalWidthValue": "27.5 mm",
+      "internalWidthValue": "23 mm",
+      "rimDepthValue": "35 mm",
+      "wheelDiameterValue": "Ø 700 c",
+      "caption": "Representative profile. Dimensions sourced from structured product data."
+    }
   },
   "partnership": {
     "sectionIndex": "PARTNERSHIP",
@@ -153,8 +186,10 @@
     ]
   },
   "contact": {
+    "eyebrow": "Contact",
     "namePlaceholder": "Name",
     "emailPlaceholder": "Email",
+    "companyLabel": "Company",
     "companyPlaceholder": "Company (optional)",
     "messagePlaceholder": "Message",
     "submit": "Send message",

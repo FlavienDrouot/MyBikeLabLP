@@ -111,6 +111,64 @@ describe('ComparisonTable', () => {
     });
   });
 
+  describe('column measurement handoff', () => {
+    it('keeps the last measured layout while a new column is measured', () => {
+      let measureNewColumn = false;
+      const getBoundingClientRect = vi.spyOn(
+        HTMLElement.prototype,
+        'getBoundingClientRect',
+      ).mockImplementation(function getRect() {
+        const measuringTable = this.closest('table[aria-hidden="true"]');
+        if (measuringTable && this.tagName === 'TH') {
+          const index = Array.from(this.parentElement.children).indexOf(this);
+          return {
+            width: index === 0 || measureNewColumn ? 120 : 0,
+            height: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+          };
+        }
+        return { width: 0, height: 0, top: 0, right: 0, bottom: 0, left: 0 };
+      });
+
+      const renderTable = (visibility) => {
+        const store = makeStore([minimalWheel]);
+        act(() => {
+          root.render(
+            createElement(
+              Provider,
+              { store },
+              createElement(ComparisonTable, { visibility }),
+            ),
+          );
+        });
+      };
+
+      renderTable({});
+      const table = () => visibleTableOf(container);
+      expect(table().style.tableLayout).toBe('fixed');
+      expect(table().querySelector('colgroup')).not.toBeNull();
+      expect(table().querySelectorAll('thead th')).toHaveLength(2);
+
+      renderTable({ depth: true });
+      // The new column is not painted until its width is ready, so the old
+      // fixed layout remains in place throughout the measurement handoff.
+      expect(table().style.tableLayout).toBe('fixed');
+      expect(table().querySelector('colgroup')).not.toBeNull();
+      expect(table().querySelectorAll('thead th')).toHaveLength(2);
+
+      measureNewColumn = true;
+      renderTable({ depth: true });
+      expect(table().style.tableLayout).toBe('fixed');
+      expect(table().querySelector('colgroup')).not.toBeNull();
+      expect(table().querySelectorAll('thead th')).toHaveLength(3);
+
+      getBoundingClientRect.mockRestore();
+    });
+  });
+
   describe('variant marker', () => {
     it('renders a variant marker for variant wheels', () => {
       const variantWheel = {
@@ -213,8 +271,8 @@ describe('ComparisonTable', () => {
       const closeButton = closeButtonOf(container);
       expect(closeButton).not.toBeUndefined();
       expect(closeButton.className).toContain('rounded-xs');
-      expect(closeButton.className).toContain('text-ink-11');
-      expect(closeButton.className).toContain('focus-visible:outline-brass-8');
+      expect(closeButton.className).toContain('text-content-primary');
+      expect(closeButton.className).toContain('focus-visible:outline-accent');
       expect(closeButton.className).not.toContain('rounded-full');
 
       act(() => {
