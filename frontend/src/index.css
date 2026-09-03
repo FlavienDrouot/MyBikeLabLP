@@ -1332,12 +1332,16 @@
 
 @media (max-width: 640px) {
   .header-inner {
-    gap: 12px;
+    gap: 0;
+  }
+
+  .container-page.header-inner {
+    padding-inline: 12px;
   }
 
   .header-meta {
-    gap: 4px;
-    padding-left: 8px;
+    gap: 0;
+    padding-left: 0;
   }
 
   .form-grid {
