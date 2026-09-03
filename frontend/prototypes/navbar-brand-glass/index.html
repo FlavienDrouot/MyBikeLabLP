@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyBikeLab — Navbar brand &amp; glass exploration</title>
+    <meta
+      name="description"
+      content="Prototype de comparaison pour la taille du wordmark et la transparence de la navbar MyBikeLab."
+    >
+    <link rel="stylesheet" href="../../src/fonts.css">
+    <link rel="stylesheet" href="../../src/design-tokens.css">
+    <link rel="stylesheet" href="_system.css">
+  </head>
+  <body>
+    <main class="navbar-prototype">
+      <header class="prototype-intro">
+        <p class="t-eyebrow">Navbar · exploration visuelle</p>
+        <h1>MyBikeLab dans la navbar</h1>
+        <p class="prototype-lead">
+          Trois agrandissements du wordmark, chacun associé à un niveau de transparence
+          différent. Les réglages sont volontairement isolés pour faciliter le choix.
+        </p>
+
+        <div class="prototype-toolbar">
+          <span class="toolbar-label">Thème de lecture</span>
+          <div class="theme-controls" role="group" aria-label="Thème de lecture">
+            <button type="button" data-theme-choice="light" aria-pressed="true">Light</button>
+            <button type="button" data-theme-choice="cream" aria-pressed="false">Cream</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="variant-list" aria-label="Variantes de navbar">
+        <article
+          class="variant-card"
+          style="--wordmark-size: 18px; --header-alpha: 82%;"
+        >
+          <div class="variant-summary">
+            <div>
+              <p class="variant-index">Option A</p>
+              <h2>Agrandissement mesuré</h2>
+            </div>
+            <dl class="variant-values">
+              <div>
+                <dt>Wordmark</dt>
+                <dd>18px</dd>
+              </div>
+              <div>
+                <dt>Fond</dt>
+                <dd>82%</dd>
+              </div>
+            </dl>
+          </div>
+          <p class="variant-description">
+            Plus présent que la version actuelle, tout en restant proche de la densité
+            de la navbar existante.
+          </p>
+          <div class="preview-stack">
+            <p class="preview-label">Desktop · 1440px</p>
+            <div class="preview-stage">
+              <div class="preview-underlay" aria-hidden="true">
+                <div class="underlay-copy">
+                  <span>ROAD WHEEL COMPARATOR</span>
+                  <strong>Compare with<br>confidence.</strong>
+                </div>
+                <div class="underlay-ledger">
+                  <span>224 wheels</span>
+                  <span>20 filter axes</span>
+                  <span>3 themes</span>
+                </div>
+                <div class="underlay-wheel"></div>
+              </div>
+              <div class="prototype-navbar">
+                <div class="prototype-container prototype-header-inner">
+                  <a href="#top" class="prototype-brand" aria-label="MyBikeLab accueil">
+                    <svg viewBox="0 0 32 32" aria-hidden="true">
+                      <rect x="0.5" y="0.5" width="31" height="31"></rect>
+                      <line x1="16" y1="0" x2="16" y2="3"></line>
+                      <line x1="16" y1="29" x2="16" y2="32"></line>
+                      <line x1="0" y1="16" x2="3" y2="16"></line>
+                      <line x1="29" y1="16" x2="32" y2="16"></line>
+                      <path d="M 7 23 L 7 9 L 16 17.5 L 25 9 L 25 23"></path>
+                    </svg>
+                    <span class="prototype-wordmark">MyBikeLab</span>
+                  </a>
+                  <nav class="prototype-nav-links" aria-label="Navigation principale">
+                    <a href="#tool">Tool</a>
+                    <a href="#roadmap">Roadmap</a>
+                    <a href="#partnerships">Partnerships</a>
+                    <a href="#contact">Contact</a>
+                  </nav>
+                  <div class="prototype-meta">
+                    <span class="prototype-language">EN&nbsp;&nbsp; FR</span>
+                    <span class="prototype-currency">€&nbsp; $</span>
+                    <span class="prototype-theme-dot" aria-label="Thème actif"></span>
+                    <button class="prototype-menu" type="button" aria-label="Ouvrir le menu">☰</button>
+                  </div>
+                </div>
+              </div>
+              <div class="preview-caption">Fond de navbar : 82% · blur 14px</div>
+            </div>
+
+            <p class="preview-label">Mobile · 390px</p>
+            <div class="preview-stage preview-stage-mobile">
+              <div class="preview-underlay" aria-hidden="true">
+                <div class="underlay-copy">
+                  <span>MYBIKELAB</span>
+                  <strong>Make smarter<br>bike decisions.</strong>
+                </div>
+                <div class="underlay-wheel"></div>
+              </div>
+              <div class="prototype-navbar">
+                <div class="prototype-container prototype-header-inner">
+                  <a href="#top" class="prototype-brand" aria-label="MyBikeLab accueil">
+                    <svg viewBox="0 0 32 32" aria-hidden="true">
+                      <rect x="0.5" y="0.5" width="31" height="31"></rect>
+                      <line x1="16" y1="0" x2="16" y2="3"></line>
+                      <line x1="16" y1="29" x2="16" y2="32"></line>
+                      <line x1="0" y1="16" x2="3" y2="16"></line>
+                      <line x1="29" y1="16" x2="32" y2="16"></line>
+                      <path d="M 7 23 L 7 9 L 16 17.5 L 25 9 L 25 23"></path>
+                    </svg>
+                    <span class="prototype-wordmark">MyBikeLab</span>
+                  </a>
+                  <div class="prototype-meta">
+                    <span class="prototype-language">EN</span>
+                    <span class="prototype-currency">€</span>
+                    <span class="prototype-theme-dot" aria-label="Thème actif"></span>
+                    <button class="prototype-menu" type="button" aria-label="Ouvrir le menu">☰</button>
+                  </div>
+                </div>
+              </div>
+              <div class="preview-caption">Même réglage · breakpoint mobile</div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="variant-card"
+          style="--wordmark-size: 22px; --header-alpha: 76%;"
+        >
+          <div class="variant-summary">
+            <div>
+              <p class="variant-index">Option B</p>
+              <h2>Présence renforcée</h2>
+            </div>
+            <dl class="variant-values">
+              <div>
+                <dt>Wordmark</dt>
+                <dd>22px</dd>
+              </div>
+              <div>
+                <dt>Fond</dt>
+                <dd>76%</dd>
+              </div>
+            </dl>
+          </div>
+          <p class="variant-description">
+            Une signature plus assumée, avec un effet verre plus visible au passage sur
+            les contenus de la page.
+          </p>
+          <div class="preview-stack">
+            <p class="preview-label">Desktop · 1440px</p>
+            <div class="preview-stage">
+              <div class="preview-underlay" aria-hidden="true">
+                <div class="underlay-copy">
+                  <span>ROAD WHEEL COMPARATOR</span>
+                  <strong>Compare with<br>confidence.</strong>
+                </div>
+                <div class="underlay-ledger">
+                  <span>224 wheels</span>
+                  <span>20 filter axes</span>
+                  <span>3 themes</span>
+                </div>
+                <div class="underlay-wheel"></div>
+              </div>
+              <div class="prototype-navbar">
+                <div class="prototype-container prototype-header-inner">
+                  <a href="#top" class="prototype-brand" aria-label="MyBikeLab accueil">
+                    <svg viewBox="0 0 32 32" aria-hidden="true">
+                      <rect x="0.5" y="0.5" width="31" height="31"></rect>
+                      <line x1="16" y1="0" x2="16" y2="3"></line>
+                      <line x1="16" y1="29" x2="16" y2="32"></line>
+                      <line x1="0" y1="16" x2="3" y2="16"></line>
+                      <line x1="29" y1="16" x2="32" y2="16"></line>
+                      <path d="M 7 23 L 7 9 L 16 17.5 L 25 9 L 25 23"></path>
+                    </svg>
+                    <span class="prototype-wordmark">MyBikeLab</span>
+                  </a>
+                  <nav class="prototype-nav-links" aria-label="Navigation principale">
+                    <a href="#tool">Tool</a>
+                    <a href="#roadmap">Roadmap</a>
+                    <a href="#partnerships">Partnerships</a>
+                    <a href="#contact">Contact</a>
+                  </nav>
+                  <div class="prototype-meta">
+                    <span class="prototype-language">EN&nbsp;&nbsp; FR</span>
+                    <span class="prototype-currency">€&nbsp; $</span>
+                    <span class="prototype-theme-dot" aria-label="Thème actif"></span>
+                    <button class="prototype-menu" type="button" aria-label="Ouvrir le menu">☰</button>
+                  </div>
+                </div>
+              </div>
+              <div class="preview-caption">Fond de navbar : 76% · blur 14px</div>
+            </div>
+
+            <p class="preview-label">Mobile · 390px</p>
+            <div class="preview-stage preview-stage-mobile">
+              <div class="preview-underlay" aria-hidden="true">
+                <div class="underlay-copy">
+                  <span>MYBIKELAB</span>
+                  <strong>Make smarter<br>bike decisions.</strong>
+                </div>
+                <div class="underlay-wheel"></div>
+              </div>
+              <div class="prototype-navbar">
+                <div class="prototype-container prototype-header-inner">
+                  <a href="#top" class="prototype-brand" aria-label="MyBikeLab accueil">
+                    <svg viewBox="0 0 32 32" aria-hidden="true">
+                      <rect x="0.5" y="0.5" width="31" height="31"></rect>
+                      <line x1="16" y1="0" x2="16" y2="3"></line>
+                      <line x1="16" y1="29" x2="16" y2="32"></line>
+                      <line x1="0" y1="16" x2="3" y2="16"></line>
+                      <line x1="29" y1="16" x2="32" y2="16"></line>
+                      <path d="M 7 23 L 7 9 L 16 17.5 L 25 9 L 25 23"></path>
+                    </svg>
+                    <span class="prototype-wordmark">MyBikeLab</span>
+                  </a>
+                  <div class="prototype-meta">
+                    <span class="prototype-language">EN</span>
+                    <span class="prototype-currency">€</span>
+                    <span class="prototype-theme-dot" aria-label="Thème actif"></span>
+                    <button class="prototype-menu" type="button" aria-label="Ouvrir le menu">☰</button>
+                  </div>
+                </div>
+              </div>
+              <div class="preview-caption">Même réglage · breakpoint mobile</div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="variant-card"
+          style="--wordmark-size: 26px; --header-alpha: 70%;"
+        >
+          <div class="variant-summary">
+            <div>
+              <p class="variant-index">Option C</p>
+              <h2>Signature dominante</h2>
+            </div>
+            <dl class="variant-values">
+              <div>
+                <dt>Wordmark</dt>
+                <dd>26px</dd>
+              </div>
+              <div>
+                <dt>Fond</dt>
+                <dd>70%</dd>
+              </div>
+            </dl>
+          </div>
+          <p class="variant-description">
+            Le nom devient un élément majeur de la navigation. Le fond plus transparent
+            accentue le caractère flottant de la barre.
+          </p>
+          <div class="preview-stack">
+            <p class="preview-label">Desktop · 1440px</p>
+            <div class="preview-stage">
+              <div class="preview-underlay" aria-hidden="true">
+                <div class="underlay-copy">
+                  <span>ROAD WHEEL COMPARATOR</span>
+                  <strong>Compare with<br>confidence.</strong>
+                </div>
+                <div class="underlay-ledger">
+                  <span>224 wheels</span>
+                  <span>20 filter axes</span>
+                  <span>3 themes</span>
+                </div>
+                <div class="underlay-wheel"></div>
+              </div>
+              <div class="prototype-navbar">
+                <div class="prototype-container prototype-header-inner">
+                  <a href="#top" class="prototype-brand" aria-label="MyBikeLab accueil">
+                    <svg viewBox="0 0 32 32" aria-hidden="true">
+                      <rect x="0.5" y="0.5" width="31" height="31"></rect>
+                      <line x1="16" y1="0" x2="16" y2="3"></line>
+                      <line x1="16" y1="29" x2="16" y2="32"></line>
+                      <line x1="0" y1="16" x2="3" y2="16"></line>
+                      <line x1="29" y1="16" x2="32" y2="16"></line>
+                      <path d="M 7 23 L 7 9 L 16 17.5 L 25 9 L 25 23"></path>
+                    </svg>
+                    <span class="prototype-wordmark">MyBikeLab</span>
+                  </a>
+                  <nav class="prototype-nav-links" aria-label="Navigation principale">
+                    <a href="#tool">Tool</a>
+                    <a href="#roadmap">Roadmap</a>
+                    <a href="#partnerships">Partnerships</a>
+                    <a href="#contact">Contact</a>
+                  </nav>
+                  <div class="prototype-meta">
+                    <span class="prototype-language">EN&nbsp;&nbsp; FR</span>
+                    <span class="prototype-currency">€&nbsp; $</span>
+                    <span class="prototype-theme-dot" aria-label="Thème actif"></span>
+                    <button class="prototype-menu" type="button" aria-label="Ouvrir le menu">☰</button>
+                  </div>
+                </div>
+              </div>
+              <div class="preview-caption">Fond de navbar : 70% · blur 14px</div>
+            </div>
+
+            <p class="preview-label">Mobile · 390px</p>
+            <div class="preview-stage preview-stage-mobile">
+              <div class="preview-underlay" aria-hidden="true">
+                <div class="underlay-copy">
+                  <span>MYBIKELAB</span>
+                  <strong>Make smarter<br>bike decisions.</strong>
+                </div>
+                <div class="underlay-wheel"></div>
+              </div>
+              <div class="prototype-navbar">
+                <div class="prototype-container prototype-header-inner">
+                  <a href="#top" class="prototype-brand" aria-label="MyBikeLab accueil">
+                    <svg viewBox="0 0 32 32" aria-hidden="true">
+                      <rect x="0.5" y="0.5" width="31" height="31"></rect>
+                      <line x1="16" y1="0" x2="16" y2="3"></line>
+                      <line x1="16" y1="29" x2="16" y2="32"></line>
+                      <line x1="0" y1="16" x2="3" y2="16"></line>
+                      <line x1="29" y1="16" x2="32" y2="16"></line>
+                      <path d="M 7 23 L 7 9 L 16 17.5 L 25 9 L 25 23"></path>
+                    </svg>
+                    <span class="prototype-wordmark">MyBikeLab</span>
+                  </a>
+                  <div class="prototype-meta">
+                    <span class="prototype-language">EN</span>
+                    <span class="prototype-currency">€</span>
+                    <span class="prototype-theme-dot" aria-label="Thème actif"></span>
+                    <button class="prototype-menu" type="button" aria-label="Ouvrir le menu">☰</button>
+                  </div>
+                </div>
+              </div>
+              <div class="preview-caption">Même réglage · breakpoint mobile</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <footer class="prototype-footer">
+        <span>Référence production : wordmark 16px · fond 86–88% · blur 14px</span>
+        <span>Prototype non intégré</span>
+      </footer>
+    </main>
+
+    <script>
+      const root = document.documentElement;
+      const themeButtons = document.querySelectorAll('[data-theme-choice]');
+
+      themeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const nextTheme = button.dataset.themeChoice;
+          root.dataset.theme = nextTheme;
+          themeButtons.forEach((candidate) => {
+            candidate.setAttribute('aria-pressed', String(candidate === button));
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
