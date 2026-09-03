@@ -164,3 +164,11 @@ A permanent ~15 px gutter appears at the right of the table even when no vertica
 ### Validation
 - `npm run test` — EVO-025 suite green (32 passed); 2 pre-existing failures unchanged
 - `npm run build` — succeeds; Tailwind JIT emitted `scrollbar-gutter:stable` in the bundled CSS
+
+## Follow-up — Wave 5 review
+
+The permanent gutter was removed from the current comparator scroll wrapper. It
+left a visible empty strip whenever the table had horizontal overflow but no
+vertical overflow, so the wrapper now uses the browser's default `auto` gutter.
+The vertical scrollbar remains available when the capped table actually needs
+vertical scrolling.

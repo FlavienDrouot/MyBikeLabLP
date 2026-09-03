@@ -12,7 +12,8 @@ import { renderCellFor, cellClassFor } from './columnCells';
 //
 // It mirrors the real table's sizing constraints: `w-min` (min-content), headers
 // allowed to wrap, body cells `whitespace-nowrap`. The header uses the SAME
-// typographic classes as the visible table (ComparisonTable) and always reserves
+// typographic classes and wrapping behavior as the visible table (ComparisonTable)
+// and always reserves
 // the sort-arrow width on every column. The visible table only shows the `↓`
 // arrow on the currently sorted column; reserving it everywhere here guarantees
 // the measured width is never smaller than any rendered state, so the sorted

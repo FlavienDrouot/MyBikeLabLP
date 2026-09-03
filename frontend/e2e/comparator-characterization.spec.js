@@ -764,6 +764,59 @@ test.describe('historical comparator characterization', () => {
     await expect.poll(() => scrollArea.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0);
   });
 
+  test('F-67 keeps translated column headers readable inside fixed columns', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await goToComparator(page);
+
+    const language = page.getByRole('group', { name: 'Language' });
+    await language.getByRole('button', { name: 'FR' }).click();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
+
+    const columns = page.getByRole('button', { name: 'Colonnes' });
+    await columns.click();
+    const menu = page.getByRole('menu');
+    await menu.getByRole('checkbox', { name: 'Options de corps de roue libre', exact: true }).check();
+    await menu.getByRole('checkbox', { name: 'Nombre de rayons', exact: true }).check();
+    await page.getByRole('heading', { name: /^Roues\s+—/ }).click();
+
+    const table = page.getByRole('table', { name: 'Comparaison des roues' });
+    const headers = table.locator('thead th');
+    await expect(headers.filter({ hasText: 'Options de corps de roue libre' })).toBeVisible();
+    await expect(headers.filter({ hasText: 'Nombre de rayons' })).toBeVisible();
+
+    const overflowingHeaders = await headers.evaluateAll((items) => items
+      .filter((header) => header.textContent.trim())
+      .filter((header) => {
+        const content = header.querySelector('button') ?? header;
+        return content.scrollWidth > content.clientWidth + 1;
+      })
+      .map((header) => header.textContent.replace(/[↑↓]/g, '').replace(/\s+/g, ' ').trim()));
+    expect(overflowingHeaders).toEqual([]);
+  });
+
+  test('F-68 ends horizontal scrolling at the table content without a reserved gutter', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await goToComparator(page);
+
+    const scrollArea = page.getByRole('region', { name: 'Comparison table scroll area' });
+    await expect.poll(() => scrollArea.evaluate((element) => (
+      element.scrollWidth > element.clientWidth && element.scrollHeight === element.clientHeight
+    ))).toBe(true);
+
+    await scrollArea.evaluate((element) => {
+      element.scrollLeft = element.scrollWidth - element.clientWidth;
+    });
+    await expect.poll(() => scrollArea.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0);
+
+    const rightGap = await scrollArea.evaluate((element) => {
+      const box = element.getBoundingClientRect();
+      const table = element.querySelector('table').getBoundingClientRect();
+      const borderRight = Number.parseFloat(getComputedStyle(element).borderRightWidth) || 0;
+      return box.right - borderRight - table.right;
+    });
+    expect(rightGap).toBeLessThanOrEqual(1);
+  });
+
   test('F-41 keeps the inline detail geometry fixed during horizontal table scrolling', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1600 });
     await goToComparator(page);
