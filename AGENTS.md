@@ -55,7 +55,7 @@ Its first product scope focuses on road wheelsets.
 - Adding a standard wheel property normally requires one registry entry only;
   add a corresponding UI-adapter entry when it needs custom presentation.
 - Key filter and sort state by registry property IDs.
-- Supported filter types are `range`, `multiSelect`, and `triState`. Adding a filter type requires corresponding matcher and slice initialization support.
+- Supported filter types are `range`, `multiSelect`, `multiSelectFlat`, and `triState`. Adding a filter type requires corresponding matcher and slice initialization support.
 - Keep column visibility local to `MiniComparator`; filter and sort state belong in Redux.
 - Before UI work, read `frontend/src/ui/styles/design-tokens.css` and
   `frontend/TASTE-PROFILE.md` when relevant. The unintegrated product-detail
