@@ -5,8 +5,8 @@ import filtersReducer, {
   changeDisplayCurrency,
 } from '../filtersSlice';
 import { setDisplayCurrency } from '../currencySlice';
-import { convert } from '../../../lib/currency';
-import { getPropertyById } from '../../../config/wheelProperties';
+import { convert } from '../../../domain/currency';
+import { getPropertyById } from '../../../domain/wheelProperties';
 
 const priceStep = getPropertyById('price').filter.step;
 const roundToStep = (v) => Math.round(v / priceStep) * priceStep;

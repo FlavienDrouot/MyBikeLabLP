@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 /**
  * Road wheel pairs surfaced by the Channel3 fetch (scripts/fetch-channel3.js).
@@ -100,7 +99,7 @@ export const channel3Wheels = [
     disc_standard: 'Center Lock'
   },
   prices: [{ amount: 580, currency: 'USD', url: 'https://icancycling.com/products/alpha-38-52-disc-pro-us' }],
-  image: wheelPlaceholderUrl,
+  image: null,
   images: [],
   affiliateLinks: {
     manufacturer: { url: 'https://icancycling.com/products/alpha-38-52-disc-pro-us', amount: 580, currency: 'USD' },

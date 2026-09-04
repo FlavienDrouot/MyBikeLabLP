@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const PRODUCT_BASE = 'https://tavelo.cc/products/';
 
@@ -98,7 +97,7 @@ const baseWheel = ({
 
 
 
-    'Ceramic' }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: images[0] || wheelPlaceholderUrl, images, affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers }, other_specs: {
+    'Ceramic' }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: images[0] || null, images, affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers }, other_specs: {
     ...otherSpecs
   }
 });

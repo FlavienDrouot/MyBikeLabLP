@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const urls = {
   ultra: 'https://www.magene.com/en/exar/191-exar-carbon-fiber-wheelset-ultra-series-2025.html',
@@ -10,7 +9,7 @@ const freehubOptions = ['Shimano HG', 'Campagnolo N3W', 'SRAM XDR'];
 
 const makeLinks = (url, priceUsd) => ({
   prices: [{ amount: priceUsd, currency: 'USD', url }],
-  image: wheelPlaceholderUrl,
+  image: null,
   images: [],
   affiliateLinks: {
     manufacturer: { url, amount: priceUsd, currency: 'USD' },

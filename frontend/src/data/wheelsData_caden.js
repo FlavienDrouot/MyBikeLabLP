@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const FREEHUB_OPTIONS = ['Shimano HG', 'Campagnolo ED', 'SRAM XD', 'SRAM XDR'];
 
@@ -65,7 +64,7 @@ const makeCadenWheel = ({
     ...baseHubSpecs
   },
   prices: Number.isFinite(priceEur) ? [{ amount: priceEur, currency: 'EUR', url }] : [],
-  image: imageUrl || wheelPlaceholderUrl,
+  image: imageUrl || null,
   images: imageUrl ? [imageUrl] : [],
   affiliateLinks: {
     manufacturer: { url, amount: Number.isFinite(priceEur) ? priceEur : null, currency: 'EUR' },

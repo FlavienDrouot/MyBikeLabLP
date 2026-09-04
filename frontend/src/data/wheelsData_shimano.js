@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const urls = {
   productInfo: 'https://productinfo.shimano.com/en/spec/road-wheel-disc-brake',
@@ -15,7 +14,7 @@ const urls = {
 
 const makeLinks = (url) => ({
   prices: [{ amount: null, currency: 'EUR', url }],
-  image: wheelPlaceholderUrl,
+  image: null,
   images: [],
   affiliateLinks: {
     manufacturer: { url, amount: null, currency: 'EUR' },

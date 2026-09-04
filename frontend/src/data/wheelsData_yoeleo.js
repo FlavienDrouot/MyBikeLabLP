@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const NXT_FREEHUB_OPTIONS = ['Shimano HG', 'Campagnolo N3W', 'SRAM XDR'];
 const QIANKUN_FREEHUB_OPTIONS = ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'];
@@ -37,7 +36,7 @@ const makeNxTWheel = ({ id, model, weight_grams, depth_mm, priceUsd, url, wheels
   },
   prices: [{ amount: priceUsd, currency: 'USD', url }],
   weight_tolerance_percent: 5,
-  image: wheelPlaceholderUrl,
+  image: null,
   images: [],
   affiliateLinks: {
     manufacturer: { url, amount: priceUsd, currency: 'USD' },
@@ -114,7 +113,7 @@ const makeQianKunWheel = ({
 
 
 
-    'Ceramic-sealed bearings', engagement: { type: "ratchet", points: 36 } }, prices: [{ amount: 1650, currency: 'USD', url }], weight_tolerance_percent: 3, image: wheelPlaceholderUrl, images: [], affiliateLinks: { manufacturer: { url, amount: 1650, currency: 'USD' }, retailers: [] }, other_specs: { range_of_use,
+    'Ceramic-sealed bearings', engagement: { type: "ratchet", points: 36 } }, prices: [{ amount: 1650, currency: 'USD', url }], weight_tolerance_percent: 3, image: null, images: [], affiliateLinks: { manufacturer: { url, amount: 1650, currency: 'USD' }, retailers: [] }, other_specs: { range_of_use,
     rim_weight_each_grams: 420,
 
 

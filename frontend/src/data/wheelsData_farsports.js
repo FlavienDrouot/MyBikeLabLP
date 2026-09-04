@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const freehubs = ['Shimano HG', 'Shimano Micro Spline', 'SRAM XDR', 'Campagnolo ED', 'Campagnolo N3W'];
 const ufoFreehubs = ['Shimano HG', 'SRAM XDR'];
@@ -24,7 +23,7 @@ const images = {
 
 const withLinks = (url, priceUsd, productImages, sourceNote) => ({
   prices: [{ amount: priceUsd, currency: 'USD', url }],
-  image: productImages.length ? productImages[0] : wheelPlaceholderUrl,
+  image: productImages.length ? productImages[0] : null,
   images: productImages,
   affiliateLinks: {
     manufacturer: { url, amount: priceUsd, currency: 'USD' },

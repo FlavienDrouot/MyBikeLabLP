@@ -4,7 +4,7 @@ import {
   getAllSorts,
   getDefaultSortId,
   getPropertyById,
-} from '../../config/wheelProperties';
+} from '../../domain/wheelProperties';
 import { collectRangeBoundValuesForItems } from '../rangeBounds';
 
 // Filter type predicates. Adding a new filter type = add an entry here +
