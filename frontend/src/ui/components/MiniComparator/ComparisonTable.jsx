@@ -41,6 +41,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   // Column widths measured on the full dataset (see MeasuringTable). Keyed by
   // column id. Empty until the first measurement → table falls back to auto.
   const [colWidths, setColWidths] = useState({});
+  const [scrollbarCompensation, setScrollbarCompensation] = useState(0);
 
   const isDesktop = useIsDesktopComparator();
   const scrollRef = useRef(null);
@@ -70,18 +71,36 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
     }
   }, []);
 
-  // Keep width correct when the scroll container is resized.
-  useLayoutEffect(() => {
+  // A classic vertical scrollbar reduces clientWidth even when the measured
+  // table would fit in the scroll area's external width. Grow only the scroll
+  // surface in that case, preserving the compact shell and real horizontal
+  // overflow for wider tables.
+  const updateScrollGeometry = useCallback(() => {
     const el = scrollRef.current;
-    if (!el) return;
-    const ro = new ResizeObserver(() => {
-      const w = el.clientWidth;
-      if (panelRef.current) panelRef.current.style.width = `${w}px`;
-      setPanelWidth(w);
-    });
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
+    const table = el?.querySelector('table.comparator-table');
+    if (!el || !table || !isDesktop) {
+      setScrollbarCompensation((previous) => (previous === 0 ? previous : 0));
+      return;
+    }
+
+    const styles = getComputedStyle(el);
+    const borders =
+      (Number.parseFloat(styles.borderLeftWidth) || 0)
+      + (Number.parseFloat(styles.borderRightWidth) || 0);
+    const verticalGutter = Math.max(0, el.offsetWidth - el.clientWidth - borders);
+    const externalWidth = el.clientWidth + verticalGutter;
+    const hasVerticalScrollbar = el.scrollHeight > el.clientHeight;
+    const tableFitsExternally = el.scrollWidth <= externalWidth + 1;
+    const viewportWidth = document.documentElement.clientWidth || window.innerWidth;
+    const viewportRoom = Math.max(0, viewportWidth - el.getBoundingClientRect().right);
+    const nextCompensation = hasVerticalScrollbar && tableFitsExternally
+      ? Math.min(verticalGutter, viewportRoom)
+      : 0;
+
+    setScrollbarCompensation((previous) => (
+      previous === nextCompensation ? previous : nextCompensation
+    ));
+  }, [isDesktop]);
 
   // Memoized so its identity is stable across renders (it feeds MeasuringTable's
   // measure effect deps); only changes when column visibility changes.
@@ -128,6 +147,24 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
   const totalWidth = widthsReady
     ? renderedCols.reduce((sum, p) => sum + getColWidth(p), 0) + ACTIONS_COL_PX
     : undefined;
+
+  // Keep width correct when the scroll container or its table is resized.
+  useLayoutEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const update = () => {
+      const w = el.clientWidth;
+      if (panelRef.current) panelRef.current.style.width = `${w}px`;
+      setPanelWidth(w);
+      updateScrollGeometry();
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    const table = el.querySelector('table.comparator-table');
+    if (table) ro.observe(table);
+    return () => ro.disconnect();
+  }, [renderedCols, totalWidth, updateScrollGeometry]);
 
   // Sort ids declared in the registry for a column: the asc/desc SortSpec pair.
   // A column is sortable from its header only when both directions exist.
@@ -226,6 +263,7 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
           <div
             className="table-wrap comparator-table-scroll comparison-table-scroll w-full max-w-full min-w-0 overflow-x-auto lg:flex-1 lg:overflow-y-auto lg:min-h-0"
             ref={scrollRef}
+            style={{ '--comparator-scrollbar-compensation': `${scrollbarCompensation}px` }}
             role="region"
             aria-label={t('table.scrollRegion')}
           >
