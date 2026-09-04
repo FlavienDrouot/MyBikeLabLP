@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { getFilterableProperties } from '../config/wheelProperties';
-import { wheelsData } from '../data/wheelsData';
+import { getCatalogStats } from '../services/catalogStats';
 
 const PHASES_PLANNED = 3;
 
@@ -45,9 +44,7 @@ const HeroWheel = () => (
 
 const Hero = () => {
   const { t } = useTranslation();
-  const wheelCount = wheelsData.length;
-  const filterAxisCount = getFilterableProperties().length;
-  const brandCount = new Set(wheelsData.map((wheel) => wheel.brand)).size;
+  const { wheelCount, filterAxisCount, brandCount } = getCatalogStats();
 
   const ledgerRows = [
     {

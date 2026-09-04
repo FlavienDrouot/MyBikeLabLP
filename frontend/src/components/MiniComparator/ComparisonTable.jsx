@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronDown, SlidersHorizontal, X } from 'lucide-react';
 import { selectFilteredWheels } from '../../store/selectors/wheelsSelectors';
 import { setSortBy } from '../../store/slices/filtersSlice';
-import { getColumnProperties } from '../../config/wheelProperties';
+import { getColumnProperties } from '../../config/wheelPropertyColumns';
 import WheelDetailPanel from './WheelDetailPanel';
 import Icon from '../ui/Icon';
 import ColumnSelector from './ColumnSelector';

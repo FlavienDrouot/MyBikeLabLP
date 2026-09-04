@@ -5,7 +5,7 @@ import { Columns2 } from 'lucide-react';
 import {
   COLUMN_GROUPS,
   getColumnProperties,
-} from '../../config/wheelProperties';
+} from '../../config/wheelPropertyColumns';
 import Icon from '../ui/Icon';
 
 const ColumnSelector = ({ visibility, onToggle }) => {

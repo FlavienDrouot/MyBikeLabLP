@@ -1,17 +1,13 @@
-﻿// Central registry of wheel properties consumed across the entire chain:
+﻿// Pure registry of wheel property metadata and domain accessors:
 //   - filtersSlice.js  : generates Redux filter state
-//   - wheelsSelectors  : iterates for filtering/sorting
-//   - FilterPanel      : renders filter and sort UI
-//   - ComparisonTable  : renders table columns
-//   - ColumnSelector   : controls column visibility
+//   - wheelsSelectors  : filters and sorts catalog data
+// UI column presentation is composed separately in wheelPropertyColumns.jsx.
 //
 // To add a new wheel property (filter + sort + column), simply add an entry
 // to WHEEL_PROPERTIES — no other files should need modification.
 
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
-import { HookBadge } from '../components/MiniComparator/badges';
 import { resolveSpec } from '../data/wheelUtils';
-import { convert, formatPrice, isSupportedCurrency } from '../lib/currency';
+import { convert, isSupportedCurrency } from '../lib/currency';
 
 /**
  * @typedef {Object} WheelProperty
@@ -36,8 +32,7 @@ import { convert, formatPrice, isSupportedCurrency } from '../lib/currency';
  * @typedef {{id: string, label: string, direction: 'asc' | 'desc' | 'localeCompare', accessor?: (w:any)=>any}} SortSpec
  * // label: translation key resolved by consuming components via t()
  *
- * @typedef {{required?: boolean, headClassName?: string, cellClassName?: string,
- *           renderCell?: (w:any) => any, hidden?: boolean, defaultVisible?: boolean,
+ * @typedef {{required?: boolean, hidden?: boolean, defaultVisible?: boolean,
  *           colWidth?: number}} ColumnSpec
  */
 
@@ -85,18 +80,6 @@ const tireWidthRangeValues = (tireWidth) => {
   return { min, max };
 };
 
-const formatTireWidthRange = (tireWidth, t) => {
-  const min = tireWidth?.min ?? null;
-  const max = tireWidth?.max ?? null;
-  if (!Number.isFinite(min) && !Number.isFinite(max)) return t('common.notAvailable');
-  if (Number.isFinite(min) && Number.isFinite(max)) {
-    if (min === max) return `${min} mm`;
-    return `${min}-${max} mm`;
-  }
-  if (Number.isFinite(min)) return `${min}+ mm`;
-  return `<= ${max} mm`;
-};
-
 export const COLUMN_GROUPS = [
   { id: 'general', label: 'properties.groups.general' },
   { id: 'rims', label: 'properties.groups.rims' },
@@ -112,18 +95,7 @@ export const WHEEL_PROPERTIES = [
     label: 'properties.image.label',
     group: 'general',
     translatable: false,
-    accessor: (w) => w.images?.[0] ?? wheelPlaceholderUrl,
-    column: {
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-2 py-2',
-      renderCell: (w) => (
-        <img
-          src={w.images?.[0] ?? wheelPlaceholderUrl}
-          alt={w.model}
-          className="w-16 h-16 object-contain rounded"
-        />
-      ),
-    },
+    accessor: (w) => w.images?.[0] ?? null,
   },
 
   {
@@ -146,22 +118,7 @@ export const WHEEL_PROPERTIES = [
     sorts: [
       { id: 'name', label: 'sorts.name', direction: 'localeCompare' },
     ],
-    column: {
-      required: true,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 font-medium text-content-primary min-w-[220px] max-w-[260px]',
-      renderCell: (w, t) => (
-        <div className="min-w-0">
-          <span className="block text-content-muted font-normal text-xs">{w.brand}</span>
-          <span className="block whitespace-normal leading-snug">{w.model}</span>
-          {w.variant && (
-            <span className="mt-1 block whitespace-normal border-l border-accent pl-2 text-[11px] font-normal leading-snug text-content-muted">
-              {t ? t(`variant.${w.variant}`) : w.variant}
-            </span>
-          )}
-        </div>
-      ),
-    },
+    column: { required: true },
   },
 
   {
@@ -178,17 +135,7 @@ export const WHEEL_PROPERTIES = [
       { id: 'price_asc', label: 'sorts.price_asc', direction: 'asc' },
       { id: 'price_desc', label: 'sorts.price_desc', direction: 'desc' },
     ],
-    column: {
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-right font-semibold text-content-primary tabular-nums',
-      renderCell: (w, t, ctx) => {
-        const displayCurrency = ctx?.displayCurrency ?? 'EUR';
-        const offer = selectMinOffer(w, displayCurrency);
-        if (!offer) return t ? t('common.notAvailable') : 'N/A';
-        const approx = offer.sourceCurrency !== displayCurrency;
-        return formatPrice(offer.valueInDisplay, displayCurrency, { approx });
-      },
-    },
+    column: {},
   },
 
   {
@@ -206,37 +153,7 @@ export const WHEEL_PROPERTIES = [
       { id: 'weight_asc', label: 'sorts.weight_asc', direction: 'asc' },
       { id: 'weight_desc', label: 'sorts.weight_desc', direction: 'desc' },
     ],
-    column: {
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
-      renderCell: (w, t) => {
-        const { front, rear, total, isSingle } = resolveSpec(w.weight_grams);
-        const tolerance = w.weight_tolerance_percent;
-        const toleranceGrams = Number.isFinite(total) && Number.isFinite(tolerance)
-          ? Math.round((total * tolerance) / 100)
-          : null;
-        const toleranceLine = toleranceGrams !== null ? (
-          <div className="text-xs text-content-muted mt-0.5">+/- {toleranceGrams} g</div>
-        ) : null;
-        if (total === null) return t('common.notAvailable');
-        if (isSingle && !toleranceLine) return `${total} g`;
-        if (isSingle) {
-          return (
-            <div>
-              <span>{total} g</span>
-              {toleranceLine}
-            </div>
-          );
-        }
-        return (
-          <div>
-            <span>{total} g</span>
-            <div className="text-xs text-content-muted mt-0.5">{front} / {rear} g</div>
-            {toleranceLine}
-          </div>
-        );
-      },
-    },
+    column: {},
   },
 
   {
@@ -246,10 +163,7 @@ export const WHEEL_PROPERTIES = [
     translatable: true,
     accessor: (w) => w.brake_type,
     filter: { type: 'multiSelect' },
-    column: {
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-    },
+    column: {},
   },
 
   {
@@ -259,10 +173,7 @@ export const WHEEL_PROPERTIES = [
     translatable: true,
     accessor: (w) => w.wheelset_category,
     filter: { type: 'multiSelect' },
-    column: {
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-    },
+    column: {},
   },
 
   {
@@ -272,12 +183,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.diameter_mm,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
-      renderCell: (w) => formatDiameter(w.diameter_mm),
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -288,11 +194,7 @@ export const WHEEL_PROPERTIES = [
     unit: ' kg',
     accessor: (w) => w.max_system_weight_kg,
     filter: { type: 'range' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -309,11 +211,7 @@ export const WHEEL_PROPERTIES = [
         'filters.uciApproved.false',
       ],
     },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -323,11 +221,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.certification?.astm,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -344,11 +238,7 @@ export const WHEEL_PROPERTIES = [
         'filters.ebikeApproved.false',
       ],
     },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-    },
+    column: { defaultVisible: false },
   },
   // ── rims ───────────────────────────────────────────────────────────────────
   {
@@ -358,10 +248,7 @@ export const WHEEL_PROPERTIES = [
     translatable: true,
     accessor: (w) => w.rim.material,
     filter: { type: 'multiSelect' },
-    column: {
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-    },
+    column: {},
   },
 
   {
@@ -385,16 +272,7 @@ export const WHEEL_PROPERTIES = [
       { id: 'depth_asc', label: 'sorts.depth_asc', direction: 'asc' },
       { id: 'depth_desc', label: 'sorts.depth_desc', direction: 'desc' },
     ],
-    column: {
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
-      renderCell: (w, t) => {
-        const { front, rear, isSingle } = resolveSpec(w.rim.depth_mm);
-        if (front === null) return t('common.notAvailable');
-        if (isSingle) return `${front} mm`;
-        return `${front} / ${rear} mm`;
-      },
-    },
+    column: {},
   },
 
   {
@@ -404,16 +282,7 @@ export const WHEEL_PROPERTIES = [
     translatable: true,
     accessor: (w) => w.rim?.tire_compatibility,
     filter: { type: 'multiSelectFlat' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-      renderCell: (w, t) => {
-        const types = w.rim?.tire_compatibility;
-        if (!Array.isArray(types) || types.length === 0) return t('common.notAvailable');
-        return types.map((type) => t(`tireCompatibility.${type}`)).join(' / ');
-      },
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -423,11 +292,7 @@ export const WHEEL_PROPERTIES = [
     translatable: true,
     accessor: (w) => w.rim.hookless,
     filter: { type: 'triState', labels: ['filters.hookless.all', 'filters.hookless.hookless', 'filters.hookless.hooked'] },
-    column: {
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3',
-      renderCell: (w) => <HookBadge hookless={w.rim.hookless} />,
-    },
+    column: {},
   },
 
   {
@@ -451,17 +316,7 @@ export const WHEEL_PROPERTIES = [
       { id: 'externalWidth_asc', label: 'sorts.externalWidth_asc', direction: 'asc' },
       { id: 'externalWidth_desc', label: 'sorts.externalWidth_desc', direction: 'desc' },
     ],
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
-      renderCell: (w, t) => {
-        const { front, rear, isSingle } = resolveSpec(w.rim.externalWidth_mm);
-        if (front === null) return t('common.notAvailable');
-        if (isSingle) return `${front} mm`;
-        return `${front} / ${rear} mm`;
-      },
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -485,17 +340,7 @@ export const WHEEL_PROPERTIES = [
       { id: 'internalWidth_asc', label: 'sorts.internalWidth_asc', direction: 'asc' },
       { id: 'internalWidth_desc', label: 'sorts.internalWidth_desc', direction: 'desc' },
     ],
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
-      renderCell: (w, t) => {
-        const { front, rear, isSingle } = resolveSpec(w.rim?.internalWidth_mm);
-        if (front === null) return t('common.notAvailable');
-        if (isSingle) return `${front} mm`;
-        return `${front} / ${rear} mm`;
-      },
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -510,29 +355,7 @@ export const WHEEL_PROPERTIES = [
       { id: 'maxTirePressure_asc', label: 'sorts.maxTirePressure_asc', direction: 'asc' },
       { id: 'maxTirePressure_desc', label: 'sorts.maxTirePressure_desc', direction: 'desc' },
     ],
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums max-w-[160px] overflow-hidden',
-      renderCell: (w, t) => {
-        const pressure = w.rim?.max_tire_pressure;
-        if (!pressure?.psi && !pressure?.bar) return t('common.notAvailable');
-
-        const primary = pressure.psi ? `${pressure.psi} psi` : null;
-        const secondary = pressure.bar ? `${pressure.bar} bar` : null;
-        const value = [primary, secondary].filter(Boolean).join(' / ');
-
-        if (!pressure.note) return value;
-
-        return (
-          <div>
-            <span>{value}</span>
-            <div className="text-xs text-content-muted mt-0.5">{pressure.note}</div>
-          </div>
-        );
-      },
-    },
+    column: { defaultVisible: false, colWidth: 160 },
   },
 
   {
@@ -548,12 +371,7 @@ export const WHEEL_PROPERTIES = [
       { id: 'tireWidth_asc', label: 'sorts.tireWidth_asc', direction: 'asc' },
       { id: 'tireWidth_desc', label: 'sorts.tireWidth_desc', direction: 'desc' },
     ],
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
-      renderCell: (w, t) => formatTireWidthRange(w.rim?.tire_width_mm, t),
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -563,12 +381,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.rim?.construction,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
-    },
+    column: { defaultVisible: false, colWidth: 160 },
   },
 
   // ── hub and spokes ─────────────────────────────────────────────────────────
@@ -583,18 +396,7 @@ export const WHEEL_PROPERTIES = [
       { id: 'warrantyYears_asc', label: 'sorts.warrantyYears_asc', direction: 'asc' },
       { id: 'warrantyYears_desc', label: 'sorts.warrantyYears_desc', direction: 'desc' },
     ],
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
-      renderCell: (w, t) => {
-        const warranty = w.warranty;
-        if (!warranty?.text && !warranty?.years) return t('common.notAvailable');
-        if (warranty.text) return warranty.text;
-        return `${warranty.years} years`;
-      },
-    },
+    column: { defaultVisible: false, colWidth: 160 },
   },
 
   {
@@ -603,18 +405,7 @@ export const WHEEL_PROPERTIES = [
     group: 'hub',
     translatable: false,
     accessor: (w) => `${w.hub.brand} ${w.hub.model}`,
-    column: {
-      headClassName: 'px-4 py-3 font-semibold',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 font-medium text-content-primary max-w-[160px] overflow-hidden',
-      renderCell: (w) => (
-        <div>
-          <span className="text-content-muted font-normal text-xs">{w.hub.brand}</span>
-          <br />
-          <span className="block truncate" title={w.hub.model}>{w.hub.model}</span>
-        </div>
-      ),
-    },
+    column: { colWidth: 160 },
   },
 
   {
@@ -647,11 +438,7 @@ export const WHEEL_PROPERTIES = [
       const r = w.hub?.axle_rear_mm ?? '\u2014';
       return `${f} / ${r}`;
     },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -661,15 +448,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.hub?.freehub_options,
     filter: { type: 'multiSelectFlat' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px]',
-      // renderCell removed: ComparisonTable now uses FreehubCell for this column (EVO-036 TASK-005).
-      // MeasuringTable still uses renderCellFor, which falls back to the default
-      // accessor-based render — sufficient for width measurement only.
-    },
+    column: { defaultVisible: false, colWidth: 160 },
   },
 
   {
@@ -679,11 +458,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.hub?.disc_standard,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -693,12 +468,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.hub?.bearing_type,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
-    },
+    column: { defaultVisible: false, colWidth: 160 },
   },
 
   {
@@ -708,11 +478,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.hub?.material,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -722,12 +488,7 @@ export const WHEEL_PROPERTIES = [
     translatable: true,
     accessor: (w) => w.hub?.engagement?.type,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
-    },
+    column: { defaultVisible: false, colWidth: 160 },
   },
 
   {
@@ -742,11 +503,7 @@ export const WHEEL_PROPERTIES = [
       { id: 'hubEngagementPoints_asc', label: 'sorts.hubEngagementPoints_asc', direction: 'asc' },
       { id: 'hubEngagementPoints_desc', label: 'sorts.hubEngagementPoints_desc', direction: 'desc' },
     ],
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -755,19 +512,7 @@ export const WHEEL_PROPERTIES = [
     group: 'spokes',
     translatable: false,
     accessor: (w) => `${w.spokes.brand} ${w.spokes.model}`,
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 font-medium text-content-primary max-w-[160px] overflow-hidden',
-      renderCell: (w) => (
-        <div>
-          <span className="text-content-muted font-normal text-xs">{w.spokes.brand}</span>
-          <br />
-          <span className="block truncate" title={w.spokes.model}>{w.spokes.model}</span>
-        </div>
-      ),
-    },
+    column: { defaultVisible: false, colWidth: 160 },
   },
 
   {
@@ -797,11 +542,7 @@ export const WHEEL_PROPERTIES = [
     translatable: true,
     accessor: (w) => w.spokes.material,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -824,17 +565,7 @@ export const WHEEL_PROPERTIES = [
       { id: 'spokeCount_asc', label: 'sorts.spokeCount_asc', direction: 'asc' },
       { id: 'spokeCount_desc', label: 'sorts.spokeCount_desc', direction: 'desc' },
     ],
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold text-right',
-      cellClassName: 'px-4 py-3 text-content-primary text-right tabular-nums',
-      renderCell: (w, t) => {
-        const { front, rear, isSingle } = resolveSpec(w.spokes?.count);
-        if (front === null) return t('common.notAvailable');
-        if (isSingle) return `${front}`;
-        return `${front} / ${rear}`;
-      },
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -844,12 +575,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.spokes?.nipple,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
-    },
+    column: { defaultVisible: false, colWidth: 160 },
   },
 
   {
@@ -859,11 +585,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.spokes?.type,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      cellClassName: 'px-4 py-3 text-content-primary',
-    },
+    column: { defaultVisible: false },
   },
 
   {
@@ -873,12 +595,7 @@ export const WHEEL_PROPERTIES = [
     translatable: false,
     accessor: (w) => w.spokes?.profile,
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
-    },
+    column: { defaultVisible: false, colWidth: 160 },
   },
 
   {
@@ -892,12 +609,7 @@ export const WHEEL_PROPERTIES = [
       return front === rear ? front : `${front} / ${rear}`;
     },
     filter: { type: 'multiSelect' },
-    column: {
-      defaultVisible: false,
-      headClassName: 'px-4 py-3 font-semibold',
-      colWidth: 160,
-      cellClassName: 'px-4 py-3 text-content-primary max-w-[160px] overflow-hidden',
-    },
+    column: { defaultVisible: false, colWidth: 160 },
   },
 ];
 
@@ -906,10 +618,6 @@ export const WHEEL_PROPERTIES = [
 /** List of filterable properties (i.e. with filter defined). */
 export const getFilterableProperties = () =>
   WHEEL_PROPERTIES.filter((p) => p.filter);
-
-/** List of properties displayable as table columns. */
-export const getColumnProperties = () =>
-  WHEEL_PROPERTIES.filter((p) => !p.column?.hidden);
 
 /**
  * Flat list of all sort options declared in the registry.

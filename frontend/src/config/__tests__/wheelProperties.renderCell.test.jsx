@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { WHEEL_PROPERTIES } from '../wheelProperties';
+import { WHEEL_PROPERTIES } from '../wheelPropertyColumns';
 
 const property = (id) => WHEEL_PROPERTIES.find((p) => p.id === id);
 

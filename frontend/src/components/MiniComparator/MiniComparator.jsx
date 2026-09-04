@@ -4,7 +4,7 @@ import { X } from 'lucide-react';
 import FilterPanel from './FilterPanel';
 import ComparisonTable from './ComparisonTable';
 import Icon from '../ui/Icon';
-import { getColumnProperties } from '../../config/wheelProperties';
+import { getColumnProperties } from '../../config/wheelPropertyColumns';
 import useIsDesktopComparator from '../../hooks/useIsDesktopComparator';
 
 // All optional columns (= non `required`) are visible by default.

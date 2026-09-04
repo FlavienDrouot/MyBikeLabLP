@@ -1,6 +1,6 @@
 // Small visual components reused in comparison table cells.
 // Extracted from old columnsConfig.jsx to allow the registry
-// (config/wheelProperties.jsx) to import the render without circular dependency.
+// (config/wheelPropertyColumns.jsx) to import the render without circular dependency.
 
 import { useTranslation } from 'react-i18next';
 
