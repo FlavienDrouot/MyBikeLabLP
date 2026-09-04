@@ -17,6 +17,48 @@ These instructions apply to `MyBikeLab`.
 
 Its first product scope focuses on road wheelsets.
 
+## Architecture direction
+
+The frontend is progressively organized around four responsibilities. The
+folder names describe the responsibility of the code, not simply its file
+format:
+
+- **Domain**: product concepts and rules independent of React and of the data
+  source. For wheels, this includes property metadata, accessors, filtering,
+  sorting and domain calculations.
+- **Application**: use cases that coordinate domain rules, data and
+  application state to answer a product need, such as catalog statistics.
+  Redux slices and selectors are application-state infrastructure.
+- **Data**: catalog content and its sources or adapters, currently the
+  `wheelsData*.js` files and data validation.
+- **UI**: React components, renderers, presentation classes and browser
+  interactions. The existing `components/` tree is the UI layer.
+
+The target dependency direction is:
+
+```text
+UI -> Application / Store -> Domain
+                    \----> Data
+```
+
+Domain code must not depend on React, JSX, UI components or presentation
+classes. Data code must not depend on UI. Keep the application layer thin: do
+not add abstractions unless they isolate a real use case or data-source
+boundary.
+
+The physical reorganization is progressive. Until the target folders are
+migrated, the current mappings are:
+
+- `config/wheelProperties.js`: domain registry;
+- `services/catalogStats.js`: application read API;
+- `data/`: catalog data and validation;
+- `components/` and `config/wheelPropertyColumns.jsx`: UI and UI adapter;
+- `store/`: application state integration.
+
+When moving an affected module, prefer the target responsibility folder and
+update its imports and documentation. Do not perform unrelated mass moves only
+to rename directories.
+
 ## Repository Map
 
 | Path | Role |
@@ -32,9 +74,10 @@ Its first product scope focuses on road wheelsets.
 ## Product Rules
 
 - Define wheel property metadata, accessors, filters and sorts in
-  `frontend/src/config/wheelProperties.js`. Keep this registry UI-agnostic:
-  React, JSX, `HookBadge`, renderers and presentation classes do not belong in
-  it.
+  `frontend/src/config/wheelProperties.js`. Keep this registry independent of
+  React, JSX, `HookBadge`, renderers and presentation classes. Transitional
+  structural column metadata may remain there, but table presentation belongs
+  in the UI adapter.
 - Keep table renderers, presentation classes and UI-specific column composition
   in `frontend/src/config/wheelPropertyColumns.jsx`, the UI adapter for the
   domain registry.
