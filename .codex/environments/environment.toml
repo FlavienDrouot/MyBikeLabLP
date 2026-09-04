@@ -11,9 +11,6 @@ set -euo pipefail
 
 worktree="${CODEX_WORKTREE_PATH:?CODEX_WORKTREE_PATH is not defined}"
 
-cd "${worktree}"
-graphify update "${worktree}"
-
 cd "${worktree}/frontend"
 npm install'''
 
@@ -28,11 +25,6 @@ if ([string]::IsNullOrWhiteSpace($worktree)) {
 }
 
 Set-Location -LiteralPath $worktree
-
-& graphify update $worktree
-if ($LASTEXITCODE -ne 0) {
-    throw "Graphify update failed with exit code $LASTEXITCODE"
-}
 
 Set-Location -LiteralPath (Join-Path $worktree "frontend")
 
