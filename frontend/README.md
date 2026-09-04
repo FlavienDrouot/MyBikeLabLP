@@ -18,11 +18,13 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 
 | Path | Role |
 | --- | --- |
-| `src/config/wheelProperties.jsx` | Central registry â€” source of truth for all wheel properties (filters, sorts, columns) |
+| `src/config/wheelProperties.js` | Domain registry â€” property metadata, accessors, filters and sorts; independent from UI rendering |
+| `src/config/wheelPropertyColumns.jsx` | UI adapter â€” React cell renderers, presentation classes and column composition |
 | `src/data/wheelsData.js` | Static wheel dataset (~15 items) |
 | `src/store/slices/filtersSlice.js` | Filter + sort global state (keyed by registry property IDs) |
 | `src/store/slices/wheelsSlice.js` | Wheel data state |
 | `src/store/selectors/wheelsSelectors.js` | `selectFilteredWheels` â€” memoized, applies active filters + sort |
+| `src/services/catalogStats.js` | Narrow read API for landing-page catalog statistics |
 | `src/store/index.js` | Redux store configuration |
 | `src/components/MiniComparator/` | Main feature: `MiniComparator` â†’ `FilterPanel` + `ComparisonTable` + `ColumnSelector` |
 | `src/components/` | Other UI components: Navbar, Hero, Footer, RoadmapSection, BenefitsGrid, ContactForm |
@@ -42,7 +44,8 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 
 ## Key Conventions
 
-- **New wheel property** â†’ add one entry in `wheelProperties.jsx` only; no other file to update
+- **New wheel property** â†’ add its domain definition to `wheelProperties.js`; add a custom presentation entry to `wheelPropertyColumns.jsx` only when the default column rendering is insufficient
+- **UI/domain boundary** â†’ filters, sorts and selectors consume `wheelProperties.js`; comparator column components consume `wheelPropertyColumns.jsx`
 - **Filter types**: `range` \| `multiSelect` \| `triState` â€” new type requires a matcher + init in `filtersSlice`
 - **Column visibility** = local state in `MiniComparator`; filter/sort = Redux global state
 - **Design tokens**: use `src/design-tokens.css`; add shared classes to `src/index.css`. Consult `TASTE-PROFILE.md` for visual direction.

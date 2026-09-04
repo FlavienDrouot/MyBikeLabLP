@@ -31,7 +31,18 @@ Its first product scope focuses on road wheelsets.
 
 ## Product Rules
 
-- Add wheel properties through `frontend/src/config/wheelProperties.jsx`.
+- Define wheel property metadata, accessors, filters and sorts in
+  `frontend/src/config/wheelProperties.js`. Keep this registry UI-agnostic:
+  React, JSX, `HookBadge`, renderers and presentation classes do not belong in
+  it.
+- Keep table renderers, presentation classes and UI-specific column composition
+  in `frontend/src/config/wheelPropertyColumns.jsx`, the UI adapter for the
+  domain registry.
+- Domain consumers such as filters, sorts and selectors import
+  `wheelProperties.js`; comparator components that need rendered columns import
+  `wheelPropertyColumns.jsx`.
+- Adding a standard wheel property normally requires one registry entry only;
+  add a corresponding UI-adapter entry when it needs custom presentation.
 - Key filter and sort state by registry property IDs.
 - Supported filter types are `range`, `multiSelect`, and `triState`. Adding a filter type requires corresponding matcher and slice initialization support.
 - Keep column visibility local to `MiniComparator`; filter and sort state belong in Redux.
