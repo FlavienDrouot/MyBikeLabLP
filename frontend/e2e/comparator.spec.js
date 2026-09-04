@@ -173,6 +173,59 @@ test.describe('Chromium P0 comparator journeys', () => {
     expect(layout.tableScrollWidth).toBeLessThanOrEqual(layout.tableClientWidth);
   });
 
+  test('compensates a classic vertical scrollbar gutter when columns fit', async ({ page }) => {
+    await page.setViewportSize({ width: 1740, height: 900 });
+    await goToComparator(page);
+
+    const tableScroll = page.getByRole('region', { name: 'Comparison table scroll area' });
+    await tableScroll.evaluate((element) => {
+      // Stable gutter makes Chromium reserve a classic scrollbar track for a
+      // deterministic check, including on hosts using overlay scrollbars.
+      element.style.scrollbarGutter = 'stable';
+    });
+
+    await expect.poll(() => tableScroll.evaluate((element) => {
+      const styles = getComputedStyle(element);
+      const borders =
+        (Number.parseFloat(styles.borderLeftWidth) || 0)
+        + (Number.parseFloat(styles.borderRightWidth) || 0);
+      const verticalGutter = element.offsetWidth - element.clientWidth - borders;
+      return {
+        verticalGutter,
+        horizontalOverflow: element.scrollWidth > element.clientWidth,
+        pageOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+      };
+    })).toEqual({ verticalGutter: 10, horizontalOverflow: false, pageOverflow: false });
+  });
+
+  test('keeps a fitting desktop table free of scrollbars without vertical overflow', async ({ page }) => {
+    await page.setViewportSize({ width: 2200, height: 900 });
+    await goToComparator(page);
+
+    const filters = await openGeneralFilters(page);
+    await filters.getByRole('button', { name: 'Track (1)', exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Wheels — 1 of 224' })).toBeVisible();
+
+    const tableScroll = page.getByRole('region', { name: 'Comparison table scroll area' });
+    await expect.poll(() => tableScroll.evaluate((element) => {
+      const styles = getComputedStyle(element);
+      const borders =
+        (Number.parseFloat(styles.borderLeftWidth) || 0)
+        + (Number.parseFloat(styles.borderRightWidth) || 0);
+      return {
+        verticalOverflow: element.scrollHeight > element.clientHeight,
+        verticalGutter: element.offsetWidth - element.clientWidth - borders,
+        horizontalOverflow: element.scrollWidth > element.clientWidth,
+        pageOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+      };
+    })).toEqual({
+      verticalOverflow: false,
+      verticalGutter: 0,
+      horizontalOverflow: false,
+      pageOverflow: false,
+    });
+  });
+
   test('aligns the comparator heading with the other section headings', async ({ page }) => {
     await page.setViewportSize({ width: 1600, height: 900 });
     await goToComparator(page);

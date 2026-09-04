@@ -2353,8 +2353,11 @@
   div.comparator-table-scroll {
     overflow-x: auto;
     overflow-y: auto;
-    width: calc(100% - 48px);
-    max-width: calc(100% - 48px);
+    width: calc(100% - 48px + var(--comparator-scrollbar-compensation, 0px));
+    max-width: min(
+      calc(100% - 48px + var(--comparator-scrollbar-compensation, 0px)),
+      calc(100vw - 48px)
+    );
     box-sizing: border-box;
     margin: 14px 24px 0;
     border: 1px solid var(--border-default);
