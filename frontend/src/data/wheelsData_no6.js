@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const FREEHUB_OPTIONS = ['Shimano HG', 'Shimano Micro Spline', 'SRAM XDR', 'Campagnolo N3W'];
 
@@ -73,7 +72,7 @@ const makeNo6Wheel = ({
 
 
 
-    hubBearingType, bearing_models: [], material: null }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: image ?? wheelPlaceholderUrl, images, affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers: [] }, certification: { uci: true, astm: null, ebike: null }, other_specs: { ...baseOtherSpecs,
+    hubBearingType, bearing_models: [], material: null }, prices: [{ amount: priceUsd, currency: 'USD', url }], image: image ?? null, images, affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers: [] }, certification: { uci: true, astm: null, ebike: null }, other_specs: { ...baseOtherSpecs,
     engagement_ratchet,
 
 

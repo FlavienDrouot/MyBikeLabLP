@@ -23,30 +23,43 @@ Its first product scope focuses on road wheelsets.
 | --- | --- |
 | `product-overview.md` | Product purpose, users, features, and roadmap |
 | `frontend/` | React application source and configuration |
-| `frontend/src/design-tokens.css` | Production design tokens and shared visual primitives |
-| `frontend/TASTE-PROFILE.md` | Consolidated visual guidance for future UI work |
+| `frontend/src/domain/` | Product rules, wheel properties, accessors, and currency logic |
+| `frontend/src/application/` | Application read APIs that coordinate domain rules and catalog data |
+| `frontend/src/data/` | Static wheel catalog and validation |
+| `frontend/src/store/` | Redux store, slices, selectors, and derived application state |
+| `frontend/src/ui/` | React application UI, entry points, presentation, and browser concerns |
+| `frontend/src/ui/components/` | React UI components and component-level presentation |
+| `frontend/src/ui/pages/` | Page-level UI composition |
+| `frontend/src/ui/hooks/` | Reusable React hooks |
+| `frontend/src/ui/assets/` | Static UI assets, illustrations, icons, fonts, and placeholders |
+| `frontend/src/ui/styles/` | Global styles, design tokens, and font declarations |
+| `frontend/src/ui/lib/` | UI utilities such as theme and document language handling |
+| `frontend/TASTE-PROFILE.md` | Consolidated visual guidance for UI work |
 | `frontend/prototypes/` | Retained unintegrated UI prototypes |
 | `scripts/` | Product data ingestion, migration, and maintenance tooling |
 | `evolutions/` | Product work artifacts |
+| `reviews/` | Historical codebase review artifacts |
 
 ## Product Rules
 
-- Add wheel properties through `frontend/src/config/wheelProperties.jsx`.
+- Define wheel property metadata, accessors, filters and sorts in
+  `frontend/src/domain/wheelProperties.js`. Keep domain modules independent of
+  React, JSX, UI components, assets, renderers and presentation classes. Table
+  presentation belongs in the UI layer.
+- Keep table renderers, presentation classes and UI-specific column composition
+  in `frontend/src/ui/components/MiniComparator/wheelPropertyColumns.jsx`, the
+  UI adapter for the domain registry.
+- Domain consumers such as filters, sorts and selectors import
+  `frontend/src/domain/wheelProperties.js`; comparator components that need
+  rendered columns import the UI adapter.
+- Adding a standard wheel property normally requires one registry entry only;
+  add a corresponding UI-adapter entry when it needs custom presentation.
 - Key filter and sort state by registry property IDs.
-- Supported filter types are `range`, `multiSelect`, and `triState`. Adding a filter type requires corresponding matcher and slice initialization support.
+- Supported filter types are `range`, `multiSelect`, `multiSelectFlat`, and `triState`. Adding a filter type requires corresponding matcher and slice initialization support.
 - Keep column visibility local to `MiniComparator`; filter and sort state belong in Redux.
-- Before UI work, read `frontend/src/design-tokens.css` and `frontend/TASTE-PROFILE.md` when relevant. The unintegrated product-detail reference is under `frontend/prototypes/wave-3-product-detail/`.
-- Use `frontend/src/design-tokens.css` and shared classes in `frontend/src/index.css` instead of ad hoc styling.
+- Before UI work, read `frontend/src/ui/styles/design-tokens.css` and
+  `frontend/TASTE-PROFILE.md` when relevant. The unintegrated product-detail
+  reference is under `frontend/prototypes/wave-3-product-detail/`.
+- Use `frontend/src/ui/styles/design-tokens.css` and shared classes in
+  `frontend/src/ui/styles/index.css` instead of ad hoc styling.
 - Wheel data schema changes must update all existing `wheelsData_*.js` files and affected product-owned validation, ingestion, migration, and documentation artifacts.
-
-## graphify
-
-This repository has a knowledge graph at `graphify-out/` with god nodes, community structure, and cross-file relationships.
-
-When the user types `/graphify`, use the installed graphify skill or instructions before doing anything else.
-
-- For codebase questions, first run `graphify query "<question>"` when `graphify-out/graph.json` exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts.
-- Dirty `graphify-out/` files are expected after hooks or incremental updates. Skip graphify only when the task concerns stale or incorrect graph output, or the user explicitly asks not to use it.
-- Use `graphify-out/wiki/index.md` for broad navigation when it exists.
-- Read `graphify-out/GRAPH_REPORT.md` only for broad architecture reviews or when query, path, or explain do not provide enough context.
-- After modifying code, run `graphify update .` to keep the graph current.

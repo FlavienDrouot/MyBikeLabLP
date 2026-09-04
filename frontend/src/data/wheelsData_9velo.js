@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const freehubOptions = ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'];
 
@@ -15,7 +14,7 @@ const urls = {
 
 const makeLinks = (url, priceUsd) => ({
   prices: [{ amount: priceUsd, currency: 'USD', url }],
-  image: wheelPlaceholderUrl,
+  image: null,
   images: [],
   affiliateLinks: {
     manufacturer: { url, amount: priceUsd, currency: 'USD' },

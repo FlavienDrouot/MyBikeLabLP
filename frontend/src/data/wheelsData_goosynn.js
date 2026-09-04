@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const FREEHUB_OPTIONS = ['Shimano HG', 'SRAM XDR', 'Campagnolo N3W'];
 
@@ -54,7 +53,7 @@ const makeGoosynn = ({
     count: { front: spokeCount, rear: spokeCount },
     lacing: { front: spokeLacing, rear: spokeLacing }
   },
-  hub: { model: hub_model, brand: 'GOOSYNN', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: FREEHUB_OPTIONS, disc_standard: 'Center Lock', bearing_type: hubBearingType }, weight_tolerance_percent: 5, prices: [{ amount: priceUsd, currency: 'USD', url }], image: images && images.length ? images[0] : wheelPlaceholderUrl, images: images || [], affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers: [{ name: 'Panda Podium', amount: priceUsd, currency: 'USD', url: retailerUrl }] }, other_specs: {
+  hub: { model: hub_model, brand: 'GOOSYNN', axle_front_mm: '12x100', axle_rear_mm: '12x142', freehub_options: FREEHUB_OPTIONS, disc_standard: 'Center Lock', bearing_type: hubBearingType }, weight_tolerance_percent: 5, prices: [{ amount: priceUsd, currency: 'USD', url }], image: images && images.length ? images[0] : null, images: images || [], affiliateLinks: { manufacturer: { url, amount: priceUsd, currency: 'USD' }, retailers: [{ name: 'Panda Podium', amount: priceUsd, currency: 'USD', url: retailerUrl }] }, other_specs: {
     neck_type: 'Straight Pull',
 
     bead_type: 'Hooked',

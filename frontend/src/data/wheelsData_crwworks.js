@@ -1,8 +1,7 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const withImage = (wheel) => ({
   ...wheel,
-  image: wheel.images.length ? wheel.images[0] : wheelPlaceholderUrl
+  image: wheel.images.length ? wheel.images[0] : null
 });
 
 export const crwWorksWheels = [

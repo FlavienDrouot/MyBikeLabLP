@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getFilterableProperties } from '../../config/wheelProperties';
+import { getFilterableProperties } from '../../domain/wheelProperties';
 import { wheelsData } from '../../data/wheelsData';
-import { convert, DEFAULT_CURRENCY } from '../../lib/currency';
+import { convert, DEFAULT_CURRENCY } from '../../domain/currency';
 import { collectRangeBoundValuesForItems } from '../rangeBounds';
 import { setDisplayCurrency } from './currencySlice';
 

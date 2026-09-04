@@ -1,4 +1,3 @@
-import wheelPlaceholderUrl from '../assets/wheel-placeholder.svg';
 
 const ULTRA_URL = 'https://www.scomsports.com/scom-ultra/';
 const AEROLITE_URL = 'https://www.scomsports.com/scom-aerolite/';
@@ -75,7 +74,7 @@ const makeScom = ({
   },
   prices: [{ amount: priceUsd, currency: priceUsd ? 'USD' : 'EUR', url: productUrl }],
   weight_tolerance_percent: 3,
-  image: images.length ? images[0] : wheelPlaceholderUrl,
+  image: images.length ? images[0] : null,
   images,
   affiliateLinks: {
     manufacturer: { url: productUrl, amount: priceUsd, currency: priceUsd ? 'USD' : 'EUR' },

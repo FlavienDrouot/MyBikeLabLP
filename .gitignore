@@ -38,6 +38,3 @@ lerna-debug.log*
 
 # Admin folder (private, not versioned)
 Administrative/
-
-# Graphify
-graphify-out/

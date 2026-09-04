@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { DEFAULT_CURRENCY, isSupportedCurrency } from '../../lib/currency';
+import { DEFAULT_CURRENCY, isSupportedCurrency } from '../../domain/currency';
 
 // Holds the active display currency. Not persisted: the app resets to the
 // default currency (EUR) on every load.
