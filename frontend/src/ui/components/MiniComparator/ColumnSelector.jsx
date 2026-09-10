@@ -155,6 +155,7 @@ const ColumnSelector = ({
           aria-label={t('columnSelector.drawerLabel')}
           aria-hidden={!mobileOpen ? 'true' : undefined}
           inert={!mobileOpen}
+          tabIndex={-1}
           style={{ zIndex: 70 }}
           className={`comparator-filter-drawer comparator-column-drawer fixed inset-y-0 right-0 z-50 flex flex-col overflow-y-auto bg-surface-well border-l border-border-default transition-transform duration-200 ease-out lg:hidden ${
             mobileOpen ? 'translate-x-0' : 'translate-x-full'

@@ -496,6 +496,9 @@ test.describe('historical comparator characterization', () => {
 
       await page.setViewportSize({ width: 1100, height: 844 });
       await expect(page.getByRole('dialog', { name: 'Columns' })).toHaveCount(0);
+      await expect.poll(() => page.evaluate(() => (
+        document.activeElement?.closest('[role="dialog"]') === null
+      ))).toBe(true);
       await expect(columnsButton).toHaveAttribute('aria-expanded', 'false');
       await expect(page.getByRole('menu')).toHaveCount(0);
 
@@ -512,6 +515,51 @@ test.describe('historical comparator characterization', () => {
       await expect(page.getByRole('dialog', { name: 'Filters' })).toHaveCount(0);
       await page.setViewportSize({ width: 390, height: 844 });
       await expect(page.getByRole('dialog', { name: 'Filters' })).toHaveCount(0);
+    });
+
+    test('F-74 contains mobile drawer focus and restores each trigger', async ({ page }) => {
+      await goToComparator(page);
+
+      const columnsButton = page.getByRole('button', { name: 'Columns', exact: true });
+      const filtersButton = page.getByRole('button', { name: 'Filters', exact: true });
+
+      const expectFocusContainment = async (drawer, closeButton) => {
+        await expect(closeButton).toBeFocused();
+        await page.keyboard.press('Shift+Tab');
+        await expect(drawer.locator(':focus')).toHaveCount(1);
+        await page.keyboard.press('Tab');
+        await expect(closeButton).toBeFocused();
+      };
+
+      await columnsButton.click();
+      let drawer = page.getByRole('dialog', { name: 'Columns' });
+      let closeButton = drawer.getByRole('button', { name: 'Close columns' });
+      await expectFocusContainment(drawer, closeButton);
+      await closeButton.click();
+      await expect(columnsButton).toBeFocused();
+
+      await columnsButton.click();
+      drawer = page.getByRole('dialog', { name: 'Columns' });
+      closeButton = drawer.getByRole('button', { name: 'Close columns' });
+      await expectFocusContainment(drawer, closeButton);
+      const columnsBox = await drawer.boundingBox();
+      await page.mouse.click(columnsBox.x / 2, page.viewportSize().height / 2);
+      await expect(columnsButton).toBeFocused();
+
+      await filtersButton.click();
+      drawer = page.getByRole('dialog', { name: 'Filters' });
+      closeButton = drawer.getByRole('button', { name: 'Close filters' });
+      await expectFocusContainment(drawer, closeButton);
+      await closeButton.click();
+      await expect(filtersButton).toBeFocused();
+
+      await filtersButton.click();
+      drawer = page.getByRole('dialog', { name: 'Filters' });
+      closeButton = drawer.getByRole('button', { name: 'Close filters' });
+      await expectFocusContainment(drawer, closeButton);
+      const filtersBox = await drawer.boundingBox();
+      await page.mouse.click(filtersBox.x + filtersBox.width + 8, page.viewportSize().height / 2);
+      await expect(filtersButton).toBeFocused();
     });
 
     test('F-18 removes one active chip while preserving the other selections', async ({ page }) => {
