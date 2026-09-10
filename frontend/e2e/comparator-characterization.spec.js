@@ -422,6 +422,98 @@ test.describe('historical comparator characterization', () => {
       expect(after.overflowY).not.toBe('hidden');
     });
 
+    test('F-71 opens the mobile column drawer from the right and updates columns', async ({ page }) => {
+      await goToComparator(page);
+
+      const columnsButton = page.getByRole('button', { name: 'Columns', exact: true });
+      await columnsButton.click();
+      const drawer = page.getByRole('dialog', { name: 'Columns' });
+      await expect(drawer).toHaveAttribute('aria-modal', 'true');
+      await expect(drawer.getByRole('button', { name: 'Close columns' })).toBeVisible();
+      await expect(page.getByRole('dialog', { name: 'Filters' })).toHaveCount(0);
+
+      await expect.poll(() => drawer.evaluate((element) => {
+        const box = element.getBoundingClientRect();
+        return {
+          right: Math.abs(box.right - window.innerWidth),
+          height: Math.abs(box.height - window.innerHeight),
+        };
+      })).toEqual({ right: 0, height: 0 });
+
+      const diameter = drawer.getByRole('checkbox', { name: 'Diameter', exact: true });
+      await diameter.check();
+      await expect(page.getByRole('table', { name: 'Wheel comparison' })
+        .getByRole('columnheader', { name: 'Diameter', exact: true })).toBeVisible();
+      await diameter.uncheck();
+      await expect(page.getByRole('table', { name: 'Wheel comparison' })
+        .getByRole('columnheader', { name: 'Diameter', exact: true })).toHaveCount(0);
+
+      await drawer.getByRole('button', { name: 'Close columns' }).click();
+      await expect(page.getByRole('dialog', { name: 'Columns' })).toHaveCount(0);
+      await expect(columnsButton).toHaveAttribute('aria-expanded', 'false');
+
+      await columnsButton.click();
+      const reopenedDrawer = page.getByRole('dialog', { name: 'Columns' });
+      const drawerBox = await reopenedDrawer.boundingBox();
+      const viewport = page.viewportSize();
+      const backdropPoint = {
+        x: drawerBox.x / 2,
+        y: viewport.height / 2,
+      };
+      await page.mouse.click(backdropPoint.x, backdropPoint.y);
+      await expect(page.getByRole('dialog', { name: 'Columns' })).toHaveCount(0);
+      await expect(columnsButton).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    test('F-72 coordinates the two mobile drawers through one active state', async ({ page }) => {
+      await goToComparator(page);
+
+      const columnsButton = page.getByRole('button', { name: 'Columns', exact: true });
+      const filtersButton = page.getByRole('button', { name: 'Filters', exact: true });
+      await columnsButton.click();
+      await expect(page.getByRole('dialog', { name: 'Columns' })).toBeVisible();
+
+      await filtersButton.click({ force: true });
+      await expect(page.getByRole('dialog', { name: 'Columns' })).toBeVisible();
+      await expect(page.getByRole('dialog', { name: 'Filters' })).toHaveCount(0);
+      await expect(filtersButton).toHaveAttribute('aria-expanded', 'false');
+
+      await page.getByRole('dialog', { name: 'Columns' })
+        .getByRole('button', { name: 'Close columns' }).click();
+      await filtersButton.click();
+      await expect(page.getByRole('dialog', { name: 'Filters' })).toBeVisible();
+      await expect(page.getByRole('dialog', { name: 'Columns' })).toHaveCount(0);
+      await expect(columnsButton).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    test('F-73 closes mobile drawer state when crossing the desktop breakpoint', async ({ page }) => {
+      await goToComparator(page);
+
+      const columnsButton = page.getByRole('button', { name: 'Columns', exact: true });
+      const filtersButton = page.getByRole('button', { name: 'Filters', exact: true });
+      await columnsButton.click();
+      await expect(page.getByRole('dialog', { name: 'Columns' })).toBeVisible();
+
+      await page.setViewportSize({ width: 1100, height: 844 });
+      await expect(page.getByRole('dialog', { name: 'Columns' })).toHaveCount(0);
+      await expect(columnsButton).toHaveAttribute('aria-expanded', 'false');
+      await expect(page.getByRole('menu')).toHaveCount(0);
+
+      await page.setViewportSize({ width: 390, height: 844 });
+      await expect(page.getByRole('dialog', { name: 'Columns' })).toHaveCount(0);
+      await columnsButton.click();
+      await expect(page.getByRole('dialog', { name: 'Columns' })).toBeVisible();
+      await page.getByRole('dialog', { name: 'Columns' })
+        .getByRole('button', { name: 'Close columns' }).click();
+
+      await filtersButton.click();
+      await expect(page.getByRole('dialog', { name: 'Filters' })).toBeVisible();
+      await page.setViewportSize({ width: 1100, height: 844 });
+      await expect(page.getByRole('dialog', { name: 'Filters' })).toHaveCount(0);
+      await page.setViewportSize({ width: 390, height: 844 });
+      await expect(page.getByRole('dialog', { name: 'Filters' })).toHaveCount(0);
+    });
+
     test('F-18 removes one active chip while preserving the other selections', async ({ page }) => {
       await page.setViewportSize({ width: 1440, height: 1600 });
       await goToComparator(page);
@@ -561,6 +653,7 @@ test.describe('historical comparator characterization', () => {
     });
 
     test('F-27 opens the truncated Freehub popup by click and keyboard and closes it outside', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 1600 });
       await goToComparator(page);
 
       const freehub = await showFreehubColumn(page);
@@ -1025,7 +1118,7 @@ test.describe('historical comparator characterization', () => {
     }).toBe(true);
   });
 
-  test('F-51 keeps the column popup anchored while changing its responsive layout', async ({ page }) => {
+  test('F-51 keeps the desktop column popup anchored while changing its responsive layout', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1600 });
     await goToComparator(page);
 
@@ -1061,10 +1154,10 @@ test.describe('historical comparator characterization', () => {
     const desktop = await readPopup();
     expect(isAnchored(desktop)).toBe(true);
 
-    await page.setViewportSize({ width: 390, height: 844 });
+    await page.setViewportSize({ width: 1024, height: 844 });
     await expect.poll(async () => isVertical(await readPopup())).toBe(true);
-    const mobile = await readPopup();
-    expect(isAnchored(mobile)).toBe(true);
+    const compactDesktop = await readPopup();
+    expect(isAnchored(compactDesktop)).toBe(true);
   });
 
   test('F-52 gives the mobile filter drawer viewport height and independent scrolling', async ({ page }) => {

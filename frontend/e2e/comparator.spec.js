@@ -365,6 +365,25 @@ test.describe('Chromium P1 comparator journeys', () => {
     await expect(page.getByRole('heading', { name: 'Road wheels: filter and compare' })).toBeVisible();
   });
 
+  test('translates the mobile column drawer and its close action', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await goToComparator(page);
+
+    await page.getByRole('button', { name: 'Columns', exact: true }).click();
+    await expect(page.getByRole('dialog', { name: 'Columns' })).toBeVisible();
+    await page.getByRole('dialog', { name: 'Columns' })
+      .getByRole('button', { name: 'Close columns' }).click();
+
+    const language = page.getByRole('group', { name: 'Language' });
+    await language.getByRole('button', { name: 'FR' }).click();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
+
+    await page.getByRole('button', { name: 'Colonnes', exact: true }).click();
+    const drawer = page.getByRole('dialog', { name: 'Colonnes' });
+    await expect(drawer.getByRole('button', { name: 'Fermer les colonnes' })).toBeVisible();
+    await expect(page.locator('body')).not.toContainText(RAW_TRANSLATION_KEY);
+  });
+
   test('opens the column selector and changes the visible table column', async ({ page }) => {
     await goToComparator(page);
 

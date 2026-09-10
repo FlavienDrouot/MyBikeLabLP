@@ -18,9 +18,17 @@ const MiniComparator = () => {
   const { t } = useTranslation();
   const defaultVisibility = useMemo(() => buildDefaultVisibility(), []);
   const [visibility, setVisibility] = useState(defaultVisibility);
-  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [activeDrawer, setActiveDrawer] = useState(null);
   const isDesktop = useIsDesktopComparator();
-  const drawerOpen = filtersOpen && !isDesktop;
+  const drawerOpen = activeDrawer !== null && !isDesktop;
+  const filtersOpen = activeDrawer === 'filters' && !isDesktop;
+  const columnsOpen = activeDrawer === 'columns' && !isDesktop;
+
+  const openDrawer = (drawer) => {
+    setActiveDrawer((currentDrawer) => currentDrawer ?? drawer);
+  };
+
+  const closeDrawer = () => setActiveDrawer(null);
 
   // When the viewport crosses the desktop breakpoint, the sidebar takes over
   // and the mobile drawer state is discarded.
@@ -29,7 +37,7 @@ const MiniComparator = () => {
 
     const mediaQuery = window.matchMedia('(min-width: 1024px)');
     const handleBreakpointChange = (event) => {
-      if (event.matches) setFiltersOpen(false);
+      if (event.matches) setActiveDrawer(null);
     };
 
     mediaQuery.addEventListener('change', handleBreakpointChange);
@@ -89,7 +97,7 @@ const MiniComparator = () => {
     setVisibility((v) => ({ ...v, [id]: !v[id] }));
 
   return (
-    <section id="tool" className={`section-spaced decor-section orbits comparator-section bg-surface-page overflow-x-clip ${drawerOpen ? 'comparator-filters-open' : ''}`}>
+    <section id="tool" className={`section-spaced decor-section orbits comparator-section bg-surface-page overflow-x-clip ${drawerOpen ? 'comparator-drawer-open' : ''}`}>
       <div className="container-fluid">
         <div className="section-head comparator-section-head">
           <div>
@@ -100,11 +108,11 @@ const MiniComparator = () => {
         </div>
 
         <div className="comparator-shell">
-          {/* Backdrop — only shown when the mobile drawer is open */}
+          {/* One backdrop coordinates both mobile drawers. */}
           {drawerOpen && (
             <div
               className="comparator-backdrop fixed inset-0 z-40 lg:hidden"
-              onClick={() => setFiltersOpen(false)}
+              onClick={closeDrawer}
               aria-hidden="true"
             />
           )}
@@ -114,12 +122,12 @@ const MiniComparator = () => {
           <div className="filters-rail comparator-filters-rail">
             <div
               id="filters-drawer"
-              role={drawerOpen ? 'dialog' : undefined}
-              aria-modal={drawerOpen ? 'true' : undefined}
+              role={filtersOpen ? 'dialog' : undefined}
+              aria-modal={filtersOpen ? 'true' : undefined}
               aria-label={t('comparator.filtersDrawerLabel')}
-              inert={!drawerOpen && !isDesktop}
+              inert={!filtersOpen && !isDesktop}
               className={`comparator-filter-drawer fixed inset-y-0 left-0 z-50 flex flex-col overflow-y-auto bg-surface-well border-r border-border-default transition-transform duration-200 ease-out ${
-                drawerOpen ? 'translate-x-0' : '-translate-x-full'
+                filtersOpen ? 'translate-x-0' : '-translate-x-full'
               } lg:relative lg:inset-auto lg:z-auto lg:flex lg:w-auto lg:max-w-none lg:translate-x-0 lg:overflow-visible lg:bg-transparent lg:border-r-0`}
             >
               {/* Mobile drawer header with close button */}
@@ -127,7 +135,7 @@ const MiniComparator = () => {
                 <span className="text-sm font-semibold text-content-primary">{t('comparator.filtersDrawerLabel')}</span>
                 <button
                   type="button"
-                  onClick={() => setFiltersOpen(false)}
+                  onClick={closeDrawer}
                   aria-label={t('filterPanel.closeFilters')}
                   className="comparator-icon-button rounded-xs p-1.5 text-content-secondary hover:bg-bg-recessed hover:text-content-primary"
                 >
@@ -145,8 +153,11 @@ const MiniComparator = () => {
             <ComparisonTable
               visibility={visibility}
               columnOnToggle={handleToggle}
-              onOpenFilters={() => setFiltersOpen(true)}
+              onOpenFilters={() => openDrawer('filters')}
               filtersOpen={filtersOpen}
+              columnsOpen={columnsOpen}
+              onOpenColumns={() => openDrawer('columns')}
+              onCloseColumns={closeDrawer}
             />
           </div>
         </div>

@@ -22,7 +22,15 @@ const ACTIONS_COL_PX = 48;
 // Fixed page size for mobile pagination (EVO-061).
 const PAGE_SIZE = 10;
 
-const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpen }) => {
+const ComparisonTable = ({
+  visibility,
+  columnOnToggle,
+  onOpenFilters,
+  filtersOpen,
+  columnsOpen,
+  onOpenColumns,
+  onCloseColumns,
+}) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const wheels = useSelector(selectFilteredWheels);
@@ -241,7 +249,15 @@ const ComparisonTable = ({ visibility, columnOnToggle, onOpenFilters, filtersOpe
             <Icon as={SlidersHorizontal} size={16} aria-hidden="true" />
             {t('comparator.filtersButton')}
           </button>
-          <ColumnSelector visibility={visibility} onToggle={columnOnToggle} />
+          <ColumnSelector
+            key={isDesktop ? 'desktop' : 'mobile'}
+            visibility={visibility}
+            onToggle={columnOnToggle}
+            isDesktop={isDesktop}
+            mobileOpen={columnsOpen}
+            onOpenMobile={onOpenColumns}
+            onCloseMobile={onCloseColumns}
+          />
         </div>
       </div>
       <FilterChips />

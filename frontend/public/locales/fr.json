@@ -77,7 +77,9 @@
     "closeFilters": "Fermer les filtres"
   },
   "columnSelector": {
-    "button": "Colonnes"
+    "button": "Colonnes",
+    "drawerLabel": "Colonnes",
+    "closeColumns": "Fermer les colonnes"
   },
   "pagination": {
     "label": "Pagination",
