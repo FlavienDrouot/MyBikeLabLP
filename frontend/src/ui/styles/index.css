@@ -1383,11 +1383,19 @@
     min-width: 0;
   }
 
+  .comparator-column-drawer-body {
+    min-width: 0;
+  }
+
   .comparator-filter-drawer {
     width: min(320px, calc(100vw - 20px));
     max-width: none;
     overflow-x: hidden;
     overscroll-behavior: contain;
+  }
+
+  .comparator-column-drawer {
+    border-right: 0;
   }
 
   .comparator-backdrop {
@@ -1915,7 +1923,7 @@
   }
 
   @media (max-width: 1023px) {
-    section.comparator-section.comparator-filters-open {
+    section.comparator-section.comparator-drawer-open {
       z-index: 60;
     }
   }
