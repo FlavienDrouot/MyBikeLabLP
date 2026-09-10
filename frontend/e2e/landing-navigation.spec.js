@@ -51,3 +51,35 @@ test('keeps every mobile navbar control inside the 390px viewport', async ({ pag
   await expect(page.locator('#mobile-menu')).toBeVisible();
   await expect(page.getByRole('navigation', { name: 'Primary mobile' }).getByRole('link')).toHaveCount(4);
 });
+
+test('keeps the compact landing layout usable at the 320px viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 844 });
+  await page.goto('#top', { waitUntil: 'networkidle' });
+  await page.evaluate(() => document.fonts.ready);
+
+  const header = page.locator('header.site-header');
+  const menu = page.getByRole('button', { name: 'Open menu' });
+  await expect(header).toBeVisible();
+  await expect.poll(() => header.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+  await expect.poll(() => menu.evaluate((element) => {
+    const { left, right } = element.getBoundingClientRect();
+    return left >= 0 && right <= window.innerWidth;
+  })).toBe(true);
+
+  for (const groupName of ['Language', /Currency/i, 'Theme']) {
+    const group = page.getByRole('group', { name: groupName });
+    await expect(group).toBeVisible();
+    await expect(group.getByRole('button')).not.toHaveCount(0);
+    await expect(group.getByRole('button').first()).toBeEnabled();
+  }
+
+  await menu.click();
+  await expect(page.locator('#mobile-menu')).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Primary mobile' }).getByRole('link')).toHaveCount(4);
+
+  const footer = page.locator('footer.site-footer');
+  const mark = footer.locator('.footer-mark');
+  await footer.scrollIntoViewIfNeeded();
+  await expect(mark).toHaveText('MyBikeLab');
+  await expect.poll(() => mark.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+});

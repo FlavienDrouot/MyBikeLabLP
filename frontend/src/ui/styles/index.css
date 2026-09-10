@@ -455,7 +455,7 @@
     padding: 32px 0 8px;
     overflow: hidden;
     color: color-mix(in srgb, var(--decoration-soft) 54%, transparent);
-    font-size: clamp(76px, 13vw, 174px);
+    font-size: clamp(52px, 13vw, 174px);
     font-weight: 760;
     letter-spacing: -0.055em;
     line-height: 1;
@@ -1346,6 +1346,23 @@
 
   .form-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 389px) {
+  /* Keep the fixed-width controls usable while the wordmark yields space. */
+  .brand .wordmark {
+    font-size: clamp(14px, calc(18vw - 48px), 22px);
+  }
+}
+
+@media (max-width: 360px) {
+  .brand {
+    gap: 0;
+  }
+
+  .brand .wordmark {
+    display: none;
   }
 }
 
