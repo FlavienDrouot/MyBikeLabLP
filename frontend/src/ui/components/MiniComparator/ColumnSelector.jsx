@@ -139,7 +139,7 @@ const ColumnSelector = ({
           ref={popupRef}
           id="columns-menu"
           role="menu"
-          className="comparator-column-menu fixed z-50 max-h-[80vh] overflow-y-auto flex flex-col gap-3 xl:flex-row xl:gap-4"
+          className="comparator-column-menu fixed z-50 max-h-[80vh] overflow-y-auto flex flex-col gap-3 sm:flex-row sm:gap-4"
           style={popupStyle}
         >
           {columnGroups}

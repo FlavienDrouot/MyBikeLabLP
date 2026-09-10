@@ -1118,7 +1118,7 @@ test.describe('historical comparator characterization', () => {
     }).toBe(true);
   });
 
-  test('F-51 keeps the desktop column popup anchored while changing its responsive layout', async ({ page }) => {
+  test('F-51 preserves the desktop column popup responsive behavior', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1600 });
     await goToComparator(page);
 
@@ -1144,18 +1144,12 @@ test.describe('historical comparator characterization', () => {
         && groupBoxes.every((box) => Math.abs(box.y - groupBoxes[0].y) <= 1)
         && groupBoxes.at(-1).x > groupBoxes[0].x
     );
-    const isVertical = ({ groupBoxes }) => (
-      groupBoxes.every((box) => box)
-        && groupBoxes.every((box) => Math.abs(box.x - groupBoxes[0].x) <= 1)
-        && groupBoxes.at(-1).y > groupBoxes[0].y
-    );
-
     await expect.poll(async () => isHorizontal(await readPopup())).toBe(true);
     const desktop = await readPopup();
     expect(isAnchored(desktop)).toBe(true);
 
     await page.setViewportSize({ width: 1024, height: 844 });
-    await expect.poll(async () => isVertical(await readPopup())).toBe(true);
+    await expect.poll(async () => isHorizontal(await readPopup())).toBe(true);
     const compactDesktop = await readPopup();
     expect(isAnchored(compactDesktop)).toBe(true);
   });
