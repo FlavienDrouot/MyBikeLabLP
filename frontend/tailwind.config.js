@@ -1,4 +1,4 @@
-// Token naming convention: evolutions/EVO-002_design-token-refactoring/token-convention.md
+// Token naming convention: frontend/src/ui/styles/design-tokens.css (current source of truth)
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
