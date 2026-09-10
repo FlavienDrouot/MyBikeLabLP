@@ -36,9 +36,9 @@ Its first product scope focuses on road wheelsets.
 | `frontend/src/ui/lib/` | UI utilities such as theme and document language handling |
 | `frontend/TASTE-PROFILE.md` | Consolidated visual guidance for UI work |
 | `frontend/prototypes/` | Retained unintegrated UI prototypes |
-| `scripts/` | Product data ingestion, migration, and maintenance tooling |
-| `evolutions/` | Product work artifacts |
-| `reviews/` | Historical codebase review artifacts |
+| `scripts/` | Retained data-collection prompt; dormant experiments archived in work-vault |
+| [Historical evolutions](https://github.com/FlavienDrouot/work-vault/tree/main/products/mybikelab/archives/evolutions) | Archived product work artifacts |
+| [Historical reviews](https://github.com/FlavienDrouot/work-vault/tree/main/products/mybikelab/archives/reviews) | Archived codebase review artifacts |
 
 ## Product Rules
 

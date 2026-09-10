@@ -11,8 +11,9 @@ React application for bike wheel comparison. Frontend-only MVP.
 |---|---|---|
 | `product-overview.md` | Functional product documentation â€” purpose, users, features, roadmap | `product-overview.md` |
 | `frontend/` | Application React (source, config, build) | `frontend/README.md` |
-| `scripts/` | Data ingestion scripts â€” affiliate and product feeds (gitignored) | `scripts/README.md` |
-| `evolutions/` | Evolution specs (planned and archived) | `evolutions/README.md` |
+| `scripts/` | Retained data-collection prompt; dormant experiments archived in work-vault | `scripts/README.md` |
+| Historical evolution records | Archived evolution, project, and fix specs | [work-vault archive](https://github.com/FlavienDrouot/work-vault/tree/main/products/mybikelab/archives/evolutions) |
+| Historical reviews | Archived codebase reviews and migration records | [work-vault archive](https://github.com/FlavienDrouot/work-vault/tree/main/products/mybikelab/archives/reviews) |
 | `frontend/src/ui/styles/design-tokens.css` | Production design tokens and shared visual primitives | `frontend/src/ui/styles/design-tokens.css` |
 | `frontend/TASTE-PROFILE.md` | Consolidated visual guidance for UI work | `frontend/TASTE-PROFILE.md` |
 | `frontend/prototypes/` | Retained unintegrated UI prototypes | `frontend/prototypes/wave-3-product-detail/` |
