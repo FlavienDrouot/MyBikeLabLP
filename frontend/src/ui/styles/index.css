@@ -1092,13 +1092,16 @@
     position: relative;
     margin-top: 32px;
     padding-bottom: 4px;
+    --roadmap-axis-offset: 54px;
+    --roadmap-marker-offset: 15px;
+    --roadmap-connector-width: 39px;
   }
 
   .timeline-track {
     position: absolute;
     top: var(--timeline-track-start, 0px);
     bottom: var(--timeline-track-end, 0px);
-    left: 14px;
+    left: var(--roadmap-marker-offset);
     z-index: 0;
     width: 2px;
     background: var(--border-default);
@@ -1148,6 +1151,7 @@
   .roadmap-group {
     display: grid;
     gap: 12px;
+    margin-left: var(--roadmap-axis-offset);
     padding: 16px 16px 16px 0;
     border: 1px solid var(--border-default);
     border-radius: var(--radius-panel);
@@ -1155,9 +1159,7 @@
   }
 
   .roadmap-group-heading {
-    margin-left: 54px;
-    padding: 4px 0 8px 16px;
-    border-left: 3px solid var(--accent-muted);
+    padding: 4px 0 8px;
   }
 
   .roadmap-group-heading h3 {
@@ -1218,14 +1220,18 @@
 
   .roadmap-item {
     position: relative;
-    padding-left: 54px;
+    padding-left: var(--roadmap-axis-offset);
+  }
+
+  .roadmap-substeps {
+    margin-left: calc(-1 * var(--roadmap-axis-offset));
   }
 
   .roadmap-item::before {
     position: absolute;
     top: 22px;
-    left: 15px;
-    width: 39px;
+    left: var(--roadmap-marker-offset);
+    width: var(--roadmap-connector-width);
     border-top: 1px solid var(--border-default);
     content: '';
   }
@@ -1233,7 +1239,7 @@
   .timeline-marker {
     position: absolute;
     top: 22px;
-    left: 15px;
+    left: var(--roadmap-marker-offset);
     z-index: 2;
     display: block;
     width: 12px;
@@ -1453,23 +1459,10 @@
     opacity: 0.1;
   }
 
-  .roadmap-group-heading {
-    margin-left: 42px;
-    padding-left: 12px;
-  }
-
-  .roadmap-item {
-    padding-left: 42px;
-  }
-
-  .roadmap-item::before {
-    left: 11px;
-    width: 31px;
-  }
-
-  .timeline-track,
-  .timeline-marker {
-    left: 11px;
+  .timeline {
+    --roadmap-axis-offset: 42px;
+    --roadmap-marker-offset: 11px;
+    --roadmap-connector-width: 31px;
   }
 
   .roadmap-card {

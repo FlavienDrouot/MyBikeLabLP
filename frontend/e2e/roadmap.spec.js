@@ -24,6 +24,8 @@ const readRoadmapGeometry = (timeline) => timeline.evaluate((element) => {
     segments: [...element.querySelectorAll('.timeline-track-segment')].map(getRect),
     markers: [...element.querySelectorAll('.timeline-marker')].map(getRect),
     items: [...element.querySelectorAll('.roadmap-item')].map(getRect),
+    cards: [...element.querySelectorAll('.roadmap-card')].map(getRect),
+    groups: [...element.querySelectorAll('.roadmap-group')].map(getRect),
     substeps: [...element.querySelectorAll('.roadmap-substep')].map((item) => ({
       rect: getRect(item),
       connectorWidth: Number.parseFloat(getComputedStyle(item, '::before').width),
@@ -50,6 +52,13 @@ const assertVerticalRoadmap = async (page) => {
 
   expect(geometry.track.width).toBeLessThanOrEqual(3);
   expect(geometry.track.height).toBeGreaterThan(geometry.track.width);
+  geometry.groups.forEach((group) => {
+    expect(group.left).toBeGreaterThan(geometry.track.left + geometry.track.width);
+  });
+  const firstCardLeft = geometry.cards[0].left;
+  geometry.cards.forEach((card) => {
+    expect(Math.abs(card.left - firstCardLeft)).toBeLessThanOrEqual(1);
+  });
   markerCenters.forEach((center) => {
     expect(Math.abs(center.x - trackCenter)).toBeLessThanOrEqual(1);
   });
@@ -69,6 +78,7 @@ const assertSemanticTimelineStyles = async (page) => {
     const activeMarker = timeline.querySelector('.timeline-marker-active');
     const completeTrack = timeline.querySelector('.timeline-track-complete');
     const activeTrack = timeline.querySelector('.timeline-track-active');
+    const groupHeading = timeline.querySelector('.roadmap-group-heading');
 
     return {
       completeMarkerBackground: getComputedStyle(completeMarker).backgroundColor,
@@ -82,6 +92,7 @@ const assertSemanticTimelineStyles = async (page) => {
       activeMarkerShadow: getComputedStyle(activeMarker).boxShadow,
       completeTrackBackground: getComputedStyle(completeTrack).backgroundColor,
       activeTrackBackgroundImage: getComputedStyle(activeTrack).backgroundImage,
+      groupHeadingBorderLeftWidth: getComputedStyle(groupHeading).borderLeftWidth,
     };
   });
 
@@ -93,6 +104,7 @@ const assertSemanticTimelineStyles = async (page) => {
   expect(styles.activeMarkerShadow).not.toBe('none');
   expect(styles.completeTrackBackground).not.toBe('rgba(0, 0, 0, 0)');
   expect(styles.activeTrackBackgroundImage).toContain('gradient');
+  expect(styles.groupHeadingBorderLeftWidth).toBe('0px');
 };
 
 test('renders one semantic vertical timeline at desktop and mobile widths', async ({ page }) => {
