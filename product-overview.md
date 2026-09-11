@@ -39,7 +39,7 @@ The current product is a single-page landing site built on a shared design syste
 |---|---|
 | Hero | Value proposition, key stats (200+ wheels, 20 filter axes), CTAs |
 | Wheel Comparator | Main interactive tool - see below |
-| Roadmap | High-level product direction (comparison -> simulation -> configurator) |
+| Roadmap | Public product trajectory from road-wheel comparison through data enrichment and analysis toward a full bike configurator |
 | Benefits | Platform value proposition for cyclists |
 | Partnership | Value proposition for brands and retailers |
 | Footer | - |
@@ -93,13 +93,17 @@ Front/rear divergent specs (weight, rim depth, widths) are supported, and severa
 
 ## Product Direction
 
-MyBikeLab's product direction is to grow from a road wheel comparator into a measurable component decision platform:
+The public roadmap describes the evolution of value delivered to cyclists, not the
+internal backlog or execution plan. The level of detail decreases with distance:
 
-1. **Comparison**: structured spec sheets, filtering, sorting, product detail pages, and trustworthy wheel data.
-2. **Acquisition and monetization**: SEO-ready product pages, traffic and outbound-click tracking, affiliate links, and partner-ready reporting.
-3. **Partner data quality**: direct outreach to manufacturers and retailers to obtain clean product feeds and better affiliate links.
-4. **Simulation**: quantify the effect of component changes through weight delta, aerodynamic estimates, and cost/performance indicators.
-5. **Configurator**: build toward a full bike component configurator covering weight, price, compatibility, and performance tradeoffs.
+1. **Current — compare road wheels**: structured manufacturer data, technical and commercial criteria, and side-by-side decisions. The current catalogue remains a point-in-time snapshot whose freshness is not guaranteed.
+2. **Near future — enrich the product data**: improve data freshness, create complete product pages, add new wheel categories (with gravel as the first candidate), and broaden relevant marketplace links without becoming an ecommerce platform.
+3. **Intermediate horizon — exploit the data**: add derived indicators, multicriteria visualizations that expose trade-offs and Pareto frontiers, and data-based analysis and recommendations.
+4. **Longer horizon — extend to other components**: progressively broaden the catalogue to other bike component families without fixing their exhaustive order in advance.
+5. **Vision — full bike configurator**: bring component catalogues and analysis together to evaluate a complete bicycle. Its precise capabilities are not promised until they are defined and validated.
+
+This trajectory intentionally publishes no dates, estimates, percentages, or rigid
+phase labels.
 
 The detailed operational roadmap is maintained as a local planning artifact outside version control.
 

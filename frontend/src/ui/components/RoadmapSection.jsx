@@ -1,78 +1,130 @@
 import { useLayoutEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const ROADMAP_PROGRESS = '11.111%';
-const MOBILE_ORIGINAL_MARKER_OFFSET = 8;
-const FALLBACK_PHASE_STATES = ['current', 'next', 'vision'];
+const ROADMAP_STATES = new Set(['complete', 'active', 'future']);
 
-const getPhaseState = (phase, index) => phase.state || FALLBACK_PHASE_STATES[index] || 'vision';
+const getRoadmapState = (item) => (
+  ROADMAP_STATES.has(item.state) ? item.state : 'future'
+);
+
+const RoadmapItem = ({ item, substep = false, stateLabel }) => {
+  const state = getRoadmapState(item);
+  const Heading = substep ? 'h4' : 'h3';
+  const points = Array.isArray(item.points) ? item.points : [];
+
+  return (
+    <li
+      className={`roadmap-item ${substep ? 'roadmap-substep' : 'roadmap-milestone'} roadmap-item-${state}`}
+      data-roadmap-id={item.id}
+      data-roadmap-state={state}
+      aria-current={state === 'active' ? 'step' : undefined}
+    >
+      <span
+        className={`timeline-marker ${substep ? 'timeline-marker-substep' : 'timeline-marker-milestone'} timeline-marker-${state}`}
+        data-roadmap-marker
+        aria-hidden="true"
+      />
+      <article className="roadmap-card">
+        <span className="sr-only">{stateLabel}</span>
+        <Heading>{item.title}</Heading>
+        <p>{item.description}</p>
+        {points.length > 0 && (
+          <ul className="roadmap-points">
+            {points.map((point) => <li key={point}>{point}</li>)}
+          </ul>
+        )}
+      </article>
+    </li>
+  );
+};
+
+const RoadmapGroup = ({ item, stateLabels }) => (
+  <li className="roadmap-group" data-roadmap-id={item.id}>
+    <div className="roadmap-group-heading">
+      <h3>{item.title}</h3>
+      <p>{item.description}</p>
+    </div>
+    <ol className="roadmap-substeps">
+      {item.steps.map((step) => (
+        <RoadmapItem
+          key={step.id}
+          item={step}
+          substep
+          stateLabel={stateLabels[getRoadmapState(step)]}
+        />
+      ))}
+    </ol>
+  </li>
+);
 
 const RoadmapSection = () => {
   const { t } = useTranslation();
-  const phases = t('roadmap.phases', { returnObjects: true });
+  const items = t('roadmap.items', { returnObjects: true });
+  const roadmapItems = Array.isArray(items) ? items : [];
+  const stateLabels = {
+    complete: t('roadmap.stateLabels.complete'),
+    active: t('roadmap.stateLabels.active'),
+    future: t('roadmap.stateLabels.future'),
+  };
   const timelineRef = useRef(null);
-  const phasesRef = useRef(null);
 
   useLayoutEffect(() => {
     const timeline = timelineRef.current;
-    const phasesElement = phasesRef.current;
 
-    if (!timeline || !phasesElement) return undefined;
+    if (!timeline) return undefined;
 
-    const phaseElements = [...phasesElement.children];
-    const markerElements = [...timeline.querySelectorAll('.timeline-marker')];
+    const updateGeometry = () => {
+      const timelineRect = timeline.getBoundingClientRect();
+      const markerElements = [...timeline.querySelectorAll('[data-roadmap-marker]')];
+      if (markerElements.length === 0 || timelineRect.height === 0) return;
 
-    const updateMobileGeometry = () => {
-      const isStacked = window.matchMedia('(max-width: 1080px)').matches;
-
-      if (!isStacked || phaseElements.length === 0) {
-        timeline.style.removeProperty('--timeline-track-start');
-        timeline.style.removeProperty('--timeline-track-end');
-        markerElements.forEach((marker) => marker.style.removeProperty('--timeline-marker-mobile-position'));
-        return;
-      }
-
-      const timelineTop = timeline.getBoundingClientRect().top;
-      const phaseRects = phaseElements.map((phase) => phase.getBoundingClientRect());
-      const markerPositions = phaseRects.map((phaseRect) => phaseRect.bottom - timelineTop);
-      const lastMarkerPosition = markerPositions[markerPositions.length - 1];
-      // Preserve the center of the former mobile pseudo-marker (2px top + 6px radius).
-      const originalMarkerPosition = phaseRects[0].top - timelineTop + MOBILE_ORIGINAL_MARKER_OFFSET;
-
-      markerElements.forEach((marker, index) => {
-        marker.style.setProperty('--timeline-marker-mobile-position', `${markerPositions[index]}px`);
+      const markerPositions = markerElements.map((marker) => {
+        const rect = marker.getBoundingClientRect();
+        return rect.top + (rect.height / 2) - timelineRect.top;
       });
-      timeline.style.setProperty('--timeline-track-start', `${originalMarkerPosition}px`);
-      timeline.style.setProperty(
-        '--timeline-track-end',
-        `${Math.max(0, timeline.getBoundingClientRect().height - lastMarkerPosition)}px`,
-      );
+      const states = markerElements.map((marker) => marker.closest('[data-roadmap-state]')?.dataset.roadmapState);
+      const trackStart = markerPositions[0];
+      const trackEnd = markerPositions.at(-1);
+      const completePositions = markerPositions.filter((_, index) => states[index] === 'complete');
+      const activePositions = markerPositions.filter((_, index) => states[index] === 'active');
+      const lastComplete = completePositions.at(-1) ?? trackStart;
+      const firstActive = activePositions[0] ?? lastComplete;
+
+      timeline.style.setProperty('--timeline-track-start', `${trackStart}px`);
+      timeline.style.setProperty('--timeline-track-end', `${Math.max(0, timelineRect.height - trackEnd)}px`);
+      timeline.style.setProperty('--timeline-complete-length', `${Math.max(0, lastComplete - trackStart)}px`);
+      timeline.style.setProperty('--timeline-active-offset', `${Math.max(0, lastComplete - trackStart)}px`);
+      timeline.style.setProperty('--timeline-active-length', `${Math.max(0, firstActive - lastComplete)}px`);
+      timeline.style.setProperty('--timeline-future-offset', `${Math.max(0, firstActive - trackStart)}px`);
+
     };
 
-    let animationFrame;
+    let animationFrame = 0;
     const scheduleGeometryUpdate = () => {
       window.cancelAnimationFrame(animationFrame);
-      animationFrame = window.requestAnimationFrame(updateMobileGeometry);
+      animationFrame = window.requestAnimationFrame(updateGeometry);
     };
 
-    updateMobileGeometry();
+    scheduleGeometryUpdate();
     window.addEventListener('resize', scheduleGeometryUpdate);
 
-    const resizeObserver = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(scheduleGeometryUpdate);
+    const resizeObserver = typeof ResizeObserver === 'undefined'
+      ? null
+      : new ResizeObserver(scheduleGeometryUpdate);
     resizeObserver?.observe(timeline);
-    phaseElements.forEach((phase) => resizeObserver?.observe(phase));
+    timeline.querySelectorAll('[data-roadmap-state]').forEach((item) => resizeObserver?.observe(item));
 
     return () => {
       window.removeEventListener('resize', scheduleGeometryUpdate);
       window.cancelAnimationFrame(animationFrame);
       resizeObserver?.disconnect();
     };
-  }, [phases.length]);
+  }, [roadmapItems.length]);
 
   return (
     <section
       id="roadmap"
-      className="section-spaced decor-section orbits roadmap-section"
+      className="section-spaced roadmap-section"
       aria-labelledby="roadmap-title"
     >
       <div className="container-page">
@@ -81,46 +133,19 @@ const RoadmapSection = () => {
           <h2 id="roadmap-title" className="roadmap-title">{t('roadmap.title')}</h2>
           <p className="roadmap-subtitle">{t('roadmap.subtitle')}</p>
 
-          <div
-            ref={timelineRef}
-            className="timeline"
-            style={{ '--roadmap-progress': ROADMAP_PROGRESS }}
-          >
+          <div ref={timelineRef} className="timeline">
             <div className="timeline-track" aria-hidden="true">
-              <span className="timeline-progress" />
+              <span className="timeline-track-segment timeline-track-future" />
+              <span className="timeline-track-segment timeline-track-active" />
+              <span className="timeline-track-segment timeline-track-complete" />
             </div>
-            <div className="timeline-markers" aria-hidden="true">
-              {phases.map((p, idx) => {
-                const state = getPhaseState(p, idx);
-
-                return (
-                  <span
-                    key={`${p.tag}-${idx}-marker`}
-                    className={`timeline-marker ${state}`}
-                    style={{ '--timeline-marker-position': `${((idx + 1) / phases.length) * 100}%` }}
-                  />
-                );
-              })}
-            </div>
-            <div ref={phasesRef} className="phases">
-              {phases.map((p, idx) => (
-                <article
-                  key={`${p.tag}-${idx}`}
-                  className={`phase ${getPhaseState(p, idx)}`}
-                >
-                  <div className="phase-meta t-mono">
-                    {p.tag} <span aria-hidden="true">·</span> {p.status}
-                  </div>
-                  <h3>{p.title}</h3>
-                  <p>{p.description}</p>
-                  <ul>
-                    {p.points.map((pt) => (
-                      <li key={pt}>{pt}</li>
-                    ))}
-                  </ul>
-                </article>
+            <ol className="roadmap-list">
+              {roadmapItems.map((item) => (
+                Array.isArray(item.steps) && item.steps.length > 0
+                  ? <RoadmapGroup key={item.id} item={item} stateLabels={stateLabels} />
+                  : <RoadmapItem key={item.id} item={item} stateLabel={stateLabels[getRoadmapState(item)]} />
               ))}
-            </div>
+            </ol>
           </div>
         </div>
       </div>

@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { getCatalogStats } from '../../application/catalogStats';
 
-const PHASES_PLANNED = 3;
-
 const HeroWheel = () => (
   <div className="hero-wheel" aria-hidden="true">
     <svg viewBox="0 0 600 600" fill="none" focusable="false">
@@ -58,12 +56,6 @@ const Hero = () => {
       label: t('hero.stats.filterAxes'),
       caption: t('hero.ledger.filterAxesCaption'),
       value: filterAxisCount,
-    },
-    {
-      id: 'phases',
-      label: t('hero.stats.phasesPlanned'),
-      caption: t('hero.ledger.phasesCaption'),
-      value: PHASES_PLANNED,
     },
   ];
 

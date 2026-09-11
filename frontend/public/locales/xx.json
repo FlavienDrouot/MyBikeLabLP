@@ -1,29 +1,50 @@
 {
   "roadmap": {
-    "phases": [
+    "stateLabels": {
+      "complete": "XX",
+      "active": "XX",
+      "future": "XX"
+    },
+    "items": [
       {
-        "tag": "XX",
-        "state": "current",
-        "status": "XX",
+        "id": "comparator",
+        "state": "complete",
         "title": "XX",
         "description": "XX",
         "points": ["XX", "XX", "XX"]
       },
       {
-        "tag": "XX",
-        "state": "next",
-        "status": "XX",
+        "id": "data-enrichment",
         "title": "XX",
         "description": "XX",
-        "points": ["XX", "XX", "XX"]
+        "steps": [
+          { "id": "freshness", "state": "active", "title": "XX", "description": "XX" },
+          { "id": "details", "state": "future", "title": "XX", "description": "XX" },
+          { "id": "categories", "state": "future", "title": "XX", "description": "XX" },
+          { "id": "marketplaces", "state": "future", "title": "XX", "description": "XX" }
+        ]
       },
       {
-        "tag": "XX",
-        "state": "vision",
-        "status": "XX",
+        "id": "data-exploitation",
         "title": "XX",
         "description": "XX",
-        "points": ["XX", "XX", "XX"]
+        "steps": [
+          { "id": "indicators", "state": "future", "title": "XX", "description": "XX" },
+          { "id": "visualizations", "state": "future", "title": "XX", "description": "XX" },
+          { "id": "articles", "state": "future", "title": "XX", "description": "XX" }
+        ]
+      },
+      {
+        "id": "other-components",
+        "state": "future",
+        "title": "XX",
+        "description": "XX"
+      },
+      {
+        "id": "configurator",
+        "state": "future",
+        "title": "XX",
+        "description": "XX"
       }
     ]
   },

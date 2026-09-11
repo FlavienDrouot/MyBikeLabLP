@@ -46,13 +46,11 @@
       "ariaLabel": "Chiffres du catalogue",
       "wheelsCaption": "paires de roues route indexées dans le catalogue",
       "filterAxesCaption": "caractéristiques combinables et filtrables",
-      "phasesCaption": "de la comparaison au configurateur vélo complet",
       "foot": "Interface bilingue, anglais et français · affichage des prix dans plusieurs devises"
     },
     "stats": {
       "wheels": "Roues",
-      "filterAxes": "Axes de filtres",
-      "phasesPlanned": "Phases prévues"
+      "filterAxes": "Axes de filtres"
     }
   },
   "comparator": {
@@ -114,32 +112,88 @@
   },
   "roadmap": {
     "sectionIndex": "ROADMAP",
-    "title": "Trois phases",
-    "subtitle": "La comparaison d'abord. La simulation d'impact ensuite. Le configurateur complet à l'horizon.",
-    "phases": [
+    "title": "Une trajectoire plus claire",
+    "subtitle": "Une roadmap guidée par la valeur apportée aux cyclistes grâce à de meilleures données sur les roues.",
+    "stateLabels": {
+      "complete": "Disponible aujourd'hui",
+      "active": "Prochaine étape",
+      "future": "Direction future"
+    },
+    "items": [
       {
-        "tag": "Phase 1",
-        "state": "current",
-        "status": "En cours",
-        "title": "Comparaison de composants",
-        "description": "Les roues d'abord, puis les transmissions, freins et pneus. Des specs structurées, des décisions côte à côte.",
-        "points": ["MVP roues disponible", "Transmissions à venir", "Freins et pneus ensuite"]
+        "id": "comparator",
+        "state": "complete",
+        "title": "Comparer les roues route",
+        "description": "MyBikeLab commence avec des données fabricants structurées pour faciliter la comparaison des roues route.",
+        "points": ["Critères techniques côte à côte", "Prix et détails de compatibilité utiles", "Données correspondant à un état collecté à un instant donné"]
       },
       {
-        "tag": "Phase 2",
-        "state": "next",
-        "status": "Suivant",
-        "title": "Simulateur d'impact",
-        "description": "Visualisez comment chaque pièce change votre machine : poids, aérodynamique, coût total, performance estimée.",
-        "points": ["Delta de poids", "Gains aéro", "Coût par watt"]
+        "id": "data-enrichment",
+        "title": "Enrichir les données produits",
+        "description": "Rendre le catalogue plus fiable, plus utile et plus facile à faire grandir.",
+        "steps": [
+          {
+            "id": "freshness",
+            "state": "active",
+            "title": "Gagner en fraîcheur",
+            "description": "Passer d'une collecte ponctuelle à des mises à jour régulières, pour renforcer la confiance dans les détails et les prix affichés."
+          },
+          {
+            "id": "details",
+            "state": "future",
+            "title": "Créer de vraies fiches produit",
+            "description": "Consacrer à chaque roue une page structurée, nettement plus complète que le panneau dépliable du comparateur."
+          },
+          {
+            "id": "categories",
+            "state": "future",
+            "title": "Ajouter de nouvelles catégories de roues",
+            "description": "Étendre le catalogue au-delà des roues route, avec le gravel comme premier candidat, sur une base maintenable."
+          },
+          {
+            "id": "marketplaces",
+            "state": "future",
+            "title": "Enrichir les liens marketplace",
+            "description": "Relier la comparaison à davantage de destinations pertinentes pour trouver les produits, sans devenir une plateforme e-commerce."
+          }
+        ]
       },
       {
-        "tag": "Phase 3",
-        "state": "vision",
-        "status": "Vision",
+        "id": "data-exploitation",
+        "title": "Exploiter les données",
+        "description": "Transformer un catalogue plus riche et plus fiable en aide à la décision analytique.",
+        "steps": [
+          {
+            "id": "indicators",
+            "state": "future",
+            "title": "Indicateurs dérivés",
+            "description": "Ajouter des métriques calculées, comme les rapports poids/prix et poids/profondeur."
+          },
+          {
+            "id": "visualizations",
+            "state": "future",
+            "title": "Visualisations multicritères",
+            "description": "Montrer les compromis entre plusieurs critères et faire ressortir plusieurs produits optimaux, notamment avec des frontières de Pareto."
+          },
+          {
+            "id": "articles",
+            "state": "future",
+            "title": "Analyses fondées sur les données",
+            "description": "Publier des observations, conclusions et recommandations fondées sur le catalogue."
+          }
+        ]
+      },
+      {
+        "id": "other-components",
+        "state": "future",
+        "title": "Étendre aux autres composants",
+        "description": "Élargir progressivement le catalogue à d'autres familles de composants vélo, sans fixer leur ordre dès aujourd'hui."
+      },
+      {
+        "id": "configurator",
+        "state": "future",
         "title": "Configurateur vélo complet",
-        "description": "Construisez un vélo complet depuis le cadre, simulez la configuration complète, puis achetez.",
-        "points": ["Du cadre à la finition", "Aperçu des performances", "Prêt pour l'affiliation"]
+        "description": "Réunir catalogues de composants et analyse pour évaluer un vélo complet ; ses capacités précises restent à définir."
       }
     ]
   },

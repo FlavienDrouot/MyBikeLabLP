@@ -13,8 +13,6 @@ const readRoadmapGeometry = (timeline) => timeline.evaluate((element) => {
     return {
       left: rect.left,
       top: rect.top,
-      right: rect.right,
-      bottom: rect.bottom,
       width: rect.width,
       height: rect.height,
     };
@@ -23,52 +21,80 @@ const readRoadmapGeometry = (timeline) => timeline.evaluate((element) => {
   return {
     timeline: getRect(element),
     track: getRect(element.querySelector('.timeline-track')),
-    progress: getRect(element.querySelector('.timeline-progress')),
+    segments: [...element.querySelectorAll('.timeline-track-segment')].map(getRect),
     markers: [...element.querySelectorAll('.timeline-marker')].map(getRect),
-    phases: [...element.querySelectorAll('.phase')].map(getRect),
+    items: [...element.querySelectorAll('.roadmap-item')].map(getRect),
+    substeps: [...element.querySelectorAll('.roadmap-substep')].map((item) => ({
+      rect: getRect(item),
+      connectorWidth: Number.parseFloat(getComputedStyle(item, '::before').width),
+    })),
   };
 });
 
-test('anchors desktop roadmap markers to the ends of equal segments', async ({ page }) => {
-  await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto('#roadmap');
+const assertVerticalRoadmap = async (page) => {
+  const timeline = page.locator('.timeline');
+  await expect(timeline.locator('.timeline-marker')).toHaveCount(10);
+  await expect(timeline.locator('.roadmap-group')).toHaveCount(2);
+  await expect(timeline.locator('.roadmap-item[data-roadmap-state="complete"]')).toHaveCount(1);
+  await expect(timeline.locator('.roadmap-item[data-roadmap-state="active"]')).toHaveCount(1);
+  await expect(timeline.locator('.roadmap-item[data-roadmap-state="future"]')).toHaveCount(8);
+  await expect(timeline.locator('.timeline-progress')).toHaveCount(0);
 
-  const geometry = await readRoadmapGeometry(page.locator('.timeline'));
-  const markerCenters = geometry.markers.map((marker) => marker.left + marker.width / 2);
-  const expectedCenters = geometry.markers.map((_, index) => (
-    geometry.track.left + geometry.track.width * ((index + 1) / geometry.markers.length)
-  ));
+  await expect.poll(async () => (await readRoadmapGeometry(timeline)).track.height).toBeGreaterThan(0);
+  const geometry = await readRoadmapGeometry(timeline);
+  const markerCenters = geometry.markers.map((marker) => ({
+    x: marker.left + marker.width / 2,
+    y: marker.top + marker.height / 2,
+  }));
+  const trackCenter = geometry.track.left + geometry.track.width / 2;
 
-  expect(Math.abs(geometry.track.left - geometry.timeline.left)).toBeLessThanOrEqual(1);
-  expect(geometry.progress.right).toBeLessThan(markerCenters[0]);
-  expect(geometry.progress.width / geometry.track.width).toBeCloseTo(1 / 9, 2);
-  markerCenters.forEach((center, index) => {
-    expect(Math.abs(center - expectedCenters[index])).toBeLessThanOrEqual(1);
+  expect(geometry.track.width).toBeLessThanOrEqual(3);
+  expect(geometry.track.height).toBeGreaterThan(geometry.track.width);
+  markerCenters.forEach((center) => {
+    expect(Math.abs(center.x - trackCenter)).toBeLessThanOrEqual(1);
   });
+  markerCenters.slice(1).forEach((center, index) => {
+    expect(center.y).toBeGreaterThan(markerCenters[index].y);
+  });
+  expect(geometry.segments[1].height).toBeGreaterThan(0);
+  expect(geometry.segments[0].height).toBeGreaterThan(0);
+  geometry.substeps.forEach(({ connectorWidth }) => {
+    expect(connectorWidth).toBeGreaterThan(0);
+  });
+};
+
+test('renders one semantic vertical timeline at desktop and mobile widths', async ({ page }) => {
+  for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
+    await page.setViewportSize(viewport);
+    await page.goto('#roadmap');
+    await assertVerticalRoadmap(page);
+  }
 });
 
-test('starts the mobile roadmap spine at the original phase-one marker and follows phase ends', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
+test('keeps the validated content, anchor, themes and French translation', async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 900 });
   await page.goto('#roadmap');
 
-  const timeline = page.locator('.timeline');
-  await expect.poll(async () => {
-    const geometry = await readRoadmapGeometry(timeline);
-    const originalMarkerPosition = geometry.phases[0].top + 8;
-    return Math.abs(geometry.track.top - originalMarkerPosition) <= 1;
-  }).toBe(true);
+  await expect(page.locator('#roadmap')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'A clearer path forward' })).toBeVisible();
+  await expect(page.getByText('Keep data fresh')).toBeVisible();
+  await expect(page.getByText('Full bike configurator')).toBeVisible();
 
-  const geometry = await readRoadmapGeometry(timeline);
-  const firstMarker = geometry.markers[0];
-  const lastMarker = geometry.markers.at(-1);
-  const markerCenters = geometry.markers.map((marker) => marker.top + marker.height / 2);
-  const originalMarkerPosition = geometry.phases[0].top + 8;
+  const bodyText = (await page.locator('body').innerText()).toLowerCase();
+  expect(bodyText).not.toContain('three phases');
+  expect(bodyText).not.toContain('phases planned');
+  expect(bodyText).not.toContain('1 / 9');
+  expect(await page.locator('.roadmap-section').evaluate((section) => section.id)).toBe('roadmap');
 
-  expect(Math.abs(geometry.track.top - originalMarkerPosition)).toBeLessThanOrEqual(1);
-  expect(Math.abs(geometry.track.bottom - (lastMarker.top + lastMarker.height / 2))).toBeLessThanOrEqual(1);
-  expect(Math.abs(firstMarker.top + firstMarker.height / 2 - geometry.phases[0].bottom)).toBeLessThanOrEqual(1);
-  expect(Math.abs(geometry.progress.top - geometry.track.top)).toBeLessThanOrEqual(1);
-  expect(geometry.progress.height / geometry.track.height).toBeCloseTo(1 / 9, 2);
-  expect(markerCenters[0]).toBeLessThan(markerCenters[1]);
-  expect(markerCenters[1]).toBeLessThan(markerCenters[2]);
+  await page.getByRole('group', { name: 'Language' }).getByRole('button', { name: 'FR' }).click();
+  await expect(page.getByRole('heading', { name: 'Une trajectoire plus claire' })).toBeVisible();
+  await expect(page.getByText('Gagner en fraîcheur')).toBeVisible();
+  await assertVerticalRoadmap(page);
+
+  const themeGroup = page.getByRole('group', { name: 'Thème' });
+  for (const theme of ['light', 'cream', 'dark']) {
+    await themeGroup.locator(`[data-theme-choice="${theme}"]`).click();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+    await expect(page.locator('.timeline')).toBeVisible();
+  }
 });
