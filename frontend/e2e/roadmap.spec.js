@@ -25,7 +25,15 @@ const readRoadmapGeometry = (timeline) => timeline.evaluate((element) => {
     markers: [...element.querySelectorAll('.timeline-marker')].map(getRect),
     items: [...element.querySelectorAll('.roadmap-item')].map(getRect),
     cards: [...element.querySelectorAll('.roadmap-card')].map(getRect),
-    groups: [...element.querySelectorAll('.roadmap-group')].map(getRect),
+    groups: [...element.querySelectorAll('.roadmap-group')].map((group) => ({
+      rect: getRect(group),
+      heading: getRect(group.querySelector('.roadmap-group-heading')),
+      substeps: [...group.querySelectorAll('.roadmap-substep')].map((substep) => ({
+        rect: getRect(substep),
+        card: getRect(substep.querySelector('.roadmap-card')),
+      })),
+    })),
+    milestoneCards: [...element.querySelectorAll('.roadmap-milestone .roadmap-card')].map(getRect),
     substeps: [...element.querySelectorAll('.roadmap-substep')].map((item) => ({
       rect: getRect(item),
       connectorWidth: Number.parseFloat(getComputedStyle(item, '::before').width),
@@ -52,11 +60,16 @@ const assertVerticalRoadmap = async (page) => {
 
   expect(geometry.track.width).toBeLessThanOrEqual(3);
   expect(geometry.track.height).toBeGreaterThan(geometry.track.width);
-  geometry.groups.forEach((group) => {
-    expect(group.left).toBeGreaterThan(geometry.track.left + geometry.track.width);
+  geometry.groups.forEach(({ rect, heading, substeps }) => {
+    expect(rect.left).toBeGreaterThan(geometry.track.left + geometry.track.width);
+    expect(heading.left).toBeGreaterThan(rect.left);
+    substeps.forEach(({ card }) => {
+      expect(card.left).toBeGreaterThan(heading.left + 10);
+      expect(card.left + card.width).toBeLessThanOrEqual(rect.left + rect.width);
+    });
   });
-  const firstCardLeft = geometry.cards[0].left;
-  geometry.cards.forEach((card) => {
+  const firstCardLeft = geometry.milestoneCards[0].left;
+  geometry.milestoneCards.forEach((card) => {
     expect(Math.abs(card.left - firstCardLeft)).toBeLessThanOrEqual(1);
   });
   markerCenters.forEach((center) => {

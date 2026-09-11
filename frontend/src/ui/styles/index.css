@@ -1095,6 +1095,11 @@
     --roadmap-axis-offset: 54px;
     --roadmap-marker-offset: 15px;
     --roadmap-connector-width: 39px;
+    --roadmap-group-padding: 16px;
+    --roadmap-substep-inset: 28px;
+    --roadmap-group-content-offset: calc(
+      var(--roadmap-axis-offset) + var(--roadmap-group-padding) + 1px
+    );
   }
 
   .timeline-track {
@@ -1152,14 +1157,15 @@
     display: grid;
     gap: 12px;
     margin-left: var(--roadmap-axis-offset);
-    padding: 16px 16px 16px 0;
+    padding: 18px 16px 18px var(--roadmap-group-padding);
     border: 1px solid var(--border-default);
     border-radius: var(--radius-panel);
     background: var(--surface-panel-soft);
   }
 
   .roadmap-group-heading {
-    padding: 4px 0 8px;
+    padding: 0 0 14px;
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .roadmap-group-heading h3 {
@@ -1224,7 +1230,23 @@
   }
 
   .roadmap-substeps {
-    margin-left: calc(-1 * var(--roadmap-axis-offset));
+    gap: 12px;
+  }
+
+  .roadmap-group .roadmap-item {
+    padding-left: var(--roadmap-substep-inset);
+  }
+
+  .roadmap-group .roadmap-item::before,
+  .roadmap-group .timeline-marker {
+    left: calc(var(--roadmap-marker-offset) - var(--roadmap-group-content-offset));
+  }
+
+  .roadmap-group .roadmap-item::before {
+    width: calc(
+      var(--roadmap-group-content-offset) + var(--roadmap-substep-inset) -
+        var(--roadmap-marker-offset)
+    );
   }
 
   .roadmap-item::before {
@@ -1300,6 +1322,22 @@
 
   .roadmap-item-active .roadmap-card {
     border-color: var(--accent-muted);
+    background: var(--accent-wash);
+  }
+
+  .roadmap-substep .roadmap-card {
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+  }
+
+  .roadmap-substep .roadmap-card h4 {
+    font-size: 15px;
+  }
+
+  .roadmap-substep .roadmap-card p {
+    margin-top: 5px;
+    font-size: 12.5px;
   }
 
   .roadmap-item-complete .roadmap-card-icon {
@@ -1463,10 +1501,30 @@
     --roadmap-axis-offset: 42px;
     --roadmap-marker-offset: 11px;
     --roadmap-connector-width: 31px;
+    --roadmap-group-padding: 12px;
+    --roadmap-substep-inset: 20px;
+  }
+
+  .roadmap-group {
+    padding: 14px 12px 14px var(--roadmap-group-padding);
+  }
+
+  .roadmap-group-heading {
+    gap: 10px;
+    padding-bottom: 11px;
+  }
+
+  .roadmap-group-icon {
+    width: 28px;
+    height: 28px;
   }
 
   .roadmap-card {
     padding: 16px 17px;
+  }
+
+  .roadmap-substep .roadmap-card {
+    padding: 12px 15px;
   }
 }
 
