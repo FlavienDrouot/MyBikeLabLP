@@ -63,11 +63,35 @@ const assertVerticalRoadmap = async (page) => {
   });
 };
 
+const assertSemanticTimelineStyles = async (page) => {
+  const styles = await page.locator('.timeline').evaluate((timeline) => {
+    const completeMarker = timeline.querySelector('.timeline-marker-complete');
+    const activeMarker = timeline.querySelector('.timeline-marker-active');
+    const completeTrack = timeline.querySelector('.timeline-track-complete');
+    const activeTrack = timeline.querySelector('.timeline-track-active');
+
+    return {
+      completeMarkerBackground: getComputedStyle(completeMarker).backgroundColor,
+      completeMarkerShadow: getComputedStyle(completeMarker).boxShadow,
+      activeMarkerShadow: getComputedStyle(activeMarker).boxShadow,
+      completeTrackBackground: getComputedStyle(completeTrack).backgroundColor,
+      activeTrackBackgroundImage: getComputedStyle(activeTrack).backgroundImage,
+    };
+  });
+
+  expect(styles.completeMarkerBackground).not.toBe('rgb(255, 255, 255)');
+  expect(styles.completeMarkerShadow).not.toBe('none');
+  expect(styles.activeMarkerShadow).not.toBe('none');
+  expect(styles.completeTrackBackground).not.toBe('rgba(0, 0, 0, 0)');
+  expect(styles.activeTrackBackgroundImage).toContain('gradient');
+};
+
 test('renders one semantic vertical timeline at desktop and mobile widths', async ({ page }) => {
   for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
     await page.setViewportSize(viewport);
     await page.goto('#roadmap');
     await assertVerticalRoadmap(page);
+    await assertSemanticTimelineStyles(page);
   }
 });
 
