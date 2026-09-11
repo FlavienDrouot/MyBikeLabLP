@@ -211,12 +211,11 @@ const RoadmapSection = () => {
   return (
     <section
       id="roadmap"
-      className="section-spaced roadmap-section"
+      className="section-spaced decor-section orbits roadmap-section"
       aria-labelledby="roadmap-title"
     >
       <div className="container-page">
         <div className="wave5-panel roadmap-panel">
-          <span className="wave5-object wave5-object--hub roadmap-hub" aria-hidden="true" />
           <p className="t-eyebrow">{t('roadmap.sectionIndex')}</p>
           <h2 id="roadmap-title" className="roadmap-title">{t('roadmap.title')}</h2>
           <p className="roadmap-subtitle">{t('roadmap.subtitle')}</p>

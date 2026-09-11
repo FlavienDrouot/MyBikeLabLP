@@ -62,8 +62,9 @@ describe('RoadmapSection', () => {
   it('renders the validated hierarchy and semantic timeline states', () => {
     const html = renderToStaticMarkup(createElement(RoadmapSection));
 
+    expect(html).toContain('class="section-spaced decor-section orbits roadmap-section"');
     expect(html).toContain('class="wave5-panel roadmap-panel"');
-    expect(html).toContain('wave5-object--hub roadmap-hub');
+    expect(html).not.toContain('roadmap-hub');
     expect(html).toContain('class="timeline-track"');
     expect(html).toContain('class="timeline-track-segment timeline-track-complete"');
     expect(html).toContain('class="timeline-track-segment timeline-track-active"');

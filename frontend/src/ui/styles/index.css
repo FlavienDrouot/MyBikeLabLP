@@ -1039,32 +1039,30 @@
 
   .roadmap-section {
     overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  .roadmap-section::after {
+    top: auto;
+    right: -48px;
+    bottom: -70px;
+    z-index: 0;
+    width: 460px;
+    height: 230px;
+    transform: rotate(5deg);
+    opacity: 0.36;
+    -webkit-mask-image: url('../assets/wave5/hub-outline.svg');
+    mask-image: url('../assets/wave5/hub-outline.svg');
   }
 
   .roadmap-section > .container-page {
     position: relative;
-  }
-
-  .roadmap-panel {
-    position: relative;
-    padding: 28px 32px 32px;
-    letter-spacing: normal;
-  }
-
-  .roadmap-panel > :not(.roadmap-hub) {
-    position: relative;
     z-index: 1;
   }
 
-  .roadmap-hub {
-    position: absolute;
-    top: 22px;
-    right: 28px;
-    z-index: 0;
-    width: 132px;
-    height: 132px;
-    opacity: 0.14;
-    transform: rotate(-8deg);
+  .roadmap-panel {
+    padding: 28px 32px 32px;
+    letter-spacing: normal;
   }
 
   .roadmap-panel > .t-eyebrow {
@@ -1451,6 +1449,13 @@
 }
 
 @media (max-width: 1080px) {
+  .roadmap-section::after {
+    right: -44px;
+    bottom: -52px;
+    width: 360px;
+    height: 180px;
+  }
+
   .site-nav {
     display: none;
   }
@@ -1547,14 +1552,6 @@
 }
 
 @media (max-width: 720px) {
-  .roadmap-hub {
-    top: 18px;
-    right: 18px;
-    width: 90px;
-    height: 90px;
-    opacity: 0.1;
-  }
-
   .timeline {
     --roadmap-axis-offset: 42px;
     --roadmap-marker-offset: 11px;
@@ -1587,6 +1584,15 @@
 
   .roadmap-substep .roadmap-card {
     padding: 12px 15px;
+  }
+}
+
+@media (max-width: 780px) {
+  .roadmap-section::after {
+    right: -38px;
+    bottom: -40px;
+    width: 270px;
+    height: 135px;
   }
 }
 
