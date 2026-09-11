@@ -19,6 +19,9 @@ export default {
     'timeline-marker-complete',
     'timeline-marker-active',
     'timeline-marker-future',
+    'roadmap-group-complete',
+    'roadmap-group-active',
+    'roadmap-group-future',
   ],
   theme: {
     extend: {
