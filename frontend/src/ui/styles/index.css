@@ -1234,6 +1234,13 @@
   }
 
   .roadmap-group-icon {
+    width: 28px;
+    height: 28px;
+    border: 0;
+    background: transparent;
+  }
+
+  .roadmap-group-active .roadmap-group-icon {
     width: 32px;
     height: 32px;
     border: 1px solid var(--accent-muted);
@@ -1242,14 +1249,10 @@
   }
 
   .roadmap-group-complete .roadmap-group-icon {
-    border-color: var(--signal-up);
-    background: color-mix(in srgb, var(--signal-up) 10%, var(--surface-panel));
     color: var(--signal-up);
   }
 
   .roadmap-group-future .roadmap-group-icon {
-    border-color: var(--border-default);
-    background: var(--surface-panel);
     color: var(--content-muted);
   }
 

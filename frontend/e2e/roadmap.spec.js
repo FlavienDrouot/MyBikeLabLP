@@ -108,8 +108,10 @@ const assertSemanticTimelineStyles = async (page) => {
     const groupHeading = timeline.querySelector('.roadmap-group-heading');
     const itemConnector = timeline.querySelector('.roadmap-item');
     const activeGroupIcon = timeline.querySelector('.roadmap-group-active .roadmap-group-icon');
+    const completeIcon = timeline.querySelector('.roadmap-item-complete .roadmap-card-icon');
     const futureGroupIcon = timeline.querySelector('.roadmap-group-future .roadmap-group-icon');
     const futureGroup = timeline.querySelector('.roadmap-group-future');
+    const futureStepIcon = futureGroup.querySelector('.roadmap-card-icon');
 
     return {
       timelineTrackWidth: getComputedStyle(timeline.querySelector('.timeline-track')).width,
@@ -130,9 +132,20 @@ const assertSemanticTimelineStyles = async (page) => {
       groupConnectorBorderTop: getComputedStyle(groupHeading, '::before').borderTop,
       itemConnectorBorderTop: getComputedStyle(itemConnector, '::before').borderTop,
       activeGroupIconColor: getComputedStyle(activeGroupIcon).color,
+      activeGroupIconBorderWidth: getComputedStyle(activeGroupIcon).borderWidth,
+      activeGroupIconBackground: getComputedStyle(activeGroupIcon).backgroundColor,
+      completeIconBorderWidth: getComputedStyle(completeIcon).borderWidth,
+      completeIconBackground: getComputedStyle(completeIcon).backgroundColor,
       futureGroupIconColor: getComputedStyle(futureGroupIcon).color,
+      futureGroupIconWidth: getComputedStyle(futureGroupIcon).width,
+      futureGroupIconHeight: getComputedStyle(futureGroupIcon).height,
+      futureGroupIconBorderWidth: getComputedStyle(futureGroupIcon).borderWidth,
       futureGroupIconBackground: getComputedStyle(futureGroupIcon).backgroundColor,
-      futureGroupBackground: getComputedStyle(futureGroup).backgroundColor,
+      futureStepIconColor: getComputedStyle(futureStepIcon).color,
+      futureStepIconWidth: getComputedStyle(futureStepIcon).width,
+      futureStepIconHeight: getComputedStyle(futureStepIcon).height,
+      futureStepIconBorderWidth: getComputedStyle(futureStepIcon).borderWidth,
+      futureStepIconBackground: getComputedStyle(futureStepIcon).backgroundColor,
     };
   });
 
@@ -148,8 +161,17 @@ const assertSemanticTimelineStyles = async (page) => {
   expect(styles.groupHeadingBorderLeftWidth).toBe('0px');
   expect(styles.timelineTrackWidth).toBe('3px');
   expect(styles.groupConnectorBorderTop).toBe(styles.itemConnectorBorderTop);
+  expect(styles.activeGroupIconBorderWidth).toBe('1px');
+  expect(styles.activeGroupIconBackground).not.toBe('rgba(0, 0, 0, 0)');
+  expect(styles.completeIconBorderWidth).toBe('0px');
+  expect(styles.completeIconBackground).toBe('rgba(0, 0, 0, 0)');
   expect(styles.futureGroupIconColor).not.toBe(styles.activeGroupIconColor);
-  expect(styles.futureGroupIconBackground).toBe(styles.futureGroupBackground);
+  expect(styles.futureGroupIconColor).toBe(styles.futureStepIconColor);
+  expect(styles.futureGroupIconWidth).toBe(styles.futureStepIconWidth);
+  expect(styles.futureGroupIconHeight).toBe(styles.futureStepIconHeight);
+  expect(styles.futureGroupIconBorderWidth).toBe('0px');
+  expect(styles.futureGroupIconBorderWidth).toBe(styles.futureStepIconBorderWidth);
+  expect(styles.futureGroupIconBackground).toBe(styles.futureStepIconBackground);
 };
 
 test('renders one semantic vertical timeline at desktop and mobile widths', async ({ page }) => {
