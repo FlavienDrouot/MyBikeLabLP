@@ -72,7 +72,13 @@ const assertSemanticTimelineStyles = async (page) => {
 
     return {
       completeMarkerBackground: getComputedStyle(completeMarker).backgroundColor,
+      completeMarkerWidth: getComputedStyle(completeMarker).width,
+      completeMarkerHeight: getComputedStyle(completeMarker).height,
+      completeMarkerBorderRadius: getComputedStyle(completeMarker).borderRadius,
       completeMarkerShadow: getComputedStyle(completeMarker).boxShadow,
+      activeMarkerWidth: getComputedStyle(activeMarker).width,
+      activeMarkerHeight: getComputedStyle(activeMarker).height,
+      activeMarkerBorderRadius: getComputedStyle(activeMarker).borderRadius,
       activeMarkerShadow: getComputedStyle(activeMarker).boxShadow,
       completeTrackBackground: getComputedStyle(completeTrack).backgroundColor,
       activeTrackBackgroundImage: getComputedStyle(activeTrack).backgroundImage,
@@ -80,6 +86,9 @@ const assertSemanticTimelineStyles = async (page) => {
   });
 
   expect(styles.completeMarkerBackground).not.toBe('rgb(255, 255, 255)');
+  expect(styles.completeMarkerWidth).toBe(styles.activeMarkerWidth);
+  expect(styles.completeMarkerHeight).toBe(styles.activeMarkerHeight);
+  expect(styles.completeMarkerBorderRadius).toBe(styles.activeMarkerBorderRadius);
   expect(styles.completeMarkerShadow).not.toBe('none');
   expect(styles.activeMarkerShadow).not.toBe('none');
   expect(styles.completeTrackBackground).not.toBe('rgba(0, 0, 0, 0)');

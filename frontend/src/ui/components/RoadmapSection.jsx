@@ -1,11 +1,48 @@
 import { useLayoutEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import {
+  Bike,
+  ChartNoAxesCombined,
+  CircleGauge,
+  Component,
+  Database,
+  FileText,
+  GitCompareArrows,
+  Layers,
+  RefreshCw,
+  ShoppingBag,
+  Waypoints,
+} from 'lucide-react';
+import Icon from './ui/Icon';
 
 const ROADMAP_STATES = new Set(['complete', 'active', 'future']);
+
+const ROADMAP_ICONS = {
+  comparator: GitCompareArrows,
+  'data-enrichment': Database,
+  freshness: RefreshCw,
+  details: FileText,
+  categories: Layers,
+  marketplaces: ShoppingBag,
+  'data-exploitation': ChartNoAxesCombined,
+  indicators: CircleGauge,
+  visualizations: Waypoints,
+  articles: FileText,
+  'other-components': Component,
+  configurator: Bike,
+};
 
 const getRoadmapState = (item) => (
   ROADMAP_STATES.has(item.state) ? item.state : 'future'
 );
+
+const RoadmapIcon = ({ itemId }) => {
+  const IconComponent = ROADMAP_ICONS[itemId];
+
+  if (!IconComponent) return null;
+
+  return <Icon as={IconComponent} size={18} aria-hidden="true" />;
+};
 
 const RoadmapItem = ({ item, substep = false, stateLabel }) => {
   const state = getRoadmapState(item);
@@ -26,7 +63,12 @@ const RoadmapItem = ({ item, substep = false, stateLabel }) => {
       />
       <article className="roadmap-card">
         <span className="sr-only">{stateLabel}</span>
-        <Heading>{item.title}</Heading>
+        <div className="roadmap-card-heading">
+          <span className="roadmap-card-icon" aria-hidden="true">
+            <RoadmapIcon itemId={item.id} />
+          </span>
+          <Heading>{item.title}</Heading>
+        </div>
         <p>{item.description}</p>
         {points.length > 0 && (
           <ul className="roadmap-points">
@@ -41,8 +83,13 @@ const RoadmapItem = ({ item, substep = false, stateLabel }) => {
 const RoadmapGroup = ({ item, stateLabels }) => (
   <li className="roadmap-group" data-roadmap-id={item.id}>
     <div className="roadmap-group-heading">
-      <h3>{item.title}</h3>
-      <p>{item.description}</p>
+      <span className="roadmap-group-icon" aria-hidden="true">
+        <RoadmapIcon itemId={item.id} />
+      </span>
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+      </div>
     </div>
     <ol className="roadmap-substeps">
       {item.steps.map((step) => (
@@ -129,6 +176,7 @@ const RoadmapSection = () => {
     >
       <div className="container-page">
         <div className="wave5-panel roadmap-panel">
+          <span className="wave5-object wave5-object--hub roadmap-hub" aria-hidden="true" />
           <p className="t-eyebrow">{t('roadmap.sectionIndex')}</p>
           <h2 id="roadmap-title" className="roadmap-title">{t('roadmap.title')}</h2>
           <p className="roadmap-subtitle">{t('roadmap.subtitle')}</p>

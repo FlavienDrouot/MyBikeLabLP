@@ -1046,8 +1046,25 @@
   }
 
   .roadmap-panel {
+    position: relative;
     padding: 28px 32px 32px;
     letter-spacing: normal;
+  }
+
+  .roadmap-panel > :not(.roadmap-hub) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .roadmap-hub {
+    position: absolute;
+    top: 22px;
+    right: 28px;
+    z-index: 0;
+    width: 132px;
+    height: 132px;
+    opacity: 0.14;
+    transform: rotate(-8deg);
   }
 
   .roadmap-panel > .t-eyebrow {
@@ -1131,6 +1148,10 @@
   .roadmap-group {
     display: grid;
     gap: 12px;
+    padding: 16px 16px 16px 0;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-panel);
+    background: var(--surface-panel-soft);
   }
 
   .roadmap-group-heading {
@@ -1152,6 +1173,47 @@
     margin: 6px 0 0;
     color: var(--content-secondary);
     font-size: 13px;
+  }
+
+  .roadmap-group-heading,
+  .roadmap-card-heading {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .roadmap-group-heading {
+    gap: 12px;
+  }
+
+  .roadmap-group-icon,
+  .roadmap-card-icon {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    color: var(--accent);
+  }
+
+  .roadmap-group-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--accent-muted);
+    border-radius: var(--radius-sm);
+    background: var(--accent-wash);
+  }
+
+  .roadmap-card-heading {
+    gap: 10px;
+  }
+
+  .roadmap-card-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--content-muted);
+  }
+
+  .roadmap-card-heading h3,
+  .roadmap-card-heading h4 {
+    flex: 1;
   }
 
   .roadmap-item {
@@ -1195,15 +1257,23 @@
     background: var(--content-muted);
   }
 
+  .timeline-marker-complete,
+  .timeline-marker-active {
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--roadmap-state-color);
+    border-radius: 50%;
+    background: var(--roadmap-state-color);
+    box-shadow: 0 0 0 3px var(--surface-page),
+      0 0 0 4px color-mix(in srgb, var(--roadmap-state-color) 22%, transparent);
+  }
+
   .timeline-marker-complete {
-    border-color: var(--signal-up);
-    background: var(--signal-up);
-    box-shadow: 0 0 0 3px var(--surface-page);
+    --roadmap-state-color: var(--signal-up);
   }
 
   .timeline-marker-active {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--surface-page), 0 0 0 4px var(--accent-wash);
+    --roadmap-state-color: var(--accent);
   }
 
   .timeline-marker-future {
@@ -1224,6 +1294,14 @@
 
   .roadmap-item-active .roadmap-card {
     border-color: var(--accent-muted);
+  }
+
+  .roadmap-item-complete .roadmap-card-icon {
+    color: var(--signal-up);
+  }
+
+  .roadmap-item-active .roadmap-card-icon {
+    color: var(--accent);
   }
 
   .roadmap-card h3,
@@ -1367,6 +1445,14 @@
 }
 
 @media (max-width: 720px) {
+  .roadmap-hub {
+    top: 18px;
+    right: 18px;
+    width: 90px;
+    height: 90px;
+    opacity: 0.1;
+  }
+
   .roadmap-group-heading {
     margin-left: 42px;
     padding-left: 12px;

@@ -63,6 +63,7 @@ describe('RoadmapSection', () => {
     const html = renderToStaticMarkup(createElement(RoadmapSection));
 
     expect(html).toContain('class="wave5-panel roadmap-panel"');
+    expect(html).toContain('wave5-object--hub roadmap-hub');
     expect(html).toContain('class="timeline-track"');
     expect(html).toContain('class="timeline-track-segment timeline-track-complete"');
     expect(html).toContain('class="timeline-track-segment timeline-track-active"');
@@ -72,6 +73,8 @@ describe('RoadmapSection', () => {
     expect(html.match(/data-roadmap-state="active"/g)).toHaveLength(1);
     expect(html.match(/data-roadmap-state="future"/g)).toHaveLength(8);
     expect(html.match(/class="roadmap-group"/g)).toHaveLength(2);
+    expect(html.match(/class="roadmap-group-icon"/g)).toHaveLength(2);
+    expect(html.match(/class="roadmap-card-icon"/g)).toHaveLength(10);
     expect(html.match(/<article/g)).toHaveLength(10);
     expect(html).toContain('Compare road wheels');
     expect(html).toContain('Enrich the product data');
