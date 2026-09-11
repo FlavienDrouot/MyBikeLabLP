@@ -106,10 +106,13 @@ const assertSemanticTimelineStyles = async (page) => {
     const completeTrack = timeline.querySelector('.timeline-track-complete');
     const activeTrack = timeline.querySelector('.timeline-track-active');
     const groupHeading = timeline.querySelector('.roadmap-group-heading');
+    const itemConnector = timeline.querySelector('.roadmap-item');
     const activeGroupIcon = timeline.querySelector('.roadmap-group-active .roadmap-group-icon');
     const futureGroupIcon = timeline.querySelector('.roadmap-group-future .roadmap-group-icon');
+    const futureGroup = timeline.querySelector('.roadmap-group-future');
 
     return {
+      timelineTrackWidth: getComputedStyle(timeline.querySelector('.timeline-track')).width,
       completeMarkerBackground: getComputedStyle(completeMarker).backgroundColor,
       completeMarkerWidth: getComputedStyle(completeMarker).width,
       completeMarkerHeight: getComputedStyle(completeMarker).height,
@@ -124,8 +127,12 @@ const assertSemanticTimelineStyles = async (page) => {
       completeTrackBackground: getComputedStyle(completeTrack).backgroundColor,
       activeTrackBackgroundImage: getComputedStyle(activeTrack).backgroundImage,
       groupHeadingBorderLeftWidth: getComputedStyle(groupHeading).borderLeftWidth,
+      groupConnectorBorderTop: getComputedStyle(groupHeading, '::before').borderTop,
+      itemConnectorBorderTop: getComputedStyle(itemConnector, '::before').borderTop,
       activeGroupIconColor: getComputedStyle(activeGroupIcon).color,
       futureGroupIconColor: getComputedStyle(futureGroupIcon).color,
+      futureGroupIconBackground: getComputedStyle(futureGroupIcon).backgroundColor,
+      futureGroupBackground: getComputedStyle(futureGroup).backgroundColor,
     };
   });
 
@@ -139,7 +146,10 @@ const assertSemanticTimelineStyles = async (page) => {
   expect(styles.completeTrackBackground).not.toBe('rgba(0, 0, 0, 0)');
   expect(styles.activeTrackBackgroundImage).toContain('gradient');
   expect(styles.groupHeadingBorderLeftWidth).toBe('0px');
+  expect(styles.timelineTrackWidth).toBe('3px');
+  expect(styles.groupConnectorBorderTop).toBe(styles.itemConnectorBorderTop);
   expect(styles.futureGroupIconColor).not.toBe(styles.activeGroupIconColor);
+  expect(styles.futureGroupIconBackground).toBe(styles.futureGroupBackground);
 };
 
 test('renders one semantic vertical timeline at desktop and mobile widths', async ({ page }) => {
