@@ -46,13 +46,11 @@
       "ariaLabel": "Catalog figures",
       "wheelsCaption": "road wheelsets indexed in the catalog",
       "filterAxesCaption": "specifications you can combine and filter on",
-      "phasesCaption": "from comparison to full bike configurator",
       "foot": "Bilingual interface, English and French · multi-currency price display"
     },
     "stats": {
       "wheels": "Wheels",
-      "filterAxes": "Filter axes",
-      "phasesPlanned": "Phases planned"
+      "filterAxes": "Filter axes"
     }
   },
   "comparator": {
@@ -114,32 +112,88 @@
   },
   "roadmap": {
     "sectionIndex": "ROADMAP",
-    "title": "Three phases",
-    "subtitle": "Comparison first. Impact simulation next. Full bike configurator on the horizon.",
-    "phases": [
+    "title": "A clearer path forward",
+    "subtitle": "A product roadmap shaped around the value cyclists get from better wheel data.",
+    "stateLabels": {
+      "complete": "Available today",
+      "active": "Next step",
+      "future": "Future direction"
+    },
+    "items": [
       {
-        "tag": "Phase 1",
-        "state": "current",
-        "status": "In progress",
-        "title": "Components comparison",
-        "description": "Wheels first, then drivetrains, brakes, tires. Structured specs, side-by-side decisions.",
-        "points": ["Wheels MVP live", "Drivetrains coming", "Brakes & tires next"]
+        "id": "comparator",
+        "state": "complete",
+        "title": "Compare road wheels",
+        "description": "MyBikeLab starts with structured manufacturer data that makes road wheel choices easier to compare.",
+        "points": ["Side-by-side technical criteria", "Prices and practical compatibility details", "Data remains a point-in-time snapshot"]
       },
       {
-        "tag": "Phase 2",
-        "state": "next",
-        "status": "Next",
-        "title": "Impact simulator",
-        "description": "See how each part changes your ride: weight, aerodynamics, total cost, predicted performance.",
-        "points": ["Weight delta", "Aero gains", "Cost-per-watt"]
+        "id": "data-enrichment",
+        "title": "Enrich the product data",
+        "description": "Make the catalogue more trustworthy, useful and easier to grow.",
+        "steps": [
+          {
+            "id": "freshness",
+            "state": "active",
+            "title": "Keep data fresh",
+            "description": "Move from one-time collection toward regular updates, so product details and prices inspire more confidence over time."
+          },
+          {
+            "id": "details",
+            "state": "future",
+            "title": "Create detailed product pages",
+            "description": "Give each wheel a dedicated page with a deeper, structured view than the comparator's expandable panel."
+          },
+          {
+            "id": "categories",
+            "state": "future",
+            "title": "Add new wheel categories",
+            "description": "Extend beyond road wheels, starting with gravel as a first candidate, on a catalogue that can be maintained."
+          },
+          {
+            "id": "marketplaces",
+            "state": "future",
+            "title": "Enrich marketplace links",
+            "description": "Connect comparisons to more relevant places to find products, without becoming an ecommerce platform."
+          }
+        ]
       },
       {
-        "tag": "Phase 3",
-        "state": "vision",
-        "status": "Vision",
+        "id": "data-exploitation",
+        "title": "Exploit the data",
+        "description": "Turn a richer, more reliable catalogue into analytical decision support.",
+        "steps": [
+          {
+            "id": "indicators",
+            "state": "future",
+            "title": "Derived indicators",
+            "description": "Add calculated metrics such as weight/price and weight/depth ratios."
+          },
+          {
+            "id": "visualizations",
+            "state": "future",
+            "title": "Multicriteria visualizations",
+            "description": "Show trade-offs across several criteria and highlight multiple optimal products, including Pareto frontiers."
+          },
+          {
+            "id": "articles",
+            "state": "future",
+            "title": "Data-based analysis",
+            "description": "Publish observations, conclusions and recommendations grounded in the catalogue."
+          }
+        ]
+      },
+      {
+        "id": "other-components",
+        "state": "future",
+        "title": "Extend to other components",
+        "description": "Broaden the catalogue progressively to other bike component families, without fixing their order today."
+      },
+      {
+        "id": "configurator",
+        "state": "future",
         "title": "Full bike configurator",
-        "description": "Build a complete bike from the frame up, simulate the full setup, then go buy it.",
-        "points": ["Frame to finish", "Performance preview", "Affiliate-ready"]
+        "description": "Bring component catalogues and analysis together to evaluate a complete bicycle; precise capabilities remain to be defined."
       }
     ]
   },

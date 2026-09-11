@@ -15,6 +15,13 @@ export default {
     'wave5-object--hub',
     'wave5-object--rotor',
     'wave5-object--wheel',
+    // Roadmap state classes are assembled from translated data at runtime.
+    'timeline-marker-complete',
+    'timeline-marker-active',
+    'timeline-marker-future',
+    'roadmap-group-complete',
+    'roadmap-group-active',
+    'roadmap-group-future',
   ],
   theme: {
     extend: {
