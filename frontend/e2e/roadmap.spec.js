@@ -28,6 +28,7 @@ const readRoadmapGeometry = (timeline) => timeline.evaluate((element) => {
     groups: [...element.querySelectorAll('.roadmap-group')].map((group) => ({
       rect: getRect(group),
       heading: getRect(group.querySelector('.roadmap-group-heading')),
+      marker: getRect(group.querySelector('[data-roadmap-marker]')),
       substeps: [...group.querySelectorAll('.roadmap-substep')].map((substep) => ({
         rect: getRect(substep),
         card: getRect(substep.querySelector('.roadmap-card')),
@@ -43,11 +44,13 @@ const readRoadmapGeometry = (timeline) => timeline.evaluate((element) => {
 
 const assertVerticalRoadmap = async (page) => {
   const timeline = page.locator('.timeline');
-  await expect(timeline.locator('.timeline-marker')).toHaveCount(10);
+  await expect(timeline.locator('.timeline-marker')).toHaveCount(12);
   await expect(timeline.locator('.roadmap-group')).toHaveCount(2);
   await expect(timeline.locator('.roadmap-item[data-roadmap-state="complete"]')).toHaveCount(1);
   await expect(timeline.locator('.roadmap-item[data-roadmap-state="active"]')).toHaveCount(1);
   await expect(timeline.locator('.roadmap-item[data-roadmap-state="future"]')).toHaveCount(8);
+  await expect(timeline.locator('.roadmap-group[data-roadmap-state="active"]')).toHaveCount(1);
+  await expect(timeline.locator('.roadmap-group[data-roadmap-state="future"]')).toHaveCount(1);
   await expect(timeline.locator('.timeline-progress')).toHaveCount(0);
 
   await expect.poll(async () => (await readRoadmapGeometry(timeline)).track.height).toBeGreaterThan(0);
@@ -60,9 +63,10 @@ const assertVerticalRoadmap = async (page) => {
 
   expect(geometry.track.width).toBeLessThanOrEqual(3);
   expect(geometry.track.height).toBeGreaterThan(geometry.track.width);
-  geometry.groups.forEach(({ rect, heading, substeps }) => {
+  geometry.groups.forEach(({ rect, heading, marker, substeps }) => {
     expect(rect.left).toBeGreaterThan(geometry.track.left + geometry.track.width);
     expect(heading.left).toBeGreaterThan(rect.left);
+    expect(Math.abs(marker.left + marker.width / 2 - trackCenter)).toBeLessThanOrEqual(1);
     substeps.forEach(({ card }) => {
       expect(card.left).toBeGreaterThan(heading.left + 10);
       expect(card.left + card.width).toBeLessThanOrEqual(rect.left + rect.width);
@@ -78,6 +82,15 @@ const assertVerticalRoadmap = async (page) => {
   markerCenters.slice(1).forEach((center, index) => {
     expect(center.y).toBeGreaterThan(markerCenters[index].y);
   });
+  const groupMarkerCenter = markerCenters[1].y;
+  const freshnessMarkerCenter = markerCenters[2].y;
+  const completeSegment = geometry.segments[2];
+  const activeSegment = geometry.segments[1];
+  const futureSegment = geometry.segments[0];
+  expect(Math.abs(completeSegment.top + completeSegment.height - groupMarkerCenter)).toBeLessThanOrEqual(1);
+  expect(Math.abs(activeSegment.top - groupMarkerCenter)).toBeLessThanOrEqual(1);
+  expect(Math.abs(activeSegment.top + activeSegment.height - freshnessMarkerCenter)).toBeLessThanOrEqual(1);
+  expect(Math.abs(futureSegment.top - freshnessMarkerCenter)).toBeLessThanOrEqual(1);
   expect(geometry.segments[1].height).toBeGreaterThan(0);
   expect(geometry.segments[0].height).toBeGreaterThan(0);
   geometry.substeps.forEach(({ connectorWidth }) => {
@@ -89,9 +102,12 @@ const assertSemanticTimelineStyles = async (page) => {
   const styles = await page.locator('.timeline').evaluate((timeline) => {
     const completeMarker = timeline.querySelector('.timeline-marker-complete');
     const activeMarker = timeline.querySelector('.timeline-marker-active');
+    const activeSubstepMarker = timeline.querySelector('.timeline-marker-substep.timeline-marker-active');
     const completeTrack = timeline.querySelector('.timeline-track-complete');
     const activeTrack = timeline.querySelector('.timeline-track-active');
     const groupHeading = timeline.querySelector('.roadmap-group-heading');
+    const activeGroupIcon = timeline.querySelector('.roadmap-group-active .roadmap-group-icon');
+    const futureGroupIcon = timeline.querySelector('.roadmap-group-future .roadmap-group-icon');
 
     return {
       completeMarkerBackground: getComputedStyle(completeMarker).backgroundColor,
@@ -99,13 +115,17 @@ const assertSemanticTimelineStyles = async (page) => {
       completeMarkerHeight: getComputedStyle(completeMarker).height,
       completeMarkerBorderRadius: getComputedStyle(completeMarker).borderRadius,
       completeMarkerShadow: getComputedStyle(completeMarker).boxShadow,
+      activeMarkerBackground: getComputedStyle(activeMarker).backgroundColor,
       activeMarkerWidth: getComputedStyle(activeMarker).width,
       activeMarkerHeight: getComputedStyle(activeMarker).height,
       activeMarkerBorderRadius: getComputedStyle(activeMarker).borderRadius,
       activeMarkerShadow: getComputedStyle(activeMarker).boxShadow,
+      activeSubstepMarkerBackground: getComputedStyle(activeSubstepMarker).backgroundColor,
       completeTrackBackground: getComputedStyle(completeTrack).backgroundColor,
       activeTrackBackgroundImage: getComputedStyle(activeTrack).backgroundImage,
       groupHeadingBorderLeftWidth: getComputedStyle(groupHeading).borderLeftWidth,
+      activeGroupIconColor: getComputedStyle(activeGroupIcon).color,
+      futureGroupIconColor: getComputedStyle(futureGroupIcon).color,
     };
   });
 
@@ -115,9 +135,11 @@ const assertSemanticTimelineStyles = async (page) => {
   expect(styles.completeMarkerBorderRadius).toBe(styles.activeMarkerBorderRadius);
   expect(styles.completeMarkerShadow).not.toBe('none');
   expect(styles.activeMarkerShadow).not.toBe('none');
+  expect(styles.activeSubstepMarkerBackground).not.toBe(styles.activeMarkerBackground);
   expect(styles.completeTrackBackground).not.toBe('rgba(0, 0, 0, 0)');
   expect(styles.activeTrackBackgroundImage).toContain('gradient');
   expect(styles.groupHeadingBorderLeftWidth).toBe('0px');
+  expect(styles.futureGroupIconColor).not.toBe(styles.activeGroupIconColor);
 };
 
 test('renders one semantic vertical timeline at desktop and mobile widths', async ({ page }) => {

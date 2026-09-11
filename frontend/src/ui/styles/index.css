@@ -1154,18 +1154,45 @@
   }
 
   .roadmap-group {
+    position: relative;
     display: grid;
     gap: 12px;
     margin-left: var(--roadmap-axis-offset);
     padding: 18px 16px 18px var(--roadmap-group-padding);
     border: 1px solid var(--border-default);
     border-radius: var(--radius-panel);
-    background: var(--surface-panel-soft);
+    background: var(--surface-panel);
+    box-shadow: var(--shadow-surface);
+  }
+
+  .roadmap-group-complete {
+    --roadmap-state-color: var(--signal-up);
+    box-shadow: inset 3px 0 0 var(--signal-up), var(--shadow-surface);
+  }
+
+  .roadmap-group-active {
+    --roadmap-state-color: var(--accent);
+    border-color: var(--accent-muted);
+    box-shadow: inset 3px 0 0 var(--accent), var(--shadow-surface);
+  }
+
+  .roadmap-group-future {
+    --roadmap-state-color: var(--content-muted);
   }
 
   .roadmap-group-heading {
+    position: relative;
     padding: 0 0 14px;
     border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .roadmap-group-heading::before {
+    position: absolute;
+    top: 16px;
+    left: calc(var(--roadmap-marker-offset) - var(--roadmap-group-content-offset));
+    width: calc(var(--roadmap-axis-offset) - var(--roadmap-marker-offset));
+    border-top: 1px solid var(--roadmap-state-color);
+    content: '';
   }
 
   .roadmap-group-heading h3 {
@@ -1209,6 +1236,18 @@
     background: var(--accent-wash);
   }
 
+  .roadmap-group-complete .roadmap-group-icon {
+    border-color: var(--signal-up);
+    background: color-mix(in srgb, var(--signal-up) 10%, var(--surface-panel));
+    color: var(--signal-up);
+  }
+
+  .roadmap-group-future .roadmap-group-icon {
+    border-color: var(--border-default);
+    background: var(--surface-well);
+    color: var(--content-muted);
+  }
+
   .roadmap-card-heading {
     gap: 10px;
   }
@@ -1240,6 +1279,10 @@
   .roadmap-group .roadmap-item::before,
   .roadmap-group .timeline-marker {
     left: calc(var(--roadmap-marker-offset) - var(--roadmap-group-content-offset));
+  }
+
+  .roadmap-group-heading .timeline-marker {
+    top: 16px;
   }
 
   .roadmap-group .roadmap-item::before {
@@ -1302,6 +1345,15 @@
 
   .timeline-marker-active {
     --roadmap-state-color: var(--accent);
+  }
+
+  .timeline-marker-substep.timeline-marker-active {
+    width: 9px;
+    height: 3px;
+    border: 0;
+    border-radius: 0;
+    background: var(--content-muted);
+    box-shadow: none;
   }
 
   .timeline-marker-future {
@@ -1512,6 +1564,10 @@
   .roadmap-group-heading {
     gap: 10px;
     padding-bottom: 11px;
+  }
+
+  .roadmap-group-heading::before {
+    top: 14px;
   }
 
   .roadmap-group-icon {

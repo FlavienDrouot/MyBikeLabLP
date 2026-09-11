@@ -36,6 +36,21 @@ const getRoadmapState = (item) => (
   ROADMAP_STATES.has(item.state) ? item.state : 'future'
 );
 
+const getRoadmapGroupState = (item) => {
+  if (ROADMAP_STATES.has(item.state)) return item.state;
+
+  const stepStates = Array.isArray(item.steps)
+    ? item.steps.map(getRoadmapState)
+    : [];
+
+  if (stepStates.includes('active')) return 'active';
+  if (stepStates.length > 0 && stepStates.every((state) => state === 'complete')) {
+    return 'complete';
+  }
+
+  return 'future';
+};
+
 const RoadmapIcon = ({ itemId }) => {
   const IconComponent = ROADMAP_ICONS[itemId];
 
@@ -80,29 +95,44 @@ const RoadmapItem = ({ item, substep = false, stateLabel }) => {
   );
 };
 
-const RoadmapGroup = ({ item, stateLabels }) => (
-  <li className="roadmap-group" data-roadmap-id={item.id}>
-    <div className="roadmap-group-heading">
-      <span className="roadmap-group-icon" aria-hidden="true">
-        <RoadmapIcon itemId={item.id} />
-      </span>
-      <div>
-        <h3>{item.title}</h3>
-        <p>{item.description}</p>
-      </div>
-    </div>
-    <ol className="roadmap-substeps">
-      {item.steps.map((step) => (
-        <RoadmapItem
-          key={step.id}
-          item={step}
-          substep
-          stateLabel={stateLabels[getRoadmapState(step)]}
+const RoadmapGroup = ({ item, stateLabels }) => {
+  const state = getRoadmapGroupState(item);
+
+  return (
+    <li
+      className={`roadmap-group roadmap-group-${state}`}
+      data-roadmap-id={item.id}
+      data-roadmap-state={state}
+      aria-current={state === 'active' ? 'step' : undefined}
+    >
+      <div className="roadmap-group-heading">
+        <span
+          className={`timeline-marker timeline-marker-milestone timeline-marker-group timeline-marker-${state}`}
+          data-roadmap-marker
+          aria-hidden="true"
         />
-      ))}
-    </ol>
-  </li>
-);
+        <span className="sr-only">{stateLabels[state]}</span>
+        <span className="roadmap-group-icon" aria-hidden="true">
+          <RoadmapIcon itemId={item.id} />
+        </span>
+        <div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </div>
+      </div>
+      <ol className="roadmap-substeps">
+        {item.steps.map((step) => (
+          <RoadmapItem
+            key={step.id}
+            item={step}
+            substep
+            stateLabel={stateLabels[getRoadmapState(step)]}
+          />
+        ))}
+      </ol>
+    </li>
+  );
+};
 
 const RoadmapSection = () => {
   const { t } = useTranslation();
@@ -130,19 +160,29 @@ const RoadmapSection = () => {
         return rect.top + (rect.height / 2) - timelineRect.top;
       });
       const states = markerElements.map((marker) => marker.closest('[data-roadmap-state]')?.dataset.roadmapState);
+      const milestones = markerElements.map((marker) => marker.classList.contains('timeline-marker-milestone'));
       const trackStart = markerPositions[0];
       const trackEnd = markerPositions.at(-1);
-      const completePositions = markerPositions.filter((_, index) => states[index] === 'complete');
-      const activePositions = markerPositions.filter((_, index) => states[index] === 'active');
-      const lastComplete = completePositions.at(-1) ?? trackStart;
-      const firstActive = activePositions[0] ?? lastComplete;
+      const completeMilestonePositions = markerPositions.filter((_, index) => (
+        milestones[index] && states[index] === 'complete'
+      ));
+      const activeMilestonePositions = markerPositions.filter((_, index) => (
+        milestones[index] && states[index] === 'active'
+      ));
+      const activeSubstepPositions = markerPositions.filter((_, index) => (
+        !milestones[index] && states[index] === 'active'
+      ));
+      const lastComplete = completeMilestonePositions.at(-1) ?? trackStart;
+      const activeMilestone = activeMilestonePositions[0] ?? lastComplete;
+      const activeSubstep = activeSubstepPositions.find((position) => position > activeMilestone)
+        ?? activeMilestone;
 
       timeline.style.setProperty('--timeline-track-start', `${trackStart}px`);
       timeline.style.setProperty('--timeline-track-end', `${Math.max(0, timelineRect.height - trackEnd)}px`);
-      timeline.style.setProperty('--timeline-complete-length', `${Math.max(0, lastComplete - trackStart)}px`);
-      timeline.style.setProperty('--timeline-active-offset', `${Math.max(0, lastComplete - trackStart)}px`);
-      timeline.style.setProperty('--timeline-active-length', `${Math.max(0, firstActive - lastComplete)}px`);
-      timeline.style.setProperty('--timeline-future-offset', `${Math.max(0, firstActive - trackStart)}px`);
+      timeline.style.setProperty('--timeline-complete-length', `${Math.max(0, activeMilestone - trackStart)}px`);
+      timeline.style.setProperty('--timeline-active-offset', `${Math.max(0, activeMilestone - trackStart)}px`);
+      timeline.style.setProperty('--timeline-active-length', `${Math.max(0, activeSubstep - activeMilestone)}px`);
+      timeline.style.setProperty('--timeline-future-offset', `${Math.max(0, activeSubstep - trackStart)}px`);
 
     };
 

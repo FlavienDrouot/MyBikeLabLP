@@ -68,11 +68,11 @@ describe('RoadmapSection', () => {
     expect(html).toContain('class="timeline-track-segment timeline-track-complete"');
     expect(html).toContain('class="timeline-track-segment timeline-track-active"');
     expect(html).toContain('class="timeline-track-segment timeline-track-future"');
-    expect(html.match(/data-roadmap-marker/g)).toHaveLength(10);
+    expect(html.match(/data-roadmap-marker/g)).toHaveLength(12);
     expect(html.match(/data-roadmap-state="complete"/g)).toHaveLength(1);
-    expect(html.match(/data-roadmap-state="active"/g)).toHaveLength(1);
-    expect(html.match(/data-roadmap-state="future"/g)).toHaveLength(8);
-    expect(html.match(/class="roadmap-group"/g)).toHaveLength(2);
+    expect(html.match(/data-roadmap-state="active"/g)).toHaveLength(2);
+    expect(html.match(/data-roadmap-state="future"/g)).toHaveLength(9);
+    expect(html.match(/class="roadmap-group(?:\s|")/g)).toHaveLength(2);
     expect(html.match(/class="roadmap-group-icon"/g)).toHaveLength(2);
     expect(html.match(/class="roadmap-card-icon"/g)).toHaveLength(10);
     expect(html.match(/<article/g)).toHaveLength(10);
