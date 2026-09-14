@@ -1214,6 +1214,17 @@ test.describe('historical comparator characterization', () => {
         && element.scrollHeight > element.clientHeight;
     })).toBe(true);
 
+    // Initial anchor positioning and font layout must finish before measuring drawer scrolling.
+    await page.evaluate(() => document.fonts.ready);
+    let previousScroll;
+    let stableSamples = 0;
+    await expect.poll(async () => {
+      const currentScroll = await page.evaluate(() => window.scrollY);
+      stableSamples = currentScroll === previousScroll ? stableSamples + 1 : 0;
+      previousScroll = currentScroll;
+      return stableSamples;
+    }).toBeGreaterThanOrEqual(3);
+
     const pageScroll = await page.evaluate(() => window.scrollY);
     await drawer.evaluate((element) => {
       element.scrollTop = 220;

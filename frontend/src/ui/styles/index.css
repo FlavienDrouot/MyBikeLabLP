@@ -1564,10 +1564,6 @@
     margin-inline: auto;
   }
 
-  .comparator-section-head .t-eyebrow {
-    margin: 0 0 9px;
-  }
-
   .comparator-shell {
     display: grid;
     grid-template-columns: 282px minmax(0, 1fr);

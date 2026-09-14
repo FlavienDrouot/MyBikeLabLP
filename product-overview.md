@@ -47,7 +47,7 @@ The current product is a single-page landing site built on a shared design syste
 Landing copy uses a personal, factual tone in French and English. The current
 road-wheel scope is distinguished from future plans, and potential affiliate
 links are described transparently. The editorial comparison and approved wording
-are recorded in [the landing editorial review](landing-editorial-review.md).
+are recorded in [the landing editorial review in issue #102](https://github.com/FlavienDrouot/MyBikeLabLP/issues/102).
 Navigation links to the comparator, project direction and contact form; there is
 no separate partnership navigation link. The contact form does not send an email
 itself: after opening the visitor's email app, it asks them to send the message there.
