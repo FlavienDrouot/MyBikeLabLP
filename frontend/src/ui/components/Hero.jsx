@@ -48,14 +48,17 @@ const Hero = () => {
     {
       id: 'wheels',
       label: t('hero.stats.wheels'),
-      caption: t('hero.ledger.wheelsCaption'),
       value: wheelCount,
     },
     {
       id: 'filterAxes',
       label: t('hero.stats.filterAxes'),
-      caption: t('hero.ledger.filterAxesCaption'),
       value: filterAxisCount,
+    },
+    {
+      id: 'brands',
+      label: t('hero.stats.brands'),
+      value: brandCount,
     },
   ];
 
@@ -67,7 +70,6 @@ const Hero = () => {
       <HeroWheel />
       <div className="container-page hero-grid">
         <div className="hero-copy">
-          <p className="t-eyebrow">{t('hero.eyebrow')}</p>
           <h1 className="hero-title text-content-primary">
             {t('hero.titleBefore')} <em>{t('hero.titleEmphasis')}</em><br />
             {t('hero.titleAfter')}
@@ -79,15 +81,6 @@ const Hero = () => {
             <a href="#tool" className="btn-primary">{t('hero.ctaPrimary')}</a>
             <a href="#roadmap" className="hero-link">{t('hero.ctaSecondary')}</a>
           </div>
-          <p className="hero-proof">
-            <strong>
-              <span className="t-numeric">{wheelCount}</span>{' '}
-              {t('hero.proof.wheelsLabel')}
-            </strong>{' '}
-            {t('hero.proof.brandsPrefix')}{' '}
-            <span className="t-numeric">{brandCount}</span>{' '}
-            {t('hero.proof.brandsLabel')}
-          </p>
         </div>
         <aside className="hero-ledger" aria-label={t('hero.ledger.ariaLabel')}>
           {ledgerRows.map((row, index) => (
@@ -96,14 +89,10 @@ const Hero = () => {
               data-testid="hero-ledger-row"
               className={`hero-ledger-row${index === 0 ? ' hero-ledger-row-key' : ''}`}
             >
-              <div>
-                <div className="hero-ledger-label">{row.label}</div>
-                <div className="hero-ledger-caption">{row.caption}</div>
-              </div>
+              <div className="hero-ledger-label">{row.label}</div>
               <div className="hero-ledger-figure t-numeric">{row.value}</div>
             </div>
           ))}
-          <div className="hero-ledger-foot">{t('hero.ledger.foot')}</div>
         </aside>
       </div>
     </section>

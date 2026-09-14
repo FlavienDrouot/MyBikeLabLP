@@ -188,9 +188,9 @@ test('keeps the validated content, anchor, themes and French translation', async
   await page.goto('#roadmap');
 
   await expect(page.locator('#roadmap')).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'A clearer path forward' })).toBeVisible();
-  await expect(page.getByText('Keep data fresh')).toBeVisible();
-  await expect(page.getByText('Full bike configurator')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'What’s next' })).toBeVisible();
+  await expect(page.getByText('Keep the data up to date')).toBeVisible();
+  await expect(page.getByText('Plan your bike build')).toBeVisible();
 
   const bodyText = (await page.locator('body').innerText()).toLowerCase();
   expect(bodyText).not.toContain('three phases');
@@ -199,8 +199,8 @@ test('keeps the validated content, anchor, themes and French translation', async
   expect(await page.locator('.roadmap-section').evaluate((section) => section.id)).toBe('roadmap');
 
   await page.getByRole('group', { name: 'Language' }).getByRole('button', { name: 'FR' }).click();
-  await expect(page.getByRole('heading', { name: 'Une trajectoire plus claire' })).toBeVisible();
-  await expect(page.getByText('Gagner en fraîcheur')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'La suite du projet' })).toBeVisible();
+  await expect(page.getByText('Maintenir les données à jour régulièrement')).toBeVisible();
   await assertVerticalRoadmap(page);
 
   const themeGroup = page.getByRole('group', { name: 'Thème' });

@@ -78,7 +78,7 @@ test.describe('Chromium P0 comparator journeys', () => {
     await goToComparator(page);
 
     await expect(page.getByRole('main')).toHaveCount(1);
-    await expect(page.getByRole('heading', { name: 'Road wheels: filter and compare' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Compare road wheelsets', level: 2 })).toBeVisible();
     await expect(page.getByRole('complementary', { name: 'Filters' })).toBeVisible();
     await expect(page.getByRole('table', { name: 'Wheel comparison' })).toBeVisible();
     await expect(page.getByRole('contentinfo')).toBeVisible();
@@ -354,15 +354,16 @@ test.describe('Chromium P1 comparator journeys', () => {
     await french.click();
 
     await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
-    await expect(page.getByRole('heading', { name: 'Roues route : filtrer et comparer' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Comparez les roues de vélo de route' })).toBeVisible();
     await expect(page.getByRole('complementary', { name: 'Filtres' })).toBeVisible();
     await expect(page.locator('body')).not.toContainText(RAW_TRANSLATION_KEY);
-    await expect(french).toHaveAttribute('aria-pressed', 'true');
+    const frenchLanguage = page.getByRole('group', { name: 'Langue', exact: true });
+    await expect(frenchLanguage.getByRole('button', { name: 'FR' })).toHaveAttribute('aria-pressed', 'true');
 
-    const english = language.getByRole('button', { name: 'EN' });
+    const english = frenchLanguage.getByRole('button', { name: 'EN' });
     await english.click();
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-    await expect(page.getByRole('heading', { name: 'Road wheels: filter and compare' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Compare road wheelsets', level: 2 })).toBeVisible();
   });
 
   test('translates the mobile column drawer and its close action', async ({ page }) => {

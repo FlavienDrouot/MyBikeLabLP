@@ -6,9 +6,8 @@
     "notAvailable": "Inconnu"
   },
   "nav": {
-    "tool": "Outil",
-    "roadmap": "Roadmap",
-    "partnerships": "Partenariats",
+    "tool": "Comparateur",
+    "roadmap": "La suite du projet",
     "contact": "Contact",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
@@ -27,36 +26,30 @@
       "en": "EN",
       "fr": "FR",
       "switchTo": "Passer en {{lang}}"
-    }
+    },
+    "primaryLabel": "Navigation principale",
+    "mobileLabel": "Navigation mobile",
+    "language": "Langue"
   },
   "hero": {
-    "titleBefore": "Des roues",
-    "titleEmphasis": "mesurées,",
-    "titleAfter": "pas marketées.",
-    "eyebrow": "Comparez les roues route",
-    "subtitle": "Comparez par poids, profil de jante, compatibilité hookless, marque de moyeu, prix et bien plus. Tout dans un seul tableau.",
+    "titleBefore": "Votre vélo.",
+    "titleEmphasis": "Vos choix.",
+    "titleAfter": "Les infos sont ici.",
+    "subtitle": "Pour commencer, retrouvez au même endroit les informations pour choisir vos roues de vélo de route : caractéristiques, compatibilités et prix.",
     "ctaPrimary": "Ouvrir le comparateur →",
-    "ctaSecondary": "Voir la roadmap →",
-    "proof": {
-      "wheelsLabel": "roues route",
-      "brandsPrefix": "parmi",
-      "brandsLabel": "marques, dont Roval, Zipp, ENVE, Mavic et Shimano."
-    },
+    "ctaSecondary": "La suite du projet →",
     "ledger": {
-      "ariaLabel": "Chiffres du catalogue",
-      "wheelsCaption": "paires de roues route indexées dans le catalogue",
-      "filterAxesCaption": "caractéristiques combinables et filtrables",
-      "foot": "Interface bilingue, anglais et français · affichage des prix dans plusieurs devises"
+      "ariaLabel": "Chiffres du catalogue"
     },
     "stats": {
-      "wheels": "Roues",
-      "filterAxes": "Axes de filtres"
+      "wheels": "Paires de roues",
+      "filterAxes": "Critères de filtre",
+      "brands": "Marques"
     }
   },
   "comparator": {
-    "sectionIndex": "COMPARATEUR",
-    "title": "Roues route : filtrer et comparer",
-    "subtitle": "Filtrez et triez par marque, poids, profil de jante, prix et bien plus.",
+    "title": "Comparez les roues de vélo de route",
+    "subtitle": "Filtrez et triez les paires de roues selon vos critères : prix, poids, hauteur de jante…",
     "filtersButton": "Filtres",
     "filtersDrawerLabel": "Filtres",
     "footerNote": "Sources officielles · Liens affiliés bientôt disponibles"
@@ -111,9 +104,8 @@
     "clincher": "Chambre à air"
   },
   "roadmap": {
-    "sectionIndex": "ROADMAP",
-    "title": "Une trajectoire plus claire",
-    "subtitle": "Une roadmap guidée par la valeur apportée aux cyclistes grâce à de meilleures données sur les roues.",
+    "title": "La suite du projet",
+    "subtitle": "Voici ce qui est déjà disponible et ce que j’aimerais développer ensuite pour vous aider à choisir votre matériel vélo.",
     "stateLabels": {
       "complete": "Disponible aujourd'hui",
       "active": "Prochaine étape",
@@ -123,151 +115,136 @@
       {
         "id": "comparator",
         "state": "complete",
-        "title": "Comparer les roues route",
-        "description": "MyBikeLab commence avec des données fabricants structurées pour faciliter la comparaison des roues route.",
-        "points": ["Critères techniques côte à côte", "Prix et détails de compatibilité utiles", "Données correspondant à un état collecté à un instant donné"]
+        "title": "Comparer les roues de vélo de route",
+        "description": "Retrouvez les caractéristiques et les prix des fabricants dans un même tableau. Les données sont issues de collectes ponctuelles et ne sont pas encore mises à jour régulièrement."
       },
       {
         "id": "data-enrichment",
-        "title": "Enrichir les données produits",
-        "description": "Rendre le catalogue plus fiable, plus utile et plus facile à faire grandir.",
+        "title": "Un catalogue plus complet et à jour",
         "steps": [
           {
             "id": "freshness",
             "state": "active",
-            "title": "Gagner en fraîcheur",
-            "description": "Passer d'une collecte ponctuelle à des mises à jour régulières, pour renforcer la confiance dans les détails et les prix affichés."
+            "title": "Maintenir les données à jour régulièrement",
+            "description": "Actualiser les caractéristiques et les prix pour mieux refléter les informations disponibles chez les fabricants et les revendeurs."
           },
           {
             "id": "details",
             "state": "future",
-            "title": "Créer de vraies fiches produit",
-            "description": "Consacrer à chaque roue une page structurée, nettement plus complète que le panneau dépliable du comparateur."
+            "title": "Des fiches produit plus complètes",
+            "description": "Consulter toutes les informations sur une roue dans une page dédiée, au-delà des caractéristiques présentées dans le comparateur."
           },
           {
             "id": "categories",
             "state": "future",
-            "title": "Ajouter de nouvelles catégories de roues",
-            "description": "Étendre le catalogue au-delà des roues route, avec le gravel comme premier candidat, sur une base maintenable."
+            "title": "Comparer d’autres types de roues",
+            "description": "Élargir le catalogue au-delà de la route, en commençant par les roues de gravel."
           },
           {
             "id": "marketplaces",
             "state": "future",
-            "title": "Enrichir les liens marketplace",
-            "description": "Relier la comparaison à davantage de destinations pertinentes pour trouver les produits, sans devenir une plateforme e-commerce."
+            "title": "Comparer les prix chez plusieurs revendeurs",
+            "description": "Ajouter les offres de davantage de revendeurs pour vous aider à trouver un meilleur prix. Les éventuels liens affiliés seront clairement signalés."
           }
         ]
       },
       {
         "id": "data-exploitation",
-        "title": "Exploiter les données",
-        "description": "Transformer un catalogue plus riche et plus fiable en aide à la décision analytique.",
+        "title": "Mieux comprendre les différences entre les produits",
         "steps": [
           {
             "id": "indicators",
             "state": "future",
-            "title": "Indicateurs dérivés",
-            "description": "Ajouter des métriques calculées, comme les rapports poids/prix et poids/profondeur."
+            "title": "De nouveaux repères pour comparer",
+            "description": "Mettre en relation les caractéristiques des roues, par exemple avec les rapports poids/prix et poids/hauteur de jante."
           },
           {
             "id": "visualizations",
             "state": "future",
-            "title": "Visualisations multicritères",
-            "description": "Montrer les compromis entre plusieurs critères et faire ressortir plusieurs produits optimaux, notamment avec des frontières de Pareto."
+            "title": "Comparer en graphiques",
+            "description": "Visualiser plusieurs critères à la fois pour repérer les compromis entre les roues et celles qui correspondent à vos priorités."
           },
           {
             "id": "articles",
             "state": "future",
-            "title": "Analyses fondées sur les données",
-            "description": "Publier des observations, conclusions et recommandations fondées sur le catalogue."
+            "title": "Comprendre les différences entre les roues",
+            "description": "Publier des articles à partir des données du catalogue pour expliquer les différences entre les roues et proposer des recommandations argumentées."
           }
         ]
       },
       {
         "id": "other-components",
         "state": "future",
-        "title": "Étendre aux autres composants",
-        "description": "Élargir progressivement le catalogue à d'autres familles de composants vélo, sans fixer leur ordre dès aujourd'hui."
+        "title": "Comparer d’autres composants vélo",
+        "description": "Élargir progressivement le catalogue pour vous aider à choisir les autres composants de votre vélo."
       },
       {
         "id": "configurator",
         "state": "future",
-        "title": "Configurateur vélo complet",
-        "description": "Réunir catalogues de composants et analyse pour évaluer un vélo complet ; ses capacités précises restent à définir."
+        "title": "Composer votre vélo",
+        "description": "Réunir les données sur les composants et les outils d’analyse pour vous aider à composer et évaluer un vélo complet."
       }
     ]
   },
   "benefits": {
-    "sectionIndex": "AVANTAGES",
-    "title": "Conçu pour les cyclistes sérieux",
+    "title": "De quoi choisir par vous-même",
     "items": [
       {
-        "title": "De meilleures décisions",
-        "description": "Fini de comparer des PDFs et des fils de forum. Filtrez sur les specs qui comptent vraiment pour votre pratique."
+        "title": "Les informations au même endroit",
+        "description": "Comparer du matériel demande souvent de parcourir des dizaines de sites, de fiches techniques et de forums. MyBikeLab rassemble ces informations en un seul endroit."
       },
       {
-        "title": "Basé sur les données",
-        "description": "Chaque spec est sourcée et structurée. Pas de communication marketing, juste des chiffres vérifiables."
+        "title": "Des caractéristiques comparables",
+        "description": "Les données des fabricants sont organisées dans un même format pour comparer les modèles et repérer leurs différences."
       },
       {
-        "title": "Orienté communauté",
-        "description": "Construit avec des cyclistes, des fabricants et des revendeurs. Données ouvertes, affiliations transparentes."
+        "title": "Vos retours font évoluer le projet",
+        "description": "Une erreur dans les données, une information manquante ou une idée pour améliorer le site ? Écrivez-moi : vos retours m’aideront à faire évoluer MyBikeLab."
       }
     ],
     "schematic": {
       "externalWidth": "largeur externe de jante",
       "internalWidth": "largeur interne de jante",
-      "rimDepth": "profondeur de jante",
+      "rimDepth": "hauteur de jante",
       "wheelDiameter": "diamètre de roue",
       "externalWidthValue": "27,5 mm",
       "internalWidthValue": "23 mm",
       "rimDepthValue": "35 mm",
       "wheelDiameterValue": "Ø 700 c",
-      "caption": "Profil représentatif. Dimensions sourcées à partir de données produit structurées."
+      "caption": "Les dimensions indiquées sont un exemple."
     }
   },
   "partnership": {
-    "sectionIndex": "PARTENARIAT",
-    "title": "Travaillez avec nous",
-    "intro": "MyBikeLab connecte les cyclistes à des données composants structurées. Si vous fournissez ou vendez des composants vélo route, vos données ont leur place ici.",
-    "audiences": [
-      {
-        "title": "Fabricants",
-        "description": "Mettez en valeur vos specs dans un format structuré, prêt pour la comparaison."
-      },
-      {
-        "title": "Revendeurs",
-        "description": "Touchez des cyclistes qui comparent activement avant d'acheter."
-      }
-    ]
+    "title": "Vous fabriquez ou vendez du matériel vélo ?",
+    "intro": "Vous pouvez m’aider à compléter le catalogue et à tenir les informations à jour en partageant les caractéristiques et les prix de vos produits.",
+    "benefit": "Les cyclistes pourront ainsi découvrir vos produits et les comparer aux autres références du catalogue."
   },
   "contact": {
-    "eyebrow": "Contact",
-    "namePlaceholder": "Nom",
-    "emailPlaceholder": "Email",
-    "companyLabel": "Entreprise",
-    "companyPlaceholder": "Entreprise (facultatif)",
-    "messagePlaceholder": "Message",
-    "submit": "Envoyer le message",
+    "title": "Une question ou un retour sur MyBikeLab ?",
+    "intro": "Une suggestion, une erreur à signaler ou une question : écrivez-moi ici.",
+    "companyLabel": "Entreprise (facultatif)",
+    "submit": "Préparer l’email",
     "errors": {
-      "nameRequired": "Le nom est requis",
-      "emailRequired": "L'email est requis",
-      "messageRequired": "Le message est requis"
+      "nameRequired": "Indiquez votre nom.",
+      "emailRequired": "Indiquez votre adresse email.",
+      "messageRequired": "Écrivez votre message."
     },
-    "success": {
-      "title": "Merci, {{name}}.",
-      "body": "Nous vous répondrons à {{email}} très prochainement."
-    },
-    "successFallbackName": "vous"
+    "nameLabel": "Nom",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "nextStep": {
+      "title": "Encore une étape",
+      "body": "Envoyez l’email depuis votre messagerie pour me contacter."
+    }
   },
   "footer": {
-    "copyright": "© {{year}} MyBikeLab. Tous droits réservés.",
+    "copyright": "© {{year}} MyBikeLab",
     "nav": {
-      "tool": "Outil",
-      "roadmap": "Roadmap",
-      "partnerships": "Partenariats",
+      "tool": "Comparateur",
+      "roadmap": "La suite du projet",
       "contact": "Contact"
-    }
+    },
+    "navLabel": "Navigation de pied de page"
   },
   "properties": {
     "groups": {

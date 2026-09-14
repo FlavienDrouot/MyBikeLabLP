@@ -28,7 +28,6 @@ const BenefitsGrid = () => {
       <div className="container-page">
         <div className="section-head">
           <div>
-            <p className="t-eyebrow">{t('benefits.sectionIndex')}</p>
             <h2>{t('benefits.title')}</h2>
           </div>
         </div>

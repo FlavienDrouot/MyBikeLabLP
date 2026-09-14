@@ -1015,7 +1015,7 @@ test.describe('historical comparator characterization', () => {
     await expect(page.getByRole('table', { name: 'Wheel comparison' })).toBeVisible();
     await page.evaluate(() => window.scrollTo(0, 0));
 
-    await page.getByRole('banner').getByRole('link', { name: 'Tool', exact: true }).click();
+    await page.getByRole('banner').getByRole('link', { name: 'Compare', exact: true }).click();
     await expect(page).toHaveURL(/#tool$/);
     const surface = getComparatorSurface(page);
     await expect.poll(async () => {
@@ -1024,7 +1024,7 @@ test.describe('historical comparator characterization', () => {
         page.locator('header').boundingBox(),
       ]);
       return surfaceBox && navbarBox
-        ? Math.round(surfaceBox.y - (navbarBox.y + navbarBox.height))
+        ? Math.abs(Math.round(surfaceBox.y - (navbarBox.y + navbarBox.height)))
         : null;
     }).toBe(0);
   });
@@ -1213,6 +1213,17 @@ test.describe('historical comparator characterization', () => {
       return Math.abs(box.height - window.innerHeight) <= 1
         && element.scrollHeight > element.clientHeight;
     })).toBe(true);
+
+    // Initial anchor positioning and font layout must finish before measuring drawer scrolling.
+    await page.evaluate(() => document.fonts.ready);
+    let previousScroll;
+    let stableSamples = 0;
+    await expect.poll(async () => {
+      const currentScroll = await page.evaluate(() => window.scrollY);
+      stableSamples = currentScroll === previousScroll ? stableSamples + 1 : 0;
+      previousScroll = currentScroll;
+      return stableSamples;
+    }).toBeGreaterThanOrEqual(3);
 
     const pageScroll = await page.evaluate(() => window.scrollY);
     await drawer.evaluate((element) => {

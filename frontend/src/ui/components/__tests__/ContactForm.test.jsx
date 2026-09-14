@@ -5,30 +5,6 @@ import { createRoot } from 'react-dom/client';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import ContactForm from '../ContactForm';
 
-const translations = {
-  'contact.eyebrow': 'Contact',
-  'contact.namePlaceholder': 'Name',
-  'contact.emailPlaceholder': 'Email',
-  'contact.companyLabel': 'Company',
-  'contact.companyPlaceholder': 'Company (optional)',
-  'contact.messagePlaceholder': 'Message',
-  'contact.submit': 'Send message',
-  'contact.errors.nameRequired': 'Name is required',
-  'contact.errors.emailRequired': 'Email is required',
-  'contact.errors.messageRequired': 'Message is required',
-  'contact.success.body': 'We will get back to you at {{email}} shortly.',
-  'contact.successFallbackName': 'there',
-};
-
-vi.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (key, options) => {
-      if (key === 'contact.success.title') return `Thanks, ${options?.name}.`;
-      return translations[key] ?? key;
-    },
-  }),
-}));
-
 const setFieldValue = (element, value) => {
   const setter = Object.getOwnPropertyDescriptor(element.constructor.prototype, 'value').set;
   setter.call(element, value);
@@ -62,16 +38,16 @@ describe('ContactForm', () => {
       );
     });
 
-    expect(container.textContent).toContain('Name is required');
-    expect(container.textContent).toContain('Email is required');
-    expect(container.textContent).toContain('Message is required');
+    expect(container.textContent).toContain('Please enter your name.');
+    expect(container.textContent).toContain('Please enter your email address.');
+    expect(container.textContent).toContain('Please write your message.');
     expect(container.querySelector('#name').getAttribute('aria-invalid')).toBe('true');
     expect(container.querySelector('#email').getAttribute('aria-invalid')).toBe('true');
     expect(container.querySelector('#message').getAttribute('aria-invalid')).toBe('true');
     expect(open).not.toHaveBeenCalled();
   });
 
-  it('keeps the mailto submission and success state', () => {
+  it('prepares the mailto message and asks the visitor to send it', () => {
     act(() => root.render(createElement(ContactForm)));
 
     act(() => {
@@ -88,7 +64,9 @@ describe('ContactForm', () => {
     });
 
     expect(open).toHaveBeenCalledWith(expect.stringContaining('mailto:contact.mybikelab@gmail.com'));
-    expect(container.querySelector('.contact-success')).not.toBeNull();
-    expect(container.textContent).toContain('Thanks, Ada.');
+    expect(container.querySelector('[role=status]')).not.toBeNull();
+    expect(container.textContent).toContain('One more step');
+    expect(container.textContent).toContain('Send the email from your email app to get in touch with me.');
+    expect(container.textContent).not.toContain('Ada');
   });
 });

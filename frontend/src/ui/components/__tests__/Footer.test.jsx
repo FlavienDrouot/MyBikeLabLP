@@ -15,8 +15,8 @@ describe('Footer', () => {
     const html = renderToStaticMarkup(createElement(Footer, null));
     expect(html).toContain('href="#tool"');
     expect(html).toContain('href="#roadmap"');
-    expect(html).toContain('href="#partnerships"');
+    expect(html).not.toContain('href="#partnerships"');
     expect(html).toContain('href="#contact"');
-    expect(html).toContain('MyBikeLab. All rights reserved.');
+    expect(html).toContain('© ' + new Date().getFullYear() + ' MyBikeLab');
   });
 });

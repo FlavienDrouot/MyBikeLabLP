@@ -7,10 +7,9 @@ const Footer = () => {
     <footer className="site-footer">
       <div className="container-page">
         <div className="footer-row">
-          <nav className="footer-nav" aria-label="Footer">
+          <nav className="footer-nav" aria-label={t('footer.navLabel')}>
             <a href="#tool">{t('footer.nav.tool')}</a>
             <a href="#roadmap">{t('footer.nav.roadmap')}</a>
-            <a href="#partnerships">{t('footer.nav.partnerships')}</a>
             <a href="#contact">{t('footer.nav.contact')}</a>
           </nav>
           <span className="copyright">

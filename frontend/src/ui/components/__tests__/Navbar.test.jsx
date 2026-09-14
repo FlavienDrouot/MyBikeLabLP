@@ -180,7 +180,7 @@ describe('Navbar currency selector (EVO-046)', () => {
     expect(mobileMenu).not.toBeNull();
     expect(
       Array.from(mobileMenu.querySelectorAll('a')).map((link) => link.getAttribute('href'))
-    ).toEqual(['#tool', '#roadmap', '#partnerships', '#contact']);
+    ).toEqual(['#tool', '#roadmap', '#contact']);
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
   });
 
