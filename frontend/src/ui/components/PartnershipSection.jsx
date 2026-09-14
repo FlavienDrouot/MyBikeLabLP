@@ -16,6 +16,10 @@ const PartnershipSection = () => {
           <p className="partner-intro">{t('partnership.intro')}</p>
 
           <p className="partner-intro">{t('partnership.benefit')}</p>
+          <div className="mt-8">
+            <h2>{t('contact.title')}</h2>
+            <p className="partner-intro">{t('contact.intro')}</p>
+          </div>
         </div>
 
         <ContactForm />

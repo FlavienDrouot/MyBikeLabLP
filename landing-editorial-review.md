@@ -191,7 +191,7 @@ Les messages de validation natifs du navigateur, notamment pour un email mal for
 
 ## Conséquences de présentation déjà retenues
 
-- Retirer les surtitres redondants de l’accueil, des avantages, des partenariats et de la roadmap ; donner au formulaire un titre distinct invitant aux questions et aux retours utilisateurs.
+- Retirer les surtitres redondants de l’accueil, des avantages, des partenariats et de la roadmap. Le titre invitant aux questions et aux retours utilisateurs et sa phrase d’introduction sont placés dans la colonne de gauche, sous le texte professionnel, hors de la carte du formulaire, conformément à la capture annotée de Flavien. Sur mobile, ces deux blocs précèdent le formulaire.
 - Le bloc de chiffres comprend les paires de roues, les critères de filtre et les marques, sans descriptions supplémentaires. Le compteur actuel de roues compte les entrées du catalogue, variantes comprises ; il ne représente pas nécessairement des modèles uniques.
 - Les navigations du haut, du menu mobile et du pied de page utilisent « Comparateur », « La suite du projet » et « Contact ». Le lien « Partenariats » disparaît ; le contenu destiné aux professionnels reste.
 - Remplacer les deux blocs fabricants/revendeurs par la phrase retenue après l’introduction.
