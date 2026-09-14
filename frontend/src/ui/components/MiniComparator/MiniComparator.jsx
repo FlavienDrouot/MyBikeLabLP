@@ -210,7 +210,6 @@ const MiniComparator = () => {
       <div className="container-fluid">
         <div className="section-head comparator-section-head">
           <div>
-            <p className="t-eyebrow">{t('comparator.sectionIndex')}</p>
             <h2 className="section-title">{t('comparator.title')}</h2>
             <p className="section-subtitle">{t('comparator.subtitle')}</p>
           </div>

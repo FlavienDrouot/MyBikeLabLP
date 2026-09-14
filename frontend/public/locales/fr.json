@@ -48,9 +48,8 @@
     }
   },
   "comparator": {
-    "sectionIndex": "COMPARATEUR",
-    "title": "Roues route : filtrer et comparer",
-    "subtitle": "Filtrez et triez par marque, poids, profil de jante, prix et bien plus.",
+    "title": "Comparez les roues de vélo de route",
+    "subtitle": "Filtrez et triez les paires de roues selon vos critères : prix, poids, hauteur de jante…",
     "filtersButton": "Filtres",
     "filtersDrawerLabel": "Filtres",
     "footerNote": "Sources officielles · Liens affiliés bientôt disponibles"

@@ -10,7 +10,7 @@ Ce tableau conserve les formulations retenues, y compris leurs suppressions, pou
 
 Une présentation simple, humaine et peu commerciale, qui aide chacun à choisir et personnaliser son vélo par lui-même. L’accroche porte sur le projet dans son ensemble ; le sous-titre explique son point de départ, les roues de route. Rassembler des informations dispersées est une motivation centrale du projet.
 
-La revue couvre l’accueil, la navigation, les avantages, les partenariats, le formulaire et ses messages, le pied de page et la roadmap. Le comparateur, son introduction, ses filtres, ses fiches et ses autres textes restent hors périmètre.
+La revue couvre l’accueil, la navigation, les avantages, les partenariats, le formulaire et ses messages, le pied de page et la roadmap. Après essai, Flavien a étendu la revue aux textes périphériques du comparateur ; le contenu du tableau, des filtres et des fiches reste hors périmètre.
 
 Les nombres restent calculés depuis le catalogue. Les intentions futures restent distinctes du service actuellement disponible. Aucune date n’est annoncée. Les éventuels liens affiliés doivent être signalés. Le formulaire prépare un email via la messagerie du visiteur ; il ne confirme pas un envoi.
 
@@ -24,6 +24,18 @@ Les nombres restent calculés depuis le catalogue. Les intentions futures resten
 - **Recommandation unslop** : contrôle supplémentaire ciblé sur les formulations présentant encore un signal de rédaction artificielle, générique ou trop rhétorique. Une cellule vide signifie qu’aucune modification supplémentaire n’est recommandée à ce titre.
 - Les identifiants désignent les textes actuels dans `frontend/public/locales/fr.json`. Ils servent à retrouver les éléments et ne prescrivent pas les futures clés.
 - « — » signifie qu’aucun texte ne sera affiché à cet emplacement.
+
+## Complément validé : en-tête du comparateur
+
+À la demande de Flavien après essai, la revue inclut aussi les textes périphériques du comparateur. Le contenu du tableau, des filtres et des fiches reste hors périmètre.
+
+| Emplacement | Avant FR | Après FR | Avant EN | Après EN |
+| --- | --- | --- | --- | --- |
+| comparator.sectionIndex | COMPARATEUR | — | COMPARATOR | — |
+| comparator.title | Roues route : filtrer et comparer | Comparez les roues de vélo de route | Road wheels: filter and compare | Compare road wheelsets |
+| comparator.subtitle | Filtrez et triez par marque, poids, profil de jante, prix et bien plus. | Filtrez et triez les paires de roues selon vos critères : prix, poids, hauteur de jante… | Filter and sort by brand, weight, rim depth, price, and many more. | Filter and sort wheelsets by criteria such as price, weight and rim depth. |
+
+Formulation française approuvée par Flavien ; adaptation anglaise dans le cadre de la délégation validée. Les mentions sous le tableau restent à discuter.
 
 ## Accueil
 

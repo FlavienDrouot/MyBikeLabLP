@@ -48,9 +48,8 @@
     }
   },
   "comparator": {
-    "sectionIndex": "COMPARATOR",
-    "title": "Road wheels: filter and compare",
-    "subtitle": "Filter and sort by brand, weight, rim depth, price, and many more.",
+    "title": "Compare road wheelsets",
+    "subtitle": "Filter and sort wheelsets by criteria such as price, weight and rim depth.",
     "filtersButton": "Filters",
     "filtersDrawerLabel": "Filters",
     "footerNote": "Official sources · Affiliate links coming soon"
