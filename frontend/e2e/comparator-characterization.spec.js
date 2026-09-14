@@ -1015,7 +1015,7 @@ test.describe('historical comparator characterization', () => {
     await expect(page.getByRole('table', { name: 'Wheel comparison' })).toBeVisible();
     await page.evaluate(() => window.scrollTo(0, 0));
 
-    await page.getByRole('banner').getByRole('link', { name: 'Tool', exact: true }).click();
+    await page.getByRole('banner').getByRole('link', { name: 'Compare', exact: true }).click();
     await expect(page).toHaveURL(/#tool$/);
     const surface = getComparatorSurface(page);
     await expect.poll(async () => {
@@ -1024,7 +1024,7 @@ test.describe('historical comparator characterization', () => {
         page.locator('header').boundingBox(),
       ]);
       return surfaceBox && navbarBox
-        ? Math.round(surfaceBox.y - (navbarBox.y + navbarBox.height))
+        ? Math.abs(Math.round(surfaceBox.y - (navbarBox.y + navbarBox.height)))
         : null;
     }).toBe(0);
   });
