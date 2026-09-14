@@ -221,7 +221,8 @@
     "benefit": "Les cyclistes pourront ainsi découvrir vos produits et les comparer aux autres références du catalogue."
   },
   "contact": {
-    "eyebrow": "Contact",
+    "title": "Une question ou un retour sur MyBikeLab ?",
+    "intro": "Une suggestion, une erreur à signaler ou une question : écrivez-moi ici.",
     "companyLabel": "Entreprise (facultatif)",
     "submit": "Préparer l’email",
     "errors": {

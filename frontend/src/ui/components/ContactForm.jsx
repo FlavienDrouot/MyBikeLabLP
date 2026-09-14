@@ -54,7 +54,8 @@ const ContactForm = () => {
 
   return (
     <form id="contact" onSubmit={onSubmit} className="wave5-panel form-card contact-form">
-      <p className="t-eyebrow">{t('contact.eyebrow')}</p>
+      <h2>{t('contact.title')}</h2>
+      <p className="partner-intro">{t('contact.intro')}</p>
       <div className="form-grid">
         <div className="field">
           <label htmlFor="name">{t('contact.nameLabel')}</label>

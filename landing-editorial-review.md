@@ -98,7 +98,8 @@ Les nombres restent calculés depuis le catalogue. Les intentions futures resten
 
 | Emplacement actuel | Avant | Après | Recommandation unslop | Décision |
 | --- | --- | --- | --- | --- |
-| contact.eyebrow | Contact | Contact |  | Retenu |
+| contact.eyebrow → contact.title | Contact | Une question ou un retour sur MyBikeLab ? |  | Titre distinct validé après essai |
+| contact.intro | — | Une suggestion, une erreur à signaler ou une question : écrivez-moi ici. |  | Ajout validé après essai |
 | contact.namePlaceholder — libellé au-dessus du champ | Nom | Nom |  | Retenu |
 | contact.emailPlaceholder — libellé au-dessus du champ | Email | Email |  | Retenu |
 | contact.companyLabel | Entreprise | Entreprise (facultatif) |  | Retenu |
@@ -178,7 +179,7 @@ Les messages de validation natifs du navigateur, notamment pour un email mal for
 
 ## Conséquences de présentation déjà retenues
 
-- Retirer les surtitres redondants de l’accueil, des avantages, des partenariats et de la roadmap ; garder « Contact » pour identifier le formulaire.
+- Retirer les surtitres redondants de l’accueil, des avantages, des partenariats et de la roadmap ; donner au formulaire un titre distinct invitant aux questions et aux retours utilisateurs.
 - Le bloc de chiffres comprend les paires de roues, les critères de filtre et les marques, sans descriptions supplémentaires. Le compteur actuel de roues compte les entrées du catalogue, variantes comprises ; il ne représente pas nécessairement des modèles uniques.
 - Les navigations du haut, du menu mobile et du pied de page utilisent « Comparateur », « La suite du projet » et « Contact ». Le lien « Partenariats » disparaît ; le contenu destiné aux professionnels reste.
 - Remplacer les deux blocs fabricants/revendeurs par la phrase retenue après l’introduction.
@@ -277,7 +278,8 @@ Les textes marqués « Adapté » sont proposés dans le cadre de cette déléga
 
 | Emplacement | Avant EN | Après EN | État |
 | --- | --- | --- | --- |
-| contact.eyebrow | Contact | Contact | Conservé |
+| contact.eyebrow → contact.title | Contact | Questions or feedback about MyBikeLab? | Adapté après essai |
+| contact.intro | — | Have a suggestion, spotted an error or want to ask a question? Get in touch here. | Ajout aligné sur le français |
 | contact.namePlaceholder — libellé au-dessus du champ | Name | Name | Conservé |
 | contact.emailPlaceholder — libellé au-dessus du champ | Email | Email | Conservé |
 | contact.companyLabel | Company | Company (optional) | Adapté |
