@@ -67,7 +67,7 @@ describe('XX locale - i18n completeness', () => {
     expect(sectionPositions).toEqual([...sectionPositions].sort((a, b) => a - b));
     expect(html).toContain('href="#tool"');
     expect(html).toContain('href="#roadmap"');
-    expect(html).toContain('href="#partnerships"');
+    expect(html).not.toContain('href="#partnerships"');
     expect(html).toContain('href="#contact"');
   });
 });

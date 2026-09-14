@@ -18,7 +18,7 @@ describe('Hero', () => {
     expect(html).toContain('viewBox="0 0 600 600"');
     expect(html).toContain('href="#tool"');
     expect(html).toContain('href="#roadmap"');
-    expect(html.match(/data-testid="hero-ledger-row"/g)).toHaveLength(2);
+    expect(html.match(/data-testid="hero-ledger-row"/g)).toHaveLength(3);
     expect(html).toContain(`>${wheelsData.length}<`);
     expect(html).toContain(`>${getFilterableProperties().length}<`);
     expect(html).toContain(`>${new Set(wheelsData.map((wheel) => wheel.brand)).size}<`);

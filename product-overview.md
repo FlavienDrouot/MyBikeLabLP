@@ -37,12 +37,20 @@ The current product is a single-page landing site built on a shared design syste
 
 | Section | Content |
 |---|---|
-| Hero | Value proposition, key stats (200+ wheels, 20 filter axes), CTAs |
+| Hero | Personal bike choices, dynamic counts of wheelsets, filter criteria and brands, and links to the tool and project direction |
 | Wheel Comparator | Main interactive tool - see below |
+| Benefits | Gather scattered information, compare manufacturer specifications, and invite feedback |
 | Roadmap | Public product trajectory from road-wheel comparison through data enrichment and analysis toward a full bike configurator |
-| Benefits | Platform value proposition for cyclists |
-| Partnership | Value proposition for brands and retailers |
-| Footer | - |
+| Partnership and contact | Invite manufacturers and retailers to share specifications and prices; contact form prepares an email in the visitor's email app |
+| Footer | Three navigation links and copyright |
+
+Landing copy uses a personal, factual tone in French and English. The current
+road-wheel scope is distinguished from future plans, and potential affiliate
+links are described transparently. The editorial comparison and approved wording
+are recorded in [the landing editorial review](landing-editorial-review.md).
+Navigation links to the comparator, project direction and contact form; there is
+no separate partnership navigation link. The contact form does not send an email
+itself: after opening the visitor's email app, it asks them to send the message there.
 
 ### Wheel Comparator
 
@@ -97,7 +105,7 @@ The public roadmap describes the evolution of value delivered to cyclists, not t
 internal backlog or execution plan. The level of detail decreases with distance:
 
 1. **Current — compare road wheels**: structured manufacturer data, technical and commercial criteria, and side-by-side decisions. The current catalogue remains a point-in-time snapshot whose freshness is not guaranteed.
-2. **Near future — enrich the product data**: improve data freshness, create complete product pages, add new wheel categories (with gravel as the first candidate), and broaden relevant marketplace links without becoming an ecommerce platform.
+2. **Near future — enrich the product data**: improve data freshness, create complete product pages, add new wheel categories starting with gravel, and add more retailer offers so users can compare prices. Any affiliate links will be clearly marked.
 3. **Intermediate horizon — exploit the data**: add derived indicators, multicriteria visualizations that expose trade-offs and Pareto frontiers, and data-based analysis and recommendations.
 4. **Longer horizon — extend to other components**: progressively broaden the catalogue to other bike component families without fixing their exhaustive order in advance.
 5. **Vision — full bike configurator**: bring component catalogues and analysis together to evaluate a complete bicycle. Its precise capabilities are not promised until they are defined and validated.

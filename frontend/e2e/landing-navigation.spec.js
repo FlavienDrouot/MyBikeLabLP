@@ -15,10 +15,10 @@ test('keeps primary navigation targets reachable after the landing reorder', asy
     await document.fonts.ready;
   });
 
-  const primaryNav = page.getByRole('navigation', { name: 'Primary' });
+  const primaryNav = page.getByRole('navigation', { name: 'Main navigation' });
   const targets = [
-    ['Roadmap', '#roadmap'],
-    ['Partnerships', '#partnerships'],
+    ['What’s next', '#roadmap'],
+    ['Compare', '#tool'],
     ['Contact', '#contact'],
   ];
 
@@ -49,7 +49,7 @@ test('keeps every mobile navbar control inside the 390px viewport', async ({ pag
   await expect(page.getByRole('group', { name: 'Theme' })).toBeVisible();
   await menu.click();
   await expect(page.locator('#mobile-menu')).toBeVisible();
-  await expect(page.getByRole('navigation', { name: 'Primary mobile' }).getByRole('link')).toHaveCount(4);
+  await expect(page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link')).toHaveCount(3);
 });
 
 test('keeps the compact landing layout usable at the 320px viewport', async ({ page }) => {
@@ -75,7 +75,7 @@ test('keeps the compact landing layout usable at the 320px viewport', async ({ p
 
   await menu.click();
   await expect(page.locator('#mobile-menu')).toBeVisible();
-  await expect(page.getByRole('navigation', { name: 'Primary mobile' }).getByRole('link')).toHaveCount(4);
+  await expect(page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link')).toHaveCount(3);
 
   const footer = page.locator('footer.site-footer');
   const mark = footer.locator('.footer-mark');

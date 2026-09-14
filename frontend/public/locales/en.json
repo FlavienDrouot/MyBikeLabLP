@@ -6,9 +6,8 @@
     "notAvailable": "Unknown"
   },
   "nav": {
-    "tool": "Tool",
-    "roadmap": "Roadmap",
-    "partnerships": "Partnerships",
+    "tool": "Compare",
+    "roadmap": "What’s next",
     "contact": "Contact",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
@@ -27,30 +26,25 @@
       "en": "EN",
       "fr": "FR",
       "switchTo": "Switch to {{lang}}"
-    }
+    },
+    "primaryLabel": "Main navigation",
+    "mobileLabel": "Mobile navigation",
+    "language": "Language"
   },
   "hero": {
-    "titleBefore": "Wheels,",
-    "titleEmphasis": "measured.",
-    "titleAfter": "Not marketed.",
-    "eyebrow": "Compare road wheels",
-    "subtitle": "Compare by weight, rim depth, hookless compatibility, hub brand, price and many more. Structured in a single table.",
-    "ctaPrimary": "Open comparator →",
-    "ctaSecondary": "See the roadmap →",
-    "proof": {
-      "wheelsLabel": "road wheels",
-      "brandsPrefix": "across",
-      "brandsLabel": "brands, including Roval, Zipp, ENVE, Mavic and Shimano."
-    },
+    "titleBefore": "Your bike.",
+    "titleEmphasis": "Your choices.",
+    "titleAfter": "The info you need.",
+    "subtitle": "Start with road wheelsets: find specifications, compatibility details and prices in one place to help you choose.",
+    "ctaPrimary": "Open comparison tool →",
+    "ctaSecondary": "What’s next →",
     "ledger": {
-      "ariaLabel": "Catalog figures",
-      "wheelsCaption": "road wheelsets indexed in the catalog",
-      "filterAxesCaption": "specifications you can combine and filter on",
-      "foot": "Bilingual interface, English and French · multi-currency price display"
+      "ariaLabel": "Catalogue statistics"
     },
     "stats": {
-      "wheels": "Wheels",
-      "filterAxes": "Filter axes"
+      "wheels": "Wheelsets",
+      "filterAxes": "Filter criteria",
+      "brands": "Brands"
     }
   },
   "comparator": {
@@ -111,9 +105,8 @@
     "clincher": "Clincher"
   },
   "roadmap": {
-    "sectionIndex": "ROADMAP",
-    "title": "A clearer path forward",
-    "subtitle": "A product roadmap shaped around the value cyclists get from better wheel data.",
+    "title": "What’s next",
+    "subtitle": "Here’s what’s available today and what I’d like to develop next to help you choose your bike components.",
     "stateLabels": {
       "complete": "Available today",
       "active": "Next step",
@@ -123,95 +116,91 @@
       {
         "id": "comparator",
         "state": "complete",
-        "title": "Compare road wheels",
-        "description": "MyBikeLab starts with structured manufacturer data that makes road wheel choices easier to compare.",
-        "points": ["Side-by-side technical criteria", "Prices and practical compatibility details", "Data remains a point-in-time snapshot"]
+        "title": "Compare road wheelsets",
+        "description": "Find manufacturer specifications and prices in one table. The data comes from one-off collections and is not yet updated regularly."
       },
       {
         "id": "data-enrichment",
-        "title": "Enrich the product data",
-        "description": "Make the catalogue more trustworthy, useful and easier to grow.",
+        "title": "A more complete, up-to-date catalogue",
         "steps": [
           {
             "id": "freshness",
             "state": "active",
-            "title": "Keep data fresh",
-            "description": "Move from one-time collection toward regular updates, so product details and prices inspire more confidence over time."
+            "title": "Keep the data up to date",
+            "description": "Regularly update specifications and prices to better reflect the information available from manufacturers and retailers."
           },
           {
             "id": "details",
             "state": "future",
-            "title": "Create detailed product pages",
-            "description": "Give each wheel a dedicated page with a deeper, structured view than the comparator's expandable panel."
+            "title": "More detailed product pages",
+            "description": "View all the information about a wheelset on a dedicated page, with more detail than the comparison table."
           },
           {
             "id": "categories",
             "state": "future",
-            "title": "Add new wheel categories",
-            "description": "Extend beyond road wheels, starting with gravel as a first candidate, on a catalogue that can be maintained."
+            "title": "Compare other types of wheelsets",
+            "description": "Expand the catalogue beyond road wheelsets, starting with gravel."
           },
           {
             "id": "marketplaces",
             "state": "future",
-            "title": "Enrich marketplace links",
-            "description": "Connect comparisons to more relevant places to find products, without becoming an ecommerce platform."
+            "title": "Compare prices across retailers",
+            "description": "Add listings from more retailers to help you find a better price. Any affiliate links will be clearly marked."
           }
         ]
       },
       {
         "id": "data-exploitation",
-        "title": "Exploit the data",
-        "description": "Turn a richer, more reliable catalogue into analytical decision support.",
+        "title": "Understand how products differ",
         "steps": [
           {
             "id": "indicators",
             "state": "future",
-            "title": "Derived indicators",
-            "description": "Add calculated metrics such as weight/price and weight/depth ratios."
+            "title": "New ways to compare",
+            "description": "Compare wheelset characteristics using measures such as weight-to-price and weight-to-rim-depth ratios."
           },
           {
             "id": "visualizations",
             "state": "future",
-            "title": "Multicriteria visualizations",
-            "description": "Show trade-offs across several criteria and highlight multiple optimal products, including Pareto frontiers."
+            "title": "Compare using charts",
+            "description": "View several criteria at once to see the trade-offs between wheelsets and find those that match your priorities."
           },
           {
             "id": "articles",
             "state": "future",
-            "title": "Data-based analysis",
-            "description": "Publish observations, conclusions and recommendations grounded in the catalogue."
+            "title": "Understand the differences between wheelsets",
+            "description": "Publish articles based on catalogue data to explain how wheelsets differ and make reasoned recommendations."
           }
         ]
       },
       {
         "id": "other-components",
         "state": "future",
-        "title": "Extend to other components",
-        "description": "Broaden the catalogue progressively to other bike component families, without fixing their order today."
+        "title": "Compare other bike components",
+        "description": "Gradually expand the catalogue to help you choose other components for your bike."
       },
       {
         "id": "configurator",
         "state": "future",
-        "title": "Full bike configurator",
-        "description": "Bring component catalogues and analysis together to evaluate a complete bicycle; precise capabilities remain to be defined."
+        "title": "Plan your bike build",
+        "description": "Bring component data and analysis tools together to help you plan and evaluate a complete bike."
       }
     ]
   },
   "benefits": {
-    "sectionIndex": "BENEFITS",
-    "title": "Built for serious cyclists",
+    "title": "Choose for yourself",
     "items": [
       {
-        "title": "Better decisions",
-        "description": "Stop comparing PDFs and forum threads. Filter on the specs that actually matter for your ride."
+        "title": "Information in one place",
+        "description": "Comparing bike components often means searching through dozens of websites, specification sheets and forums. MyBikeLab brings that information together in one place."
       },
       {
-        "title": "Data-driven",
-        "description": "Every spec is sourced and structured. No marketing fluff, just numbers you can cross-check."
+        "title": "Specs you can compare",
+        "description": "Manufacturer specifications are organised in a consistent format so you can compare models and see how they differ."
       },
       {
-        "title": "Community-focused",
-        "description": "Built with riders, manufacturers and resellers. Open data, transparent affiliations."
+        "title": "Your feedback helps improve MyBikeLab",
+        "description": "Spotted an error, a missing detail or something that could work better? Get in touch: your feedback will help me improve MyBikeLab."
       }
     ],
     "schematic": {
@@ -223,51 +212,39 @@
       "internalWidthValue": "23 mm",
       "rimDepthValue": "35 mm",
       "wheelDiameterValue": "Ø 700 c",
-      "caption": "Representative profile. Dimensions sourced from structured product data."
+      "caption": "The dimensions shown are an example."
     }
   },
   "partnership": {
-    "sectionIndex": "PARTNERSHIP",
-    "title": "Work with us",
-    "intro": "MyBikeLab connects cyclists with structured component data. If you supply or sell road bike components, your product data belongs here.",
-    "audiences": [
-      {
-        "title": "Manufacturers",
-        "description": "Showcase your specs in a structured, comparison-ready format."
-      },
-      {
-        "title": "Resellers",
-        "description": "Reach cyclists who are actively comparing before they buy."
-      }
-    ]
+    "title": "Do you make or sell bike components?",
+    "intro": "You can help me expand the catalogue and keep it up to date by sharing your product specifications and prices.",
+    "benefit": "Cyclists can then discover your products and compare them with others in the catalogue."
   },
   "contact": {
     "eyebrow": "Contact",
-    "namePlaceholder": "Name",
-    "emailPlaceholder": "Email",
-    "companyLabel": "Company",
-    "companyPlaceholder": "Company (optional)",
-    "messagePlaceholder": "Message",
-    "submit": "Send message",
+    "companyLabel": "Company (optional)",
+    "submit": "Open email app",
     "errors": {
-      "nameRequired": "Name is required",
-      "emailRequired": "Email is required",
-      "messageRequired": "Message is required"
+      "nameRequired": "Please enter your name.",
+      "emailRequired": "Please enter your email address.",
+      "messageRequired": "Please write your message."
     },
-    "success": {
-      "title": "Thanks, {{name}}.",
-      "body": "We'll get back to you at {{email}} shortly."
-    },
-    "successFallbackName": "there"
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "nextStep": {
+      "title": "One more step",
+      "body": "Send the email from your email app to get in touch with me."
+    }
   },
   "footer": {
-    "copyright": "© {{year}} MyBikeLab. All rights reserved.",
+    "copyright": "© {{year}} MyBikeLab",
     "nav": {
-      "tool": "Tool",
-      "roadmap": "Roadmap",
-      "partnerships": "Partnerships",
+      "tool": "Compare",
+      "roadmap": "What’s next",
       "contact": "Contact"
-    }
+    },
+    "navLabel": "Footer navigation"
   },
   "properties": {
     "groups": {

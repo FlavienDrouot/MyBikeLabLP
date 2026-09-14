@@ -10,28 +10,60 @@
         "id": "comparator",
         "state": "complete",
         "title": "XX",
-        "description": "XX",
-        "points": ["XX", "XX", "XX"]
+        "description": "XX"
       },
       {
         "id": "data-enrichment",
         "title": "XX",
-        "description": "XX",
         "steps": [
-          { "id": "freshness", "state": "active", "title": "XX", "description": "XX" },
-          { "id": "details", "state": "future", "title": "XX", "description": "XX" },
-          { "id": "categories", "state": "future", "title": "XX", "description": "XX" },
-          { "id": "marketplaces", "state": "future", "title": "XX", "description": "XX" }
+          {
+            "id": "freshness",
+            "state": "active",
+            "title": "XX",
+            "description": "XX"
+          },
+          {
+            "id": "details",
+            "state": "future",
+            "title": "XX",
+            "description": "XX"
+          },
+          {
+            "id": "categories",
+            "state": "future",
+            "title": "XX",
+            "description": "XX"
+          },
+          {
+            "id": "marketplaces",
+            "state": "future",
+            "title": "XX",
+            "description": "XX"
+          }
         ]
       },
       {
         "id": "data-exploitation",
         "title": "XX",
-        "description": "XX",
         "steps": [
-          { "id": "indicators", "state": "future", "title": "XX", "description": "XX" },
-          { "id": "visualizations", "state": "future", "title": "XX", "description": "XX" },
-          { "id": "articles", "state": "future", "title": "XX", "description": "XX" }
+          {
+            "id": "indicators",
+            "state": "future",
+            "title": "XX",
+            "description": "XX"
+          },
+          {
+            "id": "visualizations",
+            "state": "future",
+            "title": "XX",
+            "description": "XX"
+          },
+          {
+            "id": "articles",
+            "state": "future",
+            "title": "XX",
+            "description": "XX"
+          }
         ]
       },
       {
@@ -72,11 +104,5 @@
   },
   "wheelDetail": {
     "priceAnnotation": "XX"
-  },
-  "partnership": {
-    "audiences": [
-      { "title": "XX", "description": "XX" },
-      { "title": "XX", "description": "XX" }
-    ]
   }
 }

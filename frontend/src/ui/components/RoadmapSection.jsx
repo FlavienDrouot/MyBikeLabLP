@@ -62,7 +62,6 @@ const RoadmapIcon = ({ itemId }) => {
 const RoadmapItem = ({ item, substep = false, stateLabel }) => {
   const state = getRoadmapState(item);
   const Heading = substep ? 'h4' : 'h3';
-  const points = Array.isArray(item.points) ? item.points : [];
 
   return (
     <li
@@ -85,11 +84,6 @@ const RoadmapItem = ({ item, substep = false, stateLabel }) => {
           <Heading>{item.title}</Heading>
         </div>
         <p>{item.description}</p>
-        {points.length > 0 && (
-          <ul className="roadmap-points">
-            {points.map((point) => <li key={point}>{point}</li>)}
-          </ul>
-        )}
       </article>
     </li>
   );
@@ -115,10 +109,7 @@ const RoadmapGroup = ({ item, stateLabels }) => {
         <span className="roadmap-group-icon" aria-hidden="true">
           <RoadmapIcon itemId={item.id} />
         </span>
-        <div>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-        </div>
+        <h3>{item.title}</h3>
       </div>
       <ol className="roadmap-substeps">
         {item.steps.map((step) => (
@@ -216,7 +207,6 @@ const RoadmapSection = () => {
     >
       <div className="container-page">
         <div className="wave5-panel roadmap-panel">
-          <p className="t-eyebrow">{t('roadmap.sectionIndex')}</p>
           <h2 id="roadmap-title" className="roadmap-title">{t('roadmap.title')}</h2>
           <p className="roadmap-subtitle">{t('roadmap.subtitle')}</p>
 

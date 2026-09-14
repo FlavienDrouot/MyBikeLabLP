@@ -21,7 +21,6 @@ const THEME_OPTIONS = THEMES.map((id) => ({
 const NAV_LINKS = [
   { href: '#tool', translationKey: 'nav.tool' },
   { href: '#roadmap', translationKey: 'nav.roadmap' },
-  { href: '#partnerships', translationKey: 'nav.partnerships' },
   { href: '#contact', translationKey: 'nav.contact' },
 ];
 
@@ -56,7 +55,7 @@ const CurrencyToggle = () => {
 };
 
 const LanguageToggle = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const current = i18n.language?.split('-')[0] ?? 'en';
 
   const changeLanguage = (lang) => {
@@ -69,7 +68,7 @@ const LanguageToggle = () => {
   };
 
   return (
-    <div className="language-toggle" role="group" aria-label="Language">
+    <div className="language-toggle" role="group" aria-label={t('nav.language')}>
       {LANGUAGES.map((lang) => {
         const isActive = current === lang;
         return (
@@ -190,7 +189,7 @@ const Navbar = () => {
           <LogoMark size={27} />
           <span className="wordmark">{t('brand.name')}</span>
         </a>
-        <nav className="site-nav" aria-label="Primary">
+        <nav className="site-nav" aria-label={t('nav.primaryLabel')}>
           {NAV_LINKS.map(({ href, translationKey }) => (
             <a key={href} href={href} className="site-nav-link">
               {t(translationKey)}
@@ -219,7 +218,7 @@ const Navbar = () => {
       </div>
       {isOpen && (
         <div id="mobile-menu" className="mobile-menu">
-          <nav className="container-page mobile-menu-nav" aria-label="Primary mobile">
+          <nav className="container-page mobile-menu-nav" aria-label={t('nav.mobileLabel')}>
             {NAV_LINKS.map(({ href, translationKey }) => (
               <a key={href} href={href} onClick={close} className="mobile-menu-link">
                 {t(translationKey)}

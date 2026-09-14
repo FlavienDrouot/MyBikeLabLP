@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Check } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import Icon from './ui/Icon';
 
 const ContactForm = () => {
   const { t } = useTranslation();
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [emailPrepared, setEmailPrepared] = useState(false);
   const [errors, setErrors] = useState({ name: '', email: '', message: '' });
 
   const onChange = (e) =>
@@ -33,20 +33,20 @@ const ContactForm = () => {
       `Name: ${form.name}\nEmail: ${form.email}${form.company ? `\nCompany: ${form.company}` : ''}\n\n${form.message}`
     );
     window.open(`mailto:contact.mybikelab@gmail.com?subject=${subject}&body=${body}`);
-    setSent(true);
+    setEmailPrepared(true);
   };
 
-  if (sent) {
+  if (emailPrepared) {
     return (
-      <div id="contact" className="wave5-panel form-card contact-success">
-        <div className="contact-success-icon">
-          <Icon as={Check} size={20} aria-hidden="true" />
+      <div id="contact" className="wave5-panel form-card contact-next-step" role="status">
+        <div className="contact-next-step-icon">
+          <Icon as={Mail} size={20} aria-hidden="true" />
         </div>
         <h3>
-          {t('contact.success.title', { name: form.name || t('contact.successFallbackName') })}
+          {t('contact.nextStep.title')}
         </h3>
         <p>
-          {t('contact.success.body', { email: form.email })}
+          {t('contact.nextStep.body')}
         </p>
       </div>
     );
@@ -57,7 +57,7 @@ const ContactForm = () => {
       <p className="t-eyebrow">{t('contact.eyebrow')}</p>
       <div className="form-grid">
         <div className="field">
-          <label htmlFor="name">{t('contact.namePlaceholder')}</label>
+          <label htmlFor="name">{t('contact.nameLabel')}</label>
           <input
             id="name"
             name="name"
@@ -65,7 +65,6 @@ const ContactForm = () => {
             maxLength={80}
             value={form.name}
             onChange={onChange}
-            placeholder={t('contact.namePlaceholder')}
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? 'contact-name-error' : undefined}
             className="wave5-input"
@@ -75,7 +74,7 @@ const ContactForm = () => {
           )}
         </div>
         <div className="field">
-          <label htmlFor="email">{t('contact.emailPlaceholder')}</label>
+          <label htmlFor="email">{t('contact.emailLabel')}</label>
           <input
             id="email"
             name="email"
@@ -83,7 +82,6 @@ const ContactForm = () => {
             maxLength={320}
             value={form.email}
             onChange={onChange}
-            placeholder={t('contact.emailPlaceholder')}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? 'contact-email-error' : undefined}
             className="wave5-input"
@@ -101,19 +99,17 @@ const ContactForm = () => {
             maxLength={120}
             value={form.company}
             onChange={onChange}
-            placeholder={t('contact.companyPlaceholder')}
             className="wave5-input"
           />
         </div>
         <div className="field full">
-          <label htmlFor="message">{t('contact.messagePlaceholder')}</label>
+          <label htmlFor="message">{t('contact.messageLabel')}</label>
           <textarea
             id="message"
             name="message"
             maxLength={1200}
             value={form.message}
             onChange={onChange}
-            placeholder={t('contact.messagePlaceholder')}
             aria-invalid={Boolean(errors.message)}
             aria-describedby={errors.message ? 'contact-message-error' : undefined}
             className="wave5-input"
