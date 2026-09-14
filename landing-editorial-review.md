@@ -197,6 +197,7 @@ Les messages de validation natifs du navigateur, notamment pour un email mal for
 - Remplacer les deux blocs fabricants/revendeurs par la phrase retenue après l’introduction.
 - Retirer les placeholders redondants, tout en conservant les libellés permanents et « facultatif » pour l’entreprise.
 - Le message après le formulaire ne contient plus le nom ni l’adresse email du visiteur et ne promet plus une réponse rapide.
+- Les colonnes de la section contact ont la même largeur sur ordinateur afin de laisser les deux titres sur une ligne lorsque la largeur le permet. En français, l’espace avant leur point d’interrogation est insécable. Sur mobile, les titres peuvent revenir à la ligne sans isoler la ponctuation.
 - Retirer les trois puces de l’étape actuelle et les descriptions des deux groupes de la roadmap.
 - Le gravel est annoncé comme prochaine catégorie. L’étape des offres vise davantage de revendeurs et la comparaison de leurs prix ; le référencement initial des fabricants est déjà acquis.
 - Les rapports cités sont des exemples, pas une liste exhaustive. Les graphiques gardent l’intention de montrer les compromis et les produits adaptés aux priorités ; le terme « frontières de Pareto » disparaît du texte public.
