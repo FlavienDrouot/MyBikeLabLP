@@ -125,6 +125,7 @@
 
     .launch-gate strong { display: block; margin-bottom: 6px; }
     .launch-gate p { color: var(--muted); }
+    .launch-gate p + p { margin-top: 12px; }
 
     .phase { margin-top: 18px; }
 
@@ -195,6 +196,10 @@
     .task-detail { margin-top: 4px; color: var(--muted); }
 
     .sequence { margin-top: 28px; padding: 20px; }
+    .sequence details { margin-top: 16px; }
+    .sequence summary { cursor: pointer; font-weight: 700; }
+    .sequence details p { margin-top: 12px; color: var(--muted); }
+    .sequence a { color: var(--accent); overflow-wrap: anywhere; }
     ol { margin: 14px 0 0; padding-left: 24px; }
     li + li { margin-top: 6px; }
 
@@ -211,7 +216,7 @@
   <header>
     <div class="header-inner">
       <h1>Roadmap produit MyBikeLab</h1>
-      <p class="subtitle">Priorité court terme : atteindre rapidement un lancement passif, apprendre des premiers usages, puis consolider le produit et la donnée avant d'investir dans un lancement actif.</p>
+      <p class="subtitle">Priorité court terme : un soft launch public et découvrable, avec très peu de promotion active. Observer et consolider ensuite, avant le hard launch et son effort régulier de communication.</p>
       <div class="toolbar">
         <div class="progress-wrap">
           <div class="progress-meta">
@@ -229,15 +234,17 @@
 
   <main>
     <section class="summary-grid" aria-label="Synthèse">
-      <div class="metric"><strong>7</strong><span>étapes de roadmap</span></div>
-      <div class="metric"><strong>25</strong><span>chantiers validables</span></div>
+      <div class="metric"><strong id="phaseCount">7</strong><span>étapes de roadmap</span></div>
+      <div class="metric"><strong id="taskCount">40</strong><span>chantiers validables</span></div>
       <div class="metric"><strong>2</strong><span>modes de lancement</span></div>
       <div class="metric"><strong>1</strong><span>objectif : lancer tôt, apprendre vite</span></div>
     </section>
 
-    <section class="launch-gate" aria-label="Définition du lancement passif">
-      <strong>Jalon clé — lancement passif</strong>
-      <p>Le lancement passif correspond au moment où MyBikeLab devient réellement découvrable et indexable, sans effort régulier de communication. La pipeline de données pérenne n'est pas un prérequis à ce jalon.</p>
+    <section class="launch-gate" aria-label="Définition et validation du soft launch">
+      <strong>Soft launch = lancement passif public, pas bêta privée</strong>
+      <p>MyBikeLab est accessible à tous sur son adresse de référence, découvrable par les moteurs et équipé pour mesurer les usages et recevoir des retours. Une première optimisation SEO accompagne ce lancement, avec très peu de promotion active ; la communication régulière appartient au hard launch.</p>
+      <p>Le jalon est validé après les contrôles en production : domaine et HTTPS opérationnels, parcours essentiels sans blocage connu, métriques et contact testés, limites des données expliquées, puis levée volontaire du noindex temporaire et indexabilité vérifiée. Consigner la date et la version. Acheter le domaine ou déployer les fichiers ne suffit pas ; attendre des visiteurs, des revenus ou l'indexation effective n'est pas nécessaire.</p>
+      <p>Le site est déjà déployé sur GitHub Pages. Cette fenêtre organise son passage à une version publique de référence. La pipeline de données pérenne, l'auto-hébergement d'Umami et un serveur de production personnel ne sont pas des prérequis.</p>
     </section>
 
     <section class="phase" data-phase>
@@ -258,9 +265,9 @@
     <section class="phase" data-phase>
       <div class="phase-header">
         <div>
-          <div class="phase-label">Étape 1 — avant lancement passif</div>
-          <h2>Rendre le produit présentable et mesurable</h2>
-          <p class="phase-goal">Faire le minimum nécessaire pour exposer volontairement le site sans lancer une nouvelle phase de reconstruction.</p>
+          <div class="phase-label">Étape 1 — avant le soft launch</div>
+          <h2>Poursuivre la préparation, puis mettre en place le lancement</h2>
+          <p class="phase-goal">Conserver l'ordre du travail existant jusqu'au retrait de Graphify. Enchaîner ensuite sur la fenêtre de lancement avec les choix déjà actés : dépôt privé, Cloudflare Pages et Umami Cloud. Les cases suivantes valident leur mise en œuvre, pas une nouvelle sélection de fournisseurs.</p>
         </div>
         <div class="phase-progress" data-phase-progress>0 / 0</div>
       </div>
@@ -269,54 +276,70 @@
         <label class="task"><input type="checkbox" data-task="p1-functional-parity"><span><span class="task-title">Conserver les fonctionnalités du site actuel</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Qualité</span></span><span class="task-detail">Éviter les régressions fonctionnelles pendant la refonte visuelle et valider les parcours principaux sur desktop et mobile.</span></span></label>
         <label class="task"><input type="checkbox" data-task="p1-graphify-review"><span><span class="task-title">Faire une dernière review d'architecture avec Graphify</span><span class="task-meta"><span class="tag">Timebox</span><span class="tag">Architecture</span></span><span class="task-detail">Profiter une dernière fois de sa visualisation unique de la codebase pour noter les problèmes structurels utiles.</span></span></label>
         <label class="task"><input type="checkbox" data-task="p1-remove-graphify"><span><span class="task-title">Retirer Graphify après la review</span><span class="task-meta"><span class="tag">Nettoyage</span><span class="tag">Tooling</span></span><span class="task-detail">Supprimer l'outil et sa complexité une fois les observations d'architecture capturées.</span></span></label>
-        <label class="task"><input type="checkbox" data-task="p1-measure-feedback"><span><span class="task-title">Préparer mesure minimale et canal de feedback</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Apprentissage</span></span><span class="task-detail">Pouvoir observer les usages essentiels et recevoir des retours dès les premiers visiteurs.</span></span></label>
+        <div class="task" role="note"><span aria-hidden="true"></span><span><span class="task-title">Après Graphify — décisions actées, mise en œuvre à suivre</span><span class="task-meta"><span class="tag">Dépôt privé</span><span class="tag">Cloudflare Pages</span><span class="tag">Umami Cloud</span></span><span class="task-detail">Le dépôt passera en privé après validation de la migration. Le site sera hébergé sur Cloudflare Pages et la mesure sur Umami Cloud ; le portable Linux reste dédié au développement. Ces choix ne sont plus à comparer. Restent à préciser le domaine, les paramètres de mesure et de confidentialité, le contact et les garde-fous de consommation. Aucune migration ou configuration n'est réputée terminée du seul fait de ces décisions.</span></span></div>
+        <label class="task"><input type="checkbox" data-task="p1-domain-choice"><span><span class="task-title">Choisir puis réserver le domaine</span><span class="task-meta"><span class="tag">Reste à préciser</span><span class="tag">Domaine</span></span><span class="task-detail">Le nom de domaine n'est pas encore arrêté. Choisir le nom, le bureau d'enregistrement et l'adresse principale avec ou sans www. Réserver le domaine sous le contrôle du propriétaire, sécuriser l'accès et prévoir son renouvellement. Ne pas acheter de pack d'hébergement : Cloudflare Pages est déjà retenu. L'achat du domaine ne déclenche pas le soft launch.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p1-budget-guardrails"><span><span class="task-title">Fixer le budget et les garde-fous des offres gratuites</span><span class="task-meta"><span class="tag">Avant bascule</span><span class="tag">Coûts</span></span><span class="task-detail">Distinguer domaine annuel, Cloudflare Pages, GitHub Actions et Umami Cloud. Relever les limites dans les comptes, prévoir alertes et blocage des dépenses lorsque disponibles, limiter la conservation des artefacts CI. Définir le seuil justifiant une offre payante ou une migration, sans rouvrir le choix de la solution de démarrage.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p1-indexing-hold"><span><span class="task-title">Préparer le noindex temporaire avant toute nouvelle mise en ligne</span><span class="task-meta"><span class="tag">Avant déploiement</span><span class="tag">Indexation maîtrisée</span></span><span class="task-detail">Prévoir une directive noindex dans le HTML ou l'en-tête HTTP de la production pendant les tests, puis vérifier sa présence sur les adresses publiques, y compris après raccordement du domaine. Sur Cloudflare Pages, les prévisualisations portent par défaut X-Robots-Tag: noindex ; la production sur nom.pages.dev peut être indexable avant même l'achat du domaine. Ne pas bloquer l'exploration dans robots.txt : le robot doit pouvoir lire noindex. Cette directive ne protège pas l'accès au site. Vérifier aussi l'ancienne adresse GitHub encore publique, sans présumer qu'elle n'a jamais été indexée. Validation : la consigne est prévue avant le premier déploiement cible et contrôlée après publication.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p1-cloudflare-setup"><span><span class="task-title">Configurer le projet Cloudflare Pages</span><span class="task-meta"><span class="tag">Mise en œuvre</span><span class="tag">Hébergement retenu</span></span><span class="task-detail">Créer le projet sur Cloudflare Pages et autoriser l'intégration GitHub pour ce seul dépôt. Configurer la branche de production, le répertoire frontend, la commande de compilation et la publication de frontend/dist. Préparer le noindex avant le premier déploiement. Ne pas modifier encore la visibilité du dépôt ni couper GitHub Pages ; valider d'abord la nouvelle cible.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p1-deployment-preview"><span><span class="task-title">Tester le déploiement Cloudflare et préparer le retour arrière</span><span class="task-meta"><span class="tag">Avant bascule</span><span class="tag">Déploiement</span></span><span class="task-detail">Conserver les contrôles de qualité existants, tester une compilation sur une adresse de prévisualisation et identifier une version à republier en cas d'incident. Adapter le base Vite /MyBikeLabLP/ à / pour la publication à la racine de la nouvelle adresse. Ne pas publier secrets, roadmap de travail ni documents internes dans frontend/dist. Valider les ressources et la configuration noindex sur Cloudflare avant de couper l'ancien hébergement.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p1-umami-setup"><span><span class="task-title">Configurer Umami Cloud pour le lancement</span><span class="task-meta"><span class="tag">Mise en œuvre</span><span class="tag">Analytics retenus</span></span><span class="task-detail">Créer le compte et le site suivi dans Umami Cloud, avec l'offre Hobby gratuite prévue pour démarrer. Paramétrer la région et le domaine suivi ; relever les limites d'événements et de propriétés, la rétention, les exports et le comportement en cas de dépassement. Vérifier les conditions applicables dans le compte. Ne pas installer Umami sur le portable ni remettre en comparaison les autres logiciels ; passer ensuite au plan d'événements et à son intégration.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p1-measure-feedback"><span><span class="task-title">Préparer les métriques essentielles et le canal de retour</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Apprentissage</span></span><span class="task-detail">Définir et intégrer dans Umami Cloud un petit plan d'événements : visite, accès au comparateur, filtre appliqué, fiche ouverte et clic sortant, avec propriétés limitées aux besoins produit. Centraliser les envois, distinguer les tests de la production et éviter les doubles événements. Choisir un e-mail ou formulaire, puis vérifier la réception d'un retour. Un clic sortant n'est pas une vente attribuée.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p1-privacy"><span><span class="task-title">Préparer confidentialité, mentions et consentement si nécessaire</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Confidentialité</span></span><span class="task-detail">Documenter les données collectées, destinataires, durée de conservation et mode de contact ; publier les informations adaptées au site. Justifier l'exemption de consentement ou mettre en place son recueil, son refus et son retrait. Sans cookies ou auto-hébergé ne veut pas dire automatiquement exempté. Aucun enregistrement de session par défaut ; le comparateur doit rester utilisable sans analytics.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p3-seo-minimum"><span><span class="task-title">Préparer le SEO technique minimal</span><span class="task-meta"><span class="tag">Avant bascule</span><span class="tag">SEO</span></span><span class="task-detail">Préparer titres, descriptions, aperçus de partage, URL canonique et sitemap limité aux véritables pages publiques. Prévoir les règles robots et vérifier le contenu lisible par un moteur après rendu JavaScript. Ne pas inventer des URL de fiches si celles-ci n'existent que comme panneaux du comparateur. Les optimisations plus poussées peuvent suivre le lancement.</span></span></label>
       </div>
     </section>
 
     <section class="phase" data-phase>
       <div class="phase-header">
         <div>
-          <div class="phase-label">Étape 2 — juste avant lancement</div>
-          <h2>Valider la donnée au dernier moment</h2>
-          <p class="phase-goal">Limiter le risque de données obsolètes sans rendre la nouvelle pipeline bloquante.</p>
+          <div class="phase-label">Étape 2 — juste avant la bascule</div>
+          <h2>Valider la version candidate et les données</h2>
+          <p class="phase-goal">Contrôler les parcours et la fraîcheur au plus proche de la bascule, sans attendre une pipeline automatisée ni toutes les améliorations souhaitables.</p>
         </div>
         <div class="phase-progress" data-phase-progress>0 / 0</div>
       </div>
       <div class="tasks">
         <label class="task"><input type="checkbox" data-task="p2-freshness-audit"><span><span class="task-title">Faire un audit final de fraîcheur</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Données</span></span><span class="task-detail">Contrôler un échantillon représentatif au plus proche du lancement pour détecter les dérives manifestes.</span></span></label>
         <label class="task"><input type="checkbox" data-task="p2-essential-brands"><span><span class="task-title">Ajouter les marques réellement indispensables</span><span class="task-meta"><span class="tag">Couverture minimale</span><span class="tag">Catalogue</span></span><span class="task-detail">Compléter uniquement les absences qui rendraient immédiatement le comparateur peu crédible.</span></span></label>
-        <label class="task"><input type="checkbox" data-task="p2-freshness-message"><span><span class="task-title">Rendre explicites la fraîcheur et les limites des données</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Transparence</span></span><span class="task-detail">Indiquer que les données sont vérifiées périodiquement et qu'un suivi automatisé des changements est en cours de construction.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p2-freshness-message"><span><span class="task-title">Rendre explicites la fraîcheur et les limites des données</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Transparence</span></span><span class="task-detail">Afficher les dates ou limites des vérifications réellement effectuées et le caractère indicatif des prix. Ne pas promettre un suivi périodique ou automatisé qui n'existe pas encore. Validation : le visiteur comprend que le catalogue n'est pas actualisé en temps réel.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p2-release-check"><span><span class="task-title">Valider les parcours et traiter les seuls défauts bloquants</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Qualité</span></span><span class="task-detail">Exécuter les contrôles automatiques puis tester la version compilée sur ordinateur et téléphone : chargement, filtres, tri, fiches, langues, devises et liens externes. Vérifier les ressources à la nouvelle base d'URL. Aucun défaut connu ne doit empêcher le parcours principal ; consigner séparément les réserves et améliorations reportables.</span></span></label>
       </div>
     </section>
 
     <section class="phase" data-phase>
       <div class="phase-header">
         <div>
-          <div class="phase-label">Étape 3 — jalon</div>
-          <h2>Lancement passif</h2>
-          <p class="phase-goal">Rendre MyBikeLab découvrable, indexable et observable sans engager encore un effort actif de communication.</p>
+          <div class="phase-label">Étape 3 — bascule et jalon</div>
+          <h2>Mettre en production et valider le soft launch</h2>
+          <p class="phase-goal">Raccorder le domaine et tester la production sous noindex ; finaliser le passage du dépôt en privé après validation de Cloudflare. Une fois les parcours et métriques validés, lever cette consigne, vérifier l'indexabilité puis dater le lancement passif. La promotion active reste hors de cette fenêtre.</p>
         </div>
         <div class="phase-progress" data-phase-progress>0 / 0</div>
       </div>
       <div class="tasks">
-        <label class="task"><input type="checkbox" data-task="p3-domain"><span><span class="task-title">Finaliser domaine, HTTPS et URLs canoniques</span><span class="task-meta"><span class="tag">Lancement</span><span class="tag">Crédibilité</span></span><span class="task-detail">Donner au site une adresse stable et propre pour le partage et l'indexation.</span></span></label>
-        <label class="task"><input type="checkbox" data-task="p3-indexation"><span><span class="task-title">Autoriser et vérifier l'indexation</span><span class="task-meta"><span class="tag">Lancement</span><span class="tag">Découvrabilité</span></span><span class="task-detail">S'assurer que les pages utiles peuvent être découvertes par les moteurs de recherche.</span></span></label>
-        <label class="task"><input type="checkbox" data-task="p3-seo-minimum"><span><span class="task-title">Mettre en place le SEO technique minimal</span><span class="task-meta"><span class="tag">Lancement</span><span class="tag">SEO</span></span><span class="task-detail">Titres, meta descriptions, sitemap, canonical et structure d'URL suffisants pour une découverte organique initiale.</span></span></label>
-        <label class="task"><input type="checkbox" data-task="p3-analytics-live"><span><span class="task-title">Vérifier que les analytics et le feedback fonctionnent en production</span><span class="task-meta"><span class="tag">Lancement</span><span class="tag">Mesure</span></span><span class="task-detail">Le lancement passif doit commencer avec la capacité d'apprendre des premiers utilisateurs.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p3-domain"><span><span class="task-title">Raccorder le domaine, activer HTTPS et traiter les anciennes adresses</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Bascule</span></span><span class="task-detail">Après validation de la prévisualisation, déclarer le domaine chez Cloudflare Pages et configurer le DNS. Vérifier le certificat HTTPS, l'adresse principale et la redirection de sa variante www. Traiter l'ancienne adresse GitHub et les URL de prévisualisation selon les possibilités de l'hébergeur, sans promettre une redirection impossible. L'adresse canonique doit désigner le domaine final. Conserver le noindex temporaire sur la production pendant les vérifications ; raccorder le domaine n'est pas encore le soft launch.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p3-production-check"><span><span class="task-title">Rejouer les parcours sur le domaine définitif</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Production</span></span><span class="task-detail">Tester depuis un ordinateur et un téléphone, dont une connexion extérieure au réseau de développement : bonne version, HTTPS, images, navigation, rechargement, filtres, fiches et liens. Vérifier les informations de confidentialité et le comportement sans collecte. Validation : les parcours essentiels fonctionnent sur l'adresse réellement partagée.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p3-private-repo"><span><span class="task-title">Passer le dépôt en privé après validation de la migration</span><span class="task-meta"><span class="tag">Mise en œuvre</span><span class="tag">Visibilité décidée</span></span><span class="task-detail">Une fois Cloudflare et le domaine final validés, désactiver l'ancien déploiement GitHub Pages en conservant les tests automatiques, puis passer le dépôt en privé. Vérifier les droits de l'intégration Cloudflare et réussir un nouveau déploiement depuis le dépôt privé, toujours sous noindex. Mettre à jour les liens partagés ; ne pas compter sur l'ancienne adresse GitHub pour une redirection pérenne. Respecter les licences et droits existants. Cocher après exécution et vérification, pas au seul accord sur la visibilité.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p3-analytics-live"><span><span class="task-title">Vérifier les métriques et le contact en production</span><span class="task-meta"><span class="tag">Bloquant</span><span class="tag">Mesure</span></span><span class="task-detail">Réaliser une visite, appliquer un filtre, ouvrir une fiche puis cliquer un lien externe : retrouver les événements attendus une seule fois dans le tableau de bord. Distinguer ces essais du trafic réel. Envoyer un message par le canal de retour et confirmer sa réception ; vérifier le refus de collecte lorsque pertinent.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p3-indexation"><span><span class="task-title">Lever le noindex de production et vérifier l'indexabilité</span><span class="task-meta"><span class="tag">Déclenchement</span><span class="tag">Bloquant</span></span><span class="task-detail">Après validation des parcours, métriques, contact et autres prérequis, retirer volontairement le noindex temporaire de la production et publier la configuration de lancement. Sur le domaine final, vérifier le HTML et les en-têtes HTTP réellement servis, l'absence de noindex résiduel, les réponses HTTP, robots.txt, les URL canoniques et le contenu rendu accessible au moteur. Maintenir les prévisualisations en noindex ; rediriger l'adresse de production nom.pages.dev vers le domaine final ou lui réserver un noindex propre à cet hôte, sans bloquer le domaine final. Validation : les pages publiques de référence sont techniquement indexables ; leur présence effective dans Google n'est pas attendue pour cocher.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p3-launch-record"><span><span class="task-title">Valider et dater le soft launch</span><span class="task-meta"><span class="tag">Jalon</span><span class="tag">Validation explicite</span></span><span class="task-detail">Après validation des prérequis bloquants : domaine/HTTPS, parcours, données et transparence, confidentialité, métriques et contact, puis retrait du noindex de production et contrôle d'indexabilité. Consigner la date, le commit publié et les réserves acceptées dans une note de lancement. Ne pas cocher au seul achat du domaine ou au seul déploiement. Aucun seuil de visiteurs, revenu ou indexation effective n'est requis.</span></span></label>
       </div>
     </section>
 
     <section class="phase" data-phase>
       <div class="phase-header">
         <div>
-          <div class="phase-label">Étape 4 — phase passive</div>
-          <h2>Consolider le produit et la maintenance des données</h2>
-          <p class="phase-goal">Profiter d'un site déjà public pour améliorer le fond sans subir encore le coût d'une communication régulière.</p>
+          <div class="phase-label">Étape 4 — juste après, puis phase passive</div>
+          <h2>Observer le lancement, puis consolider le produit et les données</h2>
+          <p class="phase-goal">Commencer par les vérifications de production, d'indexation et de consommation. Améliorer ensuite le fond, avec très peu de promotion active et sans conclure trop tôt à partir d'un faible trafic.</p>
         </div>
         <div class="phase-progress" data-phase-progress>0 / 0</div>
       </div>
       <div class="tasks">
-        <label class="task"><input type="checkbox" data-task="p4-observe"><span><span class="task-title">Observer usages et premiers retours</span><span class="task-meta"><span class="tag">Apprentissage</span><span class="tag">Produit</span></span><span class="task-detail">Utiliser les données réelles pour orienter les prochains investissements UX et contenu.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p4-search-console"><span><span class="task-title">Vérifier avec Search Console, demander puis suivre l'indexation</span><span class="task-meta"><span class="tag">Après levée du noindex</span><span class="tag">SEO</span></span><span class="task-detail">Vérifier la propriété du domaine si nécessaire, tester les URL en direct dans Search Console après retrait du noindex, soumettre le sitemap et demander l'indexation des URL pertinentes. Suivre ensuite la découverte, le rendu et l'indexation effective ; corriger les obstacles constatés. Indexable signifie admissible à l'indexation, pas déjà présent dans les résultats : une demande n'assure pas l'indexation et n'en fixe pas le délai.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p4-stabilize"><span><span class="task-title">Surveiller les premiers incidents et stabiliser</span><span class="task-meta"><span class="tag">Après lancement</span><span class="tag">Fiabilité</span></span><span class="task-detail">Vérifier disponibilité, réception des métriques et du contact, erreurs signalées et liens cassés. Corriger en priorité les blocages ; utiliser la version de retour arrière si nécessaire. Choisir la cadence de contrôle initiale et consigner les incidents utiles au premier bilan.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p4-usage-costs"><span><span class="task-title">Contrôler les quotas et conserver les métriques utiles</span><span class="task-meta"><span class="tag">Après lancement</span><span class="tag">Coûts et données</span></span><span class="task-detail">Comparer l'usage réel aux limites de Cloudflare Pages, de GitHub Actions et d'Umami Cloud, y compris les propriétés d'événements. Tester un export avant expiration de l'historique. Réexaminer une offre payante ou une migration seulement si les limites, les besoins ou l'exploitation le justifient.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p4-seo-pass"><span><span class="task-title">Faire une première passe SEO ciblée</span><span class="task-meta"><span class="tag">Après lancement</span><span class="tag">Optimisation</span></span><span class="task-detail">À partir de Search Console et des contrôles réels, améliorer titres, descriptions, contenu accessible, performances et liens internes pertinents. Garder ce chantier limité ; l'optimisation SEO initiale n'implique pas une campagne de promotion ni un lancement actif.</span></span></label>
+        <label class="task"><input type="checkbox" data-task="p4-observe"><span><span class="task-title">Faire un premier bilan des usages et retours</span><span class="task-meta"><span class="tag">Apprentissage</span><span class="tag">Produit</span></span><span class="task-detail">Examiner acquisition, usage des filtres, fiches consultées et clics sortants, ainsi que les retours reçus. Fixer un premier point de revue et en tirer des priorités, sans seuil de trafic imposé. Si le volume est trop faible, consigner le manque de données plutôt que conclure à un désintérêt du produit.</span></span></label>
         <label class="task"><input type="checkbox" data-task="p4-normalize-storage"><span><span class="task-title">Revoir la normalisation du format de stockage</span><span class="task-meta"><span class="tag">Priorité haute</span><span class="tag">Données</span></span><span class="task-detail">Stabiliser le modèle de données avant de rendre la nouvelle pipeline plus complexe.</span></span></label>
         <label class="task"><input type="checkbox" data-task="p4-acquisition-cost"><span><span class="task-title">Consolider la pipeline d'acquisition optimisée en coût</span><span class="task-meta"><span class="tag">En cours</span><span class="tag">Pipeline</span></span><span class="task-detail">Capitaliser sur le travail actuel, déjà utilisable, puis l'adapter au nouveau format de stockage.</span></span></label>
         <label class="task"><input type="checkbox" data-task="p4-change-detection"><span><span class="task-title">Ajouter détection des changements et alertes</span><span class="task-meta"><span class="tag">Cible</span><span class="tag">Fraîcheur</span></span><span class="task-detail">Être alerté lorsque les sources sous-jacentes évoluent au lieu de dépendre d'une acquisition ponctuelle.</span></span></label>
@@ -327,8 +350,8 @@
     <section class="phase" data-phase>
       <div class="phase-header">
         <div>
-          <div class="phase-label">Étape 5 — deuxième jalon</div>
-          <h2>Préparer puis déclencher le lancement actif</h2>
+          <div class="phase-label">Étape 5 — hard launch, deuxième jalon</div>
+          <h2>Préparer puis déclencher le hard launch</h2>
           <p class="phase-goal">Commencer l'acquisition volontaire lorsque le coût de communication ne menace plus les chantiers de fond les plus importants.</p>
         </div>
         <div class="phase-progress" data-phase-progress>0 / 0</div>
@@ -357,17 +380,26 @@
     </section>
 
     <section class="sequence">
-      <h2>Ordre recommandé</h2>
+      <h2>Ordre recommandé autour du lancement</h2>
       <ol>
-        <li>Implémenter la nouvelle direction visuelle sans régression fonctionnelle.</li>
-        <li>Faire la dernière review Graphify, documenter les conclusions puis retirer l'outil.</li>
-        <li>Préparer analytics et feedback.</li>
-        <li>Au plus proche du lancement : audit de fraîcheur, marques indispensables et message de transparence.</li>
-        <li>Déclencher le lancement passif en rendant le site réellement découvrable et indexable.</li>
-        <li>Pendant la phase passive : normaliser le stockage puis consolider la pipeline avec détection des changements.</li>
-        <li>Utiliser les premiers usages pour choisir les enrichissements réellement utiles.</li>
-        <li>Déclencher le lancement actif seulement quand le produit, la donnée et la capacité de maintenance le permettent.</li>
+        <li>Conserver l'ordre du travail existant : direction visuelle, parité fonctionnelle, review Graphify, puis retrait de Graphify.</li>
+        <li>Après « Retirer Graphify après la review », engager la fenêtre de lancement : réserver le domaine et appliquer les choix actés — dépôt privé, Cloudflare Pages et Umami Cloud.</li>
+        <li>Préparer le noindex avant le premier déploiement Cloudflare ; tester la publication et le retour arrière, configurer Umami Cloud, la mesure, le contact, la confidentialité et le SEO minimal.</li>
+        <li>Juste avant la bascule : vérifier la version candidate, les données et leurs limites ; traiter les défauts bloquants.</li>
+        <li>Raccorder le domaine et HTTPS en conservant noindex ; valider le vrai site sur Cloudflare, désactiver l'ancien déploiement Pages puis passer le dépôt en privé. Vérifier un nouveau déploiement, les métriques et la réception des retours.</li>
+        <li>Une fois les contrôles validés, retirer le noindex de production, vérifier l'indexabilité sur le domaine final puis dater le soft launch. Les prévisualisations restent exclues de l'indexation.</li>
+        <li>Juste après : inspection en direct dans Search Console, demande et suivi de l'indexation sans attendre sa réalisation ; incidents, quotas et première passe SEO limitée. Très peu de promotion active.</li>
+        <li>Pendant la phase passive : bilan d'usage, normalisation du stockage et consolidation de la pipeline selon les priorités réelles.</li>
+        <li>Décider séparément du hard launch : engager alors l'effort régulier de communication et d'acquisition.</li>
       </ol>
+      <details>
+        <summary>Repères pour la mise en œuvre — sources vérifiées le 15 septembre 2026</summary>
+        <p>Les choix de démarrage sont actés : dépôt privé, Cloudflare Pages et Umami Cloud. Reconfirmer les conditions et régler les paramètres dans les comptes avant mise en service, sans relancer la comparaison des fournisseurs. Les cases suivent l'avancement local dans ce navigateur ; elles ne constituent pas un journal partagé. Les anciennes cases de sélection sont remplacées par de nouveaux identifiants de mise en œuvre pour ne pas confondre décision prise et opération effectuée ; les autres états de progression sont conservés.</p>
+        <p><a href="https://docs.github.com/en/get-started/learning-about-github/githubs-plans">GitHub Free</a> autorise les dépôts privés illimités. <a href="https://docs.github.com/en/billing/concepts/product-billing/github-actions">GitHub Actions</a> inclut 2 000 minutes mensuelles sur les exécuteurs standard et 500 Mo de stockage d'artefacts mutualisés avec GitHub Packages, au niveau du compte. <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits">Pages</a> exige une offre adaptée pour un dépôt privé et comporte des restrictions commerciales. <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository">Visibilité et licence</a> sont deux décisions distinctes.</p>
+        <p>Hébergement retenu : <a href="https://developers.cloudflare.com/pages/platform/limits/">Cloudflare Pages Free</a> (500 compilations/mois). Le domaine reste un achat distinct. Le portable Linux n'est pas prévu comme serveur de production ; l'auto-hébergement des analytics est reporté et ne bloque pas le lancement.</p>
+        <p>Mesure retenue : <a href="https://docs.umami.is/docs/cloud/faq">Umami Cloud</a>, en démarrant avec Hobby. Les propriétés des événements consomment aussi le quota. Relever les limites de conservation, exports et conditions d'usage dans le compte. La <a href="https://www.cnil.fr/fr/cookies-solutions-pour-les-outils-de-mesure-daudience">CNIL</a> détaille les conditions de l'exemption de consentement. <a href="https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl">Google</a> distingue demande d'exploration et indexation effective.</p>
+        <p>Indexation : <a href="https://developers.cloudflare.com/pages/configuration/preview-deployments/">Cloudflare Pages</a> ajoute par défaut X-Robots-Tag: noindex aux prévisualisations, pas à la production nom.pages.dev. Le <a href="https://developers.google.com/search/docs/crawling-indexing/block-indexing">noindex documenté par Google</a> doit être lisible par les robots : ne pas le combiner avec un blocage d'exploration dans robots.txt. Ce mécanisme n'est pas une protection d'accès. Retirer la consigne sur le domaine final au soft launch rend les pages admissibles, sans garantir leur indexation.</p>
+      </details>
     </section>
   </main>
 
@@ -398,6 +430,8 @@
     function renderProgress() {
       const done = checkboxes.filter((box) => box.checked).length;
       const total = checkboxes.length;
+      document.getElementById("taskCount").textContent = total;
+      document.getElementById("phaseCount").textContent = document.querySelectorAll("[data-phase]").length;
       const pct = total === 0 ? 0 : Math.round((done / total) * 100);
 
       progressText.textContent = `${done} / ${total} tâches validées`;
