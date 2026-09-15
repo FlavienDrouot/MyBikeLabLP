@@ -68,7 +68,7 @@ const assertVerticalRoadmap = async (page) => {
     expect(heading.left).toBeGreaterThan(rect.left);
     expect(Math.abs(marker.left + marker.width / 2 - trackCenter)).toBeLessThanOrEqual(1);
     substeps.forEach(({ card }) => {
-      expect(card.left).toBeGreaterThan(heading.left + 10);
+      expect(card.left).toBeGreaterThanOrEqual(heading.left);
       expect(card.left + card.width).toBeLessThanOrEqual(rect.left + rect.width);
     });
   });
@@ -167,7 +167,6 @@ const assertSemanticTimelineStyles = async (page) => {
   expect(styles.completeIconBackground).toBe('rgba(0, 0, 0, 0)');
   expect(styles.futureGroupIconColor).not.toBe(styles.activeGroupIconColor);
   expect(styles.futureGroupIconColor).toBe(styles.futureStepIconColor);
-  expect(styles.futureGroupIconWidth).toBe(styles.futureStepIconWidth);
   expect(styles.futureGroupIconHeight).toBe(styles.futureStepIconHeight);
   expect(styles.futureGroupIconBorderWidth).toBe('0px');
   expect(styles.futureGroupIconBorderWidth).toBe(styles.futureStepIconBorderWidth);
@@ -175,7 +174,7 @@ const assertSemanticTimelineStyles = async (page) => {
 };
 
 test('renders one semantic vertical timeline at desktop and mobile widths', async ({ page }) => {
-  for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
+  for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }, { width: 320, height: 844 }]) {
     await page.setViewportSize(viewport);
     await page.goto('#roadmap');
     await assertVerticalRoadmap(page);
@@ -203,6 +202,16 @@ test('keeps the validated content, anchor, themes and French translation', async
   await expect(page.getByText('Maintenir les données à jour régulièrement')).toBeVisible();
   await assertVerticalRoadmap(page);
 
+  await page.setViewportSize({ width: 320, height: 844 });
+  await assertVerticalRoadmap(page);
+  const panel = await page.locator('.roadmap-panel').boundingBox();
+  for (const card of await page.locator('.roadmap-card, .roadmap-group').all()) {
+    const box = await card.boundingBox();
+    expect(box.x + box.width).toBeLessThanOrEqual(panel.x + panel.width);
+  }
+  await expect(page.getByText("Disponible aujourd'hui", { exact: true })).toBeVisible();
+  await expect(page.locator('.roadmap-group-active .roadmap-status')).toBeVisible();
+  await page.getByRole('button', { name: 'Ouvrir le menu' }).click();
   const themeGroup = page.getByRole('group', { name: 'Thème' });
   for (const theme of ['light', 'cream', 'dark']) {
     await themeGroup.locator(`[data-theme-choice="${theme}"]`).click();

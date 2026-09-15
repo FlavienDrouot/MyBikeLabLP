@@ -12,7 +12,8 @@ describe('BenefitsGrid', () => {
     expect(html).toContain('Information in one place');
     expect(html).toContain('Specs you can compare');
     expect(html).toContain('Your feedback helps improve MyBikeLab');
-    expect(html).toContain('viewBox="0 0 780 390"');
+    expect(html.match(/<dt>/g)).toHaveLength(4);
+    expect(html.match(/<dd>/g)).toHaveLength(4);
     expect(html).toContain('external rim width');
     expect(html).toContain('35 mm');
     expect(html).toContain('The dimensions shown are an example.');

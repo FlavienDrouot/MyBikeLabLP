@@ -1,7 +1,7 @@
 /* ============================================================================
    MyBikeLab - Wave 5 theme foundations
    ----------------------------------------------------------------------------
-   Wave 5 uses three exact semantic palettes, Schibsted Grotesk for the
+   Wave 5 uses three semantic palettes, Schibsted Grotesk for the
    interface, and Fragment Mono for measured values.
    ============================================================================ */
 
@@ -19,11 +19,14 @@
 
   --ink:          #101722;
   --ink-secondary: #4d5b6d;
-  --muted:        #718096;
+  --muted:        #5f6d80;
   --line:         #d8e1eb;
   --line-2:       #e8edf3;
 
   --accent:       #2f64a9;
+  --accent-text:  #2f64a9;
+  --accent-action: #2f64a9;
+  --border-input: #7b899b;
   --accent-muted: #719bca;
   --accent-wash:  #edf4fb;
   --decoration:   #91b1d4;
@@ -64,10 +67,10 @@
   --border-default: var(--line);
   --border-subtle: var(--line-2);
   --border-strong: var(--ink);
-  --border-focus: var(--accent);
-  --fg-accent: var(--accent);
+  --border-focus: var(--accent-text);
+  --fg-accent: var(--accent-text);
   --fg-link: var(--ink);
-  --fg-link-hover: var(--accent);
+  --fg-link-hover: var(--accent-text);
 
   --bg-page: var(--surface-page);
   --bg-elevated: var(--surface-panel);
@@ -220,7 +223,7 @@
   --navbar-height: 5rem;
 }
 
-/* The three palettes below are the exact Wave 5 reference translations.
+/* The three palettes retain the Wave 5 surfaces and decorative accents.
    Production components consume only the semantic aliases above, so theme
    changes do not require a second DOM or layout. */
 [data-theme='cream'] {
@@ -232,11 +235,14 @@
 
   --ink:          #181a1d;
   --ink-secondary: #5d574f;
-  --muted:        #81776a;
+  --muted:        #6d6256;
   --line:         #dfd3c2;
   --line-2:       #eee5d9;
 
   --accent:       #b18743;
+  --accent-text:  #805c29;
+  --accent-action: #805c29;
+  --border-input: #928271;
   --accent-muted: #c8a76e;
   --accent-wash:  #f6ecdc;
   --decoration:   #d0b07a;
@@ -266,6 +272,9 @@
   --line-2:       #2c3238;
 
   --accent:       #7da9d6;
+  --accent-text:  #7da9d6;
+  --accent-action: #7da9d6;
+  --border-input: #798593;
   --accent-muted: #5e84aa;
   --accent-wash:  rgba(125, 169, 214, 0.13);
   --decoration:   #6788aa;

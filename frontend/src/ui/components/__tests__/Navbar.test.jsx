@@ -189,7 +189,7 @@ describe('Navbar currency selector (EVO-046)', () => {
     const group = currencyGroup();
     expect(group).not.toBeNull();
     const buttons = Array.from(group.querySelectorAll('button'));
-    expect(buttons.map((b) => b.textContent)).toEqual(['€', '$']);
+    expect(buttons.map((b) => b.querySelector('.currency-symbol').textContent)).toEqual(['€', '$']);
     expect(buttons[0].getAttribute('aria-pressed')).toBe('true');
     expect(buttons[1].getAttribute('aria-pressed')).toBe('false');
   });
@@ -198,7 +198,7 @@ describe('Navbar currency selector (EVO-046)', () => {
     const store = makeStore();
     mount(store);
     const usdButton = Array.from(currencyGroup().querySelectorAll('button')).find(
-      (b) => b.textContent === '$',
+      (b) => b.querySelector('.currency-symbol').textContent === '$',
     );
     act(() => {
       usdButton.dispatchEvent(new MouseEvent('click', { bubbles: true }));
