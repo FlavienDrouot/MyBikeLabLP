@@ -58,3 +58,32 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 - **Column visibility** = local state in `MiniComparator`; filter/sort = Redux global state
 - **Design tokens**: use `src/ui/styles/design-tokens.css`; add shared classes to `src/ui/styles/index.css`. Consult `TASTE-PROFILE.md` for visual direction.
 - **Browser translation policy**: English remains browser-translatable; non-English locales synchronize the document `lang` and protect the application with the document translation markers in `src/ui/lib/documentLanguage.js`
+
+## Landing readability and responsive controls
+
+- The rim drawing uses numbered SVG markers next to each measurement, joined by
+  straight leaders, with a matching HTML definition list.
+  Legend text keeps its CSS font size independently of the drawing scale; the
+  legend sits below the drawing at widths up to 720px.
+- Up to 1080px, language and menu controls stay in the header. Currency and theme
+  controls move into its scrollable disclosure, with EUR/USD currency codes,
+  translated theme labels and 44px minimum targets. In this disclosure, currency
+  and theme controls share their typography, spacing, radii and selected styling.
+  Currency buttons retain
+  their translated accessible names. The same controls stay mounted across breakpoints to
+  preserve selection state. Escape closes the disclosure and returns focus to
+  its toggle; Tab enters the menu after opening it. When focus leaves the
+  header, the disclosure closes without moving focus, keeping the next page
+  control unobscured.
+- The mobile roadmap retains its groups, cards and shared timeline axis, with
+  reduced horizontal insets. Available and next-step statuses are visible at
+  the corresponding milestone/group; other status labels remain available to
+  assistive technology.
+- Theme tokens distinguish decorative `--accent`, text `--accent-text`, filled
+  action `--accent-action`, and field `--border-input` colors. Generic panel
+  borders remain separate. Muted text and focus aliases are shared with the
+  comparator, so palette changes require checking that surface too.
+
+Readability checks cover French/English at 320, 390, 768 and 1440px. Browser
+checks protect legend visibility, containment and mobile keyboard access;
+visual review remains necessary for composition and contrast.

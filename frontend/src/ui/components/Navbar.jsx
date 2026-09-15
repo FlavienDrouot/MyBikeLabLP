@@ -46,7 +46,8 @@ const CurrencyToggle = () => {
                 : ''
             }`}
           >
-            {CURRENCY_SYMBOLS[code] ?? code}
+            <span className="currency-symbol">{CURRENCY_SYMBOLS[code] ?? code}</span>
+            <span className="currency-name">{code}</span>
           </button>
         );
       })}
@@ -131,6 +132,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
   const close = () => setIsOpen(false);
 
@@ -182,6 +184,17 @@ const Navbar = () => {
   return (
     <header
       ref={headerRef}
+      onBlur={(event) => {
+        if (isOpen && !event.currentTarget.contains(event.relatedTarget)) {
+          close();
+        }
+      }}
+      onKeyDown={(event) => {
+        if (event.key === 'Escape' && isOpen) {
+          close();
+          menuButtonRef.current?.focus();
+        }
+      }}
       className={`site-header${isScrolled ? ' scrolled' : ''}`}
     >
       <div className="container-page header-inner">
@@ -198,10 +211,9 @@ const Navbar = () => {
         </nav>
         <div className="header-meta">
           <LanguageToggle />
-          <CurrencyToggle />
-          <ThemeToggle />
           <button
             type="button"
+            ref={menuButtonRef}
             onClick={() => setIsOpen((v) => !v)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
@@ -214,19 +226,27 @@ const Navbar = () => {
               <Icon as={Menu} size={20} aria-hidden="true" />
             )}
           </button>
+          <div id="mobile-menu" className={`header-menu${isOpen ? ' is-open' : ''}`}>
+            <nav className="mobile-menu-nav" aria-label={t('nav.mobileLabel')}>
+              {NAV_LINKS.map(({ href, translationKey }) => (
+                <a key={href} href={href} onClick={close} className="mobile-menu-link">
+                  {t(translationKey)}
+                </a>
+              ))}
+            </nav>
+            <div className="header-settings">
+              <div className="header-setting">
+                <span className="setting-label" aria-hidden="true">{t('nav.currency')}</span>
+                <CurrencyToggle />
+              </div>
+              <div className="header-setting">
+                <span className="setting-label" aria-hidden="true">{t('nav.theme')}</span>
+                <ThemeToggle />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      {isOpen && (
-        <div id="mobile-menu" className="mobile-menu">
-          <nav className="container-page mobile-menu-nav" aria-label={t('nav.mobileLabel')}>
-            {NAV_LINKS.map(({ href, translationKey }) => (
-              <a key={href} href={href} onClick={close} className="mobile-menu-link">
-                {t(translationKey)}
-              </a>
-            ))}
-          </nav>
-        </div>
-      )}
     </header>
   );
 };

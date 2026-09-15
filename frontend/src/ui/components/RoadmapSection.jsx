@@ -76,7 +76,7 @@ const RoadmapItem = ({ item, substep = false, stateLabel }) => {
         aria-hidden="true"
       />
       <article className="roadmap-card">
-        <span className="sr-only">{stateLabel}</span>
+        <span className={!substep && state === 'complete' ? 'roadmap-status' : 'sr-only'}>{stateLabel}</span>
         <div className="roadmap-card-heading">
           <span className="roadmap-card-icon" aria-hidden="true">
             <RoadmapIcon itemId={item.id} />
@@ -105,7 +105,7 @@ const RoadmapGroup = ({ item, stateLabels }) => {
           data-roadmap-marker
           aria-hidden="true"
         />
-        <span className="sr-only">{stateLabels[state]}</span>
+        <span className={state === 'active' ? 'roadmap-status' : 'sr-only'}>{stateLabels[state]}</span>
         <span className="roadmap-group-icon" aria-hidden="true">
           <RoadmapIcon itemId={item.id} />
         </span>
