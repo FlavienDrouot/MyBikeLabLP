@@ -67,7 +67,9 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
   legend sits below the drawing at widths up to 720px.
 - Up to 1080px, language and menu controls stay in the header. Currency and theme
   controls move into its scrollable disclosure, with EUR/USD currency codes,
-  translated theme labels and 44px minimum targets. Currency buttons retain
+  translated theme labels and 44px minimum targets. In this disclosure, currency
+  and theme controls share their typography, spacing, radii and selected styling.
+  Currency buttons retain
   their translated accessible names. The same controls stay mounted across breakpoints to
   preserve selection state. Escape closes the disclosure and returns focus to
   its toggle; Tab enters the menu after opening it.
