@@ -81,7 +81,13 @@ export const UI_COLUMNS = {
   image: column('px-4 py-3 font-semibold', 'px-2 py-2', {
     renderCell: (w) => (
       <img
-        src={w.images?.[0] ?? wheelPlaceholderUrl}
+        key={w.images?.[0] || wheelPlaceholderUrl}
+        src={w.images?.[0] || wheelPlaceholderUrl}
+        onError={({ currentTarget }) => {
+          if (currentTarget.getAttribute('src') !== wheelPlaceholderUrl) {
+            currentTarget.src = wheelPlaceholderUrl;
+          }
+        }}
         alt={w.model}
         className="w-16 h-16 object-contain rounded"
       />

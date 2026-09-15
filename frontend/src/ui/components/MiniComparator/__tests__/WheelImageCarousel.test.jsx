@@ -56,6 +56,51 @@ describe('WheelImageCarousel', () => {
     expect(container.querySelector('[aria-label^="Show image"]')).toBeNull();
   });
 
+  it('removes failed images while keeping the selected valid image and navigation', () => {
+    renderCarousel({ ...baseWheel, images: ['a.png', 'b.png', 'c.png', 'd.png'] });
+    act(() => {
+      container.querySelector('[aria-label="Show image 3"]').click();
+    });
+    act(() => {
+      container.querySelector('img[src="a.png"]').dispatchEvent(new Event('error'));
+      container.querySelector('img[src="b.png"]').dispatchEvent(new Event('error'));
+    });
+
+    expect([...container.querySelectorAll('img')].map(img => img.getAttribute('src')))
+      .toEqual(['c.png', 'd.png']);
+    expect(container.querySelector('[data-testid="wheel-schematic"]')).toBeNull();
+    expect(container.querySelector('[aria-label="Image 1 of 2"]')).not.toBeNull();
+    expect(container.querySelector('[aria-label="Previous image"]').disabled).toBe(true);
+    act(() => {
+      container.querySelector('[aria-label="Next image"]').click();
+    });
+    expect(container.querySelector('[aria-label="Image 2 of 2"]')).not.toBeNull();
+    expect(container.querySelector('[aria-label="Next image"]').disabled).toBe(true);
+  });
+
+  it('recovers from a failed active image and shows the schematic only when all fail', () => {
+    renderCarousel({ ...baseWheel, images: ['a.png', 'b.png', 'c.png'] });
+    act(() => {
+      container.querySelector('[aria-label="Show image 3"]').click();
+    });
+    act(() => {
+      container.querySelector('img[src="c.png"]').dispatchEvent(new Event('error'));
+    });
+    expect(container.querySelector('[aria-label="Image 1 of 2"]')).not.toBeNull();
+    act(() => {
+      container.querySelector('img[src="a.png"]').dispatchEvent(new Event('error'));
+    });
+    expect(container.querySelectorAll('img')).toHaveLength(1);
+    expect(container.querySelector('[data-testid="wheel-schematic"]')).toBeNull();
+    expect(container.querySelector('[aria-label="Next image"]')).toBeNull();
+    act(() => {
+      container.querySelector('img').dispatchEvent(new Event('error'));
+    });
+    expect(container.querySelectorAll('img')).toHaveLength(0);
+    expect(container.querySelector('[data-testid="wheel-schematic"]')).not.toBeNull();
+    expect(container.querySelector('[aria-label^="Image "]')).toBeNull();
+  });
+
   it('does not render previous or next controls for a single image', () => {
     renderCarousel({ ...baseWheel, images: ['a.png'] });
 

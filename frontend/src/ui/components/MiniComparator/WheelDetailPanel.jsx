@@ -119,7 +119,7 @@ const WheelDetailPanel = ({ wheel, panelWidth }) => {
       <div className={`comparator-detail-layout mx-auto grid max-w-[1100px] items-start gap-12 ${isStacked ? 'grid-cols-1' : 'grid-cols-[380px_minmax(0,1fr)]'}`}>
         <div className="comparator-detail-plate mb-5 self-start">
           <div data-testid="wheel-detail-plate-image" className="comparator-detail-image h-[340px] p-6 text-content-secondary">
-            <WheelImageCarousel wheel={wheel} />
+            <WheelImageCarousel key={wheel.id} wheel={wheel} />
           </div>
         </div>
 

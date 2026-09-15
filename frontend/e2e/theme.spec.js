@@ -13,6 +13,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('switches between the three Wave 5 themes and restores the choice', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light' });
   await page.goto('#top');
 
   const themeGroup = page.getByRole('group', { name: 'Theme' });
@@ -43,4 +44,20 @@ test('switches between the three Wave 5 themes and restores the choice', async (
   await page.reload();
   await expect(html).toHaveAttribute('data-theme', 'dark');
   await expect(themeGroup.getByRole('button', { name: 'Dark' })).toHaveAttribute('aria-pressed', 'true');
+});
+
+test('starts in browser Dark and retains an explicit Light choice after reload', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.goto('#top');
+
+  const html = page.locator('html');
+  const themeGroup = page.getByRole('group', { name: 'Theme' });
+  await expect(html).toHaveAttribute('data-theme', 'dark');
+  await expect(themeGroup.getByRole('button', { name: 'Dark' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('body')).toHaveCSS('background-color', THEME_COLORS.dark);
+
+  await themeGroup.getByRole('button', { name: 'Light', exact: true }).click();
+  await page.reload();
+  await expect(html).toHaveAttribute('data-theme', 'light');
+  await expect(themeGroup.getByRole('button', { name: 'Light', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });

@@ -12,10 +12,15 @@ export const getStoredTheme = () => {
 
   try {
     const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-    return isTheme(storedTheme) ? storedTheme : DEFAULT_THEME;
+    if (isTheme(storedTheme)) return storedTheme;
   } catch {
-    return DEFAULT_THEME;
+    // The browser preference still applies when storage is unavailable.
   }
+
+  return typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : DEFAULT_THEME;
 };
 
 export const getCurrentTheme = () => {
