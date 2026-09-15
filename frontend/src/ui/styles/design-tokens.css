@@ -314,7 +314,7 @@
 .rule-faint { border-top-color: var(--rule-faint); }
 .rule-double { border: 0; border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-default); height: 4px; }
 
-::selection { background: var(--accent-wash); color: var(--content-primary); }
+::selection { background: var(--accent-text); color: var(--surface-panel); }
 :focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; }
 
 @media (prefers-reduced-motion: reduce) {

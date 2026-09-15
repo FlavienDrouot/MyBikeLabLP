@@ -94,6 +94,10 @@ translated accessible name identifying its property and minimum/maximum bound.
   action `--accent-action`, and field `--border-input` colors. Generic panel
   borders remain separate. Muted text and focus aliases are shared with the
   comparator, so palette changes require checking that surface too.
+- Text selection uses the theme's contrasting accent text color as its
+  background and panel color for selected characters, including inside inputs.
+  Keep this shared rule in `design-tokens.css` so selection remains visible
+  against field backgrounds in all three themes.
 
 Readability checks cover French/English at 320, 390, 768 and 1440px. Browser
 checks protect legend visibility, containment and mobile keyboard access;
