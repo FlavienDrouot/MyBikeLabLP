@@ -59,15 +59,19 @@ const WheelSchematic = () => {
 };
 
 const WheelImageCarousel = ({ wheel }) => {
-  const slides = Array.isArray(wheel.images) ? wheel.images.filter(Boolean) : [];
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [failedImages, setFailedImages] = useState([]);
+  const [activeSlide, setActiveSlide] = useState(null);
+  const slides = Array.isArray(wheel.images)
+    ? wheel.images.filter(slide => slide && !failedImages.includes(slide))
+    : [];
+  const activeIndex = Math.max(0, slides.indexOf(activeSlide));
 
   const hasMultipleSlides = slides.length > 1;
   const translateX = `translateX(-${(activeIndex * 100) / Math.max(slides.length, 1)}%)`;
 
-  const handlePrev = () => setActiveIndex(i => Math.max(0, i - 1));
-  const handleNext = () => setActiveIndex(i => Math.min(slides.length - 1, i + 1));
-  const handleSelect = (index) => setActiveIndex(index);
+  const handlePrev = () => setActiveSlide(slides[Math.max(0, activeIndex - 1)]);
+  const handleNext = () => setActiveSlide(slides[Math.min(slides.length - 1, activeIndex + 1)]);
+  const handleSelect = (index) => setActiveSlide(slides[index]);
 
   return (
     <div className="flex h-full min-h-[220px] w-full flex-col">
@@ -117,6 +121,7 @@ const WheelImageCarousel = ({ wheel }) => {
                 >
                   <img
                     src={slide}
+                    onError={() => setFailedImages(failed => [...failed, slide])}
                     alt={`${wheel.brand} ${wheel.model}`}
                     style={{
                       width: '100%',

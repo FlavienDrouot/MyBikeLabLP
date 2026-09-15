@@ -72,6 +72,16 @@ translated accessible name identifying its property and minimum/maximum bound.
 
 ## Landing readability and responsive controls
 
+- At page load, a saved Light/Cream/Dark choice takes precedence. Otherwise,
+  the browser's `prefers-color-scheme: dark` preference selects Dark, with Light
+  as the fallback. Automatic selection is not saved as an explicit choice;
+  system preference changes take effect on the next load.
+- Missing or failed comparator thumbnails use the local wheel placeholder.
+  The detail carousel removes failed images and updates its controls/count,
+  preserving the selected image when it remains available. If it fails,
+  selection returns to the first remaining image. The existing wheel schematic
+  appears only when no images remain; it is never inserted among valid images.
+
 - The rim drawing uses numbered SVG markers next to each measurement, joined by
   straight leaders, with a matching HTML definition list.
   Legend text keeps its CSS font size independently of the drawing scale; the
