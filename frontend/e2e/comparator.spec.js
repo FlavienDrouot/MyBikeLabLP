@@ -74,6 +74,86 @@ const focusWithVisibleRing = async (locator) => {
 };
 
 test.describe('Chromium P0 comparator journeys', () => {
+  test('edits range digits before committing on Enter or blur', async ({ page }) => {
+    await goToComparator(page);
+    const filters = await openGeneralFilters(page);
+    const low = filters.getByRole('spinbutton', { name: 'Weight minimum', exact: true });
+    const high = filters.getByRole('spinbutton', { name: 'Weight maximum', exact: true });
+    const summary = page.getByRole('heading', { name: /^Wheels\s+—/ });
+    const initialSummary = await summary.textContent();
+    const initialHigh = await high.inputValue();
+
+    await expect(low).toHaveValue('880');
+    await low.focus();
+    await low.press('End');
+    await low.press('Backspace');
+    await expect(low).toHaveValue('88');
+    await expect(summary).toHaveText(initialSummary);
+    await low.press('5');
+    await expect(low).toHaveValue('885');
+    await expect(summary).toHaveText(initialSummary);
+    await low.press('Enter');
+    await expect(low).toBeFocused();
+    await expect(low).toHaveValue('885');
+    await expect(summary).not.toHaveText(initialSummary);
+    expect(await low.evaluate((input) => input.validity.stepMismatch)).toBe(false);
+
+    await high.fill('');
+    await expect(high).toHaveValue('');
+    await high.pressSequentially('1505');
+    await expect(high).toHaveValue('1505');
+    await high.press('Tab');
+    await expect(high).toHaveValue('1505');
+    await high.focus();
+    await high.press('End');
+    await high.press('Backspace');
+    await expect(high).toHaveValue('150');
+    await high.press('6');
+    await high.press('Enter');
+    await expect(high).toHaveValue('1506');
+
+    await low.fill('1200');
+    await filters.getByRole('button', { name: 'Reset', exact: true }).click();
+    await expect(low).toHaveValue('880');
+    await expect(high).toHaveValue(initialHigh);
+    await expect(summary).toHaveText(initialSummary);
+    expect(errorsByPage.get(page)).toEqual([]);
+  });
+
+  test('restores invalid range drafts and clamps numeric limits on commit', async ({ page }) => {
+    await goToComparator(page);
+    const filters = await openGeneralFilters(page);
+    const low = filters.getByRole('spinbutton', { name: 'Weight minimum', exact: true });
+    const high = filters.getByRole('spinbutton', { name: 'Weight maximum', exact: true });
+    const initialHigh = await high.inputValue();
+
+    await low.fill('');
+    await low.press('Enter');
+    await expect(low).toHaveValue('880');
+    await high.fill('');
+    await high.press('Tab');
+    await expect(high).toHaveValue(initialHigh);
+    await low.fill('1');
+    await low.press('e');
+    await low.press('Enter');
+    await expect(low).toHaveValue('880');
+    await low.fill('88');
+    await expect(low).toHaveValue('88');
+    await low.press('Tab');
+    await expect(low).toHaveValue('880');
+    await high.fill('99999');
+    await expect(high).toHaveValue('99999');
+    await high.press('Enter');
+    await expect(high).toHaveValue(initialHigh);
+
+    await low.fill('1000');
+    await low.press('Enter');
+    await high.fill('900');
+    await high.press('Tab');
+    expect(Number(await high.inputValue())).toBeGreaterThan(1000);
+    expect(errorsByPage.get(page)).toEqual([]);
+  });
+
   test('loads the page landmarks and comparator without browser errors', async ({ page }) => {
     await goToComparator(page);
 

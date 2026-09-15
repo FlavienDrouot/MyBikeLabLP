@@ -226,6 +226,7 @@ test.describe('historical comparator characterization', () => {
     const priceInputs = filters.locator('input[type="number"]');
     await priceInputs.nth(0).fill('1000');
     await priceInputs.nth(1).fill('1200');
+    await priceInputs.nth(1).press('Enter');
 
     await expect(priceInputs.nth(0)).toHaveValue('1000');
     await expect(priceInputs.nth(1)).toHaveValue('1208');
@@ -586,6 +587,7 @@ test.describe('historical comparator characterization', () => {
       const priceInputs = filters.locator('input[type="number"]');
       await priceInputs.nth(0).fill('1000');
       await priceInputs.nth(1).fill('1208');
+      await priceInputs.nth(1).press('Enter');
       await expect(resultSummary(page)).toHaveText('Wheels — 43 of 224');
 
       const priceToggle = filters.getByRole('switch', { name: 'Enable price filter' });
@@ -786,11 +788,13 @@ test.describe('historical comparator characterization', () => {
       const depthInputs = filters.locator('input[type="number"]');
       await depthInputs.nth(0).fill('75');
       await depthInputs.nth(1).fill('85');
+      await depthInputs.nth(1).press('Enter');
       await expect(resultSummary(page)).toHaveText('Wheels — 10 of 224');
       await expect(page.getByRole('cell', { name: '58 / 80 mm', exact: true })).toBeVisible();
 
       await depthInputs.nth(0).fill('60');
       await depthInputs.nth(1).fill('70');
+      await depthInputs.nth(1).press('Enter');
       await expect(resultSummary(page)).toHaveText('Wheels — 38 of 224');
       await expect(page.getByRole('cell', { name: '58 / 80 mm', exact: true })).toHaveCount(0);
     });
@@ -844,6 +848,7 @@ test.describe('historical comparator characterization', () => {
     const priceInputs = filters.locator('input[type="number"]');
     await priceInputs.nth(0).fill('1000');
     await priceInputs.nth(1).fill('1208');
+    await priceInputs.nth(1).press('Enter');
     await expect(resultSummary(page)).toHaveText('Wheels — 43 of 224');
     await expect(page.getByRole('button', { name: /^Remove filter:/ })).toHaveCount(0);
   });
@@ -1275,6 +1280,7 @@ test.describe('historical comparator characterization', () => {
     const priceInputs = filters.locator('input[type="number"]');
     await priceInputs.nth(0).fill('4000');
     await priceInputs.nth(1).fill('4400');
+    await priceInputs.nth(1).press('Enter');
     await expect(resultSummary(page)).toHaveText('Wheels — 17 of 224');
 
     const table = page.getByRole('table', { name: 'Wheel comparison' });
@@ -1298,12 +1304,14 @@ test.describe('historical comparator characterization', () => {
     const depthInputs = filters.locator('input[type="number"]');
     await depthInputs.nth(0).fill('75');
     await depthInputs.nth(1).fill('85');
+    await depthInputs.nth(1).press('Enter');
     await expect(resultSummary(page)).toHaveText('Wheels — 10 of 224');
     await expect(page.getByRole('navigation', { name: 'Pagination' })).toHaveCount(0);
     await expect(page.getByRole('table', { name: 'Wheel comparison' }).getByRole('row')).toHaveCount(11);
 
     await depthInputs.nth(0).fill('60');
     await depthInputs.nth(1).fill('70');
+    await depthInputs.nth(1).press('Enter');
     await expect(resultSummary(page)).toHaveText('Wheels — 38 of 224');
     await expect(page.getByRole('navigation', { name: 'Pagination' })).toHaveCount(2);
     await expect(page.getByRole('table', { name: 'Wheel comparison' }).getByRole('row')).toHaveCount(11);

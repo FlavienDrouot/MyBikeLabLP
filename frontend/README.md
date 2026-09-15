@@ -59,6 +59,17 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 - **Design tokens**: use `src/ui/styles/design-tokens.css`; add shared classes to `src/ui/styles/index.css`. Consult `TASTE-PROFILE.md` for visual direction.
 - **Browser translation policy**: English remains browser-translatable; non-English locales synchronize the document `lang` and protect the application with the document translation markers in `src/ui/lib/documentLanguage.js`
 
+## Comparator range inputs
+
+Numeric range fields keep a local draft while typing; results and sliders use
+the last committed value until Enter or blur. On commit, finite numbers are
+clamped with the existing bounds, precision and minimum-gap rules; empty or
+invalid drafts restore the committed value. Manual input accepts values finer
+than a slider's increment (for example 885 g with a 10 g slider step).
+Slider changes remain immediate. External value changes, including reset and
+currency conversion, replace unfinished drafts. Each numeric field has a
+translated accessible name identifying its property and minimum/maximum bound.
+
 ## Landing readability and responsive controls
 
 - The rim drawing uses numbered SVG markers next to each measurement, joined by

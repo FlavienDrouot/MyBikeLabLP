@@ -65,6 +65,8 @@
     "searchPlaceholder": "Search…",
     "noResults": "No results",
     "enableFilter": "Enable {{label}} filter",
+    "minimum": "{{label}} minimum",
+    "maximum": "{{label}} maximum",
     "closeFilters": "Close filters"
   },
   "columnSelector": {

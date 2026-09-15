@@ -65,6 +65,8 @@
     "searchPlaceholder": "Rechercher…",
     "noResults": "Aucun résultat",
     "enableFilter": "Activer le filtre {{label}}",
+    "minimum": "{{label}} minimum",
+    "maximum": "{{label}} maximum",
     "closeFilters": "Fermer les filtres"
   },
   "columnSelector": {

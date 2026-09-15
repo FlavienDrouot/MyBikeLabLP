@@ -41,16 +41,41 @@ const FilterToggle = ({ enabled, onChange, ariaLabel }) => (
   </button>
 );
 
-const RangeInput = ({ value, onChange, disabled, className, ...props }) => (
-  <input
-    {...props}
-    type="number"
-    value={value}
-    disabled={disabled}
-    onChange={(event) => onChange(event.target.value)}
-    className={className}
-  />
-);
+const RangeInput = ({ value, onChange, disabled, className, ...props }) => {
+  const [draft, setDraft] = useState(null);
+  const [previousValue, setPreviousValue] = useState(value);
+
+  // External updates (slider, reset, currency) replace any unfinished edit.
+  if (value !== previousValue) {
+    setPreviousValue(value);
+    setDraft(null);
+  }
+
+  const commit = () => {
+    if (draft !== null && draft.trim() !== '' && Number.isFinite(Number(draft))) {
+      onChange(draft);
+    }
+    setDraft(null);
+  };
+
+  return (
+    <input
+      {...props}
+      type="number"
+      value={draft ?? value}
+      disabled={disabled}
+      onChange={(event) => setDraft(event.target.value)}
+      onBlur={commit}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          commit();
+        }
+      }}
+      className={className}
+    />
+  );
+};
 
 const DualRangeRow = ({
   label,
@@ -66,6 +91,7 @@ const DualRangeRow = ({
   onToggleEnabled,
   ariaLabel,
 }) => {
+  const { t } = useTranslation();
   const computedStep = (max - min) / 50 > 1 ? 1 : 0.1;
   const effectiveStep = stepProp ?? computedStep;
   const minDiff = roundToStep(
@@ -108,10 +134,11 @@ const DualRangeRow = ({
       <div className={`comparator-range-controls ${enabled ? '' : 'opacity-40'}`}>
         <div className="comparator-range-row flex items-center">
           <RangeInput
+            aria-label={t('filterPanel.minimum', { label })}
             value={valueLow}
             min={min}
             max={max}
-            step={effectiveStep}
+            step={Math.min(effectiveStep, 1)}
             disabled={!enabled}
             onChange={handleLow}
             className="comparator-range-input wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
@@ -120,10 +147,11 @@ const DualRangeRow = ({
             -
           </span>
           <RangeInput
+            aria-label={t('filterPanel.maximum', { label })}
             value={valueHigh}
             min={min}
             max={max}
-            step={effectiveStep}
+            step={Math.min(effectiveStep, 1)}
             disabled={!enabled}
             onChange={handleHigh}
             className="comparator-range-input wave5-input w-24 px-2 py-1.5 text-sm text-center disabled:cursor-not-allowed"
