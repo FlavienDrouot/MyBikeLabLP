@@ -6,12 +6,15 @@ import { configureStore } from '@reduxjs/toolkit';
 import wheelsReducer from '../../../store/slices/wheelsSlice';
 import filtersReducer from '../../../store/slices/filtersSlice';
 import currencyReducer from '../../../store/slices/currencySlice';
+import { SUPPORTED_CURRENCIES } from '../../../domain/currency';
 import Landing from '../Landing';
 import i18n from 'i18next';
 
 function isTokenAllowed(token) {
   return (
     token === 'XX' ||
+    // Currency codes are language-independent labels in the mobile settings.
+    SUPPORTED_CURRENCIES.includes(token) ||
     /^\d+$/.test(token) ||
     /^\(\d+\)$/.test(token) ||
     /^[a-z]{1,2}$/.test(token) ||
