@@ -47,7 +47,7 @@ const CurrencyToggle = () => {
             }`}
           >
             <span className="currency-symbol">{CURRENCY_SYMBOLS[code] ?? code}</span>
-            <span className="currency-name">{t(`nav.currencyOption.${code}`)}</span>
+            <span className="currency-name">{code}</span>
           </button>
         );
       })}

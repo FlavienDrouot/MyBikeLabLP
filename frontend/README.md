@@ -61,12 +61,14 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
 
 ## Landing readability and responsive controls
 
-- The rim drawing uses numbered SVG markers with a matching HTML definition list.
+- The rim drawing uses numbered SVG markers next to each measurement, joined by
+  straight leaders, with a matching HTML definition list.
   Legend text keeps its CSS font size independently of the drawing scale; the
   legend sits below the drawing at widths up to 720px.
 - Up to 1080px, language and menu controls stay in the header. Currency and theme
-  controls move into its scrollable disclosure, with visible translated labels
-  and 44px minimum targets. The same controls stay mounted across breakpoints to
+  controls move into its scrollable disclosure, with EUR/USD currency codes,
+  translated theme labels and 44px minimum targets. Currency buttons retain
+  their translated accessible names. The same controls stay mounted across breakpoints to
   preserve selection state. Escape closes the disclosure and returns focus to
   its toggle; Tab enters the menu after opening it.
 - The mobile roadmap retains its groups, cards and shared timeline axis, with

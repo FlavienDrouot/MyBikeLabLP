@@ -105,14 +105,11 @@ const RoadmapGroup = ({ item, stateLabels }) => {
           data-roadmap-marker
           aria-hidden="true"
         />
-        {state !== 'active' && <span className="sr-only">{stateLabels[state]}</span>}
+        <span className={state === 'active' ? 'roadmap-status' : 'sr-only'}>{stateLabels[state]}</span>
         <span className="roadmap-group-icon" aria-hidden="true">
           <RoadmapIcon itemId={item.id} />
         </span>
-        <div>
-          {state === 'active' && <span className="roadmap-status">{stateLabels[state]}</span>}
-          <h3>{item.title}</h3>
-        </div>
+        <h3>{item.title}</h3>
       </div>
       <ol className="roadmap-substeps">
         {item.steps.map((step) => (

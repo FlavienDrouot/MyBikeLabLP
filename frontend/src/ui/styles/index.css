@@ -1204,14 +1204,20 @@
     line-height: var(--leading-snug);
   }
 
-  .roadmap-group-heading,
   .roadmap-card-heading {
     display: flex;
     align-items: flex-start;
   }
 
   .roadmap-group-heading {
-    gap: 12px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    column-gap: 12px;
+  }
+
+  .roadmap-group-heading > .roadmap-status {
+    grid-column: 1 / -1;
   }
 
   .roadmap-group-icon,
@@ -1258,10 +1264,6 @@
   .roadmap-card-heading h3,
   .roadmap-card-heading h4 {
     flex: 1;
-    min-width: 0;
-  }
-
-  .roadmap-group-heading > div {
     min-width: 0;
   }
 
@@ -1641,7 +1643,7 @@
   }
 
   .roadmap-group-heading {
-    gap: 10px;
+    column-gap: 10px;
     padding-bottom: 11px;
   }
 
