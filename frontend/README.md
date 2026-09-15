@@ -72,7 +72,9 @@ React 19 + Vite application. See [MyBikeLab/README.md](../README.md) for archite
   Currency buttons retain
   their translated accessible names. The same controls stay mounted across breakpoints to
   preserve selection state. Escape closes the disclosure and returns focus to
-  its toggle; Tab enters the menu after opening it.
+  its toggle; Tab enters the menu after opening it. When focus leaves the
+  header, the disclosure closes without moving focus, keeping the next page
+  control unobscured.
 - The mobile roadmap retains its groups, cards and shared timeline axis, with
   reduced horizontal insets. Available and next-step statuses are visible at
   the corresponding milestone/group; other status labels remain available to

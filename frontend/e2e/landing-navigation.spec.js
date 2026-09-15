@@ -54,6 +54,39 @@ test('keeps every mobile navbar control inside the 390px viewport', async ({ pag
   await expect(page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link')).toHaveCount(3);
 });
 
+test('closes the mobile menu when keyboard focus moves into the page', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('#top', { waitUntil: 'networkidle' });
+
+  const menu = page.getByRole('button', { name: /^(Open|Close) menu$/ });
+  const mobileNav = page.getByRole('navigation', { name: 'Mobile navigation' });
+  const controls = [
+    mobileNav.getByRole('link', { name: 'Compare', exact: true }),
+    mobileNav.getByRole('link', { name: 'What’s next', exact: true }),
+    mobileNav.getByRole('link', { name: 'Contact', exact: true }),
+    page.getByRole('button', { name: 'Show prices in euros', exact: true }),
+    page.getByRole('button', { name: 'Show prices in dollars', exact: true }),
+    page.getByRole('button', { name: 'Light', exact: true }),
+    page.getByRole('button', { name: 'Cream', exact: true }),
+    page.getByRole('button', { name: 'Dark', exact: true }),
+  ];
+
+  await menu.focus();
+  await page.keyboard.press('Enter');
+  for (const control of controls) {
+    await page.keyboard.press('Tab');
+    await expect(control).toBeFocused();
+    await expect(menu).toHaveAttribute('aria-expanded', 'true');
+  }
+
+  await page.keyboard.press('Tab');
+  await expect(page.getByRole('link', { name: 'Open comparison tool →', exact: true })).toBeFocused();
+  await expect(menu).toHaveAttribute('aria-expanded', 'false');
+  await expect(mobileNav).toBeHidden();
+  await expect(page.getByRole('group', { name: 'Theme' })).toBeHidden();
+  await expect(page.getByRole('group', { name: /Currency/i })).toBeHidden();
+});
+
 test('keeps the compact landing layout usable at the 320px viewport', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 844 });
   await page.goto('#top', { waitUntil: 'networkidle' });

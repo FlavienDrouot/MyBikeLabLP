@@ -184,6 +184,11 @@ const Navbar = () => {
   return (
     <header
       ref={headerRef}
+      onBlur={(event) => {
+        if (isOpen && !event.currentTarget.contains(event.relatedTarget)) {
+          close();
+        }
+      }}
       onKeyDown={(event) => {
         if (event.key === 'Escape' && isOpen) {
           close();
